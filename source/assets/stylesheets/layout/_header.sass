@@ -1,0 +1,81 @@
+//------------------------------------
+    #header
+//------------------------------------
+
+.navbar
+  border: none
+  border-radius: 0
+  background: image-url('map-texture-group@2x.png') top center
+  background-size: contain
+
+  .navbar-nav
+    font-size: 16px
+
+    > li 
+
+      &:hover > a
+        background-color: $black-014
+        border-bottom: 4px solid $black-014
+
+      &.active > a
+        background-color: $black-014
+        border-bottom: 4px solid $bright-blue
+
+    > li > a
+      color: #fff
+      padding: 27px 21px
+      line-height: 1.6
+      border-bottom: 4px solid transparent
+      text-rendering: geometricPrecision
+
+ 
+.navbar-brand
+  padding: 0
+  margin: 25px 0 20px
+  height: auto
+  color: #fff
+  line-height: 0.9
+  font-size: 40px
+  font-family: $heading-font
+  
+  small.brand-carrier
+    color: #fff
+    line-height: 1.9
+    margin-left: 26px
+    font-size: 16px
+    font-family: $body-font
+    vertical-align: top
+
+//---------------
+// Eyebrow Header
+//---------------
+
+.eyebrow-header
+  color: #fff
+  padding: 0
+  background-color: $dark-grey
+
+  .list-inline 
+
+    &.eyebrow-nav
+      margin: 0
+
+    > li
+      padding-left: 0
+      padding-right: 0
+
+    > li > a
+      display: inline-block
+      padding: 10px
+      color: #fff
+      font-size: 12px
+      line-height: 1
+      text-transform: uppercase
+
+      &:hover
+        text-decoration: none
+        background: $bright-blue
+
+      img
+        margin-left: 6px
+        vertical-align: bottom
