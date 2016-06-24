@@ -1,44 +1,41 @@
 -@title= 'Middleman Starter Kit'
 -@page_classes= 'home'
 
+= partial 'partials/tabs'
+
 .container
   .row
-    .col-sm-12.mt-50
-      .jumbotron.text-center
-        .page-header
-          %i.fa.fa-fort-awesome.fa-4x.text-muted
-          %h1 middleman starter kit
+
     .col-sm-6.mt-50
-      .panel.panel-primary
-        .panel-heading
-          %h3.panel-title
-            Introduction
-        .panel-body
-          :markdown
-            ### Middleman v4 Front-end Starter Kit
-            Middleman v4 starter kit template created for middleman front-end development.
-            If you wonder about middleman please [check out here](https://middlemanapp.com/)
+      %h1 Echo UI Build Kit
 
-            ### Quick start
-            `middleman init your_project_name --template=middleman-starter-kit`
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem, porro nesciunt tenetur officiis aut voluptate, rem nisi! Consectetur autem eius tenetur commodi magnam magni itaque dolore reiciendis non animi.
 
-            More information is [here](https://middlemanapp.com/advanced/project_templates/)
+      %h2 Heading 2
+      %h3 Heading 3
 
-            ### What's Include
-            Middleman start kit template basically build on HTML5 Boilerplate front-end
-            template. Ready to use Rails assets file structure, Sass file structure.
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, distinctio ut incidunt ducimus perspiciatis molestias consectetur minima temporibus fugiat laboriosam, sint cum autem iste sequi amet aperiam nam, explicabo rerum.
 
-            - Middleman v4
-            - HAML
-            - Sass
-            - jQuery
-            - Bootstrap
-            - Font Awesome (CDN)
-            - Editor Config
-            - Simple sitemap helper
-            - humans.txt
-            - Open graph meta tags
-            - Middleman Deploy
+      %h4 Heading 4
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis sed veniam eligendi praesentium blanditiis culpa iste, exercitationem molestiae modi architecto temporibus recusandae voluptates debitis delectus sit reprehenderit dolor hic in.
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!
+
+      %ul
+        %li List 1
+        %li List 2
+        %li List 3
+        %li List 4
+        %li List 5
+
+      %blockquote
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi doloremque architecto impedit, qui dicta! In nemo laborum quod voluptate repellendus labore fugiat veniam incidunt error animi, accusamus enim eius commodi.
+    
+      %h5 Heading h5
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!
+       
 
     .col-sm-6.mt-50
       .panel.panel-primary
@@ -51,3 +48,19 @@
               - if page.url =~ /\.html/
                 %li.list-group-item
                   = link_to page.url, page.url
+
+          %h3 Button Styles
+
+          %a.btn Button Btn
+          %a.btn.btn-default Button Default
+          %a.btn.btn-primary Button Primary
+
+      %h2 Form Elements
+      = partial 'partials/forms'
+
+    .col-md-12
+      %hr
+
+      %h1 Table Layout
+      = partial 'partials/table'
+

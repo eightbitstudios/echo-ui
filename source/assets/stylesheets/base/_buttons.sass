@@ -1,0 +1,46 @@
+//------------------------------------
+    #buttons
+//------------------------------------
+
+.btn
+  padding: 12px 19px 9px
+  font-size: 22px
+  font-family: $heading-font
+  text-transform: uppercase
+  letter-spacing: 0.5px
+  line-height: 0.9
+  text-shadow: none
+  border-radius: 2px
+  transition: all 0.2s ease-in
+
+  &.btn-default
+    color: $bright-blue
+    padding: 10px 19px 7px
+    border: solid 2px $bright-blue
+    background-color: #fff
+    
+    &:hover
+      color: #fff
+      background-color: $bright-blue
+
+    &:active,
+    &:focus
+      color: #fff
+      outline: none
+      box-shadow: none
+      border: solid 2px $bright-blue
+      background-color: darken($bright-blue, 10%)
+
+  &.btn-primary
+    color: #fff
+    border: none
+    background-color: $green
+
+    &:hover
+      background-color: darken($green, 10%)
+
+    &:active,
+    &:focus
+      outline: none
+      box-shadow: none
+      background-color: darken($green, 15%)
