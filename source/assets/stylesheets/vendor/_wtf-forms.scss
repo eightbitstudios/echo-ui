@@ -27,17 +27,19 @@
   z-index: -1; /* Put the input behind the label so it doesn't overlay text */
 }
 .control-indicator {
+
   position: absolute;
   top: .25rem;
   left: 0;
   display: block;
-  width:  1.6rem;
-  height: 1.6rem;
+  width:  1.8rem;
+  height: 1.8rem;
   line-height: 1rem;
   font-size: 65%;
   color: #eee;
   text-align: center;
-  background-color: #eee;
+  border: solid 1px #e1e2e3;
+  background-color: #f7f7f7;
   background-size: 50% 50%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -48,16 +50,15 @@
 }
 
 /* Hover state */
-/* Uncomment if you need it, but be aware of the sticky iOS states.
+ // Uncomment if you need it, but be aware of the sticky iOS states.
 .control:hover .control-indicator {
-  color: #fff;
-  background-color: #ccc;
+  background-color: #f0f0f0;
 }
-*/
+
 
 /* Focus */
 .control input:focus ~ .control-indicator {
-  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #e1e2e3;
 }
 
 /* Checked state */

@@ -1,4 +1,4 @@
--@title= 'Echo UI Kitchen Sink'
+-@title= 'Echo UI Build. The Kitchen Sink'
 -@page_classes= 'home'
 
 = partial 'partials/tabs'
@@ -6,7 +6,7 @@
 .container
   .row
 
-    .col-sm-12
+    .col-sm-6.mt-50
       %h1 Echo UI Build Kit
 
       %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem, porro nesciunt tenetur officiis aut voluptate, rem nisi! Consectetur autem eius tenetur commodi magnam magni itaque dolore reiciendis non animi.
@@ -37,27 +37,25 @@
       %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!
        
 
-    .col-sm-12
+    .col-sm-6.mt-50
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title
+            Sitemap
+        .panel-body
+          %ul.list-group
+            - sitemap.resources.each do |page|
+              - if page.url =~ /\.html/
+                %li.list-group-item
+                  = link_to page.url, page.url
 
-      %h3 Sitemap
-      
-      %ul.list-group
-        - sitemap.resources.each do |page|
-          - if page.url =~ /\.html/
-            %li.list-group-item
-              = link_to page.url, page.url
-      %hr
+          %h3 Button Styles
 
-      %h3 Button Styles
+          %a.btn Button Btn
+          %a.btn.btn-default Button Default
+          %a.btn.btn-primary Button Primary
 
-      %a.btn Button Btn
-      %a.btn.btn-default Button Default
-      %a.btn.btn-primary Button Primary
-      %a.btn.btn-warning Button Warning
-
-      %hr
-
-      %h3 Form Elements
+      %h2 Form Elements
       = partial 'partials/forms'
 
     .col-md-12
