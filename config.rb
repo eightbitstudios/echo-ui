@@ -10,7 +10,8 @@ page '/*.json', layout: false
 page '/*.txt', layout: false
 
 # With alternative layout
-# page "/path/to/file.html", layout: :otherlayout
+page "/login.html", layout: :no_headerfooter
+page "/password.html", layout: :no_headerfooter
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
@@ -69,16 +70,28 @@ configure :build do
   activate :relative_assets
 
   # Middleman Deploy (https://github.com/middleman-contrib/middleman-deploy/)
-  #activate :deploy do |deploy|
+  # activate :deploy do |deploy|
   #  deploy.deploy_method = :git
   #  Optional Settings
   #  deploy.remote   = 'https://github.com/coskuntekin/baidu_weather_widget.git' # remote name or git url, default: origin
   #  deploy.branch   = 'gh-pages' # default: gh-pages
   #  deploy.strategy = :submodule # commit strategy: can be :force_push or :submodule, default: :force_push
   #  deploy.commit_message = 'custom-message' # commit message (can be empty), default: Automated commit at `timestamp` by middleman-deploy `version`
-  #end
+  # end
 
 end
+
+
+# activate :deploy do |deploy|
+#   deploy.deploy_method  = :ftp
+#   deploy.port           = 22
+#   deploy.host           = "8bitstudios.com"
+#   deploy.path           = "/clients/echo"
+#   deploy.user           = "u37443755"
+#   deploy.password       = "OhNyes!15"
+# end
+
+
 
 # Production Environment
 configure :production do

@@ -4,8 +4,24 @@
 
 footer.footer
   color: #fff
-  padding: 16px 0
+  
   background-color: $dark-blue
+  
+  .footer-primary
+    padding: 23px 0 20px
+  .footer-secondary
+    padding: 15px 0
+
+  .footer-primary
+    background-size: contain
+    background: image-url('map-texture-group@2x.png') bottom center
+
+  .footer-secondary
+    .footer-nav a
+      text-decoration: underline
+      color: $light-grey
+      &:hover
+        text-decoration: none
 
   .navbar-brand
     color: #fff
@@ -15,6 +31,9 @@ footer.footer
 
   .footer-nav
     margin-left: 10px
-
+    margin-bottom: 0
+    li
+      padding-left: 13px
+      padding-right: 13px
     a
       color: #fff
