@@ -1,0 +1,32 @@
+%footer.footer
+
+  .footer-primary
+    .container
+      .pull-left
+        .navbar-brand
+          ECHO
+      .pull-right
+        %ul.list-inline.footer-nav.navbar-right
+          %li
+            %strong ECHO REP
+            Danielle John
+          %li
+            =image_tag('mail-icon@2x.png', width: '15px', height: '15px') 
+            =link_to 'danielle.john@echoLogistics.com', 'mailto:danielle.john@echoLogistics.com'
+          %li 
+            (610) 555-1212
+
+  .footer-secondary
+    .container
+      .pull-left
+        BILLING QUESTIONS? 610-555-1212
+      .pull-right
+        %span.copyright
+          Copyright
+          :javascript
+            document.write(new Date().getFullYear())
+          Echo Global Logistics
+
+        %ul.list-inline.footer-nav.navbar-right
+          %li=link_to 'Terms &amp; Conditions', '#', class: ''
+          %li=link_to 'Privacy Policy', '#', class: ''

@@ -1,0 +1,76 @@
+-@title= 'Echo UI Kitchen Sink'
+-@page_classes= 'home'
+
+= partial 'partials/tabs'
+
+.container
+  .row
+
+    .col-sm-12
+      %h1 Echo UI Build Kit
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem, porro nesciunt tenetur officiis aut voluptate, rem nisi! Consectetur autem eius tenetur commodi magnam magni itaque dolore reiciendis non animi.
+
+      %h2 Heading 2
+      %h3 Heading 3
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, distinctio ut incidunt ducimus perspiciatis molestias consectetur minima temporibus fugiat laboriosam, sint cum autem iste sequi amet aperiam nam, explicabo rerum.
+
+      %h4 Heading 4
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis sed veniam eligendi praesentium blanditiis culpa iste, exercitationem molestiae modi architecto temporibus recusandae voluptates debitis delectus sit reprehenderit dolor hic in.
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!
+
+      %ul
+        %li List 1
+        %li List 2
+        %li List 3
+        %li List 4
+        %li List 5
+
+      %blockquote
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi doloremque architecto impedit, qui dicta! In nemo laborum quod voluptate repellendus labore fugiat veniam incidunt error animi, accusamus enim eius commodi.
+    
+      %h5 Heading h5
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!
+       
+
+    .col-sm-12
+
+      %h3 Sitemap
+      
+      %ul.list-group
+        - sitemap.resources.each do |page|
+          - if page.url =~ /\.html/
+            %li.list-group-item
+              = link_to page.url, page.url
+      %hr
+
+      %h3 Button Styles
+
+      %a.btn Button Btn
+      %a.btn.btn-default Button Default
+      %a.btn.btn-primary Button Primary
+      %a.btn.btn-warning Button Warning
+      
+      / %figure.highlight
+      /   %pre
+      /     %code.language-html{"data-lang" => "html"}
+      /       %a.btn Button Btn
+      /       %a.btn.btn-default Button Default
+      /       %a.btn.btn-primary Button Primary
+      /       %a.btn.btn-warning Button Warning
+
+      %hr
+
+      %h3 Form Elements
+      = partial 'partials/forms'
+
+    .col-md-12
+      %hr
+
+      %h1 Table Layout
+      = partial 'partials/table'
+

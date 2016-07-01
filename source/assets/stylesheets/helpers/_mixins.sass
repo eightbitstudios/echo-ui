@@ -1,0 +1,17 @@
+//------------------------------------
+    #mixins
+//------------------------------------
+
+
+$small-width:    668px
+$tablet-width:   769px
+$mobile-breakpoint: 980px
+
+@mixin mobile
+  @media (max-width: #{$mobile-breakpoint})
+    @content
+
+
+@mixin large
+  @media (min-width: #{$tablet-width})
+    @content

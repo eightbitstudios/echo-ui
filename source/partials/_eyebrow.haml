@@ -1,0 +1,12 @@
+.eyebrow-header
+  .container
+    .eyebrow-text.pull-left
+      BILLING QUESTIONS? 610-555-1212
+
+    %ul.eyebrow-nav.list-inline.navbar-right
+      %li.active=link_to 'My Carriers', '#', class: 'link-mycarriers'
+      %li=link_to 'Settings', '#', class: 'link-settings'
+      %li
+        =link_to '#', class: 'link-signout' do
+          Sign Out
+          =image_tag 'icon-signout@2x.png', class: ''
