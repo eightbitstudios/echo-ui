@@ -1,0 +1,39 @@
+//------------------------------------
+    #searchbox
+//------------------------------------
+
+.search-form
+  margin-bottom: 20px
+  margin-right: 25px
+
+  .form-group
+    position: relative
+
+  .form-control
+    height: auto
+    width: 350px
+    padding: 10px 14px
+    border: none
+    border-radius: 2px
+    background-color: $gray-lightest
+    transition: background 0.2s ease-in
+
+    &:focus
+      background-color: $gray-light
+  
+.btn.btn-icon
+  position: absolute
+  top: 10px
+  right: 10px
+
+
+//////
+// Filter Drivers button & overlay
+
+.filter-drivers
+  .btn-filter
+
+    &:hover
+      .icon-calendar-shape,
+      .icon-calendar-numbers
+        fill: #fff

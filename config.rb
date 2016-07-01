@@ -10,6 +10,8 @@ page '/*.json', layout: false
 page '/*.txt', layout: false
 
 # With alternative layout
+page "/shell-echorep.html", layout: :layout_echorep
+
 page "/login.html", layout: :no_headerfooter
 page "/password.html", layout: :no_headerfooter
 
@@ -20,6 +22,8 @@ page "/password.html", layout: :no_headerfooter
 ###
 # Helpers
 ###
+
+activate :autoprefixer
 
 ###
 # Environment List
@@ -82,14 +86,14 @@ configure :build do
 end
 
 
-# activate :deploy do |deploy|
-#   deploy.deploy_method  = :ftp
-#   deploy.port           = 22
-#   deploy.host           = "8bitstudios.com"
-#   deploy.path           = "/clients/echo"
-#   deploy.user           = "u37443755"
-#   deploy.password       = "OhNyes!15"
-# end
+activate :deploy do |deploy|
+  deploy.deploy_method  = :ftp
+  deploy.port           = 22
+  deploy.host           = "8bitstudios.com"
+  deploy.path           = "/clients/echo"
+  deploy.user           = "u37443755"
+  deploy.password       = "OhNyes!11"
+end
 
 
 

@@ -5,7 +5,7 @@
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %meta{:content => "telephone=no", :name => "format-detection"}
-
+    
     %title
       =@title
 
@@ -28,11 +28,11 @@
 
   %body{class: @page_classes}
 
-    = partial 'partials/header'
+    = partial 'partials/header_echorep'
 
     = yield
 
-    = partial 'partials/footer'
+    = partial 'partials/footer_echorep'
 
   =javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'
   :javascript

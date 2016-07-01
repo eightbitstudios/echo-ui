@@ -14,12 +14,10 @@
     > li 
 
       &:hover > a
-        background-color: $black-014
-        border-bottom: 4px solid $black-014
+        border-bottom: 4px solid $bright-blue
 
       &.active > a
         font-weight: 600
-        background-color: $black-014
         border-bottom: 4px solid $bright-blue
 
     > li > a
@@ -28,7 +26,9 @@
       line-height: 1.6
       border-bottom: 4px solid transparent
       text-rendering: geometricPrecision
-
+      &:focus,
+      &:hover
+        background: none
  
 .navbar-brand
   padding: 0
@@ -59,7 +59,7 @@
   font-size: 12px
   color: #fff
   padding: 0
-  background-color: $dark-grey
+  background-color: $black
 
   .eyebrow-text
     margin-top: 10px

@@ -1,4 +1,4 @@
-%table.table
+%table.table.table-driverlist
   %thead
     %tr
       %th.sorted-row Driver Name
@@ -9,18 +9,18 @@
       %th Next Assignment
   %tbody
     %tr
-      %td 
+      %td.driverlist-col-driver
         %h3.driver-name=link_to 'Julian Turner ', '#'
         <span><tel>(888) 421-2901</tel></span>
-      %td App Installed <br/>Tracking Enabled
-      %td 2003 1234
-      %td English
-      %td 
+      %td.driverlist-col-usage App Installed <br/>Tracking Enabled
+      %td.driverlist-col-tractor 2003 1234
+      %td.driverlist-col-lang English
+      %td.driverlist-col-current
         %h2.load-number=link_to '123443212', '#'
         Active Driver <br/>
         Starts 11:30 CST, Fri Aug 28 <br/>
         =link_to 'Change Driver', '#'
-      %td 
+      %td.driverlist-col-next
         %h2.load-number=link_to '123443212', '#'
         Active Driver <br/>
         Starts 11:30 CST, Fri Aug 28 <br/>
