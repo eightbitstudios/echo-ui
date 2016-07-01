@@ -8,25 +8,33 @@
     %h1.brand Echo
     
     %h2 Batmobile Marketing Unauthenticated Home Page
+    
+    .lead
+      %p Marketing copy and features / benefits bullets.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat nisl magna, et faucibus arcu condimentum sed:
 
-    %p Marketing copy and features / benefits bullets.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat nisl magna, et faucibus arcu condimentum sed:
-
-    %ul
-      %li Lorem ipsum dolor sit consectetur adipiscing elit.
-      %li Aliquam at porttitor sem. Aliquam erat volutpat.
-      %li Donec placerat et faucibus arcu condimentum.
-
+      %ul
+        %li Lorem ipsum dolor sit consectetur adipiscing elit.
+        %li Aliquam at porttitor sem. Aliquam erat volutpat.
+        %li Donec placerat et faucibus arcu condimentum.
 
   .col-sm-5.col-register.col-register_form
 
     %h1 Already Have An Account? <br>Please Log In.
     %form
       .form-group
-        %label Email Address
-        %input.form-control{:type => "email", :placeholder => "Email"}
+        %label Email
+        %input.form-control{:type => "email", :placeholder => "myname@mail.com"}
       .form-group
         %label Password
-        %input.form-control{:type => "password", :placeholder => "Password"}
+        %input.form-control{:type => "password", :placeholder => "Enter password"}
+      .form-group
+        =link_to 'Forgot password?', '#', class: 'form-helper'
+        %button.btn.btn-default.pull-right{type: "submit"} Submit
 
-      =link_to 'Forgot password?', '#', class: 'pull-left form-helper'
-      %button.btn.btn-default.pull-right{type: "submit"} Submit
+    .password-check
+      %p Password should contain:
+      %ul
+        %li At least 1 uppercase letter
+        %li At least 1 lowercase letter
+        %li At least 1 number
+        %li At least 8 characters
