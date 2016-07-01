@@ -22,30 +22,42 @@
 
     > li > a
       color: #fff
-      padding: 27px 21px
+      padding: 27px 10px
       line-height: 1.6
       border-bottom: 4px solid transparent
       text-rendering: geometricPrecision
       &:focus,
       &:hover
         background: none
+
+      +large
+        padding: 27px 21px
+
  
 .navbar-brand
   padding: 0
-  margin: 25px 0 20px 0
+  margin: 20px 0 10px 0
   height: auto
   color: #fff
-  line-height: 0.9
+  line-height: 20px
   font-size: 40px
   font-family: $heading-font
 
   small.brand-carrier
     color: #fff
     line-height: 1.9
-    margin-left: 26px
     font-size: 16px
     font-family: $body-font
     vertical-align: top
+    display: block
+    
+    +large
+      display: inline
+      margin-left: 26px
+
+  +large
+    line-height: 0.9
+    margin: 25px 0 20px 0
 
 .navbar > .container .navbar-brand, 
 .navbar > .container-fluid .navbar-brand
