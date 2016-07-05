@@ -5,7 +5,7 @@
 
   .col-sm-7.col-register.col-register_content
 
-    %h1.brand Echo
+    %h1.brand.brand-lg Echo
     
     %h2 Batmobile Marketing Unauthenticated Home Page
     
@@ -29,5 +29,5 @@
           %label Password
           %input.form-control{:type => "password", :placeholder => "Enter password"}
         .form-group
-          =link_to 'Forgot password?', '/password.html', class: 'form-helper'
-          %button.btn.btn-default.pull-right{type: "submit"} Submit
+          =link_to 'Forgot password?', '/password.html', class: 'btn btn-link btn-alt'
+          %button.btn.btn-default.pull-right{type: "submit"} Login

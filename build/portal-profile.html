@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      Echo UI Build. Shell Layout.
+      Echo UI Driver List
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class='home'>
+  <body class='user-profile'>
     <header class='navbar'>
       <div class='eyebrow-header'>
         <div class='container'>
@@ -66,29 +66,57 @@
         </nav>
       </div>
     </header>
-    <div class='container'>
+    <div class='container main-content'>
+      <a href="#" class="btn btn-back btn-link"><img src="assets/images/iconarrow-blue@2x.png" alt="Iconarrow blue@2x" />
+      Back To Portal User List
+      </a>
       <div class='row'>
-        <div class='col-sm-12'>
-          <h1>Echo UI Build Kit</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem, porro nesciunt tenetur officiis aut voluptate, rem nisi! Consectetur autem eius tenetur commodi magnam magni itaque dolore reiciendis non animi.</p>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, distinctio ut incidunt ducimus perspiciatis molestias consectetur minima temporibus fugiat laboriosam, sint cum autem iste sequi amet aperiam nam, explicabo rerum.</p>
-          <h4>Heading 4</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis sed veniam eligendi praesentium blanditiis culpa iste, exercitationem molestiae modi architecto temporibus recusandae voluptates debitis delectus sit reprehenderit dolor hic in.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!</p>
-          <ul>
-            <li>List 1</li>
-            <li>List 2</li>
-            <li>List 3</li>
-            <li>List 4</li>
-            <li>List 5</li>
-          </ul>
-          <blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi doloremque architecto impedit, qui dicta! In nemo laborum quod voluptate repellendus labore fugiat veniam incidunt error animi, accusamus enim eius commodi.</p>
-          </blockquote>
-          <h5>Heading h5</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!</p>
+        <div class='col-sm-6'>
+          <section class='content-container profile-info'>
+            <h1 class='profile-name profile-name_driver'>
+              <img src="assets/images/icon-portal-user.svg" class="icon icon-portal-user" alt="Icon portal user" />
+              Portal User
+            </h1>
+            <form>
+              <fieldset class='fieldset'>
+                <div class='form-group'>
+                  <label>First Name</label>
+                  <input class='form-control' placeholder='Driver Name' type='email'>
+                </div>
+                <div class='form-group'>
+                  <label>Last Name</label>
+                  <input class='form-control' placeholder='Last Name' type='password'>
+                </div>
+              </fieldset>
+              <fieldset class='fieldset'>
+                <legend>Contact Information</legend>
+                <div class='form-group has-error'>
+                  <label>Email Address</label>
+                  <input class='form-control' placeholder='email@email.com' type='email'>
+                  <span class='help-block'>This email address is currently in use</span>
+                </div>
+                <div class='form-group'>
+                  <label>Phone Number</label>
+                  <input class='form-control' placeholder='Last Name' type='password'>
+                </div>
+                <div class='form-group'>
+                  <a href="#" class="pull-left">Remove User</a>
+                  <button class='btn btn-default pull-right' type='submit'>Save Changes</button>
+                </div>
+              </fieldset>
+            </form>
+          </section>
+        </div>
+        <div class='col-sm-6'>
+          <section class='content-container'>
+            <h2 class='section-header'>Batmobile Usage</h2>
+            <ul class='checklist'>
+              <li class='checklist-inprogress'>
+                Invited May 18 2016
+                <button class='btn btn-default pull-right'>Resend Invite</button>
+              </li>
+            </ul>
+          </section>
         </div>
       </div>
     </div>
