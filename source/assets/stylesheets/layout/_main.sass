@@ -5,11 +5,34 @@
 html, body
   height: 100%
 
+@media (max-width: 991px) and (min-width: 768px)
+  .container
+    width: 100%
+
+// Flexbox layout for containers that span 100% height
+//
 .container-flex
   display: flex
   flex-direction: row
   align-items: stretch
   align-content: stretch
   justify-content: center
-  height: 100%
-  
+  // height: 100%
+
+
+// Indiviual content containers
+// Used in Profile layouts
+
+.content-container
+  +container-shadow
+  margin-bottom: 20px
+
+.section-header
+  color: $gray-darkest
+  font-size: 14px
+  font-weight: 600
+  line-height: 1.4
+  text-transform: uppercase
+  padding-bottom: 15px
+  margin: 0 0 10px
+  border-bottom: solid 1px $gray-light

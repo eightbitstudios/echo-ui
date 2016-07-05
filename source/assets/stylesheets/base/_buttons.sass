@@ -13,6 +13,10 @@
   border-radius: 2px
   transition: all 0.2s ease-in
 
+  /////////////
+  // General button styles
+  /////////////
+
   &.btn-default
     color: $bright-blue
     padding: 10px 19px 7px
@@ -45,19 +49,6 @@
       box-shadow: none
       background-color: darken($green, 15%)
 
-  &.btn-filter
-    color: $gray-mid-light
-    border-color: $gray-mid-light
-
-    &:hover
-      color: #fff
-      background-color: $gray-mid-light
-    
-    &:active,
-    &:focus
-      color: #fff
-      background-color: $gray-mid-light
-
   &.btn-warning
     border: none
     background-color: $error
@@ -71,6 +62,43 @@
       box-shadow: none
       background-color: #b33c2e
 
+  &.btn-link
+    color: $bright-blue
+    font-family: $body-font
+    font-size: 12px
+    line-height: 1.4
+    text-transform: none
+    letter-spacing: 0
+    padding: 20px 0
+
+
+    &.btn-alt
+      text-decoration: underline
+      color: $gray-mid-light
+      &:hover
+        text-decoration: none
+
+    &.btn-sm
+      font-size: 12px
+      padding: 0
+
+  /////////////
+  // Unique button styles
+  /////////////
+
+  &.btn-filter
+    color: $gray-mid-light
+    border-color: $gray-mid-light
+
+    &:hover
+      color: #fff
+      background-color: $gray-mid-light
+    
+    &:active,
+    &:focus
+      color: #fff
+      background-color: $gray-mid-light
+
 
   &.btn-icon
     padding: 0
@@ -79,3 +107,8 @@
 
     &:hover
       background: none
+
+
+  &.btn-back
+    img 
+      vertical-align: baseline

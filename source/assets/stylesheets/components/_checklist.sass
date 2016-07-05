@@ -1,0 +1,38 @@
+//------------------------------------
+    #checklist
+//------------------------------------
+
+.checklist
+  color: $gray-mid-light
+  list-style: none
+  margin-top: 5px
+  padding-left: 0
+
+  > li
+    line-height: 2.5em
+    margin-bottom: 0
+
+    &:before
+      position: relative
+      content: ''
+      top: 0.5rem
+      width: 22px
+      height: 22px
+      margin-right: 9px
+      display: inline-block
+      background: url("/assets/images/iconcheck-grey@2x.png") 0 0 no-repeat
+      background-size: 22px
+    
+    &.checklist-approved
+      color: $gray-darkest
+
+      &:before
+        background: url("/assets/images/iconcheck-grey-approved@2x.png") 0 0 no-repeat
+        background-size: 22px
+  
+    &.checklist-inprogress
+      color: $gray-darkest
+
+      &:before
+        background: url("/assets/images/icon-question@2x.png") 0 0 no-repeat
+        background-size: 22px

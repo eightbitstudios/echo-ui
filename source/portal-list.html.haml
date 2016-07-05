@@ -1,0 +1,72 @@
+-@title= 'Echo UI Driver List'
+-@page_classes= 'home'
+
+= partial 'partials/tabs'
+
+
+.container.main-content
+  .row
+    .col-md-12
+      %section.portal-user-grid
+        %article.portal-user
+          %header
+            %h1.user-name Blake Lively
+            .user-title Load Manager
+
+          .user-email 
+            =link_to 'contact.email@companyname.com', '#'
+          .user-phone (312) 444-4902
+          %footer.user-action
+            .user-action-note Last login 5 day ago
+
+        %article.portal-user
+          %header
+            %h1.user-name Lyn Walham
+            .user-title Load Manager
+
+          .user-email 
+            =link_to 'contact.email@companyname.com', '#'
+          .user-phone (312) 444-4902
+          %footer.user-action
+            .user-action-note Last login 2 weeks ago
+            .user-action-link
+
+        %article.portal-user
+          %header
+            %h1.user-name Sophie Garcia
+            .user-title Carrier Admin
+
+          .user-email 
+            =link_to 'contact.email@companyname.com', '#'
+          .user-phone (312) 444-4902
+          %footer.user-action
+            .user-action-note Last login 1 day ago
+            =link_to 'Resend Invitation', '#', class: 'btn btn-link btn-alt btn-sm'
+
+        %article.portal-user
+          %header
+            %h1.user-name Adam Carlson
+            .user-title Load Manager
+
+          .user-email 
+            =link_to 'contact.email@companyname.com', '#'
+          .user-phone (312) 444-4902
+          %footer.user-action
+            .user-action-note Last login 1 day ago
+            =link_to 'Resend Invitation', '#', class: 'btn btn-link btn-alt btn-sm'
+
+        %article.portal-user
+          %header
+            %h1.user-name Lyn Walham
+            .user-title Load Manager
+
+          .user-email 
+            =link_to 'contact.email@companyname.com', '#'
+          .user-phone (312) 444-4902
+          %footer.user-action
+            .user-action-note Last login 2 weeks ago
+            .user-action-link
+        
+        %article.portal-user.portal-add-user
+          %button.btn.btn-adduser
+            =image_tag('icon-plus.svg')

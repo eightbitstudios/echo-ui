@@ -9,7 +9,12 @@
     .col-sm-12
       %h1 Echo UI Build Kit
 
-      %h3 Sitemap
+      %h3 Approved Layouts
+      %ul.list-group
+        %li=link_to 'Shell Carrier Rep', '/shell-carrier.html'
+        %li=link_to 'Shell Echo Rep', '/shell-echorep.html'
+
+      %h3 In Development...
       %ul.list-group
         - sitemap.resources.each do |page|
           - if page.url =~ /\.html/

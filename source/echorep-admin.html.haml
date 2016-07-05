@@ -1,5 +1,158 @@
 -@title= 'Echo UI Echo Rep Admin'
--@page_classes= 'home'
+-@page_classes= 'echorep'
 
 .container-flex.container-echorep
-  
+
+  .col-sm-5.col-echorep.col-echorep_searchlist
+    .col-wrap
+      %form.search-form{role:"search"}
+        .form-group
+          %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+          %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+
+      .search-list
+        %ul.search-list_alpha
+          %li.search-list_letter
+            A
+            %ul.search-list_names
+              %li 
+                =link_to 'Carrier Company "A"', '#'
+              %li 
+                =link_to 'Carrier Company "A"', '#'
+              %li 
+                =link_to 'Carrier Company "A"', '#'
+          %li.search-list_letter 
+            B
+            %ul.search-list_names
+              %li 
+                =link_to 'Carrier Company "B"', '#'
+              %li 
+                =link_to 'Carrier Company "B"', '#'
+          %li.search-list_letter 
+            C
+            %ul.search-list_names
+              %li 
+                =link_to 'Carrier Company "C"', '#'
+          %li.search-list_letter 
+            D
+            %ul.search-list_names
+              %li 
+                =link_to 'Carrier Company "D"', '#'
+              %li 
+                =link_to 'Carrier Company "D"', '#'              
+              %li 
+                =link_to 'Carrier Company "D"', '#'
+
+
+  .col-sm-7.col-echorep.col-echorep_searchresults
+    .col-wrap
+      %section.results-selection
+      
+        %header.selection-name
+          =link_to 'View Dashboard', '#', class: 'btn btn-default pull-right'
+
+          %h1.selection-company Carrier Company “A” Name
+          3400 N Wilconshire, #309, Chicago, IL. 60616
+        
+        %article.selection-users
+          %header.selection-header
+            Portal Users - 2
+            =link_to 'View Dashboard', '#', class: 'btn btn-link btn-sm'
+          
+          %section.portal-user-grid
+            %article.portal-user
+              %header
+                %h1.user-name Blake Lively
+                .user-title Load Manager
+
+              .user-email 
+                =link_to 'contact.email@companyname.com', '#'
+              .user-phone (312) 444-4902
+              %footer.user-action
+                .user-action-note Last login 5 day ago
+
+            %article.portal-user
+              %header
+                %h1.user-name Lyn Walham
+                .user-title Load Manager
+
+              .user-email 
+                =link_to 'contact.email@companyname.com', '#'
+              .user-phone (312) 444-4902
+              %footer.user-action
+                .user-action-note Last login 2 weeks ago
+                .user-action-link
+
+            %article.portal-user
+              %header
+                %h1.user-name Sophie Garcia
+                .user-title Carrier Admin
+
+              .user-email 
+                =link_to 'contact.email@companyname.com', '#'
+              .user-phone (312) 444-4902
+              %footer.user-action
+                .user-action-note Last login 1 day ago
+                =link_to 'Resend Invitation', '#', class: 'btn btn-link btn-alt btn-sm'
+
+            %article.portal-user
+              %header
+                %h1.user-name Adam Carlson
+                .user-title Load Manager
+
+              .user-email 
+                =link_to 'contact.email@companyname.com', '#'
+              .user-phone (312) 444-4902
+              %footer.user-action
+                .user-action-note Last login 1 day ago
+                =link_to 'Resend Invitation', '#', class: 'btn btn-link btn-alt btn-sm'
+
+            %article.portal-user
+              %header
+                %h1.user-name Lyn Walham
+                .user-title Load Manager
+
+              .user-email 
+                =link_to 'contact.email@companyname.com', '#'
+              .user-phone (312) 444-4902
+              %footer.user-action
+                .user-action-note Last login 2 weeks ago
+                .user-action-link
+            
+            %article.portal-user.portal-add-user
+              %button.btn.btn-adduser
+                =image_tag('icon-plus.svg')
+
+        %article.selection-users
+          %header.selection-header
+            Drivers - 32
+            =link_to 'View Driver List', '#', class: 'btn btn-link btn-sm'
+          
+          %section.portal-user-grid
+            %article.portal-user
+              %header
+                %h1.user-name Blake Lively
+                .user-title Load Manager
+
+              .user-email 
+                =link_to 'contact.email@companyname.com', '#'
+              .user-phone (312) 444-4902
+              %footer.user-action
+                .user-action-note Last login 5 day ago
+
+            %article.portal-user
+              %header
+                %h1.user-name Lyn Walham
+                .user-title Load Manager
+
+              .user-email 
+                =link_to 'contact.email@companyname.com', '#'
+              .user-phone (312) 444-4902
+              %footer.user-action
+                .user-action-note Last login 2 weeks ago
+                .user-action-link
+
+            
+            %article.portal-user.portal-add-user
+              %button.btn.btn-adduser
+                =image_tag('icon-plus.svg')

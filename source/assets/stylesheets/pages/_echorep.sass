@@ -1,0 +1,99 @@
+//------------------------------------
+    #echorep
+//------------------------------------
+
+// Layout adjustments, grids
+.echorep
+  header.navbar
+    margin-bottom: 0
+  footer.footer
+    margin-top: 0
+
+// 1050px = 1170 - 60 - 60 
+
+.container-flex
+  .col-echorep
+    padding-top: 45px
+    padding-bottom: 45px
+    display: flex
+    
+  .col-echorep:first-child
+    justify-content: flex-end
+    
+    @media (min-width: 1200px)
+      padding-right: 60px
+      .col-wrap
+        width: calc(1170px * (5/12))
+
+        width: 373px
+
+  .col-echorep:last-child
+    justify-content: flex-start
+    background-color: #f7f7f7
+
+    @media (min-width: 1200px)
+      padding-left: 60px
+      .col-wrap
+        width: calc(1170px * (7/12))
+
+        width: 677px
+
+.results-selection
+  .portal-user-grid
+    +flex-grid(2,1rem)
+    .portal-user
+      margin-bottom: 10px
+  
+
+// search results list
+
+.search-list_alpha
+  list-style: none
+  padding-left: 0
+
+.search-list_letter
+  color: $gray-mid-light
+  font-family: $heading-font
+  font-size: 20px
+  text-transform: capitalize
+  line-height: 1
+  letter-spacing: 0.5px
+  margin-bottom: 30px
+
+.search-list_names
+  list-style: none
+  font-family: $body-font
+  font-size: 14px
+  line-height: 1.4
+  padding: 10px 0 0
+  margin-top: 10px
+  border-top: 1px solid $gray-mid-light
+  a
+    color: $gray-darkest
+    padding: 3px 0
+    &:hover
+      text-decoration: none
+      padding: 3px 10px
+      border-radius: 2px
+      background-color: $bright-blue
+
+// search results detail
+
+.selection-name
+  margin-bottom: 60px
+
+  h1
+    font-size: 30px
+    margin: 0
+    text-transform: none
+
+.selection-users
+  margin-bottom: 60px
+
+  .selection-header
+    display: flex
+    justify-content: space-between
+    text-transform: uppercase
+    padding-bottom: 5px
+    margin-bottom: 20px
+    border-bottom: solid 1px $gray-light

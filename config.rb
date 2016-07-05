@@ -11,6 +11,7 @@ page '/*.txt', layout: false
 
 # With alternative layout
 page "/shell-echorep.html", layout: :layout_echorep
+page "/echorep-admin.html", layout: :layout_echorep
 
 page "/login.html", layout: :no_headerfooter
 page "/password.html", layout: :no_headerfooter
@@ -62,10 +63,10 @@ end
 configure :build do
 
   # Minify CSS on build
-  activate :minify_css
+  # activate :minify_css
 
   # Minify Javascript on build
-  activate :minify_javascript
+  # activate :minify_javascript
 
   # GZIP text files
   # activate :gzip
