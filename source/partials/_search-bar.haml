@@ -1,19 +1,15 @@
 .search-bar.container
-  .row
-    .col-md-8
-      %form.search-form.pull-left{role:"search"}
-        .form-group
-          %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
-          %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+  %form.search-form.pull-left{role:"search"}
+    .form-group
+      %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+      %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
 
-      .filter-drivers.pull-left
-        %button.btn.btn-default.btn-filter
-          =image_tag('icon-calendar-gray@2x.png')
-          Filter Unassigned Drivers
+  .filter-drivers.pull-left
+    %button.btn.btn-default.btn-filter
+      Filter Unassigned Drivers
 
-    .col-md-4
-      .pull-right
-        %button.btn.btn-default Invite New Driver
+  .pull-right
+    %button.btn.btn-default Invite New Driver
 
       
 

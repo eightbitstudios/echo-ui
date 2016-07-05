@@ -14,25 +14,21 @@
 
     &:before
       position: relative
-      content: ''
+      content: image-url("iconcheck-grey.svg")
       top: 0.5rem
       width: 22px
       height: 22px
       margin-right: 9px
       display: inline-block
-      background: url("/assets/images/iconcheck-grey@2x.png") 0 0 no-repeat
-      background-size: 22px
     
     &.checklist-approved
       color: $gray-darkest
 
       &:before
-        background: url("/assets/images/iconcheck-grey-approved@2x.png") 0 0 no-repeat
-        background-size: 22px
+        content: image-url("iconcheck-approved.svg")
   
     &.checklist-inprogress
       color: $gray-darkest
 
       &:before
-        background: url("/assets/images/icon-question@2x.png") 0 0 no-repeat
-        background-size: 22px
+        content: image-url("icon-question.svg")

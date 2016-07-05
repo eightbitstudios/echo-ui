@@ -22,7 +22,10 @@
     padding: 10px 19px 7px
     border: solid 2px $bright-blue
     background-color: #fff
-    
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale    
+
     &:hover
       color: #fff
       background-color: $bright-blue
@@ -39,6 +42,9 @@
     color: #fff
     border: none
     background-color: $green
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
 
     &:hover
       background-color: darken($green, 10%)
@@ -52,6 +58,9 @@
   &.btn-warning
     border: none
     background-color: $error
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
 
     &:hover
       background-color: #cc4435
@@ -87,13 +96,29 @@
   /////////////
 
   &.btn-filter
+    position: relative
     color: $gray-mid-light
+    padding-left: 45px
     border-color: $gray-mid-light
+
+
+    &:before
+      content: image-url('icon-calendar-gray.svg')
+      display: inline-block
+      position: absolute
+      top: 10px
+      left: 15px
+      width: 18px
+      height: auto
+      margin-right: 6px
 
     &:hover
       color: #fff
       background-color: $gray-mid-light
-    
+
+      &:before
+        content: image-url('icon-calendar-white.svg')
+
     &:active,
     &:focus
       color: #fff
@@ -110,5 +135,6 @@
 
 
   &.btn-back
-    img 
+    img
+      width: 11px
       vertical-align: baseline
