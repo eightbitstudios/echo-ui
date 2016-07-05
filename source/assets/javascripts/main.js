@@ -14,3 +14,4 @@
 //= require bootstrap/collapse
 //= require bootstrap/carousel
 //= require bootstrap/affix
+//= require jquery.mCustomScrollbar.min.js

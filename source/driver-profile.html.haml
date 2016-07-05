@@ -11,10 +11,14 @@
   .row
     .col-sm-6
       %section.content-container.profile-info
+        .pull-right
+          =link_to '#', alt: 'Do Not Disturb', class: 'btn btn-link btn-alert' do 
+            =image_tag('icon-dnd.svg')
+            Do Not Disturb
         %h1.profile-name.profile-name_driver
           =image_tag('icon-driver.svg', class: 'icon icon-driver')
           Driver Name
-
+        
         %form
           %fieldset.fieldset
             .form-group
@@ -47,7 +51,7 @@
               %input.form-control{:type => "password", :placeholder => "Last Name"} 
 
             .form-group
-              =link_to 'Remove User', '#', class: 'pull-left'
+              =link_to 'Remove User', '#', class: 'btn btn-link btn-alt'
               %button.btn.btn-default.pull-right{type: "submit"} Save Changes
 
     .col-sm-6
