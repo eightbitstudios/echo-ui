@@ -35,12 +35,14 @@
 </head>
 
 <body ng-app="echo.index" ng-controller="AppCtrl as appCtrl" id="ng-app">
+  <app-header></app-header>
   <div class="main-content-container">
 
     <!-- body view to load remaining child routes -->
     <div ui-view></div>
 
   </div>
+  <app-footer></app-footer>
 </body>
 
 </html>

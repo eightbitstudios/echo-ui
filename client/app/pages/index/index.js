@@ -4,17 +4,19 @@ angular.module('echo.index', [
     'ui.router',
     'echo.config',
     'echo.index.controller',
-    'echo.index.home',
+    'echo.index.myCarriers',
+    'echo.components.header',
+    'echo.components.footer',
     'templates-app'
   ])
 
   .config(function($urlRouterProvider, $stateProvider, routesConfig) {
-    $urlRouterProvider.otherwise(routesConfig.INDEX.home.route);
+    $urlRouterProvider.otherwise(routesConfig.INDEX.myCarriers.route);
 
       // ROUTES
     $stateProvider
-      .state(routesConfig.INDEX.home.name, {
-        url: routesConfig.INDEX.home.route,
-        template: '<home></home>'
+      .state(routesConfig.INDEX.myCarriers.name, {
+        url: routesConfig.INDEX.myCarriers.route,
+        template: '<my-carriers></my-carriers>'
       });
   });

@@ -1,5 +1,5 @@
 @import "/client/app/less/typography-mappings";
-
+@import "/client/app/less/typography-font-faces";
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
@@ -10,7 +10,7 @@
 @font-family-serif:       OpenSans, Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   OpenSans, Menlo, Monaco, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
+@font-family-base:        @body-font;
 
 @font-size-base:          @fs-body;
 @font-size-large:         ceil((@font-size-base * 1.25));
@@ -29,7 +29,7 @@
 @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
-@headings-font-family:    inherit;
+@headings-font-family:    @heading-font;
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
 @headings-color:          @c-headings;
