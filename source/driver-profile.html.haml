@@ -43,12 +43,12 @@
               %label Email Address
               %input.form-control{:type => "email", :placeholder => "email@email.com"}
               %span.help-block This email address is currently in use
-            .form-group
+            .form-group.is-approved
               %label Phone Number
-              %input.form-control{:type => "password", :placeholder => "Last Name"} 
+              %input.form-control{:type => "tel", :placeholder => "(555) 123-4567"} 
             .form-group
               %label Tractor Number
-              %input.form-control{:type => "password", :placeholder => "Last Name"} 
+              %input.form-control{:type => "text", :placeholder => "Last Name"} 
 
             .form-group
               =link_to 'Remove User', '#', class: 'btn btn-link btn-alt'
