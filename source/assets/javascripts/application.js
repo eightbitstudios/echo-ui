@@ -24,8 +24,12 @@
 // Place any jQuery/helper plugins in here.
 $(window).load(function(){
 
-	$('.search-list').mCustomScrollbar({
-		theme: 'minimal-dark'
-	});
+	if ($('.search-list').length) {
+
+		$('.search-list').mCustomScrollbar({
+			theme: 'minimal-dark'
+		});
+		
+	}
 
 });

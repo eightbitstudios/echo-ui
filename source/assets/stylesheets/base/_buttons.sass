@@ -21,7 +21,7 @@
     color: $bright-blue
     padding: 10px 19px 7px
     border: solid 2px $bright-blue
-    background-color: #fff
+    background-color: transparent
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale    
@@ -88,7 +88,7 @@
       text-decoration: underline
       color: $gray-mid-light
       &:hover
-        text-decoration: none
+        color: #505C61
 
     &.btn-sm
       font-size: 12px
@@ -97,6 +97,9 @@
   /////////////
   // Unique button styles
   /////////////
+
+  //// Button saving animated gif
+
 
   &.btn-filter
     position: relative
@@ -145,6 +148,10 @@
   
   //////
   &.btn-back
+    &:hover
+      color: #1e9ac9
+      text-decoration: none
+
     img
       width: 11px
       vertical-align: baseline
