@@ -23,10 +23,14 @@ angular.module('echo.index', [
           return userService.fetchUserById(1);
         },
         carrierDetails: function (carrierDetailsService, user) {
-          return carrierDetailsService.fetchCarrierById(user.carrierId);
+          if(!user.isCarrierRep()){
+            return carrierDetailsService.fetchCarrierById(user.carrierId);
+          } 
         },
-        repDetails: function (repDetailsService, carrierDetails) {
-          return repDetailsService.fetchRepById(carrierDetails.repId);
+        repDetails: function (repDetailsService, user) {
+          if(!user.isCarrierRep()){
+            return repDetailsService.fetchRepByCarrierId(user.carrierId);
+          } 
         }
       },
       views: {

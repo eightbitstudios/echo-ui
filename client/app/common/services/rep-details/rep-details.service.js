@@ -16,13 +16,13 @@ angular.module('echo.services.repDetails', [
       },
 
       /**
-       * @description Retrieves a rep by Id
-       * @param {number} repId - Id for rep
+       * @description Retrieves a rep for a carrier
+       * @param {number} carrierId - Carrier Id for rep
        * @returns {Promise} - Promise containing a RepModel
        */
-      fetchRepById: function (repId) {
+      fetchRepByCarrierId: function (carrierId) {
 
-        var url = apiConfig.repById({ repId: repId });
+        var url = apiConfig.repByCarrierId({ carrierId: carrierId });
 
         return $http.get(url).then(function (resp) {
           repDetails = new RepModel(resp.data);
