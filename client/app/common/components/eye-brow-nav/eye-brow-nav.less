@@ -1,0 +1,50 @@
+//---------------
+// Eyebrow Header
+//---------------
+
+.eyebrow-header {
+  font-size: 12px;
+  color: @c-white;
+  padding: 0;
+  background-color: @c-black;
+
+  .eyebrow-text {
+    margin-top: 10px;
+    line-height: 0.8;
+  }
+  .eyebrow-nav {
+
+    &.list-inline {
+      margin: 0;
+    }
+
+    > li {
+      padding-left: 0;
+      padding-right: 0;
+      margin-bottom: 0;
+
+      &.active a {
+        text-decoration: none;
+        background: @c-bright-blue;
+      }
+    }
+    > li > a {
+      display: inline-block;
+      padding: 10px;
+      color: @c-white;
+      line-height: 1;
+      text-transform: uppercase;
+
+      &:hover {
+        text-decoration: none;
+        background: @c-bright-blue;
+      }
+    
+      img{
+        margin-left: 6px;
+        vertical-align: bottom;
+      }
+    }
+
+  }
+}

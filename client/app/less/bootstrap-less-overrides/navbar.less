@@ -2,36 +2,42 @@
   border: none;
   border-radius: 0;
   background-size: contain;
-  background: url('../assets/images/map-texture-group@2x.png') bottom center;
+  margin-bottom: 0;
+  min-height: 30px;
   @media (min-width: @screen-sm-min) {
     .navbar-nav  > li > a {
       padding: 27px 21px;
     }
   }
-  .navbar-nav{
-    font-size: @fs-medium;
+}
 
-    > li {
-      margin-bottom: 0;
+.carrier-nav {
+   background: url('../assets/images/map-texture-group@2x.png') bottom center;
+}
 
-      &:hover > a {
-        border-bottom: 4px solid @c-bright-blue;
-      }
-      &.active > a {
-        font-weight: @fw-bold;
-        border-bottom: 4px solid @c-bright-blue;
-      }
+.navbar-nav{
+  font-size: @fs-medium;
+
+  > li {
+    margin-bottom: 0;
+
+    &:hover > a {
+      border-bottom: 4px solid @c-bright-blue;
     }
-    > li > a {
-      color: @c-white;
-      padding: 27px 21px;
-      line-height: 1.6;
-      border-bottom: 4px solid transparent;
-      text-rendering: geometricPrecision;
-      &:focus,
-      &:hover{
-        background: none;
-      }
+    &.active > a {
+      font-weight: @fw-bold;
+      border-bottom: 4px solid @c-bright-blue;
+    }
+  }
+  > li > a {
+    color: @c-white;
+    padding: 27px 21px;
+    line-height: 1.6;
+    border-bottom: 4px solid transparent;
+    text-rendering: geometricPrecision;
+    &:focus,
+    &:hover{
+      background: none;
     }
   }
 }

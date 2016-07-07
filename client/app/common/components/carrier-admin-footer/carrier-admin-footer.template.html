@@ -1,0 +1,25 @@
+<div class="carrier-admin-footer footer">
+  <div class="footer-primary">
+    <div class="container">
+      <div class="pull-left">
+        <div class="navbar-brand">
+          ECHO
+        </div>
+      </div>
+      <div class="pull-right">
+        <ul class="list-inline footer-nav navbar-right">
+          <li>
+            <strong>ECHO REP</strong> {{::$ctrl.repDetails.name}}
+          </li>
+          <li>
+            <img src="assets/images/mail-icon@2x.png" width="15px" height="15px" alt="Mail icon@2x">
+            <a href="mailto:{{::$ctrl.repDetails.email}}">{{::$ctrl.repDetails.email}}</a>
+          </li>
+          <li>
+            {{::$ctrl.repDetails.phone}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

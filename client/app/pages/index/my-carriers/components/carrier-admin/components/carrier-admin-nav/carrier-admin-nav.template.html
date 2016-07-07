@@ -1,0 +1,26 @@
+<div class="carrier-admin-nav carrier-nav">
+  <div class='container'>
+    <div class='navbar-header'>
+      <div class='navbar-brand'>
+        ECHO
+        <small class="brand-carrier">{{::$ctrl.carrierDetails.name}}</small>
+      </div>
+    </div>
+    <nav class="hidden-xs">
+      <ul class="nav navbar-nav navbar-right">
+        <li ui-sref-active="active">
+          <a href="#">Dashboard</a>
+        </li>
+        <li ui-sref-active="active">
+          <a href="#">Load Management</a>
+        </li>
+        <li ui-sref-active="active">
+          <a href="#">Invoicing</a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="{{::$ctrl.routesConfig.INDEX.myCompany.name}}">My Company</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

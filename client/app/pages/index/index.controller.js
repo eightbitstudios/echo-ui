@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('echo.index.controller', [])
-  .controller('IndexCtrl', function () {
-
+  .controller('IndexCtrl', function (carrierDetails) {
+    this.carrierDetails = carrierDetails;
   }
 );

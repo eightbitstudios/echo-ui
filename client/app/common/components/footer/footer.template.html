@@ -1,20 +1,23 @@
 <footer class="footer">
-      <div class="footer-secondary">
-        <div class="container">
-          <div class="pull-left">
-            <div class="navbar-brand">
-              ECHO
-            </div>
-          </div>
-          <div class="pull-right">
-            <span class="copyright">
-              Copyright 2016 Echo Global Logistics
-            </span>
-            <ul class="list-inline footer-nav navbar-right">
-              <li><a href="#">Terms &amp; Conditions</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-          </div>
+  <div class="footer-secondary">
+    <div class="container">
+      <div class="pull-left">
+        <div ng-if="$ctrl.user.isCarrierRep" class="navbar-brand">
+          ECHO
+        </div>
+        <div ng-if="!$ctrl.user.isCarrierRep">
+          <billing-questions phone-number="$ctrl.repDetails.phone"></billing-questions>
         </div>
       </div>
-    </footer>
+      <div class="pull-right">
+        <span class="copyright">
+              Copyright 2016 Echo Global Logistics
+            </span>
+        <ul class="list-inline footer-nav navbar-right">
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

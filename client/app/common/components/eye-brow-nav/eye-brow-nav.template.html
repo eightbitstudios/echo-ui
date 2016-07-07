@@ -1,5 +1,8 @@
 <div class='eyebrow-header'>
   <div class='container'>
+    <div ng-if="!$ctrl.user.isCarrierRep" class="eyebrow-text pull-left">
+       <billing-questions phone-number="$ctrl.repDetails.phone"></billing-questions>
+    </div>
     <ul class='eyebrow-nav list-inline navbar-right'>
       <li ui-sref-active="active">
         <a ui-sref="{{::$ctrl.routesConfig.INDEX.myCarriers.name}}" class="link-mycarriers">My Carriers</a>

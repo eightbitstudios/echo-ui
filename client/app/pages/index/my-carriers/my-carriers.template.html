@@ -1,5 +1,4 @@
-<div class="container body-content">
-    <div class="content-container">
-        <h1 class="text-center">Welcome to Batmobile!</h1>
-    </div>
+<div class="my-carriers">
+    <carrier-admin ng-if="!$ctrl.user.isCarrierRep" carrier-details="$ctrl.carrierDetails" rep-details="$ctrl.repDetails">></carrier-admin>
+    <carrier-rep ng-if="$ctrl.user.isCarrierRep" carrier-details="$ctrl.carrierDetails">></carrier-rep>
 </div>
