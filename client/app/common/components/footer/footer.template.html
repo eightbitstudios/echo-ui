@@ -2,11 +2,11 @@
   <div class="footer-secondary">
     <div class="container">
       <div class="pull-left">
-        <div ng-if="$ctrl.user.isCarrierRep" class="navbar-brand">
+        <div ng-if="$ctrl.user.isCarrierRep()" class="navbar-brand">
           ECHO
         </div>
-        <div ng-if="!$ctrl.user.isCarrierRep">
-          <billing-questions phone-number="$ctrl.repDetails.phone"></billing-questions>
+        <div ng-if="!$ctrl.user.isCarrierRep()">
+          <billing-questions phone-number="$ctrl.repDetails.getPhoneNumber()"></billing-questions>
         </div>
       </div>
       <div class="pull-right">

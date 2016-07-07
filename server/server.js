@@ -96,6 +96,7 @@ config.server.staticFolders.forEach(function (path) {
 });
 
 require('./routes')(app, config);
+require('./mock-routes/mock-routes')(app, config);
 var port = config.server.appPort;
 console.log("Starting app server on port %s", port);
 app.listen(port);

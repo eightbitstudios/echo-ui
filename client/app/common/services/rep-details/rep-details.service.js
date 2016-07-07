@@ -1,20 +1,33 @@
 'use strict';
 
-angular.module('echo.services.repDetails', [])
-  .factory('repDetailsService', function ($q) {
+angular.module('echo.services.repDetails', [
+  'echo.config.api',
+  'echo.models.rep'
+])
+  .factory('repDetailsService', function ($http, apiConfig, RepModel) {
     var repDetails = {};
 
     return {
-      getRepDetails: function(){
+      /**
+       * @description Retrieves stored rep model
+       */
+      getRepDetails: function () {
         return repDetails;
       },
-      fetchRepDetails: function () {
-        repDetails = {
-          name: 'Danielle John',
-          email: 'danielle.john@echoLogistics.com',
-          phone: '(610) 555-1212'
-        };
-        return $q.when(repDetails);
+
+      /**
+       * @description Retrieves a rep by Id
+       * @param {number} repId - Id for rep
+       * @returns {Promise} - Promise containing a RepModel
+       */
+      fetchRepById: function (repId) {
+
+        var url = apiConfig.repById({ repId: repId });
+
+        return $http.get(url).then(function (resp) {
+          repDetails = new RepModel(resp.data);
+          return repDetails;
+        });
       }
     };
   });

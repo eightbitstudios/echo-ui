@@ -20,13 +20,13 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.base.route,
       resolve: {
         user: function (userService) {
-          return userService.fetchUser();
+          return userService.fetchUserById(1);
         },
-        carrierDetails: function (carrierDetailsService) {
-          return carrierDetailsService.fetchCarrierDetails();
+        carrierDetails: function (carrierDetailsService, user) {
+          return carrierDetailsService.fetchCarrierById(user.carrierId);
         },
-        repDetails: function (repDetailsService) {
-          return repDetailsService.fetchRepDetails();
+        repDetails: function (repDetailsService, carrierDetails) {
+          return repDetailsService.fetchRepById(carrierDetails.repId);
         }
       },
       views: {
