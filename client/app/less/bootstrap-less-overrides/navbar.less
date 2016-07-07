@@ -3,7 +3,11 @@
   border-radius: 0;
   background-size: contain;
   background: url('../assets/images/map-texture-group@2x.png') bottom center;
-
+  @media (min-width: @screen-sm-min) {
+    .navbar-nav  > li > a {
+      padding: 27px 21px;
+    }
+  }
   .navbar-nav{
     font-size: @fs-medium;
 
@@ -14,22 +18,19 @@
         border-bottom: 4px solid @c-bright-blue;
       }
       &.active > a {
-        font-weight: @fw-medium;
+        font-weight: @fw-bold;
         border-bottom: 4px solid @c-bright-blue;
       }
     }
     > li > a {
       color: @c-white;
-      padding: 27px 10px;
+      padding: 27px 21px;
       line-height: 1.6;
       border-bottom: 4px solid transparent;
       text-rendering: geometricPrecision;
       &:focus,
       &:hover{
         background: none;
-      }
-      +large{
-        padding: 27px 21px;
       }
     }
   }
@@ -63,7 +64,7 @@
   .navbar-brand {
     line-height: 0.9;
     margin: 25px 0 20px 0;
-    }
+  }
 }
 
 .navbar > .container .navbar-brand, 
