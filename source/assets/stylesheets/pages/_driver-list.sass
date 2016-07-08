@@ -34,12 +34,24 @@
   display: flex
   align-items: flex-start
   justify-content: space-between
+  flex-wrap: wrap
 
   .load-col
     padding-right: 10px
 
+  .load-assignment
+    flex: 0 0 100%
+    margin-bottom: 20px
+
+    +tablet
+      flex: 0
+      margin-bottom: 0
+
 .load-location
   color: $gray-darkest
+
+  &.load-pickup
+    color: $gray-mid-light
 
   .load-city
     font-size: 18px
@@ -55,9 +67,8 @@
 .load-citystate
   margin-bottom: 15px
 
-.load-direction
-  margin-top: 10px
 
+        
 
 // Driver List Filter
 

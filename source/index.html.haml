@@ -9,17 +9,30 @@
     .col-sm-12
       %h1 Echo UI Build Kit
 
+      %h3 New Approved Layouts
+      %ul.list-group
+        %li=link_to 'Driver List','/driver-list.html'
+        %li=link_to 'Driver List w/ static search component','/driver-list-search.html'
+        %li=link_to 'Driver Profile','/driver-profile.html'
+        %li=link_to 'Portal List','/portal-list.html'
+        %li=link_to 'Portal Profle','/portal-profile.html'
+        %li=link_to 'Login','/login.html'
+        %li=link_to 'Password','/password.html'
+        %li=link_to 'Echo Rep Admin','/echorep-admin.html'
+        %li=link_to 'Echo Rep Empty','/echorep-empty.html'
+        %li=link_to 'Echo Rep Profile','/echorep-profile.html'
+
       %h3 Approved Layouts
       %ul.list-group
         %li=link_to 'Shell Carrier Rep', '/shell-carrier.html'
         %li=link_to 'Shell Echo Rep', '/shell-echorep.html'
 
-      %h3 In Development...
-      %ul.list-group
-        - sitemap.resources.each do |page|
-          - if page.url =~ /\.html/
-            %li.list-group-item
-              = link_to page.url, '/clients/echo'+page.url
+      / %h3 In Development...
+      / %ul.list-group
+      /   - sitemap.resources.each do |page|
+      /     - if page.url =~ /\.html/
+      /       %li.list-group-item
+      /         = link_to page.url, '/clients/echo'+page.url
    
 
 

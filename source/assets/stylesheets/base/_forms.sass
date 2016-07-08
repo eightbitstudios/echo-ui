@@ -52,6 +52,7 @@ label
   &:focus
     box-shadow: none
     outline: none
+    border-color: $gray-darkest
 
 
 input[type="radio"], 
@@ -98,6 +99,9 @@ input[type="checkbox"]
   &:before
     content: image-url('icon-approve.svg')
     position: absolute
-    left: -20px
+    left: -15px
     bottom: 7px
     width: 11px
+
+    +tablet
+      left: -20px

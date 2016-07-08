@@ -1,4 +1,4 @@
--@title= 'Echo UI Echo Rep Admin'
+-@title= 'Rep Admin'
 -@page_classes= 'echorep'
 
 .container-flex.container-echorep
@@ -10,129 +10,7 @@
           %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
           %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
 
-      .sidebar-list
-        %ul.sidebar-list_alpha
-          %li.sidebar-list_letter
-            A
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-              %li.sidebar-selected
-                =link_to 'Carrier Company "A"', '#'
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-          %li.sidebar-list_letter 
-            B
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "B"', '#'
-              %li 
-                =link_to 'Carrier Company "B"', '#'
-          %li.sidebar-list_letter 
-            C
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "C"', '#'
-          %li.sidebar-list_letter 
-            D
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "D"', '#'
-              %li 
-                =link_to 'Carrier Company "D"', '#'              
-              %li 
-                =link_to 'Carrier Company "D"', '#'
-          %li.sidebar-list_letter
-            E
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-          %li.sidebar-list_letter 
-            F
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "B"', '#'
-              %li 
-                =link_to 'Carrier Company "B"', '#'
-          %li.sidebar-list_letter 
-            G
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "C"', '#'
-          %li.sidebar-list_letter 
-            H
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "D"', '#'
-              %li 
-                =link_to 'Carrier Company "D"', '#'              
-              %li 
-                =link_to 'Carrier Company "D"', '#'
-          %li.sidebar-list_letter
-            A
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-          %li.sidebar-list_letter 
-            B
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "B"', '#'
-              %li 
-                =link_to 'Carrier Company "B"', '#'
-          %li.sidebar-list_letter 
-            C
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "C"', '#'
-          %li.sidebar-list_letter 
-            D
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "D"', '#'
-              %li 
-                =link_to 'Carrier Company "D"', '#'              
-              %li 
-                =link_to 'Carrier Company "D"', '#'
-          %li.sidebar-list_letter
-            E
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-              %li 
-                =link_to 'Carrier Company "A"', '#'
-          %li.sidebar-list_letter 
-            F
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "B"', '#'
-              %li 
-                =link_to 'Carrier Company "B"', '#'
-          %li.sidebar-list_letter 
-            G
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "C"', '#'
-          %li.sidebar-list_letter 
-            H
-            %ul.sidebar-list_names
-              %li 
-                =link_to 'Carrier Company "D"', '#'
-              %li 
-                =link_to 'Carrier Company "D"', '#'              
-              %li 
-                =link_to 'Carrier Company "D"', '#'
-
+      = partial 'partials/sidebar-list'
 
   .col-sm-7.col-echorep.col-echorep_searchresults
     .col-wrap
@@ -146,7 +24,7 @@
         
         %article.selection-users
           %header.selection-header
-            Portal Users - 2
+            Portal Users
             =link_to 'View Portal Users List', '#', class: 'btn btn-link btn-sm'
           
           %section.portal-user-grid
@@ -215,7 +93,7 @@
 
         %article.selection-users
           %header.selection-header
-            Drivers - 32
+            Drivers
             =link_to 'View Driver List', '#', class: 'btn btn-link btn-sm'
           
           %section.portal-user-grid

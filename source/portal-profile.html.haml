@@ -1,4 +1,4 @@
--@title= 'Echo UI Portal Profile'
+-@title= 'Portal Profile'
 -@page_classes= 'user-profile'
 
 
@@ -22,7 +22,7 @@
               %input.form-control{:type => "email", :placeholder => "Driver Name"}
             .form-group
               %label Last Name
-              %input.form-control{:type => "password", :placeholder => "Last Name"} 
+              %input.form-control{:type => "text", :placeholder => "Last Name"} 
 
           %fieldset.fieldset
             %legend Contact Information
@@ -32,7 +32,7 @@
               %span.help-block This email address is currently in use
             .form-group
               %label Phone Number
-              %input.form-control{:type => "password", :placeholder => "Last Name"} 
+              %input.form-control{:type => "tel", :placeholder => "(555) 432-1234"} 
 
             .form-group
               =link_to 'Remove User', '#', class: 'btn btn-link btn-alt'

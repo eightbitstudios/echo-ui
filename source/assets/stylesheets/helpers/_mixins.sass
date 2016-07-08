@@ -5,7 +5,7 @@
 // Media Queries 
 $small-width:    668px
 $tablet-width:   769px
-$large-widht:    992px
+$large-width:    992px
 
 @mixin mobile
   @media (max-width: #{$small-width})
@@ -16,7 +16,7 @@ $large-widht:    992px
     @content
 
 @mixin large
-  @media (min-width: #{$large-widht})
+  @media (min-width: #{$large-width})
     @content
 
 
@@ -38,7 +38,10 @@ $large-widht:    992px
 
 // Container Styles
 =container-shadow
-  padding: 30px 40px
+  padding: 30px 20px
   border-radius: 2px
   background-color: #fff
   box-shadow: 0 1px 2px 0 rgba(65, 67, 68, 0.2)
+
+  +tablet
+    padding: 30px 40px
