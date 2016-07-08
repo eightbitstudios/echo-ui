@@ -1,4 +1,4 @@
 <div class="my-carriers">
-    <carrier-admin ng-if="!$ctrl.user.isRepAdmin()" carrier-details="$ctrl.carrierDetails" rep-details="$ctrl.repDetails">></carrier-admin>
+    <carrier-admin ng-if="!$ctrl.user.isRepAdmin()" carrier-details="$ctrl.carrierDetails"></carrier-admin>
     <rep-admin ng-if="$ctrl.user.isRepAdmin()" carrier-details="$ctrl.carrierDetails">></rep-admin>
 </div>

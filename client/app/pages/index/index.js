@@ -5,6 +5,7 @@ angular.module('echo.index', [
   'echo.config',
   'echo.index.controller',
   'echo.index.myCarriers',
+  'echo.index.settings',
   'echo.components.header',
   'echo.components.footer',
   'echo.services.carrierDetails',
@@ -23,14 +24,14 @@ angular.module('echo.index', [
           return userService.fetchUserById(1);
         },
         carrierDetails: function (carrierDetailsService, user) {
-          if(!user.isRepAdmin()){
+          if (!user.isRepAdmin()) {
             return carrierDetailsService.fetchCarrierById(user.carrierId);
-          } 
+          }
         },
         repDetails: function (repDetailsService, user) {
-          if(!user.isRepAdmin()){
+          if (!user.isRepAdmin()) {
             return repDetailsService.fetchRepByCarrierId(user.carrierId);
-          } 
+          }
         }
       },
       views: {
@@ -45,15 +46,20 @@ angular.module('echo.index', [
         }
       }
     })
+    .state(routesConfig.INDEX.settings.name, {
+      url: routesConfig.INDEX.settings.route,
+      template: '<settings></settings>'
+    })
     .state(routesConfig.INDEX.myCarriers.name, {
       url: routesConfig.INDEX.myCarriers.route,
       template: '<my-carriers></my-carriers>'
     })
     .state(routesConfig.INDEX.myCompany.name, {
       url: routesConfig.INDEX.myCompany.route,
-      template: '<my-company></my-company>'
+      template: '<my-company></my-company>',
     })
     .state(routesConfig.INDEX.dashboard.name, {
-      url: routesConfig.INDEX.dashboard.route
+      url: routesConfig.INDEX.dashboard.route,
+      template: '<dashboard></dashboard>'
     });
 });

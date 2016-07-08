@@ -5,6 +5,10 @@ angular.module('echo.config.routesConfig', [])
         name: 'index',
         route: '/'
       },
+      settings: {
+        name: 'index.settings',
+        route:'settings'
+      },
       myCarriers: {
         name: 'index.myCarriers',
         route:'my-carriers'

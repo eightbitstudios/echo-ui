@@ -1,9 +1,10 @@
 <div class="carrier-admin">
-  <carrier-admin-nav carrier-details="$ctrl.carrierDetails"></carrier-admin-nav>
+  <navbar carrier-details="$ctrl.carrierDetails">
+    <carrier-admin-nav  carrier-details="$ctrl.carrierDetails"></carrier-admin-nav>
+  </navbar>
   <div class="container body-content">
     <div class="content-container">
       <div ui-view></div>
     </div>
   </div>
-  <carrier-admin-footer rep-details="$ctrl.repDetails"></carrier-admin-footer>
 </div>

@@ -4,7 +4,7 @@ angular.module('echo.services.user', [
   'echo.config.api',
   'echo.models.user'
 ])
-  .factory('userService', function ($http, apiConfig, UserModel) {
+  .factory('userService', function ($http, $state, apiConfig, UserModel) {
     var user = {};
 
     return {

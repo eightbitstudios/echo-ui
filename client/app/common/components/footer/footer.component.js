@@ -2,6 +2,7 @@
 
 angular.module('echo.components.footer', [
   'echo.components.billingQuestions',
+  'echo.components.carrierAdminFooter',
   'echo.services.user',
   'echo.services.repDetails'
 ]).component('appFooter', {

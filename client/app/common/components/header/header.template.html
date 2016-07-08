@@ -1,3 +1,22 @@
 <header class='navbar'>
-  <eye-brow-nav user="$ctrl.user" carrier-details="$ctrl.carrierDetails" rep-details="$ctrl.repDetails"></eye-brow-nav>
+  <div class='eyebrow-header'>
+    <div class='container'>
+      <div ng-if="!$ctrl.user.isRepAdmin()" class="eyebrow-text pull-left">
+        <billing-questions phone-number="$ctrl.repDetails.getPhoneNumber()"></billing-questions>
+      </div>
+      <ul class='eyebrow-nav list-inline navbar-right'>
+        <li ui-sref-active="active">
+          <a ui-sref="{{::$ctrl.routesConfig.INDEX.myCarriers.name}}" class="link-mycarriers">My Carriers</a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="{{::$ctrl.routesConfig.INDEX.settings.name}}" class="link-settings">Settings</a>
+        </li>
+        <li>
+          <a href="#" class="link-signout">Sign Out
+            <img src="../assets/images/icon-signout@2x.png" class="" alt="Icon signout@2x" />
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
 </header>
