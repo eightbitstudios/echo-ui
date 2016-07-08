@@ -1,3 +1,11 @@
 <div>
   <h1>All Carriers</h1>
+  <div ng-repeat="carriersByLetter in $ctrl.carrierList">
+    <div>
+      {{carriersByLetter.letter}}
+    </div>
+    <div ng-repeat="carrier in carriersByLetter.values">
+      {{carrier.name}}
+    </div>
+  </div>
 </div>
