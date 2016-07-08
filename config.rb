@@ -11,6 +11,9 @@ page '/*.txt', layout: false
 
 # With alternative layout
 page "/shell-echorep.html", layout: :layout_echorep
+page "/echorep-admin.html", layout: :layout_echorep
+page "/echorep-empty.html", layout: :layout_echorep
+page "/echorep-profile.html", layout: :layout_echorep
 
 page "/login.html", layout: :no_headerfooter
 page "/password.html", layout: :no_headerfooter

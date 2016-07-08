@@ -1,0 +1,60 @@
+-@title= 'Rep Profile'
+-@page_classes= 'echorep'
+
+.container-flex.container-echorep
+
+  .col-sm-5.col-echorep.col-echorep_searchlist
+    .col-wrap
+      %form.search-form{role:"search"}
+        .form-group
+          %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+          %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+
+      = partial 'partials/sidebar-list'
+
+
+  .col-sm-7.col-echorep.col-echorep_searchresults
+    .col-wrap
+      %section.results-selection
+      
+        %header.selection-name
+          =link_to 'View Dashboard', '#', class: 'btn btn-default pull-right'
+
+          %h1.selection-company Carrier Company "A" Name
+          3400 N Wilconshire, #309, Chicago, IL. 60616
+        
+        %section.content-container.profile-info
+          %h1.profile-name.profile-name_driver
+            =image_tag('icon-portal-user.svg', class: 'icon icon-portal-user')
+            Portal User
+
+          %form
+            %fieldset.fieldset
+              .form-group
+                %label First Name
+                %input.form-control{:type => "email", :placeholder => "Driver Name"}
+              .form-group
+                %label Last Name
+                %input.form-control{:type => "text", :placeholder => "Last Name"} 
+
+            %fieldset.fieldset
+              %legend Contact Information
+              .form-group.has-error
+                %label Email Address
+                %input.form-control{:type => "email", :placeholder => "email@email.com"}
+                %span.help-block This email address is currently in use
+              .form-group
+                %label Phone Number
+                %input.form-control{:type => "tel", :placeholder => "(555) 432-1234"} 
+
+              .form-group
+                =link_to 'Remove User', '#', class: 'btn btn-link btn-alt'
+                %button.btn.btn-default.pull-right{type: "submit"} Save Changes
+
+        %section.content-container
+          %h2.section-header Batmobile Usage
+    
+          %ul.checklist
+            %li.checklist-inprogress 
+              Invited May 18 2016
+              %button.btn.btn-default.pull-right Resend Invite

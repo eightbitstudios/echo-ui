@@ -1,0 +1,115 @@
+-@title= 'Driver Profile'
+-@page_classes= 'user-profile'
+
+
+.container.main-content
+
+  =link_to '#', class: 'btn btn-back btn-link' do
+    =image_tag('iconarrow-blue.svg')
+    Back To Driver List
+
+  .row
+    .col-sm-6
+      %section.content-container.profile-info
+        .pull-right
+          =link_to '#', alt: 'Do Not Disturb', class: 'btn btn-link btn-alert' do 
+            =image_tag('icon-dnd.svg')
+            Do Not Disturb
+        %h1.profile-name.profile-name_driver
+          =image_tag('icon-driver.svg', class: 'icon icon-driver')
+          Driver Name
+        
+        %form
+          %fieldset.fieldset
+            .form-group
+              %label First Name
+              %input.form-control{:type => "email", :placeholder => "Driver Name"}
+            .form-group
+              %label Last Name
+              %input.form-control{:type => "text", :placeholder => "Last Name"} 
+            .form-group
+              %label Preferred Language
+              .select
+                %select
+                  %option{:value => "a"} English
+                  %option{:value => "b"} Spanish
+                  %option{:value => "c"} German
+                  %option{:value => "d"} Polish              
+                  %option{:value => "e"} Greek
+
+          %fieldset.fieldset
+            %legend Contact Information
+            .form-group.has-error
+              %label Email Address
+              %input.form-control{:type => "email", :placeholder => "email@email.com"}
+              %span.help-block This email address is currently in use
+            .form-group.is-approved
+              %label Phone Number
+              %input.form-control{:type => "tel", :placeholder => "(555) 123-4567"} 
+            .form-group
+              %label Tractor Number
+              %input.form-control{:type => "text", :placeholder => "e.g. 432019-900"} 
+
+            .form-group
+              =link_to 'Remove User', '#', class: 'btn btn-link btn-alt'
+              %button.btn.btn-default.pull-right{type: "submit"} Save Changes
+
+    .col-sm-6
+      %section.content-container
+        %h2.section-header Batmobile Usage
+  
+        %ul.checklist
+          %li.checklist-approved App installed 6 Months Ago
+          %li.checklist-approved Tracking Enabled
+          %li.checklist-approved Last Login: 09:00 CST, Fri Jun 17
+  
+      %section.content-container
+        %h2.section-header Assignments
+
+        .load-label Echo Assigned, Active
+        
+        .load-info
+
+          .load-col.load-assignment
+            %h2.load-number 123443211
+            =link_to 'Change Driver', '#'
+          
+          .load-col.load-location.load-location_pickup.load-pickup
+            .load-citystate
+              .load-city New York
+              .load-st TN, 60655
+            .load-datetime 14:00 EST <br/>Picked up Fri, May 20
+          .load-col.load-direction
+            =image_tag('icon-right-arrow-dark.svg', class: '')
+          .load-col.load-location.load-location_delivery.load-delivery
+            .load-citystate
+              .load-city Chicago
+              .load-st TX, 50968
+            .load-datetime 16:00-18:00 EST <br/>Today, Apr 20
+  
+        %hr
+
+        .load-label Next Assignment
+
+        .load-info
+
+          .load-col.load-assignment
+            %h2.load-number 123443211
+            =link_to 'Change Driver', '#'
+
+          .load-col.load-location.load-location_pickup.load-pickup
+            .load-citystate
+              .load-city New York
+              .load-st TN, 60655
+            .load-datetime 14:00 EST <br/>Picked up Fri, May 20
+          .load-col.load-direction
+            =image_tag('icon-right-arrow-dark.svg', class: '')
+          .load-col.load-location.load-location_delivery
+            .load-citystate
+              .load-city Chicago
+              .load-st TX, 50968
+            .load-datetime 16:00-18:00 EST <br/>Today, Apr 20
+
+
+
+    

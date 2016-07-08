@@ -23,5 +23,19 @@
 
 // Place any jQuery/helper plugins in here.
 $(window).load(function(){
-	console.log('jQuery Version is: ' +$().jquery);
+
+	if ($('.search-list').length) {
+
+		$('.search-list').mCustomScrollbar({
+			theme: 'minimal-dark'
+		});
+
+	}
+
+	// $('.search-form') {
+	// 	var searchBox = $('.search-form').find('input')
+	// 	var searchClose = null
+	// 	$('input').on('change', function(){ })
+	// }
+
 });

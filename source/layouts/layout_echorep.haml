@@ -13,7 +13,7 @@
     =stylesheet_link_tag  'application'
     %link{href: '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet', integrity: 'sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==', crossorigin: 'anonymous'}
     
-    %link{href: "https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Teko", rel:"stylesheet"}
+    %link{href: "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700|Teko", rel:"stylesheet"}
 
     %link{type:'text/plain', rel:'author', href:'/humans.txt'}
 
@@ -39,4 +39,5 @@
     //jQuery CDN fallback
     window.jQuery || document.write('<script src="assets/javascripts/vendor/jquery.min.js"><\/script>')
   =javascript_include_tag 'main.js',
-                        'application.js'
+                          'application.js',
+                          'vendor/jquery.mCustomScrollbar.min.js'

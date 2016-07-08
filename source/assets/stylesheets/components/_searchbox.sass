@@ -2,25 +2,36 @@
     #searchbox
 //------------------------------------
 
+.search-bar
+  margin-bottom: 30px
+
+  .search-form
+    margin-right: 25px
+
+
 .search-form
-  margin-bottom: 20px
-  margin-right: 25px
+  width: 250px
+  // display: flex
+
+  +tablet
+    width: 350px
 
   .form-group
     position: relative
 
-  .form-control
+  .form-control.search-form-input
     height: auto
-    width: 350px
+    width: 100%
     padding: 10px 14px
     border: none
     border-radius: 2px
     background-color: $gray-lightest
     transition: background 0.2s ease-in
-
+    
+    &:hover,
     &:focus
       background-color: $gray-light
-  
+
 .btn.btn-icon
   position: absolute
   top: 10px
@@ -37,3 +48,73 @@
       .icon-calendar-shape,
       .icon-calendar-numbers
         fill: #fff
+
+// Searchbox overlay
+////////////
+
+.search-form_searching
+
+  .search-results_count
+    position: absolute
+    top: 10px
+    right: 35px
+    color: $gray-mid-light
+    font-size: 14px
+    line-height: 1.6
+
+  .search-results_close
+    cursor: pointer
+    position: absolute
+    top: 10px
+    right: 14px
+    color: $gray-mid-light
+    line-height: 1.6
+
+  button[type="submit"],
+  input[type="submit"]
+    display: none
+
+  .search-loader
+    position: absolute
+    left: -30px
+    top: 10px
+
+  .search-results_overlay
+    list-style: none
+    position: absolute
+    z-index: 100
+    top: 100%
+    left: 0
+    width: 370px
+    margin: 0
+    padding: 30px 30px 20px
+    border-radius: 2px
+    background-color: #fff
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
+
+    .results-row
+      color: $gray-mid-light
+      line-height: 1.4
+      margin-bottom: 10px
+      padding: 5px 0 15px
+      border-bottom: 1px solid $gray-light
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
+
+      &:hover
+        cursor: pointer
+
+      &:last-child
+        margin-bottom: 0
+        border-bottom: none
+      
+    .result-title
+      color: $gray-darkest
+      font-size: 18px
+      line-height: 1
+      margin-bottom: 5px
+    
+    .result-phone
+      margin-left: auto
+

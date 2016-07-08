@@ -13,12 +13,19 @@
   border-radius: 2px
   transition: all 0.2s ease-in
 
+  /////////////
+  // General button styles
+  /////////////
+
   &.btn-default
     color: $bright-blue
     padding: 10px 19px 7px
     border: solid 2px $bright-blue
-    background-color: #fff
-    
+    background-color: transparent
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale    
+
     &:hover
       color: #fff
       background-color: $bright-blue
@@ -31,10 +38,14 @@
       border: solid 2px $bright-blue
       background-color: darken($bright-blue, 10%)
 
+  //////
   &.btn-primary
     color: #fff
     border: none
     background-color: $green
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
 
     &:hover
       background-color: darken($green, 10%)
@@ -45,22 +56,13 @@
       box-shadow: none
       background-color: darken($green, 15%)
 
-  &.btn-filter
-    color: $gray-mid-light
-    border-color: $gray-mid-light
-
-    &:hover
-      color: #fff
-      background-color: $gray-mid-light
-    
-    &:active,
-    &:focus
-      color: #fff
-      background-color: $gray-mid-light
-
+  //////
   &.btn-warning
     border: none
     background-color: $error
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
 
     &:hover
       background-color: #cc4435
@@ -70,8 +72,65 @@
       outline: none
       box-shadow: none
       background-color: #b33c2e
+  
+  //////
+  &.btn-link
+    color: $bright-blue
+    font-family: $body-font
+    font-size: 14px
+    line-height: 1.4
+    text-transform: none
+    letter-spacing: 0
+    padding: 10px 0
 
 
+    &.btn-alt
+      text-decoration: underline
+      color: $gray-mid-light
+      &:hover
+        color: #505C61
+
+    &.btn-sm
+      font-size: 12px
+      padding: 0
+
+  /////////////
+  // Unique button styles
+  /////////////
+
+  //// Button saving animated gif
+
+
+  &.btn-filter
+    position: relative
+    color: $gray-mid-light
+    padding-left: 45px
+    border-color: $gray-mid-light
+
+
+    &:before
+      content: image-url('icon-calendar-gray.svg')
+      display: inline-block
+      position: absolute
+      top: 10px
+      left: 15px
+      width: 18px
+      height: auto
+      margin-right: 6px
+
+    &:hover
+      color: #fff
+      background-color: $gray-mid-light
+
+      &:before
+        content: image-url('icon-calendar-white.svg')
+
+    &:active,
+    &:focus
+      color: #fff
+      background-color: $gray-mid-light
+
+  //////
   &.btn-icon
     padding: 0
     border: none
@@ -79,3 +138,20 @@
 
     &:hover
       background: none
+  
+  //////
+  &.btn-alert
+    padding: 5px 0
+    color: $danger
+    img
+      vertical-align: baseline
+  
+  //////
+  &.btn-back
+    &:hover
+      color: #1e9ac9
+      text-decoration: none
+
+    img
+      width: 11px
+      vertical-align: baseline

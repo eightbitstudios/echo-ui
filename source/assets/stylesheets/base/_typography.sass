@@ -5,9 +5,10 @@
 body
   color: $dark-grey
   font-family: $body-font
-  font-smoothing: antialiased
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+  font-weight: 300
+  // font-smoothing: antialiased
+  // -webkit-font-smoothing: antialiased
+  // -moz-osx-font-smoothing: grayscale
 
 h1
   font-size: 32px
@@ -44,6 +45,9 @@ ul > li
 a
   color: $bright-blue
   transition: all 0.2s ease-in
+  &:hover
+    color: #1E9AC9
+    text-decoration: none
 
 .lead
   font-size: 18px
@@ -52,3 +56,14 @@ a
   font-weight: 600
   font-family: $heading-font
   text-transform: uppercase
+
+  &.brand-lg
+    margin-bottom: 60px
+
+.section-label
+  color: $gray-darkest
+  font-size: 30px
+  line-height: 1
+  letter-spacing: 0.5px
+  text-transform: none
+
