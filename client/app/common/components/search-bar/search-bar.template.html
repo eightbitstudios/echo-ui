@@ -1,0 +1,10 @@
+<div class="search">
+  <input name="searchText" type="text" ng-model="$ctrl.searchText" />
+  <span ng-if="$ctrl.searchText.length > 0">{{$ctrl.searchResults.length}} Search Results</span>
+  <div class="search-list" ng-if="$ctrl.searchText.length > 0">
+    <div ng-repeat="searchItems in $ctrl.searchResults = ($ctrl.searchList | filter:$ctrl.searchText)">
+      {{searchItems.name}}
+    </div>
+  </div>
+  <ng-transclude ng-if="$ctrl.searchText.length === 0"></ng-transclude>
+</div>

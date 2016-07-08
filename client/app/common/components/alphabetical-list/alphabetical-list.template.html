@@ -1,0 +1,10 @@
+<div class="alphabetical-list">
+  <div ng-repeat="alphabeticalItem in $ctrl.items">
+    <div>
+      {{alphabeticalItem.letter}}
+    </div>
+    <div ng-repeat="value in alphabeticalItem.values">
+      {{value.name}}
+    </div>
+  </div>
+</div>

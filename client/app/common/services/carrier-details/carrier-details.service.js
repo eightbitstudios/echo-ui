@@ -15,6 +15,16 @@ angular.module('echo.services.carrierDetails', [
         return carrierDetails;
       },
 
-     
+    /**
+      * @description Retrieves a carrier by Id and stores the model
+      * @param {number} carrierId - Id for carrier
+      * @returns {Promise} - Promise containing a CarrierModel
+      */
+      fetchCarrierById: function (carrierId) {
+        return carrierService.fetchCarrierById(carrierId).then(function(carrier){
+          carrierDetails = carrier;
+          return carrierDetails;
+        });
+      }
     };
   });

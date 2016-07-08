@@ -3,11 +3,11 @@
 angular.module('echo.services.carrier', [
   'echo.config.api',
   'echo.models.carrier'
-]).factory('carrierService', function ($http, apiConfig) {
+]).factory('carrierService', function ($http, apiConfig, CarrierModel) {
   return {
     /**
      * @description Retrieves a list of carriers
-     * @returns {Promise} - Promise containing a CarrierModel
+     * @returns {Promise} - Promise containing an array of CarrierModel's
      */
     fetchCarriers: function () {
 
@@ -28,8 +28,7 @@ angular.module('echo.services.carrier', [
       var url = apiConfig.carrierById({ carrierId: carrierId });
 
       return $http.get(url).then(function (resp) {
-        carrierDetails = new CarrierModel(resp.data);
-        return carrierDetails;
+        return new CarrierModel(resp.data);
       });
     }
   };
