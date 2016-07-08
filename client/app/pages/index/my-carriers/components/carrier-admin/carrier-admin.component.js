@@ -1,7 +1,7 @@
 angular.module('echo.index.myCarriers.carrierAdmin', [
-  'echo.index.myCarriers.myCompany',
-  'echo.index.myCarriers.dashboard',
-  'echo.components.carrierAdminNav',
+  'echo.index.myCarriers.carrierAdmin.myCompany',
+  'echo.index.myCarriers.carrierAdmin.dashboard',
+  'echo.index.myCarriers.carrierAdmin.carrierAdminNav',
   'echo.components.navbar'
 ]).component('carrierAdmin', {
   bindings: {
