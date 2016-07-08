@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('echo.components.carrierAdminNav', [
+angular.module('echo.index.myCarriers.carrierAdmin.carrierAdminNav', [
   'echo.config.routesConfig'
 ]).component('carrierAdminNav', {
   bindings: {
