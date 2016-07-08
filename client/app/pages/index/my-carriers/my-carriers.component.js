@@ -1,6 +1,6 @@
 angular.module('echo.index.myCarriers', [
   'echo.index.myCarriers.carrierAdmin',
-  'echo.index.myCarriers.carrierRep',
+  'echo.index.myCarriers.repAdmin',
   'echo.services.carrierDetails',
   'echo.services.repDetails',
   'echo.services.user'

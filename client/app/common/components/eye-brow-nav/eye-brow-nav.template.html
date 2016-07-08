@@ -1,6 +1,6 @@
 <div class='eyebrow-header'>
   <div class='container'>
-    <div ng-if="!$ctrl.user.isCarrierRep()" class="eyebrow-text pull-left">
+    <div ng-if="!$ctrl.user.isRepAdmin()" class="eyebrow-text pull-left">
        <billing-questions phone-number="$ctrl.repDetails.getPhoneNumber()"></billing-questions>
     </div>
     <ul class='eyebrow-nav list-inline navbar-right'>

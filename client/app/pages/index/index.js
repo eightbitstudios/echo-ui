@@ -23,12 +23,12 @@ angular.module('echo.index', [
           return userService.fetchUserById(1);
         },
         carrierDetails: function (carrierDetailsService, user) {
-          if(!user.isCarrierRep()){
+          if(!user.isRepAdmin()){
             return carrierDetailsService.fetchCarrierById(user.carrierId);
           } 
         },
         repDetails: function (repDetailsService, user) {
-          if(!user.isCarrierRep()){
+          if(!user.isRepAdmin()){
             return repDetailsService.fetchRepByCarrierId(user.carrierId);
           } 
         }
@@ -52,5 +52,8 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCompany.name, {
       url: routesConfig.INDEX.myCompany.route,
       template: '<my-company></my-company>'
+    })
+    .state(routesConfig.INDEX.dashboard.name, {
+      url: routesConfig.INDEX.dashboard.route
     });
 });

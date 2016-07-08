@@ -15,11 +15,11 @@ angular.module('echo.models.user', [])
     }
 
     /**
-     * @description If the user is the carriers rep
+     * @description If the user is the rep admin
      * @return {boolean}
      */
-    User.prototype.isCarrierRep = function () {
-      return $location.search().isCarrierRep;
+    User.prototype.isRepAdmin = function () {
+      return $location.search().isRepAdmin;
     };
 
     /**
