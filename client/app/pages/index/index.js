@@ -19,6 +19,7 @@ angular.module('echo.index', [
   $stateProvider
     .state(routesConfig.INDEX.base.name, {
       url: routesConfig.INDEX.base.route,
+      abstract: true,
       resolve: {
         user: function (userService) {
           return userService.fetchUserById(1);
