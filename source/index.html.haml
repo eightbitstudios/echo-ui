@@ -19,7 +19,7 @@
         - sitemap.resources.each do |page|
           - if page.url =~ /\.html/
             %li.list-group-item
-              = link_to page.url, page.url
+              = link_to page.url, '/clients/echo'+page.url
    
 
 

@@ -144,86 +144,38 @@
           %h1.selection-company Carrier Company "A" Name
           3400 N Wilconshire, #309, Chicago, IL. 60616
         
-        %article.selection-users
-          %header.selection-header
-            Portal Users - 2
-            =link_to 'View Portal Users List', '#', class: 'btn btn-link btn-sm'
-          
-          %section.portal-user-grid
-            %article.portal-user
-              %header
-                %h1.user-name Blake Lively
-                .user-title Load Manager
+        %section.content-container.profile-info
+          %h1.profile-name.profile-name_driver
+            =image_tag('icon-portal-user.svg', class: 'icon icon-portal-user')
+            Portal User
 
-              .user-email 
-                =link_to 'contact.email@companyname.com', '#'
-              .user-phone (312) 444-4902
-              %footer.user-action
-                .user-action-note Last login 5 day ago
+          %form
+            %fieldset.fieldset
+              .form-group
+                %label First Name
+                %input.form-control{:type => "email", :placeholder => "Driver Name"}
+              .form-group
+                %label Last Name
+                %input.form-control{:type => "password", :placeholder => "Last Name"} 
 
-            %article.portal-user
-              %header
-                %h1.user-name Lyn Walham
-                .user-title Load Manager
+            %fieldset.fieldset
+              %legend Contact Information
+              .form-group.has-error
+                %label Email Address
+                %input.form-control{:type => "email", :placeholder => "email@email.com"}
+                %span.help-block This email address is currently in use
+              .form-group
+                %label Phone Number
+                %input.form-control{:type => "password", :placeholder => "Last Name"} 
 
-              .user-email 
-                =link_to 'contact.email@companyname.com', '#'
-              .user-phone (312) 444-4902
-              %footer.user-action
-                .user-action-note Last login 2 weeks ago
-                .user-action-link
+              .form-group
+                =link_to 'Remove User', '#', class: 'btn btn-link btn-alt'
+                %button.btn.btn-default.pull-right{type: "submit"} Save Changes
 
-            %article.portal-user
-              %header
-                %h1.user-name Sophie Garcia
-                .user-title Carrier Admin
-
-              .user-email 
-                =link_to 'contact.email@companyname.com', '#'
-              .user-phone (312) 444-4902
-              %footer.user-action
-                .user-action-note Last login 1 day ago
-                =link_to 'Resend Invitation', '#', class: 'btn btn-link btn-alt btn-sm'
-
-            %article.portal-user
-              %header
-                %h1.user-name Adam Carlson
-                .user-title Load Manager
-
-              .user-email 
-                =link_to 'contact.email@companyname.com', '#'
-              .user-phone (312) 444-4902
-              %footer.user-action
-                .user-action-note Last login 1 day ago
-                =link_to 'Resend Invitation', '#', class: 'btn btn-link btn-alt btn-sm'
-
-            %article.portal-user
-              %header
-                %h1.user-name Lyn Walham
-                .user-title Load Manager
-
-              .user-email 
-                =link_to 'contact.email@companyname.com', '#'
-              .user-phone (312) 444-4902
-              %footer.user-action
-                .user-action-note Last login 2 weeks ago
-                .user-action-link
-            
-            %article.portal-user.portal-add-user
-              %button.btn.btn-adduser
-                =image_tag('icon-plus.svg')
-
-        %article.selection-users
-          %header.selection-header
-            Drivers - 32
-            =link_to 'View Driver List', '#', class: 'btn btn-link btn-sm'
-          
-          %section.portal-user-grid
-            
-            %article.portal-user.driver-results
-              %p 32 Drivers Total
-              =link_to 'Manage Drivers', '#'
-
-            %article.portal-user.portal-add-user
-              %button.btn.btn-adduser
-                =image_tag('icon-plus.svg')
+        %section.content-container
+          %h2.section-header Batmobile Usage
+    
+          %ul.checklist
+            %li.checklist-inprogress 
+              Invited May 18 2016
+              %button.btn.btn-default.pull-right Resend Invite

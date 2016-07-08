@@ -1,0 +1,36 @@
+.search-bar.container
+  %form.search-form.search-form_searching.pull-left{role:"search"}
+    .form-group
+      %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+      %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+
+  .filter-drivers.pull-left
+    %button.btn.btn-default.btn-filter
+      Filter Unassigned Drivers
+    .filter-drivers_overlay
+      %header.filter-header
+        View Available Drivers Between
+
+      .filter-form
+        %form
+          .form-group
+            %label Starting
+            %input.form-control{:type => "date", :placeholder => "Select a date..."} 
+          .form-group
+            %label Ending
+            %input.form-control{:type => "date", :placeholder => "Select a date..."} 
+
+      .filter-datepicker
+        .datepicker
+
+      %footer.filter-footer
+        .btn.btn-default Apply
+        &nbsp;
+        .btn.btn-link.btn-alt CLEAR
+
+  .pull-right
+    %button.btn.btn-default Invite New Driver
+
+      
+
+

@@ -16,14 +16,17 @@
     padding-top: 45px
     padding-bottom: 45px
     display: flex
-    
+
+  .col-wrap
+    width: 100%
+
   .col-echorep:first-child
     justify-content: flex-end
     
     @media (min-width: 1200px)
       padding-right: 60px
       .col-wrap
-        width: calc(1170px * (5/12))
+        // width: calc(1170px * (5/12))
 
         width: 373px
 
@@ -34,7 +37,7 @@
     @media (min-width: 1200px)
       padding-left: 60px
       .col-wrap
-        width: calc(1170px * (7/12))
+        // width: calc(1170px * (7/12))
 
         width: 677px
 
@@ -45,17 +48,24 @@
       margin-bottom: 10px
   
 
-// search results list
+// Listing Sidebar
+/////////////
 
-.search-list
+.col-echorep_searchlist
+  .search-form
+    width: 100%
+
+.sidebar-list
   overflow-y: scroll
   height: 75vh
+  margin-top: 20px
 
-.search-list_alpha
+.sidebar-list_alpha
   list-style: none
   padding-left: 0
+  margin-top: 0
 
-.search-list_letter
+.sidebar-list_letter
   color: $gray-mid-light
   font-family: $heading-font
   font-size: 20px
@@ -63,8 +73,9 @@
   line-height: 1
   letter-spacing: 0.5px
   margin-bottom: 30px
+  padding-left: 1px
 
-.search-list_names
+.sidebar-list_names
   list-style: none
   font-family: $body-font
   font-size: 14px
@@ -82,13 +93,15 @@
       border-radius: 2px
       background-color: $bright-blue
   
-  .search-selected
+  .sidebar-selected
     text-decoration: none
     padding: 3px 10px
     border-radius: 2px
     background-color: $bright-blue
 
+
 // search results detail
+///////////////
 
 .selection-name
   margin-bottom: 60px
@@ -118,6 +131,8 @@
   justify-content: center
   p
     margin-bottom: 0
+  a
+    font-size: 14px
 
 
 // Empty Search Results
@@ -132,4 +147,7 @@
   color: $gray-mid-light
   text-align: center
   padding: 0 5%
+
+  h2
+    font-weight: 100
 

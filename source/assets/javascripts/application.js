@@ -29,7 +29,13 @@ $(window).load(function(){
 		$('.search-list').mCustomScrollbar({
 			theme: 'minimal-dark'
 		});
-		
+
 	}
+
+	// $('.search-form') {
+	// 	var searchBox = $('.search-form').find('input')
+	// 	var searchClose = null
+	// 	$('input').on('change', function(){ })
+	// }
 
 });
