@@ -24,7 +24,7 @@ angular.module('echo.services.user', [
         var url = apiConfig.userById({ userId: userId });
 
         return $http.get(url).then(function (resp) {
-          user = new UserModel(resp.data);
+          user = new UserModel(resp.data.data);
           return user;
         });
       }

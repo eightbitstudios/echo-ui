@@ -14,7 +14,7 @@ angular.module('echo.services.carrier', [
       var url = apiConfig.carriers;
 
       return $http.get(url).then(function (resp) {
-        return resp.data;
+        return resp.data.data;
       });
     },
 
@@ -28,7 +28,7 @@ angular.module('echo.services.carrier', [
       var url = apiConfig.carrierById({ carrierId: carrierId });
 
       return $http.get(url).then(function (resp) {
-        return new CarrierModel(resp.data);
+        return new CarrierModel(resp.data.data);
       });
     }
   };
