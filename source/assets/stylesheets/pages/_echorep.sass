@@ -13,8 +13,7 @@
 
 .container-flex
   .col-echorep
-    padding-top: 45px
-    padding-bottom: 45px
+    padding: 45px 30px
     display: flex
 
   .col-wrap
@@ -23,27 +22,34 @@
   .col-echorep:first-child
     justify-content: flex-end
     
-    @media (min-width: 1200px)
+    @media (min-width: 992px)
+      padding-left: 60px
       padding-right: 60px
       .col-wrap
-        // width: calc(1170px * (5/12))
+        width: 330px
 
+    @media (min-width: 1270px)
+      .col-wrap
         width: 373px
 
   .col-echorep:last-child
     justify-content: flex-start
     background-color: #f7f7f7
-
-    @media (min-width: 1200px)
+    
+    @media (min-width: 992px)
       padding-left: 60px
-      .col-wrap
-        // width: calc(1170px * (7/12))
+      padding-right: 60px
 
+    @media (min-width: 1370px)
+      .col-wrap
         width: 677px
 
 .results-selection
   .portal-user-grid
-    +flex-grid(2,1rem)
+    +flex-grid(1,1rem)
+
+    +tablet
+      +flex-grid(2,1rem)
     .portal-user
       margin-bottom: 10px
   
