@@ -1,16 +1,25 @@
 angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
   'echo.services.carrier',
+  'echo.config.routesConfig',
   'echo.components.searchBar',
-  'echo.components.alphabeticalList'
+  'echo.components.sidebarList'
 ])
   .component('allCarriers', {
     templateUrl: 'app/pages/index/my-carriers/components/rep-admin/components/all-carriers/all-carriers.template.html',
     bindings: {},
-    controller: function (carrierService) {
+    controller: function ($stateParams, routesConfig, carrierService) {
       var that = this;
+
+      that.routesConfig = routesConfig;
+
       carrierService.fetchCarriers().then(function (carriers) {
-        that.carrierList = _(carriers).sortBy('name').value();
-        that.alphabeticalCarrierList = _(that.carrierList)
+
+        that.carrierList = _(carriers).sortBy('name').value(); // Sort all carriers by their name
+
+        /**
+         * Groups a list of carriers by the first letter in their name and maps them to an object.
+         */
+        that.sidebarCarrierList = _(that.carrierList)
           .groupBy(function (carrier) {
             return carrier.name.charAt(0);
           }).map(function (value, prop) {
@@ -19,6 +28,21 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
               letter: prop
             };
           }).value();
+
+        // Set a carrier to selected if user is routed to page with a carrier id  
+        that.selectCarrier(that.carrierList, $stateParams.id);
       });
+
+      /**
+       * @description Sets a state for a carrier to selected
+       * @param {Array.<CarrierModel>} carrierList - List of carrier models
+       * @param {number} id - Carrier Id to search for in carrier list
+       */
+      that.selectCarrier = function (carrierList, id) {
+        var carrier = _.find(carrierList, { id: _.parseInt(id, 10) });
+        if (carrier) {
+          carrier.selected = true;
+        }
+      };
     }
   });

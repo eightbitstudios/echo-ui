@@ -1,10 +1,23 @@
-<div class="search">
-  <input name="searchText" type="text" ng-model="$ctrl.searchText" />
-  <span ng-if="$ctrl.searchText.length > 0">{{$ctrl.searchResults.length}} Search Results</span>
-  <div class="search-list" ng-if="$ctrl.searchText.length > 0">
-    <div ng-repeat="searchItems in $ctrl.searchResults = ($ctrl.searchList | filter:$ctrl.searchText)">
-      {{searchItems.name}}
+<div class="search-bar">
+  <form class="search-form">
+    <div class="form-group">
+      <input type="text" ng-model="$ctrl.searchText" class="form-control search-form-input" placeholder="Find a Carrier" />
+      <span class="search-icon" ng-if="$ctrl.searchText.length < 3">
+        <img src="../assets/images/icon-search@2x.png"  style="width: 16px; height: 16px;"/>
+      </span>
+      <span class="search-bar-controls" ng-if="$ctrl.searchText.length >= 3">
+        <span class="search-results-count">{{$ctrl.searchResults.length}} Search Results</span>
+      <div class="search-results-close echo-icon close-icon" ng-click="$ctrl.clearSearchHandler()"></div>
+      </span>
+      <ul class="search-results-overlay" ng-if="$ctrl.searchText.length >= 3">
+        <li class="results-row" ng-repeat="searchItem in $ctrl.searchResults = ($ctrl.searchList | filter:$ctrl.searchText)">
+          <a ui-sref="{{$ctrl.link}}({id: searchItem.id, isRepAdmin: true})" ng-click="$ctrl.searchItemSelected(searchItem)">{{searchItem.name}}</a>
+        </li>
+        <li ng-if="$ctrl.searchResults.length === 0">
+          <span class="no-search-results">No Search Results</span>
+        </li>
+      </ul>
     </div>
-  </div>
-  <ng-transclude ng-if="$ctrl.searchText.length === 0"></ng-transclude>
+  </form>
+  <ng-transclude ng-if="$ctrl.searchText.length < 3"></ng-transclude>
 </div>

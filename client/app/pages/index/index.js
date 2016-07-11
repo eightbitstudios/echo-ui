@@ -62,5 +62,9 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.dashboard.name, {
       url: routesConfig.INDEX.dashboard.route,
       template: '<dashboard></dashboard>'
+    })
+    .state(routesConfig.INDEX.myCarriersDetails.name, {
+      url: routesConfig.INDEX.myCarriersDetails.route,
+      template: '<carrier-details></carrier-details>'
     });
 });
