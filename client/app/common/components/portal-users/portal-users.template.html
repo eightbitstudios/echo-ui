@@ -1,0 +1,26 @@
+<article class="selection-users">
+  <header class="selection-header">
+    Portal Users
+    <a href="#" class="btn btn-link btn-sm">View Portal Users List</a>
+  </header>
+  <section class="portal-user-grid">
+    <article class="portal-user" ng-repeat="portalUser in $ctrl.portalUsers">
+      <header>
+        <div class="user-name">{{portalUser.name}}</div>
+        <div class="user-title">{{portalUser.role}}</div>
+      </header>
+      <div class="user-email">
+        <a href="#">{{portalUser.email}}</a>
+      </div>
+      <div class="user-phone">{{portalUser.phone}}</div>
+      <footer class="user-action">
+        <div class="user-action-note">Last login {{portalUser.lastLogin}}</div>
+      </footer>
+    </article>
+    <article class="portal-user">
+      <button class="btn btn-adduser">
+        <div class="echo-icon icon-plus"></div>
+      </button>
+    </article>
+  </section>
+</article>

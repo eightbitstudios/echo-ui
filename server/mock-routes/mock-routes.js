@@ -3,6 +3,8 @@ var carrierHandler = require('./handlers/carrier-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
+  app.get(endpoints.api.driverCount, carrierHandler.getDriverCount);
+  app.get(endpoints.api.portalUsers, carrierHandler.getPortalUsers);
   app.get(endpoints.api.carriers, carrierHandler.getCarriers);
   app.get(endpoints.api.carrierById, carrierHandler.getCarrierById);
   app.get(endpoints.api.repByCarrierId, carrierHandler.getRepByCarrierId);

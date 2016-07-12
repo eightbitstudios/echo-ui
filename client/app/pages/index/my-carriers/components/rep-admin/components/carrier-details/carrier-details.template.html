@@ -1,8 +1,12 @@
 <div>
-  <h1>
-    Details
-  </h1>
-  <div>
-    Name: {{$ctrl.carrier.name}}
+  <div class="col-wrap">
+    <section class="results-selection">
+      <header class="selection-name">
+        <a href="#" class="btn btn-default pull-right">View Dashboard</a>
+        <h1 class="selection-company">{{$ctrl.carrier.name}}</h1> {{$ctrl.carrier.address}}
+      </header>
+      <portal-users portal-users="$ctrl.portalUsers"></portal-users>
+      <driver-list driver-count="$ctrl.driverCount"></driver-list>
+    </section>
   </div>
 </div>

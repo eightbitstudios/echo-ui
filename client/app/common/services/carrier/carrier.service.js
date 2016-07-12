@@ -32,6 +32,34 @@ angular.module('echo.services.carrier', [
       return $http.get(url).then(function (resp) {
         return new CarrierModel(resp.data.data);
       });
+    },
+
+   /**
+    * @description Retrieves portal users for a carrier
+    * @param {number} carrierId - Id for carrier
+    * @returns {Promise} - Promise containing portal users
+    */
+    fetchCarrierPortalUsers: function (carrierId) {
+
+      var url = apiConfig.portalUsers({ carrierId: carrierId });
+
+      return $http.get(url).then(function (resp) {
+        return resp.data.data;
+      });
+    },
+
+   /**
+    * @description Retrieves driver counts for a carrier
+    * @param {number} carrierId - Id for carrier
+    * @returns {Promise} - Promise containing driver counts
+    */
+    fetchCarrierDriverCount: function (carrierId) {
+
+      var url = apiConfig.driverCount({ carrierId: carrierId });
+
+      return $http.get(url).then(function (resp) {
+        return resp.data.data;
+      });
     }
   };
 });
