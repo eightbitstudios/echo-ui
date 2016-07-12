@@ -6,7 +6,8 @@ angular.module('echo.components.portalUserProfile', [
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '=', 
-    carrierId: '='
+    carrierId: '=',
+    invitationSentHandler: '&'
   },
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
   controller: function ($state, routesConfig, portalUserService) {
@@ -21,7 +22,7 @@ angular.module('echo.components.portalUserProfile', [
     };
 
     that.invitationButtonHandler = function() {
-      $state.go(routesConfig.INDEX.myCarriersDetails.name);
+      that.invitationSentHandler();
     };
   }
 });

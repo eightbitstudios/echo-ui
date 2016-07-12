@@ -66,12 +66,5 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCarriersDetails.name, {
       url: routesConfig.INDEX.myCarriersDetails.route,
       template: '<carrier-details></carrier-details>'
-    })
-    .state(routesConfig.INDEX.carrierDetailsPortalUser.name, {
-      url: routesConfig.INDEX.carrierDetailsPortalUser.route,
-      template: '<carrier-details-user></arrier-details-user>',
-      params: {
-          id: {value: 'foo'}
-      },
     });
 });

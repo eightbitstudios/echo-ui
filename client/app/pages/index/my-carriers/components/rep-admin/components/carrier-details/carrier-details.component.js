@@ -1,8 +1,8 @@
 angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
   'echo.index.myCarriers.repAdmin.driverList',
-  'echo.index.myCarriers.repAdmin.carrierDetailsUser',
   'echo.config.routes',
   'echo.services.carrier',
+  'echo.services.portalUser',
   'echo.enums.carrier',
   'echo.components.portalUsers',
   'echo.components.portalUserProfile'
@@ -10,14 +10,20 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
   .component('carrierDetails', {
     templateUrl: 'app/pages/index/my-carriers/components/rep-admin/components/carrier-details/carrier-details.template.html',
     bindings: {},
-    controller: function ($stateParams, carrierService, carrierEnum, routesConfig) {
+    controller: function ($stateParams, carrierService, carrierEnum, routesConfig, portalUserService) {
       var that = this;
 
-      that.showPortalProfile = false;
+      that.mode = {
+        DETAILS: 0,
+        PORTAL_USER: 1
+      };
+
+      that.showMode = that.mode.DETAILS;
 
       that.userRoute = routesConfig.INDEX.carrierDetailsPortalUser;
+      that.carrierId = $stateParams.carrierId;
 
-      carrierService.fetchCarrierById($stateParams.carrierId).then(function (carrier) {
+      carrierService.fetchCarrierById(that.carrierId).then(function (carrier) {
         that.carrier = carrier;
 
         if (that.carrier.status !== carrierEnum.STATUS.INACTIVE) {
@@ -30,5 +36,25 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
           });
         }
       });
+
+      that.showPortalUserHandler = function (user) {
+        if (user) {
+          portalUserService.fetchPortalUserById(that.carrierId, user.userId).then(function (user) {
+            that.portalUser = user;
+            that.showPortalUser();
+          });
+        } else {
+          that.portalUser = {};
+          that.showPortalUser();
+        }
+      };
+
+      that.showDetailsHandler = function () {
+        that.showMode = that.mode.DETAILS;
+      };
+
+      that.showPortalUser = function () {
+        that.showMode = that.mode.PORTAL_USER;
+      };
     }
   });

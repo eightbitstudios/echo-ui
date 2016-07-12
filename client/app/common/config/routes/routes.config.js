@@ -17,10 +17,6 @@ angular.module('echo.config.routes', [])
         name: 'index.myCarriers.details',
         route:'/:carrierId?isRepAdmin'
       },
-      carrierDetailsPortalUser: {
-        name: 'index.myCarriers.details.portalUser',
-        route:'/portal-user/{userId}'
-      },
       dashboard: {
         name: 'index.myCarriers.dashboard',
         route:'/dashboard'

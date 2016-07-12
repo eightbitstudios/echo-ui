@@ -3,18 +3,18 @@
 angular.module('echo.components.portalUsers', []).component('portalUsers', {
   bindings: {
     portalUsers: '=',
-    userRoute: '='
+    clickHandler: '&'
   },
   templateUrl: 'app/common/components/portal-users/portal-users.template.html',
-  controller: function($state) { 
+  controller: function() { 
     var that = this;
 
     that.userTileClickHandler = function(portalUser) {
-      $state.go(that.userRoute.name, {userId: portalUser.userId});
+      that.clickHandler({user: portalUser});
     };
 
     that.addTileHandler = function() {
-      $state.go(that.userRoute.name);
+      that.clickHandler({user: null});
     };
   }
 });

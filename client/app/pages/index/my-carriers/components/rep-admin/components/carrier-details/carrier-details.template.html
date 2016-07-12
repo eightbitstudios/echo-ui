@@ -5,9 +5,15 @@
         <a href="#" class="btn btn-default pull-right">View Dashboard</a>
         <h1 class="selection-company">{{$ctrl.carrier.name}}</h1> {{$ctrl.carrier.address}}
       </header>
-      <div ui-view>
-        <portal-users portal-users="$ctrl.portalUsers" user-route="$ctrl.userRoute"></portal-users>
+      <div ng-if="$ctrl.showMode === $ctrl.mode.DETAILS">
+        <portal-users portal-users="$ctrl.portalUsers" click-handler="$ctrl.showPortalUserHandler(user)"></portal-users>
         <driver-list driver-count="$ctrl.driverCount"></driver-list>
+      </div>
+      <div ng-if="$ctrl.showMode === $ctrl.mode.PORTAL_USER">
+        <a ng-click="$ctrl.showDetailsHandler()" class="btn btn-link">
+          <div class="echo-icon icon-left-arrow"></div>Back to Details
+        </a>
+        <portal-user-profile portal-user="$ctrl.portalUser" carrier-id="$ctrl.carrierId" invitation-sent-handler="$ctrl.showDetailsHandler()"></portal-user-profile>
       </div>
     </section>
   </div>
