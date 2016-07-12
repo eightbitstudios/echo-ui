@@ -1,0 +1,67 @@
+header.navbar + .tab-bar{
+  margin-top: -20px;
+}
+.tab-bar{
+  margin-bottom: 45px;
+  background-color: #f7f7f7;
+  box-shadow: inset 0 -1px 0 0 #e1e2e3;
+
+  .nav-tabs{
+    margin-top: 20px;
+    border-bottom: 0;
+
+    svg{
+      margin-right: 5px;
+      margin-bottom: -1px;
+    }
+    g.icon{
+      fill: @c-slate-grey;
+      transition: fill 0.3s;
+    }
+    > li{
+      margin-bottom: 0;
+
+      > a{
+        padding: 10px 20px 11px;
+        color: @c-slate-grey;
+        line-height: 1.2;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-size: @fs-xl;
+        border-radius: 0;
+        border: none;
+        border-bottom: 4px solid transparent;
+        background: none;
+      
+        &:hover{
+          color: @c-bright-blue;
+          border: none;
+          border-bottom: 4px solid transparent;
+          g.icon{
+            fill: @c-bright-blue;
+        }
+        }
+      }
+      &.active{
+        a{
+          color: @c-bright-blue;
+          background: none;
+          border-bottom: 4px solid @c-bright-blue;
+        }
+        g.icon{
+          fill: @c-bright-blue;
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: @screen-md){
+    .dashboard-portal-users .selection-users .portal-user-grid > .portal-user{
+        width: ~'calc(100% / 3 - 2.5rem)';
+  }
+}
+  .dashboard-portal-users .selection-users .portal-user-grid > .portal-user{
+      width: ~'width: calc(100% / 2 - 2.5rem)';
+}
