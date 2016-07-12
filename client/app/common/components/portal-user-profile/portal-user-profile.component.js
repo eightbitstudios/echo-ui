@@ -5,7 +5,7 @@ angular.module('echo.components.portalUserProfile', [
   'echo.services.portalUser'
 ]).component('portalUserProfile', {
   bindings: {
-    portalUser: '=', 
+    portalUser: '=',
     carrierId: '=',
     invitationSentHandler: '&'
   },
@@ -14,6 +14,7 @@ angular.module('echo.components.portalUserProfile', [
     var that = this;
 
     that.dataSubmitted = false;
+    that.showConfirmation = false;
 
     that.saveChangesHandler = function (portalUser) {
       portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function () {
@@ -21,8 +22,19 @@ angular.module('echo.components.portalUserProfile', [
       });
     };
 
-    that.invitationButtonHandler = function() {
+    that.removeUserHandler = function (portalUser) {
+      portalUser.active = false;
+      portalUserService.updatePortalUserById(that.carrierId, portalUser).then(function () {
+        that.invitationSentHandler();
+      });
+    };
+
+    that.invitationButtonHandler = function () {
       that.invitationSentHandler();
+    };
+
+    that.toggleConfirmation = function() {
+      that.showConfirmation = !that.showConfirmation;
     };
   }
 });

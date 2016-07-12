@@ -18,7 +18,7 @@
         <legend>Contact Information</legend>
         <div class="form-group" ng-class="{'has-error': userProfile.userEmail.$invalid && (userProfile.$submitted || userProfile.userEmail.$touched)}">
           <label>Email Address</label>
-          <input class="form-control" name="userEmail" pattern="{{$ctrl.appConstants.EMAIL_REGEX}}" placeholder="email@email.com" type="email" ng-model="$ctrl.portalUser.email" required>
+          <input class="form-control" name="userEmail" placeholder="email@email.com" type="email" ng-model="$ctrl.portalUser.email" required>
           <span class="help-block" ng-if="userProfile.userEmail.$error.email">Invalid email address</span>
           <span class="help-block" ng-if="userProfile.userEmail.$error.required && (userProfile.$submitted || userProfile.userEmail.$touched)">An email address is required</span>
         </div>
@@ -28,7 +28,12 @@
           <span class="help-block" ng-if="userProfile.phoneNumber.$error.required && (userProfile.$submitted || userProfile.phoneNumber.$touched)">A phone number is required</span>
         </div>
         <div class="form-group">
-          <a href="#" class="btn btn-link btn-alt">Remove User</a>
+          <div ng-if="$ctrl.showConfirmation" class="pull-left text-center">
+            <div>Are you sure you want to remove this user?</div>
+            <button class="btn btn-primary" type="submit" ng-click="$ctrl.removeUserHandler($ctrl.portalUser)">Ok</button>
+            <button class="btn btn-secondary" type="submit" ng-click="$ctrl.toggleConfirmation()">Cancel</button>
+          </div>
+          <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.portalUser.userId && !$ctrl.showConfirmation" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
           <button class="btn btn-default pull-right" type="submit" ng-click="$ctrl.saveChangesHandler($ctrl.portalUser)">Save Changes</button>
         </div>
       </fieldset>
