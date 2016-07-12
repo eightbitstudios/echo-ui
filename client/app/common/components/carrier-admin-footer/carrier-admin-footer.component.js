@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('echo.components.carrierAdminFooter', [
-  'echo.config.routesConfig'
+  'echo.config.routes'
 ]).component('carrierAdminFooter', {
   bindings: {
     repDetails: '='

@@ -1,4 +1,6 @@
 angular.module('echo.config.appConstants', [])
   .constant('appConstants', {
-    MIN_CARRIER_SEARCH_CHARACTERS: 3
+    MIN_SEARCH_CHARACTERS: {
+      CARRIERS: 3,
+    }
   });

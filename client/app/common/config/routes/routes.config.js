@@ -1,4 +1,4 @@
-angular.module('echo.config.routesConfig', [])
+angular.module('echo.config.routes', [])
   .constant('routesConfig', {
     INDEX: {
       base: {
@@ -15,7 +15,11 @@ angular.module('echo.config.routesConfig', [])
       },
       myCarriersDetails: {
         name: 'index.myCarriers.details',
-        route:'/:id?isRepAdmin'
+        route:'/:carrierId?isRepAdmin'
+      },
+      carrierDetailsPortalUser: {
+        name: 'index.myCarriers.details.portalUser',
+        route:'/portal-user/{userId}'
       },
       dashboard: {
         name: 'index.myCarriers.dashboard',

@@ -25,6 +25,19 @@ module.exports = {
     resTemplate.data = _(portalUserRes).sampleSize(portalUserRes.length).slice(1, _.random(2, portalUserRes.length));
     res.json(resTemplate);
   },
+  getPortalUserById: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = _(portalUserRes).find({userId: _.parseInt(req.params.userId)});
+    res.json(resTemplate);
+  },
+  updatePortalUserById: function (req, res) {
+    var resTemplate = new ResTemplate();
+    res.json(resTemplate);
+  },
+  insertPortalUser: function (req, res) {
+    var resTemplate = new ResTemplate();
+    res.json(resTemplate);
+  },
   getDriverCount: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = {

@@ -1,6 +1,6 @@
 angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
   'echo.services.carrier',
-  'echo.config.routesConfig',
+  'echo.config.routes',
   'echo.components.searchBar',
   'echo.components.sidebarList'
 ])
@@ -30,7 +30,7 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
           }).value();
 
         // Set a carrier to selected if user is routed to page with a carrier id  
-        that.selectCarrier(that.carrierList, $stateParams.id);
+        that.selectCarrier(that.carrierList, $stateParams.carrierId);
       });
 
       /**

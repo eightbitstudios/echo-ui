@@ -15,7 +15,7 @@ angular.module('echo.components.searchBar', [
     that.searchText = '';
     that.searchResults = [];
     that.isSearching = false;
-    that.minSearchCharacters = appConstants.MIN_CARRIER_SEARCH_CHARACTERS;
+    that.minSearchCharacters = appConstants.MIN_SEARCH_CHARACTERS.CARRIERS;
 
     /**
      * @description Sets a search item state to selected

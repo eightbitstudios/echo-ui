@@ -5,8 +5,10 @@
         <a href="#" class="btn btn-default pull-right">View Dashboard</a>
         <h1 class="selection-company">{{$ctrl.carrier.name}}</h1> {{$ctrl.carrier.address}}
       </header>
-      <portal-users portal-users="$ctrl.portalUsers"></portal-users>
-      <driver-list driver-count="$ctrl.driverCount"></driver-list>
+      <div ui-view>
+        <portal-users portal-users="$ctrl.portalUsers" user-route="$ctrl.userRoute"></portal-users>
+        <driver-list driver-count="$ctrl.driverCount"></driver-list>
+      </div>
     </section>
   </div>
 </div>

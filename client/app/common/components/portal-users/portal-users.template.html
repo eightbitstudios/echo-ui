@@ -4,9 +4,9 @@
     <a href="#" class="btn btn-link btn-sm">View Portal Users List</a>
   </header>
   <section class="portal-user-grid">
-    <article class="portal-user" ng-repeat="portalUser in $ctrl.portalUsers">
+    <article class="portal-user" ng-repeat="portalUser in $ctrl.portalUsers" ng-click="$ctrl.userTileClickHandler(portalUser)">
       <header>
-        <div class="user-name">{{portalUser.name}}</div>
+        <div class="user-name">{{portalUser.firstName}} {{portalUser.lastName}}</div>
         <div class="user-title">{{portalUser.role}}</div>
       </header>
       <div class="user-email">
@@ -18,7 +18,7 @@
       </footer>
     </article>
     <article class="portal-user">
-      <button class="btn btn-adduser">
+      <button class="btn btn-adduser" ng-click="$ctrl.addTileHandler()">
         <div class="echo-icon icon-plus"></div>
       </button>
     </article>

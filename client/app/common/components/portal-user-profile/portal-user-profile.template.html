@@ -1,0 +1,44 @@
+<section class="content-container portal-user-profile">
+  <div ng-if="!$ctrl.dataSubmitted">
+    <h1 class="profile-name profile-name_driver"><div class="echo-icon icon-users"></div>Portal User</h1>
+    <form name="userProfile" novalidate>
+      <fieldset class="fieldset">
+        <div class="form-group" ng-class="{'has-error': userProfile.firstName.$error.required && (userProfile.$submitted || userProfile.firstName.$touched)}">
+          <label>First Name</label>
+          <input class="form-control" name="firstName" placeholder="First Name" type="text" ng-model="$ctrl.portalUser.firstName" required>
+          <span class="help-block" ng-if="userProfile.firstName.$error.required  && (userProfile.$submitted || userProfile.firstName.$touched)">A first name is required</span>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userProfile.lastName.$error.required && (userProfile.$submitted || userProfile.lastName.$touched)}">
+          <label>Last Name</label>
+          <input class="form-control" name="lastName" placeholder="Last Name" type="text" ng-model="$ctrl.portalUser.lastName" required>
+          <span class="help-block" ng-if="userProfile.lastName.$error.required && (userProfile.$submitted || userProfile.lastName.$touched)">A last name is required</span>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend>Contact Information</legend>
+        <div class="form-group" ng-class="{'has-error': userProfile.userEmail.$invalid && (userProfile.$submitted || userProfile.userEmail.$touched)}">
+          <label>Email Address</label>
+          <input class="form-control" name="userEmail" pattern="{{$ctrl.appConstants.EMAIL_REGEX}}" placeholder="email@email.com" type="email" ng-model="$ctrl.portalUser.email" required>
+          <span class="help-block" ng-if="userProfile.userEmail.$error.email">Invalid email address</span>
+          <span class="help-block" ng-if="userProfile.userEmail.$error.required && (userProfile.$submitted || userProfile.userEmail.$touched)">An email address is required</span>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userProfile.phoneNumber.$invalid && (userProfile.$submitted || userProfile.phoneNumber.$touched)}">
+          <label>Phone Number</label>
+          <input class="form-control" name="phoneNumber" placeholder="(555) 432-1234" type="tel" ng-model="$ctrl.portalUser.phone" required>
+          <span class="help-block" ng-if="userProfile.phoneNumber.$error.required && (userProfile.$submitted || userProfile.phoneNumber.$touched)">A phone number is required</span>
+        </div>
+        <div class="form-group">
+          <a href="#" class="btn btn-link btn-alt">Remove User</a>
+          <button class="btn btn-default pull-right" type="submit" ng-click="$ctrl.saveChangesHandler($ctrl.portalUser)">Save Changes</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <div class="text-center" ng-if="$ctrl.dataSubmitted">
+    <h1>Your invitation has been sent!</h1>
+    <button class="btn btn-default" ng-click="$ctrl.invitationButtonHandler()">
+      Back to Carrier Details
+    </button>
+  </div>
+</section>
