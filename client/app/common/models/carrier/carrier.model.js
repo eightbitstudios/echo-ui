@@ -1,13 +1,12 @@
-angular.module('echo.models.carrier', [
-  'echo.enums.carrier'
-]).factory('CarrierModel', function (carrierEnum) {
+angular.module('echo.models.carrier', []).factory('CarrierModel', function () {
 
   /**
    * @description Model for a Carrier
    * @param {Object} carrierData - Data to be converted to a Carrier Model
-   * @param {number} [carrierData.id] - Carrier id
+   * @param {number} [carrierData.carrierId] - Carrier id
    * @param {number} [carrierData.repId] - Rep associated with carrier
-   * @param {string} [carrierData.name] - Carrier name
+   * @param {string} [carrierData.carrierName] - Carrier name
+   * @param {string} [carrierData.isActive] - If carrier is active
    * @constructor
    */
   function Carrier(carrierData) {
@@ -22,9 +21,17 @@ angular.module('echo.models.carrier', [
    * @returns {boolean}
    */
   Carrier.prototype.isInactive = function () {
-    return this.status === carrierEnum.STATUS.INACTIVE;
+    return !this.isActive;
   };
 
+  /**
+   * Returns if the carrier is inactive
+   * @returns {boolean}
+   */
+  Carrier.prototype.getFullAddress = function () {
+    var address = _([this.address1, this.address2, this.city, this.state]).join(', ');
+     return _([address, this.zip]).join(' ');
+  };
   /**
    * Return the constructor function
    */

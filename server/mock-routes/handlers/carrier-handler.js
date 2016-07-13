@@ -12,7 +12,7 @@ module.exports = {
   },
   getCarrierById: function (req, res) {
     var resTemplate = new ResTemplate();
-    resTemplate.data = _.find(carriers, { id: _.parseInt(req.params.carrierId) });
+    resTemplate.data = _.find(carriers, { carrierId: _.parseInt(req.params.carrierId) });
     res.json(resTemplate);
   },
   getRepByCarrierId: function (req, res) {
@@ -41,7 +41,7 @@ module.exports = {
   getDriverCount: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = {
-      count: _.random(100)
+      userCount: _.random(100)
     };
 
     res.json(resTemplate);
