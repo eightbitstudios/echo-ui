@@ -3,6 +3,7 @@ angular.module('echo.index', [
   'echo',
   'ui.router',
   'echo.config',
+  'echo.directives.echoIcon',
   'echo.index.controller',
   'echo.index.myCarriers',
   'echo.index.settings',
@@ -57,6 +58,7 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompany.name, {
       url: routesConfig.INDEX.myCompany.route,
+      abstract:true,
       template: '<my-company></my-company>',
     })
     .state(routesConfig.INDEX.dashboard.name, {
@@ -66,5 +68,13 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCarriersDetails.name, {
       url: routesConfig.INDEX.myCarriersDetails.route,
       template: '<carrier-details></carrier-details>'
+    })
+    .state(routesConfig.INDEX.myCompanyUsers.name, {
+      url: routesConfig.INDEX.myCompanyUsers.route,
+      template: '<my-company-portal-users></my-company-portal-users>'
+    })
+    .state(routesConfig.INDEX.myCompanyDrivers.name, {
+      url: routesConfig.INDEX.myCompanyDrivers.route,
+      template: '<my-company-drivers>></my-company-drivers>'
     });
 });

@@ -9,6 +9,8 @@
   <meta name="author" content="Slalom">
 
   <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  
+  <script type='text/javascript'  src='assets/icons/grunticon.loader.js'></script>
 
   <title>BATMOBILE</title>
 
@@ -31,7 +33,9 @@
   <!-- endinjector -->
   <!-- endbuild -->
 
-
+  <script>
+    grunticon(["assets/icons/icons.data.svg.css", "assets/icons/icons.data.png.css", "assets/icon/icons.fallback.css"], grunticon.svgLoadedCallback);
+  </script>
 </head>
 
 <body ng-app="echo.index" ng-controller="AppCtrl as appCtrl" id="ng-app">

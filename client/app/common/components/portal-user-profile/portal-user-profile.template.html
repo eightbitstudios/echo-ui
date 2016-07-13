@@ -1,6 +1,6 @@
 <section class="content-container portal-user-profile">
   <div ng-if="!$ctrl.dataSubmitted">
-    <h1 class="profile-name profile-name_driver"><div class="echo-icon icon-users"></div>Portal User</h1>
+    <h1 class="profile-name profile-name_driver"><span data-grunticon-embed class="echo-icon icon-portal-user"></span>Portal User</h1>
     <form name="userProfile" novalidate>
       <fieldset class="fieldset">
         <div class="form-group" ng-class="{'has-error': userProfile.firstName.$error.required && (userProfile.$submitted || userProfile.firstName.$touched)}">

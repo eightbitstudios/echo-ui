@@ -111,7 +111,8 @@ module.exports = function (grunt) {
         //Instead of including css as an asset, just import it from within main.less
       ],
       assets: [
-        'bower_components/bootstrap/fonts/**/*'
+        'bower_components/bootstrap/fonts/**/*',
+        'assets/icons/icons.data.svg.css'
       ]
     },
 
