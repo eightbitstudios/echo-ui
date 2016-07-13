@@ -28,10 +28,10 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
       /**
        * @description Sets a state for a carrier to selected
        * @param {Array.<CarrierModel>} carrierList - List of carrier models
-       * @param {number} id - Carrier Id to search for in carrier list
+       * @param {number} carrierId - Carrier Id to search for in carrier list
        */
-      that.selectCarrier = function (carrierList, id) {
-        var carrier = _.find(carrierList, { id: _.parseInt(id, 10) });
+      that.selectCarrier = function (carrierList, carrierId) {
+        var carrier = _.find(carrierList, { carrierId: _.parseInt(carrierId, 10) });
         if (carrier) {
           carrier.selected = true;
         }

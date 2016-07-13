@@ -1,79 +1,131 @@
 module.exports = [{
-  id: 1,
+  carrierId: 1,
   repId: 1,
-  name: 'A Carrier Company Name',
-  address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-  status: 1
+  carrierName: 'A Carrier Company Name',
+  address1: '3400 N Wilconshire',
+  address2: '#309',
+  state: 'IL',
+  zip: '60616',
+  city: 'Chicago',
+  isActive: true
 }, {
-    id: 2,
+    carrierId: 2,
     repId: 1,
-    name: 'A2 Carrier Company Name ',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 0
+    carrierName: 'A2 Carrier Company Name ',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 3,
+    carrierId: 3,
     repId: 1,
-    name: 'C Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'C Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 4,
+    carrierId: 4,
     repId: 1,
-    name: 'D Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'D Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 5,
+    carrierId: 5,
     repId: 1,
-    name: 'D2 Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'D2 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 6,
+    carrierId: 6,
     repId: 1,
-    name: 'M Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 0
+    carrierName: 'M Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 7,
+    carrierId: 7,
     repId: 1,
-    name: 'M2 Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'M2 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 8,
+    carrierId: 8,
     repId: 1,
-    name: 'M3 Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 0
+    carrierName: 'M3 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 9,
+    carrierId: 9,
     repId: 1,
-    name: 'T Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'T Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 10,
+    carrierId: 10,
     repId: 1,
-    name: 'T2 Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'T2 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 11,
+    carrierId: 11,
     repId: 1,
-    name: 'W Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'W Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 12,
+    carrierId: 12,
     repId: 1,
-    name: 'Z Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'Z Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 13,
+    carrierId: 13,
     repId: 1,
-    name: 'Z2 Carrier Company Name',
-    address: '3400 N Wilconshire, #309, Chicago, IL. 60616',
-    status: 1
+    carrierName: 'Z2 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }];

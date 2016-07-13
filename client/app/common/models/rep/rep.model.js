@@ -4,8 +4,9 @@ angular.module('echo.models.rep', [])
     /**
      * @description Model for a Rep
      * @param {Object} repData - Data to be converted to a Rep Model
-     * @param {number} [repData.id] - Rep Id
-     * @param {string} [repData.name] - Rep name
+     * @param {number} [repData.repId] - Rep Id
+     * @param {string} [repData.firstName] - Rep's first name
+     * @param {string} [repData.lastName] - Rep's last name
      * @param {string} [repData.email] - Rep email
      * @param {string} [repData.phone] - Rep phone number
      * @constructor
@@ -16,6 +17,14 @@ angular.module('echo.models.rep', [])
  
       _.assign(that, repData);
     }
+
+    /**
+     * @description Returns a Rep's full name
+     * @returns {string} - Rep's full name
+     */
+    Rep.prototype.getFullName = function () {
+      return _([this.firstName, this.lastName]).join(' ');
+    };
 
     /**
      * @description Returns a Reps phone number
