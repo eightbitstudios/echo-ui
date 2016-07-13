@@ -1,5 +1,7 @@
 <div class="all-carriers">
-  <search-bar search-list="$ctrl.carrierList" link="$ctrl.routesConfig.INDEX.myCarriersDetails.name">
-    <sidebar-list items="$ctrl.sidebarCarrierList" link="$ctrl.routesConfig.INDEX.myCarriersDetails.name"></sidebar-list>
-  </search-bar>
+  <div ng-if="!$ctrl.isLoading">
+    <search-bar search-list="$ctrl.carrierList" search-param="$ctrl.searchParam" link="$ctrl.routesConfig.INDEX.myCarriersDetails.name"  min-search-characters="$ctrl.minSearchCharacters">
+    </search-bar>
+     <sidebar-list items="$ctrl.carrierList" search-param="$ctrl.searchParam" min-search-characters="$ctrl.minSearchCharacters" link="$ctrl.routesConfig.INDEX.myCarriersDetails.name"></sidebar-list>
+  </div>
 </div>
