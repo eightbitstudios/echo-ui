@@ -17,7 +17,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile', [
         that.portalUser = user;
       });
 
-      that.invitationButtonHandler = function() {
+      that.goToCompanyPortalUsers = function() {
         $state.go(routesConfig.INDEX.myCompanyUsers.name);
       };
     }

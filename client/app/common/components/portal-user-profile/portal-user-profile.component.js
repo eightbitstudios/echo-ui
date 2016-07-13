@@ -7,7 +7,8 @@ angular.module('echo.components.portalUserProfile', [
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
-    carrierId: '<'
+    carrierId: '<',
+    removedUserHandler: '&'
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
@@ -31,7 +32,7 @@ angular.module('echo.components.portalUserProfile', [
     that.removeUserHandler = function (portalUser) {
       portalUser.active = false;
       portalUserService.updatePortalUserById(that.carrierId, portalUser).then(function () {
-        that.invitationSentHandler();
+        that.removedUserHandler();
       }).catch(function(message){
         that.serverError = message;
       });
