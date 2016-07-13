@@ -32,7 +32,17 @@ module.exports = {
   },
   updatePortalUserById: function (req, res) {
     var resTemplate = new ResTemplate();
-    res.json(resTemplate);
+
+    if(req.body.email === 'error@gmail.com'){
+      resTemplate.status.message = 'There was an error. Please try again.';
+      resTemplate.status.error = true;
+    }
+
+    if(resTemplate.status.error){
+      res.status(400).json(resTemplate);
+    }else {
+      res.json(resTemplate);
+    }
   },
   insertPortalUser: function (req, res) {
     var resTemplate = new ResTemplate();

@@ -3,7 +3,7 @@
 angular.module('echo.services.portalUser', [
   'echo.config.api'
 ])
-  .factory('portalUserService', function ($http, apiConfig) {
+  .factory('portalUserService', function ($http, $q, apiConfig) {
 
     return {
 
@@ -36,6 +36,8 @@ angular.module('echo.services.portalUser', [
 
         return $http.post(url, portalUser).then(function (resp) {
           return resp.data.data;
+        }).catch(function(resp){
+          return $q.reject(resp.data.status.message);
         });
       },
 
@@ -51,6 +53,8 @@ angular.module('echo.services.portalUser', [
 
         return $http.post(url, portalUser).then(function (resp) {
           return resp.data.data;
+        }).catch(function(resp){
+          return $q.reject(resp.data.status.message);
         });
       },
 
