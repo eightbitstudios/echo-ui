@@ -21,8 +21,7 @@ angular.module('echo.components.portalUserProfile', [
 
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
-      portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function (thing) {
-        console.log(thing);
+      portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function () {
         that.dataSubmitted = true;
       }).catch(function(message){
         that.serverError = message;
