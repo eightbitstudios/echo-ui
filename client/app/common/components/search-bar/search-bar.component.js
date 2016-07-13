@@ -1,21 +1,19 @@
 'use strict';
 
 angular.module('echo.components.searchBar', [
-  'echo.config.appConstants'
 ]).component('searchBar', {
   bindings: {
     searchList: '=',
-    link: '='
+    link: '<',
+    searchParam: '=',
+    minSearchCharacters: '<'
   },
-  transclude: true,
   templateUrl: 'app/common/components/search-bar/search-bar.template.html',
-  controller: function (appConstants) {
+  controller: function () {
     var that = this;
 
-    that.searchText = '';
     that.searchResults = [];
     that.isSearching = false;
-    that.minSearchCharacters = appConstants.MIN_SEARCH_CHARACTERS.CARRIERS;
 
     /**
      * @description Sets a search item state to selected
@@ -31,12 +29,12 @@ angular.module('echo.components.searchBar', [
       item.selected = true;
       this.clearSearchHandler();
     };
-    
+
     /**
      * Clears search text
      */
     that.clearSearchHandler = function() {
-      that.searchText = '';
+      that.searchParam = '';
     };
   }
 });

@@ -5,8 +5,8 @@ angular.module('echo.components.portalUserProfile', [
   'echo.services.portalUser'
 ]).component('portalUserProfile', {
   bindings: {
-    portalUser: '=',
-    carrierId: '=',
+    portalUser: '<',
+    carrierId: '<',
     invitationSentHandler: '&'
   },
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
