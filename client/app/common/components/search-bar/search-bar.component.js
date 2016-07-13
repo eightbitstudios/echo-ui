@@ -4,17 +4,16 @@ angular.module('echo.components.searchBar', [
 ]).component('searchBar', {
   bindings: {
     searchList: '=',
-    link: '='
+    link: '<',
+    searchParam: '=',
+    minSearchCharacters: '<'
   },
-  transclude: true,
   templateUrl: 'app/common/components/search-bar/search-bar.template.html',
   controller: function () {
     var that = this;
 
-    that.searchText = '';
     that.searchResults = [];
     that.isSearching = false;
-    that.minSearchCharacters = 3;
 
     /**
      * @description Sets a search item state to selected
@@ -30,12 +29,12 @@ angular.module('echo.components.searchBar', [
       item.selected = true;
       this.clearSearchHandler();
     };
-    
+
     /**
      * Clears search text
      */
     that.clearSearchHandler = function() {
-      that.searchText = '';
+      that.searchParam = '';
     };
   }
 });
