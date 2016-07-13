@@ -44,8 +44,6 @@
 
   <div class="text-center" ng-if="$ctrl.dataSubmitted">
     <h1>Your invitation has been sent!</h1>
-    <button class="btn btn-default" ng-click="$ctrl.invitationButtonHandler()">
-      Back to Carrier Details
-    </button>
+    <ng-transclude></ng-transclude>
   </div>
 </section>

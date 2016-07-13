@@ -58,7 +58,6 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompany.name, {
       url: routesConfig.INDEX.myCompany.route,
-      abstract:true,
       template: '<my-company></my-company>',
     })
     .state(routesConfig.INDEX.dashboard.name, {
@@ -71,14 +70,32 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyUsers.name, {
       url: routesConfig.INDEX.myCompanyUsers.route,
-      template: '<my-company-portal-users></my-company-portal-users>'
+      views: {
+        'myCompanyTabBar': {
+          template: '<my-company-tab-bar></my-company-tab-bar>'
+        },
+        'myCompanyBody': {
+          template: '<my-company-portal-users></my-company-portal-users>'
+        }
+      }
     })
     .state(routesConfig.INDEX.myCompanyUsersProfile.name, {
       url: routesConfig.INDEX.myCompanyUsersProfile.route,
-      template: '<my-company-drivers></my-company-drivers>'
+      views: {
+        'myCompanyBody': {
+          template: '<my-company-user-profile></my-company-user-profile>'
+        }
+      }
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      template: '<my-company-drivers></my-company-drivers>'
+      views: {
+        'myCompanyTabBar': {
+          template: '<my-company-tab-bar></my-company-tab-bar>'
+        },
+        'myCompanyBody': {
+          template: '<my-company-drivers></my-company-drivers>'
+        }
+      }
     });
 });

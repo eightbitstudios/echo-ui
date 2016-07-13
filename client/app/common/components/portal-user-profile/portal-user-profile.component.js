@@ -7,9 +7,9 @@ angular.module('echo.components.portalUserProfile', [
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
-    carrierId: '<',
-    invitationSentHandler: '&'
+    carrierId: '<'
   },
+  transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
   controller: function ($state, routesConfig, portalUserService, appConstants) {
     var that = this;
@@ -21,8 +21,7 @@ angular.module('echo.components.portalUserProfile', [
 
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
-      portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function (thing) {
-        console.log(thing);
+      portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function () {
         that.dataSubmitted = true;
       }).catch(function(message){
         that.serverError = message;
@@ -36,10 +35,6 @@ angular.module('echo.components.portalUserProfile', [
       }).catch(function(message){
         that.serverError = message;
       });
-    };
-
-    that.invitationButtonHandler = function () {
-      that.invitationSentHandler();
     };
 
     that.toggleConfirmation = function() {
