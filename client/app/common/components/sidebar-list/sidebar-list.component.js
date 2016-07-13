@@ -16,7 +16,7 @@ angular.module('echo.components.sidebarList', [])
        */
       that.sidebarList = _(that.items)
         .groupBy(function (item) {
-          return item.name.charAt(0);
+          return item.carrierName.charAt(0);
         }).map(function (value, prop) {
           return {
             values: value,
