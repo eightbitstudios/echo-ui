@@ -28,6 +28,10 @@ angular.module('echo.config.routes', [])
       myCompanyUsers: {
         name: 'index.myCarriers.myCompany.portalUsers',
         route: '/portal-users'
+      },      
+      myCompanyUsersProfile: {
+        name: 'index.myCarriers.myCompany.portalUsers.profile',
+        route: '/:userId'
       },
       myCompanyDrivers: {
         name: 'index.myCarriers.myCompany.drivers',

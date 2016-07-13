@@ -73,6 +73,14 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCompanyUsers.route,
       template: '<my-company-portal-users></my-company-portal-users>'
     })
+    .state(routesConfig.INDEX.myCompanyUsers.name, {
+      url: routesConfig.INDEX.myCompanyUsers.route,
+      template: '<my-company-portal-users></my-company-portal-users>'
+    })
+    .state(routesConfig.INDEX.myCompanyUsersProfile.name, {
+      url: routesConfig.INDEX.myCompanyUsersProfile.route,
+      template: '<my-company-portal-users></my-company-portal-users>'
+    })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {
       url: routesConfig.INDEX.myCompanyDrivers.route,
       template: '<my-company-drivers>></my-company-drivers>'
