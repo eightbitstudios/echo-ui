@@ -10,7 +10,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
       var that = this;
       
       that.carrier = carrierDetailsService.getCarrierDetails();
-      carrierService.fetchCarrierPortalUsers(that.carrier.id).then(function (portalUsers) {
+      carrierService.fetchCarrierPortalUsers(that.carrier.carrierId).then(function (portalUsers) {
         that.portalUsers = portalUsers;
       });
     }
