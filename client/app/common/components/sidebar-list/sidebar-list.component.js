@@ -5,7 +5,7 @@ angular.module('echo.components.sidebarList', [])
     bindings: {
       items: '<',
       link: '<',
-      searchParam: '<',
+      searchParam: '=',
       minSearchCharacters: '<'
     },
     templateUrl: 'app/common/components/sidebar-list/sidebar-list.template.html',
@@ -29,7 +29,7 @@ angular.module('echo.components.sidebarList', [])
        * @param {Object} item - Item that was selected
        */
       that.selectItemHandler = function (item) {
-
+        that.searchParam = '';
         // Set all sidebar items to not be selected
         _(that.items).forEach(function (value) {
           value.selected = false;
