@@ -11,18 +11,6 @@ angular.module('echo.components.sidebarList', [])
     templateUrl: 'app/common/components/sidebar-list/sidebar-list.template.html',
     controller: function () {
       var that = this;
-      /**
-       * Groups a list of carriers by the first letter in their name and maps them to an object.
-       */
-      that.sidebarList = _(that.items)
-        .groupBy(function (item) {
-          return item.carrierName.charAt(0);
-        }).map(function (value, prop) {
-          return {
-            values: value,
-            letter: prop
-          };
-        }).value();
 
       /**
        * @description Handler for when a sidebar item is selected
@@ -38,5 +26,24 @@ angular.module('echo.components.sidebarList', [])
 
         item.selected = true;
       };
+
+      that.mapSidebarItems = function (changesObj) {
+        if (changesObj.items) {
+          /**
+          * Groups a list of carriers by the first letter in their name and maps them to an object.
+          */
+          that.sidebarList = _(that.items)
+            .groupBy(function (item) {
+              return item.carrierName.charAt(0);
+            }).map(function (value, prop) {
+              return {
+                values: value,
+                letter: prop
+              };
+            }).value();
+        }
+      };
+
+      this.$onChanges = that.mapSidebarItems;
     }
   });

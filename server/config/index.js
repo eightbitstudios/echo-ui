@@ -7,12 +7,12 @@ var proxyTypes = require('./proxy-types');
 
 var envConfig = require('./env/' + env);
 
-var proxyType = process.env.PROXY_TYPE || proxyTypes.live;
+var proxyType = process.env.PROXY_TYPE || proxyTypes.mixed;
 var server = envConfig.server;
 
 var httpPort = process.env.PORT || server.httpPort;
 var appPort = process.env.APP_PORT || server.appPort;
-var mockApiEndPoint = server.mockApiEndPoint;
+var mockApiEndPoint = envConfig.mockApiEndPoint;
 var analyticsSrc = server.analyticsSrc;
 var analyticsEnv = server.analyticsEnv;
 var debuggingEnabled = server.debuggingEnabled;
@@ -65,8 +65,7 @@ switch (proxyType) {
     break;
   case proxyTypes.mixed:
     defaultApiEndpoint = envConfig.liveApiEndPoint;
-
-    proxies.push(commonProxies.mock(mockApiEndPoint, server.mockRegexes));
+    proxies.push(commonProxies.mock(mockApiEndPoint, envConfig.mockRegexes));
     proxies.push(commonProxies.api(envConfig.liveApiEndPoint));
     proxies.push(commonProxies.localhost(appPort));
     break;

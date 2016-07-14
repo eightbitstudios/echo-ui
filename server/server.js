@@ -42,7 +42,6 @@ var router = function (req, res) {
 
   function next() {
     var proxy = proxies[i++];
-    console.log(proxy);
     if (proxy) {
       proxy._matcher(req, function (match) {
         if (match) {

@@ -8,7 +8,8 @@ angular.module('echo.components.portalUserProfile', [
   bindings: {
     portalUser: '<',
     carrierId: '<',
-    removedUserHandler: '&'
+    userUpdatedHandler: '&',
+    showLoading: '='
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
@@ -17,26 +18,30 @@ angular.module('echo.components.portalUserProfile', [
 
     that.dataSubmitted = false;
     that.showConfirmation = false;
-    that.isNewProfile = _.isUndefined(that.portalUser.userId);
 
     that.regex = appConstants.REGEX;
 
     that.saveChangesHandler = function (portalUser) {
+      that.showLoading = true;
       that.serverError = null;
       portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function () {
         that.dataSubmitted = true;
         if(!that.isNewProfile){
-          that.invitationSentHandler();
+          that.userUpdatedHandler();
+        }else {
+          that.showLoading = false;
         }
       }).catch(function(message){
         that.serverError = message;
+        that.showLoading = false;
       });
     };
 
     that.removeUserHandler = function (portalUser) {
+      that.showLoading = true;
       portalUser.active = false;
       portalUserService.updatePortalUserById(that.carrierId, portalUser).then(function () {
-        that.removedUserHandler();
+        that.userUpdatedHandler();
       }).catch(function(message){
         that.serverError = message;
       });
@@ -46,5 +51,13 @@ angular.module('echo.components.portalUserProfile', [
       that.serverError = null;
       that.showConfirmation = !that.showConfirmation;
     };
+
+    that.checkIfNewProfile = function(changeObject) {
+      if(changeObject.portalUser && changeObject.portalUser.current){
+        that.isNewProfile = _.isUndefined(that.portalUser.userId);
+      }
+    };
+
+    that.$onChanges = that.checkIfNewProfile;
   }
 });

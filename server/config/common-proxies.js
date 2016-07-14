@@ -65,13 +65,6 @@ module.exports = {
         _.some(regexes, function(regex) {
           var matchingRoutesRegEx = new RegExp(regex);
           match = matchingRoutesRegEx.test(req.url);
-
-//          console.log('========================================');
-//          console.log('description = ' + description);
-//          console.log('regex = ' + regex);
-//          console.log('req.url = ' + req.url);
-//          console.log('match = ' + match);
-
           return match;
         });
 

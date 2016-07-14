@@ -1,12 +1,18 @@
-<a class="btn btn-link" ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyUsers.name}}">
-  <div class="echo-icon icon-left-arrow" data-grunticon-embed></div>Back To Portal User List</a>
-<div class="row">
-  <div class="col-sm-6">
-    <portal-user-profile portal-user="$ctrl.portalUser" carrier-id="$ctrl.carrier.carrierId" removed-user-handler="$ctrl.goToCompanyPortalUsers()">
-      <button class="btn btn-default" ng-click="$ctrl.goToCompanyPortalUsers()">
-      Back to Portal User List
-    </button>
-    </portal-user-profile>
+<div class="my-company-user-profile">
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <a class="btn btn-link" ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyUsers.name}}">
+    <div class="echo-icon icon-left-arrow" data-grunticon-embed></div>Back To Portal User List</a>
+  <div class="row">
+    <div class="col-sm-6">
+      <portal-user-profile portal-user="$ctrl.portalUser" carrier-id="$ctrl.carrier.carrierId" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.goToCompanyPortalUsers()">
+        <button class="btn btn-default" ng-click="$ctrl.goToCompanyPortalUsers()">
+        Back to Portal User List
+      </button>
+      </portal-user-profile>
+    </div>
+    <div class="col-sm-6">
+      <resend-invite ng-if="$ctrl.portalUser.userId"></resend-invite>
+    </div>
+    </div>
+    </row>
   </div>
-  </div>
-  </row>

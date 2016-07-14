@@ -3,9 +3,10 @@ module.exports = {
     httpPort: 9000,
     httpsPort: 9443,
     appPort: 9080,
-    staticFolders: ['build/public']
+    staticFolders: ['build/public'],
   },
-  liveApiEndPoint: 'https://i-m365-api.culturenxt.com/culture-next',
+  liveApiEndPoint: 'https://api.local',
   mockApiEndPoint: 'http://localhost',
+  mockRegexes: ['/api/v1/user/*', '/api/v1/carriers/[\\d]+/portal-users'],
   name: 'dev'
 };

@@ -28,6 +28,11 @@ module.exports = {
   getPortalUserById: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = _(portalUserRes).find({userId: _.parseInt(req.params.userId)});
+
+    if(!resTemplate.data){
+      resTemplate.data = portalUserRes[0];
+    }
+
     res.json(resTemplate);
   },
   updatePortalUserById: function (req, res) {

@@ -2,6 +2,7 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
   'echo.services.carrier',
   'echo.config.routes',
   'echo.components.searchBar',
+  'echo.components.loading',
   'echo.components.sidebarList',
   'echo.config.appConstants'
 ])
@@ -12,17 +13,17 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
       var that = this;
 
       that.routesConfig = routesConfig;
-      that.isLoading = true;
+      that.showLoading = true;
       that.searchParam = '';
       that.minSearchCharacters = appConstants.MIN_SEARCH_CHARACTERS.CARRIERS;
-      
+
       carrierService.fetchCarriers().then(function (carriers) {
 
         that.carrierList = _(carriers).sortBy('name').value(); // Sort all carriers by their name
 
         // Set a carrier to selected if user is routed to page with a carrier id  
         that.selectCarrier(that.carrierList, $stateParams.carrierId);
-        that.isLoading = false;
+        that.showLoading = false;
       });
 
       /**

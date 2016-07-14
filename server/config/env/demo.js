@@ -5,7 +5,8 @@ module.exports = {
     appPort: 9080,
     staticFolders: ['./public']
   },
-  liveApiEndPoint: 'https://i-m365-api.culturenxt.com/culture-next',
+  liveApiEndPoint: 'https://api.local',
   mockApiEndPoint: 'http://localhost',
+  mockRegexes: ['/api/v1/user/*', '/api/v1/carriers/[\\d]+/portal-users'],
   name: 'demo'
 };
