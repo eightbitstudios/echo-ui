@@ -17,6 +17,7 @@ angular.module('echo.components.portalUserProfile', [
 
     that.dataSubmitted = false;
     that.showConfirmation = false;
+    that.isNewProfile = _.isUndefined(that.portalUser.userId);
 
     that.regex = appConstants.REGEX;
 
@@ -24,6 +25,9 @@ angular.module('echo.components.portalUserProfile', [
       that.serverError = null;
       portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function () {
         that.dataSubmitted = true;
+        if(!that.isNewProfile){
+          that.invitationSentHandler();
+        }
       }).catch(function(message){
         that.serverError = message;
       });
