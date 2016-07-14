@@ -2,7 +2,6 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
   'echo.index.myCarriers.repAdmin.driverList',
   'echo.config.routes',
   'echo.services.carrier',
-  'echo.services.portalUser',
   'echo.components.portalUsers',
   'echo.components.loading',
   'echo.components.portalUserProfile',
@@ -11,7 +10,7 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
   .component('carrierDetails', {
     templateUrl: 'app/pages/index/my-carriers/components/rep-admin/components/carrier-details/carrier-details.template.html',
     bindings: {},
-    controller: function ($stateParams, $q, carrierService, routesConfig, portalUserService) {
+    controller: function ($stateParams, $q, carrierService, routesConfig) {
       var that = this;
 
       that.mode = {
@@ -45,17 +44,8 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
       };
 
       that.showPortalUserHandler = function (user) {
-        if (user) {
-          that.showLoading = true;
-          portalUserService.fetchPortalUserById(that.carrierId, user.Id).then(function (user) {
-            that.portalUser = user;
-            that.showPortalUser();
-            that.showLoading = false;
-          });
-        } else {
-          that.portalUser = {};
-          that.showPortalUser();
-        }
+        that.portalUser = user || {};
+        that.showPortalUser();
       };
 
       that.loadCarrierDetails = function () {

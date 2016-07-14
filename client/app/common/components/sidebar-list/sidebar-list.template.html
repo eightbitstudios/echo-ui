@@ -4,7 +4,7 @@
       {{sidebarItem.letter}}
       <ul class="sidebar-list-names">
         <li ng-repeat="value in  sidebarItem.values" ng-click="$ctrl.selectItemHandler(value)" 
-          ng-class="{'sidebar-selected': value.selected, 'item-inactive': value.isInactive()}">
+          ng-class="{'sidebar-selected': value.selected, 'item-inactive': value.isInactive()}" class="sidebar-name">
           <a ui-sref="{{$ctrl.link}}({carrierId: value.getId(), isRepAdmin: true})">{{value.getName()}}</a>
         </li>
       </ul>
@@ -12,7 +12,7 @@
   </ul>
   <ul class="sidebar-list-names" ng-if="$ctrl.searchParam.length >= $ctrl.minSearchCharacters">
     <li ng-repeat="value in $ctrl.filteredItems = ($ctrl.items | filter:$ctrl.searchParam)" ng-click="$ctrl.selectItemHandler(value)" 
-      ng-class="{'sidebar-selected': value.selected, 'item-inactive': value.isInactive()}">
+      ng-class="{'sidebar-selected': value.selected, 'item-inactive': value.isInactive()}" class="sidebar-name">
       <a ui-sref="{{$ctrl.link}}({carrierId: value.getId(), isRepAdmin: true})">{{value.getName()}}</a>
     </li>
     <li ng-if="$ctrl.filteredItems.length === 0">

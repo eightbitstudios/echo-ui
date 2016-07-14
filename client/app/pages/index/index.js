@@ -23,7 +23,7 @@ angular.module('echo.index', [
       abstract: true,
       resolve: {
         user: function (userService) {
-          return userService.fetchUserById(1);
+          return userService.fetchUserById();
         },
         carrierDetails: function (carrierDetailsService, user) {
           if (!user.isRepAdmin()) {
@@ -70,32 +70,10 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyUsers.name, {
       url: routesConfig.INDEX.myCompanyUsers.route,
-      views: {
-        'myCompanyTabBar': {
-          template: '<my-company-tab-bar></my-company-tab-bar>'
-        },
-        'myCompanyBody': {
-          template: '<my-company-portal-users></my-company-portal-users>'
-        }
-      }
-    })
-    .state(routesConfig.INDEX.myCompanyUsersProfile.name, {
-      url: routesConfig.INDEX.myCompanyUsersProfile.route,
-      views: {
-        'myCompanyBody': {
-          template: '<my-company-user-profile></my-company-user-profile>'
-        }
-      }
+      template: '<my-company-portal-users></my-company-portal-users>'
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      views: {
-        'myCompanyTabBar': {
-          template: '<my-company-tab-bar></my-company-tab-bar>'
-        },
-        'myCompanyBody': {
-          template: '<my-company-drivers></my-company-drivers>'
-        }
-      }
+      template: '<my-company-drivers></my-company-drivers>'
     });
 });

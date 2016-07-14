@@ -1,13 +1,12 @@
 <div class="my-company-user-profile">
-  <loading show-loading="$ctrl.showLoading"></loading>
-  <a class="btn btn-link" ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyUsers.name}}">
+  <a class="btn btn-link" ng-click="$ctrl.userProfileCompleted()">
     <div class="echo-icon icon-left-arrow" data-grunticon-embed></div>Back To Portal User List</a>
   <div class="row">
     <div class="col-sm-6">
-      <portal-user-profile portal-user="$ctrl.portalUser" carrier-id="$ctrl.carrier.carrierId" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.goToCompanyPortalUsers()">
-        <button class="btn btn-default" ng-click="$ctrl.goToCompanyPortalUsers()">
-        Back to Portal User List
-      </button>
+      <portal-user-profile portal-user="$ctrl.portalUser" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.userProfileCompleted()">
+        <button class="btn btn-default" ng-click="$ctrl.userProfileCompleted()">
+          Back to Portal User List
+        </button>
       </portal-user-profile>
     </div>
     <div class="col-sm-6">

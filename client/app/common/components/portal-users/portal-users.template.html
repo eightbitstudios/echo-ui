@@ -2,7 +2,7 @@
   <article class="portal-user" ng-repeat="portalUser in $ctrl.portalUsers" ng-click="$ctrl.userTileClickHandler(portalUser)">
     <header>
       <div class="user-name">{{portalUser.firstName}} {{portalUser.lastName}}</div>
-      <div class="user-title">{{portalUser.role}}</div>
+      <div class="user-title">{{portalUser.oneLoginRoleId}}</div>
     </header>
     <div class="user-email">
       <a href="mailto:{{portalUser.email}}">{{portalUser.email}}</a>

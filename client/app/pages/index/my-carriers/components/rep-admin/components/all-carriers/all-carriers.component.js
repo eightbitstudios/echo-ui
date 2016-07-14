@@ -1,6 +1,7 @@
 angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
   'echo.services.carrier',
   'echo.config.routes',
+  'echo.services.user',
   'echo.components.searchBar',
   'echo.components.loading',
   'echo.components.sidebarList',
@@ -9,7 +10,7 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
   .component('allCarriers', {
     templateUrl: 'app/pages/index/my-carriers/components/rep-admin/components/all-carriers/all-carriers.template.html',
     bindings: {},
-    controller: function ($stateParams, routesConfig, carrierService, appConstants) {
+    controller: function ($stateParams, routesConfig, carrierService, appConstants, userService) {
       var that = this;
 
       that.routesConfig = routesConfig;
@@ -17,7 +18,9 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
       that.searchParam = '';
       that.minSearchCharacters = appConstants.MIN_SEARCH_CHARACTERS.CARRIERS;
 
-      carrierService.fetchCarriers().then(function (carriers) {
+      var repId = userService.getUser().repId;
+
+      carrierService.fetchCarriers(repId).then(function (carriers) {
 
         that.carrierList = _(carriers).sortBy('name').value(); // Sort all carriers by their name
 

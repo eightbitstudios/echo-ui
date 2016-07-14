@@ -7,7 +7,6 @@ angular.module('echo.components.portalUserProfile', [
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
-    carrierId: '<',
     userUpdatedHandler: '&',
     showLoading: '='
   },
@@ -24,7 +23,7 @@ angular.module('echo.components.portalUserProfile', [
     that.saveChangesHandler = function (portalUser) {
       that.showLoading = true;
       that.serverError = null;
-      portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function () {
+      portalUserService.upsertPortalUser(portalUser).then(function () {
         that.dataSubmitted = true;
         if(!that.isNewProfile){
           that.userUpdatedHandler();
@@ -39,8 +38,7 @@ angular.module('echo.components.portalUserProfile', [
 
     that.removeUserHandler = function (portalUser) {
       that.showLoading = true;
-      portalUser.active = false;
-      portalUserService.updatePortalUserById(that.carrierId, portalUser).then(function () {
+      portalUserService.deactivatePortalUserById(portalUser).then(function () {
         that.userUpdatedHandler();
       }).catch(function(message){
         that.serverError = message;
