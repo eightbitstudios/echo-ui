@@ -3,6 +3,7 @@ angular.module('echo.index', [
   'echo',
   'ui.router',
   'echo.config',
+  'echo.directives.echoIcon',
   'echo.index.controller',
   'echo.index.myCarriers',
   'echo.index.settings',
@@ -66,5 +67,35 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCarriersDetails.name, {
       url: routesConfig.INDEX.myCarriersDetails.route,
       template: '<carrier-details></carrier-details>'
+    })
+    .state(routesConfig.INDEX.myCompanyUsers.name, {
+      url: routesConfig.INDEX.myCompanyUsers.route,
+      views: {
+        'myCompanyTabBar': {
+          template: '<my-company-tab-bar></my-company-tab-bar>'
+        },
+        'myCompanyBody': {
+          template: '<my-company-portal-users></my-company-portal-users>'
+        }
+      }
+    })
+    .state(routesConfig.INDEX.myCompanyUsersProfile.name, {
+      url: routesConfig.INDEX.myCompanyUsersProfile.route,
+      views: {
+        'myCompanyBody': {
+          template: '<my-company-user-profile></my-company-user-profile>'
+        }
+      }
+    })
+    .state(routesConfig.INDEX.myCompanyDrivers.name, {
+      url: routesConfig.INDEX.myCompanyDrivers.route,
+      views: {
+        'myCompanyTabBar': {
+          template: '<my-company-tab-bar></my-company-tab-bar>'
+        },
+        'myCompanyBody': {
+          template: '<my-company-drivers></my-company-drivers>'
+        }
+      }
     });
 });

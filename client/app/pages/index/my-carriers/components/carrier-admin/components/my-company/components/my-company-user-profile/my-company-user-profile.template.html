@@ -1,0 +1,12 @@
+<a class="btn btn-link" ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyUsers.name}}">
+  <div class="echo-icon icon-left-arrow" data-grunticon-embed></div>Back To Portal User List</a>
+<div class="row">
+  <div class="col-sm-6">
+    <portal-user-profile portal-user="$ctrl.portalUser" carrier-id="$ctrl.carrier.carrierId" removed-user-handler="$ctrl.goToCompanyPortalUsers()">
+      <button class="btn btn-default" ng-click="$ctrl.goToCompanyPortalUsers()">
+      Back to Portal User List
+    </button>
+    </portal-user-profile>
+  </div>
+  </div>
+  </row>

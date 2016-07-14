@@ -17,6 +17,22 @@ angular.module('echo.models.carrier', []).factory('CarrierModel', function () {
   }
 
   /**
+   * Returns carrier Id
+   * @returns {number}
+   */
+  Carrier.prototype.getId = function () {
+    return this.carrierId;
+  };
+
+  /**
+   * Returns carrier name
+   * @returns {number}
+   */
+  Carrier.prototype.getName = function () {
+    return this.carrierName;
+  };
+
+  /**
    * Returns if the carrier is inactive
    * @returns {boolean}
    */

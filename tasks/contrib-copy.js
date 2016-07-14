@@ -32,29 +32,6 @@ module.exports = function(grunt, options) {
       }]
     },
 
-    endpoints: {
-      files: [{
-        cwd: 'client/app/common/config/api',
-        src: 'api-config.js',
-        dest: '<%= build_dir %>/public/app/common/config/api/',
-        expand: true,
-        process: true
-      }],
-
-      options: {
-        process: function (content) {
-          return content
-              .replace('@configurationsEndpoint@',grunt.config.get(['configurationsEndpoint']) )
-              .replace('@loadEntryEndpoint@', grunt.config.get(['loadEntryEndpoint']) )
-              .replace('@itemTypeAheadEndpoint@', grunt.config.get(['itemTypeAheadEndpoint']) )
-              .replace('@referenceNumbersEndpoint@', grunt.config.get(['referenceNumbersEndpoint']) )
-              .replace('@addressVerificationEndpoint@', grunt.config.get(['addressVerificationEndpoint']) )
-              .replace('@carriersEndpoint@', grunt.config.get(['carriersEndpoint']) )
-              .replace('@warehousesEndpoint@', grunt.config.get(['warehousesEndpoint']) );
-        }
-      }
-    },
-
     build: {
       files: [{
         src: '<%= app_files.html %>',
@@ -84,10 +61,13 @@ module.exports = function(grunt, options) {
         expand: true
       }, {
         cwd: 'client',
-        src: 'assets/**/*',
+        src: [
+          'assets/**/*',
+          '!assets/icons/**/*'   //don't copy. grunticon takes care of this directory.
+        ],
         dest: '<%= build_dir %>/public/',
         expand: true
-      }, {
+      },{
         cwd: 'client',
         src: ['favicon.ico', 'robots.txt'],
         dest: '<%= build_dir %>/public/',

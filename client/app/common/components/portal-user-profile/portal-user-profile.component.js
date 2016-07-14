@@ -8,8 +8,9 @@ angular.module('echo.components.portalUserProfile', [
   bindings: {
     portalUser: '<',
     carrierId: '<',
-    invitationSentHandler: '&'
+    removedUserHandler: '&'
   },
+  transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
   controller: function ($state, routesConfig, portalUserService, appConstants) {
     var that = this;
@@ -21,8 +22,7 @@ angular.module('echo.components.portalUserProfile', [
 
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
-      portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function (thing) {
-        console.log(thing);
+      portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function () {
         that.dataSubmitted = true;
       }).catch(function(message){
         that.serverError = message;
@@ -32,14 +32,10 @@ angular.module('echo.components.portalUserProfile', [
     that.removeUserHandler = function (portalUser) {
       portalUser.active = false;
       portalUserService.updatePortalUserById(that.carrierId, portalUser).then(function () {
-        that.invitationSentHandler();
+        that.removedUserHandler();
       }).catch(function(message){
         that.serverError = message;
       });
-    };
-
-    that.invitationButtonHandler = function () {
-      that.invitationSentHandler();
     };
 
     that.toggleConfirmation = function() {

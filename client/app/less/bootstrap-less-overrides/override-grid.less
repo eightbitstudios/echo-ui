@@ -6,9 +6,10 @@
 // Container widths
 //
 // Set the container width, and override it for fixed navbars in media queries.
-
+.main-content-container{ 
+    min-height: 85vh; // TODO remove when empty pages get content
+}
 .container {
-
   //At the medium breakpoint, overriding the bootstrap default to set a static width
   //for a container. Since our container and breakpoint are equal width values, browsers
   //with an attached scrollbar would cut into that, causing a horizontal scrollbar.
@@ -16,7 +17,6 @@
   //until the viewport is larger and the scrollbar goes away.
   @media (min-width: @screen-md-min) {
     width: auto;
-    max-width: @container-md;
   }
 
   //left/right padding for top level containers to make sure content isn't flush with the side of the page
@@ -93,4 +93,21 @@
     background-color: @c-white;
     box-shadow: 0 1px 2px 0 rgba(65, 67, 68, 0.2);
     margin-bottom: 20px;
+}
+
+@media (max-width: @screen-md) and (min-width: @screen-sm){
+    .container {
+        width: 100%;
+    }
+}
+@media (min-width: @screen-md){
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: @screen-lg){
+    .container {
+        width: 1170px;
+    }
 }

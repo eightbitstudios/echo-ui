@@ -11,6 +11,7 @@ module.exports = function(grunt) {
       grunt.task.run([
         'dist',
         'copy:deploy',
+        'grunticon',
         'install',
         'env:heroku',
         'express:dist',
@@ -21,6 +22,7 @@ module.exports = function(grunt) {
         'dist',
         'copy:deploy',
         'install',
+        'grunticon',
         'env:dev',
         'express:dev',
         'keepalive'
@@ -28,6 +30,7 @@ module.exports = function(grunt) {
     } else {
       grunt.task.run([
         'build',
+        'grunticon',
         'env:dev',
         'express:dev',
         'watch'
@@ -40,6 +43,7 @@ module.exports = function(grunt) {
       'dist',
       'copy:deploy',
       'install',
+      'grunticon',
       'env:demo',
       'express:dist'
     ]);
@@ -60,7 +64,6 @@ module.exports = function(grunt) {
       'copy:build',
       'gitinfo',
       'copy:version',
-      'copy:endpoints',
       'injector',
       'karma:unit'
     ]);
