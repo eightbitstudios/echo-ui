@@ -23,7 +23,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
         var params = {};
 
         if(user){
-          params = {userId: user.userId};
+          params = {userId: user.Id};
         }
         
         $state.go(routesConfig.INDEX.myCompanyUsersProfile.name, params);

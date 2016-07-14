@@ -18,7 +18,7 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
         DETAILS: 0,
         PORTAL_USER: 1
       };
-      
+
       that.showLoading = false;
 
       that.userRoute = routesConfig.INDEX.carrierDetailsPortalUser;
@@ -30,17 +30,16 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
           that.carrier = carrier;
 
           if (that.carrier.isActive) {
-            var portalUsersPromise = carrierService.fetchCarrierPortalUsers(carrier.carrierId).then(function (portalUsers) {
+            $q.all([
+              carrierService.fetchCarrierPortalUsers(carrier.carrierId),
+              carrierService.fetchCarrierDriverCount(carrier.carrierId)
+            ]).then(_.spread(function (portalUsers, drivers) {
               that.portalUsers = portalUsers;
-            });
-
-            var driverCountPromise = carrierService.fetchCarrierDriverCount(carrier.carrierId).then(function (driverCount) {
-              that.driverCount = driverCount.userCount;
-            });
-
-            $q.all([portalUsersPromise, driverCountPromise]).then(function () {
+              that.driverCount = drivers.userCount;
               that.showLoading = false;
-            });
+            }));
+          } else {
+            that.showLoading = false;
           }
         });
       };
@@ -48,7 +47,7 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
       that.showPortalUserHandler = function (user) {
         if (user) {
           that.showLoading = true;
-          portalUserService.fetchPortalUserById(that.carrierId, user.userId).then(function (user) {
+          portalUserService.fetchPortalUserById(that.carrierId, user.Id).then(function (user) {
             that.portalUser = user;
             that.showPortalUser();
             that.showLoading = false;
@@ -60,10 +59,8 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
       };
 
       that.loadCarrierDetails = function () {
-        that.showLoading = true;
         that.getCarrier(that.carrierId).then(function () {
           that.showDetailsHandler();
-          that.showLoading = false;
         });
       };
 

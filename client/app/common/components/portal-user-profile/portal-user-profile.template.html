@@ -34,7 +34,7 @@
             <button class="btn btn-primary" type="submit" ng-click="$ctrl.removeUserHandler($ctrl.portalUser)">Ok</button>
             <button class="btn btn-secondary" type="submit" ng-click="$ctrl.toggleConfirmation()">Cancel</button>
           </div>
-          <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.portalUser.userId && !$ctrl.showConfirmation" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
+          <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.portalUser.Id && !$ctrl.showConfirmation" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
           <button class="btn btn-default pull-right" type="submit" ng-disabled="userProfile.$invalid" ng-click="$ctrl.saveChangesHandler($ctrl.portalUser)">Save Changes</button>
           <div class="text-right help-block" ng-if="$ctrl.serverError">{{$ctrl.serverError}}</div>
         </div>

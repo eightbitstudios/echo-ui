@@ -4,7 +4,7 @@ angular.module('echo.config.api', [])
     carrierById: _.template('/api/v1/carriers/${carrierId}'),
     userById: _.template('/api/v1/user/${userId}'),
     repByCarrierId:  _.template('/api/v1/carriers/${carrierId}/echorep'),
-    portalUsers: _.template('/api/v1/carriers/${carrierId}/portal-users'),
+    portalUsers: _.template('/api/v1/carriers/${carrierId}/portalusers'),
     driverCount: _.template('/api/v1/carriers/${carrierId}/drivers/count'),
-    portalUserById: _.template('/api/v1/carriers/${carrierId}/portal-users/${userId}')
+    portalUserById: _.template('/api/v1/carriers/${carrierId}/portalusers/${userId}')
   });

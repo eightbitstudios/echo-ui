@@ -3,7 +3,7 @@ angular.module('echo.models.user', [])
     /**
      * @description Model for a User
      * @param {Object} userData - Data to be converted to a User Model
-     * @param {string} [userData.userId] - User Id
+     * @param {string} [userData.Id] - User Id
      * @param {number} [userData.carrierId] - Carrier associated to user
      * @constructor
      */

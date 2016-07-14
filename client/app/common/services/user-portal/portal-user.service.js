@@ -16,7 +16,7 @@ angular.module('echo.services.portalUser', [
       upsertPortalUser: function (carrierId, portalUser) {
 
         var serviceCall;
-        if(portalUser.userId){
+        if(portalUser.Id){
           serviceCall = this.updatePortalUserById(carrierId, portalUser);
         }else {
           serviceCall = this.insertPortalUser(carrierId, portalUser);
@@ -32,7 +32,7 @@ angular.module('echo.services.portalUser', [
        */
       updatePortalUserById: function (carrierId, portalUser) {
 
-        var url = apiConfig.portalUserById({ carrierId: carrierId, userId: portalUser.userId });
+        var url = apiConfig.portalUserById({ carrierId: carrierId, userId: portalUser.Id });
 
         return $http.post(url, portalUser).then(function (resp) {
           return resp.data.data;
