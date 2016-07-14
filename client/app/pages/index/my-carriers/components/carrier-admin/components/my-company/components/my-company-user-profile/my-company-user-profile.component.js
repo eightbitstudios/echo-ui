@@ -10,12 +10,17 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile', [
     templateUrl: 'app/pages/index/my-carriers/components/carrier-admin/components/my-company/components/my-company-user-profile/my-company-user-profile.template.html',
     bindings: {
       portalUser: '<',
-      doneHandler: '&'
+      goBackHandler: '&',
+      reloadPortalHandler: '&'
     },
     controller: function () {
       var that = this;
-      that.userProfileCompleted = function() {
-        that.doneHandler();
+      that.goBackToPortal = function() {
+        that.goBackHandler();
+      };
+
+      that.userProfileUpdated = function() {
+        that.reloadPortalHandler();
       };
     }
   });

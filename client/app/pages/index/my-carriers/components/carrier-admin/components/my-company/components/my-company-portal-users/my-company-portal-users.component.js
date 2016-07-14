@@ -20,19 +20,30 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
 
       that.showMode = that.mode.USERS_PORTAL;
       that.showLoading = true;
-      
-      that.carrier = carrierDetailsService.getCarrierDetails();
-      carrierService.fetchCarrierPortalUsers(that.carrier.carrierId).then(function (portalUsers) {
-        that.portalUsers = portalUsers;
-        that.showLoading = false;
-      });
 
-      that.userTileClickHandler = function(user) {
+      that.carrier = carrierDetailsService.getCarrierDetails();
+
+      that.getCarrierPortalUsers = function () {
+        carrierService.fetchCarrierPortalUsers(that.carrier.carrierId).then(function (portalUsers) {
+          that.portalUsers = portalUsers;
+          that.showLoading = false;
+        });
+      };
+
+      that.userTileClickHandler = function (user) {
         that.showMode = that.mode.USER_PROFILE;
         that.portalUser = user;
       };
-      that.showUsersPortal = function() {
+      
+      that.showUsersPortal = function () {
         that.showMode = that.mode.USERS_PORTAL;
       };
+
+      that.reloadUsersPortal = function () {
+        that.getCarrierPortalUsers();
+        that.showUsersPortal();
+      };
+
+      that.getCarrierPortalUsers();
     }
   });
