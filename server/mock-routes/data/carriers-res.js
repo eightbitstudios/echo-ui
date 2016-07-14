@@ -1,66 +1,131 @@
 module.exports = [{
-  id: 1,
+  carrierId: 1,
   repId: 1,
-  name: 'A Carrier Company Name',
-  status: 1
+  carrierName: 'A Carrier Company Name',
+  address1: '3400 N Wilconshire',
+  address2: '#309',
+  state: 'IL',
+  zip: '60616',
+  city: 'Chicago',
+  isActive: true
 }, {
-    id: 2,
+    carrierId: 2,
     repId: 1,
-    name: 'A2 Carrier Company Name ',
-    status: 0
+    carrierName: 'A2 Carrier Company Name ',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }, {
-    id: 3,
+    carrierId: 3,
     repId: 1,
-    name: 'C Carrier Company Name',
-    status: 1
-  },{
-    id: 4,
+    carrierName: 'C Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 4,
     repId: 1,
-    name: 'D Carrier Company Name',
-    status: 1
-  },{
-    id: 5,
+    carrierName: 'D Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 5,
     repId: 1,
-    name: 'D2 Carrier Company Name',
-    status: 1
-  },{
-    id: 6,
+    carrierName: 'D2 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 6,
     repId: 1,
-    name: 'M Carrier Company Name',
-    status: 0
-  },{
-    id: 7,
+    carrierName: 'M Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 7,
     repId: 1,
-    name: 'M2 Carrier Company Name',
-    status: 1
-  },{
-    id: 8,
+    carrierName: 'M2 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 8,
     repId: 1,
-    name: 'M3 Carrier Company Name',
-    status: 0
-  },{
-    id: 9,
+    carrierName: 'M3 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 9,
     repId: 1,
-    name: 'T Carrier Company Name',
-    status: 1
-  },{
-    id: 10,
+    carrierName: 'T Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 10,
     repId: 1,
-    name: 'T2 Carrier Company Name',
-    status: 1
-  },{
-    id: 11,
+    carrierName: 'T2 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 11,
     repId: 1,
-    name: 'W Carrier Company Name',
-    status: 1
-  },{
-    id: 12,
+    carrierName: 'W Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 12,
     repId: 1,
-    name: 'Z Carrier Company Name',
-    status: 1
-  },{
-    id: 13,
+    carrierName: 'Z Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
+  }, {
+    carrierId: 13,
     repId: 1,
-    name: 'Z2 Carrier Company Name',
-    status: 1
+    carrierName: 'Z2 Carrier Company Name',
+    address1: '3400 N Wilconshire',
+    address2: '#309',
+    state: 'IL',
+    zip: '60616',
+    city: 'Chicago',
+    isActive: true
   }];

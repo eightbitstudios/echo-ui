@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('echo.index.myCarriers.carrierAdmin.carrierAdminNav', [
-  'echo.config.routesConfig'
+  'echo.config.routes'
 ]).component('carrierAdminNav', {
   bindings: {
     carrierDetails: '='
