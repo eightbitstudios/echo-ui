@@ -13,6 +13,10 @@ angular.module('echo.config.routesConfig', [])
         name: 'index.myCarriers',
         route:'my-carriers'
       },
+      myCarriersDetails: {
+        name: 'index.myCarriers.details',
+        route:'/:id?isRepAdmin'
+      },
       dashboard: {
         name: 'index.myCarriers.dashboard',
         route:'/dashboard'
