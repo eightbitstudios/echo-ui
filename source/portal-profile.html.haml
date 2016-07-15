@@ -46,3 +46,20 @@
           %li.checklist-inprogress 
             Invited May 18 2016
             %button.btn.btn-default.pull-right Resend Invite
+
+      %section.content-container
+        %h2.section-header Change Password
+  
+        %form
+          %fieldset.fieldset
+            .form-group
+              %label Current Password
+              %input.form-control{:type => "password", :placeholder => "******"}
+            .form-group
+              %label New Password
+              %input.form-control{:type => "password", :placeholder => "******"} 
+            .form-group
+              %label Confirm New Password
+              %input.form-control{:type => "password", :placeholder => "******"} 
+            .form-group
+              %button.btn.btn-default.btn-disabled.pull-right{type: "submit", disabled: 'disabled'} Set

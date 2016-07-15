@@ -3,44 +3,44 @@
 
 .carrier-dashboard-header
 
-  .carrier-dashboard-header_left
-    text-transform: uppercase
-
-  .carrier-dashboard-header_right
-
-    .carrier-dashboard-header_label
-      font-weight: bold
-      color: $blue
-      margin-right: 5px
-
-    a
-      color: $dark-grey
-
-    li
-      padding-left: 13px
-      padding-right: 13px
-
   li
     margin-bottom: 0
+
+.carrier-dashboard-header_left
+  text-transform: uppercase
+
+.carrier-dashboard-header_right
+  a
+    color: $dark-grey
+
+  li
+    padding-left: 13px
+    padding-right: 13px
+
+.carrier-dashboard-header_label
+  font-weight: bold
+  color: #19468d
+  margin-right: 5px
+
 
 .carrier-dashboard
 
   section
-    margin-top: 50px
+    margin-top: 40px
 
-    .section-head
-      display: flex
-      justify-content: space-between
-      align-items: flex-end
-      margin-bottom: 20px
+  .section-head
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    margin-bottom: 20px
 
-      .section-label, .section-sub-label
-        text-transform: uppercase
-        font-weight: normal
-        margin-bottom: 0
+  .section-label, .section-sub-label
+    text-transform: uppercase
+    font-weight: normal
+    margin-bottom: 0
 
-      .section-sub-label
-        padding-left: 15px
+  .section-sub-label
+    padding-left: 15px
 
   table
     color: $gray-darkest
@@ -53,44 +53,45 @@
     .location-delivery
       margin-left: 18px
 
+  .pagination > li > a
+    float: none
+
+  ul.pagination
+    margin-top: 5px
+    margin-bottom: 0
+    display: block
+
+    li
+      color: $gray-mid-light
+
   .carrier-dashboard-load
     p
       margin-bottom: 10px
     p.label
       margin-bottom: 3px
 
-  .carrier-dashboard-pickup, .carrier-dashboard-delivery
+  .location-pickup, 
+  .location-delivery
+    vertical-align: top
+    display: inline-flex
+    flex-direction: column
+
+  .lead
+    line-height: 24px
+    margin-bottom: 0
+    font-weight: normal
+
+  .location-state
+    margin-bottom: 10px
+
+  .location-time
+    font-size: 12px
+    line-height: 16px
+    margin-top: auto
+
+  .carrier-dashboard-pickup, 
+  .carrier-dashboard-delivery
     max-width: 200px
-
-    .location-pickup, .location-delivery
-      vertical-align: top
-      display: inline-flex
-      flex-direction: column
-
-    .pagination > li > a
-      float: none
-
-    ul.pagination
-      margin-top: 5px
-      margin-bottom: 0
-      display: block
-
-      li
-        color: $gray-mid-light
-
-
-    .lead
-      line-height: 24px
-      margin-bottom: 0
-      font-weight: normal
-
-    .location-state
-      margin-bottom: 10px
-
-    .location-time
-      font-size: 12px
-      line-height: 16px
-      margin-top: auto
 
   .carrier-dashboard-arrow
     padding-left: 0
@@ -102,7 +103,13 @@
   .muted
     color: $gray-mid-light
 
-  .carrier-dashboard-driver, .carrier-dashboard-action
+  .driver-status
+    font-size: 12px
+    line-height: 16px
+    margin-top: auto
+
+  .carrier-dashboard-driver, 
+  .carrier-dashboard-action
     display: inline-flex
     flex-direction: column
 
@@ -113,17 +120,13 @@
       font-size: 12px
       line-height: 16px
 
-    .driver-status
-      font-size: 12px
-      line-height: 16px
-      margin-top: auto
-
   .carrier-dashboard-driver
 
     .btn
       margin-top: 5px
 
-  .carrier-dashboard-action, .carrier-dashboard-multi-load-action
+  .carrier-dashboard-action, 
+  .carrier-dashboard-multi-load-action
     min-width: 230px
 
     .btn
