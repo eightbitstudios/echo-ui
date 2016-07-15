@@ -1,0 +1,310 @@
+%table.table.table-carrier-dashboard.carrier-dashboard-multi-load
+  %thead
+    %tr
+      %th Load
+      %th.carrier-dashboard-pickup Pickup
+      %th.carrier-dashboard-arrow
+      %th.carrier-dashboard-delivery Delivery
+      %th Driver
+      %th Action
+  %tbody
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443211', '#'
+        %p.muted 4 Stops Total
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Memphis
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-16:00 EST
+            %br
+            Picked Up Tue, Apr 8
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height
+          .lead
+            Austin
+          .location-state
+            TX, 50968
+          .location-time
+            14:00-16:00 EST
+            %br
+            Today, Apr 20
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name Alta N.
+          <span><tel>(952) 796-9653</tel></span>
+          .driver-status
+            = link_to 'Verify Driver', '#'
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Call to report (312) 555-1212
+          .action-align-bottom
+            = link_to 'Add Pod / Documents', '#', class: 'btn btn-primary'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443212', '#'
+        %p.label Pro:
+        %p 1234567890
+        %p.muted 3 Stops Total
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Rancho Santa Margarita
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-16:00 EST
+            %br
+            Picked Up Tue, Apr 8
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height
+          .lead
+            Austin
+          .location-state
+            TX, 50968
+          .location-time
+            14:00-16:00 EST
+            %br
+            Today, Apr 20
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name Sophia S.
+          <span><tel>(952) 796-9653</tel></span>
+          .driver-status
+            Entered By Echo
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Call to report (312) 555-1212
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443213', '#'
+        %p.muted 5 Stops Total
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Memphis
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-16:00 EST
+            %br
+            Today, Apr 20
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Austin
+          .location-state
+            TX, 50968
+          .location-time
+            14:00-16:00 EST
+            %br
+            Delivery Fri, Apr 25
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name Bernice D.
+          <span><tel>(952) 796-9653</tel></span>
+          .driver-status
+            Entered By Echo
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Call to report (312) 555-1212
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443214', '#'
+        %p.muted 6 Stops Total
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Philadelphia
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-16:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height
+          .lead
+            Memphis
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-16:00 EST
+            %br
+            Today, Apr 20
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name Alta N.
+          <span><tel>(952) 796-9653</tel></span>
+          .driver-status
+            Entered By Echo
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Call to report (312) 555-1212
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443215', '#'
+        %p.muted 7 Stops Total
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Memphis
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-16:00 EST
+            %br
+            Today, Apr 20
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Rancho Santa Margarita
+          .location-state
+            TX, 50968
+          .location-time
+            14:00-16:00 EST
+            %br
+            Delivery Fri, Apr 25
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name Lela W.
+          <span><tel>(952) 796-9653</tel></span>
+          .driver-status
+            Entered By Echo
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Call to report (312) 555-1212
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'

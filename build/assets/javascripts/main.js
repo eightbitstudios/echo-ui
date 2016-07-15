@@ -15,3 +15,4 @@
 //= require bootstrap/carousel
 //= require bootstrap/affix
 //= require jquery.mCustomScrollbar.min.js
+//= require jquery.matchHeight.min.js

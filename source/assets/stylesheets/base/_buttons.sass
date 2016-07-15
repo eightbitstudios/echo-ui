@@ -12,6 +12,7 @@
   text-shadow: none
   border-radius: 2px
   transition: all 0.2s ease-in
+  white-space: normal
 
   /////////////
   // General button styles
@@ -24,7 +25,7 @@
     background-color: transparent
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
-    -moz-osx-font-smoothing: grayscale    
+    -moz-osx-font-smoothing: grayscale
 
     &:hover
       color: #fff
@@ -38,6 +39,14 @@
       border: solid 2px $bright-blue
       background-color: darken($bright-blue, 10%)
 
+    &.btn-disabled
+      opacity: 0.3
+      &:hover
+        color: $bright-blue
+        padding: 10px 19px 7px
+        border: solid 2px $bright-blue
+        background-color: transparent
+
   //////
   &.btn-primary
     color: #fff
@@ -48,31 +57,48 @@
     -moz-osx-font-smoothing: grayscale
 
     &:hover
-      background-color: darken($green, 10%)
+      background-color: $green-dark
 
     &:active,
     &:focus
       outline: none
       box-shadow: none
-      background-color: darken($green, 15%)
+      background-color: #1c3b21
 
   //////
   &.btn-warning
     border: none
-    background-color: $error
+    background-color: $danger
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
 
     &:hover
-      background-color: #cc4435
+      background-color: $danger-dark
 
     &:active,
     &:focus
       outline: none
       box-shadow: none
-      background-color: #b33c2e
-  
+      background-color: #a80035
+
+  //////
+  &.btn-danger
+    border: none
+    background-color: $danger
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover
+      background-color: $danger-dark
+
+    &:active,
+    &:focus
+      outline: none
+      box-shadow: none
+      background-color: #a80035
+
   //////
   &.btn-link
     color: $bright-blue
@@ -138,14 +164,14 @@
 
     &:hover
       background: none
-  
+
   //////
   &.btn-alert
     padding: 5px 0
     color: $danger
     img
       vertical-align: baseline
-  
+
   //////
   &.btn-back
     &:hover
