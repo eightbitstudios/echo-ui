@@ -6,7 +6,7 @@ module.exports = {
     repByCarrierId: '/api/v1/carriers/:carrierId/echorep',
     portalUsers: '/api/v1/carriers/:carrierId/portalusers',
     driverCount: '/api/v1/carriers/:carrierId/drivers/count',
-    userById: '/api/v1/user/:userId',
-    portalUserById: '/api/v1/carriers/:carrierId/portalusers/:userId'
+    userById: '/api/v1/users/:userId',
+    deactivateUserById: '/api/v1/users/:userId/deactivate'
   }
 };

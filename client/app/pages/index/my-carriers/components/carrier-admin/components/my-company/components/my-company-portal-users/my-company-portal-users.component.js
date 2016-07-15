@@ -5,12 +5,13 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
   'echo.components.portalUsers',
   'echo.components.portalUserProfile',
   'echo.components.loading',
+  'echo.models.user',
   'echo.index.myCarriers.carrierAdmin.myCompany.userProfile'
 ])
   .component('myCompanyPortalUsers', {
     templateUrl: 'app/pages/index/my-carriers/components/carrier-admin/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html',
     bindings: {},
-    controller: function ($state, carrierService, carrierDetailsService) {
+    controller: function ($state, carrierService, carrierDetailsService, UserModel) {
       var that = this;
 
       that.mode = {
@@ -32,7 +33,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
 
       that.userTileClickHandler = function (user) {
         that.showMode = that.mode.USER_PROFILE;
-        that.portalUser = user;
+        that.portalUser = user || new UserModel();
       };
       
       that.showUsersPortal = function () {

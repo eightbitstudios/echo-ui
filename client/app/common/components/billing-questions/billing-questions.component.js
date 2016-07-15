@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('echo.components.billingQuestions', [])
+angular.module('echo.components.billingQuestions', [
+  'echo.filters.phoneNumber'
+])
 .component('billingQuestions', {
   bindings: {
     phoneNumber: '='

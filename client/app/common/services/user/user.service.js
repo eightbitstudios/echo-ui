@@ -21,7 +21,7 @@ angular.module('echo.services.user', [
        * @returns {Promise} - Promise containing a UserModel
        */
       fetchUserById: function () {
-        user = new UserModel({id: 1, repId: 22, carrierId: 1});
+        user = new UserModel({id: 1, repId: 22, carrierId: 223}); //TODO: replace with service call once we can get a user profile
         return $q.when(user);
       }
     };

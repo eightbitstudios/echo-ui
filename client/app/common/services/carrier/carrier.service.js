@@ -2,8 +2,9 @@
 
 angular.module('echo.services.carrier', [
   'echo.config.api',
-  'echo.models.carrier'
-]).factory('carrierService', function ($http, apiConfig, CarrierModel) {
+  'echo.models.carrier',
+  'echo.models.user'
+]).factory('carrierService', function ($http, apiConfig, CarrierModel, UserModel) {
   return {
     /**
      * @description Retrieves a list of carriers
@@ -48,7 +49,9 @@ angular.module('echo.services.carrier', [
       var url = apiConfig.portalUsers({ carrierId: carrierId });
 
       return $http.get(url).then(function (resp) {
-        return resp.data.data;
+        return _(resp.data.data).map(function(user) {
+          return new UserModel(user);
+        }).value();
       });
     },
 

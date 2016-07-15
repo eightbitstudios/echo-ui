@@ -24,9 +24,9 @@
         </div>
         <div class="form-group" ng-class="{'has-error': userProfile.phoneNumber.$invalid && userProfile.phoneNumber.$touched}">
           <label>Phone Number</label>
-          <input class="form-control" name="phoneNumber" pattern="{{$ctrl.regex.PHONE}}" placeholder="(555) 432-1234" type="tel" ng-model="$ctrl.portalUser.phone" required>
+          <input class="form-control" name="phoneNumber" phone-number-mask placeholder="1-555-432-1234" type="tel" ng-model="$ctrl.portalUser.phone" required>
           <span class="help-block" ng-if="userProfile.phoneNumber.$error.required && userProfile.phoneNumber.$touched">A phone number is required</span>
-          <span class="help-block" ng-if="userProfile.phoneNumber.$error.pattern && userProfile.phoneNumber.$touched">Invalid phone number</span>
+          <span class="help-block" ng-if="userProfile.phoneNumber.$error.invalidFormat && userProfile.phoneNumber.$touched">Invalid phone number</span>
         </div>
         <div class="form-group">
           <div ng-if="$ctrl.showConfirmation" class="pull-left text-center">

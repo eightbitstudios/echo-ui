@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('echo.components.carrierAdminFooter', [
+  'echo.filters.phoneNumber',
   'echo.config.routes'
 ]).component('carrierAdminFooter', {
   bindings: {

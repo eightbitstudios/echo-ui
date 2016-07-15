@@ -11,7 +11,8 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile', [
     bindings: {
       portalUser: '<',
       goBackHandler: '&',
-      reloadPortalHandler: '&'
+      reloadPortalHandler: '&',
+      showLoading: '='
     },
     controller: function () {
       var that = this;

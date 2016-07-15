@@ -2,8 +2,8 @@
 
 angular.module('echo.components.portalUserProfile', [
   'echo.config.routes',
-  'echo.services.portalUser',
-  'echo.config.appConstants'
+  'echo.models.user',
+  'echo.directives.phoneNumberMask'
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
@@ -12,13 +12,11 @@ angular.module('echo.components.portalUserProfile', [
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
-  controller: function ($state, routesConfig, portalUserService, appConstants) {
+  controller: function ($state, routesConfig, portalUserService) {
     var that = this;
 
     that.dataSubmitted = false;
     that.showConfirmation = false;
-
-    that.regex = appConstants.REGEX;
 
     that.saveChangesHandler = function (portalUser) {
       that.showLoading = true;

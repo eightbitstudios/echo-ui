@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('echo.services.portalUser', [
-  'echo.config.api'
+  'echo.config.api',
+  'echo.services.portalUserReqConverter'
 ])
-  .factory('portalUserService', function ($http, $q, apiConfig) {
+  .factory('portalUserService', function ($http, $q, apiConfig, portalUserReqConverterService) {
 
     return {
 
@@ -15,9 +16,9 @@ angular.module('echo.services.portalUser', [
       upsertPortalUser: function (portalUser) {
 
         var serviceCall;
-        if(portalUser.Id){
+        if (portalUser.Id) {
           serviceCall = this.updatePortalUserById(portalUser);
-        }else {
+        } else {
           serviceCall = this.insertPortalUser(portalUser);
         }
         return serviceCall;
@@ -31,10 +32,11 @@ angular.module('echo.services.portalUser', [
       updatePortalUserById: function (portalUser) {
 
         var url = apiConfig.userById({ userId: portalUser.Id });
+        var data = portalUserReqConverterService.convertPortalUser(portalUser);
 
-        return $http.put(url, portalUser).then(function (resp) {
+        return $http.put(url, data).then(function (resp) {
           return resp.data.data;
-        }).catch(function(resp){
+        }).catch(function (resp) {
           return $q.reject(resp.data.status.message);
         });
       },
@@ -47,10 +49,11 @@ angular.module('echo.services.portalUser', [
       deactivatePortalUserById: function (portalUser) {
 
         var url = apiConfig.deactivateUserById({ userId: portalUser.Id });
+        var data = portalUserReqConverterService.convertPortalUser(portalUser);
 
-        return $http.put(url, portalUser).then(function (resp) {
+        return $http.put(url, data).then(function (resp) {
           return resp.data.data;
-        }).catch(function(resp){
+        }).catch(function (resp) {
           return $q.reject(resp.data.status.message);
         });
       },
@@ -62,10 +65,11 @@ angular.module('echo.services.portalUser', [
       insertPortalUser: function (portalUser) {
 
         var url = apiConfig.user;
-
-        return $http.post(url, portalUser).then(function (resp) {
+        var data = portalUserReqConverterService.convertPortalUser(portalUser);
+        
+        return $http.post(url, data).then(function (resp) {
           return resp.data.data;
-        }).catch(function(resp){
+        }).catch(function (resp) {
           return $q.reject(resp.data.status.message);
         });
       },

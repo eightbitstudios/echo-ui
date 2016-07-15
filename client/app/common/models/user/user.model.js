@@ -10,6 +10,8 @@ angular.module('echo.models.user', [])
     function User(userData) {
 
       var that = this;
+
+      that.role = 'CarrierAdmin';
  
       _.assign(that, userData);
     }

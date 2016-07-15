@@ -5,12 +5,13 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
   'echo.components.portalUsers',
   'echo.components.loading',
   'echo.components.portalUserProfile',
-  'echo.components.resendInvite'
+  'echo.components.resendInvite',
+  'echo.models.user'
 ])
   .component('carrierDetails', {
     templateUrl: 'app/pages/index/my-carriers/components/rep-admin/components/carrier-details/carrier-details.template.html',
     bindings: {},
-    controller: function ($stateParams, $q, carrierService, routesConfig) {
+    controller: function ($stateParams, $q, carrierService, routesConfig, UserModel) {
       var that = this;
 
       that.mode = {
@@ -44,7 +45,7 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
       };
 
       that.showPortalUserHandler = function (user) {
-        that.portalUser = user || {};
+        that.portalUser = user || new UserModel();
         that.showPortalUser();
       };
 

@@ -7,6 +7,6 @@ module.exports = {
   },
   liveApiEndPoint: 'https://api.local',
   mockApiEndPoint: 'http://localhost',
-  mockRegexes: ['/api/v1/user/*'],
+  mockRegexes: [],
   name: 'dev'
 };
