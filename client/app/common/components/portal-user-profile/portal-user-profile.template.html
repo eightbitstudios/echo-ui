@@ -1,5 +1,5 @@
 <section class="content-container portal-user-profile">
-  <div ng-if="!$ctrl.dataSubmitted">
+  <div ng-if="$ctrl.modeShow === $ctrl.mode.PROFILE">
     <h1 class="profile-name profile-name_driver"><span data-grunticon-embed class="echo-icon icon-portal-user"></span>Portal User</h1>
     <form name="userProfile" novalidate>
       <fieldset class="fieldset">
@@ -42,7 +42,7 @@
     </form>
   </div>
 
-  <div class="text-center" ng-if="$ctrl.dataSubmitted">
+  <div class="text-center" ng-if="$ctrl.modeShow === $ctrl.mode.CONFIRMATION">
     <h1>Your invitation has been sent!</h1>
     <ng-transclude></ng-transclude>
   </div>

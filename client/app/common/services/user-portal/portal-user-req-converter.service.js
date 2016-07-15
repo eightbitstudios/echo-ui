@@ -6,12 +6,13 @@ angular.module('echo.services.portalUserReqConverter', [])
     return {
       convertPortalUser: function (portalUser) {
         return {
-          userId: portalUser.id,
+          id: portalUser.id,
           email: portalUser.email,
           firstName: portalUser.firstName,
           lastName: portalUser.lastName,
           role: portalUser.role,
           phoneNumber: portalUser.phone,
+          carrierId: portalUser.carrierId
         };
       }
     };

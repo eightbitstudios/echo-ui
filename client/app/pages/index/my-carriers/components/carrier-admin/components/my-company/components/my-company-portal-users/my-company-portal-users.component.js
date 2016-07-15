@@ -33,14 +33,15 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
 
       that.userTileClickHandler = function (user) {
         that.showMode = that.mode.USER_PROFILE;
-        that.portalUser = user || new UserModel();
+        that.portalUser = user || new UserModel({ carrierId: that.carrier.carrierId });
       };
-      
+
       that.showUsersPortal = function () {
         that.showMode = that.mode.USERS_PORTAL;
       };
 
       that.reloadUsersPortal = function () {
+        that.showLoading = true;
         that.getCarrierPortalUsers();
         that.showUsersPortal();
       };

@@ -15,41 +15,42 @@ angular.module('echo.components.portalUserProfile', [
   controller: function ($state, routesConfig, portalUserService) {
     var that = this;
 
-    that.dataSubmitted = false;
+    that.mode = {
+      PROFILE: 0,
+      CONFIRMATION: 1
+    };
+
+    that.modeShow = that.mode.PROFILE;
+
     that.showConfirmation = false;
 
     that.saveChangesHandler = function (portalUser) {
-      that.showLoading = true;
       that.serverError = null;
       portalUserService.upsertPortalUser(portalUser).then(function () {
-        that.dataSubmitted = true;
-        if(!that.isNewProfile){
+        that.modeShow = that.mode.CONFIRMATION;
+        if (!that.isNewProfile) {
           that.userUpdatedHandler();
-        }else {
-          that.showLoading = false;
         }
-      }).catch(function(message){
+      }).catch(function (message) {
         that.serverError = message;
-        that.showLoading = false;
       });
     };
 
     that.removeUserHandler = function (portalUser) {
-      that.showLoading = true;
       portalUserService.deactivatePortalUserById(portalUser).then(function () {
         that.userUpdatedHandler();
-      }).catch(function(message){
+      }).catch(function (message) {
         that.serverError = message;
       });
     };
 
-    that.toggleConfirmation = function() {
+    that.toggleConfirmation = function () {
       that.serverError = null;
       that.showConfirmation = !that.showConfirmation;
     };
 
-    that.checkIfNewProfile = function(changeObject) {
-      if(changeObject.portalUser && changeObject.portalUser.current){
+    that.checkIfNewProfile = function (changeObject) {
+      if (changeObject.portalUser && changeObject.portalUser.currentValue) {
         that.isNewProfile = _.isUndefined(that.portalUser.id);
       }
     };
