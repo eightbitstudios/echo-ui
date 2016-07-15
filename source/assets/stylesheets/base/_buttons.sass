@@ -24,7 +24,7 @@
     background-color: transparent
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
-    -moz-osx-font-smoothing: grayscale    
+    -moz-osx-font-smoothing: grayscale
 
     &:hover
       color: #fff
@@ -72,7 +72,24 @@
       outline: none
       box-shadow: none
       background-color: #b33c2e
-  
+
+  //////
+  &.btn-danger
+    border: none
+    background-color: $error
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover
+      background-color: #cc4435
+
+    &:active,
+    &:focus
+      outline: none
+      box-shadow: none
+      background-color: #b33c2e
+
   //////
   &.btn-link
     color: $bright-blue
@@ -138,14 +155,14 @@
 
     &:hover
       background: none
-  
+
   //////
   &.btn-alert
     padding: 5px 0
     color: $danger
     img
       vertical-align: baseline
-  
+
   //////
   &.btn-back
     &:hover

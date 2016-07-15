@@ -38,4 +38,8 @@ $(window).load(function(){
 	// 	$('input').on('change', function(){ })
 	// }
 
+	$(function() {
+	  $('.match-height').matchHeight();
+	});
+
 });

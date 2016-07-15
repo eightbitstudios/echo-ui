@@ -21,19 +21,21 @@
         %li=link_to 'Echo Rep Admin','/echorep-admin.html'
         %li=link_to 'Echo Rep Empty','/echorep-empty.html'
         %li=link_to 'Echo Rep Profile','/echorep-profile.html'
+        %li=link_to 'Echo Rep Carrier Dashboard','/echorep-carrier-dashboard.html'
 
       %h3 Approved Layouts
       %ul.list-group
         %li=link_to 'Shell Carrier Rep', '/shell-carrier.html'
         %li=link_to 'Shell Echo Rep', '/shell-echorep.html'
 
-      %h3 Links for Eight Bit Studios
+      %h3 Links for Eight Bit Staging Site
       %ul.list-group
         - sitemap.resources.each do |page|
           - if page.url =~ /\.html/
             %li.list-group-item
               = link_to page.url, '/clients/echo'+page.url
    
+
 
 
 
