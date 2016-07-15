@@ -18,10 +18,6 @@ angular.module('echo.directives.phoneNumberMask', [
 
           return maskedValue;
         });
-
-        ngModelCtrl.$render = function () {
-          $element.val($filter('phoneNumber')(ngModelCtrl.$viewValue, false));
-        };
       }
     };
   });

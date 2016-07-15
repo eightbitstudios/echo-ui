@@ -50,7 +50,7 @@ angular.module('echo.components.portalUserProfile', [
 
     that.checkIfNewProfile = function(changeObject) {
       if(changeObject.portalUser && changeObject.portalUser.current){
-        that.isNewProfile = _.isUndefined(that.portalUser.Id);
+        that.isNewProfile = _.isUndefined(that.portalUser.id);
       }
     };
 

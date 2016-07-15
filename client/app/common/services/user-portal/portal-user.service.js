@@ -16,7 +16,7 @@ angular.module('echo.services.portalUser', [
       upsertPortalUser: function (portalUser) {
 
         var serviceCall;
-        if (portalUser.Id) {
+        if (portalUser.id) {
           serviceCall = this.updatePortalUserById(portalUser);
         } else {
           serviceCall = this.insertPortalUser(portalUser);
@@ -31,7 +31,7 @@ angular.module('echo.services.portalUser', [
        */
       updatePortalUserById: function (portalUser) {
 
-        var url = apiConfig.userById({ userId: portalUser.Id });
+        var url = apiConfig.userById({ userId: portalUser.id });
         var data = portalUserReqConverterService.convertPortalUser(portalUser);
 
         return $http.put(url, data).then(function (resp) {
@@ -48,7 +48,7 @@ angular.module('echo.services.portalUser', [
        */
       deactivatePortalUserById: function (portalUser) {
 
-        var url = apiConfig.deactivateUserById({ userId: portalUser.Id });
+        var url = apiConfig.deactivateUserById({ userId: portalUser.id });
         var data = portalUserReqConverterService.convertPortalUser(portalUser);
 
         return $http.put(url, data).then(function (resp) {

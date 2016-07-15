@@ -6,19 +6,15 @@ angular.module('echo.filters.phoneNumber', [])
 
       if (!phone) { return ''; }
 
-      var value = phone.toString().trim().replace(/[\-]+/g, '');
+      var value = phone.toString().trim().replace(/[\(\)\-\s]+/g, '');
 
-      var country, city, number;
+      var city, number;
 
-      if(value.length === 1){
-        country = value;
-      } else if (value.length <= 4) {
-        country = value.slice(0, 1);
-        city = value.slice(1);
-      } else if (value.length > 4) {
-        country = value.slice(0, 1);
-        city = value.slice(1, 4);
-        number = value.slice(4);
+      if (value.length <= 3) {
+        city = value;
+      } else if (value.length > 3) {
+        city = value.slice(0, 3);
+        number = value.slice(3);
       }
 
       var formattedPhoneNumber = '';
@@ -31,12 +27,10 @@ angular.module('echo.filters.phoneNumber', [])
           number = number;
         }
 
-        formattedPhoneNumber = (country + '-' + city + '-' + number).trim();
+        formattedPhoneNumber = ('(' + city + ') ' + number).trim();
       }
-      else if(city){
-        formattedPhoneNumber = country + '-' + city;
-      } else{
-        formattedPhoneNumber = country;
+      else {
+        formattedPhoneNumber = '(' + city;
       }
 
       return formattedPhoneNumber;
