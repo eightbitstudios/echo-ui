@@ -22,7 +22,7 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
 
       carrierService.fetchCarriers(repId).then(function (carriers) {
 
-        that.carrierList = _(carriers).sortBy('name').value(); // Sort all carriers by their name
+        that.carrierList = _(carriers).sortBy('carrierName').value(); // Sort all carriers by their name
 
         // Set a carrier to selected if user is routed to page with a carrier id  
         that.selectCarrier(that.carrierList, $stateParams.carrierId);

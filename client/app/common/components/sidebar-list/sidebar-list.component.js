@@ -33,7 +33,6 @@ angular.module('echo.components.sidebarList', [])
           * Groups a list of carriers by the first letter in their name and maps them to an object.
           */
           that.sidebarList = _(that.items)
-            .sortBy('carrierName')
             .groupBy(function (item) {
               return item.carrierName.charAt(0);
             }).map(function (value, prop) {
