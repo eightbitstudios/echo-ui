@@ -7,26 +7,7 @@
   .filter-drivers.pull-left
     %button.btn.btn-default.btn-filter
       Filter Unassigned Drivers
-    .filter-drivers_overlay
-      %header.filter-header
-        View Available Drivers Between
-
-      .filter-form
-        %form
-          .form-group
-            %label Starting
-            %input.form-control{:type => "date", :placeholder => "Select a date..."} 
-          .form-group
-            %label Ending
-            %input.form-control{:type => "date", :placeholder => "Select a date..."} 
-
-      .filter-datepicker
-        .datepicker
-
-      %footer.filter-footer
-        .btn.btn-default Apply
-        &nbsp;
-        .btn.btn-link.btn-alt CLEAR
+    .datepicker
 
   .pull-right
     %button.btn.btn-default Invite New Driver
