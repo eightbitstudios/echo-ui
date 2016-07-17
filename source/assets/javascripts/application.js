@@ -85,8 +85,8 @@ $(window).load(function(){
 
 			$drpTrigger.html(availString).addClass('filter__assigned').append('<span class="close">X</span>')
 			$drpTrigger.find('.close').on('click', function(e){
-				resetdrpTrigger()
 				e.stopPropagation()
+				resetdrpTrigger()
 			})
 		});
 
