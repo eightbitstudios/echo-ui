@@ -6,7 +6,7 @@ Each selection is of the form:
 
    {Environment}_{ProxyType}[_{Minify}]
 
-Environments: dev, qa, demo, stage, uat, prod
+Environments: dev, qa, demo, stage, prod
 
 ProxyTypes:
    mocks - Will only hit Mock API.

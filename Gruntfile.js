@@ -22,11 +22,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('_configAndServe', function () {
     var envConfig = require('./server/config/');
-    // grunt-express-server's port fallback chain is options.port => env.PORT => 3000. The result gets assigned back to env.PORT.
-    // Our fallback chain is env => config => Fail.
-    // We need to wedge our config fallback into the process by evaluating our chain and assigning the result to options.port.
-    // (This situation only applies when running from grunt)
-
     var tasks = [];
 
     if (envConfig.buildSettings.minifyFiles) {
@@ -44,15 +39,7 @@ module.exports = function (grunt) {
   grunt.registerTask('serve', function (envDescriptorName) {
 
     if (envDescriptorName) {
-      var isValidDescriptor = deployment.validateEnvDescriptorName(envDescriptorName, env);
-
-      if (isValidDescriptor) {
         serve(envDescriptorName);
-      }
-      else {
-        console.log('\nInvalid Environment descriptor name [%s].', envDescriptorName);
-        grunt.task.run('serve');
-      }
     } else {
       envAppSelectorUi.menu(env, function (selectedDescriptorName) {
         if (selectedDescriptorName) {
