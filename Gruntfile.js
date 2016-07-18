@@ -20,6 +20,9 @@ module.exports = function (grunt) {
     ]);
   }
 
+  /**
+   * Creates a list of grunt task to run based on minify setting
+   */
   grunt.registerTask('_configAndServe', function () {
     var envConfig = require('./server/config/');
     var tasks = [];
@@ -36,6 +39,9 @@ module.exports = function (grunt) {
     grunt.task.run(tasks);
   });
 
+  /**
+   * Serves application
+   */
   grunt.registerTask('serve', function (envDescriptorName) {
 
     if (envDescriptorName) {
@@ -91,6 +97,9 @@ module.exports = function (grunt) {
     ]);
   });
 
+  /**
+   * Task for running frontend unit test
+   */
   grunt.registerTask('test', function () {
     grunt.task.run([
       'build',
@@ -118,7 +127,9 @@ module.exports = function (grunt) {
     ]);
   });
 
-
+  /**
+   * Installs npm dependencies
+   */
   grunt.registerTask('install', 'install server dependencies', function () {
     var exec = require('child_process').exec;
     var async = this.async();
