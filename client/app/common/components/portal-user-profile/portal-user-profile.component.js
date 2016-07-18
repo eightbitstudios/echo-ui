@@ -3,7 +3,8 @@
 angular.module('echo.components.portalUserProfile', [
   'echo.config.routes',
   'echo.models.user',
-  'echo.directives.phoneNumberMask'
+  'echo.directives.phoneNumberMask',
+  'echo.components.loadingButton'
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
@@ -17,22 +18,26 @@ angular.module('echo.components.portalUserProfile', [
 
     that.mode = {
       PROFILE: 0,
-      CONFIRMATION: 1
+      SENT: 1
     };
 
     that.modeShow = that.mode.PROFILE;
 
     that.showConfirmation = false;
+     that.showButtonLoading = false;
 
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
+      that.showButtonLoading = true;
       portalUserService.upsertPortalUser(portalUser).then(function () {
-        that.modeShow = that.mode.CONFIRMATION;
+        that.modeShow = that.mode.SENT;
         if (!that.isNewProfile) {
           that.userUpdatedHandler();
         }
       }).catch(function (message) {
         that.serverError = message;
+      }).finally(function(){
+        that.showButtonLoading = false;
       });
     };
 

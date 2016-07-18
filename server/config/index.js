@@ -7,7 +7,7 @@ var proxyTypes = require('./proxy-types');
 
 var envConfig = require('./env/' + env);
 
-var proxyType = process.env.PROXY_TYPE || proxyTypes.mixed;
+var proxyType = process.env.PROXY_TYPE || proxyTypes.mocks;
 var server = envConfig.server;
 
 var httpPort = process.env.PORT || server.httpPort;

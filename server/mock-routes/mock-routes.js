@@ -4,7 +4,7 @@ var carrierHandler = require('./handlers/carrier-handler'),
 
 module.exports = function (app) {
   
-  app.post(endpoints.api.userById, userHandler.insertPortalUser);
+  app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);
   app.post(endpoints.api.deactivateUserById, userHandler.deactivateUserById);
