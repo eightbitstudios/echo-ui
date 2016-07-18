@@ -7,7 +7,7 @@ var proxyTypes = require('./proxy-types');
 
 var envConfig = require('./env/' + env);
 
-var proxyType = process.env.PROXY_TYPE || proxyTypes.mocks;
+var proxyType = process.env.PROXY_TYPE || proxyTypes.mixed;
 var server = envConfig.server;
 
 var httpPort = process.env.PORT || server.httpPort;
@@ -20,6 +20,17 @@ var isAws = !!process.env.EC2_HOME;
 var staticFolders = server.staticFolders;
 var proxies = [];
 var defaultApiEndpoint = '';
+var isMinified = _.isString(process.env.IS_MINIFIED)
+                  ? process.env.IS_MINIFIED.toLowerCase() === 'true' // IS_MINIFIED is a string due to grunt-env
+                  : envConfig.isMinified;
+
+
+if (isMinified) {
+  staticFolders = ['./public'];
+
+} else {
+  staticFolders = ['build/public'];
+}
 
 /**
  * Assembles an error message detailing possible reasons why a port number isn't found.
@@ -30,11 +41,11 @@ var defaultApiEndpoint = '';
  * @param  {string} server   The server config file to use as specified in deploy/config/{env}.
  * @return {string}                An error message with possible solutions.
  */
-var createPortErrorMsg = function(listener, envVar, envObjProperty, server) {
+var createPortErrorMsg = function (listener, envVar, envObjProperty, server) {
   return '\nNo ' + listener + ' port configured.' +
-         '\nEnsure that either the ' + envVar.toUpperCase() + ' environment variable ' +
-         'or ' + envObjProperty + ' property on the ' + server + ' server configuration object ' +
-         '(located: server/config/env/' + server + '.js) has been set.';
+    '\nEnsure that either the ' + envVar.toUpperCase() + ' environment variable ' +
+    'or ' + envObjProperty + ' property on the ' + server + ' server configuration object ' +
+    '(located: server/config/env/' + server + '.js) has been set.';
 };
 
 if (!httpPort) {
@@ -86,6 +97,9 @@ var config = {
     proxyType: proxyType,
     debuggingEnabled: debuggingEnabled,
     staticFolders: staticFolders
+  },
+  buildSettings: {
+    minifyFiles: isMinified
   },
   analyticsSrc: analyticsSrc,
   analyticsEnv: analyticsEnv,

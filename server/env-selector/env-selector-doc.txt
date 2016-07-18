@@ -1,0 +1,26 @@
+--------------------------------------------------
+Environment and Application configuration Selector
+--------------------------------------------------
+
+Each selection is of the form:
+
+   {Environment}_{ProxyType}[_{Minify}]
+
+Environments: dev, qa, demo, stage, uat, prod
+
+ProxyTypes:
+   mocks - Will only hit Mock API.
+   live  - Will only hit Live API.
+   mixed - Will hit a combination of Mock and Live API depending on
+           mockRegex matching. See server/config/env/dev.js for more.
+Minify:
+   min - (Optional) Code will be minified.
+
+===NOTES===
+ - Not all combinations are listed. To add one that is not listed,
+   see taskConfig.env in Gruntfile.js.
+
+ - This list is sorted by environment and then alphabetically.
+   Keep in mind that if new entries are added, the selection
+   numbers could change!
+

@@ -2,8 +2,7 @@ module.exports = {
   server: {
     httpPort: 9000,
     httpsPort: 9443,
-    appPort: 9080,
-    staticFolders: ['build/public'],
+    appPort: 9080
   },
   liveApiEndPoint: 'https://api.local',
   mockApiEndPoint: 'http://localhost',
