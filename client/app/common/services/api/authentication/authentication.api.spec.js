@@ -35,15 +35,21 @@ describe('Api: authenticationApi', function () {
 
     it('should make a POST request with token and user passwords', function (done) {
       var token = '1234';
+      var userId = '1';
       var passwordChange = {
         newPassword: 'Newpassword123',
         confirmPassword: 'Newpassword123'
-      }
-      authenticationApi.createPassword(token, passwordChange).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.createPassword, {
-          token: token, 
-          newPassword: passwordChange.newPassword, 
-          confirmPassword: passwordChange.confirmPassword
+      };
+
+      authenticationApi.createPassword(userId, token, passwordChange).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.createPassword({ userId: userId }), {
+          data: {
+            newPassword: passwordChange.newPassword,
+            confirmPassword: passwordChange.confirmPassword
+          },
+          params: {
+            invitationToken: token
+          }
         });
         done();
       });

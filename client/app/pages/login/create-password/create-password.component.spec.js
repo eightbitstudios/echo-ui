@@ -1,6 +1,6 @@
 
 describe('Component: createPassword', function () {
-  var component, $q, scope, createPassword, element, authenticationApi, state, routesConfig, createPasswordRes;
+  var component, $q, window, scope, createPassword, element, authenticationApi, state, routesConfig, createPasswordRes;
 
   beforeEach(function () {
     module('templates-app');
@@ -8,6 +8,7 @@ describe('Component: createPassword', function () {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['createPassword']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
+      $provide.value('$window', window = {location: null});
       $provide.value('PasswordChangeModel', jasmine.createSpy('PasswordChangeModel'));
     });
   });
@@ -30,10 +31,11 @@ describe('Component: createPassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
+      component.userId = '1';
       authenticationApi.createPassword.and.returnValue($q.when());
       component.createPassword();
 
-      expect(authenticationApi.createPassword).toHaveBeenCalledWith(component.token, component.passwordChange);
+      expect(authenticationApi.createPassword).toHaveBeenCalledWith(component.userId, component.token, component.passwordChange);
     });
 
     it('should redirect to login page if the token is invalid', function () {
@@ -46,6 +48,18 @@ describe('Component: createPassword', function () {
       scope.$digest();
 
       expect(state.go).toHaveBeenCalledWith(routesConfig.LOGIN.start.name, { invalidToken: true });
+    });
+
+    it('should redirect to dashboard when sucessful', function () {
+      component.passwordChange.newPassword = 'Test1234';
+      component.passwordChange.confirmPassword = 'Test1234';
+      component.token = '1234';
+      authenticationApi.createPassword.and.returnValue($q.when());
+      component.createPassword();
+
+      scope.$digest();
+
+      expect(window.location).toEqual(routesConfig.INDEX.base.route);
     });
 
     it('should toggle loading button', function () {

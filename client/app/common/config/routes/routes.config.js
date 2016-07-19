@@ -49,7 +49,7 @@ angular.module('echo.config.routes', [])
       },
       createPassword: {
         name: 'login.createPassword',
-        route: '/createPassword?token'
+        route: '/createPassword?validationToken&userId'
       }
     }
   });
