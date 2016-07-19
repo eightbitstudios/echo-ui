@@ -11,7 +11,7 @@ angular.module('echo.config.routes', [])
       },
       myCarriers: {
         name: 'index.myCarriers',
-        route:'my-carriers'
+        route:'myCarriers'
       },
       myCarriersDetails: {
         name: 'index.myCarriers.details',
@@ -23,19 +23,33 @@ angular.module('echo.config.routes', [])
       },
       myCompany: {
         name: 'index.myCarriers.myCompany',
-        route:'/my-company'
+        route:'/myCompany'
       },
       myCompanyUsers: {
         name: 'index.myCarriers.myCompany.portalUsers',
-        route: '/portal-users'
+        route: '/portalUsers'
       },      
       myCompanyUsersProfile: {
         name: 'index.myCarriers.myCompany.profile',
-        route: '/portal-users/{userId}'
+        route: '/portalUsers/{userId}'
       },
       myCompanyDrivers: {
         name: 'index.myCarriers.myCompany.drivers',
         route: '/drivers'
+      }
+    },
+    LOGIN: {
+      base: {
+        name: 'login',
+        route: '/'
+      },
+      start: {
+        name: 'login.start',
+        route: '/?invalidToken'
+      },
+      createPassword: {
+        name: 'login.createPassword',
+        route: '/createPassword?token'
       }
     }
   });

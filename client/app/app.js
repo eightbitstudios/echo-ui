@@ -45,7 +45,7 @@ angular.module('echo', [
 
   .run(function ($rootScope, $uibModalStack) {
     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (/*event, next*/) {
+    $rootScope.$on('$stateChangeStart', function (event, next) {//jshint unused:false
       $rootScope.showLoading = true;  //TODO: move to service
     });
 

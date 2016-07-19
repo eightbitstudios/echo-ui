@@ -14,6 +14,13 @@ module.exports = function(grunt) {
             '<%= build_dir %>/public/app/app.js',
             '<%= build_dir %>/public/app/templates-app.js',
             '!<%= build_dir %>/public/app/**/*.spec.js'
+          ],
+          '<%= build_dir %>/public/login.html': [
+            '<%= build_dir %>/public/app/common/**/*.js',
+            '<%= build_dir %>/public/app/pages/login/**/*.js',
+            '<%= build_dir %>/public/app/app.js',
+            '<%= build_dir %>/public/app/templates-app.js',
+            '!<%= build_dir %>/public/app/**/*.spec.js'
           ]
         }
       }

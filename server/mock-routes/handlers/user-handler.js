@@ -1,16 +1,26 @@
 var userRes = require('../data/user-res.js'),
+  responseUtil = require('../util/response-util.js'),
   ResTemplate = require('../data/res-template.js');
+
+var maxDelay = 2,
+  minDelay = 1;
 
 module.exports = {
   getUserById: function (req, res) {
     var resTemplate = new ResTemplate()
     resTemplate.data = userRes;
-    res.json(resTemplate);
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   },
   deactivateUserById: function (req, res) {
     var resTemplate = new ResTemplate()
     resTemplate.data = userRes;
-    res.json(resTemplate);
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   },
   updatePortalUserById: function (req, res) {
     var resTemplate = new ResTemplate();
@@ -20,11 +30,14 @@ module.exports = {
       resTemplate.status.error = true;
     }
 
-    if (resTemplate.status.error) {
-      res.status(400).json(resTemplate);
-    } else {
-      res.json(resTemplate);
-    }
+    responseUtil.timeout(function () {
+      if (resTemplate.status.error) {
+        res.status(400).json(resTemplate);
+      } else {
+        res.json(resTemplate);
+      }
+    }, minDelay, maxDelay);
+
   },
   insertPortalUser: function (req, res) {
     var resTemplate = new ResTemplate();
@@ -34,10 +47,12 @@ module.exports = {
       resTemplate.status.error = true;
     }
 
-    if (resTemplate.status.error) {
-      res.status(400).json(resTemplate);
-    } else {
-      res.json(resTemplate);
-    }
+    responseUtil.timeout(function () {
+      if (resTemplate.status.error) {
+        res.status(400).json(resTemplate);
+      } else {
+        res.json(resTemplate);
+      }
+    }, minDelay, maxDelay);
   }
 };

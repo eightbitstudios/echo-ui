@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 var express = require('express'),
   bodyParser = require('body-parser'),
   cookieParser = require('cookie-parser'),
@@ -96,6 +94,7 @@ config.server.staticFolders.forEach(function (path) {
 });
 
 require('./mock-routes/mock-routes')(app, config);
+require('./page-routes/page-routes')(app, config);
 var port = config.server.appPort;
 console.log("Starting app server on port %s", port);
 app.listen(port);
