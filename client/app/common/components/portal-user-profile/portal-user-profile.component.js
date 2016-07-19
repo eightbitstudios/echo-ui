@@ -24,7 +24,7 @@ angular.module('echo.components.portalUserProfile', [
     that.modeShow = that.mode.PROFILE;
 
     that.showConfirmation = false;
-     that.showButtonLoading = false;
+    that.showButtonLoading = false;
 
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
@@ -42,10 +42,13 @@ angular.module('echo.components.portalUserProfile', [
     };
 
     that.removeUserHandler = function (portalUser) {
+      that.showButtonLoading = true;
       portalUserService.deactivatePortalUserById(portalUser).then(function () {
         that.userUpdatedHandler();
       }).catch(function (message) {
         that.serverError = message;
+      }).finally(function(){
+        that.showButtonLoading = false;
       });
     };
 
