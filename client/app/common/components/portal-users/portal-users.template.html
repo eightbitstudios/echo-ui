@@ -2,14 +2,14 @@
   <article class="portal-user" ng-repeat="portalUser in $ctrl.portalUsers" ng-click="$ctrl.userTileClickHandler(portalUser)">
     <header>
       <div class="user-name">{{portalUser.firstName}} {{portalUser.lastName}}</div>
-      <div class="user-title">{{portalUser.oneLoginRoleId}}</div>
+      <div class="user-title">{{portalUser.getRoleName()}}</div>
     </header>
     <div class="user-email">
       <a href="javascript:void(0)">{{portalUser.email}}</a>
     </div>
     <div class="user-phone">{{portalUser.phone | phoneNumber}}</div>
     <footer class="user-action">
-      <div class="user-action-note">Last login {{portalUser.lastLogin}}</div>
+      <div class="user-action-note">Invitation Sent</div>
     </footer>
   </article>
   <article class="portal-user">

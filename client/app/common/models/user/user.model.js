@@ -25,6 +25,14 @@ angular.module('echo.models.user', [])
     };
 
     /**
+     * @description Returns user role name
+     * @return {string}
+     */
+    User.prototype.getRoleName = function () {
+      return _.startCase(this.oneLoginRoleName);
+    };
+
+    /**
      * Return the constructor function
      */
     return User;
