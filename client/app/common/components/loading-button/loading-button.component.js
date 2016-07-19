@@ -5,6 +5,7 @@ angular.module('echo.components.loadingButton', [
 ]).component('loadingButton', {
   bindings: {
     buttonText: '@',
+    buttonClass: '@',
     showLoading: '<',
     disableButton: '<',
     clickHandler: '&'

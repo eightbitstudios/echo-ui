@@ -1,5 +1,5 @@
 <div class="loading-button">
-  <button ng-disabled="$ctrl.showLoading || $ctrl.disableButton" ng-click="$ctrl.clickHandler()" class="btn btn-default">
+  <button ng-disabled="$ctrl.showLoading || $ctrl.disableButton" ng-click="$ctrl.clickHandler()" class="btn {{$ctrl.buttonClass || 'btn-default'}}">
     <div ng-class="{'hide-button-text': $ctrl.showLoading}">{{$ctrl.buttonText}}</div>
     <loading show-loading="$ctrl.showLoading"></loading>
   </button>  
