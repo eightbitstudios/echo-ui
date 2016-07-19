@@ -132,7 +132,22 @@
     color: $gray-mid-light
     padding-left: 45px
     border-color: $gray-mid-light
-
+    
+    &.filter__assigned
+      color: #fff
+      font-family: $body-font
+      font-size: 14px
+      line-height: 1.4
+      letter-spacing: 0
+      text-transform: none
+      border-color: $bright-blue
+      background-color: $bright-blue
+      transition: none
+      &:before
+        content: image-url('icon-calendar-white.svg')
+      &:hover
+        border-color: $bright-blue-dark
+        background-color: $bright-blue-dark
 
     &:before
       content: image-url('icon-calendar-gray.svg')
@@ -144,17 +159,16 @@
       height: auto
       margin-right: 6px
 
-    &:hover
+    &:hover,
+    &:active,
+    &:focus
       color: #fff
+      border-color: $gray-mid-light
       background-color: $gray-mid-light
 
       &:before
         content: image-url('icon-calendar-white.svg')
 
-    &:active,
-    &:focus
-      color: #fff
-      background-color: $gray-mid-light
 
   //////
   &.btn-icon
