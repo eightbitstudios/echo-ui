@@ -79,7 +79,7 @@ $(window).load(function(){
 		$drpTrigger.on('apply.daterangepicker', function(ev, picker) {
 			var filterStartDate = picker.startDate,
 					filterEndDate = picker.endDate,
-					availString = 'Availability ' + filterStartDate.format('MM/DD') + '-' + filterEndDate.format('MM/DD')
+					availString = 'Availability ' + filterStartDate.format('MM/DD/YY') + '-' + filterEndDate.format('MM/DD/YY')
 
 			console.log(filterStartDate, filterEndDate)
 

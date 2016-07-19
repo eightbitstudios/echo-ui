@@ -8756,46 +8756,47 @@ header.navbar + .tab-bar {
     border-bottom: 1px solid #e1e2e3; }
     /* line 66, components/_datepicker.sass */
     .daterangepicker .daterangepicker_input .form-control {
-      border-bottom: 0; }
-  /* line 69, components/_datepicker.sass */
+      border-bottom: 0;
+      font-size: 18px; }
+  /* line 70, components/_datepicker.sass */
   .daterangepicker .left .daterangepicker_input {
     border-right: 1px solid #ccc; }
-  /* line 72, components/_datepicker.sass */
+  /* line 73, components/_datepicker.sass */
   .daterangepicker .calendar {
     width: 50%;
     max-width: none;
     margin: 0; }
-  /* line 77, components/_datepicker.sass */
+  /* line 78, components/_datepicker.sass */
   .daterangepicker .calendar.left .calendar-table {
     padding-right: 10px; }
-    /* line 79, components/_datepicker.sass */
+    /* line 80, components/_datepicker.sass */
     .daterangepicker .calendar.left .calendar-table th.month {
       padding-right: 0; }
-  /* line 82, components/_datepicker.sass */
+  /* line 83, components/_datepicker.sass */
   .daterangepicker .calendar.right .calendar-table {
     padding-left: 10px; }
-    /* line 84, components/_datepicker.sass */
+    /* line 85, components/_datepicker.sass */
     .daterangepicker .calendar.right .calendar-table th.month {
       padding-left: 0; }
-  /* line 87, components/_datepicker.sass */
+  /* line 88, components/_datepicker.sass */
   .daterangepicker .calendar-table {
     border-radius: 2px;
     padding: 5px 20px;
     margin-bottom: 10px; }
-    /* line 92, components/_datepicker.sass */
+    /* line 93, components/_datepicker.sass */
     .daterangepicker .calendar-table thead tr:last-child th {
       background-color: #f0f0f0; }
-    /* line 94, components/_datepicker.sass */
+    /* line 95, components/_datepicker.sass */
     .daterangepicker .calendar-table tbody td {
       background-color: #f0f0f0; }
-  /* line 97, components/_datepicker.sass */
+  /* line 98, components/_datepicker.sass */
   .daterangepicker td,
   .daterangepicker th {
     font-size: 12px;
     line-height: 1.3;
     border-radius: 0;
     color: #2b363b; }
-  /* line 104, components/_datepicker.sass */
+  /* line 105, components/_datepicker.sass */
   .daterangepicker .calendar-table th {
     color: #a9adaf;
     font-weight: 100;
@@ -8804,24 +8805,24 @@ header.navbar + .tab-bar {
     text-transform: uppercase;
     padding-top: 10px;
     padding-bottom: 10px; }
-  /* line 113, components/_datepicker.sass */
+  /* line 114, components/_datepicker.sass */
   .daterangepicker .calendar-table td {
     padding-top: 10px;
     padding-bottom: 10px; }
-  /* line 117, components/_datepicker.sass */
+  /* line 118, components/_datepicker.sass */
   .daterangepicker .calendar-table td.in-range {
     background-color: rgba(38, 193, 251, 0.2); }
-  /* line 120, components/_datepicker.sass */
+  /* line 121, components/_datepicker.sass */
   .daterangepicker .calendar-table td.active,
   .daterangepicker .calendar-table td.active:hover {
     background-color: #26c1fb; }
-  /* line 124, components/_datepicker.sass */
+  /* line 125, components/_datepicker.sass */
   .daterangepicker td.off {
     color: #ccc; }
-  /* line 127, components/_datepicker.sass */
+  /* line 128, components/_datepicker.sass */
   .daterangepicker .fa-calendar {
     display: none; }
-  /* line 130, components/_datepicker.sass */
+  /* line 131, components/_datepicker.sass */
   .daterangepicker .ranges {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -8834,26 +8835,29 @@ header.navbar + .tab-bar {
     margin: 0;
     padding: 10px;
     border-top: 1px solid #e1e2e3; }
-    /* line 138, components/_datepicker.sass */
+    /* line 139, components/_datepicker.sass */
     .daterangepicker .ranges .btn {
       margin: 0 5px; }
-  /* line 141, components/_datepicker.sass */
+    /* line 142, components/_datepicker.sass */
+    .daterangepicker .ranges .btn-link {
+      text-transform: uppercase; }
+  /* line 145, components/_datepicker.sass */
   .daterangepicker .select.monthselect-wrap {
     width: 56%;
     margin-right: 2%;
     float: left; }
-    /* line 145, components/_datepicker.sass */
+    /* line 149, components/_datepicker.sass */
     .daterangepicker .select.monthselect-wrap select.monthselect {
       width: 100%;
       margin-right: 0; }
-  /* line 149, components/_datepicker.sass */
+  /* line 153, components/_datepicker.sass */
   .daterangepicker .select.yearselect-wrap {
     width: 42%;
     float: left; }
-    /* line 152, components/_datepicker.sass */
+    /* line 156, components/_datepicker.sass */
     .daterangepicker .select.yearselect-wrap select.yearselect {
       width: 100%; }
-  /* line 155, components/_datepicker.sass */
+  /* line 159, components/_datepicker.sass */
   .daterangepicker .select select {
     font-size: 14px;
     line-height: 1.4;
