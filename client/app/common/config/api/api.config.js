@@ -10,5 +10,6 @@ angular.module('echo.config.api', [])
     repByCarrierId:  _.template('/api/v1/carriers/${carrierId}/echorep'),
     portalUsers: _.template('/api/v1/carriers/${carrierId}/portalusers'),
     driverCount: _.template('/api/v1/carriers/${carrierId}/drivers/count'),
+    drivers: _.template('/api/v1/carriers/${carrierId}/drivers'),
     portalUserById: _.template('/api/v1/carriers/${carrierId}/portalusers/${userId}')
   });

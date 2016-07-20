@@ -1,0 +1,17 @@
+<nav>
+  <ul class="pagination">
+    <li>
+      <a ng-click="$ctrl.previousPage()" href="javascript:void(0)">
+        <span class="echo-icon icon-left-chevron"></span>
+      </a>
+    </li>
+    <li ng-repeat="page in $ctrl.pages" ng-class="{'active-page': $ctrl.selectedPage === page}">
+      <a ng-click="$ctrl.pageClick(page)" href="javascript:void(0)">{{page}}</a>
+    </li>
+    <li>
+      <a ng-click="$ctrl.nextPage()" href="javascript:void(0)">
+        <span class="echo-icon icon-right-chevron"></span>
+      </a>
+    </li>
+  </ul>
+</nav>

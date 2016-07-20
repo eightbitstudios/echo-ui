@@ -1,0 +1,42 @@
+<typeahead-search search-service="$ctrl.searchDrivers(val)"></typeahead-search>
+<div class="container main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-driverlist">
+        <thead>
+          <tr>
+            <th class="sorted-row">Driver Name</th>
+            <th>Usage</th>
+            <th>Tractor</th>
+            <th>Pref. Language</th>
+            <th>Current Assignment</th>
+            <th>Next Assignment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="driver in $ctrl.drivers">
+            <td class="driverlist-col-driver">
+              <h3 class="driver-name"><a href="javascript:void(0)">{{driver.getFullName()}}</a></h3>
+              <span><tel>{{driver.phone}}</tel></span>
+            </td>
+            <td class="driverlist-col-usage">App Installed <br>Tracking Enabled</td>
+            <td class="driverlist-col-tractor">{{driver.tractor}}</td>
+            <td class="driverlist-col-lang">{{driver.language}}</td>
+            <td class="driverlist-col-current">
+              <h2 class="load-number"><a href="#">123443212</a></h2> Active Driver <br> Starts 11:30 CST, Fri Aug 28 <br>
+              <a href="#">Change Driver</a>
+            </td>
+            <td class="driverlist-col-next">
+              <h2 class="load-number"><a href="#">123443212</a></h2> Active Driver <br> Starts 11:30 CST, Fri Aug 28 <br>
+              <a href="#">Change Driver</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination number-of-pages="$ctrl.numberOfPages" page-click-handler="$ctrl.getDriversForPage(page)" class="pull-left"></pagination>
+      <div class="results-count pull-right">
+        Showing 1-5 of 20 Drivers
+      </div>
+    </div>
+  </div>
+</div>

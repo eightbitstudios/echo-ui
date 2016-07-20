@@ -1,0 +1,16 @@
+<div class="typeahead-search container">
+  <form class="search-form pull-left" role="search">
+    <div class="form-group">
+      <input class="form-control search-form-input"
+        ng-model="$ctrl.selection"
+        placeholder="Find a Driver"
+        uib-typeahead="result as result.name for result in $ctrl.searchService({val: $ctrl.selection})"
+        typeahead-min-length="$ctrl.typeaheadMinLength"
+        typeahead-wait-ms="$ctrl.debounce"
+        typeahead-on-select="$ctrl.onSelect()"
+        typeahead-template-url="app/common/components/typeahead-search/templates/driver-results.template.html"
+        typeahead-open-on-focus>
+      <img src="assets/images/icon-search@2x.png" width="16px" height="16px" alt="Icon search@2x">
+    </div>
+  </form>
+</div>
