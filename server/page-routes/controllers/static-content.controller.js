@@ -10,7 +10,7 @@ var StaticContentController = function () {
    * @param {Object} res - Http Response
    */
   that.getLoginPage = function (req, res) {
-    res.sendfile(pages.login.file, {root: config.server.staticFolders[0]});
+    res.sendFile(pages.login.file, {root: config.server.staticFolders[0]});
   };
 };
 
