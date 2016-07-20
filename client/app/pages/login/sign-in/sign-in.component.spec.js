@@ -1,11 +1,12 @@
 
 describe('Component: signIn', function () {
-  var component, $q, window, scope, createPassword, element, authenticationApi, state, routesConfig, createPasswordRes;
+  var component, $q, window, scope, element, authenticationApi, routesConfig, stateParams;
 
   beforeEach(function () {
     module('app/pages/login/sign-in/sign-in.template.html');
     module('echo.login.signIn', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['signIn']));
+      $provide.value('$stateParams', stateParams = {});
       $provide.value('$window', window = { location: null });
     });
   });

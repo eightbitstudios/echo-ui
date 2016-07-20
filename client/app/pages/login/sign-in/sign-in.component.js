@@ -3,11 +3,12 @@ angular.module('echo.login.signIn', [
   'echo.config.routes'
 ]).component('signIn', {
   templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
-  controller: function ($window, routesConfig, authenticationApi) {
+  controller: function ($window, $stateParams, routesConfig, authenticationApi) {
     var that = this;
 
     that.username = '';
     that.password = '';
+    that.invalidToken = !_.isUndefined($stateParams.invalidToken);
     that.showButtonLoading = false;
 
     /**
