@@ -57,4 +57,22 @@ describe('Api: authenticationApi', function () {
       $scope.$digest();
     });
   });
+
+  describe('Function: signIn', function () {
+
+    it('should make a POST request with username and password', function (done) {
+      var username = 'test@gmail.com',
+        password = 'Test1234';
+
+      authenticationApi.signIn(username, password).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.signIn, {
+          username: username,
+          password: password
+        });
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
 });

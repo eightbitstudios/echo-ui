@@ -3,7 +3,7 @@ describe('Component: createPassword', function () {
   var component, $q, window, scope, createPassword, element, authenticationApi, state, routesConfig, createPasswordRes;
 
   beforeEach(function () {
-    module('templates-app');
+    module('app/pages/login/create-password/create-password.template.html');
     module('echo.login.createPassword', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['createPassword']));
       $provide.value('$stateParams', stateParams = {});
@@ -59,7 +59,7 @@ describe('Component: createPassword', function () {
 
       scope.$digest();
 
-      expect(window.location).toEqual(routesConfig.INDEX.base.route);
+      expect(window.location).toEqual(routesConfig.INDEX.base.url);
     });
 
     it('should toggle loading button', function () {

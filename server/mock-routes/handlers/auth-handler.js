@@ -15,5 +15,16 @@ module.exports = {
       }
       res.json(resTemplate);
     }, minDelay, maxDelay);
+  },
+  signIn: function (req, res) {
+    var resTemplate = new ResTemplate()
+
+    responseUtil.timeout(function () {
+      if(req.body.password === 'invalid'){
+        res.status(400);
+        resTemplate.status.message = 'Incorrect username/password';
+      }
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };

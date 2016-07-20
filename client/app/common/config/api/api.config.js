@@ -5,6 +5,7 @@ angular.module('echo.config.api', [])
     userById: _.template('/api/v1/users/${userId}'),
     deactivateUserById: _.template('/api/v1/users/${userId}/deactivate'),
     user: '/api/v1/users',
+    signIn: '/api/v1/auth/signIn',
     createPassword: _.template('/api/v1/users/${userId}/createPassword'),
     repByCarrierId:  _.template('/api/v1/carriers/${carrierId}/echorep'),
     portalUsers: _.template('/api/v1/carriers/${carrierId}/portalusers'),

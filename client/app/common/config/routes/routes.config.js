@@ -3,7 +3,8 @@ angular.module('echo.config.routes', [])
     INDEX: {
       base: {
         name: 'index',
-        route: '/'
+        route: '/',
+        url: '/'
       },
       settings: {
         name: 'index.settings',
@@ -11,7 +12,8 @@ angular.module('echo.config.routes', [])
       },
       myCarriers: {
         name: 'index.myCarriers',
-        route:'myCarriers'
+        route:'myCarriers',
+        url: '/#/myCarriers'
       },
       myCarriersDetails: {
         name: 'index.myCarriers.details',

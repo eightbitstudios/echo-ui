@@ -17,7 +17,7 @@ angular.module('echo.login.createPassword', [
       that.showButtonLoading = true;
 
       authenticationApi.createPassword(that.userId, that.token, that.passwordChange).then(function () {
-        $window.location = routesConfig.INDEX.base.route;
+        $window.location = routesConfig.INDEX.base.url;
       }).catch(function () {
         $state.go(routesConfig.LOGIN.start.name, { invalidToken: true });
       }).finally(function () {

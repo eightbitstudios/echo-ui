@@ -28,6 +28,27 @@ angular.module('echo.api.authentication', [
       }).catch(function(){
         return $q.reject();
       });
+    },
+    
+    /**
+     * @description Signs in a user
+     * @param {string} username - Username
+     * @param {PasswordChangeModel} password - User's password
+     * @returns {Promise} - Users is logged in
+     */
+    signIn: function (username, password) {
+      var url = apiConfig.signIn;
+      
+      var data = {
+        username: username,
+        password: password
+      };
+
+      return $http.post(url, data).then(function (resp) {
+        return resp;
+      }).catch(function(error){
+        return $q.reject(error);
+      });
     }
   };
 });
