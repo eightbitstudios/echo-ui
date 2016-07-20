@@ -6,23 +6,26 @@ angular.module('echo.login.signIn', [
   controller: function ($window, $stateParams, routesConfig, authenticationApi) {
     var that = this;
 
-    that.username = '';
+    that.email = '';
     that.password = '';
     that.invalidToken = !_.isUndefined($stateParams.invalidToken);
     that.showButtonLoading = false;
+    that.signInForm = null;
 
     /**
      * Call api to sign a user in
      */
     that.signInHandler = function () {
-      that.showButtonLoading = true;
-      authenticationApi.signIn(that.username, that.password).then(function () {
-        $window.location = routesConfig.INDEX.myCarriers.url;
-      }).catch(function () {
-        //TODO: Handle error codes
-      }).finally(function () {
-        that.showButtonLoading = false;
-      });
+      if (that.signInForm.email.$valid && that.signInForm.password.$valid) {
+        that.showButtonLoading = true;
+        authenticationApi.signIn(that.email, that.password).then(function () {
+          $window.location = routesConfig.INDEX.myCarriers.url;
+        }).catch(function () {
+          //TODO: Handle error codes
+        }).finally(function () {
+          that.showButtonLoading = false;
+        });
+      }
     };
   }
 });

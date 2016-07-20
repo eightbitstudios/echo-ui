@@ -25,22 +25,52 @@ describe('Component: signIn', function () {
   }));
 
   describe('Function: signIn', function () {
+
+    beforeEach(function(){
+      component.signInForm = {
+        email: {
+          $valid: true
+        },
+        password: {
+          $valid: true
+        }
+      };
+    });
+
+    it('should not call signIn service if email is not valid', function(){
+      component.email = '';
+      component.password = 'test';
+      component.signInForm.email.$valid = false;
+      component.signInHandler();
+
+      expect(authenticationApi.signIn).not.toHaveBeenCalled();
+    });
+
+    it('should not call signIn service if password is not valid', function(){
+      component.email = 'test@gmail.com';
+      component.password = '';
+      component.signInForm.email.$valid = false;
+      component.signInHandler();
+
+      expect(authenticationApi.signIn).not.toHaveBeenCalled();
+    });
+
     it('should call signIn service', function () {
-      component.username = 'test';
+      component.email = 'test';
       component.password = 'Test1234';
       authenticationApi.signIn.and.returnValue($q.when());
       component.signInHandler();
 
-      expect(authenticationApi.signIn).toHaveBeenCalledWith(component.username, component.password);
+      expect(authenticationApi.signIn).toHaveBeenCalledWith(component.email, component.password);
     });
 
     it('should redirect to dashboard if the user is valid', function () {
-      component.username = 'test';
+      component.email = 'test';
       component.password = 'Test1234';
       authenticationApi.signIn.and.returnValue($q.when());
       component.signInHandler();
 
-      expect(authenticationApi.signIn).toHaveBeenCalledWith(component.username, component.password);
+      expect(authenticationApi.signIn).toHaveBeenCalledWith(component.email, component.password);
 
       scope.$digest();
 
@@ -48,7 +78,7 @@ describe('Component: signIn', function () {
     });
 
     it('should toggle loading button', function () {
-      component.username = 'test';
+      component.email = 'test';
       component.password = 'Test1234';
       authenticationApi.signIn.and.returnValue($q.when());
       component.signInHandler();
