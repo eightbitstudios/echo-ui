@@ -8,7 +8,7 @@ describe('Component: createPassword', function () {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['createPassword']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
-      $provide.value('$window', window = {location: null});
+      $provide.value('$window', window = { location: null });
       $provide.value('PasswordChangeModel', jasmine.createSpy('PasswordChangeModel'));
     });
   });
@@ -47,7 +47,7 @@ describe('Component: createPassword', function () {
 
       scope.$digest();
 
-      expect(state.go).toHaveBeenCalledWith(routesConfig.LOGIN.start.name, { invalidToken: true });
+      expect(state.go).toHaveBeenCalledWith(routesConfig.LOGIN.signIn.name, { invalidToken: true });
     });
 
     it('should redirect to dashboard when sucessful', function () {

@@ -1,10 +1,10 @@
 
-describe('Component: login', function () {
+describe('Component: signIn', function () {
   var component, $q, window, scope, createPassword, element, authenticationApi, state, routesConfig, createPasswordRes;
 
   beforeEach(function () {
-    module('app/pages/login/login/login.template.html');
-    module('echo.login.login', function ($provide) {
+    module('app/pages/login/sign-in/sign-in.template.html');
+    module('echo.login.signIn', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['signIn']));
       $provide.value('$window', window = { location: null });
     });
@@ -20,7 +20,7 @@ describe('Component: login', function () {
 
     scope.$digest();
 
-    component = $componentController('login', null, {});
+    component = $componentController('signIn', null, {});
   }));
 
   describe('Function: signIn', function () {
@@ -28,7 +28,7 @@ describe('Component: login', function () {
       component.username = 'test';
       component.password = 'Test1234';
       authenticationApi.signIn.and.returnValue($q.when());
-      component.signIn();
+      component.signInHandler();
 
       expect(authenticationApi.signIn).toHaveBeenCalledWith(component.username, component.password);
     });
@@ -37,7 +37,7 @@ describe('Component: login', function () {
       component.username = 'test';
       component.password = 'Test1234';
       authenticationApi.signIn.and.returnValue($q.when());
-      component.signIn();
+      component.signInHandler();
 
       expect(authenticationApi.signIn).toHaveBeenCalledWith(component.username, component.password);
 
@@ -45,13 +45,13 @@ describe('Component: login', function () {
 
       expect(window.location).toEqual(routesConfig.INDEX.myCarriers.url);
     });
-    
+
     it('should toggle loading button', function () {
-     component.username = 'test';
+      component.username = 'test';
       component.password = 'Test1234';
       authenticationApi.signIn.and.returnValue($q.when());
-      component.signIn();
-      
+      component.signInHandler();
+
       expect(component.showButtonLoading).toBeTruthy();
       scope.$digest();
 

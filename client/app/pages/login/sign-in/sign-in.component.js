@@ -1,8 +1,8 @@
-angular.module('echo.login.login', [
+angular.module('echo.login.signIn', [
   'echo.api.authentication',
   'echo.config.routes'
-]).component('login', {
-  templateUrl: 'app/pages/login/login/login.template.html',
+]).component('signIn', {
+  templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
   controller: function ($window, routesConfig, authenticationApi) {
     var that = this;
 
@@ -11,9 +11,9 @@ angular.module('echo.login.login', [
     that.showButtonLoading = false;
 
     /**
-     * Call api to sign user in
+     * Call api to sign a user in
      */
-    that.signIn = function () {
+    that.signInHandler = function () {
       that.showButtonLoading = true;
       authenticationApi.signIn(that.username, that.password).then(function () {
         $window.location = routesConfig.INDEX.myCarriers.url;

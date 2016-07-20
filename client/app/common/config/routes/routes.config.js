@@ -45,8 +45,8 @@ angular.module('echo.config.routes', [])
         name: 'login',
         route: '/'
       },
-      start: {
-        name: 'login.start',
+      signIn: {
+        name: 'login.signIn',
         route: '/?invalidToken'
       },
       createPassword: {

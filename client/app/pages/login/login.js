@@ -4,7 +4,7 @@ angular.module('echo.login', [
   'ui.router',
   'echo.config',
   'echo.directives.echoIcon',
-  'echo.login.login',
+  'echo.login.signIn',
   'echo.login.createPassword',
   'templates-app'
 ]).config(function ($urlRouterProvider, $stateProvider, routesConfig) {
@@ -16,9 +16,9 @@ angular.module('echo.login', [
         abstract: true,
         template: '<div ui-view></div>'
     })
-    .state(routesConfig.LOGIN.start.name, {
-      url: routesConfig.LOGIN.start.route,
-      template: '<login></login>'
+    .state(routesConfig.LOGIN.signIn.name, {
+      url: routesConfig.LOGIN.signIn.route,
+      template: '<sign-in></sign-in>'
     })
     .state(routesConfig.LOGIN.createPassword.name, {
       url: routesConfig.LOGIN.createPassword.route,
