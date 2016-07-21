@@ -9,7 +9,7 @@ module.exports = {
     var resTemplate = new ResTemplate()
 
     responseUtil.timeout(function () {
-      if(req.body.newPassword === 'invalidToken123'){
+      if (req.body.newPassword === 'invalidToken123') {
         res.status(400);
         resTemplate.status.message = 'Invalid Token';
       }
@@ -20,9 +20,17 @@ module.exports = {
     var resTemplate = new ResTemplate()
 
     responseUtil.timeout(function () {
-      if(req.body.password === 'invalid'){
+      if (req.body.password === 'invalid') {
         res.status(400);
-        resTemplate.status.message = 'Incorrect username/password';
+        resTemplate.status.code = 401001;
+      }
+      else if (req.body.password === 'locked') {
+        res.status(400);
+        resTemplate.status.code = 401002;
+      }
+      else if (req.body.password === 'deactivated') {
+        res.status(400);
+        resTemplate.status.code = 401003;
       }
       res.json(resTemplate);
     }, minDelay, maxDelay);
