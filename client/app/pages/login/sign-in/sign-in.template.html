@@ -37,6 +37,8 @@
           <div class="form-group">
             <a href="#" class="btn btn-link btn-alt">Forgot password?</a>
             <loading-button button-text="Login" class="pull-right" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.signInHandler()"></loading-button>
+            <div class="text-center help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.INVALID_USERNAME_OR_PASSWORD">Invalid User name or Password.</div>
+            <div class="text-center help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.DEACTIVATED">User account is Deactivated.</div>
           </div>
         </fieldset>
       </form>

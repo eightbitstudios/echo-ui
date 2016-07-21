@@ -50,6 +50,18 @@ describe('Component: signIn', function () {
       expect(authenticationApi.signIn).toHaveBeenCalledWith(component.email, component.password);
     });
 
+
+    it('should set server error code on fail', function () {
+      component.email = 'test';
+      component.password = 'Test1234';
+      authenticationApi.signIn.and.returnValue($q.reject(400));
+      component.signInHandler();
+
+      scope.$digest();
+
+      expect(component.serverError).toBe(400);
+    });
+
     it('should redirect to dashboard if the user is valid', function () {
       component.email = 'test';
       component.password = 'Test1234';

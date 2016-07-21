@@ -45,9 +45,9 @@ angular.module('echo.api.authentication', [
       };
 
       return $http.post(url, data).then(function (resp) {
-        return resp;
+        return resp; // TODO: Do something with response once it is defined by the API team.
       }).catch(function(error){
-        return $q.reject(error);
+        return $q.reject(error.data.status.code);
       });
     }
   };

@@ -4,6 +4,7 @@ angular.module('echo', [
   'ngCookies',
   'ngSanitize',
   'ui.router',
+  'echo.config.errors',
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -12,28 +13,13 @@ angular.module('echo', [
     $httpProvider.interceptors.push('authInterceptor');
   })
 
-  .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
+  .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location, errorsConfig) {
     return {
-      // Add authorization token to headers
-      request: function (config) {
-        config.headers = config.headers || {};
-        var tokenCookie = $cookieStore.get('token');
-
-        if (tokenCookie) {
-          config.headers.Authorization = 'Bearer ' + tokenCookie;
-        }
-
-        return config;
-      },
-
       // Intercept 401s and redirect you to login
       responseError: function (response) {
-        var HTTP_UNAUTHORIZED = 401;
-
-        if (response.status === HTTP_UNAUTHORIZED) {
+ 
+        if (response.status === errorsConfig.UNAUTHORIZED) {
           $location.path('/login');
-          // remove any stale tokens
-          $cookieStore.remove('token');
         }
 
         return $q.reject(response);
