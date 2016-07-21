@@ -28,28 +28,14 @@ describe('Component: signIn', function () {
 
     beforeEach(function(){
       component.signInForm = {
-        email: {
-          $valid: true
-        },
-        password: {
-          $valid: true
-        }
+        $valid: true
       };
     });
 
-    it('should not call signIn service if email is not valid', function(){
+    it('should not call signIn service if form is not valid', function(){
       component.email = '';
       component.password = 'test';
-      component.signInForm.email.$valid = false;
-      component.signInHandler();
-
-      expect(authenticationApi.signIn).not.toHaveBeenCalled();
-    });
-
-    it('should not call signIn service if password is not valid', function(){
-      component.email = 'test@gmail.com';
-      component.password = '';
-      component.signInForm.email.$valid = false;
+      component.signInForm.$valid = false;
       component.signInHandler();
 
       expect(authenticationApi.signIn).not.toHaveBeenCalled();
