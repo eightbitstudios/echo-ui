@@ -13,7 +13,7 @@ angular.module('echo.login.forgotPassword', [
     that.sendHandler = function () {
       if (that.forgotPasswordForm.$valid) {
         that.showButtonLoading = true;
-        authenticationApi.forgotPassword(that.email).then(function (resp) {
+        authenticationApi.forgotPassword(that.email).then(function () {
           $state.go(routesConfig.LOGIN.signIn.name);
         }).catch(function () { })
           .finally(function () {
