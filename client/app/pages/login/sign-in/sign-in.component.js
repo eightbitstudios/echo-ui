@@ -4,7 +4,7 @@ angular.module('echo.login.signIn', [
   'echo.config.errors'
 ]).component('signIn', {
   templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
-  controller: function ($window, $stateParams, routesConfig, authenticationApi, errorsConfig) {
+  controller: function ($window, $state, $stateParams, routesConfig, authenticationApi, errorsConfig) {
     var that = this;
 
     that.routesConfig = routesConfig;
@@ -25,7 +25,11 @@ angular.module('echo.login.signIn', [
         authenticationApi.signIn(that.email, that.password).then(function () {
           $window.location = routesConfig.INDEX.myCarriers.url;
         }).catch(function (errorCode) {
-          that.serverError = errorCode;
+          if (errorCode === errorsConfig.LOCKED) {
+            $state.go(routesConfig.LOGIN.forgotPassword.name);
+          } else {
+            that.serverError = errorCode;
+          }
         }).finally(function () {
           that.showButtonLoading = false;
         });

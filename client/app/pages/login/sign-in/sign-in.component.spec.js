@@ -1,19 +1,21 @@
 
 describe('Component: signIn', function () {
-  var component, $q, window, scope, element, authenticationApi, routesConfig, stateParams;
+  var component, $q, window, scope, state, element, authenticationApi, routesConfig, stateParams, errorsConfig;
 
   beforeEach(function () {
     module('app/pages/login/sign-in/sign-in.template.html');
     module('echo.login.signIn', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['signIn']));
       $provide.value('$stateParams', stateParams = {});
+      $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
       $provide.value('$window', window = { location: null });
     });
   });
 
-  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController, _routesConfig_) {
+  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController, _routesConfig_, _errorsConfig_) {
     scope = $rootScope.$new();
     routesConfig = _routesConfig_;
+    errorsConfig = _errorsConfig_;
     $q = _$q_;
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -60,6 +62,17 @@ describe('Component: signIn', function () {
       scope.$digest();
 
       expect(component.serverError).toBe(400);
+    });
+
+    it('should reroute to forgot password if account is locked', function () {
+      component.email = 'test';
+      component.password = 'Test1234';
+      authenticationApi.signIn.and.returnValue($q.reject(errorsConfig.LOCKED));
+      component.signInHandler();
+
+      scope.$digest();
+
+      expect(state.go).toHaveBeenCalledWith(routesConfig.LOGIN.forgotPassword.name);
     });
 
     it('should redirect to dashboard if the user is valid', function () {

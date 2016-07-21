@@ -49,6 +49,26 @@ angular.module('echo.api.authentication', [
       }).catch(function(error){
         return $q.reject(error.data.status.code);
       });
-    }
+    },
+    
+    /**
+     * @description Forgot password
+     * @param {string} username - Username
+     * @returns {Promise} - Users forgot password request has been sent
+     */
+    forgotPassword: function (username) {
+      var url = apiConfig.forgotPassword;
+
+      var data = {
+        username: username
+      };
+
+      return $http.post(url, data).then(function (resp) {
+         return resp;
+      }).catch(function(error){
+        return $q.reject(error.data.status.code);
+      });
+     },
+
   };
 });
