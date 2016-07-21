@@ -26,5 +26,12 @@ module.exports = {
       }
       res.json(resTemplate);
     }, minDelay, maxDelay);
+  },
+  forgotPassword: function (req, res) {
+    var resTemplate = new ResTemplate()
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };

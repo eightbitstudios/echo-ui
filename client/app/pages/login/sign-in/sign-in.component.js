@@ -6,6 +6,7 @@ angular.module('echo.login.signIn', [
   controller: function ($window, $stateParams, routesConfig, authenticationApi) {
     var that = this;
 
+    that.routesConfig = routesConfig;
     that.email = '';
     that.password = '';
     that.invalidToken = !_.isUndefined($stateParams.invalidToken);

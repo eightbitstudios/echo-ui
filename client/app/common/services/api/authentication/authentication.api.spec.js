@@ -75,4 +75,21 @@ describe('Api: authenticationApi', function () {
       $scope.$digest();
     });
   });
+
+
+  describe('Function: forgotPassword', function () {
+
+    it('should make a POST request with username and password', function (done) {
+      var username = 'test@gmail.com';
+
+      authenticationApi.forgotPassword(username).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.forgotPassword, {
+          username: username
+        });
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
 });

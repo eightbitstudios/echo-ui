@@ -2,7 +2,7 @@
 
 angular.module('echo.api.authentication', [
   'echo.config.api'
-]).factory('authenticationApi', function ($q, $http, apiConfig) {
+]).factory('authenticationApi', function ($q, $http, $httpParamSerializerJQLike, apiConfig) {
   return {
     /**
      * @description Creates a password
@@ -12,8 +12,8 @@ angular.module('echo.api.authentication', [
      * @returns {Promise} - Users password was created
      */
     createPassword: function (userId, token, passwordChange) {
-      var url = apiConfig.createPassword({userId: userId});
-      
+      var url = apiConfig.createPassword({ userId: userId });
+
       var data = {
         newPassword: passwordChange.newPassword,
         confirmPassword: passwordChange.confirmPassword
@@ -23,13 +23,32 @@ angular.module('echo.api.authentication', [
         invitationToken: token
       };
 
-      return $http.post(url, {data: data, params: params}).then(function (resp) {
+      return $http.post(url, { data: data, params: params }).then(function (resp) {
         return resp;
-      }).catch(function(){
+      }).catch(function () {
         return $q.reject();
       });
     },
-    
+
+    /**
+     * @description Forgot password
+     * @param {string} username - Username
+     * @returns {Promise} - Users forgot password request has been sent
+     */
+    forgotPassword: function (username) {
+      var url = apiConfig.forgotPassword;
+
+      var data = {
+        username: username
+      };
+
+      return $http.post(url, data).then(function (resp) {
+        return resp;
+      }).catch(function () {
+        return $q.reject();
+      });
+    },
+
     /**
      * @description Signs in a user
      * @param {string} username - Username
@@ -38,7 +57,7 @@ angular.module('echo.api.authentication', [
      */
     signIn: function (username, password) {
       var url = apiConfig.signIn;
-      
+
       var data = {
         username: username,
         password: password
@@ -46,7 +65,7 @@ angular.module('echo.api.authentication', [
 
       return $http.post(url, data).then(function (resp) {
         return resp;
-      }).catch(function(error){
+      }).catch(function (error) {
         return $q.reject(error);
       });
     }
