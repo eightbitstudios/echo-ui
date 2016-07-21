@@ -16,7 +16,7 @@ angular.module('echo.login.signIn', [
      * Call api to sign a user in
      */
     that.signInHandler = function () {
-      if (that.signInForm.email.$valid && that.signInForm.password.$valid) {
+      if (that.signInForm.$valid) {
         that.showButtonLoading = true;
         authenticationApi.signIn(that.email, that.password).then(function () {
           $window.location = routesConfig.INDEX.myCarriers.url;
