@@ -5,6 +5,7 @@ module.exports = {
     carrierById: '/api/v1/carriers/:carrierId',
     createPassword: '/api/v1/users/:userId/createPassword',
     forgotPassword: '/api/v1/auth/forgotPassword',
+    changePassword: '/api/v1/users/:userId/setPassword',
     repByCarrierId: '/api/v1/carriers/:carrierId/echorep',
     portalUsers: '/api/v1/carriers/:carrierId/portalusers',
     driverCount: '/api/v1/carriers/:carrierId/drivers/count',

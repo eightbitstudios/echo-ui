@@ -1,6 +1,8 @@
 angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changePassword', [
   'echo.components.passwordValidation',
   'echo.config.routes',
+  'echo.config.errors',
+  'echo.api.authentication',
   'echo.models.passwordChange'
 ])
   .component('changePassword', {
@@ -8,17 +10,32 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changeP
     bindings: {
       userId: '<'
     },
-    controller: function (PasswordChangeModel) {
+    controller: function (authenticationApi, PasswordChangeModel, errorsConfig) {
       var that = this;
 
       that.passwordChange = new PasswordChangeModel();
       that.currentPassword = null;
-      that.showLoadingButton = false;
+      that.showButtonLoading = false;
+      that.changePasswordForm = null;
+      that.errorsConfig = errorsConfig;
 
 
-      that.changePasswordHandler = function() {
-
+      that.changePasswordHandler = function () {
+        if (that.changePasswordForm.$valid) {
+          that.serverError = null;
+          that.showButtonLoading = true;
+          authenticationApi.changePassword(that.userId, that.currentPassword, that.passwordChange).then(function () {
+            that.showSuccessMessage = true;
+          }).catch(function (errorCode) {
+            that.serverError = errorCode;
+          }).finally(function () {
+            that.showButtonLoading = false;
+          });
+        }
       };
 
+      that.clearServerErrors = function () {
+        that.serverError = null;
+      };
     }
   });
