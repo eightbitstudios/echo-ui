@@ -25,20 +25,22 @@
       <form name="$ctrl.signInForm" novalidate>
         <fieldset class="fieldset">
           <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted}">
+            <div class="text-left help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.INVALID_USERNAME_OR_PASSWORD">Invalid Username or Password.</div>
+            <div class="text-left help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.DEACTIVATED">User account is deactivated.</div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted}">
             <label>Email</label>
             <input class="form-control" placeholder="myname@mail.com" name="email" ng-model="$ctrl.email" type="email" required>
-             <span class="help-block" ng-if="$ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted">Enter your email</span>
+            <span class="help-block" ng-if="$ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted">Enter your email</span>
           </div>
           <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.password.$invalid && $ctrl.signInForm.$submitted}">
             <label>Password</label>
             <input class="form-control" placeholder="Enter password" name="password" ng-model="$ctrl.password" type="password" required>
-             <span class="help-block" ng-if="$ctrl.signInForm.password.$invalid && $ctrl.signInForm.$submitted">Enter your password</span>
+            <span class="help-block" ng-if="$ctrl.signInForm.password.$invalid && $ctrl.signInForm.$submitted">Enter your password</span>
           </div>
           <div class="form-group">
             <a href="#" class="btn btn-link btn-alt">Forgot password?</a>
             <loading-button button-text="Login" class="pull-right" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.signInHandler()"></loading-button>
-            <div class="text-center help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.INVALID_USERNAME_OR_PASSWORD">Invalid User name or Password.</div>
-            <div class="text-center help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.DEACTIVATED">User account is Deactivated.</div>
           </div>
         </fieldset>
       </form>
