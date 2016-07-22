@@ -9,8 +9,9 @@
         </button>
       </portal-user-profile>
     </div>
-    <div class="col-sm-6">
-      <resend-invite ng-if="$ctrl.portalUser.id"></resend-invite>
+    <div class="col-sm-6" ng-if="$ctrl.portalUser.id">
+      <resend-invite></resend-invite>
+      <change-password ng-if="$ctrl.portalUser.id === $ctrl.userId" user-id="$ctrl.userId"></change-password>
     </div>
   </div>
 </div>
