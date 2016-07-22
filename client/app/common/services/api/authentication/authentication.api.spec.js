@@ -76,7 +76,6 @@ describe('Api: authenticationApi', function () {
     });
   });
 
-
   describe('Function: forgotPassword', function () {
 
     it('should make a POST request with username and password', function (done) {
@@ -85,6 +84,29 @@ describe('Api: authenticationApi', function () {
       authenticationApi.forgotPassword(username).then(function () {
         expect($http.post).toHaveBeenCalledWith(apiConfig.forgotPassword, {
           username: username
+        });
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: changePassword', function () {
+
+    it('should make a PUT request with new and current password', function (done) {
+      var userId = 1,
+      currentPassword = 'Test1234',
+      passwordChange = {
+        newPassword: 'Password1234',
+        confirmPassword: 'Password1234'
+      };
+      
+      authenticationApi.changePassword(userId, currentPassword, passwordChange).then(function () {
+        expect($http.put).toHaveBeenCalledWith(apiConfig.changePassword({userId: userId}), {
+          currentPassword: currentPassword,
+          newPassword: passwordChange.newPassword,
+          confirmPassword: passwordChange.confirmPassword
         });
         done();
       });

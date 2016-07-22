@@ -24,9 +24,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changeP
         if (that.changePasswordForm.$valid) {
           that.serverError = null;
           that.showButtonLoading = true;
-          authenticationApi.changePassword(that.userId, that.currentPassword, that.passwordChange).then(function () {
-            that.showSuccessMessage = true;
-          }).catch(function (errorCode) {
+          authenticationApi.changePassword(that.userId, that.currentPassword, that.passwordChange).catch(function (errorCode) {
             that.serverError = errorCode;
           }).finally(function () {
             that.showButtonLoading = false;
