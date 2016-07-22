@@ -2,6 +2,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changeP
   'echo.components.passwordValidation',
   'echo.config.routes',
   'echo.config.errors',
+  'echo.config.appConstants',
   'echo.api.authentication',
   'echo.models.passwordChange'
 ])
@@ -10,7 +11,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changeP
     bindings: {
       userId: '<'
     },
-    controller: function (authenticationApi, PasswordChangeModel, errorsConfig) {
+    controller: function (authenticationApi, PasswordChangeModel, errorsConfig, appConstants) {
       var that = this;
 
       that.passwordChange = new PasswordChangeModel();
@@ -18,6 +19,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changeP
       that.showButtonLoading = false;
       that.changePasswordForm = null;
       that.errorsConfig = errorsConfig;
+      that.appConstants = appConstants;
 
 
       that.changePasswordHandler = function () {
