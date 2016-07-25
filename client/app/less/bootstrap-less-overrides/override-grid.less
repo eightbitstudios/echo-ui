@@ -42,13 +42,19 @@
     -ms-flex-pack: end;
     justify-content: flex-end;
 }
-@media (min-width: @screen-lg) {
+@media (min-width: 992px) {
     
     .container-flex .col-echo:first-child {
         padding-right: 60px;
+        padding-left: 60px;
+        .col-wrap {
+            width: 373px;
+        }
     }
-    .container-flex .col-echo:first-child .col-wrap {
-        width: 373px;
+    
+    .container-flex .col-echo:last-child {
+        padding-right: 60px;
+        padding-left: 60px;
     }
 }
 
@@ -58,12 +64,9 @@
     justify-content: flex-start;
     background-color: @c-gray-lightest;
 }
-@media (min-width: @screen-lg) {
-    
-    .container-flex .col-echo:last-child {
-        padding-left: 60px;
-    }
-    
+
+@media (min-width: 1370px) {
+
     .container-flex .col-echo:last-child .col-wrap {
         width: 677px;
     }

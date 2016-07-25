@@ -45,9 +45,10 @@ angular.module('echo.models.carrier', []).factory('CarrierModel', function () {
    * @returns {boolean}
    */
   Carrier.prototype.getFullAddress = function () {
-    var address = _([this.address1, this.address2, this.city, this.state]).join(', ');
+    var address = _([this.address1, this.address2, this.city, this.state]).pull(undefined).join(', ');
      return _([address, this.zip]).join(' ');
   };
+  
   /**
    * Return the constructor function
    */

@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('echo.components.portalUsers', []).component('portalUsers', {
+angular.module('echo.components.portalUsers', [
+  'echo.filters.phoneNumber',
+]).component('portalUsers', {
   bindings: {
     portalUsers: '=',
     clickHandler: '&'

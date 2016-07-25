@@ -1,0 +1,7 @@
+<div class="my-company-portal-users">
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div ng-if="!$ctrl.showLoading">
+    <portal-users ng-if="$ctrl.showMode === $ctrl.mode.USERS_PORTAL" portal-users="$ctrl.portalUsers" click-handler="$ctrl.userTileClickHandler(user)"></portal-users>
+    <my-company-user-profile show-loading="$ctrl.showLoading" ng-if="$ctrl.showMode === $ctrl.mode.USER_PROFILE" portal-user="$ctrl.portalUser" reload-portal-handler="$ctrl.reloadUsersPortal()" go-back-handler="$ctrl.showUsersPortal()"></my-company-user-profile>
+  </div>
+</div>

@@ -46,16 +46,13 @@ angular.module('echo', [
   .run(function ($rootScope, $uibModalStack) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (/*event, next*/) {
-      // Auth.isLoggedInAsync(function(loggedIn) {
-      //   if (next.authenticate && !loggedIn) {
-      //     $location.path('/login');
-      //   }
-      // });
+      $rootScope.showLoading = true;  //TODO: move to service
     });
 
     $rootScope.$on('$stateChangeSuccess',
       function(event, toState, toParams, fromState, fromParams){ //jshint unused:false
         $uibModalStack.dismissAll();
+        $rootScope.showLoading = false; //TODO: move to service
       }
     );
   });

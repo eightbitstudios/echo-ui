@@ -1,5 +1,5 @@
 <section class="content-container portal-user-profile">
-  <div ng-if="!$ctrl.dataSubmitted">
+  <div ng-if="$ctrl.modeShow === $ctrl.mode.PROFILE">
     <h1 class="profile-name profile-name_driver"><span data-grunticon-embed class="echo-icon icon-portal-user"></span>Portal User</h1>
     <form name="userProfile" novalidate>
       <fieldset class="fieldset">
@@ -24,25 +24,25 @@
         </div>
         <div class="form-group" ng-class="{'has-error': userProfile.phoneNumber.$invalid && userProfile.phoneNumber.$touched}">
           <label>Phone Number</label>
-          <input class="form-control" name="phoneNumber" pattern="{{$ctrl.regex.PHONE}}" placeholder="(555) 432-1234" type="tel" ng-model="$ctrl.portalUser.phone" required>
+          <input class="form-control" name="phoneNumber" phone-number-mask placeholder="(555) 432-1234" type="tel" ng-model="$ctrl.portalUser.phone" required>
           <span class="help-block" ng-if="userProfile.phoneNumber.$error.required && userProfile.phoneNumber.$touched">A phone number is required</span>
-          <span class="help-block" ng-if="userProfile.phoneNumber.$error.pattern && userProfile.phoneNumber.$touched">Invalid phone number</span>
+          <span class="help-block" ng-if="userProfile.phoneNumber.$error.invalidFormat && userProfile.phoneNumber.$touched">Invalid phone number</span>
         </div>
         <div class="form-group">
-          <div ng-if="$ctrl.showConfirmation" class="pull-left text-center">
+          <div ng-if="$ctrl.showConfirmation" class="confirmation text-center">
             <div>Are you sure you want to remove this user?</div>
-            <button class="btn btn-primary" type="submit" ng-click="$ctrl.removeUserHandler($ctrl.portalUser)">Ok</button>
-            <button class="btn btn-secondary" type="submit" ng-click="$ctrl.toggleConfirmation()">Cancel</button>
+            <button class="btn btn-secondary" ng-disabled="$ctrl.showButtonLoading" type="submit" ng-click="$ctrl.toggleConfirmation()">Cancel</button>
+            <loading-button button-class="btn-danger" button-text="Delete" click-handler="$ctrl.removeUserHandler($ctrl.portalUser)" show-loading="$ctrl.showButtonLoading"></loading-button>
           </div>
-          <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.portalUser.userId && !$ctrl.showConfirmation" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
-          <button class="btn btn-default pull-right" type="submit" ng-disabled="userProfile.$invalid" ng-click="$ctrl.saveChangesHandler($ctrl.portalUser)">Save Changes</button>
+          <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.portalUser.id && !$ctrl.showConfirmation" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
+          <loading-button ng-if="!$ctrl.showConfirmation" button-text="Save Changes" disable-button="userProfile.$invalid" click-handler="$ctrl.saveChangesHandler($ctrl.portalUser)" show-loading="$ctrl.showButtonLoading" class="pull-right"></loading-button>
           <div class="text-right help-block" ng-if="$ctrl.serverError">{{$ctrl.serverError}}</div>
         </div>
       </fieldset>
     </form>
   </div>
 
-  <div class="text-center" ng-if="$ctrl.dataSubmitted">
+  <div class="text-center" ng-if="$ctrl.modeShow === $ctrl.mode.SENT">
     <h1>Your invitation has been sent!</h1>
     <ng-transclude></ng-transclude>
   </div>

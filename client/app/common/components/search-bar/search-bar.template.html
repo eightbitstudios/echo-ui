@@ -7,7 +7,7 @@
       </span>
       <span class="search-bar-controls" ng-if="$ctrl.searchParam.length >= $ctrl.minSearchCharacters">
         <span class="search-results-count">{{($ctrl.searchList | filter:$ctrl.searchParam).length}} Search Results</span>
-      <div class="search-results-close echo-icon close-icon" ng-click="$ctrl.clearSearchHandler()"></div>
+      <div class="search-results-close echo-icon icon-close" ng-click="$ctrl.clearSearchHandler()"></div>
       </span>
     </div>
   </form>

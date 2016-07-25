@@ -1,0 +1,16 @@
+<div class="my-company-user-profile">
+  <a class="btn btn-link" ng-click="$ctrl.goBackToPortal()">
+    <div class="echo-icon icon-left-arrow" data-grunticon-embed></div>Back To Portal User List</a>
+  <div class="row">
+    <div class="col-sm-6">
+      <portal-user-profile portal-user="$ctrl.portalUser" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.userProfileUpdated()">
+        <button class="btn btn-default" ng-click="$ctrl.userProfileUpdated()">
+          Back to Portal User List
+        </button>
+      </portal-user-profile>
+    </div>
+    <div class="col-sm-6">
+      <resend-invite ng-if="$ctrl.portalUser.id"></resend-invite>
+    </div>
+  </div>
+</div>

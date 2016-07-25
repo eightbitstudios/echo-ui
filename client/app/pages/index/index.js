@@ -7,10 +7,11 @@ angular.module('echo.index', [
   'echo.index.controller',
   'echo.index.myCarriers',
   'echo.index.settings',
+  'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
-  'echo.services.carrierDetails',
   'echo.services.repDetails',
+  'echo.services.carrierDetails',
   'echo.services.user',
   'templates-app'
 ]).config(function ($urlRouterProvider, $stateProvider, routesConfig) {
@@ -23,12 +24,7 @@ angular.module('echo.index', [
       abstract: true,
       resolve: {
         user: function (userService) {
-          return userService.fetchUserById(1);
-        },
-        carrierDetails: function (carrierDetailsService, user) {
-          if (!user.isRepAdmin()) {
-            return carrierDetailsService.fetchCarrierById(user.carrierId);
-          }
+          return userService.fetchUserById();
         },
         repDetails: function (repDetailsService, user) {
           if (!user.isRepAdmin()) {
@@ -56,9 +52,13 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCarriers.route,
       template: '<my-carriers></my-carriers>'
     })
+    .state(routesConfig.INDEX.carrier.name, {
+      url: routesConfig.INDEX.carrier.route,
+      template: '<carrier></carrier>'
+    })
     .state(routesConfig.INDEX.myCompany.name, {
       url: routesConfig.INDEX.myCompany.route,
-      template: '<my-company></my-company>',
+      template: '<my-company></my-company>'
     })
     .state(routesConfig.INDEX.dashboard.name, {
       url: routesConfig.INDEX.dashboard.route,
@@ -70,32 +70,10 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyUsers.name, {
       url: routesConfig.INDEX.myCompanyUsers.route,
-      views: {
-        'myCompanyTabBar': {
-          template: '<my-company-tab-bar></my-company-tab-bar>'
-        },
-        'myCompanyBody': {
-          template: '<my-company-portal-users></my-company-portal-users>'
-        }
-      }
-    })
-    .state(routesConfig.INDEX.myCompanyUsersProfile.name, {
-      url: routesConfig.INDEX.myCompanyUsersProfile.route,
-      views: {
-        'myCompanyBody': {
-          template: '<my-company-user-profile></my-company-user-profile>'
-        }
-      }
+      template: '<my-company-portal-users></my-company-portal-users>'
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      views: {
-        'myCompanyTabBar': {
-          template: '<my-company-tab-bar></my-company-tab-bar>'
-        },
-        'myCompanyBody': {
-          template: '<my-company-drivers></my-company-drivers>'
-        }
-      }
+      template: '<my-company-drivers></my-company-drivers>'
     });
 });

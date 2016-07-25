@@ -3,13 +3,15 @@ angular.module('echo.models.user', [])
     /**
      * @description Model for a User
      * @param {Object} userData - Data to be converted to a User Model
-     * @param {string} [userData.userId] - User Id
+     * @param {string} [userData.id] - User Id
      * @param {number} [userData.carrierId] - Carrier associated to user
      * @constructor
      */
     function User(userData) {
 
       var that = this;
+
+      that.role = 'CarrierAdmin';
  
       _.assign(that, userData);
     }
@@ -20,6 +22,14 @@ angular.module('echo.models.user', [])
      */
     User.prototype.isRepAdmin = function () {
       return $location.search().isRepAdmin;
+    };
+
+    /**
+     * @description Returns user role name
+     * @return {string}
+     */
+    User.prototype.getRoleName = function () {
+      return _.startCase(this.oneLoginRoleName);
     };
 
     /**

@@ -2,19 +2,24 @@
 
 angular.module('echo.services.carrier', [
   'echo.config.api',
-  'echo.models.carrier'
-]).factory('carrierService', function ($http, apiConfig, CarrierModel) {
+  'echo.models.carrier',
+  'echo.models.user'
+]).factory('carrierService', function ($http, apiConfig, CarrierModel, UserModel) {
   return {
     /**
      * @description Retrieves a list of carriers
+     * @param {number} repId - Rep Id
      * @returns {Promise} - Promise containing an array of CarrierModel's
      */
-    fetchCarriers: function () {
+    fetchCarriers: function (repId) {
 
       var url = apiConfig.carriers;
+      var params = {
+        'RepId': repId
+      };
 
-      return $http.get(url).then(function (resp) {
-        return _.map(resp.data.data, function(carrier) {
+      return $http.get(url, { params: params }).then(function (resp) {
+        return _.map(resp.data.data, function (carrier) {
           return new CarrierModel(carrier);
         });
       });
@@ -34,25 +39,27 @@ angular.module('echo.services.carrier', [
       });
     },
 
-   /**
-    * @description Retrieves portal users for a carrier
-    * @param {number} carrierId - Id for carrier
-    * @returns {Promise} - Promise containing portal users
-    */
+    /**
+     * @description Retrieves portal users for a carrier
+     * @param {number} carrierId - Id for carrier
+     * @returns {Promise} - Promise containing portal users
+     */
     fetchCarrierPortalUsers: function (carrierId) {
 
       var url = apiConfig.portalUsers({ carrierId: carrierId });
 
       return $http.get(url).then(function (resp) {
-        return resp.data.data;
+        return _(resp.data.data).map(function(user) {
+          return new UserModel(user);
+        }).value();
       });
     },
 
-   /**
-    * @description Retrieves driver counts for a carrier
-    * @param {number} carrierId - Id for carrier
-    * @returns {Promise} - Promise containing driver counts
-    */
+    /**
+     * @description Retrieves driver counts for a carrier
+     * @param {number} carrierId - Id for carrier
+     * @returns {Promise} - Promise containing driver counts
+     */
     fetchCarrierDriverCount: function (carrierId) {
 
       var url = apiConfig.driverCount({ carrierId: carrierId });

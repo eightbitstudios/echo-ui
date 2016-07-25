@@ -4,7 +4,7 @@ angular.module('echo.services.user', [
   'echo.config.api',
   'echo.models.user'
 ])
-  .factory('userService', function ($http, apiConfig, UserModel) {
+  .factory('userService', function ($http, $q, UserModel) {
     var user = {};
 
     return {
@@ -20,13 +20,9 @@ angular.module('echo.services.user', [
        * @param {number} userId - Id for user
        * @returns {Promise} - Promise containing a UserModel
        */
-      fetchUserById: function (userId) {
-        var url = apiConfig.userById({ userId: userId });
-
-        return $http.get(url).then(function (resp) {
-          user = new UserModel(resp.data.data);
-          return user;
-        });
+      fetchUserById: function () {
+        user = new UserModel({id: 1, repId: 45, carrierId: 1}); //TODO: replace with service call once we can get a user profile
+        return $q.when(user);
       }
     };
   });

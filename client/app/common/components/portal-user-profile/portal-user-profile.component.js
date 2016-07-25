@@ -2,45 +2,67 @@
 
 angular.module('echo.components.portalUserProfile', [
   'echo.config.routes',
-  'echo.services.portalUser',
-  'echo.config.appConstants'
+  'echo.models.user',
+  'echo.directives.phoneNumberMask',
+  'echo.components.loadingButton'
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
-    carrierId: '<',
-    removedUserHandler: '&'
+    userUpdatedHandler: '&',
+    showLoading: '='
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
-  controller: function ($state, routesConfig, portalUserService, appConstants) {
+  controller: function ($state, routesConfig, portalUserService) {
     var that = this;
 
-    that.dataSubmitted = false;
-    that.showConfirmation = false;
+    that.mode = {
+      PROFILE: 0,
+      SENT: 1
+    };
 
-    that.regex = appConstants.REGEX;
+    that.modeShow = that.mode.PROFILE;
+
+    that.showConfirmation = false;
+    that.showButtonLoading = false;
 
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
-      portalUserService.upsertPortalUser(that.carrierId, portalUser).then(function () {
-        that.dataSubmitted = true;
-      }).catch(function(message){
+      that.showButtonLoading = true;
+      portalUserService.upsertPortalUser(portalUser).then(function () {
+        that.modeShow = that.mode.SENT;
+        if (!that.isNewProfile) {
+          that.userUpdatedHandler();
+        }
+      }).catch(function (message) {
         that.serverError = message;
+      }).finally(function(){
+        that.showButtonLoading = false;
       });
     };
 
     that.removeUserHandler = function (portalUser) {
-      portalUser.active = false;
-      portalUserService.updatePortalUserById(that.carrierId, portalUser).then(function () {
-        that.removedUserHandler();
-      }).catch(function(message){
+      that.showButtonLoading = true;
+      portalUserService.deactivatePortalUserById(portalUser).then(function () {
+        that.userUpdatedHandler();
+      }).catch(function (message) {
         that.serverError = message;
+      }).finally(function(){
+        that.showButtonLoading = false;
       });
     };
 
-    that.toggleConfirmation = function() {
+    that.toggleConfirmation = function () {
       that.serverError = null;
       that.showConfirmation = !that.showConfirmation;
     };
+
+    that.checkIfNewProfile = function (changeObject) {
+      if (changeObject.portalUser && changeObject.portalUser.currentValue) {
+        that.isNewProfile = _.isUndefined(that.portalUser.id);
+      }
+    };
+
+    that.$onChanges = that.checkIfNewProfile;
   }
 });

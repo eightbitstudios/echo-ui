@@ -16,7 +16,7 @@
             <a href="mailto:{{::$ctrl.repDetails.email}}">{{::$ctrl.repDetails.email}}</a>
           </li>
           <li>
-            {{::$ctrl.repDetails.getPhoneNumber()}}
+            {{::$ctrl.repDetails.getPhoneNumber() | phoneNumber}}
           </li>
         </ul>
       </div>
