@@ -1,4 +1,4 @@
-angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile', [
+angular.module('echo.index.carrier.myCompany.userProfile', [
   'echo.services.portalUser',
   'echo.components.portalUsers',
   'echo.components.tabBar',
@@ -7,7 +7,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile', [
   'echo.config.routes'
 ])
   .component('myCompanyUserProfile', {
-    templateUrl: 'app/pages/index/my-carriers/components/carrier-admin/components/my-company/components/my-company-user-profile/my-company-user-profile.template.html',
+    templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-user-profile/my-company-user-profile.template.html',
     bindings: {
       portalUser: '<',
       goBackHandler: '&',

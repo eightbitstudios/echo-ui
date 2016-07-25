@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('echo.index.myCarriers.carrierAdmin.carrierAdminNav', [
+angular.module('echo.index.carrier.carrierAdminNav', [
   'echo.config.routes'
 ]).component('carrierAdminNav', {
   bindings: {
     carrierDetails: '='
   },
-  templateUrl: 'app/pages/index/my-carriers/components/carrier-admin/components/carrier-admin-nav/carrier-admin-nav.template.html',
+  templateUrl: 'app/pages/index/carrier/components/carrier-admin-nav/carrier-admin-nav.template.html',
   controller: function ($state, routesConfig) {
     this.routesConfig = routesConfig;
     if($state.current.name === routesConfig.INDEX.myCarriers.name){
