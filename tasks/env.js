@@ -8,7 +8,9 @@ module.exports = function(grunt) {
       PROXY_TYPE: proxyTypes.mocks,
       IS_MINIFIED: false
     },
-
+    demo: {
+      NODE_ENV: 'demo'
+    },
     dev_mixed: {
       NODE_ENV: 'dev',
       PROXY_TYPE: proxyTypes.mixed,

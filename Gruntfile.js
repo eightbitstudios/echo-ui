@@ -97,6 +97,16 @@ module.exports = function (grunt) {
     ]);
   });
 
+   grunt.registerTask('demo', function(target) {
+    grunt.task.run([
+      'dist',
+      'copy:deploy',
+      'install',
+      'env:demo',
+      'express:dist'
+    ]);
+  });
+
   /**
    * Task for running frontend unit test
    */
