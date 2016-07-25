@@ -1,54 +1,20 @@
 .typeahead-search {
   margin-bottom: 30px;
   .search-form {
-    margin-right: 25px;
-    width: 250px;
-    // display: flex
-    +tablet {
-      width: 350px;
-    }
-    .form-group {
+    display: inline-block;
+  }
+  .loading {
       position: relative;
-    }
-    .form-control.search-form-input {
-      height: auto;
-      width: 100%;
-      padding: 10px 14px;
-      border: none;
-      border-radius: 2px;
-      background-color: @c-gray-lightest;
-      transition: background 0.2s ease-in;
-      &:hover, &:focus {
-        background-color: @c-gray-light;
+      z-index: 0;
+      height: 25px;
+      width: 25px;
+      display: inline-block;
+      .loading-text {
+        height: 25px;
+        width: 25px;
+        position: relative;
+        left: 0;
+        top: 25%;
       }
     }
-    .btn.btn-icon {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-  }
-  .search-form_searching {
-    .search-results_count {
-      position: absolute;
-      top: 10px;
-      right: 35px;
-      color: @c-gray-mid-light;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .search-results_close {
-      cursor: pointer;
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      color: @c-gray-mid-light;
-      line-height: 1.6;
-    }
-    .search-loader {
-      position: absolute;
-      left: -30px;
-      top: 10px;
-    }
-  }
 }

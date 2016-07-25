@@ -1,16 +1,14 @@
-<div class="typeahead-search container">
-  <form class="search-form pull-left" role="search">
+<div class="typeahead-search search-bar">
+  <form class="search-form" role="search">
     <div class="form-group">
-      <input class="form-control search-form-input"
-        ng-model="$ctrl.selection"
-        placeholder="Find a Driver"
-        uib-typeahead="result as result.name for result in $ctrl.searchService({val: $ctrl.selection})"
-        typeahead-min-length="$ctrl.typeaheadMinLength"
-        typeahead-wait-ms="$ctrl.debounce"
-        typeahead-on-select="$ctrl.onSelect()"
-        typeahead-template-url="app/common/components/typeahead-search/templates/driver-results.template.html"
-        typeahead-open-on-focus>
-      <img src="assets/images/icon-search@2x.png" width="16px" height="16px" alt="Icon search@2x">
+      <input class="form-control search-form-input" ng-model="$ctrl.selection" placeholder="Find a Driver" uib-typeahead="result as result.name for result in $ctrl.searchServiceHandler($ctrl.selection)" typeahead-min-length="$ctrl.typeaheadMinLength" typeahead-wait-ms="$ctrl.debounce"
+        typeahead-on-select="$ctrl.onSelect()" typeahead-loading="$ctrl.showLoadingButton" typeahead-template-url="app/common/components/typeahead-search/templates/driver-results.template.html" typeahead-is-open="$ctrl.isTypeaheadOpen" typeahead-focus-on-select="true">
+      <span class="search-bar-controls">
+        <img src="assets/images/icon-search@2x.png" ng-if="$ctrl.selection.length === 0" width="16px" height="16px" alt="Icon search@2x">
+        <span class="search-results-count" ng-if="$ctrl.isTypeaheadOpen">{{$ctrl.numberOfSearchResults}} Search Results</span>
+        <div ng-if="$ctrl.selection.length > 0" class="search-results-close echo-icon icon-close" ng-click="$ctrl.clearSearchHandler()"></div>
+      </span>
     </div>
   </form>
+  <loading show-loading="$ctrl.showLoadingButton"></loading>
 </div>

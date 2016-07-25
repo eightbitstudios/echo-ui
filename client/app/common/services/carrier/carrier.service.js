@@ -85,9 +85,14 @@ angular.module('echo.services.carrier', [
       };
 
       return $http.get(url, {params}).then(function (resp) {
-        return _.map(resp.data.data, function(driver){
+        var drivers = _.map(resp.data.data, function(driver){
           return new DriverModel(driver);
         });
+
+        return {
+          data: drivers,
+          pagination: resp.data.pagination
+        };
       });
     },
 

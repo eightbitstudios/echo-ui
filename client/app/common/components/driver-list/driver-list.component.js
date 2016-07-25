@@ -10,17 +10,12 @@ angular.module('echo.components.driverList', [
   controller: function (carrierService) {
     var that = this;
     that.drivers = null;
-    that.numberOfPages = 0;
+    that.pagination = null;
     that.showLoading = false;
+    that.firstRecord = 0;
 
     function init() {
-      //that.showLoading = true;
-      carrierService.fetchDrivers(1).then(function (drivers) {
-       that.drivers = drivers;
-        that.numberOfPages = 7;
-      }).finally(function () {
-        that.showLoading = true;
-      });
+      that.getDriversForPage(1);
     }
 
     that.searchDrivers = function(val){
@@ -35,9 +30,15 @@ angular.module('echo.components.driverList', [
     };
 
     that.getDriversForPage = function (page) {
-      //that.showLoading = true;
+      that.showLoading = true;
       carrierService.fetchDrivers(1, page).then(function (drivers) {
-        that.drivers = drivers;
+        that.pagination = drivers.pagination;
+        if(page === 1){
+          that.firstRecordNumber = 1;
+        } else{
+          that.firstRecordNumber = (that.pagination.currentPage - 1) * that.pagination.recordsPerPage + 1;
+        }
+        that.drivers = drivers.data;
       }).finally(function () {
         that.showLoading = false;
       });
