@@ -1,5 +1,5 @@
-angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
-  'echo.index.myCarriers.repAdmin.driverList',
+angular.module('echo.index.myCarriers.carrierDetails', [
+  'echo.index.myCarriers.driverList',
   'echo.config.routes',
   'echo.services.carrier',
   'echo.components.portalUsers',
@@ -9,7 +9,7 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
   'echo.models.user'
 ])
   .component('carrierDetails', {
-    templateUrl: 'app/pages/index/my-carriers/components/rep-admin/components/carrier-details/carrier-details.template.html',
+    templateUrl: 'app/pages/index/my-carriers/components/carrier-details/carrier-details.template.html',
     bindings: {},
     controller: function ($stateParams, $q, carrierService, routesConfig, UserModel) {
       var that = this;
@@ -21,8 +21,8 @@ angular.module('echo.index.myCarriers.repAdmin.carrierDetails', [
 
       that.showLoading = false;
 
-      that.userRoute = routesConfig.INDEX.carrierDetailsPortalUser;
       that.carrierId = $stateParams.carrierId;
+      that.usersRoute = routesConfig.INDEX.myCompanyUsers;
 
       that.getCarrier = function (carrierId) {
         that.showLoading = true;

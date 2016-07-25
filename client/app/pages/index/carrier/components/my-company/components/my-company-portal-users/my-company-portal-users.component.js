@@ -1,4 +1,4 @@
-angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
+angular.module('echo.index.carrier.myCompany.portalUsers', [
   'echo.services.carrier',
   'echo.services.carrierDetails',
   'echo.config.routes',
@@ -6,12 +6,12 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
   'echo.components.portalUserProfile',
   'echo.components.loading',
   'echo.models.user',
-  'echo.index.myCarriers.carrierAdmin.myCompany.userProfile'
+  'echo.index.carrier.myCompany.userProfile'
 ])
   .component('myCompanyPortalUsers', {
-    templateUrl: 'app/pages/index/my-carriers/components/carrier-admin/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html',
+    templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html',
     bindings: {},
-    controller: function ($state, carrierService, carrierDetailsService, UserModel) {
+    controller: function ($stateParams, $state, carrierService, carrierDetailsService, UserModel) {
       var that = this;
 
       that.mode = {
@@ -22,10 +22,10 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
       that.showMode = that.mode.USERS_PORTAL;
       that.showLoading = true;
 
-      that.carrier = carrierDetailsService.getCarrierDetails();
+      that.carrierId = $stateParams.carrierId;
 
       that.getCarrierPortalUsers = function () {
-        carrierService.fetchCarrierPortalUsers(that.carrier.carrierId).then(function (portalUsers) {
+        carrierService.fetchCarrierPortalUsers(that.carrierId).then(function (portalUsers) {
           that.portalUsers = portalUsers;
           that.showLoading = false;
         });
@@ -33,7 +33,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.portalUsers', [
 
       that.userTileClickHandler = function (user) {
         that.showMode = that.mode.USER_PROFILE;
-        that.portalUser = user || new UserModel({ carrierId: that.carrier.carrierId });
+        that.portalUser = user || new UserModel({ carrierId: that.carrierId });
       };
 
       that.showUsersPortal = function () {

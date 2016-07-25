@@ -1,12 +1,12 @@
-angular.module('echo.index.myCarriers.carrierAdmin.myCompany', [
+angular.module('echo.index.carrier.myCompany', [
   'echo.config.routes',
   'echo.components.tabBar',
-  'echo.index.myCarriers.carrierAdmin.myCompany.portalUsers',
-  'echo.index.myCarriers.carrierAdmin.myCompany.drivers',
-  'echo.index.myCarriers.carrierAdmin.myCompany.userProfile'
+  'echo.index.carrier.myCompany.portalUsers',
+  'echo.index.carrier.myCompany.drivers',
+  'echo.index.carrier.myCompany.userProfile'
 ])
   .component('myCompany', {
-    templateUrl: 'app/pages/index/my-carriers/components/carrier-admin/components/my-company/my-company.template.html',
+    templateUrl: 'app/pages/index/carrier/components/my-company/my-company.template.html',
     bindings: {},
     controller: function ($state, routesConfig) {
       var that = this;

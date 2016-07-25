@@ -1,4 +1,4 @@
-angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
+angular.module('echo.index.myCarriers.allCarriers', [
   'echo.services.carrier',
   'echo.config.routes',
   'echo.services.user',
@@ -8,7 +8,7 @@ angular.module('echo.index.myCarriers.repAdmin.allCarriers', [
   'echo.config.appConstants'
 ])
   .component('allCarriers', {
-    templateUrl: 'app/pages/index/my-carriers/components/rep-admin/components/all-carriers/all-carriers.template.html',
+    templateUrl: 'app/pages/index/my-carriers/components/all-carriers/all-carriers.template.html',
     bindings: {},
     controller: function ($stateParams, routesConfig, carrierService, appConstants, userService) {
       var that = this;
