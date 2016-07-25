@@ -1,61 +1,69 @@
 module.exports = function (grunt) {
 
+  // API endpoints by env
+  var apiConfigLocal = require('./config/api-config-local.js')(grunt);
+  var apiConfigDev = require('./config/api-config-dev.js')(grunt);
+  var apiConfigDemo = require('./config/api-config-demo.js')(grunt);
+
   var userConfig = require('./build.config.js')(grunt);
-  var envAppSelectorUi = require('./server/env-selector/env-selector');
   grunt.initConfig(userConfig);
   grunt.loadTasks('tasks');
 
-  var env = grunt.config('env');
-  /**
-   * Serves the application based on the configuration derived from envDescriptorName.
-   *
-   * @param {string} envDescriptorName The environment descriptor describing the configuration from which to serve.
-   */
-  function serve(envDescriptorName) {
-    console.log('RUNNING SERVE WITH: ' + envDescriptorName);
+  grunt.registerTask('serve', function (target) {
+    if (target === 'dist') {
+      grunt.log.write("LOADING CONFIGS FOR DIST");
+      grunt.task.run([
+        'dist',
+        'copy:deploy',
+        'install',
+        'env:heroku',
+        'express:dist',
+        'keepalive'
+      ]);
+    } else if (target === 'demo') {
+      grunt.log.write("LOADING CONFIGS FOR DEMO");
+      grunt.config.merge(apiConfigDemo);
 
-    grunt.task.run([
-      'env:' + envDescriptorName,
-      '_configAndServe'
-    ]);
-  }
+      grunt.task.run([
+        'build',
+        'env:local',
+        'express:dev',
+        'watch'
+      ]);
+    } else if (target === 'dev') {
+      grunt.log.write("LOADING CONFIGS FOR DEV");
+      grunt.config.merge(apiConfigDev);
 
-  /**
-   * Creates a list of grunt task to run based on minify setting
-   */
-  grunt.registerTask('_configAndServe', function () {
-    var envConfig = require('./server/config/');
-    var tasks = [];
+      grunt.task.run([
+        'build',
+        'env:local',
+        'express:dev',
+        'watch'
+      ]);
+    } else {
+      grunt.log.write("LOADING CONFIGS FOR LOCAL");
+      grunt.config.merge(apiConfigLocal);
 
-    if (envConfig.buildSettings.minifyFiles) {
-      grunt.config('express.dist.options.port', envConfig.server.httpPort);
-      tasks.push('dist', 'copy:deploy', 'install', 'express:dist', 'keepalive');
+      grunt.task.run([
+        'build',
+        'env:local',
+        'express:dev',
+        'watch'
+      ]);
     }
-    else {
-      grunt.config('express.dev.options.port', envConfig.server.httpPort);
-      tasks.push('build', 'express:dev', 'watch');
-    }
-
-    grunt.task.run(tasks);
   });
 
-  /**
-   * Serves application
-   */
-  grunt.registerTask('serve', function (envDescriptorName) {
-
-    if (envDescriptorName) {
-        serve(envDescriptorName);
-    } else {
-      envAppSelectorUi.menu(env, function (selectedDescriptorName) {
-        if (selectedDescriptorName) {
-          serve(selectedDescriptorName);
-        }
-        else {
-          console.log('\nNo environment configuration selected.');
-        }
-      }, this.async());
-    }
+  grunt.registerTask('demo', function (target) {
+    grunt.config.merge(apiConfigDemo);
+    grunt.task.run([
+      'dist',
+      'copy:deploy',
+      'install',
+      'grunticon',
+      'env:demo',
+      'express:dist',
+        'keepalive'
+    ]);
   });
 
   grunt.registerTask('default', function (target) {
@@ -66,14 +74,15 @@ module.exports = function (grunt) {
   grunt.registerTask('build', function () {
     grunt.task.run([
       'clean:build',
-      'grunticon',
       'jshint',
       'less',
+      'grunticon',
       'copy:htmlPartials',
       'html2js',
       'copy:build',
       'gitinfo',
       'copy:version',
+      'copy:endpoints',
       'injector',
       'karma:unit'
     ]);
@@ -97,19 +106,6 @@ module.exports = function (grunt) {
     ]);
   });
 
-   grunt.registerTask('demo', function(target) {
-    grunt.task.run([
-      'dist',
-      'copy:deploy',
-      'install',
-      'env:demo',
-      'express:dist'
-    ]);
-  });
-
-  /**
-   * Task for running frontend unit test
-   */
   grunt.registerTask('test', function () {
     grunt.task.run([
       'build',
@@ -137,9 +133,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  /**
-   * Installs npm dependencies
-   */
+
   grunt.registerTask('install', 'install server dependencies', function () {
     var exec = require('child_process').exec;
     var async = this.async();
@@ -149,4 +143,7 @@ module.exports = function (grunt) {
       async();
     });
   });
+
+
+
 };
