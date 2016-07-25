@@ -61,8 +61,7 @@ module.exports = function (grunt) {
       'install',
       'grunticon',
       'env:demo',
-      'express:dist',
-        'keepalive'
+      'express:dist'
     ]);
   });
 
