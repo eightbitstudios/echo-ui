@@ -9,7 +9,9 @@ module.exports = function(grunt) {
       IS_MINIFIED: false
     },
     demo: {
-      NODE_ENV: 'demo'
+      NODE_ENV: 'demo',
+      PROXY_TYPE: proxyTypes.live,
+      IS_MINIFIED: true
     },
     dev_mixed: {
       NODE_ENV: 'dev',
