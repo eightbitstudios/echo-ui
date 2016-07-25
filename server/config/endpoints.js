@@ -1,13 +1,13 @@
 
 module.exports = {
   api: {
-    carriers: '/api/v1/carriers',
-    carrierById: '/api/v1/carriers/:carrierId',
-    repByCarrierId: '/api/v1/carriers/:carrierId/echorep',
-    portalUsers: '/api/v1/carriers/:carrierId/portalusers',
-    driverCount: '/api/v1/carriers/:carrierId/drivers/count',
-    users: '/api/v1/users',
-    userById: '/api/v1/users/:userId',
-    deactivateUserById: '/api/v1/users/:userId/deactivate'
+    carriers: '/mock/api/v1/carriers',
+    carrierById: '/mock/api/v1/carriers/:carrierId',
+    repByCarrierId: '/mock/api/v1/carriers/:carrierId/echorep',
+    portalUsers: '/mock/api/v1/carriers/:carrierId/portalusers',
+    driverCount: '/mock/api/v1/carriers/:carrierId/drivers/count',
+    users: '/mock/api/v1/users',
+    userById: '/mock/api/v1/users/:userId',
+    deactivateUserById: '/mock/api/v1/users/:userId/deactivate'
   }
 };
