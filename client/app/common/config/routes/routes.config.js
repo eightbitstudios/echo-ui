@@ -45,7 +45,7 @@ angular.module('echo.config.routes', [])
     LOGIN: {
       base: {
         name: 'login',
-        route: '/'
+        route: '/login.html'
       },
       start: {
         name: 'login.start',
