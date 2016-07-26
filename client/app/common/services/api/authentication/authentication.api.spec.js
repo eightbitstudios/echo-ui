@@ -43,13 +43,13 @@ describe('Api: authenticationApi', function () {
 
       authenticationApi.createPassword(userId, token, passwordChange).then(function () {
         expect($http.post).toHaveBeenCalledWith(apiConfig.createPassword({ userId: userId }), {
-          newPassword: passwordChange.newPassword,
+          password: passwordChange.newPassword,
           confirmPassword: passwordChange.confirmPassword,
           invitationToken: token
         });
         done();
       });
-
+ 
       $scope.$digest();
     });
   });

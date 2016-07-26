@@ -15,7 +15,7 @@ angular.module('echo.api.authentication', [
       var url = apiConfig.createPassword({userId: userId});
       
       var data = {
-        newPassword: passwordChange.newPassword,
+        password: passwordChange.newPassword,
         confirmPassword: passwordChange.confirmPassword,
         invitationToken: token
       };
