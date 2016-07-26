@@ -35,7 +35,10 @@
     width: 285px
 
     table.table-condensed
-      margin-bottom: 65px
+      margin-bottom: 15px
+
+    .calendar-table
+      margin-bottom: 100px
 
     th.month
       font-size: 18px
@@ -45,6 +48,32 @@
       &:hover
         color: #FFF
         background-color: $gray-mid-light
+
+    .checkboxes
+      width: 245px
+      position: absolute
+      left: 20px
+      bottom: 70px
+
+      .checkbox
+        display: inline-block
+        padding-left: 0
+
+      .control input:checked ~ .control-indicator
+        background-color: $gray-light
+
+      .checkbox input:checked ~ .control-indicator
+        background-image: image_url('checkbox-check.svg')
+
+      .control-indicator
+        top: 0
+        margin-right: 5px
+
+      label
+        font-size: 14px
+        text-transform: none
+        margin-right: 16px
+        padding-left: 25px
 
     .ranges
       position: absolute

@@ -557,6 +557,16 @@
             this.updateMonthsInView();
             this.updateCalendars();
             this.updateFormInputs();
+            if (this.singleDatePicker) {
+                this.updateSdpHeader();
+            }
+        },
+
+        // Modify single date picker to use custom text format called out by design
+        updateSdpHeader: function() {
+            var date = $('input[name=daterangepicker_start]').val()
+            var formatedDate = moment(date, 'MM/DD/YYYY').format('ddd, MMM DD');
+            $('.calendar-table').find('.month').text(formatedDate);
         },
 
         updateMonthsInView: function() {
@@ -754,7 +764,14 @@
                 dateHtml = monthHtml + yearHtml;
             }
 
-            html += '<th colspan="6" class="month">' + dateHtml + '</th>';
+            // Modify for single date picker to align correctly with design.
+            var monthColspan = "6"
+
+            if (this.singleDatePicker) {
+                monthColspan = "5"
+            }
+
+            html += '<th colspan=' + monthColspan + ' class="month">' + dateHtml + '</th>';
             if ((!maxDate || maxDate.isAfter(calendar.lastDay)) && (!this.linkedCalendars || side == 'right' || this.singleDatePicker)) {
                 html += '<th class="next available"><i class="fa fa-' + arrow.right + ' glyphicon glyphicon-' + arrow.right + '"></i></th>';
             } else {
@@ -1363,8 +1380,9 @@
 
             if (this.singleDatePicker) {
                 this.setEndDate(this.startDate);
-                if (!this.timePicker)
-                    this.clickApply();
+                // Commented out so we can force the user to use the apply button
+                // if (!this.timePicker)
+                //     this.clickApply();
             }
 
             this.updateView();

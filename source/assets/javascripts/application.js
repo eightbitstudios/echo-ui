@@ -56,6 +56,13 @@ $(window).load(function(){
 	  	}
 	  });
 
+	  function resetFilterBtns() {
+	  	$('.filter-bar').find('.close').remove()
+	  	$('.filter__assigned').removeClass('filter__assigned');
+	  }
+
+	  // Single Date Picker JS
+
 	  var $sdpTrigger = $('.btn-single-dp')
 
 	  if ($sdpTrigger.hasClass('filter__assigned')) {
@@ -67,6 +74,7 @@ $(window).load(function(){
 			buttonClasses: "btn",
 			applyClass: "btn-default",
 			cancelClass: "btn-link btn-alt",
+			autoApply: false,
 			locale: {
 				format: "MM/DD/YYYY",
 				cancelLabel: "Clear",
@@ -82,6 +90,65 @@ $(window).load(function(){
 			  ]
 			}
 		});
+
+		function resetSdpTrigger() {
+			$sdpTrigger.html('APPT. Date').removeClass('filter__assigned');
+			$sdpTrigger.removeClass('active');
+		}
+
+		$sdpTrigger.on('show.daterangepicker', function(ev, picker) {
+			$sdpTrigger.addClass('active');
+			var $sdpContainer = $(picker.container)
+			$sdpContainer.addClass('single-datepicker');
+			$('label[for=daterangepicker_start]').remove();
+			if ($sdpTrigger.find('input[type=checkbox]').length === 0) {
+				$('.single-datepicker').append(
+					'<div class="checkboxes">' +
+						'<div class="checkbox control">' +
+							'<label class="checkbox-inline">' +
+							  '<input type="checkbox" id="pickups" name="pickups" value="pickups">' +
+							  '<span class="control-indicator"/>' +
+							  'Pickups' +
+							'</label>' +
+						'</div>' +
+						'<div class="checkbox control">' +
+							'<label class="checkbox-inline">' +
+							  '<input type="checkbox" id="deliveries" name="deliveries" value="deliveries">' +
+							  '<span class="control-indicator"/>' +
+							  'Deliveries' +
+							'</label>' +
+						'</div>' +
+					'</div>'
+				);
+			}
+		});
+
+		$sdpTrigger.on('apply.daterangepicker', function(ev, picker) {
+			var filterStartDate = picker.startDate,
+					availString = 'Appt Date: ' + filterStartDate.format('MM/DD/YY')
+
+			$sdpTrigger.html(availString).addClass('filter__assigned').append('<span class="close">X</span>');
+			$sdpTrigger.removeClass('active');
+
+			$sdpTrigger.find('.close').on('click', function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				resetSdpTrigger();
+			})
+		});
+
+		$sdpTrigger.on('cancel.daterangepicker', function(ev, picker) {
+			$('input[name=daterangepicker_start], input[name=daterangepicker_end]').val('');
+			resetSdpTrigger();
+		});
+
+		$sdpTrigger.on('blur.daterangepicker', function(ev, picker) {
+			$sdpTrigger.removeClass('active');
+		});
+
+
+
+		// Date Range Picker JS
 
 		var $drpTrigger = $(".btn-date-picker")
 
@@ -112,42 +179,9 @@ $(window).load(function(){
 			}
 		});
 
-		function resetFilterBtns() {
-			$('.filter-bar').find('.close').remove()
-			$('.filter__assigned').removeClass('filter__assigned');
-		}
-
-		function resetSdpTrigger() {
-			$sdpTrigger.html('APPT. Date').removeClass('filter__assigned')
-		}
-
 		function resetdrpTrigger(){
 			$drpTrigger.html('Filter Unassigned Drivers').removeClass('filter__assigned')
 		}
-
-		$sdpTrigger.on('show.daterangepicker', function(ev, picker) {
-			var $sdpContainer = $(picker.container)
-			$sdpContainer.addClass('single-datepicker');
-			$('.single-datepicker th[colspan=6]').prop('colspan', 5);
-			$('label[for=daterangepicker_start]').remove();
-		});
-
-		$sdpTrigger.on('apply.daterangepicker', function(ev, picker) {
-			var filterStartDate = picker.startDate,
-					availString = 'Appt Date: ' + filterStartDate.format('MM/DD/YY')
-
-			$sdpTrigger.html(availString).addClass('filter__assigned').append('<span class="close">X</span>')
-			$drpTrigger.find('.close').on('click', function(e){
-				e.preventDefault();
-				e.stopPropagation();
-				resetdrpTrigger();
-			})
-		});
-
-		$sdpTrigger.on('cancel.daterangepicker', function(ev, picker) {
-			$('input[name=daterangepicker_start], input[name=daterangepicker_end]').val('');
-			resetSdpTrigger();
-		});
 
 		$drpTrigger.on('show.daterangepicker', function(ev, picker) {
 			var $drpContainer = $(picker.container)
