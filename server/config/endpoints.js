@@ -9,6 +9,7 @@ module.exports = {
     driverCount: '/mock/api/v1/carriers/:carrierId/drivers/count',
     users: '/mock/api/v1/users',
     userById: '/mock/api/v1/users/:userId',
+    signIn: '/mock/api/v1/signIn',
     deactivateUserById: '/mock/api/v1/users/:userId/deactivate',
     drivers: '/mock/api/v1/carriers/:carrierId/drivers'
   }
