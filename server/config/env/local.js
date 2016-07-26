@@ -3,7 +3,7 @@ module.exports = {
     httpPort: 9000,
     httpsPort: 9443,
     appPort: 9080,
-    staticFolders: ['./public']
+    staticFolders: ['build/public']
   },
   // https://www.npmjs.com/package/http-proxy
   // One example proxy is shown. Uncomment and modify if you'd like to
@@ -25,5 +25,5 @@ module.exports = {
       }
     }
   ],
-  name: 'dev'
+  name: 'local'
 };

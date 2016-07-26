@@ -1,7 +1,8 @@
 angular.module('echo.index.myCarriers', [
-  'echo.index.myCarriers.carrierAdmin',
-  'echo.index.myCarriers.repAdmin',
   'echo.services.carrierDetails',
+  'echo.index.myCarriers.allCarriers',
+  'echo.index.myCarriers.carrierDetails',
+  'echo.index.myCarriers.driverList',
   'echo.services.repDetails',
   'echo.services.user'
 ]).component('myCarriers', {
