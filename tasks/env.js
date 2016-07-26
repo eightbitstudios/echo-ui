@@ -1,28 +1,22 @@
 module.exports = function(grunt) {
 
-  var proxyTypes = require('../server/config/proxy-types');
-
-  var envConfigs = {
-    dev_mocks: {
-      NODE_ENV: 'dev',
-      PROXY_TYPE: proxyTypes.mocks,
-      IS_MINIFIED: false
+  grunt.config('env', {
+    local: {
+      NODE_ENV: 'local'
     },
-
-    dev_mixed: {
-      NODE_ENV: 'dev',
-      PROXY_TYPE: proxyTypes.mixed,
-      IS_MINIFIED: false
+    demo: {
+      NODE_ENV: 'demo'
     },
-    
-    dev_mixed_min: {
-      NODE_ENV: 'dev',
-      PROXY_TYPE: proxyTypes.mixed,
-      IS_MINIFIED: true
+    dev: {
+      NODE_ENV: 'dev'
+    },
+    heroku: {
+      NODE_ENV: 'heroku'
+    },
+    production: {
+      NODE_ENV: 'production'
     }
-  };
-
-  grunt.config('env', envConfigs);
+  });
 
   grunt.loadNpmTasks('grunt-env');
 };
