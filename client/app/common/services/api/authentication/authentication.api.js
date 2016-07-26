@@ -16,14 +16,11 @@ angular.module('echo.api.authentication', [
       
       var data = {
         newPassword: passwordChange.newPassword,
-        confirmPassword: passwordChange.confirmPassword
-      };
-
-      var params = {
+        confirmPassword: passwordChange.confirmPassword,
         invitationToken: token
       };
 
-      return $http.post(url, {data: data, params: params}).then(function (resp) {
+      return $http.post(url, data).then(function (resp) {
         return resp;
       }).catch(function(){
         return $q.reject();

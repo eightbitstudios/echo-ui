@@ -1,4 +1,5 @@
-module.exports = function(grunt, options) {
+var _ = require('lodash');
+module.exports = function (grunt, options) {
 
   grunt.config('copy', {
     //htmlPartials is only here because jade normally puts our partials in the correct directory
@@ -18,7 +19,7 @@ module.exports = function(grunt, options) {
 
     version: {
       options: {
-        process: function(content, srcPath) {
+        process: function (content, srcPath) {
           console.log('Processing %s', srcPath);
           return grunt.template.process(content);
         }
@@ -32,6 +33,26 @@ module.exports = function(grunt, options) {
       }]
     },
 
+    endpoints: {
+      files: [{
+        cwd: 'client/app/common/config/api',
+        src: 'api.config.js',
+        dest: '<%= build_dir %>/public/app/common/config/api/',
+        expand: true,
+        process: true
+      }],
+
+      options: {
+        process: function (content) {
+          _.forEach(_.words(content, /@[\w]+@/g), function (word) {
+            content = content.replace(word, grunt.config.get([_.replace(word, /@/g, '')]));
+          });
+
+          return content;
+        }
+      }
+    },
+
     build: {
       files: [{
         src: '<%= app_files.html %>',
@@ -40,43 +61,43 @@ module.exports = function(grunt, options) {
         flatten: true,
         expand: true
       }, {
-        cwd: 'client',
-        src: ['app/**/*.js', '!app/**/*.spec.js'],
-        dest: '<%= build_dir %>/public/',
-        expand: true
-      }, {
-        cwd: 'client',
-        src: '<%= vendor_files.js %>',
-        dest: '<%= build_dir %>/public/',
-        expand: true
-      }, {
-        cwd: 'client',
-        src: '<%= vendor_files.css %>',
-        dest: '<%= build_dir %>/public/',
-        expand: true
-      }, {
-        cwd: 'client',
-        src: '<%= vendor_files.assets %>',
-        dest: '<%= build_dir %>/public/',
-        expand: true
-      }, {
-        cwd: 'client',
-        src: [
-          'assets/**/*',
-          '!assets/icons/**/*'   //don't copy. grunticon takes care of this directory.
-        ],
-        dest: '<%= build_dir %>/public/',
-        expand: true
-      },{
-        cwd: 'client',
-        src: ['favicon.ico', 'robots.txt'],
-        dest: '<%= build_dir %>/public/',
-        expand: true
-      }],
+          cwd: 'client',
+          src: ['app/**/*.js', '!app/**/*.spec.js'],
+          dest: '<%= build_dir %>/public/',
+          expand: true
+        }, {
+          cwd: 'client',
+          src: '<%= vendor_files.js %>',
+          dest: '<%= build_dir %>/public/',
+          expand: true
+        }, {
+          cwd: 'client',
+          src: '<%= vendor_files.css %>',
+          dest: '<%= build_dir %>/public/',
+          expand: true
+        }, {
+          cwd: 'client',
+          src: '<%= vendor_files.assets %>',
+          dest: '<%= build_dir %>/public/',
+          expand: true
+        }, {
+          cwd: 'client',
+          src: [
+            'assets/**/*',
+            '!assets/icons/**/*'   //don't copy. grunticon takes care of this directory.
+          ],
+          dest: '<%= build_dir %>/public/',
+          expand: true
+        }, {
+          cwd: 'client',
+          src: ['favicon.ico', 'robots.txt'],
+          dest: '<%= build_dir %>/public/',
+          expand: true
+        }],
 
       options: {
         noProcess: ['**/*.{png,gif,jpg,ico,psd,ttf,otf,woff,svg}'], //since they are binary, can't even send them through
-        process: function(content, srcPath) {
+        process: function (content, srcPath) {
           // Run our page html files through grunts tempalating (currently used to auto inject script tags)
           if (grunt.file.isMatch('**/*.html', srcPath)) {
             console.log('Processing %s', srcPath);
@@ -96,21 +117,21 @@ module.exports = function(grunt, options) {
         dest: '<%= dist_dir %>/public',
         expand: true
       }, {
-        cwd: 'build/public',
-        src: 'assets/**',
-        dest: '<%= dist_dir %>/public/',
-        expand: true
-      }, {
-        cwd: 'build/public',
-        src: 'bower_components/**',
-        dest: '<%= dist_dir %>/public/',
-        expand: true
-      }, {
-        cwd: 'build/public',
-        src: ['robots.txt', 'favicon.ico'],
-        dest: '<%= dist_dir %>/public/',
-        expand: true
-      }]
+          cwd: 'build/public',
+          src: 'assets/**',
+          dest: '<%= dist_dir %>/public/',
+          expand: true
+        }, {
+          cwd: 'build/public',
+          src: 'bower_components/**',
+          dest: '<%= dist_dir %>/public/',
+          expand: true
+        }, {
+          cwd: 'build/public',
+          src: ['robots.txt', 'favicon.ico'],
+          dest: '<%= dist_dir %>/public/',
+          expand: true
+        }]
     },
 
     // Copies the server and package over to the dist directory
@@ -122,12 +143,12 @@ module.exports = function(grunt, options) {
         flatten: false,
         expand: true
       }, {
-        src: 'package.json',
-        dest: '<%= dist_dir %>/',
-        filter: 'isFile',
-        flatten: true,
-        expand: true
-      }]
+          src: 'package.json',
+          dest: '<%= dist_dir %>/',
+          filter: 'isFile',
+          flatten: true,
+          expand: true
+        }]
     }
   });
 
