@@ -38,9 +38,27 @@ angular.module('echo.directives.dateRangePicker', [])
         element.on('apply.daterangepicker', function (ev, picker) {
           var filterStartDate = picker.startDate,
             filterEndDate = picker.endDate;
-
+          scope.$apply(function () {
             scope.startDate = filterStartDate;
             scope.endDate = filterEndDate;
+          });
+        });
+
+        var init = false;
+        element.on('show.daterangepicker', function (env, picker) {
+          if (!init) {
+            picker.container.prepend(angular.element('<header class="filter-header">View Available Drivers Between</header>'));
+            picker.container.find('[name="daterangepicker_start"]').before(angular.element('<label for="daterangepicker_start">Starting</label>'));
+            picker.container.find('[name="daterangepicker_end"]').before(angular.element('<label for="daterangepicker_end">Ending</label>'));
+            init = true;
+          }
+        });
+
+        element.on('cancel.daterangepicker', function () {
+          scope.$apply(function () {
+            scope.startDate = null;
+            scope.endDate = null;
+          });
         });
       }
     };

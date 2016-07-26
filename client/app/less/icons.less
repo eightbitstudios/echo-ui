@@ -1,8 +1,13 @@
 // A list of all icons. Note that grunticon is not in this boilerplate. For automation of icon creation, add that and
 // use this file just to set the width/height/margin/padding/color/etc of icons.
+.fill-echo-icon(@color) {
+   g {
+    fill: @color;
+  }
+}
 
 .echo-icon {
-    display: inline-block;
+  display: inline-block;
 }
 
 .icon-left-arrow {
@@ -36,15 +41,20 @@
 }
 
 .icon-check-grey, .icon-check-approved {
-    position: relative;
-    top: 0.5rem;
-    width: 21px;
-    height: 21px;
-    margin-right: 9px;
-}
-.icon-left-chevron, .icon-right-chevron {
-    height: 12px;
-    width: 9px;
-    margin-top: 4px;
+  position: relative;
+  top: 0.5rem;
+  width: 21px;
+  height: 21px;
+  margin-right: 9px;
 }
 
+.icon-left-chevron, .icon-right-chevron {
+  height: 12px;
+  width: 9px;
+  margin-top: 4px;
+}
+
+.icon-calendar-gray {
+  width: 18px;
+  height: 18px;
+}

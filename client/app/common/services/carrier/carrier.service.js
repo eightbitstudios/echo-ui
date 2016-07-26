@@ -74,14 +74,16 @@ angular.module('echo.services.carrier', [
      * @description Retrieves drivers for a carrier
      * @param {number} carrierId - Id for carrier
      * @param {number} [page] - Page number for drivers
+     * @param {number} [searchText] - Search text for drivers
      * @returns {Promise} - Promise containing drivers
      */
-    fetchDrivers: function (carrierId, page) {
+    fetchDrivers: function (carrierId, page, searchText) {
 
       var url = apiConfig.drivers({ carrierId: carrierId });
 
       var params = {
-        page: page
+        page: page,
+        searchText: searchText
       };
 
       return $http.get(url, { params: params }).then(function (resp) {
@@ -93,27 +95,6 @@ angular.module('echo.services.carrier', [
           data: drivers,
           pagination: resp.data.pagination
         };
-      });
-    },
-
-    /**
-     * @description Retrieves drivers for a carrier
-     * @param {number} carrierId - Id for carrier
-     * @param {number} [page] - Page number for drivers
-     * @returns {Promise} - Promise containing drivers
-     */
-    searchDrivers: function (carrierId, searchText) {
-
-      var url = apiConfig.drivers({ carrierId: carrierId });
-
-      var params = {
-        searchText: searchText
-      };
-
-      return $http.get(url, { params: params }).then(function (resp) {
-        return _.map(resp.data.data, function (driver) {
-          return new DriverModel(driver);
-        });
       });
     }
   };

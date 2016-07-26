@@ -1,15 +1,16 @@
 <div class="container main-content driver-grid">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <typeahead-search search-service="$ctrl.searchDrivers(val)"></typeahead-search>
       <date-range-picker start-date="$ctrl.startDate" end-date="$ctrl.endDate">
-        <button class="btn btn-default btn-filter">
-          <span class="echo-icon icon-calendar-gray"></span>
-            Filter Unassigned Drivers
+        <button class="btn btn-default btn-filter" ng-class="{'filter__assigned': $ctrl.startDate && $ctrl.endDate}">
+          <span class="echo-icon icon-calendar" data-grunticon-embed></span>
+            {{$ctrl.startDate && $ctrl.endDate ? $ctrl.formatDates() : 'Filter Unassigned Drivers'}}
+            <span class="echo-icon icon-close" ng-click="$ctrl.clearDates($event)" data-grunticon-embed></span>
         </button>
       </date-range-picker>
     </div>
-    <div class="col-sm-4 text-right">
+    <div class="col-sm-3 text-right">
       <button class="btn btn-default">Invite New Driver</button>
     </div>
   </div>

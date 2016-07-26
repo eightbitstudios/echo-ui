@@ -28,14 +28,24 @@ angular.module('echo.components.driverGrid', [
      * @retuns {Promise} - List of drivers formatted for typeahead search
      */
     that.searchDrivers = function (val) {
-      return carrierService.searchDrivers(1, val).then(function (drivers) {
-        return _.map(drivers, function (driver) {
+      return carrierService.fetchDrivers(1, appConstants.PAGINATION.defaultPage, val).then(function (drivers) {
+        return _.map(drivers.data, function (driver) {
           return {
             id: driver.id,
             name: driver.getFullName()
           };
         });
       });
+    };
+
+    that.formatDates = function (){
+      return 'Availability ' + _.join([moment(that.startDate).format('MM/DD/YY'),moment(that.endDate).format('MM/DD/YY')], ' - ');
+    };
+
+    that.clearDates = function($event) {
+      that.startDate = null;
+      that.endDate = null;
+      $event.stopPropagation();
     };
 
     /**

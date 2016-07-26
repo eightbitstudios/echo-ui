@@ -111,10 +111,9 @@ module.exports = function (grunt) {
         'bower_components/bootstrap-daterangepicker/daterangepicker.js'
       ],
       css: [
-        'bower_components/bootstrap-daterangepicker/daterangepicker.css'
+        'bower_components/bootstrap-daterangepicker/daterangepicker.css',
       ],
       assets: [
-        'bower_components/bootstrap/fonts/**/*',
         'assets/icons/icons.data.svg.css'
       ]
     },
