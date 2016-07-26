@@ -43,13 +43,9 @@ describe('Api: authenticationApi', function () {
 
       authenticationApi.createPassword(userId, token, passwordChange).then(function () {
         expect($http.post).toHaveBeenCalledWith(apiConfig.createPassword({ userId: userId }), {
-          data: {
-            newPassword: passwordChange.newPassword,
-            confirmPassword: passwordChange.confirmPassword
-          },
-          params: {
-            invitationToken: token
-          }
+          newPassword: passwordChange.newPassword,
+          confirmPassword: passwordChange.confirmPassword,
+          invitationToken: token
         });
         done();
       });

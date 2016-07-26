@@ -1,0 +1,34 @@
+<div>
+  <div class="col-wrap">
+    <section class="results-selection">
+      <loading show-loading="$ctrl.showLoading"></loading>
+      <div ng-if="!$ctrl.showLoading">
+        <header class="selection-name">
+          <a href="#" class="btn btn-default pull-right">View Dashboard</a>
+          <h1 class="selection-company">{{$ctrl.carrier.carrierName}}</h1> {{$ctrl.carrier.getFullAddress()}}
+        </header>
+        <div ng-if="$ctrl.showMode === $ctrl.mode.DETAILS">
+          <article class="selection-users">
+            <header class="selection-header">
+              Portal Users
+              <a href="#" class="btn btn-link btn-sm" ui-sref="{{$ctrl.usersRoute.name}}({carrierId: $ctrl.carrierId})">View Portal Users List</a>
+            </header>
+            <portal-users portal-users="$ctrl.portalUsers" click-handler="$ctrl.showPortalUserHandler(user)"></portal-users>
+          </article>
+          <driver-list driver-count="$ctrl.driverCount"></driver-list>
+        </div>
+        <div ng-if="$ctrl.showMode === $ctrl.mode.PORTAL_USER">
+          <a ng-click="$ctrl.showDetailsHandler()" class="btn btn-link">
+            <div class="echo-icon icon-left-arrow"></div>Back to Details
+          </a>
+          <portal-user-profile portal-user="$ctrl.portalUser" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.loadCarrierDetails()">
+              <button class="btn btn-default" ng-click="$ctrl.loadCarrierDetails()">
+                Back to Carrier Details
+              </button>
+          </portal-user-profile>
+          <resend-invite ng-if="$ctrl.portalUser.id"></resend-invite>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

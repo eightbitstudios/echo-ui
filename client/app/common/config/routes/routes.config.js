@@ -13,12 +13,16 @@ angular.module('echo.config.routes', [])
         name: 'index.myCarriers',
         route:'myCarriers'
       },
+      carrier: {
+        name: 'index.carrier',
+        route:'carrier/:carrierId'
+      },
       myCarriersDetails: {
         name: 'index.myCarriers.details',
-        route:'/:carrierId?isRepAdmin'
+        route:'/:carrierId'
       },
       dashboard: {
-        name: 'index.myCarriers.dashboard',
+        name: 'index.carrier.dashboard',
         route:'/dashboard'
       },
       myCompany: {
@@ -34,7 +38,7 @@ angular.module('echo.config.routes', [])
         route: '/portalUsers/{userId}'
       },
       myCompanyDrivers: {
-        name: 'index.myCarriers.myCompany.drivers',
+        name: 'index.carrier.myCompany.drivers',
         route: '/drivers'
       }
     },

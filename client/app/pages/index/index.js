@@ -7,10 +7,11 @@ angular.module('echo.index', [
   'echo.index.controller',
   'echo.index.myCarriers',
   'echo.index.settings',
+  'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
-  'echo.services.carrierDetails',
   'echo.services.repDetails',
+  'echo.services.carrierDetails',
   'echo.services.user',
   'templates-app'
 ]).config(function ($urlRouterProvider, $stateProvider, routesConfig) {
@@ -24,11 +25,6 @@ angular.module('echo.index', [
       resolve: {
         user: function (userService) {
           return userService.fetchUserById();
-        },
-        carrierDetails: function (carrierDetailsService, user) {
-          if (!user.isRepAdmin()) {
-            return carrierDetailsService.fetchCarrierById(user.carrierId);
-          }
         },
         repDetails: function (repDetailsService, user) {
           if (!user.isRepAdmin()) {
@@ -56,9 +52,13 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCarriers.route,
       template: '<my-carriers></my-carriers>'
     })
+    .state(routesConfig.INDEX.carrier.name, {
+      url: routesConfig.INDEX.carrier.route,
+      template: '<carrier></carrier>'
+    })
     .state(routesConfig.INDEX.myCompany.name, {
       url: routesConfig.INDEX.myCompany.route,
-      template: '<my-company></my-company>',
+      template: '<my-company></my-company>'
     })
     .state(routesConfig.INDEX.dashboard.name, {
       url: routesConfig.INDEX.dashboard.route,
