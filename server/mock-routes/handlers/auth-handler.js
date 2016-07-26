@@ -34,5 +34,20 @@ module.exports = {
       }
       res.json(resTemplate);
     }, minDelay, maxDelay);
+  },
+  forgotPassword: function (req, res) {
+    var resTemplate = new ResTemplate()
+
+    responseUtil.timeout(function () {
+      if (req.body.username === 'invalid@gmail.com') {
+        res.status(400);
+        resTemplate.status.code = 400001;
+      }
+      else if (req.body.username === 'deactivated@gmail.com') {
+        res.status(400);
+        resTemplate.status.code = 401003;
+      }
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };

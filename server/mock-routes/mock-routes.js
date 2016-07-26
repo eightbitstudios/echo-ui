@@ -10,6 +10,7 @@ module.exports = function (app) {
   app.get(endpoints.api.userById, userHandler.getUserById);
   app.post(endpoints.api.signIn, authHandler.signIn);
   app.post(endpoints.api.createPassword, authHandler.createPassword);
+  app.post(endpoints.api.forgotPassword, authHandler.forgotPassword);
   app.post(endpoints.api.deactivateUserById, userHandler.deactivateUserById);
   app.get(endpoints.api.driverCount, carrierHandler.getDriverCount);
   app.get(endpoints.api.portalUsers, carrierHandler.getPortalUsers);

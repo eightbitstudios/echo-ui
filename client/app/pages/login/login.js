@@ -6,6 +6,7 @@ angular.module('echo.login', [
   'echo.directives.echoIcon',
   'echo.login.signIn',
   'echo.login.createPassword',
+  'echo.login.forgotPassword',
   'templates-app'
 ]).config(function ($urlRouterProvider, $stateProvider, routesConfig) {
   $urlRouterProvider.otherwise('/');
@@ -23,5 +24,9 @@ angular.module('echo.login', [
     .state(routesConfig.LOGIN.createPassword.name, {
       url: routesConfig.LOGIN.createPassword.route,
       template: '<create-password></create-password>'
+    })
+    .state(routesConfig.LOGIN.forgotPassword.name, {
+      url: routesConfig.LOGIN.forgotPassword.route,
+      template: '<forgot-password></forgot-password>'
     });
 });

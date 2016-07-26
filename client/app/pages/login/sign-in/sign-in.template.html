@@ -31,7 +31,7 @@
           <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted}">
             <label>Email</label>
             <input class="form-control" placeholder="myname@mail.com" name="email" ng-model="$ctrl.email" type="email" required>
-            <span class="help-block" ng-if="$ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted">Enter your email</span>
+             <span class="help-block" ng-if="$ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted">Enter your email address</span>
           </div>
           <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.password.$invalid && $ctrl.signInForm.$submitted}">
             <label>Password</label>
@@ -39,7 +39,7 @@
             <span class="help-block" ng-if="$ctrl.signInForm.password.$invalid && $ctrl.signInForm.$submitted">Enter your password</span>
           </div>
           <div class="form-group">
-            <a href="#" class="btn btn-link btn-alt">Forgot password?</a>
+            <a ui-sref="{{$ctrl.routesConfig.LOGIN.forgotPassword.name}}" class="btn btn-link btn-alt">Forgot password?</a>
             <loading-button button-text="Login" class="pull-right" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.signInHandler()"></loading-button>
           </div>
         </fieldset>
