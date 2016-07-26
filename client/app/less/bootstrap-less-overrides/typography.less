@@ -1,0 +1,80 @@
+
+body{
+  color: @c-dark-grey;
+  font-weight: @fw-light;
+  }
+h1{
+  font-size: @fs-h1;
+  font-weight: @fw-normal;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+h2{
+  font-size: @fs-h2;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+h3{
+  font-size: @fs-h3;
+  line-height: 1.4;
+}
+
+h4{
+  font-size: @fs-h4;
+  line-height: 1.4;
+}
+h5{
+  font-size: @fs-h5;
+  line-height: 1.6;
+}
+
+ul, ol{
+  padding-left: 20px;
+  margin: 20px 0;
+}
+
+ul > li{
+  margin-bottom: 10px;
+}
+
+a{
+  color: @c-bright-blue;
+  transition: all 0.2s ease-in;
+  &:hover{
+    color: #1E9AC9;
+    text-decoration: none;
+    }
+}
+.lead{
+  font-size: @fs-large;
+}
+.brand{
+  font-weight: @fw-normal;
+  text-transform: uppercase;
+
+  &.brand-lg{
+    margin-bottom: 60px;
+}
+}
+.section-label{
+  color: @c-gray-darkest;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+.section-sub-label{
+  color: @c-gray-mid-light;
+  font-size: 20px;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+p.label{
+  padding: 0;
+  text-align: left;
+  display: block;
+  color: @c-gray-mid-dark;
+  }

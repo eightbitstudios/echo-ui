@@ -1,29 +1,45 @@
 var carriers = require('../data/carriers-res.js'),
   ResTemplate = require('../data/res-template.js'),
   _ = require('lodash'),
+  responseUtil = require('../util/response-util.js'),
   repDetailsRes = require('../data/rep-details-res.js'),
   portalUserRes = require('../data/portal-users-res.js');
+
+var maxDelay = 2,
+  minDelay = 1;
 
 module.exports = {
   getCarriers: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = carriers;
-    res.json(resTemplate);
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   },
   getCarrierById: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = _.find(carriers, { carrierId: _.parseInt(req.params.carrierId) });
-    res.json(resTemplate);
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   },
   getRepByCarrierId: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = repDetailsRes;
-    res.json(resTemplate);
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   },
   getPortalUsers: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = _(portalUserRes).sampleSize(portalUserRes.length).slice(1, _.random(2, portalUserRes.length));
-    res.json(resTemplate);
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   },
   getDriverCount: function (req, res) {
     var resTemplate = new ResTemplate();
@@ -31,6 +47,8 @@ module.exports = {
       userCount: _.random(100)
     };
 
-    res.json(resTemplate);
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };

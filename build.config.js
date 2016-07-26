@@ -53,7 +53,8 @@ module.exports = function (grunt) {
     },
 
     pages: [
-      {name: 'index'}
+      {name: 'index'},
+      {name: 'login'}
     ],
 
     /**
