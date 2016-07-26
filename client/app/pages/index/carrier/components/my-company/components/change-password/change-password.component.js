@@ -1,4 +1,4 @@
-angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changePassword', [
+angular.module('echo.index.carrier.myCompany.userProfile.changePassword', [
   'echo.components.passwordValidation',
   'echo.config.routes',
   'echo.config.errors',
@@ -7,7 +7,7 @@ angular.module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changeP
   'echo.models.passwordChange'
 ])
   .component('changePassword', {
-    templateUrl: 'app/pages/index/my-carriers/components/carrier-admin/components/my-company/components/my-company-user-profile/components/change-password/change-password.template.html',
+    templateUrl: 'app/pages/index/carrier/components/my-company/components/change-password/change-password.template.html',
     bindings: {
       userId: '<'
     },

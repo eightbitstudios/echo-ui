@@ -101,7 +101,7 @@ describe('Api: authenticationApi', function () {
       authenticationApi.changePassword(userId, currentPassword, passwordChange).then(function () {
         expect($http.put).toHaveBeenCalledWith(apiConfig.changePassword({userId: userId}), {
           currentPassword: currentPassword,
-          newPassword: passwordChange.newPassword,
+          password: passwordChange.newPassword,
           confirmPassword: passwordChange.confirmPassword
         });
         done();

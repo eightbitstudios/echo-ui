@@ -3,8 +3,8 @@ describe('Component: changePassword', function () {
   var component, $q, window, scope, changePassword, element, authenticationApi, state, routesConfig, changePasswordRes;
 
   beforeEach(function () {
-    module('app/pages/index/my-carriers/components/carrier-admin/components/my-company/components/my-company-user-profile/components/change-password/change-password.template.html');
-    module('echo.index.myCarriers.carrierAdmin.myCompany.userProfile.changePassword', function ($provide) {
+    module('app/pages/index/carrier/components/my-company/components/change-password/change-password.template.html');
+    module('echo.index.carrier.myCompany.userProfile.changePassword', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['changePassword']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
