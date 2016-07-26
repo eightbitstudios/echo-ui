@@ -50,7 +50,7 @@ angular.module('echo.services.carrier', [
       var url = apiConfig.portalUsers({ carrierId: carrierId });
 
       return $http.get(url).then(function (resp) {
-        return _(resp.data.data).map(function(user) {
+        return _(resp.data.data).map(function (user) {
           return new UserModel(user);
         }).value();
       });
@@ -84,8 +84,8 @@ angular.module('echo.services.carrier', [
         page: page
       };
 
-      return $http.get(url, {params}).then(function (resp) {
-        var drivers = _.map(resp.data.data, function(driver){
+      return $http.get(url, { params: params }).then(function (resp) {
+        var drivers = _.map(resp.data.data, function (driver) {
           return new DriverModel(driver);
         });
 
@@ -110,8 +110,8 @@ angular.module('echo.services.carrier', [
         searchText: searchText
       };
 
-      return $http.get(url, {params}).then(function (resp) {
-        return _.map(resp.data.data, function(driver){
+      return $http.get(url, { params: params }).then(function (resp) {
+        return _.map(resp.data.data, function (driver) {
           return new DriverModel(driver);
         });
       });

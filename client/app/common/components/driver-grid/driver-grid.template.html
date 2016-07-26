@@ -1,9 +1,15 @@
-<div class="container main-content">
+<div class="container main-content driver-grid">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-8">
       <typeahead-search search-service="$ctrl.searchDrivers(val)"></typeahead-search>
+      <date-range-picker start-date="$ctrl.startDate" end-date="$ctrl.endDate">
+        <button class="btn btn-default btn-filter">
+          <span class="echo-icon icon-calendar-gray"></span>
+            Filter Unassigned Drivers
+        </button>
+      </date-range-picker>
     </div>
-    <div class="col-sm-6 text-right">
+    <div class="col-sm-4 text-right">
       <button class="btn btn-default">Invite New Driver</button>
     </div>
   </div>
@@ -13,7 +19,7 @@
       <table class="table table-driverlist" ng-if="!$ctrl.showLoading">
         <thead>
           <tr>
-            <th class="sorted-row">Driver Name</th>
+            <th>Driver Name</th>
             <th>Usage</th>
             <th>Tractor</th>
             <th>Pref. Language</th>
