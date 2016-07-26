@@ -7,8 +7,10 @@ angular.module('echo.index.carrier.myCompany', [
 ])
   .component('myCompany', {
     templateUrl: 'app/pages/index/carrier/components/my-company/my-company.template.html',
-    bindings: {},
-    controller: function ($state, routesConfig) {
+    bindings: {
+      carrierId: '<'
+    },
+    controller: function ($stateParams, $state, routesConfig) {
       var that = this;
       
       that.tabItems = [{

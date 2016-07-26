@@ -77,16 +77,37 @@ angular.module('echo.api.carrier', [
      * @param {number} [searchText] - Search text for drivers
      * @returns {Promise} - Promise containing drivers
      */
-    fetchDrivers: function (carrierId, page, searchText) {
+    fetchDrivers: function (carrierId, page) {
 
       var url = apiConfig.drivers({ carrierId: carrierId });
 
       var params = {
-        page: page,
-        searchText: searchText
+        page: page
       };
 
       return $http.get(url, { params: params }).then(function (resp) {
+        var drivers = _.map(resp.data.data, function (driver) {
+          return new DriverModel(driver);
+        });
+
+        return {
+          data: drivers,
+          pagination: resp.data.pagination
+        };
+      });
+    },
+
+    /**
+     * @description Retrieves drivers for a carrier
+     * @param {number} carrierId - Id for carrier
+     * @param {number} searchTerm - Search text for drivers
+     * @returns {Promise} - Promise containing drivers
+     */
+    searchDrivers: function (carrierId, searchTerm) {
+
+      var url = apiConfig.searchDrivers({ carrierId: carrierId, searchTerm: searchTerm });
+
+      return $http.get(url).then(function (resp) {
         var drivers = _.map(resp.data.data, function (driver) {
           return new DriverModel(driver);
         });

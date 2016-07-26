@@ -11,4 +11,5 @@ angular.module('echo.config.api', [])
     driverCount: _.template('@driverCount@'),
     portalUserById: _.template('@portalUserById@'),
     drivers: _.template('@drivers@'),
+    searchDrivers: _.template('@searchDrivers@'),
   });

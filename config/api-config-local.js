@@ -14,6 +14,7 @@ module.exports = function (grunt) {
     portalUsers:  '/mock/api/v1/carriers/${carrierId}/portalusers',
     driverCount:  '/mock/api/v1/carriers/${carrierId}/drivers/count',
     drivers:  '/mock/api/v1/carriers/${carrierId}/drivers',
+    searchDrivers: '/mock/api/v1/carriers/${carrierId}/drivers/${searchTerm}',
     portalUserById:  '/mock/api/v1/carriers/${carrierId}/portalusers/${userId}'
   };
 };

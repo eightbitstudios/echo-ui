@@ -8,6 +8,9 @@ angular.module('echo.components.driverGrid', [
   'echo.directives.dateRangePicker',
   'echo.api.carrier'
 ]).component('driverGrid', {
+  bindings: {
+    carrierId: '<'
+  },
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
   controller: function (carrierApi, appConstants) {
     var that = this;
@@ -21,8 +24,10 @@ angular.module('echo.components.driverGrid', [
     /**
      * Controller init
      */
-    function init() {
-      that.getDriversForPage(appConstants.PAGINATION.defaultPage);
+    function init(changeObject) {
+      if(changeObject.carrierId && changeObject.carrierId.currentValue){
+        that.getDriversForPage(appConstants.PAGINATION.defaultPage);
+      }
     }
 
     /**
@@ -31,7 +36,7 @@ angular.module('echo.components.driverGrid', [
      * @retuns {Promise} - List of drivers formatted for typeahead search
      */
     that.searchDrivers = function (val) {
-      return carrierApi.fetchDrivers(1, appConstants.PAGINATION.defaultPage, val).then(function (drivers) {
+      return carrierApi.searchDrivers(that.carrierId, val).then(function (drivers) {
         return _.map(drivers.data, function (driver) {
           return {
             id: driver.id,
@@ -65,7 +70,7 @@ angular.module('echo.components.driverGrid', [
      */
     that.getDriversForPage = function (page) {
       that.showLoading = true;
-      carrierApi.fetchDrivers(1, page).then(function (drivers) {
+      carrierApi.fetchDrivers(that.carrierId, page).then(function (drivers) {
         that.pagination = drivers.pagination;
 
         if (page === 1) {
@@ -79,6 +84,6 @@ angular.module('echo.components.driverGrid', [
       });
     };
 
-    that.$onInit = init();
+    that.$onChanges = init;
   }
 });

@@ -58,7 +58,7 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompany.name, {
       url: routesConfig.INDEX.myCompany.route,
-      template: '<my-company></my-company>'
+      template: '<my-company carrier-id="$ctrl.carrierId"></my-company>'
     })
     .state(routesConfig.INDEX.dashboard.name, {
       url: routesConfig.INDEX.dashboard.route,
@@ -74,6 +74,6 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      template: '<driver-grid></driver-grid>'
+      template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>'
     });
 });

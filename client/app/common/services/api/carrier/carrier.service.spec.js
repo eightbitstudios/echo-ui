@@ -102,17 +102,15 @@ describe('Api: carrierApi', function () {
   });
 
   describe('Function: fetchDrivers', function () {
-    it('should make a get with page and searchText', function (done) {
+    it('should make a get with page number', function (done) {
       var carrierId = '1234',
-        page = 1,
-        searchText = 'Test';
+        page = 1;
       getRes.data = { data: '' };
 
-      carrierApi.fetchDrivers(carrierId, page, searchText).then(function () {
+      carrierApi.fetchDrivers(carrierId, page).then(function () {
         expect($http.get).toHaveBeenCalledWith(apiConfig.drivers({ carrierId: carrierId }), {
           params: {
-            page: page,
-            searchText: searchText
+            page: page
           }
         });
         done();
