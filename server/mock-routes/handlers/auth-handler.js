@@ -9,7 +9,6 @@ module.exports = {
     var resTemplate = new ResTemplate()
 
     responseUtil.timeout(function () {
-      console.log(req.body);
       if(req.body.newPassword === 'invalidToken123'){
         res.status(400);
         resTemplate.status.message = 'Invalid Token';

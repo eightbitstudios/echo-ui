@@ -5,7 +5,7 @@
       <date-range-picker start-date="$ctrl.startDate" end-date="$ctrl.endDate">
         <button class="btn btn-default btn-filter" ng-class="{'filter__assigned': $ctrl.startDate && $ctrl.endDate}">
           <span class="echo-icon icon-calendar" data-grunticon-embed></span>
-            {{$ctrl.startDate && $ctrl.endDate ? $ctrl.formatDates() : 'Filter Unassigned Drivers'}}
+            {{$ctrl.startDate && $ctrl.endDate ? $ctrl.formatDateText() : 'Filter Unassigned Drivers'}}
             <span class="echo-icon icon-close" ng-click="$ctrl.clearDates($event)" data-grunticon-embed></span>
         </button>
       </date-range-picker>

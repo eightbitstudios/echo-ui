@@ -6,7 +6,7 @@
       <span class="search-bar-controls">
         <img src="assets/images/icon-search@2x.png" ng-if="$ctrl.selection.length === 0" width="16px" height="16px" alt="Icon search@2x">
         <loading show-loading="$ctrl.showLoadingButton"></loading>
-        <span class="search-results-count" ng-if="$ctrl.isTypeaheadOpen">{{$ctrl.numberOfSearchResults}} Search Results</span>
+        <span class="search-results-count" ng-if="$ctrl.isTypeaheadOpen && !$ctrl.showLoadingButton">{{$ctrl.numberOfSearchResults}} Search Results</span>
         <div ng-if="$ctrl.selection.length > 0" class="search-results-close echo-icon icon-close" ng-click="$ctrl.clearSearchHandler()"></div>
       </span>
     </div>

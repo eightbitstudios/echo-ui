@@ -1,7 +1,7 @@
 angular.module('echo.index.myCarriers.carrierDetails', [
   'echo.index.myCarriers.driverList',
   'echo.config.routes',
-  'echo.services.carrier',
+  'echo.api.carrier',
   'echo.components.portalUsers',
   'echo.components.loading',
   'echo.components.portalUserProfile',
@@ -11,7 +11,7 @@ angular.module('echo.index.myCarriers.carrierDetails', [
   .component('carrierDetails', {
     templateUrl: 'app/pages/index/my-carriers/components/carrier-details/carrier-details.template.html',
     bindings: {},
-    controller: function ($stateParams, $q, carrierService, routesConfig, UserModel) {
+    controller: function ($stateParams, $q, carrierApi, routesConfig, UserModel) {
       var that = this;
 
       that.mode = {
@@ -26,13 +26,13 @@ angular.module('echo.index.myCarriers.carrierDetails', [
 
       that.getCarrier = function (carrierId) {
         that.showLoading = true;
-        return carrierService.fetchCarrierById(carrierId).then(function (carrier) {
+        return carrierApi.fetchCarrierById(carrierId).then(function (carrier) {
           that.carrier = carrier;
 
           if (that.carrier.isActive) {
             $q.all([
-              carrierService.fetchCarrierPortalUsers(carrier.carrierId),
-              carrierService.fetchCarrierDriverCount(carrier.carrierId)
+              carrierApi.fetchCarrierPortalUsers(carrier.carrierId),
+              carrierApi.fetchCarrierDriverCount(carrier.carrierId)
             ]).then(_.spread(function (portalUsers, drivers) {
               that.portalUsers = portalUsers;
               that.driverCount = drivers.userCount;

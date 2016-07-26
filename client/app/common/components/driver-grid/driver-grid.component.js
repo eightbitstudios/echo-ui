@@ -6,10 +6,10 @@ angular.module('echo.components.driverGrid', [
   'echo.config.appConstants',
   'echo.components.pagination',
   'echo.directives.dateRangePicker',
-  'echo.services.carrier'
+  'echo.api.carrier'
 ]).component('driverGrid', {
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function (carrierService, appConstants) {
+  controller: function (carrierApi, appConstants) {
     var that = this;
     that.drivers = null;
     that.pagination = null;
@@ -18,6 +18,9 @@ angular.module('echo.components.driverGrid', [
     that.startDate = null;
     that.endDate = null;
 
+    /**
+     * Controller init
+     */
     function init() {
       that.getDriversForPage(appConstants.PAGINATION.defaultPage);
     }
@@ -28,7 +31,7 @@ angular.module('echo.components.driverGrid', [
      * @retuns {Promise} - List of drivers formatted for typeahead search
      */
     that.searchDrivers = function (val) {
-      return carrierService.fetchDrivers(1, appConstants.PAGINATION.defaultPage, val).then(function (drivers) {
+      return carrierApi.fetchDrivers(1, appConstants.PAGINATION.defaultPage, val).then(function (drivers) {
         return _.map(drivers.data, function (driver) {
           return {
             id: driver.id,
@@ -38,10 +41,18 @@ angular.module('echo.components.driverGrid', [
       });
     };
 
-    that.formatDates = function (){
+    /**
+     * Returns text for filter
+     * @example Availability 10/15/2015 - 11/12/2015
+     */
+    that.formatDateText = function (){
       return 'Availability ' + _.join([moment(that.startDate).format('MM/DD/YY'),moment(that.endDate).format('MM/DD/YY')], ' - ');
     };
 
+    /**
+     * Clears out filter dates
+     * @param {Object} $event - JQuery event
+     */
     that.clearDates = function($event) {
       that.startDate = null;
       that.endDate = null;
@@ -54,7 +65,7 @@ angular.module('echo.components.driverGrid', [
      */
     that.getDriversForPage = function (page) {
       that.showLoading = true;
-      carrierService.fetchDrivers(1, page).then(function (drivers) {
+      carrierApi.fetchDrivers(1, page).then(function (drivers) {
         that.pagination = drivers.pagination;
 
         if (page === 1) {

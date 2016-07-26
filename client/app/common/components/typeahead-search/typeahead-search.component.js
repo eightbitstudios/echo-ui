@@ -31,7 +31,6 @@ angular.module('echo.components.typeaheadSearch', [])
 
       that.clearSearchHandler = function () {
         that.selection = '';
-        that.showLoadingButton = false;
       };
     }
   });

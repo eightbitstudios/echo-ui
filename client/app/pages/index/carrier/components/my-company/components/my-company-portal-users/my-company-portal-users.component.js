@@ -1,5 +1,5 @@
 angular.module('echo.index.carrier.myCompany.portalUsers', [
-  'echo.services.carrier',
+  'echo.api.carrier',
   'echo.services.carrierDetails',
   'echo.config.routes',
   'echo.components.portalUsers',
@@ -11,7 +11,7 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
   .component('myCompanyPortalUsers', {
     templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html',
     bindings: {},
-    controller: function ($stateParams, $state, carrierService, carrierDetailsService, UserModel) {
+    controller: function ($stateParams, $state, carrierApi, carrierDetailsService, UserModel) {
       var that = this;
 
       that.mode = {
@@ -25,7 +25,7 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
       that.carrierId = $stateParams.carrierId;
 
       that.getCarrierPortalUsers = function () {
-        carrierService.fetchCarrierPortalUsers(that.carrierId).then(function (portalUsers) {
+        carrierApi.fetchCarrierPortalUsers(that.carrierId).then(function (portalUsers) {
           that.portalUsers = portalUsers;
           that.showLoading = false;
         });

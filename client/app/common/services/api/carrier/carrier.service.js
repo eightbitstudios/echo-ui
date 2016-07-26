@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('echo.services.carrier', [
+angular.module('echo.api.carrier', [
   'echo.config.api',
   'echo.models.carrier',
   'echo.models.driver',
   'echo.models.user'
-]).factory('carrierService', function ($http, apiConfig, CarrierModel, UserModel, DriverModel) {
+]).factory('carrierApi', function ($http, apiConfig, CarrierModel, UserModel, DriverModel) {
   return {
     /**
      * @description Retrieves a list of carriers

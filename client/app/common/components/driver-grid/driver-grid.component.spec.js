@@ -1,11 +1,11 @@
 
 describe('Component: driverGrid', function () {
-  var component, $q, carrierService, driverList, element;
+  var component, $q, carrierApi, driverList, element;
 
   beforeEach(function () {
     module('app/common/components/driver-grid/driver-grid.template.html');
     module('echo.components.driverGrid', function ($provide) {
-      $provide.value('carrierService', carrierService = jasmine.createSpyObj('carrierService', ['fetchDrivers']));
+      $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchDrivers']));
     });
   });
 
@@ -19,7 +19,7 @@ describe('Component: driverGrid', function () {
 
     scope.$digest();
 
-    carrierService.fetchDrivers.and.returnValue($q.when({}));
+    carrierApi.fetchDrivers.and.returnValue($q.when({}));
     component = $componentController('driverGrid', null, {});
   }));
 
@@ -27,16 +27,16 @@ describe('Component: driverGrid', function () {
     it('should call carrier service to search drivers', function () {
       var searchText = 'test';
 
-      carrierService.fetchDrivers.and.returnValue($q.when());
+      carrierApi.fetchDrivers.and.returnValue($q.when());
       component.searchDrivers(searchText);
 
-      expect(carrierService.fetchDrivers).toHaveBeenCalledWith(1, 1, searchText);
+      expect(carrierApi.fetchDrivers).toHaveBeenCalledWith(1, 1, searchText);
     });
 
     it('should map drivers to typeahead model', function (done) {
       var searchText = 'test',
         drivers = [{ id: 1, firstName: 'Bob', lastName: 'Ted', getFullName: function () { return this.firstName + ' ' + this.lastName; } }]
-      carrierService.fetchDrivers.and.returnValue($q.when({data: drivers}));
+      carrierApi.fetchDrivers.and.returnValue($q.when({data: drivers}));
       component.searchDrivers(searchText).then(function (convertedDrivers) {
         expect(convertedDrivers).toEqual([{
           id: 1,
@@ -49,15 +49,14 @@ describe('Component: driverGrid', function () {
     });
   });
 
-
   describe('Function: getDriversForPage', function () {
     it('should fetch drivers', function () {
       var page = 2;
 
-      carrierService.fetchDrivers.and.returnValue($q.when());
+      carrierApi.fetchDrivers.and.returnValue($q.when());
       component.getDriversForPage(page);
 
-      expect(carrierService.fetchDrivers).toHaveBeenCalledWith(1, page);
+      expect(carrierApi.fetchDrivers).toHaveBeenCalledWith(1, page);
     });
 
     it('should set firstRecordNumber to 1 on page 1', function () {
@@ -67,10 +66,10 @@ describe('Component: driverGrid', function () {
           recordsPerPage: 10
         };
 
-      carrierService.fetchDrivers.and.returnValue($q.when({pagination: pagination}));
+      carrierApi.fetchDrivers.and.returnValue($q.when({pagination: pagination}));
       component.getDriversForPage(page);
 
-      expect(carrierService.fetchDrivers).toHaveBeenCalledWith(1, page);
+      expect(carrierApi.fetchDrivers).toHaveBeenCalledWith(1, page);
       scope.$digest();
 
       expect(component.firstRecordNumber).toBe(1);
@@ -83,7 +82,7 @@ describe('Component: driverGrid', function () {
           recordsPerPage: 10
         };
 
-      carrierService.fetchDrivers.and.returnValue($q.when({pagination: pagination}));
+      carrierApi.fetchDrivers.and.returnValue($q.when({pagination: pagination}));
       component.getDriversForPage(page);
 
       scope.$digest();

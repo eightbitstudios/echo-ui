@@ -74,6 +74,6 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      template: '<my-company-drivers></my-company-drivers>'
+      template: '<driver-grid></driver-grid>'
     });
 });
