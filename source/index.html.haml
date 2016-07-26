@@ -22,6 +22,9 @@
         %li=link_to 'Echo Rep Empty','/echorep-empty.html'
         %li=link_to 'Echo Rep Profile','/echorep-profile.html'
         %li=link_to 'Echo Rep Carrier Dashboard','/echorep-carrier-dashboard.html'
+        %li=link_to 'Load Management - Active','/echorep-carrier-loads-active.html'
+        %li=link_to 'Load Management - Unbilled','/echorep-carrier-loads-unbilled.html'
+        %li=link_to 'Load Management - Upcoming','/echorep-carrier-loads-upcoming.html'
 
       %h3 Approved Layouts
       %ul.list-group
@@ -34,7 +37,7 @@
           - if page.url =~ /\.html/
             %li.list-group-item
               = link_to page.url, '/clients/echo'+page.url
-   
+
 
 
 

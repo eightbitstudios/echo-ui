@@ -130,9 +130,20 @@
   &.btn-filter
     position: relative
     color: $gray-mid-light
-    padding-left: 45px
     border-color: $gray-mid-light
-    
+    border-width: 2px
+    font-weight: normal
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover,
+    &:active,
+    &:focus
+      color: #fff
+      border-color: $gray-mid-light
+      background-color: $gray-mid-light
+
     &.filter__assigned
       color: #fff
       font-family: $body-font
@@ -143,31 +154,58 @@
       border-color: $bright-blue
       background-color: $bright-blue
       transition: none
-      &:before
-        content: image-url('icon-calendar-white.svg')
       &:hover
         border-color: $bright-blue-dark
         background-color: $bright-blue-dark
 
-    &:before
-      content: image-url('icon-calendar-gray.svg')
-      display: inline-block
-      position: absolute
-      top: 10px
-      left: 15px
-      width: 18px
-      height: auto
-      margin-right: 6px
+    &.btn-date-picker
+      padding-left: 45px
 
-    &:hover,
-    &:active,
-    &:focus
-      color: #fff
-      border-color: $gray-mid-light
-      background-color: $gray-mid-light
+      &.filter__assigned
+        &:before
+          content: image-url('icon-calendar-white.svg')
 
       &:before
-        content: image-url('icon-calendar-white.svg')
+        content: image-url('icon-calendar-gray.svg')
+        display: inline-block
+        position: absolute
+        top: 10px
+        left: 15px
+        width: 18px
+        height: auto
+        margin-right: 6px
+
+      &:hover,
+      &:active,
+      &:focus
+        &:before
+          content: image-url('icon-calendar-white.svg')
+
+    span.close
+      position: relative
+      opacity: 1
+      font-size: 0
+      line-height: 0
+      width: 12px
+      height: 12px
+      margin: 2px -10px 0 20px
+      z-index: 999999
+
+      &:after,
+      &:before
+        content: ''
+        width: 12px
+        height: 2px
+        background: #fff
+        border-radius: 3px
+        position: absolute
+        top: 50%
+        left: 50%
+        opacity: 1
+        transform: translateX(-50%) rotateZ(45deg)
+
+      &:after
+        transform: translateX(-50%) rotateZ(-45deg)
 
 
   //////

@@ -1,0 +1,33 @@
+-@title= 'Load Management - Active'
+-@page_classes= 'load-management load-management-active'
+
+= partial 'partials/header_load_management', locals: {link: 'active'}
+= partial 'partials/header_carrier_dashboard'
+= partial 'partials/map_spacer'
+
+.container.main-content
+  %section
+    .section-head
+      = partial 'partials/filter_bar'
+    .row
+      .col-md-12
+        = partial 'partials/carrier_dashboard_table_need_action'
+
+        %nav.pull-left
+          =link_to 'Show 5 More Loads', '#'
+        .results-count.pull-right
+          Showing 1-5 of 7 Loads Needing Action
+  %section
+    .section-head
+      %h1.section-label
+        Multi Stop Loads
+        %span.section-sub-label
+          With Upcoming Appointments
+    .row
+      .col-md-12
+        = partial 'partials/carrier_dashboard_table_multi_stop'
+
+        %nav.pull-left
+          =link_to 'Show 5 More Loads', '#'
+        .results-count.pull-right
+          Showing 1-5 of 7 Multi Stop Loads
