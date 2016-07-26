@@ -10,25 +10,44 @@
 .container.main-content
   .section-head
     %h1.section-label
-      Stops
-    = link_to 'View All 11 Active Loads'
+      STOPS
 
   .row
-    .col-md-9
+    %section.col-md-8
+    
+      = partial 'partials/loads_accordion'
+      / = partial 'partials/loads_sidebar_relatedcontent'
 
-      #accordion.panel-group{role:"tablist"}
-        .panel.panel-default
-          #headingOne.panel-heading
-            %h4.panel-title
-              =link_to 'Collapsible Group Item #1', '#collapseOne', {:role => 'button', :data => {toggle: 'collapse', parent: '#accordion'}, :aria => {expanded: "true", controls: "collapseOne"}}         
 
-          #collapseOne.panel-collapse.collapse.in{role: "tabpanel"}
-            .panel-body
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      %section.load-log-table
+        %h4 All Load Activities
+        %p.disclaimer [Disclaimer text provided by Legal to clarify that this log does not replace other records for purposes like calculating detention, etc]
 
-    .col-md-3
+        %table.table.log-table
+          %tr
+            %td.log-note Do not Disturb On
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5
+          %tr
+            %td.log-note Trailer Picked up: Midtown OK
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5              
+          %tr
+            %td.log-note Driver Assigned: Mike P.
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5              
+          %tr
+            %td.log-note Reported Arrival at Pickup: Memphis TN
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5
+
+    .col-md-4
       %section.sidebar-container
-        %h4 Equipment
+        %h4.container-header Equipment
         .equip-list
           Dry Van 53’<br/>
           HazMat<br/>
@@ -40,11 +59,11 @@
           No Reefers<br>
 
       %section.sidebar-container
-        %h4 General Instructions
+        %h4.container-header General Instructions
         %p POD Required within 24-48 hours after delivery. 
 
       %section.sidebar-container
-        %h4 Documents
+        %h4.container-header Documents
         %ul.load-documents
           %li
             .doc-image
@@ -56,8 +75,10 @@
                 By Echo
 
           %li
-            .doc-add_invoice
-              .doc-add_type Invoice
+            %button.btn.btn-add_document
+              .add-type
+                Invoice <br>
+                %small BOLs, Receipts, Scale Tickets
           %li
             .doc-add_docs
               .doc-add_type Load Documents

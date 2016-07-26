@@ -169,6 +169,49 @@
       &:before
         content: image-url('icon-calendar-white.svg')
 
+  ///////
+  &.btn-add_document
+    position: relative
+    color: $gray-mid-light
+    width: 100%
+    font-size: 22px
+    line-height: 0.9
+    text-align: left
+    letter-spacing: 0.5px
+    padding: 10px 
+    background-color: #f7f7f7
+    border: dotted 1px $gray-mid-light
+
+    &:before,
+    &:after
+      content: ''
+      position: absolute
+      top: 50%
+      left: 25px
+      width: 2.8rem
+      height: 0.3rem
+      border-radius: 20px
+      background-color: $gray-mid-light
+      // transform: translateX(-50%)
+      transform-origin: 50% 50%
+      transition: transform 0.25s cubic-bezier(.71,.48,.3,.9)
+      -webkit-backface-visibility: none
+      backface-visibility: none
+    &:after
+      transform: rotateZ(90deg)
+
+    .add-type
+      margin-left: 80px
+      padding: 10px 25px
+      border-left: dotted 1px $gray-mid-light
+
+      small
+        color: $gray-mid-light
+        font-family: $body-font
+        font-size: 12px
+        letter-spacing: 0
+        text-transform: none
+        line-height: 1.3
 
   //////
   &.btn-icon
@@ -195,3 +238,4 @@
     img
       width: 11px
       vertical-align: baseline
+
