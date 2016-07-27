@@ -7,6 +7,7 @@ angular.module('echo.config.api', [])
     user: '@user@',
     createPassword: _.template('@createPassword@'),
     signIn: '@signIn@',
+    signOut: '@signOut@',
     repByCarrierId:  _.template('@repByCarrierId@'),
     forgotPassword: '@forgotPassword@',
     portalUsers: _.template('@portalUsers@'),

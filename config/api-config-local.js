@@ -9,6 +9,7 @@ module.exports = function (grunt) {
     deactivateUserById:  '/mock/api/v1/users/${userId}/deactivate',
     user:  '/mock/api/v1/users',
     signIn:  '/mock/api/v1/auth/signIn',
+    signOut: '/mock/api/v1/auth/signOut',
     createPassword:  '/mock/api/v1/users/${userId}/createPassword',
     repByCarrierId:   '/mock/api/v1/carriers/${carrierId}/echorep',
     portalUsers:  '/mock/api/v1/carriers/${carrierId}/portalusers',

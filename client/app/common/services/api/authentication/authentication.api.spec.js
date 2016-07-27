@@ -6,6 +6,7 @@ describe('Api: authenticationApi', function () {
     $http,
     $base64,
     authenticationApi,
+    localStorageService,
     apiConfig,
     getRes,
     postRes,
@@ -17,6 +18,7 @@ describe('Api: authenticationApi', function () {
     module('echo.api.authentication', function ($provide) {
       $provide.value('$http', $http = jasmine.createSpyObj('$http', ['get', 'post', 'put', 'delete']));
       $provide.value('$base64', $base64 = jasmine.createSpyObj('$base64', ['encode']));
+      $provide.value('localStorageService', localStorageService = jasmine.createSpyObj('localStorageService', ['setRefreshToken']));
     });
 
     inject(function ($rootScope, _$q_, _$http_, _apiConfig_, _authenticationApi_) {
@@ -28,7 +30,13 @@ describe('Api: authenticationApi', function () {
     });
     $base64.encode.and.returnValue('test');
     $http.get.and.returnValue($q.when(getRes = {}));
-    $http.post.and.returnValue($q.when(postRes = {}));
+    $http.post.and.returnValue($q.when(postRes = {
+      data: {
+        data: {
+          refresh_token: ''
+        }
+      }
+    }));
     $http.put.and.returnValue($q.when(putRes = {}));
     $http.delete.and.returnValue($q.when(deleteRes = {}));
   });
@@ -53,7 +61,7 @@ describe('Api: authenticationApi', function () {
         });
         done();
       });
- 
+
       $scope.$digest();
     });
   });
@@ -69,10 +77,10 @@ describe('Api: authenticationApi', function () {
           username: username,
           password: password
         }, {
-          headers: {
-            'Authorization': 'Basic test'
-          }
-        });
+            headers: {
+              'Authorization': 'Basic test'
+            }
+          });
         done();
       });
 
@@ -80,6 +88,21 @@ describe('Api: authenticationApi', function () {
     });
   });
 
+  describe('Function: signOut', function () {
+
+    it('should make a POST request with userId', function (done) {
+      var userId = 123;
+
+      authenticationApi.signOut(userId).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.signOut, {
+          userId: userId
+        });
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
 
   describe('Function: forgotPassword', function () {
 

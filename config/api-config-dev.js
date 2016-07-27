@@ -11,6 +11,7 @@ module.exports = function (grunt) {
     deactivateUserById: host + '/api/v1/users/${userId}/deactivate',
     user: host + '/api/v1/users',
     signIn: host + '/api/v1/auth/signIn',
+    signOut: host + '/api/v1/auth/signOut',
     createPassword: host + '/api/v1/users/${userId}/createPassword',
     repByCarrierId: host +  '/api/v1/carriers/${carrierId}/echorep',
     forgotPassword: host + '/api/v1/auth/forgotPassword',

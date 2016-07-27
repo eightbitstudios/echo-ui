@@ -10,6 +10,7 @@ module.exports = {
     users: '/mock/api/v1/users',
     forgotPassword: '/mock/api/v1/auth/forgotPassword',
     signIn: '/mock/api/v1/auth/signIn',
+    signOut: '/mock/api/v1/auth/signOut',
     userById: '/mock/api/v1/users/:userId',
     deactivateUserById: '/mock/api/v1/users/:userId/deactivate'
   }

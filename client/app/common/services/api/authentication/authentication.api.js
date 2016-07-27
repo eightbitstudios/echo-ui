@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('echo.api.authentication', [
-  'echo.config.api'
-]).factory('authenticationApi', function ($base64, $q, $http, apiConfig) {
+  'echo.config.api',
+  'echo.services.localStorage'
+]).factory('authenticationApi', function ($base64, $q, $http, localStorageService, apiConfig) {
   return {
     /**
      * @description Creates a password
@@ -49,9 +50,28 @@ angular.module('echo.api.authentication', [
           'Authorization': 'Basic ' + authData
         }
       }).then(function (resp) {
-        return resp; // TODO: Do something with response once it is defined by the API team.
+        localStorageService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
+        return resp.data.data;
       }).catch(function (error) {
         return $q.reject(error.data.status.code);
+      });
+    },
+
+    /**
+     * @description Signs out a user
+     * @param {number} userId - User's id
+     * @returns {Promise} - Users is signed out
+     */
+    signOut: function (userId) {
+      var url = apiConfig.signOut;
+
+      var data = {
+        userId: userId
+      };
+
+      return $http.post(url, data).then(function (resp) {
+        localStorageService.setRefreshToken(null);
+        return resp.data.data;
       });
     },
 
