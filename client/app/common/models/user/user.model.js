@@ -21,7 +21,7 @@ angular.module('echo.models.user', [])
      * @return {boolean}
      */
     User.prototype.isRepAdmin = function () {
-      return $location.search().isRepAdmin;
+      return !$location.search().isCarrierAdmin;
     };
 
     /**

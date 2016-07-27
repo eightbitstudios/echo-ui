@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
 
-  var host = 'https://api.local';
+  var host = 'http://carr-prtl.dev.echogl.net:81';
 
   return {
     carriers: host + '/api/v1/carriers',
