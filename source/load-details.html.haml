@@ -18,6 +18,7 @@
       = partial 'partials/loads_accordion'
       / = partial 'partials/loads_sidebar_relatedcontent'
 
+      %p.text-muted Activity Logs are not available for multi-stop loads yet.
 
       %section.load-log-table
         %h4 All Load Activities
@@ -47,23 +48,27 @@
 
     .col-md-4
       %section.sidebar-container
-        %h4.container-header Equipment
+        %h4.section-header.sh-short Equipment
         .equip-list
           Dry Van 53’<br/>
           HazMat<br/>
           Tractor 093837<br/>
           =link_to 'Add Trailer Number', '#', class: 'btn btn-link btn-alt btn-sm'
+          %form
+            .form-group.form-inline
+              %label.hidden Add Trailer Number
+              %input.form-control{:type => "text", :placeholder => "Add Trailer Number"} 
 
         .equip-specials
           Drop Trailer at Shipper<br>
           No Reefers<br>
 
       %section.sidebar-container
-        %h4.container-header General Instructions
+        %h4.section-header.sh-short General Instructions
         %p POD Required within 24-48 hours after delivery. 
 
       %section.sidebar-container
-        %h4.container-header Documents
+        %h4.section-header.sh-short Documents
         %ul.load-documents
           %li
             .doc-image
@@ -74,14 +79,13 @@
                 Updated 06:45 CST, Today
                 By Echo
 
-          %li
-            %button.btn.btn-add_document
-              .add-type
-                Invoice <br>
-                %small BOLs, Receipts, Scale Tickets
-          %li
-            .doc-add_docs
-              .doc-add_type Load Documents
+        %button.btn.btn-document.btn-document_primary
+          .add-type
+            Invoice
+        %button.btn.btn-document
+          .add-type
+            Load Documents
+            %small BOLs, Receipts, Scale Tickets
         
-        %p.text-center
+        %p.text-center.text-muted
           %small Accepted File Types: JPEG, PDF, PNG

@@ -12,7 +12,7 @@
       .panel-body.load-details
         .row
           .details-location.col-md-4
-            %h5 Location
+            %h5.small-header Location
             %span.loc-name Walmart Warehouse A34 
             %br
             %span.loc-addr1 555 W. Western
@@ -24,38 +24,45 @@
             =link_to 'Open In Maps', '#'
           
           .details-contact.col-md-3
-            %h5 Contact
+            %h5.small-header Contact
             Bob Peterson
             %br
             (312) 555-1212
 
           .details-notes.col-md-5
-            %h5 Notes from customer
+            %h5.small-header Notes from customer
             %p DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime…
             =link_to 'Read more', '#'
 
-        .row.load-items-details
-          %h4
+        .load-items-details
+          %h4.section-header.sh-med.section-header_items
             Items to Pick Up
-            %span.items-pickup-number
-              Pickup Number
-              %em
-                56783456
-            %span.items-total-weight
-              Stop Total
-              %em
-                18680 LBS
+            .pull-right
+              %span.items-pickup-number
+                Pickup Number
+                %em
+                  56783456
+              %span.items-total-weight
+                Stop Total
+                %em
+                  18680 LBS
 
           .items-lists
-            .item-list.well
-              %p Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs
-              %p 1 EA, Floor Handling Unit
-              %p This could contain more items in plain text
-              %p This could contain more items in plain text
-            .item-list.well
-              %p Paper Goods
-              %p Skids Handling Unit <br>13680 lb
-
+            %section.item-list.well
+              %article.item-content
+                %p Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs
+                %p 1 EA, Floor Handling Unit
+                %p This could contain more items in plain text
+                %p This could contain more items in plain text
+              %footer.item-footer
+                To Delivery 1: Austin, TX 45678
+            %section.item-list.well
+              %article.item-content
+                %p Paper Goods
+                %p Skids Handling Unit <br>13680 lb
+              %footer.item-footer
+                To Delivery 2: Winchester-on-the-Severn, TX
+  
   .panel
     #headingTwo.panel-heading
       %h4.panel-title
@@ -69,7 +76,7 @@
       .panel-body.load-details
         .row
           .details-location.col-md-4
-            %h5 Location
+            %h5.small-header Location
             %span.loc-name Walmart Warehouse A34 
             %br
             %span.loc-addr1 555 W. Western
@@ -81,34 +88,38 @@
             =link_to 'Open In Maps', '#'
           
           .details-contact.col-md-3
-            %h5 Contact
+            %h5.small-header Contact
             Bob Peterson
             %br
             (312) 555-1212
 
           .details-notes.col-md-5
-            %h5 Notes from customer
+            %h5.small-header Notes from customer
             %p DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime…
             =link_to 'Read more', '#'
 
-        .row.load-items-details
-          %h4
+        .load-items-details
+          %h4.section-header.sh-med.section-header_items
             Items to Pick Up
-            %span.items-pickup-number
-              Pickup Number
-              %em
-                56783456
-            %span.items-total-weight
-              Stop Total
-              %em
-                18680 LBS
+            .pull-right
+              %span.items-pickup-number
+                Pickup Number
+                %em
+                  56783456
+              %span.items-total-weight
+                Stop Total
+                %em
+                  18680 LBS
 
           .items-lists
-            .items-list.well
-              %p Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs
-              %p 1 EA, Floor Handling Unit
-              %p This could contain more items in plain text
-              %p This could contain more items in plain text
-            .items-list.well
-              %p Paper Goods
-              %p Skids Handling Unit <br>13680 lb
+            %section.item-list.well
+              %article.item-content
+                %p Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs
+                %p 1 EA, Floor Handling Unit
+                %p This could contain more items in plain text
+                %p This could contain more items in plain text
+
+            %section.item-list.well
+              %article.item-content
+                %p Paper Goods
+                %p Skids Handling Unit <br>13680 lb
