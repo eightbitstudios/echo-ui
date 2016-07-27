@@ -47,9 +47,6 @@ $(window).load(function(){
 
 	  		if ($(this).hasClass('filter__assigned')) {
 	  			resetFilterBtns();
-	  			// Helps keep width from transitioning
-	  			// so much when text changes
-	  			$(this).width(width)
 	  			$btnFilter.blur()
 	  		} else {
 	  			resetFilterBtns();
@@ -237,6 +234,11 @@ $(window).load(function(){
 				evt.stopPropagation();
 				applyDropdownFilter($dropdown, evt.target)
 			})
+			$('#location').keypress(function(e){
+			  if(e.which == 13){//Enter key pressed
+			    $dropdown.find('.applyBtn').click();
+			  }
+			});
 		});
 
 		$(document).on('click', function (e) {

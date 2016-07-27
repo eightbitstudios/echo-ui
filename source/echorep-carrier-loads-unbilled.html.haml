@@ -1,0 +1,15 @@
+-@title= 'Load Management - Unbilled'
+-@page_classes= 'load-management load-management-unbilled'
+
+= partial 'partials/header_load_management', locals: {link: 'unbilled'}
+= partial 'partials/header_carrier_dashboard', locals: {loads: '12 Unbilled Loads', map: false}
+
+.container.main-content
+  %section
+    .section-head
+      = partial 'partials/filter_bar_unbilled'
+    .row
+      .col-md-12
+        = partial 'partials/load_management_unbilled'
+
+        = partial 'partials/load_management_pagination'

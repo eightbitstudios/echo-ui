@@ -13,21 +13,4 @@
       .col-md-12
         = partial 'partials/load_management_active'
 
-        %nav.pull-left
-          %ul.pagination
-            %li
-              =link_to '#' do
-                %span
-                  =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
-
-            %li.active-page=link_to '1', '#'
-            %li=link_to '2', '#'
-            %li=link_to '3', '#'
-            %li=link_to '4', '#'
-            %li=link_to '5', '#'
-            %li
-              =link_to '#' do
-                %span
-                  =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
-        .results-count.pull-right
-          Showing 1-10 of 40 Loads Needing Action
+        = partial 'partials/load_management_pagination'
