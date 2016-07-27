@@ -12,6 +12,7 @@ angular.module('echo.index', [
   'echo.components.footer',
   'echo.services.repDetails',
   'echo.services.carrierDetails',
+  'echo.components.driverProfile',
   'echo.services.user',
   'templates-app'
 ]).config(function ($urlRouterProvider, $stateProvider, routesConfig) {
@@ -75,5 +76,9 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCompanyDrivers.name, {
       url: routesConfig.INDEX.myCompanyDrivers.route,
       template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>'
+    })
+    .state(routesConfig.INDEX.myCompanyDriverProfile.name, {
+      url: routesConfig.INDEX.myCompanyDriverProfile.route,
+      template: '<driver-profile carrier-id="$ctrl.carrierId"></driver-profile>'
     });
 });
