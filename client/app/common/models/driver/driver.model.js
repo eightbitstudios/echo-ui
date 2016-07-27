@@ -10,8 +10,12 @@ angular.module('echo.models.driver', [])
     function Driver(userData) {
 
       var that = this;
+
+      var defaults = {
+        language: 'English'
+      };
  
-      _.assign(that, userData);
+      _.assign(that, defaults, userData);
     }
 
     Driver.prototype.getFullName = function() {

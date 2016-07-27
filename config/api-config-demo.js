@@ -16,6 +16,8 @@ module.exports = function (grunt) {
     portalUsers: host + '/api/v1/carriers/${carrierId}/portalusers',
     driverCount:host +  '/api/v1/carriers/${carrierId}/drivers/count',
     drivers: host + '/api/v1/carriers/${carrierId}/drivers',
+    driverById: host + '/api/v1/carriers/${carrierId}/drivers/${driverId}',
+    deactivateDriverById: host + '/api/v1/carriers/${carrierId}/drivers/${driverId}/deactivate',
     searchDrivers: host + '/api/v1/carriers/${carrierId}/drivers/${searchTerm}',
     portalUserById: host + '/api/v1/carriers/${carrierId}/portalusers/${userId}'
   };

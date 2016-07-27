@@ -1,6 +1,7 @@
 var carrierHandler = require('./handlers/carrier-handler'),
   userHandler = require('./handlers/user-handler'),
   authHandler = require('./handlers/auth-handler'),
+  driverHandler = require('./handlers/driver-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
@@ -12,6 +13,10 @@ module.exports = function (app) {
   app.post(endpoints.api.createPassword, authHandler.createPassword);
   app.post(endpoints.api.deactivateUserById, userHandler.deactivateUserById);
   app.get(endpoints.api.driverCount, carrierHandler.getDriverCount);
+  app.post(endpoints.api.drivers, driverHandler.insertDriver);
+  app.get(endpoints.api.driverById, driverHandler.getDriverById);
+  app.put(endpoints.api.driverById, driverHandler.updateDriverById);
+  app.put(endpoints.api.deactivateDriverById, driverHandler.deactivateDriverById);
   app.get(endpoints.api.drivers, carrierHandler.getDrivers);
   app.get(endpoints.api.portalUsers, carrierHandler.getPortalUsers);
   app.get(endpoints.api.carriers, carrierHandler.getCarriers);

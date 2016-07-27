@@ -1,122 +1,58 @@
-<div class="container main-content">
-      <a href="#" class="btn btn-back btn-link">
-      Back To Driver List
-      </a>
-      <div class="row">
-        <div class="col-sm-6">
-          <section class="content-container profile-info">
-            <div class="pull-right">
-              <a href="#" alt="Do Not Disturb" class="btn btn-link btn-alert">
-              Do Not Disturb
-              </a>
-            </div>
-            <h1 class="profile-name profile-name_driver">
-              Driver Name
+<section class="content-container profile-info">
+  <div class="pull-right" ng-if="$ctrl.driver.id">
+    <a href="#" alt="Do Not Disturb" class="btn btn-link btn-alert">
+      <div class="echo-icon icon-dnd"></div>Do Not Disturb
+    </a>
+  </div>
+  <h1 class="profile-name profile-name_driver">
+              <div class="echo-icon icon-driver"></div> 
+              <span ng-if="!$ctrl.driver.id">New Driver</span>
             </h1>
-            <form>
-              <fieldset class="fieldset">
-                <div class="form-group">
-                  <label>First Name</label>
-                  <input class="form-control" placeholder="Driver Name" type="email">
-                </div>
-                <div class="form-group">
-                  <label>Last Name</label>
-                  <input class="form-control" placeholder="Last Name" type="text">
-                </div>
-                <div class="form-group">
-                  <label>Preferred Language</label>
-                  <div class="select">
-                    <select>
-                      <option value="a">English</option>
-                      <option value="b">Spanish</option>
-                      <option value="c">German</option>
-                      <option value="d">Polish</option>
-                      <option value="e">Greek</option>
+  <form name="$ctrl.driverProfileForm" novalidate>
+    <fieldset class="fieldset">
+      <div class="form-group">
+        <label>First Name</label>
+        <input class="form-control" ng-model="$ctrl.driver.firstName" placeholder="Driver Name" type="text">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input class="form-control" ng-model="$ctrl.driver.lastName" placeholder="Last Name" type="text">
+      </div>
+      <div class="form-group">
+        <label>Preferred Language</label>
+        <div class="select">
+          <select ng-model="$ctrl.driver.language">
+                      <option value="English">English</option>
+                      <option value="Spanish">Spanish</option>
+                      <option value="German">German</option>
+                      <option value="Polish">Polish</option>
+                      <option value="Greek">Greek</option>
                     </select>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset class="fieldset">
-                <legend>Contact Information</legend>
-                <div class="form-group">
-                  <label>Email Address</label>
-                  <input class="form-control" placeholder="email@email.com" type="email">
-                </div>
-                <div class="form-group">
-                  <label>Phone Number</label>
-                  <input class="form-control" placeholder="(555) 123-4567" type="tel">
-                </div>
-                <div class="form-group">
-                  <label>Tractor Number</label>
-                  <input class="form-control" placeholder="e.g. 432019-900" type="text">
-                </div>
-                <div class="form-group">
-                  <a href="#" class="btn btn-link btn-alt">Remove User</a>
-                  <button class="btn btn-default pull-right" type="submit">Save Changes</button>
-                </div>
-              </fieldset>
-            </form>
-          </section>
-        </div>
-        <div class="col-sm-6">
-          <section class="content-container">
-            <h2 class="section-header">Batmobile Usage</h2>
-            <ul class="checklist">
-              <li class="checklist-approved">App installed 6 Months Ago</li>
-              <li class="checklist-approved">Tracking Enabled</li>
-              <li class="checklist-approved">Last Login: 09:00 CST, Fri Jun 17</li>
-            </ul>
-          </section>
-          <section class="content-container">
-            <h2 class="section-header">Assignments</h2>
-            <div class="load-label">Echo Assigned, Active</div>
-            <div class="load-info">
-              <div class="load-col load-assignment">
-                <h2 class="load-number">123443211</h2>
-                <a href="#">Change Driver</a>
-              </div>
-              <div class="load-col load-location load-location_pickup load-pickup">
-                <div class="load-citystate">
-                  <div class="load-city">New York</div>
-                  <div class="load-st">TN, 60655</div>
-                </div>
-                <div class="load-datetime">14:00 EST <br>Picked up Fri, May 20</div>
-              </div>
-              <div class="load-col load-direction">
-              </div>
-              <div class="load-col load-location load-location_delivery load-delivery">
-                <div class="load-citystate">
-                  <div class="load-city">Chicago</div>
-                  <div class="load-st">TX, 50968</div>
-                </div>
-                <div class="load-datetime">16:00-18:00 EST <br>Today, Apr 20</div>
-              </div>
-            </div>
-            <hr>
-            <div class="load-label">Next Assignment</div>
-            <div class="load-info">
-              <div class="load-col load-assignment">
-                <h2 class="load-number">123443211</h2>
-                <a href="#">Change Driver</a>
-              </div>
-              <div class="load-col load-location load-location_pickup load-pickup">
-                <div class="load-citystate">
-                  <div class="load-city">New York</div>
-                  <div class="load-st">TN, 60655</div>
-                </div>
-                <div class="load-datetime">14:00 EST <br>Picked up Fri, May 20</div>
-              </div>
-              <div class="load-col load-direction">
-              </div>
-              <div class="load-col load-location load-location_delivery">
-                <div class="load-citystate">
-                  <div class="load-city">Chicago</div>
-                  <div class="load-st">TX, 50968</div>
-                </div>
-                <div class="load-datetime">16:00-18:00 EST <br>Today, Apr 20</div>
-              </div>
-            </div>
-          </section>
         </div>
       </div>
-    </div>
+    </fieldset>
+    <fieldset class="fieldset">
+      <legend>Contact Information</legend>
+      <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.email.$invalid && $ctrl.driverProfileForm.email.$touched}">
+        <label>Email Address</label>
+        <input class="form-control" name="email" placeholder="email@email.com" type="email" ng-model="$ctrl.driver.email" required>
+        <span class="help-block" ng-if="$ctrl.driverProfileForm.email.$error.email">Invalid email address</span>
+        <span class="help-block" ng-if="$ctrl.driverProfileForm.email.$error.required && $ctrl.driverProfileForm.email.$touched">An email address is required</span>
+      </div>
+      <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.phoneNumber.$invalid && $ctrl.driverProfileForm.phoneNumber.$touched}">
+        <label>Phone Number</label>
+        <input class="form-control" name="phoneNumber" phone-number-mask placeholder="(555) 432-1234" type="tel" ng-model="$ctrl.driver.phone" required>
+        <span class="help-block" ng-if="$ctrl.driverProfileForm.phoneNumber.$error.required && $ctrl.driverProfileForm.phoneNumber.$touched">A phone number is required</span>
+        <span class="help-block" ng-if="$ctrl.driverProfileForm.phoneNumber.$error.invalidFormat && $ctrl.driverProfileForm.phoneNumber.$touched">Invalid phone number</span>
+      </div>
+      <div class="form-group">
+        <label>Tractor Number</label>
+        <input class="form-control" placeholder="e.g. 432019-900" type="text" ng-model="$ctrl.driver.tractor">
+      </div>
+      <div class="form-group">
+        <a href="#" class="btn btn-link btn-alt" ng-if="$ctrl.driver.id">Remove User</a>
+        <button class="btn btn-default pull-right" type="submit" ng-click="$ctrl.saveDriverHandler()">Save Changes</button>
+      </div>
+    </fieldset>
+  </form>
+</section>
