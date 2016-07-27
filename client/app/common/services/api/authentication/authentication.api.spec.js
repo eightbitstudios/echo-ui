@@ -4,6 +4,7 @@ describe('Api: authenticationApi', function () {
   var $scope,
     $q,
     $http,
+    $base64,
     authenticationApi,
     apiConfig,
     getRes,
@@ -15,6 +16,7 @@ describe('Api: authenticationApi', function () {
 
     module('echo.api.authentication', function ($provide) {
       $provide.value('$http', $http = jasmine.createSpyObj('$http', ['get', 'post', 'put', 'delete']));
+      $provide.value('$base64', $base64 = jasmine.createSpyObj('$base64', ['encode']));
     });
 
     inject(function ($rootScope, _$q_, _$http_, _apiConfig_, _authenticationApi_) {
@@ -24,7 +26,7 @@ describe('Api: authenticationApi', function () {
 
       authenticationApi = _authenticationApi_;
     });
-
+    $base64.encode.and.returnValue('test');
     $http.get.and.returnValue($q.when(getRes = {}));
     $http.post.and.returnValue($q.when(postRes = {}));
     $http.put.and.returnValue($q.when(putRes = {}));
@@ -66,6 +68,10 @@ describe('Api: authenticationApi', function () {
         expect($http.post).toHaveBeenCalledWith(apiConfig.signIn, {
           username: username,
           password: password
+        }, {
+          headers: {
+            'Authorization': 'Basic test'
+          }
         });
         done();
       });

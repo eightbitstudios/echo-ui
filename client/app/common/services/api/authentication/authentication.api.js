@@ -2,7 +2,7 @@
 
 angular.module('echo.api.authentication', [
   'echo.config.api'
-]).factory('authenticationApi', function ($q, $http, apiConfig) {
+]).factory('authenticationApi', function ($base64, $q, $http, apiConfig) {
   return {
     /**
      * @description Creates a password
@@ -13,8 +13,8 @@ angular.module('echo.api.authentication', [
      * @returns {Promise} - Users password was created
      */
     createPassword: function (userId, oneLoginUserId, token, passwordChange) {
-      var url = apiConfig.createPassword({userId: userId});
-      
+      var url = apiConfig.createPassword({ userId: userId });
+
       var data = {
         password: passwordChange.newPassword,
         confirmPassword: passwordChange.confirmPassword,
@@ -24,11 +24,11 @@ angular.module('echo.api.authentication', [
 
       return $http.post(url, data).then(function (resp) {
         return resp;
-      }).catch(function(){
+      }).catch(function () {
         return $q.reject();
       });
     },
-    
+
     /**
      * @description Signs in a user
      * @param {string} username - Username
@@ -37,19 +37,24 @@ angular.module('echo.api.authentication', [
      */
     signIn: function (username, password) {
       var url = apiConfig.signIn;
-      
-      var data = {
-        username: username,
-        password: password
-      };
 
-      return $http.post(url, data).then(function (resp) {
+      var authData = $base64.encode(username + ':' + password),
+        data = {
+          username: username,
+          password: password
+        };
+
+      return $http.post(url, data, {
+        headers: {
+          'Authorization': 'Basic ' + authData
+        }
+      }).then(function (resp) {
         return resp; // TODO: Do something with response once it is defined by the API team.
-      }).catch(function(error){
+      }).catch(function (error) {
         return $q.reject(error.data.status.code);
       });
     },
-    
+
     /**
      * @description Forgot password
      * @param {string} username - Username
@@ -63,11 +68,11 @@ angular.module('echo.api.authentication', [
       };
 
       return $http.post(url, data).then(function (resp) {
-         return resp;
-      }).catch(function(error){
+        return resp;
+      }).catch(function (error) {
         return $q.reject(error.data.status.code);
       });
-     },
+    },
 
   };
 });
