@@ -12,34 +12,34 @@ angular.module('echo.config.routes', [])
       myCarriers: {
         name: 'index.myCarriers',
         route:'myCarriers'
-      },
-      carrier: {
-        name: 'index.carrier',
-        route:'carrier/:carrierId'
-      },
+      },      
       myCarriersDetails: {
         name: 'index.myCarriers.details',
         route:'/:carrierId'
       },
+      carrier: {
+        name: 'index.carrier',
+        route:'carrier/:carrierId?isCarrierAdmin'
+      },
       dashboard: {
         name: 'index.carrier.dashboard',
-        route:'/dashboard'
+        route:'/dashboard?isCarrierAdmin'
       },
       myCompany: {
-        name: 'index.myCarriers.myCompany',
-        route:'/myCompany'
+        name: 'index.carrier.myCompany',
+        route:'/myCompany?isCarrierAdmin'
       },
       myCompanyUsers: {
-        name: 'index.myCarriers.myCompany.portalUsers',
-        route: '/portalUsers'
+        name: 'index.carrier.myCompany.portalUsers',
+        route: '/portalUsers?isCarrierAdmin'
       },      
       myCompanyUsersProfile: {
-        name: 'index.myCarriers.myCompany.profile',
-        route: '/portalUsers/{userId}'
+        name: 'index.carrier.myCompany.profile',
+        route: '/portalUsers/{userId}?isCarrierAdmin'
       },
       myCompanyDrivers: {
         name: 'index.carrier.myCompany.drivers',
-        route: '/drivers'
+        route: '/drivers?isCarrierAdmin'
       }
     },
     LOGIN: {
