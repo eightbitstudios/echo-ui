@@ -2,11 +2,11 @@
   .container
     %ul.nav.nav-tabs
       %li{class: link == 'active' ? 'active' : ''}
-        =link_to '11 Active Loads', '#'
+        =link_to '11 Active Loads', '/echorep-carrier-loads-active.html'
       %li{class: link == 'unbilled' ? 'active' : ''}
-        =link_to '12 Unbilled Loads', '#'
+        =link_to '12 Unbilled Loads', '/echorep-carrier-loads-unbilled.html'
       %li{class: link == 'upcoming' ? 'active' : ''}
-        =link_to '11 Upcoming Loads', '#'
+        =link_to '11 Upcoming Loads', '/echorep-carrier-loads-upcoming.html'
     %form.search-form.pull-right{role:"search"}
       .form-group
         %input.form-control.search-form-input.search-form-input_dark{type: "text", placeholder:"Load or PRO Number"}

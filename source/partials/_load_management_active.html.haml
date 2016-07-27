@@ -1,0 +1,420 @@
+%table.table.table-carrier-dashboard
+  %thead
+    %tr
+      %th Load
+      %th.carrier-dashboard-pickup Pickup
+      %th.carrier-dashboard-arrow
+      %th.carrier-dashboard-delivery Delivery
+      %th Driver
+      %th Action
+  %tbody
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443211', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Washington-on-the-Brazos
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-15:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Winchester-on-the-Severn
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Fred F', '#'
+          <span><tel>(899) 584-0803</tel></span>
+          .driver-status
+            Active Driver
+            %br
+            Tracking On
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Reported Empty'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'REPORT ARRIVAL AT PICKUP', '#', class: 'btn btn-danger'
+            %p.muted Running 15 Min. Late
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443212', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Truth Or Consequence
+          .location-state
+            CA, 60655
+          .location-time
+            15:00-16:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Rancho Santa Margarita
+          .location-state
+            CA, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, Dec 1
+      %td.carrier-dashboard-load
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Alfonzo A', '#'
+          <span><tel>(054) 534-6618</tel></span>
+          .driver-status
+            Do Not Disturb
+            %br
+            Tracking Off
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Reported Empty'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'REPORT ARRIVAL AT PICKUP', '#', class: 'btn btn-primary'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443213', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            New York
+          .location-state
+            TN, 60655
+          .location-time
+            14:00 EST
+            %br
+            Picked Up Fri, May 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height
+          .lead
+            Chicago
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Today, Apr 20
+      %td
+        .carrier-dashboard-driver.match-height
+          =link_to 'Assign Driver', '#', class: 'btn btn-default'
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Reported Empty'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'REPORT ARRIVAL AT DELIVERY', '#', class: 'btn btn-primary'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443214', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Philadelphia
+          .location-state
+            TN, 60655
+          .location-time
+            16:00-18:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            San Francisco
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Thu, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Gregory M', '#'
+          <span><tel>(343) 890-1203</tel></span>
+          .driver-status
+            =link_to 'Verify Driver', '#'
+            %br
+            Tracking Off
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Reported Empty'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'REPORT DELIVERY', '#', class: 'btn btn-primary'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443215', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Memphis
+          .location-state
+            TN, 60655
+          .location-time
+            14:00 EST
+            %br
+            Picked Up Wed, Aug 4
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Austin
+          .location-state
+            TX, 50968
+          .location-time
+            16:00 EST
+            %br
+            Delivered Tue, Oct 31
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Alta N', '#'
+          <span><tel>(952) 796-9653</tel></span>
+          .driver-status
+            Active Driver
+            %br
+            Tracking Off
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Reported Location'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'Send Load Update', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443211', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Washington-on-the-Brazos
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-15:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Winchester-on-the-Severn
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Fred F', '#'
+          <span><tel>(899) 584-0803</tel></span>
+          .driver-status
+            Active Driver
+            %br
+            Tracking On
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Reported Empty'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'Report Loaded', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443212', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Truth Or Consequence
+          .location-state
+            CA, 60655
+          .location-time
+            15:00-16:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Rancho Santa Margarita
+          .location-state
+            CA, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, Dec 1
+      %td.carrier-dashboard-load
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Alfonzo A', '#'
+          <span><tel>(054) 534-6618</tel></span>
+          .driver-status
+            Do Not Disturb
+            %br
+            Tracking Off
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Driver Assigned'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'Report Empty', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443213', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            New York
+          .location-state
+            TN, 60655
+          .location-time
+            14:00 EST
+            %br
+            Picked Up Fri, May 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height
+          .lead
+            Chicago
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Today, Apr 20
+      %td
+        .carrier-dashboard-driver.match-height
+          =link_to 'Assign Driver', '#', class: 'btn btn-default'
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Load Now Active
+          As of 13:15 CST today
+          .action-align-bottom
+            = link_to 'REPORT Empty', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443214', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Philadelphia
+          .location-state
+            TN, 60655
+          .location-time
+            16:00-18:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            San Francisco
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Thu, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name Gregory M
+          <span><tel>(343) 890-1203</tel></span>
+          .driver-status
+            =link_to 'Verify Driver', '#'
+            %br
+            Tracking Off
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Reported Loaded'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'REPORT LOCATION', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443215', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Memphis
+          .location-state
+            TN, 60655
+          .location-time
+            14:00 EST
+            %br
+            Picked Up Wed, Aug 4
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Austin
+          .location-state
+            TX, 50968
+          .location-time
+            16:00 EST
+            %br
+            Delivered Tue, Oct 31
+        %ul.pagination
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+          %li 1
+          %li /
+          %li 2
+          %li
+            =link_to '#' do
+              %span
+                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name Alta T
+          <span><tel>(952) 796-9653</tel></span>
+          .driver-status
+            Active Driver
+            %br
+            Tracking Off
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Call To Report
+          .action-align-bottom
+            = link_to 'ADD DOCUMENTS', '#', class: 'btn btn-default'

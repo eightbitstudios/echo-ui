@@ -96,6 +96,7 @@ $(window).load(function(){
 		function resetSdpTrigger() {
 			$sdpTrigger.html('APPT. Date').removeClass('filter__assigned');
 			$sdpTrigger.removeClass('active');
+			$sdpTrigger.blur();
 		}
 
 		$sdpTrigger.on('show.daterangepicker', function(ev, picker) {

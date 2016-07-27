@@ -2,7 +2,7 @@
 -@page_classes= 'load-management load-management-active'
 
 = partial 'partials/header_load_management', locals: {link: 'active'}
-= partial 'partials/header_carrier_dashboard'
+= partial 'partials/header_carrier_dashboard', locals: {loads: '9 Loads Located', map: true}
 = partial 'partials/map_spacer'
 
 .container.main-content
@@ -11,23 +11,23 @@
       = partial 'partials/filter_bar'
     .row
       .col-md-12
-        = partial 'partials/carrier_dashboard_table_need_action'
+        = partial 'partials/load_management_active'
 
         %nav.pull-left
-          =link_to 'Show 5 More Loads', '#'
-        .results-count.pull-right
-          Showing 1-5 of 7 Loads Needing Action
-  %section
-    .section-head
-      %h1.section-label
-        Multi Stop Loads
-        %span.section-sub-label
-          With Upcoming Appointments
-    .row
-      .col-md-12
-        = partial 'partials/carrier_dashboard_table_multi_stop'
+          %ul.pagination
+            %li
+              =link_to '#' do
+                %span
+                  =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
 
-        %nav.pull-left
-          =link_to 'Show 5 More Loads', '#'
+            %li.active-page=link_to '1', '#'
+            %li=link_to '2', '#'
+            %li=link_to '3', '#'
+            %li=link_to '4', '#'
+            %li=link_to '5', '#'
+            %li
+              =link_to '#' do
+                %span
+                  =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
         .results-count.pull-right
-          Showing 1-5 of 7 Multi Stop Loads
+          Showing 1-10 of 40 Loads Needing Action

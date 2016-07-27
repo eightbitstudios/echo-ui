@@ -2,9 +2,10 @@
 
   %ul.list-inline.carrier-dashboard-header_left
     %li
-      %strong 21 Loads Located
+      %strong=loads
     %li
-      = link_to 'View Full Map', '#'
+      - if map
+        = link_to 'View Full Map', '#'
 
   %ul.list-inline.carrier-dashboard-header_right
     %li
