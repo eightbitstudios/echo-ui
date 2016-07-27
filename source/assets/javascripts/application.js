@@ -41,7 +41,9 @@ $(window).load(function(){
 	  	e.preventDefault();
 	  	width = $(this).width()
 
-	  	if (!$(this).is('.btn-date-picker, .btn-single-dp')) {
+	  	if (!$(this).is('.btn-date-picker, .btn-single-dp, .btn-filter-dropdown')) {
+	  		resetDropdownButton();
+	  		resetSdpTrigger();
 
 	  		if ($(this).hasClass('filter__assigned')) {
 	  			resetFilterBtns();
@@ -127,6 +129,9 @@ $(window).load(function(){
 			var filterStartDate = picker.startDate,
 					availString = 'Appt Date: ' + filterStartDate.format('MM/DD/YY')
 
+			resetDropdownButton();
+			resetFilterBtns();
+
 			$sdpTrigger.html(availString).addClass('filter__assigned').append('<span class="close">X</span>');
 			$sdpTrigger.removeClass('active');
 
@@ -208,6 +213,66 @@ $(window).load(function(){
 		$drpTrigger.on('cancel.daterangepicker', function(ev, picker) {
 			resetdrpTrigger()
 		});
+
+		// Dropdown Filter JS
+
+		var $dropdownButton = $('.btn-filter-dropdown'),
+				$dropdown = $('.dropdown-filter')
+
+		$dropdownButton.on('click', function(e) {
+			e.stopPropagation()
+			var left = $(this).position().left,
+			    top = $(this).position().top,
+			    height = $(this).height(),
+			    formTop = top + height + 25
+			$dropdown.css({top: formTop + 'px', left: left + 'px'}).toggle();
+			$dropdown.find('.cancelBtn').unbind('click').on('click', function(ev){
+				ev.preventDefault();
+				ev.stopPropagation();
+				resetDropdownFilter($dropdown, ev.target);
+			})
+			$dropdown.find('.applyBtn').unbind('click').on('click', function(evt){
+				evt.preventDefault();
+				evt.stopPropagation();
+				applyDropdownFilter($dropdown, evt.target)
+			})
+		});
+
+		$(document).on('click', function (e) {
+	    if (!$dropdown.is(e.target) && $dropdown.has(e.target).length === 0) {
+        resetDropdownFilter($dropdown);
+	    }
+		});
+
+		function resetDropdownFilter() {
+			$dropdown.find('input').val('');
+			$dropdown.hide();
+			$dropdown.find('input[type=checkbox]').prop('checked', false);
+		}
+
+		function resetDropdownButton() {
+			$btnFilter.blur()
+			$('.close').remove();
+			$('.btn-filter-dropdown').html('Stop Location').removeClass('filter__assigned');
+		}
+
+		function applyDropdownFilter() {
+			var location = $dropdown.find('input#location').val();
+			if (location == '') {
+				location = 'Stop Location'
+			}
+
+			resetSdpTrigger();
+			resetFilterBtns();
+
+			$dropdownButton.html(location).addClass('filter__assigned').append('<span class="close">X</span>')
+			$dropdownButton.find('.close').on('click', function(ev){
+				ev.preventDefault();
+				ev.stopPropagation();
+				resetDropdownButton();
+			})
+			$dropdown.toggle()
+		}
 
 	});
 
