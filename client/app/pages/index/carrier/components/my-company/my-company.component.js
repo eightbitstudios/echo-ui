@@ -12,6 +12,8 @@ angular.module('echo.index.carrier.myCompany', [
     },
     controller: function ($stateParams, $state, routesConfig) {
       var that = this;
+      that.routesConfig = routesConfig;
+      that.state = $state;
       
       that.tabItems = [{
         title: 'Portal Users',

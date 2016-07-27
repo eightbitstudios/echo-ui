@@ -10,9 +10,10 @@
             </h1>
   <form name="$ctrl.driverProfileForm" novalidate>
     <fieldset class="fieldset">
-      <div class="form-group">
+      <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.firstName.$invalid && $ctrl.driverProfileForm.firstName.$touched}">
         <label>First Name</label>
-        <input class="form-control" ng-model="$ctrl.driver.firstName" placeholder="Driver Name" type="text">
+        <input class="form-control" required ng-model="$ctrl.driver.firstName" name="firstName" placeholder="Driver Name" type="text">
+        <span class="help-block" ng-if="$ctrl.driverProfileForm.firstName.$error.required && $ctrl.driverProfileForm.firstName.$touched">First name is required</span>
       </div>
       <div class="form-group">
         <label>Last Name</label>
@@ -22,12 +23,9 @@
         <label>Preferred Language</label>
         <div class="select">
           <select ng-model="$ctrl.driver.language">
-                      <option value="English">English</option>
-                      <option value="Spanish">Spanish</option>
-                      <option value="German">German</option>
-                      <option value="Polish">Polish</option>
-                      <option value="Greek">Greek</option>
-                    </select>
+            <option ng-repeat="item in $ctrl.languages" ng-value="item.language">{{item.language}}</option>
+           </select>
+          <input ng-if="$ctrl.driver.language === 'Other'" class="form-control" ng-model="$ctrl.otherLanguage" placeholder="Language" type="text">
         </div>
       </div>
     </fieldset>
@@ -35,9 +33,8 @@
       <legend>Contact Information</legend>
       <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.email.$invalid && $ctrl.driverProfileForm.email.$touched}">
         <label>Email Address</label>
-        <input class="form-control" name="email" placeholder="email@email.com" type="email" ng-model="$ctrl.driver.email" required>
+        <input class="form-control" name="email" placeholder="email@email.com" type="email" ng-model="$ctrl.driver.email">
         <span class="help-block" ng-if="$ctrl.driverProfileForm.email.$error.email">Invalid email address</span>
-        <span class="help-block" ng-if="$ctrl.driverProfileForm.email.$error.required && $ctrl.driverProfileForm.email.$touched">An email address is required</span>
       </div>
       <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.phoneNumber.$invalid && $ctrl.driverProfileForm.phoneNumber.$touched}">
         <label>Phone Number</label>
@@ -50,8 +47,13 @@
         <input class="form-control" placeholder="e.g. 432019-900" type="text" ng-model="$ctrl.driver.tractor">
       </div>
       <div class="form-group">
-        <a href="#" class="btn btn-link btn-alt" ng-if="$ctrl.driver.id">Remove User</a>
-        <button class="btn btn-default pull-right" type="submit" ng-click="$ctrl.saveDriverHandler()">Save Changes</button>
+        <div ng-if="$ctrl.showConfirmation" class="confirmation text-center">
+          <div>Are you sure you want to remove this user?</div>
+          <button class="btn btn-secondary" ng-disabled="$ctrl.showButtonLoading" type="submit" ng-click="$ctrl.toggleConfirmation()">Cancel</button>
+          <loading-button button-class="btn-danger" button-text="Delete" click-handler="$ctrl.removeUserHandler()" show-loading="$ctrl.showButtonLoading"></loading-button>
+        </div>
+        <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.driver.id && !$ctrl.showConfirmation" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
+        <loading-button ng-if="!$ctrl.showConfirmation" button-text="Save Changes" disable-button="$ctrl.driverProfileForm.$invalid" click-handler="$ctrl.saveDriverHandler()" show-loading="$ctrl.showButtonLoading" class="pull-right"></loading-button>
       </div>
     </fieldset>
   </form>

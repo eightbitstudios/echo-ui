@@ -14,4 +14,5 @@ angular.module('echo.config.api', [])
     driverById: _.template('@driverById@'),
     deactivateDriverById: _.template('@deactivateDriverById@'),
     searchDrivers: _.template('@searchDrivers@'),
+    language: '@language@',
   });

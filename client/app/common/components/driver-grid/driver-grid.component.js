@@ -4,6 +4,7 @@ angular.module('echo.components.driverGrid', [
   'echo.components.typeaheadSearch',
   'echo.components.loading',
   'echo.config.appConstants',
+  'echo.config.routes',
   'echo.components.pagination',
   'echo.directives.dateRangePicker',
   'echo.api.carrier'
@@ -12,14 +13,15 @@ angular.module('echo.components.driverGrid', [
     carrierId: '<'
   },
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function (carrierApi, appConstants) {
+  controller: function ($state, routesConfig, carrierApi, appConstants) {
     var that = this;
     that.drivers = null;
     that.pagination = null;
-    that.showLoading = false;
+    that.showLoading = true;
     that.firstRecord = 0;
     that.startDate = null;
     that.endDate = null;
+    that.routesConfig = routesConfig;
 
     /**
      * Controller init
@@ -82,6 +84,10 @@ angular.module('echo.components.driverGrid', [
       }).finally(function () {
         that.showLoading = false;
       });
+    };
+
+    that.newDriverHandler = function() {
+      $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name);
     };
 
     that.$onChanges = init;

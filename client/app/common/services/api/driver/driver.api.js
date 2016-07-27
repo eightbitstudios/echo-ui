@@ -8,7 +8,7 @@ angular.module('echo.api.driver', [
       /**
        * @description Upserts a portal user
        * @param {DriverModel} driver
-       * @returns {Promise} - Promise containing a UserModel
+       * @returns {Promise} - Promise containing a DriverModel
        */
       upsertDriver: function (carrierId, driver) {
 
@@ -24,7 +24,7 @@ angular.module('echo.api.driver', [
       /**
        * @description Updates a driver
        * @param {DriverModel} driver
-       * @returns {Promise} - Promise containing a UserModel
+       * @returns {Promise} - Promise containing a DriverModel
        */
       updateDriverById: function (carrierId, driver) {
 
@@ -40,7 +40,7 @@ angular.module('echo.api.driver', [
       /**
        * @description Deactivates a portal user
        * @param {DriverModel} driver
-       * @returns {Promise} - Promise containing a UserModel
+       * @returns {Promise} - Promise containing a DriverModel
        */
       deactivateDriverById: function (carrierId, driver) {
 
@@ -55,7 +55,7 @@ angular.module('echo.api.driver', [
       /**
        * @description Creates a new portal user
        * @param {DriverModel} driver
-       * @returns {Promise} - Promise containing a UserModel
+       * @returns {Promise} - Promise containing a DriverModel
        */
       insertDriver: function (carrierId, driver) {
 
@@ -65,6 +65,21 @@ angular.module('echo.api.driver', [
           return resp.data.data;
         }).catch(function (resp) {
           return $q.reject(resp.data.status.message);
+        });
+      },      
+      
+      /**
+       * @description Fetches a driver by id
+       * @param {number} carrierId
+       * @param {number} driverId
+       * @returns {Promise} - Promise containing a DriverModel
+       */
+      fetchDriverById: function (carrierId, driverId) {
+
+        var url = apiConfig.driverById({ carrierId: carrierId, driverId: driverId });
+        
+        return $http.get(url).then(function (resp) {
+          return resp.data.data;
         });
       }
   };

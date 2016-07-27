@@ -11,7 +11,7 @@
       </date-range-picker>
     </div>
     <div class="col-sm-3 text-right">
-      <button class="btn btn-default">Invite New Driver</button>
+      <button class="btn btn-default" ng-click="$ctrl.newDriverHandler()">Invite New Driver</button>
     </div>
   </div>
   <div class="row">
@@ -31,7 +31,9 @@
         <tbody>
           <tr ng-repeat="driver in $ctrl.drivers">
             <td class="driverlist-col-driver">
-              <h3 class="driver-name"><a href="javascript:void(0)">{{driver.getFullName()}}</a></h3>
+              <h3 class="driver-name">
+                <a ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyDriverProfile.name}}({driverId: driver.id})">{{driver.getFullName()}}</a>
+                </h3>
               <span><tel>{{driver.phone}}</tel></span>
             </td>
             <td class="driverlist-col-usage">App Installed <br>Tracking Enabled</td>

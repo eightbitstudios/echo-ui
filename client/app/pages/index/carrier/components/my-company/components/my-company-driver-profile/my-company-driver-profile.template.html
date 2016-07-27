@@ -1,10 +1,11 @@
 <div class="container main-content">
-      <a href="#" class="btn btn-back btn-link">
-      <div class="echo-icon icon-left-arrow"></div> Back To Driver List
+      <a ng-if="!$ctrl.loading" ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyDrivers.name}}" class="btn btn-back btn-link">
+        <div class="echo-icon icon-left-arrow"></div> Back To Driver List
       </a>
-      <div class="row">
+      <loading show-loading="$ctrl.loading"></loading>
+      <div class="row" ng-if="!$ctrl.loading">
         <div class="col-sm-6">
-          <driver-profile carrier-id="$ctrl.carrierId" driver=""></driver-profile>
+          <driver-profile carrier-id="$ctrl.carrierId" driver="$ctrl.driver" languages="$ctrl.languages" profile-updated-handler="$ctrl.profileUpdated()"></driver-profile>
         </div>
         <div class="col-sm-6">
           <usage></usage>

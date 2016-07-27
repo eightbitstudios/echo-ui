@@ -16,8 +16,7 @@ module.exports = {
     }, minDelay, maxDelay);
   },
   deactivateDriverById: function (req, res) {
-    var resTemplate = new ResTemplate()
-    resTemplate.data = driverRes;
+    var resTemplate = new ResTemplate();
 
     responseUtil.timeout(function () {
       res.json(resTemplate);
