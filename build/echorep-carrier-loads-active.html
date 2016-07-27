@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      Carrier Dashboard
+      Load Management - Active
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class='carrier-dashboard'>
+  <body class='load-management load-management-active'>
     <header class='navbar'>
       <div class='eyebrow-header'>
         <div class='container'>
@@ -66,10 +66,43 @@
         </nav>
       </div>
     </header>
+    <div class='tab-bar'>
+      <div class='container'>
+        <ul class='nav nav-tabs'>
+          <li class='active'>
+            <a href="/echorep-carrier-loads-active.html">11 Active Loads</a>
+          </li>
+          <li class=''>
+            <a href="/echorep-carrier-loads-unbilled.html">12 Unbilled Loads</a>
+          </li>
+          <li class=''>
+            <a href="/echorep-carrier-loads-upcoming.html">11 Upcoming Loads</a>
+          </li>
+        </ul>
+        <form class='search-form pull-right' role='search'>
+          <div class='form-group'>
+            <input class='form-control search-form-input search-form-input_dark' placeholder='Load or PRO Number' type='text'>
+            <span class='search-help-text'>Press Enter To Search</span>
+            <button class='btn btn-default btn-icon' type='submit'>
+              <svg height='18px' version='1.1' viewbox='0 0 18 18' width='18px' xmlns='http://www.w3.org/2000/svg'>
+                <g class='search-svg' fill-rule='evenodd' fill='none' id='States,-Interactions,-Misc' stroke-width='1' stroke='none'>
+                  <g id='patterns' stroke-width='2' stroke='#FFFFFF' transform='translate(-521.000000, -5581.000000)'>
+                    <g id='icon-/-search' transform='translate(522.000000, 5582.000000)'>
+                      <circle cx='6.33333333' cy='6.33333333' id='Oval' r='6'></circle>
+                      <path d='M10.5753333,10.576 L15.5,15.5' id='Shape'></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class='container carrier-dashboard-header'>
       <ul class='list-inline carrier-dashboard-header_left'>
         <li>
-          <strong>22 Loads Located</strong>
+          <strong>9 Loads Located</strong>
         </li>
         <li>
           <a href="#">View Full Map</a>
@@ -93,13 +126,50 @@
     <div class='container main-content'>
       <section>
         <div class='section-head'>
-          <h1 class='section-label'>
-            Loads Needing Action
-            <span class='section-sub-label'>
-              Via Online Reporting
-            </span>
-          </h1>
-          <a href="#">View All 11 Active Loads</a>
+          <div class='filter-bar-wrap'>
+            <div class='filter-bar'>
+              <div class='label'>Filter By</div>
+              <a href="#" class="btn btn-filter">Pickups Today</a>
+              <a href="#" class="btn btn-filter">Deliveries Today</a>
+              <a href="#" class="btn btn-filter btn-filter-dropdown" data-dropdown="stop-location">Stop Location
+              </a>
+              <a href="#" class="btn btn-filter btn-single-dp">APPT. Date</a>
+              <span class='filter-summary'>
+                <h5>20 Loads</h5>
+                By Next Appointment
+              </span>
+            </div>
+            <div class='dropdown-filter' data-dropdown='stop-location'>
+              <div class='form-group'>
+                <label for='location'>
+                  City, State, or Zip
+                </label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="e.g. Chicago" />
+              </div>
+              <div class='form-group form-group-inline'>
+                <div class='checkbox control'>
+                  <label class='checkbox-inline'>
+                    <input type="checkbox" name="pickups" value="1" />
+                    <span class='control-indicator'></span>
+                    Pickups
+                  </label>
+                </div>
+              </div>
+              <div class='form-group form-group-inline'>
+                <div class='checkbox control'>
+                  <label class='checkbox-inline'>
+                    <input type="checkbox" name="deliveries" value="1" />
+                    <span class='control-indicator'></span>
+                    Deliveries
+                  </label>
+                </div>
+              </div>
+              <div class='dropdown-filter-buttons'>
+                <button class='applyBtn btn btn-default'>Apply</button>
+                <button class='cancelBtn btn btn-link btn-alt'>Clear</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class='row'>
           <div class='col-md-12'>
@@ -327,7 +397,7 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'>Gregory M</h3>
+                      <h3 class='driver-name'><a href="#">Gregory M</a></h3>
                       <span><tel>(343) 890-1203</tel></span>
                       <div class='driver-status'>
                         <a href="#">Verify Driver</a>
@@ -341,7 +411,7 @@
                       <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
                       By Mike P at 13:15 CST today
                       <div class='action-align-bottom'>
-                        <a href="#" class="btn btn-primary">REPORT LOCATION IN TRANSIT</a>
+                        <a href="#" class="btn btn-primary">REPORT DELIVERY</a>
                       </div>
                     </div>
                   </td>
@@ -351,7 +421,7 @@
                     <h2 class='load-number'><a href="#">123443215</a></h2>
                   </td>
                   <td class='carrier-dashboard-pickup'>
-                    <div class='location-pickup match-height muted'>
+                    <div class='location-pickup match-height'>
                       <div class='lead'>
                         Memphis
                       </div>
@@ -396,137 +466,70 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
+                      <h3 class='driver-name'><a href="#">Reported Location</a></h3>
                       By Mike P at 13:15 CST today
                       <div class='action-align-bottom'>
-                        <a href="#" class="btn btn-primary">ADD POD / DOCUMENTS</a>
-                        <p>
-                          <a href="#" class="btn btn-link btn-alt btn-sm">3 Documents Added</a>
-                        </p>
+                        <a href="#" class="btn btn-default">Send Load Update</a>
                       </div>
                     </div>
                   </td>
                 </tr>
-              </tbody>
-            </table>
-            <nav class='pull-left'>
-              <a href="#">Show 5 More Loads</a>
-            </nav>
-            <div class='results-count pull-right'>
-              Showing 1-5 of 7 Loads Needing Action
-            </div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div class='section-head'>
-          <h1 class='section-label'>
-            Multi Stop Loads
-            <span class='section-sub-label'>
-              With Upcoming Appointments
-            </span>
-          </h1>
-        </div>
-        <div class='row'>
-          <div class='col-md-12'>
-            <table class='table table-carrier-dashboard carrier-dashboard-multi-load'>
-              <thead>
-                <tr>
-                  <th>Load</th>
-                  <th class='carrier-dashboard-pickup'>Pickup</th>
-                  <th class='carrier-dashboard-arrow'></th>
-                  <th class='carrier-dashboard-delivery'>Delivery</th>
-                  <th>Driver</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
                 <tr>
                   <td class='carrier-dashboard-load'>
                     <h2 class='load-number'><a href="#">123443211</a></h2>
-                    <p class='muted'>4 Stops Total</p>
+                    <p class='label'>Pro:</p>
+                    <p>1234567890</p>
                   </td>
                   <td class='carrier-dashboard-pickup'>
-                    <div class='location-pickup match-height muted'>
+                    <div class='location-pickup match-height'>
                       <div class='lead'>
-                        Memphis
+                        Washington-on-the-Brazos
                       </div>
                       <div class='location-state'>
                         TN, 60655
                       </div>
                       <div class='location-time'>
-                        14:00-16:00 EST
+                        14:00-15:00 EST
                         <br>
-                        Picked Up Tue, Apr 8
+                        Today, Apr 20
                       </div>
                     </div>
-                    <ul class='pagination'>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                      <li>1</li>
-                      <li>/</li>
-                      <li>2</li>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                    </ul>
                   </td>
                   <td class='carrier-dashboard-arrow'>
                     <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
                   </td>
                   <td class='carrier-dashboard-delivery'>
-                    <div class='location-delivery match-height'>
+                    <div class='location-delivery match-height muted'>
                       <div class='lead'>
-                        Austin
+                        Winchester-on-the-Severn
                       </div>
                       <div class='location-state'>
                         TX, 50968
                       </div>
                       <div class='location-time'>
-                        14:00-16:00 EST
+                        16:00-18:00 EST
                         <br>
-                        Today, Apr 20
+                        Fri, May 23
                       </div>
                     </div>
-                    <ul class='pagination'>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                      <li>1</li>
-                      <li>/</li>
-                      <li>2</li>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                    </ul>
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'>Alta N.</h3>
-                      <span><tel>(952) 796-9653</tel></span>
+                      <h3 class='driver-name'><a href="#">Fred F</a></h3>
+                      <span><tel>(899) 584-0803</tel></span>
                       <div class='driver-status'>
-                        <a href="#">Verify Driver</a>
+                        Active Driver
+                        <br>
+                        Tracking On
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <h3 class='driver-name'>Call to report (312) 555-1212</h3>
+                      <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
+                      By Mike P at 13:15 CST today
                       <div class='action-align-bottom'>
-                        <a href="#" class="btn btn-primary">Add Pod / Documents</a>
+                        <a href="#" class="btn btn-default">Report Loaded</a>
                       </div>
                     </div>
                   </td>
@@ -536,89 +539,57 @@
                     <h2 class='load-number'><a href="#">123443212</a></h2>
                     <p class='label'>Pro:</p>
                     <p>1234567890</p>
-                    <p class='muted'>3 Stops Total</p>
                   </td>
                   <td class='carrier-dashboard-pickup'>
-                    <div class='location-pickup match-height muted'>
+                    <div class='location-pickup match-height'>
                       <div class='lead'>
-                        Rancho Santa Margarita
+                        Truth Or Consequence
                       </div>
                       <div class='location-state'>
-                        TN, 60655
+                        CA, 60655
                       </div>
                       <div class='location-time'>
-                        14:00-16:00 EST
+                        15:00-16:00 EST
                         <br>
-                        Picked Up Tue, Apr 8
+                        Today, Apr 20
                       </div>
                     </div>
-                    <ul class='pagination'>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                      <li>1</li>
-                      <li>/</li>
-                      <li>2</li>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                    </ul>
                   </td>
                   <td class='carrier-dashboard-arrow'>
                     <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
                   </td>
                   <td class='carrier-dashboard-delivery'>
-                    <div class='location-delivery match-height'>
+                    <div class='location-delivery match-height muted'>
                       <div class='lead'>
-                        Austin
+                        Rancho Santa Margarita
                       </div>
                       <div class='location-state'>
-                        TX, 50968
+                        CA, 50968
                       </div>
                       <div class='location-time'>
-                        14:00-16:00 EST
+                        16:00-18:00 EST
                         <br>
-                        Today, Apr 20
+                        Fri, Dec 1
                       </div>
                     </div>
-                    <ul class='pagination'>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                      <li>1</li>
-                      <li>/</li>
-                      <li>2</li>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                    </ul>
                   </td>
-                  <td>
+                  <td class='carrier-dashboard-load'>
                     <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'>Sophia S.</h3>
-                      <span><tel>(952) 796-9653</tel></span>
+                      <h3 class='driver-name'><a href="#">Alfonzo A</a></h3>
+                      <span><tel>(054) 534-6618</tel></span>
                       <div class='driver-status'>
-                        Entered By Echo
+                        Do Not Disturb
+                        <br>
+                        Tracking Off
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <h3 class='driver-name'>Call to report (312) 555-1212</h3>
+                      <h3 class='driver-name'><a href="#">Driver Assigned</a></h3>
+                      By Mike P at 13:15 CST today
                       <div class='action-align-bottom'>
-                        <a href="#" class="btn btn-default">Add Documents</a>
+                        <a href="#" class="btn btn-default">Report Empty</a>
                       </div>
                     </div>
                   </td>
@@ -626,10 +597,119 @@
                 <tr>
                   <td class='carrier-dashboard-load'>
                     <h2 class='load-number'><a href="#">123443213</a></h2>
-                    <p class='muted'>5 Stops Total</p>
+                  </td>
+                  <td class='carrier-dashboard-pickup'>
+                    <div class='location-pickup match-height muted'>
+                      <div class='lead'>
+                        New York
+                      </div>
+                      <div class='location-state'>
+                        TN, 60655
+                      </div>
+                      <div class='location-time'>
+                        14:00 EST
+                        <br>
+                        Picked Up Fri, May 20
+                      </div>
+                    </div>
+                  </td>
+                  <td class='carrier-dashboard-arrow'>
+                    <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
+                  </td>
+                  <td class='carrier-dashboard-delivery'>
+                    <div class='location-delivery match-height'>
+                      <div class='lead'>
+                        Chicago
+                      </div>
+                      <div class='location-state'>
+                        TX, 50968
+                      </div>
+                      <div class='location-time'>
+                        16:00-18:00 EST
+                        <br>
+                        Today, Apr 20
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class='carrier-dashboard-driver match-height'>
+                      <a href="#" class="btn btn-default">Assign Driver</a>
+                    </div>
+                  </td>
+                  <td>
+                    <div class='carrier-dashboard-action match-height'>
+                      <h3 class='driver-name'>Load Now Active</h3>
+                      As of 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-default">REPORT Empty</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='carrier-dashboard-load'>
+                    <h2 class='load-number'><a href="#">123443214</a></h2>
                   </td>
                   <td class='carrier-dashboard-pickup'>
                     <div class='location-pickup match-height'>
+                      <div class='lead'>
+                        Philadelphia
+                      </div>
+                      <div class='location-state'>
+                        TN, 60655
+                      </div>
+                      <div class='location-time'>
+                        16:00-18:00 EST
+                        <br>
+                        Today, Apr 20
+                      </div>
+                    </div>
+                  </td>
+                  <td class='carrier-dashboard-arrow'>
+                    <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
+                  </td>
+                  <td class='carrier-dashboard-delivery'>
+                    <div class='location-delivery match-height muted'>
+                      <div class='lead'>
+                        San Francisco
+                      </div>
+                      <div class='location-state'>
+                        TX, 50968
+                      </div>
+                      <div class='location-time'>
+                        16:00-18:00 EST
+                        <br>
+                        Thu, May 23
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class='carrier-dashboard-driver match-height'>
+                      <h3 class='driver-name'>Gregory M</h3>
+                      <span><tel>(343) 890-1203</tel></span>
+                      <div class='driver-status'>
+                        <a href="#">Verify Driver</a>
+                        <br>
+                        Tracking Off
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class='carrier-dashboard-action match-height'>
+                      <h3 class='driver-name'><a href="#">Reported Loaded</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-default">REPORT LOCATION</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='carrier-dashboard-load'>
+                    <h2 class='load-number'><a href="#">123443215</a></h2>
+                  </td>
+                  <td class='carrier-dashboard-pickup'>
+                    <div class='location-pickup match-height muted'>
                       <div class='lead'>
                         Memphis
                       </div>
@@ -637,28 +717,11 @@
                         TN, 60655
                       </div>
                       <div class='location-time'>
-                        14:00-16:00 EST
+                        14:00 EST
                         <br>
-                        Today, Apr 20
+                        Picked Up Wed, Aug 4
                       </div>
                     </div>
-                    <ul class='pagination'>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                      <li>1</li>
-                      <li>/</li>
-                      <li>2</li>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                    </ul>
                   </td>
                   <td class='carrier-dashboard-arrow'>
                     <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
@@ -672,9 +735,9 @@
                         TX, 50968
                       </div>
                       <div class='location-time'>
-                        14:00-16:00 EST
+                        16:00 EST
                         <br>
-                        Delivery Fri, Apr 25
+                        Delivered Tue, Oct 31
                       </div>
                     </div>
                     <ul class='pagination'>
@@ -697,181 +760,20 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'>Bernice D.</h3>
+                      <h3 class='driver-name'>Alta T</h3>
                       <span><tel>(952) 796-9653</tel></span>
                       <div class='driver-status'>
-                        Entered By Echo
+                        Active Driver
+                        <br>
+                        Tracking Off
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <h3 class='driver-name'>Call to report (312) 555-1212</h3>
+                      <h3 class='driver-name'>Call To Report</h3>
                       <div class='action-align-bottom'>
-                        <a href="#" class="btn btn-default">Add Documents</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class='carrier-dashboard-load'>
-                    <h2 class='load-number'><a href="#">123443214</a></h2>
-                    <p class='muted'>6 Stops Total</p>
-                  </td>
-                  <td class='carrier-dashboard-pickup'>
-                    <div class='location-pickup match-height muted'>
-                      <div class='lead'>
-                        Philadelphia
-                      </div>
-                      <div class='location-state'>
-                        TN, 60655
-                      </div>
-                      <div class='location-time'>
-                        14:00-16:00 EST
-                        <br>
-                        Today, Apr 20
-                      </div>
-                    </div>
-                  </td>
-                  <td class='carrier-dashboard-arrow'>
-                    <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
-                  </td>
-                  <td class='carrier-dashboard-delivery'>
-                    <div class='location-delivery match-height'>
-                      <div class='lead'>
-                        Memphis
-                      </div>
-                      <div class='location-state'>
-                        TN, 60655
-                      </div>
-                      <div class='location-time'>
-                        14:00-16:00 EST
-                        <br>
-                        Today, Apr 20
-                      </div>
-                    </div>
-                    <ul class='pagination'>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                      <li>1</li>
-                      <li>/</li>
-                      <li>2</li>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </td>
-                  <td>
-                    <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'>Alta N.</h3>
-                      <span><tel>(952) 796-9653</tel></span>
-                      <div class='driver-status'>
-                        Entered By Echo
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class='carrier-dashboard-action match-height'>
-                      <h3 class='driver-name'>Call to report (312) 555-1212</h3>
-                      <div class='action-align-bottom'>
-                        <a href="#" class="btn btn-default">Add Documents</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class='carrier-dashboard-load'>
-                    <h2 class='load-number'><a href="#">123443215</a></h2>
-                    <p class='muted'>7 Stops Total</p>
-                  </td>
-                  <td class='carrier-dashboard-pickup'>
-                    <div class='location-pickup match-height'>
-                      <div class='lead'>
-                        Memphis
-                      </div>
-                      <div class='location-state'>
-                        TN, 60655
-                      </div>
-                      <div class='location-time'>
-                        14:00-16:00 EST
-                        <br>
-                        Today, Apr 20
-                      </div>
-                    </div>
-                    <ul class='pagination'>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                      <li>1</li>
-                      <li>/</li>
-                      <li>2</li>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </td>
-                  <td class='carrier-dashboard-arrow'>
-                    <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
-                  </td>
-                  <td class='carrier-dashboard-delivery'>
-                    <div class='location-delivery match-height muted'>
-                      <div class='lead'>
-                        Rancho Santa Margarita
-                      </div>
-                      <div class='location-state'>
-                        TX, 50968
-                      </div>
-                      <div class='location-time'>
-                        14:00-16:00 EST
-                        <br>
-                        Delivery Fri, Apr 25
-                      </div>
-                    </div>
-                    <ul class='pagination'>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                      <li>1</li>
-                      <li>/</li>
-                      <li>2</li>
-                      <li>
-                        <a href="#"><span>
-                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
-                        </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </td>
-                  <td>
-                    <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'>Lela W.</h3>
-                      <span><tel>(952) 796-9653</tel></span>
-                      <div class='driver-status'>
-                        Entered By Echo
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class='carrier-dashboard-action match-height'>
-                      <h3 class='driver-name'>Call to report (312) 555-1212</h3>
-                      <div class='action-align-bottom'>
-                        <a href="#" class="btn btn-default">Add Documents</a>
+                        <a href="#" class="btn btn-default">ADD DOCUMENTS</a>
                       </div>
                     </div>
                   </td>
@@ -879,10 +781,28 @@
               </tbody>
             </table>
             <nav class='pull-left'>
-              <a href="#">Show 5 More Loads</a>
+              <ul class='pagination'>
+                <li>
+                  <a href="#"><span>
+                    <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
+                  </span>
+                  </a>
+                </li>
+                <li class='active-page'><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                  <a href="#"><span>
+                    <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
+                  </span>
+                  </a>
+                </li>
+              </ul>
             </nav>
             <div class='results-count pull-right'>
-              Showing 1-5 of 7 Multi Stop Loads
+              Showing 1-10 of 40 Loads Needing Action
             </div>
           </div>
         </div>
