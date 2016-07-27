@@ -1,11 +1,12 @@
 
 describe('Component: driverGrid', function () {
-  var component, $q, carrierApi, driverList, element;
+  var component, $q, carrierApi, driverList, element, state;
 
   beforeEach(function () {
     module('app/common/components/driver-grid/driver-grid.template.html');
     module('echo.components.driverGrid', function ($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchDrivers', 'searchDrivers']));
+      $provide.value('$state', state =  jasmine.createSpyObj('$state', ['go']));
     });
   });
 
