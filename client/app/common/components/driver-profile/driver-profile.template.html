@@ -22,11 +22,11 @@
       <div class="form-group">
         <label>Preferred Language</label>
         <div class="select">
-          <select ng-model="$ctrl.driver.language">
+          <select class="select" ng-model="$ctrl.driver.language">
             <option ng-repeat="item in $ctrl.languages" ng-value="item.language">{{item.language}}</option>
            </select>
-          <input ng-if="$ctrl.driver.language === 'Other'" class="form-control" ng-model="$ctrl.otherLanguage" placeholder="Language" type="text">
         </div>
+        <input ng-if="$ctrl.driver.language === 'Other'" class="form-control" ng-model="$ctrl.otherLanguage" placeholder="Language" type="text">
       </div>
     </fieldset>
     <fieldset class="fieldset">

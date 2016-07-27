@@ -128,9 +128,6 @@ select {
   border-radius: .25rem;
   cursor: pointer;
   outline: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 select:focus:-moz-focusring {
@@ -138,7 +135,7 @@ select:focus:-moz-focusring {
   text-shadow: 0 0 0 #000;
 }
 
-select:after {
+.select:after {
   position: absolute;
   top: 50%;
   right: 1.25rem;
@@ -152,6 +149,15 @@ select:after {
   border-right: .35rem solid transparent;
   border-bottom: .35rem solid transparent;
   border-left: .35rem solid transparent;
+}
+
+.select {
+  position: relative;
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
 }
 
 select:focus {
@@ -206,6 +212,6 @@ select {
   background-color: transparent;
 }
 
-.select select:focus {
+select:focus {
   box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.1rem #a9adaf;
 }

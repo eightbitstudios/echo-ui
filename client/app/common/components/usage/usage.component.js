@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('echo.components.usage', []).component('usage', {
-  bindings: {},
+  bindings: {
+    driver: '<'
+  },
   templateUrl: 'app/common/components/usage/usage.template.html',
   controller: function () {}
 });

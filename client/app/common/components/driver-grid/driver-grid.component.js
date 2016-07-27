@@ -6,6 +6,7 @@ angular.module('echo.components.driverGrid', [
   'echo.config.appConstants',
   'echo.config.routes',
   'echo.components.pagination',
+  'echo.filters.phoneNumber',
   'echo.directives.dateRangePicker',
   'echo.api.carrier'
 ]).component('driverGrid', {
@@ -27,7 +28,7 @@ angular.module('echo.components.driverGrid', [
      * Controller init
      */
     function init(changeObject) {
-      if(changeObject.carrierId && changeObject.carrierId.currentValue){
+      if (changeObject.carrierId && changeObject.carrierId.currentValue) {
         that.getDriversForPage(appConstants.PAGINATION.defaultPage);
       }
     }
@@ -52,15 +53,15 @@ angular.module('echo.components.driverGrid', [
      * Returns text for filter
      * @example Availability 10/15/2015 - 11/12/2015
      */
-    that.formatDateText = function (){
-      return 'Availability ' + _.join([moment(that.startDate).format('MM/DD/YY'),moment(that.endDate).format('MM/DD/YY')], ' - ');
+    that.formatDateText = function () {
+      return 'Availability ' + _.join([moment(that.startDate).format('MM/DD/YY'), moment(that.endDate).format('MM/DD/YY')], ' - ');
     };
 
     /**
      * Clears out filter dates
      * @param {Object} $event - JQuery event
      */
-    that.clearDates = function($event) {
+    that.clearDates = function ($event) {
       that.startDate = null;
       that.endDate = null;
       $event.stopPropagation();
@@ -86,8 +87,12 @@ angular.module('echo.components.driverGrid', [
       });
     };
 
-    that.newDriverHandler = function() {
+    that.newDriverHandler = function () {
       $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name);
+    };
+
+    that.onSelectCallback = function (driver) {
+      $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name, { driverId: driver.id });
     };
 
     that.$onChanges = init;

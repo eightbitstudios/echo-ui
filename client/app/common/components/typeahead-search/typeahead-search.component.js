@@ -3,7 +3,8 @@
 angular.module('echo.components.typeaheadSearch', [])
   .component('typeaheadSearch', {
     bindings: {
-      searchService: '&'
+      searchService: '&',
+      onSelectCallback: '&'
     },
     templateUrl: 'app/common/components/typeahead-search/typeahead-search.template.html',
     controller: function ($q) {
