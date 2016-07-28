@@ -31,7 +31,7 @@ angular.module('echo.api.driver', [
       updateDriverById: function (carrierId, driver) {
 
         var url = apiConfig.driverById({ carrierId: carrierId, driverId: driver.id });
-        var data = driverConverterService.driverRequest(driver);
+        var data = driverConverterService.driverRequest(driver, carrierId);
 
         return $http.put(url, data).then(function (resp) {
           return resp.data.data;
@@ -62,8 +62,8 @@ angular.module('echo.api.driver', [
        */
       insertDriver: function (carrierId, driver) {
 
-        var url = apiConfig.drivers({carrierId: carrierId});
-        var data = driverConverterService.driverRequest(driver);
+        var url = apiConfig.driver;
+        var data = driverConverterService.driverRequest(driver, carrierId);
 
         return $http.post(url, data).then(function (resp) {
           return resp.data.data;
