@@ -3,7 +3,8 @@ angular.module('echo.config.routes', [])
     INDEX: {
       base: {
         name: 'index',
-        route: '/'
+        route: '/',
+        url: '/'
       },
       settings: {
         name: 'index.settings',
@@ -11,7 +12,8 @@ angular.module('echo.config.routes', [])
       },
       myCarriers: {
         name: 'index.myCarriers',
-        route:'myCarriers'
+        route:'myCarriers',
+        url: '/#/myCarriers'
       },      
       myCarriersDetails: {
         name: 'index.myCarriers.details',
@@ -27,7 +29,8 @@ angular.module('echo.config.routes', [])
       },
       myCompany: {
         name: 'index.carrier.myCompany',
-        route:'/myCompany?isCarrierAdmin'
+        route:'/myCompany?isCarrierAdmin',
+        url: _.template('/#/carrier/${carrierId}/myCompany')
       },
       myCompanyUsers: {
         name: 'index.carrier.myCompany.portalUsers',
@@ -47,13 +50,17 @@ angular.module('echo.config.routes', [])
         name: 'login',
         route: '/login.html'
       },
-      start: {
-        name: 'login.start',
+      signIn: {
+        name: 'login.signIn',
         route: '/?invalidToken'
       },
       createPassword: {
         name: 'login.createPassword',
         route: '/createPassword?validationToken&userId'
+      },
+      forgotPassword: {
+        name: 'login.forgotPassword',
+        route: '/forgotPassword'
       }
     }
   });

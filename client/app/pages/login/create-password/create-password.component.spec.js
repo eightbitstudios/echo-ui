@@ -3,12 +3,12 @@ describe('Component: createPassword', function () {
   var component, $q, window, scope, createPassword, element, authenticationApi, state, routesConfig, createPasswordRes;
 
   beforeEach(function () {
-    module('templates-app');
+    module('app/pages/login/create-password/create-password.template.html');
     module('echo.login.createPassword', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['createPassword']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
-      $provide.value('$window', window = {location: null});
+      $provide.value('$window', window = { location: null });
       $provide.value('PasswordChangeModel', jasmine.createSpy('PasswordChangeModel'));
     });
   });
@@ -32,10 +32,11 @@ describe('Component: createPassword', function () {
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
       component.userId = '1';
+      component.oneLoginUserId = '1';
       authenticationApi.createPassword.and.returnValue($q.when());
       component.createPassword();
 
-      expect(authenticationApi.createPassword).toHaveBeenCalledWith(component.userId, component.token, component.passwordChange);
+      expect(authenticationApi.createPassword).toHaveBeenCalledWith(component.userId, component.oneLoginUserId, component.token, component.passwordChange);
     });
 
     it('should redirect to login page if the token is invalid', function () {
@@ -47,7 +48,7 @@ describe('Component: createPassword', function () {
 
       scope.$digest();
 
-      expect(state.go).toHaveBeenCalledWith(routesConfig.LOGIN.start.name, { invalidToken: true });
+      expect(state.go).toHaveBeenCalledWith(routesConfig.LOGIN.signIn.name, { invalidToken: true });
     });
 
     it('should redirect to dashboard when sucessful', function () {
@@ -59,7 +60,7 @@ describe('Component: createPassword', function () {
 
       scope.$digest();
 
-      expect(window.location).toEqual(routesConfig.INDEX.base.route);
+      expect(window.location).toEqual(routesConfig.INDEX.base.url);
     });
 
     it('should toggle loading button', function () {
