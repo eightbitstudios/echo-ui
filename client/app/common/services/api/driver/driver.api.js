@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('echo.api.driver', [
-  'echo.config.api'
-]).factory('driverApi', function ($q, $http, apiConfig) {
+  'echo.config.api',
+  'echo.models.driver'
+]).factory('driverApi', function ($q, $http, DriverModel, apiConfig) {
   return {
     
       /**
@@ -79,7 +80,7 @@ angular.module('echo.api.driver', [
         var url = apiConfig.driverById({ carrierId: carrierId, driverId: driverId });
         
         return $http.get(url).then(function (resp) {
-          return resp.data.data;
+          return new DriverModel(resp.data.data);
         });
       }
   };

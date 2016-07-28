@@ -21,9 +21,12 @@ angular.module('echo.components.driverProfile', [
 
     that.saveDriverHandler = function () {
       if (that.driverProfileForm.$valid) {
+        that.serverError = null;
         that.showButtonLoading = true;
         driverApi.upsertDriver(that.carrierId, that.driver).then(function () {
           that.profileUpdatedHandler();
+        }).catch(function(errorMessage){
+          that.serverError = errorMessage;
         }).finally(function () {
           that.showButtonLoading = false;
         });

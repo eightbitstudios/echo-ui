@@ -3,11 +3,11 @@
         <div class="echo-icon icon-left-arrow"></div> Back To Driver List
       </a>
       <loading show-loading="$ctrl.loading"></loading>
-      <div class="row" ng-if="!$ctrl.loading">
+      <div class="row">
         <div class="col-sm-6">
           <driver-profile carrier-id="$ctrl.carrierId" driver="$ctrl.driver" languages="$ctrl.languages" profile-updated-handler="$ctrl.profileUpdated()"></driver-profile>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6" ng-if="$ctrl.driver.id">
           <usage></usage>
           <assignments></assignments>
         </div>
