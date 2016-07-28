@@ -33,7 +33,7 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
 
       that.userTileClickHandler = function (user) {
         that.showMode = that.mode.USER_PROFILE;
-        that.portalUser = user || new UserModel({ carrierId: that.carrierId });
+        that.portalUser = new UserModel(_.clone(user)) || new UserModel({ carrierId: that.carrierId });
       };
 
       that.showUsersPortal = function () {
