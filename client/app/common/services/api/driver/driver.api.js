@@ -47,7 +47,7 @@ angular.module('echo.api.driver', [
        */
       deactivateDriverById: function (carrierId, driver) {
 
-        var url = apiConfig.deactivateDriverById({ carrierId: carrierId, driverId: driver.id });
+        var url = apiConfig.deactivateUserById({ userId: driver.id });
 
         return $http.put(url, driver).then(function (resp) {
           return resp.data.data;
