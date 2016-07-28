@@ -11,7 +11,7 @@ angular.module('echo.services.driverConverter', []).factory('driverConverterServ
        }
 
        convertedDriver.carrierId = carrierId;
-       convertedDriver.phoneNumber = driver.phone;
+       convertedDriver.phoneNumber = _.replace(driver.phone, /\s|\-|\(|\)/g, '');
 
        return _.omit(convertedDriver, ['otherLanguage', 'phone']);
     }
