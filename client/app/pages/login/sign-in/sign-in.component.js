@@ -24,7 +24,7 @@ angular.module('echo.login.signIn', [
       if (that.signInForm.$valid) {
         that.showButtonLoading = true;
         authenticationApi.signIn(that.email, that.password).then(function (loginTokens) {
-          var user = userService.mapJwtToUser(loginTokens.access_token); // jshint ignore:true
+          var user = userService.mapJwtToUser(loginTokens.access_token); // jshint ignore:line
 
           if(user.isRepAdmin()){
             $window.location = routesConfig.INDEX.myCarriers.url;

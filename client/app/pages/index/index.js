@@ -28,8 +28,8 @@ angular.module('echo.index', [
           var jwt = cookieService.getToken();
           
           if(jwt){
-            var user = userService.mapJwtToUser(jwt);
-          	userService.setUser(user);
+            var userObj = userService.mapJwtToUser(jwt);
+          	userService.setUser(userObj);
           }
 
           var user = userService.getUser();

@@ -36,7 +36,7 @@ angular.module('echo', [
       // Intercept 401s and redirect you to login
       responseError: function (response) {
 
-        var refreshToken = cookieService.getRefreshToken();
+        //var refreshToken = cookieService.getRefreshToken();
 
         if (response.status === errorsConfig.UNAUTHORIZED) {
           $location.path('/login.html');
