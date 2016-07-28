@@ -1,0 +1,145 @@
+.daterangepicker.dropdown-menu {
+  color: @c-gray-mid-light;
+  z-index: 100;
+  top: 100%;
+  left: 0;
+  right: auto;
+  margin: 0;
+  margin-top: 15px;
+  padding: 0;
+  width: 550px;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  position: absolute;
+  .filter-header, .filter-footer {
+    text-align: center;
+    padding: 15px;
+  }
+  .filter-header {
+    border-bottom: 1px solid @c-gray-light;
+  }
+  &:after, &:before {
+    display: none;
+  }
+  .daterangepicker_input {
+    padding: 0 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e1e2e3;
+  }
+  .form-control {
+    border-bottom: 0;
+    font-size: 18px;
+  }
+  .left .daterangepicker_input {
+    border-right: 1px solid #ccc;
+  }
+  .calendar {
+    width: 50%;
+    max-width: none;
+    margin: 0;
+  }
+  .calendar.left .calendar-table {
+    padding-right: 10px;
+    th.month {
+      padding-right: 0;
+    }
+  }
+  .calendar.right .calendar-table {
+    padding-left: 10px;
+    th.month {
+      padding-left: 0;
+    }
+  }
+  .calendar-table {
+    border-radius: 2px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    thead tr:last-child th {
+      background-color: @c-gray-lightest ;
+    }
+    tbody td {
+      background-color: @c-gray-lightest ;
+    }
+  }
+  td, th {
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: 0;
+    color: @c-gray-darkest;
+  }
+  .calendar-table th {
+    color: @c-gray-mid-light;
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .calendar-table td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .calendar-table td.in-range {
+    background-color: rgba(38, 193, 251, 0.2);
+  }
+  .calendar-table td.active, .calendar-table td.active:hover {
+    background-color: @c-bright-blue;
+  }
+  td.off {
+    color: #ccc;
+  }
+  .fa-calendar {
+    display: none;
+  }
+  .ranges {
+    display: flex;
+    justify-content: center;
+    float: none !important;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    border-top: 1px solid @c-gray-light;
+    .btn {
+      margin: 0 5px;
+    }
+    .btn-link {
+      text-transform: uppercase;
+    }
+  }
+  .monthselect-wrap {
+    width: 56%;
+    margin-right: 2%;
+    float: left;
+    select.monthselect {
+      width: 50%;
+      margin-right: 0;
+    }
+  }
+  .yearselect-wrap {
+    width: 42%;
+    float: left;
+    select.yearselect {
+      width: 50%;
+    }
+  }
+  select.yearselect, select.monthselect {
+    font-size: 14px;
+    line-height: 1.4;
+    color: @c-gray-darkest;
+    width: 50%;
+    margin: 0;
+    padding: .5rem 2.25rem .5rem 1rem;
+    border-radius: 2px;
+    background-color: @c-gray-lightest;
+    border: 0;
+    cursor: pointer;
+  }
+  .input-mini.form-control {
+    padding: 0;
+    .form-control();
+    border: none;
+  }
+}

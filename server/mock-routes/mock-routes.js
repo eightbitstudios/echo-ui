@@ -16,6 +16,7 @@ module.exports = function (app) {
   app.post(endpoints.api.forgotPassword, authHandler.forgotPassword);
   app.post(endpoints.api.deactivateUserById, userHandler.deactivateUserById);
   app.get(endpoints.api.driverCount, carrierHandler.getDriverCount);
+  app.get(endpoints.api.drivers, carrierHandler.getDrivers);
   app.get(endpoints.api.portalUsers, carrierHandler.getPortalUsers);
   app.get(endpoints.api.carriers, carrierHandler.getCarriers);
   app.get(endpoints.api.carrierById, carrierHandler.getCarrierById);

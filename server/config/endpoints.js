@@ -14,6 +14,8 @@ module.exports = {
     signOut: '/mock/api/v1/auth/signOut',
     refresh: '/mock/api/v1/refresh',
     userById: '/mock/api/v1/users/:userId',
-    deactivateUserById: '/mock/api/v1/users/:userId/deactivate'
+    signIn: '/mock/api/v1/signIn',
+    deactivateUserById: '/mock/api/v1/users/:userId/deactivate',
+    drivers: '/mock/api/v1/carriers/:carrierId/drivers'
   }
 };

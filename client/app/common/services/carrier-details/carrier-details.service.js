@@ -2,9 +2,9 @@
 
 angular.module('echo.services.carrierDetails', [
   'echo.config.api',
-  'echo.services.carrier'
+  'echo.api.carrier'
 ])
-  .factory('carrierDetailsService', function ($http, apiConfig, carrierService) {
+  .factory('carrierDetailsService', function ($http, apiConfig, carrierApi) {
     var carrierDetails = {};
 
     return {
@@ -21,7 +21,7 @@ angular.module('echo.services.carrierDetails', [
       * @returns {Promise} - Promise containing a CarrierModel
       */
       fetchCarrierById: function (carrierId) {
-        return carrierService.fetchCarrierById(carrierId).then(function(carrier){
+        return carrierApi.fetchCarrierById(carrierId).then(function(carrier){
           carrierDetails = carrier;
           return carrierDetails;
         });

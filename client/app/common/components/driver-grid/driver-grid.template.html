@@ -1,0 +1,59 @@
+<div class="container main-content driver-grid">
+  <div class="row">
+    <div class="col-sm-9">
+      <typeahead-search search-service="$ctrl.searchDrivers(val)"></typeahead-search>
+      <date-range-picker start-date="$ctrl.startDate" end-date="$ctrl.endDate">
+        <button class="btn btn-default btn-filter" ng-class="{'filter__assigned': $ctrl.startDate && $ctrl.endDate}">
+          <span class="echo-icon icon-calendar" data-grunticon-embed></span>
+            {{$ctrl.startDate && $ctrl.endDate ? $ctrl.formatDateText() : 'Filter Unassigned Drivers'}}
+            <span class="echo-icon icon-close" ng-click="$ctrl.clearDates($event)" data-grunticon-embed></span>
+        </button>
+      </date-range-picker>
+    </div>
+    <div class="col-sm-3 text-right">
+      <button class="btn btn-default">Invite New Driver</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <loading show-loading="$ctrl.showLoading"></loading>
+      <table class="table table-driverlist" ng-if="!$ctrl.showLoading">
+        <thead>
+          <tr>
+            <th>Driver Name</th>
+            <th>Usage</th>
+            <th>Tractor</th>
+            <th>Pref. Language</th>
+            <th>Current Assignment</th>
+            <th>Next Assignment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="driver in $ctrl.drivers">
+            <td class="driverlist-col-driver">
+              <h3 class="driver-name"><a href="javascript:void(0)">{{driver.getFullName()}}</a></h3>
+              <span><tel>{{driver.phone}}</tel></span>
+            </td>
+            <td class="driverlist-col-usage">App Installed <br>Tracking Enabled</td>
+            <td class="driverlist-col-tractor">{{driver.tractor}}</td>
+            <td class="driverlist-col-lang">{{driver.language}}</td>
+            <td class="driverlist-col-current">
+              <h2 class="load-number"><a href="#">123443212</a></h2> Active Driver <br> Starts 11:30 CST, Fri Aug 28 <br>
+              <a href="#">Change Driver</a>
+            </td>
+            <td class="driverlist-col-next">
+              <h2 class="load-number"><a href="#">123443212</a></h2> Active Driver <br> Starts 11:30 CST, Fri Aug 28 <br>
+              <a href="#">Change Driver</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div ng-show="!$ctrl.showLoading" ng-if="$ctrl.pagination">
+        <pagination number-of-pages="$ctrl.pagination.totalPages" page-click-handler="$ctrl.getDriversForPage(page)" class="pull-left"></pagination>
+        <div class="results-count pull-right">
+          Showing {{$ctrl.firstRecordNumber}}-{{$ctrl.pagination.currentPage * $ctrl.pagination.recordsPerPage}} of {{$ctrl.pagination.totalRecords}} Drivers
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

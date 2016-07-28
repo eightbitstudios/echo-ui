@@ -14,5 +14,7 @@ angular.module('echo.config.api', [])
     changePassword: _.template('@changePassword@'),
     portalUsers: _.template('@portalUsers@'),
     driverCount: _.template('@driverCount@'),
-    portalUserById: _.template('@portalUserById@')
+    portalUserById: _.template('@portalUserById@'),
+    drivers: _.template('@drivers@'),
+    searchDrivers: _.template('@searchDrivers@'),
   });

@@ -3,6 +3,9 @@ angular.module('echo.config.appConstants', [])
     MIN_SEARCH_CHARACTERS: {
       CARRIERS: 3,
     },
+    PAGINATION: {
+      defaultPage: 1
+    },
     REGEX: {
       passwordLength: /^.{8,25}$/,
       passwordLowerCase: /[a-z]/,

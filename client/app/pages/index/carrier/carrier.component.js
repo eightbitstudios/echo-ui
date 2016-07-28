@@ -11,6 +11,7 @@ angular.module('echo.index.carrier', [
     var that = this;
     carrierDetailsService.fetchCarrierById($stateParams.carrierId).then(function (carrierDetails) {
       that.carrierDetails = carrierDetails;
+      that.carrierId = carrierDetails.carrierId;
     });
   }
 });

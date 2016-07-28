@@ -1,5 +1,7 @@
-angular.module('echo.models.user', [])
-  .factory('UserModel', function () {
+angular.module('echo.models.user', [
+  'echo.enums.roles'
+])
+  .factory('UserModel', function (RolesEnum) {
     /**
      * @description Model for a User
      * @param {Object} userData - Data to be converted to a User Model
@@ -12,14 +14,6 @@ angular.module('echo.models.user', [])
       var that = this;
 
       _.assign(that, userData);
-
-      if (userData && userData.user_id) {
-        that.userId = _.parseInt(userData.user_id, 10); // jshint ignore:line
-      }
-
-      if (userData && userData.carrier_id) {
-        that.carrierId = _.parseInt(userData.carrier_id, 10); // jshint ignore:line
-      }
     }
 
     /**
@@ -27,7 +21,7 @@ angular.module('echo.models.user', [])
      * @return {boolean}
      */
     User.prototype.isRepAdmin = function () {
-      return this.role === 'RepAdmin';
+      return this.role === RolesEnum.REP_ADMIN;
     };
 
     /**

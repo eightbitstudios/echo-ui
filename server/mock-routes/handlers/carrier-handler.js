@@ -3,6 +3,7 @@ var carriers = require('../data/carriers-res.js'),
   _ = require('lodash'),
   responseUtil = require('../util/response-util.js'),
   repDetailsRes = require('../data/rep-details-res.js'),
+  driversRes = require('../data/drivers-res.js'),
   portalUserRes = require('../data/portal-users-res.js');
 
 var maxDelay = 2,
@@ -36,6 +37,15 @@ module.exports = {
   getPortalUsers: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = _(portalUserRes).sampleSize(portalUserRes.length).slice(1, _.random(2, portalUserRes.length));
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getDrivers: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = driversRes;
+    resTemplate.pagination.currentPage = req.query.page || 1;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

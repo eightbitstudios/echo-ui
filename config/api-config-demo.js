@@ -20,6 +20,7 @@ module.exports = function (grunt) {
     changePassword: host + '/api/v1/users/${userId}/setPassword',
     driverCount:host +  '/api/v1/carriers/${carrierId}/drivers/count',
     drivers: host + '/api/v1/carriers/${carrierId}/drivers',
+    searchDrivers: host + '/api/v1/carriers/${carrierId}/drivers/${searchTerm}',
     portalUserById: host + '/api/v1/carriers/${carrierId}/portalusers/${userId}'
   };
 };
