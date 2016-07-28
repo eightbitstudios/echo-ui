@@ -48,7 +48,7 @@ describe('Api: carrierApi', function () {
       carrierApi.fetchCarriers(repId).then(function () {
         expect($http.get).toHaveBeenCalledWith(apiConfig.carriers, {
           params: {
-            'RepId': repId
+            'repId': repId
           }
         });
         done();

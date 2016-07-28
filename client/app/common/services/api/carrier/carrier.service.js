@@ -16,7 +16,7 @@ angular.module('echo.api.carrier', [
 
       var url = apiConfig.carriers;
       var params = {
-        'RepId': repId
+        repId: repId
       };
 
       return $http.get(url, { params: params }).then(function (resp) {

@@ -1,32 +1,35 @@
 'use strict';
 
 angular.module('echo.api.authentication', [
-  'echo.config.api'
-]).factory('authenticationApi', function ($q, $http, apiConfig) {
+  'echo.config.api',
+  'echo.services.cookie',
+]).factory('authenticationApi', function ($base64, $q, $http, cookieService, apiConfig) {
   return {
     /**
      * @description Creates a password
      * @param {string} userId - User Id
+     * @param {string} oneLoginUserId - One Login User Id
      * @param {string} token - User token for password creation
      * @param {PasswordChangeModel} passwordChange - Password change model
      * @returns {Promise} - Users password was created
      */
-    createPassword: function (userId, token, passwordChange) {
-      var url = apiConfig.createPassword({userId: userId});
-      
+    createPassword: function (userId, oneLoginUserId, token, passwordChange) {
+      var url = apiConfig.createPassword({ userId: userId });
+
       var data = {
-        newPassword: passwordChange.newPassword,
+        password: passwordChange.newPassword,
         confirmPassword: passwordChange.confirmPassword,
-        invitationToken: token
+        invitationToken: token,
+        oneLoginId: oneLoginUserId
       };
 
       return $http.post(url, data).then(function (resp) {
         return resp;
-      }).catch(function(){
+      }).catch(function () {
         return $q.reject();
       });
     },
-    
+
     /**
      * @description Signs in a user
      * @param {string} username - Username
@@ -35,16 +38,98 @@ angular.module('echo.api.authentication', [
      */
     signIn: function (username, password) {
       var url = apiConfig.signIn;
-      
+
+      var authData = $base64.encode(username + ':' + password),
+        data = {
+          username: username,
+          password: password
+        };
+
+      return $http.post(url, data, {
+        headers: {
+          'Authorization': 'Basic ' + authData
+        }
+      }).then(function (resp) {
+        cookieService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
+        cookieService.setToken(resp.data.data.access_token); // jshint ignore:line
+        return resp.data.data;
+      }).catch(function (error) {
+        return $q.reject(error.data.status.code);
+      });
+    },
+    /**
+     * @description Refreshes users session
+     * @returns {Promise} - Users recieves new auth token
+     */
+    refresh: function () {
+      var url = apiConfig.refresh;
+
+      return $http.get(url).then(function (resp) {
+        cookieService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
+        cookieService.setToken(resp.data.data.access_token); // jshint ignore:line
+        return resp.data.data;
+      }).catch(function() {
+        cookieService.clearToken();
+        cookieService.clearRefreshToken();
+      });
+    },
+
+    /**
+     * @description Signs out a user
+     * @param {number} userId - User's id
+     * @returns {Promise} - Users is signed out
+     */
+    signOut: function (userId) {
+      var url = apiConfig.signOut;
+
       var data = {
-        username: username,
-        password: password
+        userId: userId
+      };
+
+      return $http.post(url, data).then(function (resp) {
+        cookieService.clearToken();
+        cookieService.clearRefreshToken();
+        return resp.data.data;
+      });
+    },
+
+    /**
+     * @description Forgot password
+     * @param {string} username - Username
+     * @returns {Promise} - Users forgot password request has been sent
+     */
+    forgotPassword: function (username) {
+      var url = apiConfig.forgotPassword;
+
+      var data = {
+        username: username
       };
 
       return $http.post(url, data).then(function (resp) {
         return resp;
-      }).catch(function(error){
-        return $q.reject(error);
+      }).catch(function (error) {
+        return $q.reject(error.data.status.code);
+      });
+    },
+
+    /**
+     * @description Change password
+     * @param {string} username - Username
+     * @returns {Promise} - Users change password request has been sent
+     */
+    changePassword: function (userId, currentPassword, changePassword) {
+      var url = apiConfig.changePassword({userId: userId});
+
+      var data = {
+        currentPassword: currentPassword,
+        paassword: changePassword.newPassword,
+        confirmPassword: changePassword.confirmPassword
+      };
+
+      return $http.put(url, data).then(function (resp) {
+        return resp;
+      }).catch(function (error) {
+        return $q.reject(error.data.status.code);
       });
     }
   };

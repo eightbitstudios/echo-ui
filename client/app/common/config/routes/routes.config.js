@@ -15,29 +15,30 @@ angular.module('echo.config.routes', [])
         route:'myCarriers',
         url: '/#/myCarriers'
       },
-      carrier: {
-        name: 'index.carrier',
-        route:'carrier/:carrierId'
-      },
       myCarriersDetails: {
         name: 'index.myCarriers.details',
         route:'/:carrierId'
       },
+      carrier: {
+        name: 'index.carrier',
+        route:'carrier/:carrierId?isCarrierAdmin'
+      },
       dashboard: {
         name: 'index.carrier.dashboard',
-        route:'/dashboard'
+        route:'/dashboard?isCarrierAdmin'
       },
       myCompany: {
         name: 'index.carrier.myCompany',
-        route:'/myCompany'
+        route:'/myCompany?isCarrierAdmin',
+        url: _.template('/#/carrier/${carrierId}/myCompany')
       },
       myCompanyUsers: {
         name: 'index.carrier.myCompany.portalUsers',
-        route: '/portalUsers'
+        route: '/portalUsers?isCarrierAdmin'
       },
       myCompanyDrivers: {
         name: 'index.carrier.myCompany.drivers',
-        route: '/drivers'
+        route: '/drivers?isCarrierAdmin'
       },
       myCompanyDriverProfile: {
         name: 'index.carrier.myCompany.driverProfile',
@@ -56,6 +57,10 @@ angular.module('echo.config.routes', [])
       createPassword: {
         name: 'login.createPassword',
         route: '/createPassword?validationToken&userId'
+      },
+      forgotPassword: {
+        name: 'login.forgotPassword',
+        route: '/forgotPassword'
       }
     }
   });
