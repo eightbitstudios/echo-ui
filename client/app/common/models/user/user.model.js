@@ -21,7 +21,7 @@ angular.module('echo.models.user', [
      * @return {boolean}
      */
     User.prototype.isRepAdmin = function () {
-      return this.role === RolesEnum.REP_ADMIN;
+      return this.role === RolesEnum.ECHO_REP;
     };
 
     /**
