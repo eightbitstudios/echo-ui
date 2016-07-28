@@ -10,7 +10,7 @@ angular.module('echo.services.driverConverter', []).factory('driverConverterServ
          convertedDriver.language = convertedDriver.otherLanguage;
        }
 
-       return convertedDriver;
+       return _.omit(convertedDriver, 'otherLanguage');
     }
   };
 });

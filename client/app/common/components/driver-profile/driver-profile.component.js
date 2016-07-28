@@ -22,7 +22,7 @@ angular.module('echo.components.driverProfile', [
     that.other = appConstants.LANGUAGES.other;
 
     // Check to see if user has a language that is not listed
-    if(!_.find(that.languages, {language: that.driver.language})){
+    if(!_.find(that.languages, {language: _.get(that.driver, 'language')})){
       that.driver.otherLanguage = that.driver.language;
       that.driver.language = appConstants.LANGUAGES.other;
     }

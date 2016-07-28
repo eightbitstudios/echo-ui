@@ -27,7 +27,7 @@
             <option ng-repeat="item in $ctrl.languages" ng-value="item.language">{{item.language}}</option>
            </select>
         </div>
-        <input ng-if="$ctrl.driver.language === $ctrl.other" class="form-control" ng-model="$ctrl.otherLanguage" placeholder="Language" type="text">
+        <input ng-if="$ctrl.driver.language === $ctrl.other" class="form-control" ng-model="$ctrl.driver.otherLanguage" placeholder="Language" type="text">
       </div>
     </fieldset>
     <fieldset class="fieldset">
