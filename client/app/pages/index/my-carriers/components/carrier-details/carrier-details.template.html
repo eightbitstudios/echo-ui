@@ -15,14 +15,20 @@
             </header>
             <portal-users portal-users="$ctrl.portalUsers" click-handler="$ctrl.showPortalUserHandler(user)"></portal-users>
           </article>
-          <driver-list driver-count="$ctrl.driverCount"></driver-list>
+          <article class="selection-users">
+            <header class="selection-header">
+              Drivers
+              <a href="#" ui-sref="{{$ctrl.driverRoute.name}}({carrierId: $ctrl.carrierId})" class="btn btn-link btn-sm">View Driver List</a>
+            </header>
+            <driver-list driver-count="$ctrl.driverCount" driver-route="$ctrl.driverRoute.name" carrier-id="$ctrl.carrierId"></driver-list>
+          </article>
         </div>
         <div ng-if="$ctrl.showMode === $ctrl.mode.PORTAL_USER">
           <a ng-click="$ctrl.showDetailsHandler()" class="btn btn-link">
             <div class="echo-icon icon-left-arrow"></div>Back to Details
           </a>
           <portal-user-profile portal-user="$ctrl.portalUser" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.loadCarrierDetails()">
-              <button class="btn btn-default" ng-click="$ctrl.loadCarrierDetails()">
+            <button class="btn btn-default" ng-click="$ctrl.loadCarrierDetails()">
                 Back to Carrier Details
               </button>
           </portal-user-profile>
