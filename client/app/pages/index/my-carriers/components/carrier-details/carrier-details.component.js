@@ -36,7 +36,7 @@ angular.module('echo.index.myCarriers.carrierDetails', [
               carrierApi.fetchCarrierDriverCount(carrier.carrierId)
             ]).then(_.spread(function (portalUsers, drivers) {
               that.portalUsers = portalUsers;
-              that.driverCount = drivers.userCount;
+              that.driverCount = _.get(drivers, 'userCount');
               that.showLoading = false;
             }));
           } else {
