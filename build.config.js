@@ -108,6 +108,7 @@ module.exports = function (grunt) {
         'bower_components/angular-resource/angular-resource.js',
         'bower_components/lodash/dist/lodash.js',
         'bower_components/moment/moment.js',
+        'bower_components/angular-base64/angular-base64.js',
         'bower_components/bootstrap-daterangepicker/daterangepicker.js'
       ],
       css: [

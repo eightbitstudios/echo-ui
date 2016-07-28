@@ -12,9 +12,10 @@ angular.module('echo.index', [
   'echo.components.footer',
   'echo.services.repDetails',
   'echo.services.carrierDetails',
+  'echo.services.cookie',
   'echo.services.user',
   'templates-app'
-]).config(function ($urlRouterProvider, $stateProvider, routesConfig) {
+]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig) {
   $urlRouterProvider.otherwise('/myCarriers');
 
   // ROUTES
@@ -23,11 +24,19 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.base.route,
       abstract: true,
       resolve: {
-        user: function (userService) {
-          return userService.fetchUserById();
+        user: function ($q, cookieService, userService) {
+          var jwt = cookieService.getToken();
+          
+          if(jwt){
+            var userObj = userService.mapJwtToUser(jwt);
+          	userService.setUser(userObj);
+          }
+
+          var user = userService.getUser();
+          return $q.when(user);
         },
         repDetails: function (repDetailsService, user) {
-          if (!user.isRepAdmin()) {
+          if (_.isFunction(user.isRepAdmin) && !user.isRepAdmin()) {
             return repDetailsService.fetchRepByCarrierId(user.carrierId);
           }
         }
