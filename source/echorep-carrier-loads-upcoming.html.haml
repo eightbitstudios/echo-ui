@@ -1,0 +1,15 @@
+-@title= 'Load Management - Upcoming'
+-@page_classes= 'load-management load-management-upcoming'
+
+= partial 'partials/header_load_management', locals: {link: 'upcoming'}
+= partial 'partials/header_carrier_dashboard', locals: {loads: '14 Upcoming Loads', map: false}
+
+.container.main-content
+  %section
+    .section-head
+      = partial 'partials/filter_bar_upcoming'
+    .row
+      .col-md-12
+        = partial 'partials/load_management_upcoming'
+
+        = partial 'partials/load_management_pagination'

@@ -2,23 +2,33 @@
     #load-details
 //------------------------------------
 
-
-.load-management
+body.load-management-detail
   background-color: #f7f7f7
 
-#loads-accordion
+// Load Mgmt single table
+////////
 
+.load-table_detail
+  background: #fff
+
+  table.table tr > td
+    border-bottom: 0
+
+// Load Mgmt Pickup/Delivery collapsible panels
+////////
+
+#loads-accordion
   .panel-title
     strong
       text-transform: uppercase
       margin-right: 10px
 
   .stops-date
-    color: #ffffff
     font-size: 14px
     line-height: 1.4
     float: right
-
+    .caret
+      margin-left: 10px
 
 
 .load-items-details
@@ -54,8 +64,53 @@
     background-color: $gray-lightest
     border-top: 1px solid $gray-light
 
+// Driver Log
+
+.log-note
+  font-weight: 600
+  white-space: nowrap
+
 
 // Sidebar
 
+.form-inline-editing
+  padding: 5px
+  border-radius: 3px
+  background: $gray-lightest
+
+  .form-control
+    margin-right: 10px
+
 .load-documents
   padding: 0
+  margin: 20px 0
+
+.load-doc
+  display: flex
+  flex-direction: row
+  align-items: center
+  margin-bottom: 10px
+  padding: 0px 10px 15px
+  border-bottom: 1px solid $gray-light
+
+.doc-image
+  height: 70px
+  width: 65px
+  margin: 0 20px 0 0
+  display: flex
+  flex: 0 0 auto
+  align-items: center
+  justify-content: center
+
+  img
+    width: auto
+    height: auto
+    flex: 0 0 auto
+
+.doc-descrip
+  font-size: 12px
+  line-height: 1.3
+  h5
+    font-size: 14px
+    text-transform: uppercase
+    margin: 0

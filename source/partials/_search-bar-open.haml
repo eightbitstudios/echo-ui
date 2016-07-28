@@ -3,7 +3,7 @@
     .form-group
       %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
       %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
-      %span.search-loader 
+      %span.search-loader
         =image_tag('icon-loader-temp.svg')
       %span.search-results_count 3 Search Results
       %span.search-results_close
@@ -15,23 +15,23 @@
           .result-phone (773) 555-4567
           .result-numb  Tractor Number: 2003 1234
 
-        %li.results-row       
+        %li.results-row
           .result-title Mablelle William-shire
           .result-phone (773) 883-3890
           .result-numb  Tractor Number: 2003 1243
 
-        %li.results-row       
+        %li.results-row
           .result-title Ethel Williamson
           .result-phone (773) 555-4567
           .result-numb  Tractor Number: 2003 1234
 
   .filter-drivers.pull-left
-    %button.btn.btn-default.btn-filter
+    %button.btn.btn-default.btn-filter.btn-date-picker
       Filter Unassigned Drivers
 
   .pull-right
     %button.btn.btn-default Invite New Driver
 
-      
+
 
 

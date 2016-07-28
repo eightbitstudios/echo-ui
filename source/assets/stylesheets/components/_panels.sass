@@ -3,6 +3,7 @@
 //------------------------------------
 
 .panel
+  padding: 20px
   border-radius: 2px
   border: 0
   background-color: #ffffff
@@ -10,22 +11,42 @@
   
   > .panel-heading
     color: #fff
-    font-size: 18px
-    line-height: 1.3
     padding: 0
     background-color: #525966
+    transition: all 0.2s ease-in
+    &:hover,
+    &.panel-closed
+      background-color: $gray-light
+      color: $gray-darkest
+      .caret
+        transform: rotateZ(180deg)
+  
+    .caret
+      transform: rotateZ(0deg)
+      transition: rotate 0.2s ease-in
 
   .panel-title
+    font-size: 18px
+    line-height: 1.3
     padding: 19px 30px
     > a
       display: block
+      transition: none
+      &:hover
+        color: inherit
+
+      &:focus
+        text-decoration: none
+        outline: none
+
 
   .panel-body
     padding: 30px 30px 20px
     border-top: 0
 
 .panel-group
-  .panel  
+  .panel
+    padding: 0
     margin-bottom: 20px
 
 

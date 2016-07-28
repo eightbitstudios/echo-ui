@@ -1,0 +1,31 @@
+.filter-bar-wrap
+  .filter-bar
+    .label Filter By
+    = link_to 'Pickups Today', '#', class: 'btn btn-filter'
+    = link_to 'Deliveries Today', '#', class: 'btn btn-filter'
+    = link_to '#', class: 'btn btn-filter btn-filter-dropdown', data: { dropdown: 'stop-location' } do
+      Stop Location
+    = link_to 'APPT. Date', '#', class: 'btn btn-filter btn-single-dp'
+    %span.filter-summary
+      %h5 20 Loads
+      By Next Appointment
+  .dropdown-filter{ data: { dropdown: 'stop-location' } }
+    .form-group
+      %label{ for:'location' }
+        City, State, or Zip
+      = text_field_tag :location, id: 'location', class: 'form-control', placeholder: 'e.g. Chicago'
+    .form-group.form-group-inline
+      .checkbox.control
+        %label.checkbox-inline
+          = check_box_tag :pickups
+          %span.control-indicator
+          Pickups
+    .form-group.form-group-inline
+      .checkbox.control
+        %label.checkbox-inline
+          = check_box_tag :deliveries
+          %span.control-indicator
+          Deliveries
+    .dropdown-filter-buttons
+      %button.applyBtn.btn.btn-default Apply
+      %button.cancelBtn.btn.btn-link.btn-alt Clear

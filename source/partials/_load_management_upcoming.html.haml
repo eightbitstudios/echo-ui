@@ -41,16 +41,14 @@
           %h3.driver-name=link_to 'Fred F', '#'
           <span><tel>(899) 584-0803</tel></span>
           .driver-status
-            Active Driver
-            %br
-            Tracking On
+            Do Not Disturb
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name=link_to 'Reported Empty'
-          By Mike P at 13:15 CST today
-          .action-align-bottom
-            = link_to 'REPORT ARRIVAL AT PICKUP', '#', class: 'btn btn-danger'
-            %p.muted Running 15 Min. Late
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
@@ -84,21 +82,20 @@
           %h3.driver-name=link_to 'Alfonzo A', '#'
           <span><tel>(054) 534-6618</tel></span>
           .driver-status
-            Do Not Disturb
-            %br
-            Tracking Off
+            Entered By Echo
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name=link_to 'Reported Empty'
-          By Mike P at 13:15 CST today
-          .action-align-bottom
-            = link_to 'REPORT ARRIVAL AT PICKUP', '#', class: 'btn btn-primary'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
         %h2.load-number=link_to '123443213', '#'
       %td.carrier-dashboard-pickup
-        .location-pickup.match-height.muted
+        .location-pickup.match-height
           .lead
             New York
           .location-state
@@ -110,7 +107,7 @@
       %td.carrier-dashboard-arrow
         = image_tag 'icon-right-arrow-dark@2x.png'
       %td.carrier-dashboard-delivery
-        .location-delivery.match-height
+        .location-delivery.match-height.muted
           .lead
             Chicago
           .location-state
@@ -124,10 +121,11 @@
           =link_to 'Assign Driver', '#', class: 'btn btn-default'
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name=link_to 'Reported Empty'
-          By Mike P at 13:15 CST today
-          .action-align-bottom
-            = link_to 'REPORT ARRIVAL AT DELIVERY', '#', class: 'btn btn-primary'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
@@ -156,18 +154,14 @@
             Thu, May 23
       %td
         .carrier-dashboard-driver.match-height
-          %h3.driver-name=link_to 'Gregory M', '#'
-          <span><tel>(343) 890-1203</tel></span>
-          .driver-status
-            =link_to 'Verify Driver', '#'
-            %br
-            Tracking Off
+          =link_to 'Assign Driver', '#', class: 'btn btn-default'
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name=link_to 'Reported Empty'
-          By Mike P at 13:15 CST today
-          .action-align-bottom
-            = link_to 'REPORT DELIVERY', '#', class: 'btn btn-primary'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
@@ -196,18 +190,14 @@
             Delivered Tue, Oct 31
       %td
         .carrier-dashboard-driver.match-height
-          %h3.driver-name=link_to 'Alta N', '#'
-          <span><tel>(952) 796-9653</tel></span>
-          .driver-status
-            Active Driver
-            %br
-            Tracking Off
+          =link_to 'Assign Driver', '#', class: 'btn btn-default'
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name=link_to 'Reported Location'
-          By Mike P at 13:15 CST today
-          .action-align-bottom
-            = link_to 'Send Load Update', '#', class: 'btn btn-default'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
@@ -238,18 +228,14 @@
             Fri, May 23
       %td
         .carrier-dashboard-driver.match-height
-          %h3.driver-name=link_to 'Fred F', '#'
-          <span><tel>(899) 584-0803</tel></span>
-          .driver-status
-            Active Driver
-            %br
-            Tracking On
+          =link_to 'Assign Driver', '#', class: 'btn btn-default'
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name=link_to 'Reported Empty'
-          By Mike P at 13:15 CST today
-          .action-align-bottom
-            = link_to 'Report Loaded', '#', class: 'btn btn-default'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
@@ -280,24 +266,21 @@
             Fri, Dec 1
       %td.carrier-dashboard-load
         .carrier-dashboard-driver.match-height
-          %h3.driver-name=link_to 'Alfonzo A', '#'
+          %h3.driver-name=link_to 'Jay C', '#'
           <span><tel>(054) 534-6618</tel></span>
-          .driver-status
-            Do Not Disturb
-            %br
-            Tracking Off
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name=link_to 'Driver Assigned'
-          By Mike P at 13:15 CST today
-          .action-align-bottom
-            = link_to 'Report Empty', '#', class: 'btn btn-default'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
         %h2.load-number=link_to '123443213', '#'
       %td.carrier-dashboard-pickup
-        .location-pickup.match-height.muted
+        .location-pickup.match-height
           .lead
             New York
           .location-state
@@ -309,7 +292,7 @@
       %td.carrier-dashboard-arrow
         = image_tag 'icon-right-arrow-dark@2x.png'
       %td.carrier-dashboard-delivery
-        .location-delivery.match-height
+        .location-delivery.match-height.muted
           .lead
             Chicago
           .location-state
@@ -320,13 +303,15 @@
             Today, Apr 20
       %td
         .carrier-dashboard-driver.match-height
-          =link_to 'Assign Driver', '#', class: 'btn btn-default'
+          %h3.driver-name=link_to 'Eva R', '#'
+          <span><tel>(954) 134-5633</tel></span>
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name Load Now Active
-          As of 13:15 CST today
-          .action-align-bottom
-            = link_to 'REPORT Empty', '#', class: 'btn btn-default'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
@@ -355,24 +340,23 @@
             Thu, May 23
       %td
         .carrier-dashboard-driver.match-height
-          %h3.driver-name Gregory M
+          %h3.driver-name=link_to 'Nelle H', '#'
           <span><tel>(343) 890-1203</tel></span>
           .driver-status
-            =link_to 'Verify Driver', '#'
-            %br
-            Tracking Off
+            Entered By Echo
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name=link_to 'Reported Loaded'
-          By Mike P at 13:15 CST today
-          .action-align-bottom
-            = link_to 'REPORT LOCATION', '#', class: 'btn btn-default'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
 
     %tr
       %td.carrier-dashboard-load
         %h2.load-number=link_to '123443215', '#'
       %td.carrier-dashboard-pickup
-        .location-pickup.match-height.muted
+        .location-pickup.match-height
           .lead
             Memphis
           .location-state
@@ -393,28 +377,15 @@
             16:00 EST
             %br
             Delivered Tue, Oct 31
-        %ul.pagination
-          %li
-            =link_to '#' do
-              %span
-                =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
-          %li 1
-          %li /
-          %li 2
-          %li
-            =link_to '#' do
-              %span
-                =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
       %td
         .carrier-dashboard-driver.match-height
-          %h3.driver-name Alta T
+          %h3.driver-name=link_to 'Rebecca J', '#'
           <span><tel>(952) 796-9653</tel></span>
-          .driver-status
-            Active Driver
-            %br
-            Tracking Off
       %td
         .carrier-dashboard-action.match-height
-          %h3.driver-name Call To Report
-          .action-align-bottom
-            = link_to 'ADD DOCUMENTS', '#', class: 'btn btn-default'
+          .action-text
+            %p Added at 13:15 CST Today by Patty A.
+            = link_to '#' do
+              = image_tag 'icon-document@2x.png'
+              %span View Rate Confirmation
+

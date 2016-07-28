@@ -13,33 +13,6 @@
   .filter-header
     border-bottom: 1px solid $gray-light
 
-.btn-filter
-  span.close
-    position: relative
-    opacity: 1
-    font-size: 0
-    line-height: 0
-    width: 12px
-    height: 12px
-    margin: 2px -10px 0 20px
-    z-index: 999999
-
-    &:after,
-    &:before
-      content: ''
-      width: 12px
-      height: 2px
-      background: #fff
-      border-radius: 3px
-      position: absolute
-      top: 50%
-      left: 50%
-      opacity: 1
-      transform: translateX(-50%) rotateZ(45deg)
-
-    &:after
-      transform: translateX(-50%) rotateZ(-45deg)
-
 .daterangepicker
   color: $gray-mid-light
   position: absolute
@@ -57,6 +30,59 @@
   &:after,
   &:before
     display: none
+
+  &.single-datepicker
+    width: 285px
+
+    table.table-condensed
+      margin-bottom: 15px
+
+    .calendar-table
+      margin-bottom: 100px
+
+    th.month
+      font-size: 18px
+      color: $gray-darkest
+
+    tbody > tr > td
+      &:hover
+        color: #FFF
+        background-color: $gray-mid-light
+
+    .checkboxes
+      width: 245px
+      position: absolute
+      left: 20px
+      bottom: 70px
+
+      .checkbox
+        display: inline-block
+        padding-left: 0
+
+      .control input:checked ~ .control-indicator
+        background-color: $gray-light
+
+      .checkbox input:checked ~ .control-indicator
+        background-image: image_url('checkbox-check.svg')
+
+      .control-indicator
+        top: 0
+        margin-right: 5px
+
+      label
+        font-size: 14px
+        text-transform: none
+        margin-right: 16px
+        padding-left: 25px
+
+        &:hover
+          font-weight: bold
+
+    .ranges
+      position: absolute
+      left: 0
+      bottom: 0
+      width: 100%
 
   .daterangepicker_input
     padding: 0 20px
@@ -78,7 +104,7 @@
     padding-right: 10px
     th.month
       padding-right: 0
-      
+
   .calendar.right .calendar-table
     padding-left: 10px
     th.month
@@ -88,7 +114,7 @@
     border-radius: 2px
     padding: 5px 20px
     margin-bottom: 10px
-    
+
     thead tr:last-child th
       background-color: $gray-lightest
     tbody td
@@ -137,7 +163,7 @@
     border-top: 1px solid $gray-light
     .btn
       margin: 0 5px
-  
+
   .select.monthselect-wrap
     width: 56%
     margin-right: 2%

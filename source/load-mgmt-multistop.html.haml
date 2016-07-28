@@ -1,27 +1,21 @@
 -@title= 'Carrier Dashboard'
 -@page_classes= 'load-management load-management-detail'
 
-= partial 'partials/header_carrier_dashboard', locals: {loads: '9 Loads Located', map: true}
-= partial 'partials/map_spacer'
+= partial 'partials/header_carrier_load', locals: {loads: '9 Loads Located', map: false}
 
 .container-fluid.load-table_detail
   .container
     = partial 'partials/load_management_detail'
 
-.alert.alert-warning.text-center
-  Some stop details have changed since this load became active, review below.
-
 .container.main-content
   .section-head
     %h1.section-label
-      STOPS
+      3 STOPS
 
   .row
     %section.col-md-8
     
-      = partial 'partials/loads_accordion'
-      / = partial 'partials/loads_sidebar_relatedcontent'
-
+      = partial 'partials/loads_accordion-multi'
 
       %section.panel.load-table_log
         %h4.section-header.sh-no_border All Load Activities
