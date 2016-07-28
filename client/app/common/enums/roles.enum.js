@@ -1,5 +1,5 @@
 angular.module('echo.enums.roles', [])
   .constant('RolesEnum', {
-    REP_ADMIN: 'RepAdmin',
+    ECHO_REP: 'EchoRep',
     CARRIER_ADMIN: 'CarrierAdmin'
   });
