@@ -18,7 +18,7 @@ angular.module('echo.index.myCarriers.allCarriers', [
       that.searchParam = '';
       that.minSearchCharacters = appConstants.MIN_SEARCH_CHARACTERS.CARRIERS;
 
-      var repId = userService.getUser().repId;
+      var repId = userService.getUser().userId;
 
       carrierApi.fetchCarriers(repId).then(function (carriers) {
 
