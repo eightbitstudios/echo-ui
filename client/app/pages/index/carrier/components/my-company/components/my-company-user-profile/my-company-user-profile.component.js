@@ -23,7 +23,7 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
 
       that.passwordChange = new PasswordChangeModel();
       that.currentPassword = null;
-      that.userId = userService.getUser().id;
+      that.userId = userService.getUser().userId;
 
       that.goBackToPortal = function () {
         that.goBackHandler();

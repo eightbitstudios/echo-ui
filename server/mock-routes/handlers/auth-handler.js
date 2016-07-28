@@ -16,6 +16,13 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
+  refresh: function (req, res) {
+    var resTemplate = new ResTemplate()
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
   signIn: function (req, res) {
     var resTemplate = new ResTemplate()
 
@@ -32,6 +39,12 @@ module.exports = {
         res.status(400);
         resTemplate.status.code = 401003;
       }
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  signOut: function (req, res) {
+    var resTemplate = new ResTemplate()
+    responseUtil.timeout(function () {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
