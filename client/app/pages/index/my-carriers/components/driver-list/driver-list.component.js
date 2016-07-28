@@ -6,5 +6,11 @@ angular.module('echo.index.myCarriers.driverList', [])
       driverRoute: '<',
       carrierId: '<'
     },
-    controller: function () {}
+    controller: function ($state, routesConfig) {
+      var that = this;
+
+      that.addDriverHandler = function() {
+        $state.go(routesConfig.INDEX.myCompanyDriverProfile.name, {carrierId: that.carrierId});
+      };
+    }
   });
