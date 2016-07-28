@@ -4,7 +4,9 @@ angular.module('echo.components.driverGrid', [
   'echo.components.typeaheadSearch',
   'echo.components.loading',
   'echo.config.appConstants',
+  'echo.config.routes',
   'echo.components.pagination',
+  'echo.filters.phoneNumber',
   'echo.directives.dateRangePicker',
   'echo.api.carrier'
 ]).component('driverGrid', {
@@ -12,20 +14,21 @@ angular.module('echo.components.driverGrid', [
     carrierId: '<'
   },
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function (carrierApi, appConstants) {
+  controller: function ($state, routesConfig, carrierApi, appConstants) {
     var that = this;
     that.drivers = null;
     that.pagination = null;
-    that.showLoading = false;
+    that.showLoading = true;
     that.firstRecord = 0;
     that.startDate = null;
     that.endDate = null;
+    that.routesConfig = routesConfig;
 
     /**
      * Controller init
      */
     function init(changeObject) {
-      if(changeObject.carrierId && changeObject.carrierId.currentValue){
+      if (changeObject.carrierId && changeObject.carrierId.currentValue) {
         that.getDriversForPage(appConstants.PAGINATION.defaultPage);
       }
     }
@@ -50,15 +53,15 @@ angular.module('echo.components.driverGrid', [
      * Returns text for filter
      * @example Availability 10/15/2015 - 11/12/2015
      */
-    that.formatDateText = function (){
-      return 'Availability ' + _.join([moment(that.startDate).format('MM/DD/YY'),moment(that.endDate).format('MM/DD/YY')], ' - ');
+    that.formatDateText = function () {
+      return 'Availability ' + _.join([moment(that.startDate).format('MM/DD/YY'), moment(that.endDate).format('MM/DD/YY')], ' - ');
     };
 
     /**
      * Clears out filter dates
      * @param {Object} $event - JQuery event
      */
-    that.clearDates = function($event) {
+    that.clearDates = function ($event) {
       that.startDate = null;
       that.endDate = null;
       $event.stopPropagation();
@@ -82,6 +85,14 @@ angular.module('echo.components.driverGrid', [
       }).finally(function () {
         that.showLoading = false;
       });
+    };
+
+    that.newDriverHandler = function () {
+      $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name);
+    };
+
+    that.onSelectCallback = function (driver) {
+      $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name, { driverId: driver.id });
     };
 
     that.$onChanges = init;

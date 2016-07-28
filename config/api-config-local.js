@@ -16,9 +16,12 @@ module.exports = function (grunt) {
     portalUsers:  '/mock/api/v1/carriers/${carrierId}/portalusers',
     driverCount:  '/mock/api/v1/carriers/${carrierId}/drivers/count',
     drivers:  '/mock/api/v1/carriers/${carrierId}/drivers',
+    driverById: '/mock/api/v1/carriers/${carrierId}/drivers/${driverId}',
+    deactivateDriverById: '/mock/api/v1/carriers/${carrierId}/drivers/${driverId}/deactivate',
     searchDrivers: '/mock/api/v1/carriers/${carrierId}/drivers/${searchTerm}',
+    portalUserById:  '/mock/api/v1/carriers/${carrierId}/portalusers/${userId}',
+    language: '/mock/api/v1/preferredLanguages',
     forgotPassword: '/mock/api/v1/auth/forgotPassword',
-    changePassword: '/mock/api/v1/users/${userId}/setPassword',
-    portalUserById:  '/mock/api/v1/carriers/${carrierId}/portalusers/${userId}'
+    changePassword: '/mock/api/v1/users/${userId}/setPassword'
   };
 };

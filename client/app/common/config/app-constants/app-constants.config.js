@@ -6,6 +6,10 @@ angular.module('echo.config.appConstants', [])
     PAGINATION: {
       defaultPage: 1
     },
+    LANGUAGES: {
+      default: 'English',
+      other: 'Other'
+    },
     REGEX: {
       passwordLength: /^.{8,25}$/,
       passwordLowerCase: /[a-z]/,

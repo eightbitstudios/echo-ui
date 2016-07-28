@@ -12,6 +12,7 @@ angular.module('echo.index', [
   'echo.components.footer',
   'echo.services.repDetails',
   'echo.services.carrierDetails',
+  'echo.index.carrier.myCompany.driverProfile',
   'echo.services.cookie',
   'echo.services.user',
   'templates-app'
@@ -84,5 +85,9 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCompanyDrivers.name, {
       url: routesConfig.INDEX.myCompanyDrivers.route,
       template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>'
+    })
+    .state(routesConfig.INDEX.myCompanyDriverProfile.name, {
+      url: routesConfig.INDEX.myCompanyDriverProfile.route,
+      template: '<my-company-driver-profile carrier-id="$ctrl.carrierId"></my-company-driver-profile>'
     });
 });

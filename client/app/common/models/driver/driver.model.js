@@ -1,5 +1,7 @@
-angular.module('echo.models.driver', [])
-  .factory('DriverModel', function () {
+angular.module('echo.models.driver', [
+  'echo.config.appConstants'
+])
+  .factory('DriverModel', function (appConstants) {
     /**
      * @description Model for a User
      * @param {Object} userData - Data to be converted to a User Model
@@ -10,8 +12,12 @@ angular.module('echo.models.driver', [])
     function Driver(userData) {
 
       var that = this;
+
+      var defaults = {
+        language: appConstants.LANGUAGES.default
+      };
  
-      _.assign(that, userData);
+      _.assign(that, defaults, userData);
     }
 
     Driver.prototype.getFullName = function() {
