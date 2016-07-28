@@ -2,8 +2,9 @@
 
 angular.module('echo.api.driver', [
   'echo.config.api',
-  'echo.models.driver'
-]).factory('driverApi', function ($q, $http, DriverModel, apiConfig) {
+  'echo.models.driver',
+  'echo.services.driverConverter'
+]).factory('driverApi', function ($q, $http, DriverModel, apiConfig, driverConverterService) {
   return {
     
       /**
@@ -30,8 +31,9 @@ angular.module('echo.api.driver', [
       updateDriverById: function (carrierId, driver) {
 
         var url = apiConfig.driverById({ carrierId: carrierId, driverId: driver.id });
+        var data = driverConverterService.driverRequest(driver);
 
-        return $http.put(url, driver).then(function (resp) {
+        return $http.put(url, data).then(function (resp) {
           return resp.data.data;
         }).catch(function (resp) {
           return $q.reject(resp.data.status.message);
@@ -61,8 +63,9 @@ angular.module('echo.api.driver', [
       insertDriver: function (carrierId, driver) {
 
         var url = apiConfig.drivers({carrierId: carrierId});
-        
-        return $http.post(url, driver).then(function (resp) {
+        var data = driverConverterService.driverRequest(driver);
+
+        return $http.post(url, data).then(function (resp) {
           return resp.data.data;
         }).catch(function (resp) {
           return $q.reject(resp.data.status.message);
