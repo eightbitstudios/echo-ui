@@ -2,7 +2,7 @@
 
 angular.module('echo.services.driverConverter', []).factory('driverConverterService', function () {
   return {
-    driverRequest: function (driver) {
+    driverRequest: function (driver, carrierId) {
       var convertedDriver = {};
        _.assign(convertedDriver, driver);
 
@@ -10,7 +10,10 @@ angular.module('echo.services.driverConverter', []).factory('driverConverterServ
          convertedDriver.language = convertedDriver.otherLanguage;
        }
 
-       return _.omit(convertedDriver, 'otherLanguage');
+       convertedDriver.carrierId = carrierId;
+       convertedDriver.phoneNumber = driver.phone;
+
+       return _.omit(convertedDriver, ['otherLanguage', 'phone']);
     }
   };
 });
