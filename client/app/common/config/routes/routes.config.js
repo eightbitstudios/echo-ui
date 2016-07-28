@@ -15,10 +15,6 @@ angular.module('echo.config.routes', [])
         route:'myCarriers',
         url: '/#/myCarriers'
       },
-      carrier: {
-        name: 'index.carrier',
-        route:'carrier/:carrierId'
-      },
       myCarriersDetails: {
         name: 'index.myCarriers.details',
         route:'/:carrierId'

@@ -25,7 +25,7 @@
       <form name="$ctrl.signInForm" novalidate>
         <fieldset class="fieldset">
           <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted}">
-            <div class="text-left help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.INVALID_USERNAME_OR_PASSWORD">Invalid Username or Password.</div>
+            <div class="text-left help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.INVALID_USERNAME_OR_PASSWORD || $ctrl.serverError === $ctrl.errorsConfig.UNAUTHORIZED">Invalid Username or Password.</div>
             <div class="text-left help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.DEACTIVATED">User account is deactivated.</div>
           </div>
           <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted}">
@@ -41,7 +41,7 @@
           <div class="form-group">
             <a ui-sref="{{$ctrl.routesConfig.LOGIN.forgotPassword.name}}" class="btn btn-link btn-alt">Forgot password?</a>
             <loading-button button-text="Login" class="pull-right" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.signInHandler()"></loading-button>
-            <div class="text-center help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.INVALID_USERNAME_OR_PASSWORD">{{$ctrl.appConstants.ERROR_MESSAGES.invalidUsernameOrPassword}}</div>
+            <div class="text-center help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.INVALID_USERNAME_OR_PASSWORD || $ctrl.serverError === $ctrl.errorsConfig.UNAUTHORIZED">{{$ctrl.appConstants.ERROR_MESSAGES.invalidUsernameOrPassword}}</div>
             <div class="text-center help-block" ng-if="$ctrl.serverError === $ctrl.errorsConfig.DEACTIVATED">{{$ctrl.appConstants.ERROR_MESSAGES.userDeactivated}}</div>
           </div>
         </fieldset>
