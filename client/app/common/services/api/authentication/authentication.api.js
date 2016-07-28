@@ -2,8 +2,8 @@
 
 angular.module('echo.api.authentication', [
   'echo.config.api',
-  'echo.services.localStorage'
-]).factory('authenticationApi', function ($base64, $q, $http, localStorageService, apiConfig) {
+  'echo.services.cookie',
+]).factory('authenticationApi', function ($base64, $q, $http, cookieService, apiConfig) {
   return {
     /**
      * @description Creates a password
@@ -50,10 +50,27 @@ angular.module('echo.api.authentication', [
           'Authorization': 'Basic ' + authData
         }
       }).then(function (resp) {
-        localStorageService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
+        cookieService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
+        cookieService.setToken(resp.data.data.access_token); // jshint ignore:line
         return resp.data.data;
       }).catch(function (error) {
         return $q.reject(error.data.status.code);
+      });
+    },
+    /**
+     * @description Refreshes users session
+     * @returns {Promise} - Users recieves new auth token
+     */
+    refresh: function () {
+      var url = apiConfig.refresh;
+
+      return $http.get(url).then(function (resp) {
+        cookieService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
+        cookieService.setToken(resp.data.data.access_token); // jshint ignore:line
+        return resp.data.data;
+      }).catch(function() {
+        cookieService.clearToken();
+        cookieService.clearRefreshToken();
       });
     },
 
@@ -70,7 +87,8 @@ angular.module('echo.api.authentication', [
       };
 
       return $http.post(url, data).then(function (resp) {
-        localStorageService.setRefreshToken(null);
+        cookieService.clearToken();
+        cookieService.clearRefreshToken();
         return resp.data.data;
       });
     },

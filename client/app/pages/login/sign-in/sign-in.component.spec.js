@@ -1,6 +1,6 @@
 
 describe('Component: signIn', function () {
-  var component, $q, window, scope, state, element, authenticationApi, routesConfig, stateParams, errorsConfig;
+  var component, $q, window, scope, state, userService, element, authenticationApi, routesConfig, stateParams, errorsConfig, user;
 
   beforeEach(function () {
     module('app/pages/login/sign-in/sign-in.template.html');
@@ -9,6 +9,7 @@ describe('Component: signIn', function () {
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
       $provide.value('$window', window = { location: null });
+      $provide.value('userService', userService = jasmine.createSpyObj('userService', ['mapJwtToUser']));
     });
   });
 
@@ -24,6 +25,7 @@ describe('Component: signIn', function () {
     scope.$digest();
 
     component = $componentController('signIn', null, {});
+    userService.mapJwtToUser.and.returnValue(user = jasmine.createSpyObj('user', ['isRepAdmin']));
   }));
 
   describe('Function: signIn', function () {
@@ -46,7 +48,9 @@ describe('Component: signIn', function () {
     it('should call signIn service', function () {
       component.email = 'test';
       component.password = 'Test1234';
-      authenticationApi.signIn.and.returnValue($q.when());
+      authenticationApi.signIn.and.returnValue($q.when({
+        access_token: '123'
+      }));
       component.signInHandler();
 
       expect(authenticationApi.signIn).toHaveBeenCalledWith(component.email, component.password);
@@ -78,7 +82,10 @@ describe('Component: signIn', function () {
     it('should redirect to dashboard if the user is valid', function () {
       component.email = 'test';
       component.password = 'Test1234';
-      authenticationApi.signIn.and.returnValue($q.when());
+      user.isRepAdmin.and.returnValue(true);
+      authenticationApi.signIn.and.returnValue($q.when({
+        access_token: '123'
+      }));
       component.signInHandler();
 
       expect(authenticationApi.signIn).toHaveBeenCalledWith(component.email, component.password);
@@ -91,7 +98,9 @@ describe('Component: signIn', function () {
     it('should toggle loading button', function () {
       component.email = 'test';
       component.password = 'Test1234';
-      authenticationApi.signIn.and.returnValue($q.when());
+      authenticationApi.signIn.and.returnValue($q.when({
+        access_token: '123'
+      }));
       component.signInHandler();
 
       expect(component.showButtonLoading).toBeTruthy();

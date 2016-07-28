@@ -29,7 +29,8 @@ angular.module('echo.config.routes', [])
       },
       myCompany: {
         name: 'index.carrier.myCompany',
-        route:'/myCompany?isCarrierAdmin'
+        route:'/myCompany?isCarrierAdmin',
+        url: _.template('/#/carrier/${carrierId}/myCompany')
       },
       myCompanyUsers: {
         name: 'index.carrier.myCompany.portalUsers',
