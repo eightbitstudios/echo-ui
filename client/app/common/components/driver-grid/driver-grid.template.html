@@ -50,7 +50,7 @@
           </tr>
         </tbody>
       </table>
-      <div ng-show="!$ctrl.showLoading">
+      <div ng-show="!$ctrl.showLoading" ng-if="$ctrl.pagination">
         <pagination number-of-pages="$ctrl.pagination.totalPages" page-click-handler="$ctrl.getDriversForPage(page)" class="pull-left"></pagination>
         <div class="results-count pull-right">
           Showing {{$ctrl.firstRecordNumber}}-{{$ctrl.pagination.currentPage * $ctrl.pagination.recordsPerPage}} of {{$ctrl.pagination.totalRecords}} Drivers
