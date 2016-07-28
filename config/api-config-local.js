@@ -17,6 +17,7 @@ module.exports = function (grunt) {
     driverCount:  '/mock/api/v1/carriers/${carrierId}/drivers/count',
     drivers:  '/mock/api/v1/carriers/${carrierId}/drivers',
     forgotPassword: '/mock/api/v1/auth/forgotPassword',
+    changePassword: '/mock/api/v1/users/${userId}/setPassword',
     portalUserById:  '/mock/api/v1/carriers/${carrierId}/portalusers/${userId}'
   };
 };

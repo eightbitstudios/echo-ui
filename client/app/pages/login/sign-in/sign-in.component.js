@@ -1,11 +1,12 @@
 angular.module('echo.login.signIn', [
   'echo.api.authentication',
   'echo.config.routes',
+  'echo.config.appConstants',
   'echo.services.user',
   'echo.config.errors'
 ]).component('signIn', {
   templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
-  controller: function ($window, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, userService) {
+  controller: function ($window, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, appConstants, userService) {
     var that = this;
 
     that.routesConfig = routesConfig;
@@ -15,6 +16,7 @@ angular.module('echo.login.signIn', [
     that.showButtonLoading = false;
     that.signInForm = null;
     that.errorsConfig = errorsConfig;
+    that.appConstants = appConstants;
 
     /**
      * Call api to sign a user in

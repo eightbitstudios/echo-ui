@@ -112,5 +112,25 @@ angular.module('echo.api.authentication', [
       });
     },
 
+    /**
+     * @description Change password
+     * @param {string} username - Username
+     * @returns {Promise} - Users change password request has been sent
+     */
+    changePassword: function (userId, currentPassword, changePassword) {
+      var url = apiConfig.changePassword({userId: userId});
+
+      var data = {
+        currentPassword: currentPassword,
+        password: changePassword.newPassword,
+        confirmPassword: changePassword.confirmPassword
+      };
+
+      return $http.put(url, data).then(function (resp) {
+        return resp;
+      }).catch(function (error) {
+        return $q.reject(error.data.status.code);
+      });
+    }
   };
 });

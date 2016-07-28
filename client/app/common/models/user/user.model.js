@@ -13,9 +13,12 @@ angular.module('echo.models.user', [])
 
       _.assign(that, userData);
 
-      if (userData) {
-        that.userId = userData.user_id; // jshint ignore:line
-        that.carrierId = userData.carrier_id; // jshint ignore:line
+      if (userData && userData.user_id) {
+        that.userId = _.parseInt(userData.user_id, 10); // jshint ignore:line
+      }
+
+      if (userData && userData.carrier_id) {
+        that.carrierId = _.parseInt(userData.carrier_id, 10); // jshint ignore:line
       }
     }
 

@@ -18,6 +18,7 @@ module.exports = function (grunt) {
     forgotPassword: host + '/api/v1/auth/forgotPassword',
     portalUsers: host + '/api/v1/carriers/${carrierId}/portalusers',
     driverCount:host +  '/api/v1/carriers/${carrierId}/drivers/count',
+    changePassword: host + '/api/v1/users/${userId}/setPassword',
     drivers: host + '/api/v1/carriers/${carrierId}/drivers',
     portalUserById: host + '/api/v1/carriers/${carrierId}/portalusers/${userId}'
   };

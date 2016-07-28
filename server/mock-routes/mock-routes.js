@@ -9,6 +9,7 @@ module.exports = function (app) {
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);
   app.post(endpoints.api.signIn, authHandler.signIn);
+  app.put(endpoints.api.changePassword,  authHandler.changePassword);
   app.post(endpoints.api.signOut, authHandler.signOut);
   app.post(endpoints.api.refresh, authHandler.refresh);
   app.post(endpoints.api.createPassword, authHandler.createPassword);

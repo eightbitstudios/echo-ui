@@ -36,7 +36,7 @@ angular.module('echo.index', [
           return $q.when(user);
         },
         repDetails: function (repDetailsService, user) {
-          if (!user.isRepAdmin()) {
+          if (_.isFunction(user.isRepAdmin) && !user.isRepAdmin()) {
             return repDetailsService.fetchRepByCarrierId(user.carrierId);
           }
         }

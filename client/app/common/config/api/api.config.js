@@ -11,6 +11,7 @@ angular.module('echo.config.api', [])
     refresh: '@refresh@',
     repByCarrierId:  _.template('@repByCarrierId@'),
     forgotPassword: '@forgotPassword@',
+    changePassword: _.template('@changePassword@'),
     portalUsers: _.template('@portalUsers@'),
     driverCount: _.template('@driverCount@'),
     portalUserById: _.template('@portalUserById@')

@@ -1,10 +1,11 @@
 angular.module('echo.login.forgotPassword', [
   'echo.config.routes',
   'echo.config.errors',
+  'echo.config.appConstants',
   'echo.api.authentication'
 ]).component('forgotPassword', {
   templateUrl: 'app/pages/login/forgot-password/forgot-password.template.html',
-  controller: function ($state, errorsConfig, routesConfig, authenticationApi) {
+  controller: function ($state, errorsConfig, routesConfig, authenticationApi, appConstants) {
     var that = this;
 
     that.email = '';
@@ -12,6 +13,7 @@ angular.module('echo.login.forgotPassword', [
     that.forgotPasswordForm = null;
     that.showButtonLoading = false;
     that.serverError = null;
+    that.appConstants = appConstants;
 
     that.sendHandler = function () {
       that.serverError = null;
