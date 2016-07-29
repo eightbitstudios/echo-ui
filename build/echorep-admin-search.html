@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      Echo Rep Shell.
+      Rep Admin
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class='home'>
+  <body class='echorep'>
     <header class='navbar'>
       <div class='eyebrow-header'>
         <div class='container'>
@@ -54,29 +54,55 @@
         </div>
       </div>
     </header>
-    <div class='container'>
-      <div class='row'>
-        <div class='col-sm-12'>
-          <h1>Echo UI Build Kit</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem, porro nesciunt tenetur officiis aut voluptate, rem nisi! Consectetur autem eius tenetur commodi magnam magni itaque dolore reiciendis non animi.</p>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, distinctio ut incidunt ducimus perspiciatis molestias consectetur minima temporibus fugiat laboriosam, sint cum autem iste sequi amet aperiam nam, explicabo rerum.</p>
-          <h4>Heading 4</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis sed veniam eligendi praesentium blanditiis culpa iste, exercitationem molestiae modi architecto temporibus recusandae voluptates debitis delectus sit reprehenderit dolor hic in.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!</p>
-          <ul>
-            <li>List 1</li>
-            <li>List 2</li>
-            <li>List 3</li>
-            <li>List 4</li>
-            <li>List 5</li>
-          </ul>
-          <blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi doloremque architecto impedit, qui dicta! In nemo laborum quod voluptate repellendus labore fugiat veniam incidunt error animi, accusamus enim eius commodi.</p>
-          </blockquote>
-          <h5>Heading h5</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!</p>
+    <div class='container-flex container-echorep'>
+      <div class='col-sm-5 col-echorep col-echorep_searchlist'>
+        <div class='col-wrap'>
+          <form class='search-form search-form_searching' role='search'>
+            <div class='form-group'>
+              <input class='form-control search-form-input' placeholder='Find A Driver' type='text'>
+              <button class='btn btn-default btn-icon' type='submit'><img src="assets/images/icon-search@2x.png" width="16px" height="16px" alt="Icon search@2x" /></button>
+            </div>
+            <span class='search-results_count'>3 Search Results</span>
+            <span class='search-results_close'>
+              <img src="assets/images/icon-close-sm.svg" alt="Icon close sm" />
+            </span>
+          </form>
+          <div class='sidebar-list search-results'>
+            <ul class='sidebar-list_results'>
+              <li>
+                <a href="#"><span class='input-result'>Bat</span>
+                Company 'A'
+                </a>
+              </li>
+              <li class='text-muted'>
+                <span class='input-result'>Bat</span>
+                Company 'B'
+              </li>
+              <li>
+                <a href="#"><span class='input-result'>Bat</span>
+                Company 'C'
+                </a>
+              </li>
+              <li>
+                <a href="#"><span class='input-result'>Bat</span>
+                Company 'D'
+                </a>
+              </li>
+              <li>
+                <a href="#"><span class='input-result'>Bat</span>
+                Company 'E'
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class='col-sm-7 col-echorep col-echorep_searchresults'>
+        <div class='col-wrap'>
+          <section class='results-selection results-selection_empty'>
+            <img src="assets/images/icon-book.svg" alt="Icon book" />
+            <h2>Select a carrier in the sidebar to <br/>view their users and drivers.</h2>
+          </section>
         </div>
       </div>
     </div>

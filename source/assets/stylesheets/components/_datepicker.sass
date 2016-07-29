@@ -34,13 +34,33 @@
   &.single-datepicker
     width: 285px
 
-    table.table-condensed
-      margin-bottom: 15px
+    .daterangepicker_input
+      display: none
+    
+    .calendar
+      width: 100%
 
     .calendar-table
       margin-bottom: 100px
 
+    table.table-condensed
+      margin-bottom: 15px
+      // &:before
+      //   content: ''
+      //   position: absolute
+      //   top: 60px
+      //   left: 0
+      //   height: 1px
+      //   width: 100%
+      //   background: $gray-lightest
+
+    thead tr:first-child
+      th
+        padding: 15px 0 17px
+    
     th.month
+      text-transform: none
+      padding: 0
       font-size: 18px
       color: $gray-darkest
 
@@ -124,6 +144,7 @@
 
     thead tr:last-child th
       background-color: $gray-lightest
+      border-bottom-color: $gray-lightest
     tbody td
       background-color: $gray-lightest
 

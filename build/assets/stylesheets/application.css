@@ -8169,27 +8169,28 @@ p.label {
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
-    /* line 30, base/_buttons.sass */
-    .btn.btn-default:hover {
-      color: #fff;
-      background-color: #26c1fb; }
-    /* line 34, base/_buttons.sass */
+    @media (min-width: 769px) {
+      /* line 30, base/_buttons.sass */
+      .btn.btn-default:hover {
+        color: #fff;
+        background-color: #26c1fb; } }
+    /* line 35, base/_buttons.sass */
     .btn.btn-default:active, .btn.btn-default:focus {
       color: #fff;
       outline: none;
       box-shadow: none;
       border: solid 2px #26c1fb;
       background-color: #04abea; }
-    /* line 42, base/_buttons.sass */
+    /* line 43, base/_buttons.sass */
     .btn.btn-default.btn-disabled {
       opacity: 0.3; }
-      /* line 44, base/_buttons.sass */
+      /* line 45, base/_buttons.sass */
       .btn.btn-default.btn-disabled:hover {
         color: #26c1fb;
         padding: 10px 19px 7px;
         border: solid 2px #26c1fb;
         background-color: transparent; }
-  /* line 51, base/_buttons.sass */
+  /* line 52, base/_buttons.sass */
   .btn.btn-primary {
     color: #fff;
     border: none;
@@ -8197,45 +8198,46 @@ p.label {
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
-    /* line 59, base/_buttons.sass */
-    .btn.btn-primary:hover {
-      background-color: #264f47; }
-    /* line 62, base/_buttons.sass */
+    @media (min-width: 769px) {
+      /* line 60, base/_buttons.sass */
+      .btn.btn-primary:hover {
+        background-color: #264f47; } }
+    /* line 64, base/_buttons.sass */
     .btn.btn-primary:active, .btn.btn-primary:focus {
       outline: none;
       box-shadow: none;
       background-color: #1c3b21; }
-  /* line 69, base/_buttons.sass */
+  /* line 71, base/_buttons.sass */
   .btn.btn-warning {
     border: none;
     background-color: #eb004b;
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
-    /* line 76, base/_buttons.sass */
+    /* line 78, base/_buttons.sass */
     .btn.btn-warning:hover {
       background-color: #bc003c; }
-    /* line 79, base/_buttons.sass */
+    /* line 81, base/_buttons.sass */
     .btn.btn-warning:active, .btn.btn-warning:focus {
       outline: none;
       box-shadow: none;
       background-color: #a80035; }
-  /* line 86, base/_buttons.sass */
+  /* line 88, base/_buttons.sass */
   .btn.btn-danger {
     border: none;
     background-color: #eb004b;
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
-    /* line 93, base/_buttons.sass */
+    /* line 95, base/_buttons.sass */
     .btn.btn-danger:hover {
       background-color: #bc003c; }
-    /* line 96, base/_buttons.sass */
+    /* line 98, base/_buttons.sass */
     .btn.btn-danger:active, .btn.btn-danger:focus {
       outline: none;
       box-shadow: none;
       background-color: #a80035; }
-  /* line 103, base/_buttons.sass */
+  /* line 105, base/_buttons.sass */
   .btn.btn-link {
     color: #26c1fb;
     font-family: "Open Sans", sans-serif;
@@ -8244,18 +8246,18 @@ p.label {
     text-transform: none;
     letter-spacing: 0;
     padding: 10px 0; }
-    /* line 113, base/_buttons.sass */
+    /* line 115, base/_buttons.sass */
     .btn.btn-link.btn-alt {
       text-decoration: underline;
       color: #a9adaf; }
-      /* line 116, base/_buttons.sass */
+      /* line 118, base/_buttons.sass */
       .btn.btn-link.btn-alt:hover {
         color: #505C61; }
-    /* line 119, base/_buttons.sass */
+    /* line 121, base/_buttons.sass */
     .btn.btn-link.btn-sm, .btn-group-sm > .btn.btn-link {
       font-size: 12px;
       padding: 0; }
-  /* line 130, base/_buttons.sass */
+  /* line 132, base/_buttons.sass */
   .btn.btn-filter {
     position: relative;
     color: #a9adaf;
@@ -8267,13 +8269,24 @@ p.label {
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
-    /* line 141, base/_buttons.sass */
-    .btn.btn-filter:hover, .btn.btn-filter:active, .btn.btn-filter:focus, .btn.btn-filter.active {
+    /* line 143, base/_buttons.sass */
+    .btn.btn-filter:hover, .btn.btn-filter.active {
       color: #fff;
       border-color: #a9adaf;
       background-color: #a9adaf;
       box-shadow: none; }
     /* line 150, base/_buttons.sass */
+    .btn.btn-filter:focus, .btn.btn-filter:active {
+      color: #a9adaf;
+      border-color: #a9adaf; }
+      @media (min-width: 769px) {
+        /* line 150, base/_buttons.sass */
+        .btn.btn-filter:focus, .btn.btn-filter:active {
+          color: #fff;
+          border-color: #a9adaf;
+          background-color: #a9adaf;
+          box-shadow: none; } }
+    /* line 161, base/_buttons.sass */
     .btn.btn-filter.filter__assigned {
       color: #fff;
       font-family: "Open Sans", sans-serif;
@@ -8286,17 +8299,17 @@ p.label {
       background-color: #26c1fb;
       -webkit-transition: none;
       transition: none; }
-      /* line 161, base/_buttons.sass */
+      /* line 172, base/_buttons.sass */
       .btn.btn-filter.filter__assigned:hover {
         border-color: #1e9ac9;
         background-color: #1e9ac9; }
-    /* line 165, base/_buttons.sass */
+    /* line 176, base/_buttons.sass */
     .btn.btn-filter.btn-date-picker {
       padding-left: 45px; }
-      /* line 169, base/_buttons.sass */
+      /* line 180, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker.filter__assigned:before {
         content: url("../images/icon-calendar-white.svg"); }
-      /* line 172, base/_buttons.sass */
+      /* line 183, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker:before {
         content: url("../images/icon-calendar-gray.svg");
         display: inline-block;
@@ -8306,20 +8319,20 @@ p.label {
         width: 18px;
         height: auto;
         margin-right: 6px; }
-      /* line 185, base/_buttons.sass */
+      /* line 196, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker:hover:before, .btn.btn-filter.btn-date-picker:active:before, .btn.btn-filter.btn-date-picker:focus:before {
         content: url("../images/icon-calendar-white.svg"); }
-    /* line 188, base/_buttons.sass */
+    /* line 199, base/_buttons.sass */
     .btn.btn-filter span.close {
       position: relative;
       opacity: 1;
       font-size: 0;
       line-height: 0;
       width: 12px;
-      height: 12px;
+      height: auto;
       margin: 2px -10px 0 20px;
       z-index: 999999; }
-      /* line 198, base/_buttons.sass */
+      /* line 209, base/_buttons.sass */
       .btn.btn-filter span.close:after, .btn.btn-filter span.close:before {
         content: "";
         width: 12px;
@@ -8332,11 +8345,11 @@ p.label {
         opacity: 1;
         -webkit-transform: translateX(-50%) rotateZ(45deg);
                 transform: translateX(-50%) rotateZ(45deg); }
-      /* line 211, base/_buttons.sass */
+      /* line 222, base/_buttons.sass */
       .btn.btn-filter span.close:after {
         -webkit-transform: translateX(-50%) rotateZ(-45deg);
                 transform: translateX(-50%) rotateZ(-45deg); }
-  /* line 215, base/_buttons.sass */
+  /* line 226, base/_buttons.sass */
   .btn.btn-document {
     position: relative;
     color: #a9adaf;
@@ -8350,21 +8363,21 @@ p.label {
     background-color: #f7f7f7;
     border-radius: 0;
     border: dotted 1px #a9adaf; }
-    /* line 229, base/_buttons.sass */
+    /* line 240, base/_buttons.sass */
     .btn.btn-document.btn-document_primary {
       color: #26c1fb;
       border: dotted 1px #26c1fb;
       background: rgba(38, 193, 251, 0.2); }
-      /* line 233, base/_buttons.sass */
+      /* line 244, base/_buttons.sass */
       .btn.btn-document.btn-document_primary:hover {
         background-color: rgba(38, 193, 251, 0.4); }
-      /* line 235, base/_buttons.sass */
+      /* line 246, base/_buttons.sass */
       .btn.btn-document.btn-document_primary:before, .btn.btn-document.btn-document_primary:after {
         background-color: #26c1fb; }
-      /* line 239, base/_buttons.sass */
+      /* line 250, base/_buttons.sass */
       .btn.btn-document.btn-document_primary .add-type {
         border-left-color: #26c1fb; }
-    /* line 242, base/_buttons.sass */
+    /* line 253, base/_buttons.sass */
     .btn.btn-document:before, .btn.btn-document:after {
       content: "";
       position: absolute;
@@ -8375,14 +8388,14 @@ p.label {
       margin-top: -2px;
       border-radius: 20px;
       background-color: #a9adaf; }
-    /* line 255, base/_buttons.sass */
+    /* line 266, base/_buttons.sass */
     .btn.btn-document:after {
       -webkit-transform: rotateZ(90deg);
               transform: rotateZ(90deg); }
-    /* line 258, base/_buttons.sass */
+    /* line 269, base/_buttons.sass */
     .btn.btn-document:hover {
       background-color: #f0f0f0; }
-    /* line 261, base/_buttons.sass */
+    /* line 272, base/_buttons.sass */
     .btn.btn-document .add-type {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -8398,7 +8411,7 @@ p.label {
       margin-left: 67px;
       padding: 10px 25px;
       border-left: dotted 1px #a9adaf; }
-      /* line 270, base/_buttons.sass */
+      /* line 281, base/_buttons.sass */
       .btn.btn-document .add-type small {
         color: #a9adaf;
         font-family: "Open Sans", sans-serif;
@@ -8407,26 +8420,26 @@ p.label {
         text-transform: none;
         line-height: 1.3;
         display: block; }
-  /* line 280, base/_buttons.sass */
+  /* line 291, base/_buttons.sass */
   .btn.btn-icon {
     padding: 0;
     border: none;
     background: none; }
-    /* line 285, base/_buttons.sass */
+    /* line 296, base/_buttons.sass */
     .btn.btn-icon:hover {
       background: none; }
-  /* line 289, base/_buttons.sass */
+  /* line 300, base/_buttons.sass */
   .btn.btn-alert {
     padding: 5px 0;
     color: #eb004b; }
-    /* line 292, base/_buttons.sass */
+    /* line 303, base/_buttons.sass */
     .btn.btn-alert img {
       vertical-align: baseline; }
-  /* line 297, base/_buttons.sass */
+  /* line 308, base/_buttons.sass */
   .btn.btn-back:hover {
     color: #1e9ac9;
     text-decoration: none; }
-  /* line 301, base/_buttons.sass */
+  /* line 312, base/_buttons.sass */
   .btn.btn-back img {
     width: 11px;
     vertical-align: baseline; }
@@ -8685,8 +8698,9 @@ table.table {
     .pagination > li > a:focus,
     .pagination > li > span:hover,
     .pagination > li > span:focus {
-      color: #26c1fb; }
-  /* line 30, components/_pagination.sass */
+      color: #26c1fb;
+      background-color: transparent; }
+  /* line 31, components/_pagination.sass */
   .pagination > li > a {
     color: #a9adaf;
     border: none;
@@ -8702,15 +8716,16 @@ table.table {
 
 /* line 11, components/_searchbox.sass */
 .search-form {
-  width: 250px; }
+  width: 250px;
+  position: relative; }
   @media (min-width: 769px) {
     /* line 11, components/_searchbox.sass */
     .search-form {
       width: 350px; } }
-  /* line 18, components/_searchbox.sass */
+  /* line 19, components/_searchbox.sass */
   .search-form .form-group {
     position: relative; }
-  /* line 21, components/_searchbox.sass */
+  /* line 22, components/_searchbox.sass */
   .search-form .form-control.search-form-input {
     height: auto;
     width: 100%;
@@ -8720,35 +8735,37 @@ table.table {
     background-color: #f0f0f0;
     -webkit-transition: background 0.2s ease-in;
     transition: background 0.2s ease-in; }
-    /* line 30, components/_searchbox.sass */
+    /* line 31, components/_searchbox.sass */
     .search-form .form-control.search-form-input:hover, .search-form .form-control.search-form-input:focus {
       background-color: #e1e2e3; }
-  /* line 34, components/_searchbox.sass */
+  /* line 35, components/_searchbox.sass */
   .search-form .search-help-text {
     color: #a9adaf;
     position: absolute;
     top: 10px;
     right: 35px;
-    display: none; }
-  /* line 41, components/_searchbox.sass */
+    display: none;
+    -webkit-transition: opacity 0.2s ease-in;
+    transition: opacity 0.2s ease-in; }
+  /* line 43, components/_searchbox.sass */
   .search-form .search-form-input:focus + .search-help-text {
     display: block; }
-  /* line 45, components/_searchbox.sass */
+  /* line 47, components/_searchbox.sass */
   .search-form .search-form-input:focus + .search-help-text + .btn.btn-icon svg g {
     stroke: #a9adaf; }
 
-/* line 48, components/_searchbox.sass */
+/* line 50, components/_searchbox.sass */
 .btn.btn-icon {
   position: absolute;
   top: 10px;
   right: 10px; }
 
-/* line 61, components/_searchbox.sass */
+/* line 63, components/_searchbox.sass */
 .filter-drivers .btn-filter:hover .icon-calendar-shape,
 .filter-drivers .btn-filter:hover .icon-calendar-numbers {
   fill: #fff; }
 
-/* line 70, components/_searchbox.sass */
+/* line 72, components/_searchbox.sass */
 .search-form_searching .search-results_count {
   position: absolute;
   top: 10px;
@@ -8756,7 +8773,7 @@ table.table {
   color: #a9adaf;
   font-size: 14px;
   line-height: 1.6; }
-/* line 78, components/_searchbox.sass */
+/* line 80, components/_searchbox.sass */
 .search-form_searching .search-results_close {
   cursor: pointer;
   position: absolute;
@@ -8764,16 +8781,16 @@ table.table {
   right: 14px;
   color: #a9adaf;
   line-height: 1.6; }
-/* line 86, components/_searchbox.sass */
+/* line 88, components/_searchbox.sass */
 .search-form_searching button[type="submit"],
 .search-form_searching input[type="submit"] {
   display: none; }
-/* line 90, components/_searchbox.sass */
+/* line 92, components/_searchbox.sass */
 .search-form_searching .search-loader {
   position: absolute;
   left: -30px;
   top: 10px; }
-/* line 95, components/_searchbox.sass */
+/* line 97, components/_searchbox.sass */
 .search-form_searching .search-results_overlay {
   list-style: none;
   position: absolute;
@@ -8786,7 +8803,7 @@ table.table {
   border-radius: 2px;
   background-color: #fff;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1); }
-  /* line 108, components/_searchbox.sass */
+  /* line 110, components/_searchbox.sass */
   .search-form_searching .search-results_overlay .results-row {
     color: #a9adaf;
     line-height: 1.4;
@@ -8801,20 +8818,20 @@ table.table {
             justify-content: space-between;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
-    /* line 118, components/_searchbox.sass */
+    /* line 120, components/_searchbox.sass */
     .search-form_searching .search-results_overlay .results-row:hover {
       cursor: pointer; }
-    /* line 121, components/_searchbox.sass */
+    /* line 123, components/_searchbox.sass */
     .search-form_searching .search-results_overlay .results-row:last-child {
       margin-bottom: 0;
       border-bottom: none; }
-  /* line 125, components/_searchbox.sass */
+  /* line 127, components/_searchbox.sass */
   .search-form_searching .search-results_overlay .result-title {
     color: #2b363b;
     font-size: 18px;
     line-height: 1;
     margin-bottom: 5px; }
-  /* line 131, components/_searchbox.sass */
+  /* line 133, components/_searchbox.sass */
   .search-form_searching .search-results_overlay .result-phone {
     margin-left: auto; }
 
@@ -8827,49 +8844,58 @@ header.navbar + .tab-bar {
   margin-bottom: 45px;
   background-color: #f7f7f7;
   box-shadow: inset 0 -1px 0 0 #e1e2e3; }
-  /* line 13, components/_tabs.sass */
+  /* line 12, components/_tabs.sass */
+  .tab-bar .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  /* line 15, components/_tabs.sass */
   .tab-bar .nav-tabs {
     margin-top: 20px;
     border-bottom: 0; }
-    /* line 17, components/_tabs.sass */
+    /* line 19, components/_tabs.sass */
     .tab-bar .nav-tabs svg {
       margin-right: 5px;
       margin-bottom: -1px; }
-    /* line 21, components/_tabs.sass */
+    /* line 23, components/_tabs.sass */
     .tab-bar .nav-tabs g.icon {
       fill: #525966;
       -webkit-transition: fill 0.3s;
       transition: fill 0.3s; }
-    /* line 25, components/_tabs.sass */
+    /* line 27, components/_tabs.sass */
     .tab-bar .nav-tabs > li {
+      font-size: 20px;
+      font-family: "Teko", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       margin-bottom: 0; }
-      /* line 28, components/_tabs.sass */
+      @media (min-width: 769px) {
+        /* line 27, components/_tabs.sass */
+        .tab-bar .nav-tabs > li {
+          font-size: 30px; } }
+      /* line 36, components/_tabs.sass */
       .tab-bar .nav-tabs > li > a {
-        padding: 10px 20px 11px;
         color: #525966;
         line-height: 1.2;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        font-size: 30px;
-        font-family: "Teko", sans-serif;
+        padding: 10px 20px 11px;
         border-radius: 0;
         border: none;
         border-bottom: 4px solid transparent;
         background: none; }
-        /* line 41, components/_tabs.sass */
+        /* line 45, components/_tabs.sass */
         .tab-bar .nav-tabs > li > a:hover {
           color: #26c1fb;
           border: none;
           border-bottom: 4px solid transparent; }
-          /* line 45, components/_tabs.sass */
+          /* line 49, components/_tabs.sass */
           .tab-bar .nav-tabs > li > a:hover g.icon {
             fill: #26c1fb; }
-      /* line 49, components/_tabs.sass */
+      /* line 53, components/_tabs.sass */
       .tab-bar .nav-tabs > li.active a {
         color: #26c1fb;
         background: none;
         border-bottom: 4px solid #26c1fb; }
-      /* line 53, components/_tabs.sass */
+      /* line 57, components/_tabs.sass */
       .tab-bar .nav-tabs > li.active g.icon {
         fill: #26c1fb; }
 
@@ -8940,108 +8966,120 @@ header.navbar + .tab-bar {
   .daterangepicker.single-datepicker {
     width: 285px; }
     /* line 37, components/_datepicker.sass */
-    .daterangepicker.single-datepicker table.table-condensed {
-      margin-bottom: 15px; }
+    .daterangepicker.single-datepicker .daterangepicker_input {
+      display: none; }
     /* line 40, components/_datepicker.sass */
+    .daterangepicker.single-datepicker .calendar {
+      width: 100%; }
+    /* line 43, components/_datepicker.sass */
     .daterangepicker.single-datepicker .calendar-table {
       margin-bottom: 100px; }
-    /* line 43, components/_datepicker.sass */
+    /* line 46, components/_datepicker.sass */
+    .daterangepicker.single-datepicker table.table-condensed {
+      margin-bottom: 15px; }
+    /* line 58, components/_datepicker.sass */
+    .daterangepicker.single-datepicker thead tr:first-child th {
+      padding: 15px 0 17px; }
+    /* line 61, components/_datepicker.sass */
     .daterangepicker.single-datepicker th.month {
+      text-transform: none;
+      padding: 0;
       font-size: 18px;
       color: #2b363b; }
-    /* line 48, components/_datepicker.sass */
+    /* line 68, components/_datepicker.sass */
     .daterangepicker.single-datepicker tbody > tr > td:hover {
       color: #FFF;
       background-color: #a9adaf; }
-    /* line 52, components/_datepicker.sass */
+    /* line 72, components/_datepicker.sass */
     .daterangepicker.single-datepicker .checkboxes {
       width: 245px;
       position: absolute;
       left: 20px;
       bottom: 70px; }
-      /* line 58, components/_datepicker.sass */
+      /* line 78, components/_datepicker.sass */
       .daterangepicker.single-datepicker .checkboxes .checkbox {
         display: inline-block;
         padding-left: 0; }
-      /* line 62, components/_datepicker.sass */
+      /* line 82, components/_datepicker.sass */
       .daterangepicker.single-datepicker .checkboxes .control input:checked ~ .control-indicator {
         background-color: #e1e2e3; }
-      /* line 65, components/_datepicker.sass */
+      /* line 85, components/_datepicker.sass */
       .daterangepicker.single-datepicker .checkboxes .checkbox input:checked ~ .control-indicator {
         background-image: url("../images/checkbox-check.svg"); }
-      /* line 68, components/_datepicker.sass */
+      /* line 88, components/_datepicker.sass */
       .daterangepicker.single-datepicker .checkboxes .control-indicator {
         top: 0;
         margin-right: 5px; }
-      /* line 72, components/_datepicker.sass */
+      /* line 92, components/_datepicker.sass */
       .daterangepicker.single-datepicker .checkboxes label, .daterangepicker.single-datepicker .checkboxes p.label {
         font-size: 14px;
         text-transform: none;
         margin-right: 16px;
         padding-left: 25px; }
-        /* line 78, components/_datepicker.sass */
+        /* line 98, components/_datepicker.sass */
         .daterangepicker.single-datepicker .checkboxes label:hover, .daterangepicker.single-datepicker .checkboxes p.label:hover {
           font-weight: bold; }
-    /* line 81, components/_datepicker.sass */
+    /* line 101, components/_datepicker.sass */
     .daterangepicker.single-datepicker .ranges {
       position: absolute;
       left: 0;
       bottom: 0;
       width: 100%; }
-  /* line 87, components/_datepicker.sass */
+  /* line 107, components/_datepicker.sass */
   .daterangepicker .daterangepicker_input {
     padding: 20px 20px 0;
     margin-bottom: 5px;
     border-bottom: 1px solid #e1e2e3; }
-    /* line 92, components/_datepicker.sass */
+    /* line 112, components/_datepicker.sass */
     .daterangepicker .daterangepicker_input label, .daterangepicker .daterangepicker_input p.label {
       margin-bottom: 0; }
-    /* line 95, components/_datepicker.sass */
+    /* line 115, components/_datepicker.sass */
     .daterangepicker .daterangepicker_input .form-control {
       font-size: 18px;
       padding: 0;
       height: auto;
       margin-bottom: 10px;
       border-bottom: 0; }
-  /* line 102, components/_datepicker.sass */
+  /* line 122, components/_datepicker.sass */
   .daterangepicker .left .daterangepicker_input {
     border-right: 1px solid #e1e2e3; }
-  /* line 105, components/_datepicker.sass */
+  /* line 125, components/_datepicker.sass */
   .daterangepicker .calendar {
     width: 50%;
     max-width: none;
     margin: 0; }
-  /* line 110, components/_datepicker.sass */
+  /* line 130, components/_datepicker.sass */
   .daterangepicker .calendar.left .calendar-table {
     padding-right: 10px; }
-    /* line 112, components/_datepicker.sass */
+    /* line 132, components/_datepicker.sass */
     .daterangepicker .calendar.left .calendar-table th.month {
       padding-right: 0; }
-  /* line 115, components/_datepicker.sass */
+  /* line 135, components/_datepicker.sass */
   .daterangepicker .calendar.right .calendar-table {
     padding-left: 10px; }
-    /* line 117, components/_datepicker.sass */
+    /* line 137, components/_datepicker.sass */
     .daterangepicker .calendar.right .calendar-table th.month {
       padding-left: 0; }
-  /* line 120, components/_datepicker.sass */
+  /* line 140, components/_datepicker.sass */
   .daterangepicker .calendar-table {
     border-radius: 2px;
     padding: 5px 20px;
     margin-bottom: 10px; }
-    /* line 125, components/_datepicker.sass */
+    /* line 145, components/_datepicker.sass */
     .daterangepicker .calendar-table thead tr:last-child th {
-      background-color: #f0f0f0; }
-    /* line 127, components/_datepicker.sass */
+      background-color: #f0f0f0;
+      border-bottom-color: #f0f0f0; }
+    /* line 148, components/_datepicker.sass */
     .daterangepicker .calendar-table tbody td {
       background-color: #f0f0f0; }
-  /* line 130, components/_datepicker.sass */
+  /* line 151, components/_datepicker.sass */
   .daterangepicker td,
   .daterangepicker th {
     font-size: 12px;
     line-height: 1.3;
     border-radius: 0;
     color: #2b363b; }
-  /* line 137, components/_datepicker.sass */
+  /* line 158, components/_datepicker.sass */
   .daterangepicker .calendar-table th {
     color: #a9adaf;
     font-weight: 100;
@@ -9050,24 +9088,24 @@ header.navbar + .tab-bar {
     text-transform: uppercase;
     padding-top: 10px;
     padding-bottom: 10px; }
-  /* line 146, components/_datepicker.sass */
+  /* line 167, components/_datepicker.sass */
   .daterangepicker .calendar-table td {
     padding-top: 10px;
     padding-bottom: 10px; }
-  /* line 150, components/_datepicker.sass */
+  /* line 171, components/_datepicker.sass */
   .daterangepicker .calendar-table td.in-range {
     background-color: rgba(38, 193, 251, 0.2); }
-  /* line 153, components/_datepicker.sass */
+  /* line 174, components/_datepicker.sass */
   .daterangepicker .calendar-table td.active,
   .daterangepicker .calendar-table td.active:hover {
     background-color: #26c1fb; }
-  /* line 157, components/_datepicker.sass */
+  /* line 178, components/_datepicker.sass */
   .daterangepicker td.off {
     color: #ccc; }
-  /* line 160, components/_datepicker.sass */
+  /* line 181, components/_datepicker.sass */
   .daterangepicker .fa-calendar {
     display: none; }
-  /* line 163, components/_datepicker.sass */
+  /* line 184, components/_datepicker.sass */
   .daterangepicker .ranges {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -9080,26 +9118,26 @@ header.navbar + .tab-bar {
     margin: 0;
     padding: 10px;
     border-top: 1px solid #e1e2e3; }
-    /* line 171, components/_datepicker.sass */
+    /* line 192, components/_datepicker.sass */
     .daterangepicker .ranges .btn {
       margin: 0 5px; }
-  /* line 174, components/_datepicker.sass */
+  /* line 195, components/_datepicker.sass */
   .daterangepicker .select.monthselect-wrap {
     width: 56%;
     margin-right: 2%;
     float: left; }
-    /* line 178, components/_datepicker.sass */
+    /* line 199, components/_datepicker.sass */
     .daterangepicker .select.monthselect-wrap select.monthselect {
       width: 100%;
       margin-right: 0; }
-  /* line 182, components/_datepicker.sass */
+  /* line 203, components/_datepicker.sass */
   .daterangepicker .select.yearselect-wrap {
     width: 42%;
     float: left; }
-    /* line 185, components/_datepicker.sass */
+    /* line 206, components/_datepicker.sass */
     .daterangepicker .select.yearselect-wrap select.yearselect {
       width: 100%; }
-  /* line 188, components/_datepicker.sass */
+  /* line 209, components/_datepicker.sass */
   .daterangepicker .select select {
     font-size: 14px;
     line-height: 1.4;
@@ -9291,6 +9329,16 @@ header.navbar + .tab-bar {
   /* line 20, components/_alerts.sass */
   .alert.alert-danger {
     background-color: #eb004b; }
+
+/* line 26, components/_alerts.sass */
+.status-alert:before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 100%;
+  background-color: #f18300; }
 
 /* line 5, layout/_header.sass */
 .navbar {
@@ -9823,23 +9871,46 @@ body.user-profile {
   margin-top: 20px; }
 
 /* line 71, pages/_echorep.sass */
+.sidebar-list_results {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0; }
+  /* line 75, pages/_echorep.sass */
+  .sidebar-list_results span.input-result {
+    border-bottom: 2px solid #f18300; }
+  /* line 77, pages/_echorep.sass */
+  .sidebar-list_results li {
+    line-height: 1.4;
+    margin-bottom: 14px; }
+    /* line 80, pages/_echorep.sass */
+    .sidebar-list_results li a {
+      color: #2b363b;
+      padding: 3px 0;
+      display: block; }
+      /* line 84, pages/_echorep.sass */
+      .sidebar-list_results li a:hover {
+        text-decoration: none;
+        padding: 3px 10px;
+        border-radius: 2px;
+        background-color: #26c1fb; }
+
+/* line 90, pages/_echorep.sass */
 .sidebar-list_alpha {
   list-style: none;
   padding-left: 0;
   margin-top: 0; }
 
-/* line 76, pages/_echorep.sass */
+/* line 95, pages/_echorep.sass */
 .sidebar-list_letter {
   color: #a9adaf;
   font-family: "Teko", sans-serif;
   font-size: 20px;
   text-transform: capitalize;
   line-height: 1;
-  letter-spacing: 0.5px;
   margin-bottom: 30px;
   padding-left: 1px; }
 
-/* line 86, pages/_echorep.sass */
+/* line 104, pages/_echorep.sass */
 .sidebar-list_names {
   list-style: none;
   font-family: "Open Sans", sans-serif;
@@ -9848,40 +9919,40 @@ body.user-profile {
   padding: 10px 0 0;
   margin-top: 10px;
   border-top: 1px solid #a9adaf; }
-  /* line 96, pages/_echorep.sass */
+  /* line 114, pages/_echorep.sass */
   .sidebar-list_names .item-inactive > a {
     color: #a9adaf; }
-  /* line 98, pages/_echorep.sass */
+  /* line 116, pages/_echorep.sass */
   .sidebar-list_names a {
     color: #2b363b;
     padding: 3px 0;
     display: block; }
-    /* line 102, pages/_echorep.sass */
+    /* line 120, pages/_echorep.sass */
     .sidebar-list_names a:hover {
       text-decoration: none;
       padding: 3px 10px;
       border-radius: 2px;
       background-color: #26c1fb; }
-  /* line 108, pages/_echorep.sass */
+  /* line 126, pages/_echorep.sass */
   .sidebar-list_names .sidebar-selected {
     text-decoration: none;
     padding: 3px 10px;
     border-radius: 2px;
     background-color: #26c1fb; }
 
-/* line 118, pages/_echorep.sass */
+/* line 136, pages/_echorep.sass */
 .selection-name {
   margin-bottom: 60px; }
-  /* line 121, pages/_echorep.sass */
+  /* line 139, pages/_echorep.sass */
   .selection-name h1 {
     font-size: 30px;
     margin: 0;
     text-transform: none; }
 
-/* line 126, pages/_echorep.sass */
+/* line 144, pages/_echorep.sass */
 .selection-users {
   margin-bottom: 60px; }
-  /* line 129, pages/_echorep.sass */
+  /* line 147, pages/_echorep.sass */
   .selection-users .selection-header {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -9894,7 +9965,7 @@ body.user-profile {
     margin-bottom: 20px;
     border-bottom: solid 1px #e1e2e3; }
 
-/* line 137, pages/_echorep.sass */
+/* line 155, pages/_echorep.sass */
 .driver-results {
   font-size: 18px;
   text-align: center;
@@ -9911,14 +9982,14 @@ body.user-profile {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  /* line 144, pages/_echorep.sass */
+  /* line 162, pages/_echorep.sass */
   .driver-results p {
     margin-bottom: 0; }
-  /* line 146, pages/_echorep.sass */
+  /* line 164, pages/_echorep.sass */
   .driver-results a {
     font-size: 14px; }
 
-/* line 153, pages/_echorep.sass */
+/* line 171, pages/_echorep.sass */
 .results-selection_empty {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9937,13 +10008,13 @@ body.user-profile {
   color: #a9adaf;
   text-align: center;
   padding: 0 5%; }
-  /* line 163, pages/_echorep.sass */
+  /* line 181, pages/_echorep.sass */
   .results-selection_empty h2 {
     font-weight: 100; }
 
 /* line 4, pages/_carrier_dashboard.sass */
 .navbar + .carrier-dashboard-header {
-  margin-top: -40px; }
+  margin-top: -20px; }
 
 /* line 7, pages/_carrier_dashboard.sass */
 .carrier-dashboard-header {
@@ -10046,7 +10117,6 @@ body.user-profile {
   /* line 98, pages/_carrier_dashboard.sass */
   .table-carrier-dashboard .location-pickup,
   .table-carrier-dashboard .location-delivery {
-    vertical-align: top;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -10054,32 +10124,40 @@ body.user-profile {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column; }
-  /* line 108, pages/_carrier_dashboard.sass */
+  /* line 107, pages/_carrier_dashboard.sass */
   .table-carrier-dashboard .lead {
     font-weight: normal;
     line-height: 20px;
     margin-bottom: 2px;
     word-break: break-word; }
-  /* line 114, pages/_carrier_dashboard.sass */
+  /* line 113, pages/_carrier_dashboard.sass */
   .table-carrier-dashboard .location-state {
     margin-bottom: 10px; }
-  /* line 117, pages/_carrier_dashboard.sass */
+  /* line 116, pages/_carrier_dashboard.sass */
   .table-carrier-dashboard .location-time {
     font-size: 12px;
     line-height: 16px;
-    margin-top: auto; }
-  /* line 122, pages/_carrier_dashboard.sass */
+    margin-top: 10px; }
+    @media (min-width: 769px) {
+      /* line 116, pages/_carrier_dashboard.sass */
+      .table-carrier-dashboard .location-time {
+        margin-top: auto; } }
+  /* line 123, pages/_carrier_dashboard.sass */
   .table-carrier-dashboard .driver-status {
     font-size: 12px;
     line-height: 16px;
-    margin-top: auto; }
+    margin-top: 10px; }
+    @media (min-width: 769px) {
+      /* line 123, pages/_carrier_dashboard.sass */
+      .table-carrier-dashboard .driver-status {
+        margin-top: auto; } }
 
-/* line 127, pages/_carrier_dashboard.sass */
+/* line 130, pages/_carrier_dashboard.sass */
 .carrier-dashboard-pickup,
 .carrier-dashboard-delivery {
   max-width: 200px; }
 
-/* line 131, pages/_carrier_dashboard.sass */
+/* line 134, pages/_carrier_dashboard.sass */
 .carrier-dashboard-driver,
 .carrier-dashboard-action {
   display: -webkit-inline-box;
@@ -10090,58 +10168,58 @@ body.user-profile {
       -ms-flex-direction: column;
           flex-direction: column;
   line-height: 20px; }
-  /* line 136, pages/_carrier_dashboard.sass */
+  /* line 139, pages/_carrier_dashboard.sass */
   .carrier-dashboard-driver h3,
   .carrier-dashboard-action h3 {
     margin-bottom: 0;
     line-height: 24px; }
-  /* line 139, pages/_carrier_dashboard.sass */
+  /* line 142, pages/_carrier_dashboard.sass */
   .carrier-dashboard-driver .muted,
   .carrier-dashboard-action .muted {
     font-size: 12px;
     line-height: 16px; }
 
-/* line 143, pages/_carrier_dashboard.sass */
+/* line 146, pages/_carrier_dashboard.sass */
 .carrier-dashboard-action {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
 
-/* line 147, pages/_carrier_dashboard.sass */
+/* line 150, pages/_carrier_dashboard.sass */
 .carrier-dashboard-driver .btn {
   margin-top: 5px; }
 
-/* line 150, pages/_carrier_dashboard.sass */
+/* line 153, pages/_carrier_dashboard.sass */
 .carrier-dashboard-action,
 .carrier-dashboard-multi-load-action {
   width: 100%; }
-  /* line 153, pages/_carrier_dashboard.sass */
+  /* line 156, pages/_carrier_dashboard.sass */
   .carrier-dashboard-action .btn,
   .carrier-dashboard-multi-load-action .btn {
     margin: 6px 0 0 0;
     width: 100%; }
-  /* line 156, pages/_carrier_dashboard.sass */
+  /* line 159, pages/_carrier_dashboard.sass */
   .carrier-dashboard-action p,
   .carrier-dashboard-multi-load-action p {
     margin: 6px 0 0 0; }
-    /* line 158, pages/_carrier_dashboard.sass */
+    /* line 161, pages/_carrier_dashboard.sass */
     .carrier-dashboard-action p > .btn-link,
     .carrier-dashboard-multi-load-action p > .btn-link {
       text-align: left;
       margin: 0; }
-  /* line 162, pages/_carrier_dashboard.sass */
+  /* line 165, pages/_carrier_dashboard.sass */
   .carrier-dashboard-action .action-align-bottom,
   .carrier-dashboard-multi-load-action .action-align-bottom {
     margin-top: auto; }
 
-/* line 168, pages/_carrier_dashboard.sass */
+/* line 171, pages/_carrier_dashboard.sass */
 .carrier-dashboard-multi-load .carrier-dashboard-action .action-align-bottom {
   margin-top: auto; }
-/* line 170, pages/_carrier_dashboard.sass */
+/* line 173, pages/_carrier_dashboard.sass */
 .carrier-dashboard-multi-load .carrier-dashboard-action .btn {
   margin-bottom: 0; }
 
-/* line 174, pages/_carrier_dashboard.sass */
+/* line 177, pages/_carrier_dashboard.sass */
 .carrier-dashboard-arrow img {
   width: 23px;
   height: auto; }
@@ -10298,64 +10376,60 @@ body.load-management-detail {
 .load-management .tab-bar {
   margin-bottom: 0; }
 /* line 9, pages/_load_management.sass */
-.load-management .nav-tabs {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex; }
-/* line 12, pages/_load_management.sass */
 .load-management .nav-tabs > li > a {
   padding-top: 5px;
   padding-bottom: 15px; }
-/* line 16, pages/_load_management.sass */
+/* line 13, pages/_load_management.sass */
 .load-management .search-form {
+  width: 225px;
   margin-top: 20px;
-  width: 250px; }
+  margin-left: auto; }
   @media (min-width: 769px) {
-    /* line 16, pages/_load_management.sass */
+    /* line 13, pages/_load_management.sass */
     .load-management .search-form {
       width: 350px; } }
-  /* line 22, pages/_load_management.sass */
+  /* line 20, pages/_load_management.sass */
   .load-management .search-form .search-form-input_dark {
     background-color: #a9adaf;
     color: #FFF; }
-    /* line 26, pages/_load_management.sass */
+    /* line 24, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark:hover, .load-management .search-form .search-form-input_dark:focus {
       background-color: #505c61; }
-    /* line 30, pages/_load_management.sass */
+    /* line 28, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark::-webkit-input-placeholder {
       color: #FFF; }
-    /* line 32, pages/_load_management.sass */
+    /* line 30, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark:-moz-placeholder {
       color: #FFF;
       opacity: 1; }
-    /* line 35, pages/_load_management.sass */
+    /* line 33, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark::-moz-placeholder {
       color: #FFF;
       opacity: 1; }
-    /* line 38, pages/_load_management.sass */
+    /* line 36, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark:-ms-input-placeholder {
       color: #FFF; }
-    /* line 42, pages/_load_management.sass */
+    /* line 40, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark:focus::-webkit-input-placeholder {
       color: #505c61; }
-    /* line 44, pages/_load_management.sass */
+    /* line 42, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark:focus:-moz-placeholder {
       color: #505c61;
       opacity: 1; }
-    /* line 47, pages/_load_management.sass */
+    /* line 45, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark:focus::-moz-placeholder {
       color: #505c61;
       opacity: 1; }
-    /* line 50, pages/_load_management.sass */
+    /* line 48, pages/_load_management.sass */
     .load-management .search-form .search-form-input_dark:focus:-ms-input-placeholder {
       color: #505c61; }
 
-/* line 57, pages/_load_management.sass */
+/* line 55, pages/_load_management.sass */
 .load-management-upcoming .action-text p {
   margin-bottom: 15px; }
-/* line 59, pages/_load_management.sass */
+/* line 57, pages/_load_management.sass */
 .load-management-upcoming .action-text img {
   margin-right: 8px; }
-/* line 61, pages/_load_management.sass */
+/* line 59, pages/_load_management.sass */
 .load-management-upcoming .action-text span {
   vertical-align: middle; }

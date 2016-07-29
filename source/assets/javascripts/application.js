@@ -3,6 +3,17 @@
 // Place any jQuery/helper plugins in here.
 $(window).load(function(){
 
+
+	//helper for search box text
+	/////////
+
+	$('input.search-form-input').on('change keyup click paste', function() {
+		if ($(this).val().length > 0) 
+			$(this).next('.search-help-text').css('opacity', '0')
+		else
+			$(this).next('.search-help-text').css('opacity', '1')
+	})
+
 	//inline editing buttons
 	/////////
 
@@ -39,9 +50,9 @@ $(window).load(function(){
 	//Echo Rep search sidebar custom scrollbar
 	///////////
 
-	if ($('.search-list').length) {
-
-		$('.search-list').mCustomScrollbar({
+	if ($('.sidebar-list.search-results').length) {
+		
+		$('.sidebar-list').mCustomScrollbar({
 			theme: 'minimal-dark'
 		});
 
@@ -126,8 +137,8 @@ $(window).load(function(){
 			
 			var $sdpContainer = $(picker.container)
 			$sdpContainer.addClass('single-datepicker');
-			debugger
-			if ($sdpTrigger.find('checkboxes').length === 0) {
+
+			if ($('.daterangepicker').find('.checkboxes').length === 0) {
 				$('.single-datepicker').append(
 					'<div class="checkboxes">' +
 						'<div class="checkbox control">' +

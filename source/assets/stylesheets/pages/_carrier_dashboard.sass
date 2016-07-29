@@ -2,7 +2,7 @@
 //////////
 
 .navbar + .carrier-dashboard-header
-  margin-top: -40px
+  margin-top: -20px
 
 .carrier-dashboard-header
   background: #fff
@@ -97,7 +97,6 @@
 
   .location-pickup,
   .location-delivery
-    vertical-align: top
     display: flex
     flex-direction: column
 
@@ -117,12 +116,16 @@
   .location-time
     font-size: 12px
     line-height: 16px
-    margin-top: auto
+    margin-top: 10px
+    +tablet
+      margin-top: auto
 
   .driver-status
     font-size: 12px
     line-height: 16px
-    margin-top: auto
+    margin-top: 10px
+    +tablet
+      margin-top: auto
 
 .carrier-dashboard-pickup,
 .carrier-dashboard-delivery
