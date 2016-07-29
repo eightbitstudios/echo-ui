@@ -38,9 +38,6 @@ label
     .form-control
       border-color: $gray-darkest
 
-.form-group-inline
-  display: inline-block
-
 .form-control
   color: $gray-darkest
   box-shadow: none
@@ -61,6 +58,12 @@ label
     outline: none
     border-color: $gray-darkest
 
+.form-group-inline
+  display: inline-block
+
+.form-inline-editing
+  .form-control
+    background-color: transparent
 
 input[type="radio"],
 input[type="checkbox"]
@@ -94,6 +97,17 @@ input[type="checkbox"]
 
 .checkbox,
 .radio
+  label
+    letter-spacing: 0
+    font-weight: 300 !important
+
+  &:hover
+    label
+      font-weight: 300
+
+  .control:hover .control-indicator
+    background: $gray-light
+
   &.control
     display: block
 

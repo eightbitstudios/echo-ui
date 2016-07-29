@@ -1,35 +1,22 @@
-// Avoid `console` errors in browsers that lack a console.
-(function() {
-	var method;
-	var noop = function () {};
-	var methods = [
-		'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-		'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-		'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-		'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn'
-	];
-	var length = methods.length;
-	var console = (window.console = window.console || {});
 
-	while (length--) {
-		method = methods[length];
-
-		// Only stub undefined methods.
-		if (!console[method]) {
-			console[method] = noop;
-		}
-	}
-}());
 
 // Place any jQuery/helper plugins in here.
 $(window).load(function(){
 
-	//load management details accordion script
-	///////////
+	//inline editing buttons
+	/////////
 
-	$('.btn-inline-edit').on('click', function(){
-		$(this).next().toggle()
+	$('.btn-inline-edit').on('click', function(e){
+		e.preventDefault()
+		$(this).next().slideToggle()
+
+		$('.form-inline-editing').find('[type="reset"]').on('click', function(){
+			$(this).closest('.form-inline-editing').hide()
+		})
 	})
+
+	//load management details panels collapsing script
+	///////////
 
 	if ($('#loads-accordion').length) {
 
@@ -46,17 +33,11 @@ $(window).load(function(){
 		  		.removeClass('panel-open')
 		  		.addClass('panel-closed')
 			});
-
-		// $('.panel-heading').on('click' function(){
-
-		// 	if ($(this).next().hasClass('in')) {
-		// 		console.log('panel open')
-		// 	} else {
-		// 		$(this)
-		// 	}
-
-		// })
 	}
+
+
+	//Echo Rep search sidebar custom scrollbar
+	///////////
 
 	if ($('.search-list').length) {
 
@@ -67,8 +48,15 @@ $(window).load(function(){
 	}
 
 	$(function() {
+
+		/////////////
+		// Match Height for Driver List table sizing
 	  $('.match-height').matchHeight();
 
+
+	  /////////////
+	  // Load Management Filter button toggles
+		/////////////
 	  var $btnFilter = $(".btn-filter")
 
 	  $btnFilter.on('click', function(e) {
@@ -93,9 +81,11 @@ $(window).load(function(){
 	  	$('.filter-bar').find('.close').remove()
 	  	$('.filter__assigned').removeClass('filter__assigned');
 	  }
-
+		
+		/////////////
 	  // Single Date Picker JS
-
+		/////////////
+	  
 	  var $sdpTrigger = $('.btn-single-dp')
 
 	  if ($sdpTrigger.hasClass('filter__assigned')) {
@@ -132,10 +122,12 @@ $(window).load(function(){
 
 		$sdpTrigger.on('show.daterangepicker', function(ev, picker) {
 			$sdpTrigger.addClass('active');
+			$('label[for=daterangepicker_start]').remove();
+			
 			var $sdpContainer = $(picker.container)
 			$sdpContainer.addClass('single-datepicker');
-			$('label[for=daterangepicker_start]').remove();
-			if ($sdpTrigger.find('input[type=checkbox]').length === 0) {
+			debugger
+			if ($sdpTrigger.find('checkboxes').length === 0) {
 				$('.single-datepicker').append(
 					'<div class="checkboxes">' +
 						'<div class="checkbox control">' +
@@ -184,8 +176,9 @@ $(window).load(function(){
 		});
 
 
-
+		/////////////
 		// Date Range Picker JS
+		/////////////
 
 		var $drpTrigger = $(".btn-date-picker")
 
@@ -202,8 +195,8 @@ $(window).load(function(){
 			locale: {
 				format: "MM/DD/YYYY",
 				cancelLabel: "Clear",
-				fromLabel: "Starting",
-				toLabel: "Ending",
+				fromLabel: "Unassigned From",
+				toLabel: "Until",
 				daysOfWeek: [
 					"Sun",
 					"Mon",
@@ -219,13 +212,6 @@ $(window).load(function(){
 		function resetdrpTrigger(){
 			$drpTrigger.html('Filter Unassigned Drivers').removeClass('filter__assigned')
 		}
-
-		$drpTrigger.on('show.daterangepicker', function(ev, picker) {
-			var $drpContainer = $(picker.container)
-			if ($drpContainer.find('.filter-header').length === 0) {
-				$drpContainer.prepend('<header class="filter-header">View Available Drivers Between</header>')
-			}
-		});
 
 		$drpTrigger.on('apply.daterangepicker', function(ev, picker) {
 			var filterStartDate = picker.startDate,
@@ -246,7 +232,9 @@ $(window).load(function(){
 			resetdrpTrigger()
 		});
 
-		// Dropdown Filter JS
+		/////////////
+		// Stop Location Dropdown Filter JS
+		/////////////
 
 		var $dropdownButton = $('.btn-filter-dropdown'),
 				$dropdown = $('.dropdown-filter')

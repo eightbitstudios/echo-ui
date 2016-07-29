@@ -14,16 +14,16 @@
     padding: 0
     background-color: #525966
     transition: all 0.2s ease-in
-    &:hover,
+    &:hover
+      background-color: darken(#525966,10%)
+      .caret
+        transform: rotateZ(180deg)
+
     &.panel-closed
       background-color: $gray-light
       color: $gray-darkest
       .caret
-        transform: rotateZ(180deg)
-  
-    .caret
-      transform: rotateZ(0deg)
-      transition: rotate 0.2s ease-in
+        transform: rotateZ(0deg)
 
   .panel-title
     font-size: 18px

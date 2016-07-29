@@ -69,8 +69,8 @@
             separator: ' - ',
             applyLabel: 'Apply',
             cancelLabel: 'Cancel',
-            toLabel: "To",
             fromLabel: "From",
+            toLabel: "To",
             weekLabel: 'W',
             customRangeLabel: 'Custom Range',
             daysOfWeek: moment.weekdaysMin(),
@@ -98,7 +98,7 @@
             options.template = '<div class="daterangepicker dropdown-menu">' +
                 '<div class="calendar left">' +
                     '<div class="daterangepicker_input form-group">' +
-                      '<label for="daterangepicker_start">Starting</label>' +
+                      '<label class="label-start" for="daterangepicker_start">Starting</label>' +
                       '<input class="form-control" type="text" name="daterangepicker_start" value="" />' +
                       '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
                       '<div class="calendar-time">' +
@@ -110,7 +110,7 @@
                 '</div>' +
                 '<div class="calendar right">' +
                     '<div class="daterangepicker_input form-group">' +
-                      '<label for="daterangepicker_start">Ending</label>' +
+                      '<label class="label-end" for="daterangepicker_end">Ending</label>' +
                       '<input class="form-control" type="text" name="daterangepicker_end" value="" />' +
                       '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
                       '<div class="calendar-time">' +
@@ -172,6 +172,12 @@
 
             if (typeof options.locale.customRangeLabel === 'string')
               this.locale.customRangeLabel = options.locale.customRangeLabel;
+
+            if (typeof options.locale.fromLabel === 'string')
+              this.locale.fromLabel = options.locale.fromLabel;
+
+            if (typeof options.locale.toLabel === 'string')
+              this.locale.toLabel = options.locale.toLabel;
 
         }
         this.container.addClass(this.locale.direction);
@@ -413,6 +419,10 @@
             this.container.find('.cancelBtn').addClass(this.cancelClass);
         this.container.find('.applyBtn').html(this.locale.applyLabel);
         this.container.find('.cancelBtn').html(this.locale.cancelLabel);
+        
+        this.container.find('.label-start').html(this.locale.fromLabel);
+        this.container.find('.label-end').html(this.locale.toLabel);
+
 
         //
         // event listeners

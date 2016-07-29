@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta content='telephone=no' name='format-detection'>
+    <title>
+      Load Management Details
+    </title>
+    <!-- / stylesheets -->
+    <link href="assets/stylesheets/application.css" rel="stylesheet" />
+    <link crossorigin='anonymous' href='//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' integrity='sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700|Teko' rel='stylesheet'>
+    <link href='/humans.txt' rel='author' type='text/plain'>
+    <!-- / favicons -->
+    <link href='favicon.png' rel='icon'>
+    <!--[if IE]>
+      <link rel="shortcut icon" href="favicon.ico">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class='load-management load-management-detail'>
+    <header class='navbar'>
+      <div class='eyebrow-header'>
+        <div class='container'>
+          <div class='eyebrow-text pull-left'>
+            BILLING QUESTIONS? 610-555-1212
+          </div>
+          <ul class='eyebrow-nav list-inline navbar-right'>
+            <li><a href="#" class="link-mycarriers">My Carriers</a></li>
+            <li><a href="#" class="link-settings">Settings</a></li>
+            <li>
+              <a href="#" class="link-signout">Sign Out
+              <img src="assets/images/icon-signout@2x.png" class="" alt="Icon signout@2x" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class='container'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle collapsed' data-target='#main-nav' data-toggle='collapse' type='button'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <div class='navbar-brand'>
+            ECHO
+            <small class='brand-carrier'>Carrier Company "A" Name</small>
+          </div>
+        </div>
+        <nav class='collapse navbar-collapse' id='main-nav'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li><a href="#" class="">Dashboard</a></li>
+            <li class='active'><a href="#" class="">Load Management</a></li>
+            <li><a href="#" class="">Invoicing</a></li>
+            <li><a href="#" class="">My Company</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class='container-fluid carrier-dashboard-header'>
+      <div class='container'>
+        <ul class='list-inline carrier-dashboard-header_left'>
+          <li>
+            <strong>LOAD 123443215</strong>
+          </li>
+          <li>
+            <a href="#">BACK TO ACTIVE LOADS</a>
+          </li>
+        </ul>
+        <ul class='list-inline carrier-dashboard-header_right'>
+          <li>
+            <span class='carrier-dashboard-header_label'>ECHO REP</span>
+            Danielle John
+          </li>
+          <li>
+            <img src="assets/images/mail-icon-gray@2x.png" width="15px" height="15px" alt="Mail icon gray@2x" />
+            <a href="mailto:danielle.john@echoLogistics.com">danielle.john@echoLogistics.com</a>
+          </li>
+          <li>
+            (610) 555-1212
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class='carrier-map-spacer'></div>
+    <div class='container-fluid load-table_detail'>
+      <div class='container'>
+        <table class='table table-carrier-dashboard'>
+          <tbody>
+            <tr>
+              <td class='carrier-dashboard-load'>
+                <p class='label'>Pro:</p>
+                <p>
+                  <a href="#" class="btn-inline-edit">12345678910
+                  <img src="assets/images/add-pencil.svg" alt="Add pencil" />
+                  </a>
+                  <form class='form-inline form-inline-editing' style='display: none;'>
+                    <div class='form-group'>
+                      <label class='hidden'>Update Number</label>
+                      <input class='form-control' placeholder='Update Number' type='text'>
+                    </div>
+                    <div class='form-group'>
+                      <button class='btn btn-link btn-sm' type='submit'>Save</button>
+                      <a href="#" class="btn btn-link btn-sm btn-alt">Cancel</a>
+                    </div>
+                  </form>
+                </p>
+                <p class='label'>BOL:</p>
+                <p>12345678910</p>
+              </td>
+              <td class='carrier-dashboard-pickup'>
+                <div class='location-pickup match-height'>
+                  <div class='lead'>
+                    Washington-on-the-Brazos
+                  </div>
+                  <div class='location-state'>
+                    TN, 60655
+                  </div>
+                  <div class='location-time'>
+                    14:00-15:00 EST
+                    <br>
+                    Today, Apr 20
+                  </div>
+                </div>
+              </td>
+              <td class='carrier-dashboard-arrow'>
+                <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
+              </td>
+              <td class='carrier-dashboard-delivery'>
+                <div class='location-delivery match-height muted'>
+                  <div class='lead'>
+                    Winchester-on-the-Severn
+                  </div>
+                  <div class='location-state'>
+                    TX, 50968
+                  </div>
+                  <div class='location-time'>
+                    16:00-18:00 EST
+                    <br>
+                    Fri, May 23
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class='carrier-dashboard-driver match-height'>
+                  <h3 class='driver-name'><a href="#">Fred F</a></h3>
+                  <span><tel>(899) 584-0803</tel></span>
+                  <div class='driver-status'>
+                    Active Driver
+                    <br>
+                    Tracking On
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class='carrier-dashboard-action match-height'>
+                  <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
+                  By Mike P at 13:15 CST today
+                  <div class='action-align-bottom'>
+                    <a href="#" class="btn btn-danger">REPORT ARRIVAL AT PICKUP</a>
+                    <p class='muted'>Running 15 Min. Late</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class='alert alert-warning text-center'>
+      Some stop details have changed since this load became active, review below.
+    </div>
+    <div class='container main-content'>
+      <div class='section-head'>
+        <h1 class='section-label'>
+          STOPS
+        </h1>
+      </div>
+      <div class='row'>
+        <section class='col-md-8'>
+          <div class='panel-group' id='loads-accordion' role='tablist'>
+            <div class='panel'>
+              <div class='panel-heading'>
+                <h4 class='panel-title'>
+                  <a href="#pickup-panel" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="pickup-panel"><strong>PICKUP</strong> Memphis, TN 60655
+                  <span class='stops-date'>
+                    Today from 14:00-15:00 EST
+                    <div class='caret'></div>
+                  </span>
+                  </a>
+                </h4>
+              </div>
+              <div class='panel-collapse collapse in' id='pickup-panel' role='tabpanel'>
+                <div class='panel-body load-details'>
+                  <div class='row'>
+                    <div class='details-location col-sm-4'>
+                      <h5 class='small-header'>Location</h5>
+                      <span class='loc-name'>Walmart Warehouse A34</span>
+                      <br>
+                      <span class='loc-addr1'>555 W. Western</span>
+                      <br>
+                      <span class='loc-addr2'>Dock #123</span>
+                      <br>
+                      <span class='loc-region'>Bartville, IN</span>
+                      <br>
+                      <a href="#">Open in Maps
+                      <img src="assets/images/icon_window.svg" alt="Icon window" />
+                      </a>
+                    </div>
+                    <div class='details-contact col-sm-3'>
+                      <h5 class='small-header'>Contact</h5>
+                      Bob Peterson
+                      <br>
+                      (312) 555-1212
+                    </div>
+                    <div class='details-notes col-sm-5'>
+                      <h5 class='small-header'>Notes from customer</h5>
+                      <p>DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime...</p>
+                      <a href="#">Read more</a>
+                    </div>
+                  </div>
+                  <div class='load-items-details'>
+                    <h4 class='section-header sh-med section-header_items'>
+                      Items to Pick Up
+                      <div class='pull-right'>
+                        <span class='items-pickup-number'>
+                          Pickup Number
+                          <em>
+                            56783456
+                          </em>
+                        </span>
+                        <span class='items-total-weight'>
+                          Stop Total
+                          <em>
+                            18680 LBS
+                          </em>
+                        </span>
+                      </div>
+                    </h4>
+                    <div class='items-lists'>
+                      <section class='item-list well'>
+                        <article class='item-content'>
+                          <p>Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs</p>
+                          <p>1 EA, Floor Handling Unit</p>
+                          <p>This could contain more items in plain text</p>
+                          <p>This could contain more items in plain text</p>
+                        </article>
+                      </section>
+                      <section class='item-list well'>
+                        <article class='item-content'>
+                          <p>Paper Goods</p>
+                          <p>Skids Handling Unit <br>13680 lb</p>
+                        </article>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='panel'>
+              <div class='panel-heading'>
+                <h4 class='panel-title'>
+                  <a href="#panel-delivery-1" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="panel-delivery-1"><strong>Delivery</strong> Austin, TX 45678
+                  <span class='stops-date'>
+                    Fri, Jun 3 from 14:00-15:00 EST
+                    <div class='caret'></div>
+                  </span>
+                  </a>
+                </h4>
+              </div>
+              <div class='panel-collapse collapse in' id='panel-delivery-1' role='tabpanel'>
+                <div class='panel-body load-details'>
+                  <div class='row'>
+                    <div class='details-location col-sm-4'>
+                      <h5 class='small-header'>Location</h5>
+                      <span class='loc-name'>Walmart Warehouse A34</span>
+                      <br>
+                      <span class='loc-addr1'>555 W. Western</span>
+                      <br>
+                      <span class='loc-addr2'>Dock #123</span>
+                      <br>
+                      <span class='loc-region'>Bartville, IN</span>
+                      <br>
+                      <a href="#">Open In Maps</a>
+                    </div>
+                    <div class='details-contact col-sm-3'>
+                      <h5 class='small-header'>Contact</h5>
+                      Bob Peterson
+                      <br>
+                      (312) 555-1212
+                    </div>
+                    <div class='details-notes col-sm-5'>
+                      <h5 class='small-header'>Notes from customer</h5>
+                      <p>DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime...</p>
+                      <a href="#">Read more</a>
+                    </div>
+                  </div>
+                  <div class='load-items-details'>
+                    <h4 class='section-header sh-med section-header_items'>
+                      Items to Pick Up
+                      <div class='pull-right'>
+                        <span class='items-pickup-number'>
+                          Pickup Number
+                          <em>
+                            56783456
+                          </em>
+                        </span>
+                        <span class='items-total-weight'>
+                          Stop Total
+                          <em>
+                            18680 LBS
+                          </em>
+                        </span>
+                      </div>
+                    </h4>
+                    <div class='items-lists'>
+                      <section class='item-list well'>
+                        <article class='item-content'>
+                          <p>Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs</p>
+                          <p>1 EA, Floor Handling Unit</p>
+                          <p>This could contain more items in plain text</p>
+                          <p>This could contain more items in plain text</p>
+                        </article>
+                      </section>
+                      <section class='item-list well'>
+                        <article class='item-content'>
+                          <p>Paper Goods</p>
+                          <p>Skids Handling Unit <br>13680 lb</p>
+                        </article>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section class='panel load-table_log'>
+            <h4 class='section-header sh-no_border'>All Load Activities</h4>
+            <p class='text-muted disclaimer'>[Disclaimer text provided by Legal to clarify that this log does not replace other records for purposes like calculating detention, etc]</p>
+            <table class='table table-condensed table-log'>
+              <tr>
+                <td class='log-note'>Do not Disturb On</td>
+                <td class='log-driver'>Driver Mike P.</td>
+                <td class='log-time'>14:00 CST</td>
+                <td class='log-day'>Sat, June 5</td>
+              </tr>
+              <tr>
+                <td class='log-note'>Trailer Picked up: Midtown OK</td>
+                <td class='log-driver'>Driver Mike P.</td>
+                <td class='log-time'>14:00 CST</td>
+                <td class='log-day'>Sat, June 5</td>
+              </tr>
+              <tr>
+                <td class='log-note'>Driver Assigned: Mike P.</td>
+                <td class='log-driver'>Driver Mike P.</td>
+                <td class='log-time'>14:00 CST</td>
+                <td class='log-day'>Sat, June 5</td>
+              </tr>
+              <tr>
+                <td class='log-note'>Reported Arrival at Pickup: Memphis TN</td>
+                <td class='log-driver'>Driver Mike P.</td>
+                <td class='log-time'>14:00 CST</td>
+                <td class='log-day'>Sat, June 5</td>
+              </tr>
+              <tr>
+                <td class='log-note'>Do not Disturb On</td>
+                <td class='log-driver'>Driver Mike P.</td>
+                <td class='log-time'>14:00 CST</td>
+                <td class='log-day'>Sat, June 5</td>
+              </tr>
+              <tr>
+                <td class='log-note'>Trailer Picked up: Midtown OK</td>
+                <td class='log-driver'>Driver Mike P.</td>
+                <td class='log-time'>14:00 CST</td>
+                <td class='log-day'>Sat, June 5</td>
+              </tr>
+              <tr>
+                <td class='log-note'>Driver Assigned: Mike P.</td>
+                <td class='log-driver'>Driver Mike P.</td>
+                <td class='log-time'>14:00 CST</td>
+                <td class='log-day'>Sat, June 5</td>
+              </tr>
+              <tr>
+                <td class='log-note'>Reported Arrival at Pickup: Memphis TN</td>
+                <td class='log-driver'>Driver Mike P.</td>
+                <td class='log-time'>14:00 CST</td>
+                <td class='log-day'>Sat, June 5</td>
+              </tr>
+            </table>
+            <a href="#">See Last Activity Only</a>
+          </section>
+          <p class='text-muted'>Activity Logs are not available for multi-stop loads yet.</p>
+        </section>
+        <div class='col-md-4'>
+          <section class='sidebar-container'>
+            <h4 class='section-header sh-short'>Equipment</h4>
+            <div class='equip-list'>
+              Dry Van 53'<br/>
+              HazMat<br/>
+              Tractor 093837<br/>
+              <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
+              <img src="assets/images/add-pencil.svg" alt="Add pencil" />
+              </a>
+              <form class='form-inline form-inline-editing' style='display: none;'>
+                <div class='form-group'>
+                  <label class='hidden'>Add Trailer Number</label>
+                  <input class='form-control' placeholder='Add Trailer Number' type='text'>
+                </div>
+                <div class='form-group'>
+                  <button class='btn btn-link btn-sm' type='submit'>Save</button>
+                  <a href="#" class="btn btn-link btn-sm btn-alt" type="reset">Cancel</a>
+                </div>
+              </form>
+            </div>
+            <br>
+            <div class='equip-specials'>
+              Drop Trailer at Shipper<br>
+              No Reefers<br>
+            </div>
+          </section>
+          <section class='sidebar-container'>
+            <h4 class='section-header sh-short'>General Instructions</h4>
+            <p>POD Required within 24-48 hours after delivery.</p>
+          </section>
+          <section class='sidebar-container'>
+            <h4 class='section-header sh-short'>Documents</h4>
+            <div class='load-documents'>
+              <div class='load-doc'>
+                <div class='doc-image'>
+                  <a href='#'>
+                    <img src="assets/images/document_image.png" alt="Document image" />
+                  </a>
+                </div>
+                <div class='doc-descrip'>
+                  <h5>Rate Confirmation</h5>
+                  <div class='doc-data'>
+                    Updated 06:45 CST, Today
+                    <br>
+                    By Echo
+                  </div>
+                </div>
+              </div>
+              <div class='load-doc'>
+                <div class='doc-image'>
+                  <a href='#'>
+                    <img src="assets/images/doc-TEMP-image.png" alt="Doc temp image" />
+                  </a>
+                </div>
+                <div class='doc-descrip'>
+                  <h5>Proof of Delivery</h5>
+                  <div class='doc-data'>
+                    Updated 06:45 CST, Today
+                    <br>
+                    By Michelle P.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class='btn btn-document btn-document_primary'>
+              <div class='add-type'>
+                Invoice
+              </div>
+            </button>
+            <button class='btn btn-document'>
+              <div class='add-type'>
+                Load Documents
+                <small>BOLs, Receipts, Scale Tickets</small>
+              </div>
+            </button>
+            <p class='text-center text-muted'>
+              <small>Accepted File Types: JPEG, PDF, PNG</small>
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class='footer'>
+      <div class='footer-primary'>
+        <div class='container'>
+          <div class='pull-left'>
+            <div class='navbar-brand'>
+              ECHO
+            </div>
+          </div>
+          <div class='pull-right'>
+            <ul class='list-inline footer-nav navbar-right'>
+              <li>
+                <strong>ECHO REP</strong>
+                Danielle John
+              </li>
+              <li>
+                <img src="assets/images/mail-icon@2x.png" width="15px" height="15px" alt="Mail icon@2x" />
+                <a href="mailto:danielle.john@echoLogistics.com">danielle.john@echoLogistics.com</a>
+              </li>
+              <li>
+                (610) 555-1212
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class='footer-secondary'>
+        <div class='container'>
+          <div class='pull-left'>
+            BILLING QUESTIONS? 610-555-1212
+          </div>
+          <div class='pull-right'>
+            <span class='copyright'>
+              Copyright
+              <script>
+                document.write(new Date().getFullYear())
+              </script>
+              Echo Global Logistics
+            </span>
+            <ul class='list-inline footer-nav navbar-right'>
+              <li><a href="#" class="">Terms &amp; Conditions</a></li>
+              <li><a href="#" class="">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    //jQuery CDN fallback
+    window.jQuery || document.write('<script src="assets/javascripts/vendor/jquery.min.js"><\/script>')
+  </script>
+  <script src="assets/javascripts/application.js"></script><script src="assets/javascripts/vendor/transition.js"></script><script src="assets/javascripts/vendor/collapse.js"></script><script src="assets/javascripts/vendor/moment.js"></script><script src="assets/javascripts/vendor/jquery.mCustomScrollbar.min.js"></script><script src="assets/javascripts/vendor/jquery.matchHeight.min.js"></script><script src="assets/javascripts/vendor/daterangepicker-mod.js"></script>
+</html>

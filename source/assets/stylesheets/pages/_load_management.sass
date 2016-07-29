@@ -1,6 +1,4 @@
-.no-map-border
-  border-top: 1px solid $gray-light
-  width: 100%
+
 
 // Load Management Nav Tabs
 
@@ -17,7 +15,9 @@
 
   .search-form
     margin-top: 20px
-    width: 300px
+    width: 250px
+    +tablet
+      width: 350px
 
     .search-form-input_dark
       background-color: $gray-mid-light
@@ -57,6 +57,6 @@
     p
       margin-bottom: 15px
     img
-      margin-right: 10px
+      margin-right: 8px
     span
       vertical-align: middle

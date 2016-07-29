@@ -1,4 +1,4 @@
--@title= 'Carrier Dashboard'
+-@title= 'Load Management Details Multistop'
 -@page_classes= 'load-management load-management-detail'
 
 = partial 'partials/header_carrier_load', locals: {loads: '9 Loads Located', map: false}
@@ -17,112 +17,8 @@
     
       = partial 'partials/loads_accordion-multi'
 
-      %section.panel.load-table_log
-        %h4.section-header.sh-no_border All Load Activities
-        %p.text-muted.disclaimer [Disclaimer text provided by Legal to clarify that this log does not replace other records for purposes like calculating detention, etc]
-
-        %table.table.table-condensed.table-log
-          %tr
-            %td.log-note Do not Disturb On
-            %td.log-driver Driver Mike P.
-            %td.log-time 14:00 CST
-            %td.log-day Sat, June 5
-          %tr
-            %td.log-note Trailer Picked up: Midtown OK
-            %td.log-driver Driver Mike P.
-            %td.log-time 14:00 CST
-            %td.log-day Sat, June 5              
-          %tr
-            %td.log-note Driver Assigned: Mike P.
-            %td.log-driver Driver Mike P.
-            %td.log-time 14:00 CST
-            %td.log-day Sat, June 5              
-          %tr
-            %td.log-note Reported Arrival at Pickup: Memphis TN
-            %td.log-driver Driver Mike P.
-            %td.log-time 14:00 CST
-            %td.log-day Sat, June 5
-          %tr
-            %td.log-note Do not Disturb On
-            %td.log-driver Driver Mike P.
-            %td.log-time 14:00 CST
-            %td.log-day Sat, June 5
-          %tr
-            %td.log-note Trailer Picked up: Midtown OK
-            %td.log-driver Driver Mike P.
-            %td.log-time 14:00 CST
-            %td.log-day Sat, June 5              
-          %tr
-            %td.log-note Driver Assigned: Mike P.
-            %td.log-driver Driver Mike P.
-            %td.log-time 14:00 CST
-            %td.log-day Sat, June 5              
-          %tr
-            %td.log-note Reported Arrival at Pickup: Memphis TN
-            %td.log-driver Driver Mike P.
-            %td.log-time 14:00 CST
-            %td.log-day Sat, June 5
-
-        =link_to 'See Last Activity Only', '#'
-
       %p.text-muted Activity Logs are not available for multi-stop loads yet.
 
     .col-md-4
-      %section.sidebar-container
-        %h4.section-header.sh-short Equipment
-        .equip-list
-          Dry Van 53’<br/>
-          HazMat<br/>
-          Tractor 093837<br/>
-          =link_to '#', class: 'btn btn-link btn-inline-edit btn-sm' do
-            Add Trailer Number
-            =image_tag('add-pencil.svg')
-          %form.form-inline.form-inline-editing{style: "display: none;"}
-            .form-group
-              %label.hidden Add Trailer Number
-              %input.form-control{:type => "text", :placeholder => "Add Trailer Number"}
-            .form-group
-              %button.btn.btn-link.btn-sm{type: "submit"} Save
-              =link_to 'Cancel', '#', class: 'btn btn-link btn-sm btn-alt'
-        %br
-        .equip-specials
-          Drop Trailer at Shipper<br>
-          No Reefers<br>
-
-      %section.sidebar-container
-        %h4.section-header.sh-short General Instructions
-        %p POD Required within 24-48 hours after delivery. 
-
-      %section.sidebar-container
-        %h4.section-header.sh-short Documents
-        .load-documents
-          .load-doc
-            .doc-image
-              %a{href: "#"}
-                =image_tag('document_image.png')
-            .doc-descrip
-              %h5 Rate Confirmation
-              .doc-data
-                Updated 06:45 CST, Today
-                By Echo
-
-          .load-doc
-            .doc-image
-              %a{href: "#"}
-                =image_tag('doc-TEMP-image.png')
-            .doc-descrip
-              %h5 Proof of Delivery
-              .doc-data
-                Updated 06:45 CST, Today 
-                By Michelle P.                
-
-        %button.btn.btn-document.btn-document_primary
-          .add-type
-            Invoice
-        %button.btn.btn-document
-          .add-type
-            Load Documents
-            %small BOLs, Receipts, Scale Tickets
-        
-        %p.text-center.text-muted
-          %small Accepted File Types: JPEG, PDF, PNG
+      
+      = partial 'partials/loads_sidebar'
