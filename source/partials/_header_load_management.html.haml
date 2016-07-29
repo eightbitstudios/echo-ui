@@ -1,0 +1,22 @@
+.tab-bar
+  .container
+    %ul.nav.nav-tabs
+      %li{class: link == 'active' ? 'active' : ''}
+        =link_to '11 Active Loads', '/echorep-carrier-loads-active.html'
+      %li{class: link == 'unbilled' ? 'active' : ''}
+        =link_to '12 Unbilled Loads', '/echorep-carrier-loads-unbilled.html'
+      %li{class: link == 'upcoming' ? 'active' : ''}
+        =link_to '11 Upcoming Loads', '/echorep-carrier-loads-upcoming.html'
+    %form.search-form.pull-right{role:"search"}
+      .form-group
+        %input.form-control.search-form-input.search-form-input_dark{type: "text", placeholder:"Load or PRO Number"}
+        %span.search-help-text Press Enter To Search
+        %button.btn.btn-default.btn-icon{type:"submit"}
+          %svg{:height => "18px", :version => "1.1", :viewbox => "0 0 18 18", :width => "18px", :xmlns => "http://www.w3.org/2000/svg"}
+            %g.search-svg{:fill => "none", "fill-rule" => "evenodd", :id => "States,-Interactions,-Misc", :stroke => "none", "stroke-width" => "1"}
+              %g#patterns{:stroke => "#FFFFFF", "stroke-width" => "2", :transform => "translate(-521.000000, -5581.000000)"}
+                %g{:id => "icon-/-search", :transform => "translate(522.000000, 5582.000000)"}
+                  %circle#Oval{:cx => "6.33333333", :cy => "6.33333333", :r => "6"}
+                  %path#Shape{:d => "M10.5753333,10.576 L15.5,15.5"}
+
+

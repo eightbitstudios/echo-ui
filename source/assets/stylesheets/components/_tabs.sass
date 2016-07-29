@@ -9,6 +9,8 @@ header.navbar + .tab-bar
   margin-bottom: 45px
   background-color: #f7f7f7
   box-shadow: inset 0 -1px 0 0 #e1e2e3
+  .container
+    display: flex
 
   .nav-tabs
     margin-top: 20px
@@ -23,21 +25,23 @@ header.navbar + .tab-bar
       transition: fill 0.3s
 
     > li
+      font-size: 20px
+      font-family: $heading-font
+      text-transform: uppercase
+      letter-spacing: 0.5px
       margin-bottom: 0
+      +tablet
+        font-size: 30px
 
       > a
-        padding: 10px 20px 11px
         color: $slate-grey
         line-height: 1.2
-        letter-spacing: 0.5px
-        text-transform: uppercase
-        font-size: 30px
-        font-family: $heading-font
+        padding: 10px 20px 11px
         border-radius: 0
         border: none
         border-bottom: 4px solid transparent
         background: none
-      
+        
         &:hover
           color: $bright-blue
           border: none

@@ -1,0 +1,33 @@
+//------------------------------------
+    #alerts
+//------------------------------------
+
+.alert
+  color: #fff
+  border: none
+  border-radius: 3px
+  padding: 12px 18px
+
+  &.alert-success
+    background-color: $success
+  
+  &.alert-info
+    background-color: $info
+  
+  &.alert-warning
+    background-color: $warning
+  
+  &.alert-danger
+    background-color: $danger
+
+
+.status-alert
+  
+  &:before
+    content: ''
+    display: inline-block
+    width: 7px
+    height: 7px
+    margin-right: 5px
+    border-radius: 100%
+    background-color: $warning

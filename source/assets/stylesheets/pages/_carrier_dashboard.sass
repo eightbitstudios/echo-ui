@@ -1,8 +1,14 @@
 // Dashboard Header
 //////////
 
+.navbar + .carrier-dashboard-header
+  margin-top: -20px
+
 .carrier-dashboard-header
-  display: flex
+  background: #fff
+  border-bottom: 1px solid $gray-light
+  > div
+    display: flex
 
   li
     margin-bottom: 0
@@ -11,12 +17,12 @@
   text-transform: uppercase
 
 .carrier-dashboard-header_right
+  text-align: right
+
   +tablet
     margin-left: auto
-
   a
     color: $dark-grey
-
   li
     padding-left: 13px
     padding-right: 13px
@@ -27,8 +33,10 @@
   margin-right: 5px
 
 
-.carrier-dashboard
+// Section Header
+//////////
 
+.carrier-dashboard
   section
     margin-top: 40px
 
@@ -46,16 +54,29 @@
   .section-sub-label
     padding-left: 15px
 
-  table
-    color: $gray-darkest
+// Carrier Dashboard Table details
+//////////
 
-    tr > td
-      &.carrier-dashboard-arrow, &.carrier-dashboard-pickup,
-        border-right: none
+.table-carrier-dashboard
+  color: $gray-darkest
+
+  tr > td
+    &.carrier-dashboard-arrow, 
+    &.carrier-dashboard-pickup,
+      border-right: none
+
+    &.carrier-dashboard-arrow
+      padding-left: 0
+      padding-right: 0
+      img
+        margin: 15px 0
 
   thead
     .location-delivery
       margin-left: 18px
+
+  .muted
+    color: $gray-mid-light
 
   .pagination > li > a
     float: none
@@ -74,16 +95,19 @@
     p.label
       margin-bottom: 3px
 
-  .location-pickup, 
+  .location-pickup,
   .location-delivery
-    vertical-align: top
     display: flex
     flex-direction: column
 
+    // +tablet
+    //   &.match-height
+    //     height: auto
+
   .lead
     font-weight: normal
-    line-height: 24px
-    margin-bottom: 0
+    line-height: 20px
+    margin-bottom: 2px
     word-break: break-word
 
   .location-state
@@ -92,62 +116,60 @@
   .location-time
     font-size: 12px
     line-height: 16px
-    margin-top: auto
-
-  .muted
-    color: $gray-mid-light
+    margin-top: 10px
+    +tablet
+      margin-top: auto
 
   .driver-status
     font-size: 12px
     line-height: 16px
-    margin-top: auto
+    margin-top: 10px
+    +tablet
+      margin-top: auto
 
-.carrier-dashboard-pickup, 
+.carrier-dashboard-pickup,
 .carrier-dashboard-delivery
   max-width: 200px
 
-.carrier-dashboard-arrow
-  padding-left: 0
-  padding-right: 0
-
-  img
-    margin: 15px 0
-
-
-.carrier-dashboard-driver, 
+.carrier-dashboard-driver,
 .carrier-dashboard-action
   display: inline-flex
   flex-direction: column
-
+  line-height: 20px
   h3
     margin-bottom: 0
-
+    line-height: 24px
   .muted
     font-size: 12px
     line-height: 16px
 
-.carrier-dashboard-driver
+.carrier-dashboard-action
+  justify-content: center
 
+.carrier-dashboard-driver
   .btn
     margin-top: 5px
 
-.carrier-dashboard-action, 
+.carrier-dashboard-action,
 .carrier-dashboard-multi-load-action
-  // min-width: 230px
-
+  width: 100%
   .btn
-    margin: 6px 0
-
+    margin: 6px 0 0 0
+    width: 100%
   p
-    margin: 0
+    margin: 6px 0 0 0
+    > .btn-link
+      text-align: left
+      margin: 0
+
+  .action-align-bottom
+    margin-top: auto
 
 .carrier-dashboard-multi-load
 
   .carrier-dashboard-action
-
     .action-align-bottom
       margin-top: auto
-
     .btn
       margin-bottom: 0
 

@@ -12,6 +12,7 @@ page '/*.txt', layout: false
 # With alternative layout
 page "/shell-echorep.html", layout: :layout_echorep
 page "/echorep-admin.html", layout: :layout_echorep
+page "/echorep-admin-search.html", layout: :layout_echorep
 page "/echorep-empty.html", layout: :layout_echorep
 page "/echorep-profile.html", layout: :layout_echorep
 
@@ -47,7 +48,7 @@ configure :development do
   activate :automatic_image_sizes
 
   # Reload the browser automatically whenever files change
-  activate :livereload,  :no_swf => true
+  # activate :livereload,  :no_swf => true
 
   # Assets Pipeline Sets
   set :haml, {ugly: false, format: :html5}

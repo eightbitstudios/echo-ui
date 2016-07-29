@@ -1,0 +1,390 @@
+%table.table.table-carrier-dashboard
+  %thead
+    %tr
+      %th Load
+      %th.carrier-dashboard-pickup Pickup
+      %th.carrier-dashboard-arrow
+      %th.carrier-dashboard-delivery Delivery
+      %th Driver
+      %th Action
+  %tbody
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443211', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Washington-on-the-Brazos
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-15:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Winchester-on-the-Severn
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Fred F', '#'
+          <span><tel>(899) 584-0803</tel></span>
+          .driver-status
+            Do Not Disturb
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Need POD & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443212', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Truth Or Consequence
+          .location-state
+            CA, 60655
+          .location-time
+            15:00-16:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Rancho Santa Margarita
+          .location-state
+            CA, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, Dec 1
+      %td.carrier-dashboard-load
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Alfonzo A', '#'
+          <span><tel>(054) 534-6618</tel></span>
+          .driver-status
+            Entered By Echo
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Invoice and POD added
+          = link_to 'Moved to Invoicing', '#'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443213', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            New York
+          .location-state
+            TN, 60655
+          .location-time
+            14:00 EST
+            %br
+            Picked Up Fri, May 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Chicago
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Today, Apr 20
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Bernice B', '#'
+          <span><tel>(899) 584-0803</tel></span>
+          .driver-status
+            Do Not Disturb
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Need POD & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443214', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Philadelphia
+          .location-state
+            TN, 60655
+          .location-time
+            16:00-18:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            San Francisco
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Thu, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Mitchell S', '#'
+          <span><tel>(054) 534-6618</tel></span>
+          .driver-status
+            Entered By Echo
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Need POD & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443215', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Memphis
+          .location-state
+            TN, 60655
+          .location-time
+            14:00 EST
+            %br
+            Picked Up Wed, Aug 4
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Austin
+          .location-state
+            TX, 50968
+          .location-time
+            16:00 EST
+            %br
+            Delivered Tue, Oct 31
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Floyd F', '#'
+          <span><tel>(899) 584-0803</tel></span>
+          .driver-status
+            Do Not Disturb
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Need POD & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443211', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Washington-on-the-Brazos
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-15:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Winchester-on-the-Severn
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Marian B', '#'
+          <span><tel>(899) 584-0803</tel></span>
+          .driver-status
+            Entered By Echo
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Need POD & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443212', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Truth Or Consequence
+          .location-state
+            CA, 60655
+          .location-time
+            15:00-16:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Rancho Santa Margarita
+          .location-state
+            CA, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, Dec 1
+      %td.carrier-dashboard-load
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Jay C', '#'
+          <span><tel>(054) 534-6618</tel></span>
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Needs 2 PODs & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443213', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            New York
+          .location-state
+            TN, 60655
+          .location-time
+            14:00 EST
+            %br
+            Picked Up Fri, May 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Chicago
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Today, Apr 20
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Eva R', '#'
+          <span><tel>(054) 534-6618</tel></span>
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Need POD & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443214', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Philadelphia
+          .location-state
+            TN, 60655
+          .location-time
+            16:00-18:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            San Francisco
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Thu, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Nelle H', '#'
+          <span><tel>(899) 584-0803</tel></span>
+          .driver-status
+            Entered By Echo
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Need POD & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'
+
+    %tr
+      %td.carrier-dashboard-load
+        %h2.load-number=link_to '123443215', '#'
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height.muted
+          .lead
+            Memphis
+          .location-state
+            TN, 60655
+          .location-time
+            14:00 EST
+            %br
+            Picked Up Wed, Aug 4
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark@2x.png'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Austin
+          .location-state
+            TX, 50968
+          .location-time
+            16:00 EST
+            %br
+            Delivered Tue, Oct 31
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Rebecca J', '#'
+          <span><tel>(899) 584-0803</tel></span>
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name Bill $1380
+          Need POD & Invoice
+          .action-align-bottom
+            = link_to 'Add Documents', '#', class: 'btn btn-default'

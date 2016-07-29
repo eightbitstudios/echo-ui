@@ -58,10 +58,32 @@ label
     outline: none
     border-color: $gray-darkest
 
+.form-group-inline
+  display: inline-block
 
-input[type="radio"], 
+.form-inline-editing
+  .form-control
+    background-color: transparent
+
+input[type="radio"],
 input[type="checkbox"]
   margin-top: 0
+
+.control
+
+  input:checked ~ .control-indicator
+    background-color: $gray-light
+    background-image: image_url('checkbox-check.svg')
+
+  input:active ~ .control-indicator
+    background-color: #f7f7f7
+
+  input:focus ~ .control-indicator
+    box-shadow: 0 0 0 0
+
+.checkbox
+  .control-indicator
+    border-radius: 0
 
 .select
   select
@@ -69,12 +91,23 @@ input[type="checkbox"]
     border-radius: 0
     border-bottom: 1px solid $gray-mid-light
     background-color: transparent
-    
+
     &:focus
       box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $gray-mid-light
 
 .checkbox,
 .radio
+  label
+    letter-spacing: 0
+    font-weight: 300 !important
+
+  &:hover
+    label
+      font-weight: 300
+
+  .control:hover .control-indicator
+    background: $gray-light
+
   &.control
     display: block
 

@@ -69,8 +69,8 @@
             separator: ' - ',
             applyLabel: 'Apply',
             cancelLabel: 'Cancel',
-            toLabel: "To",
             fromLabel: "From",
+            toLabel: "To",
             weekLabel: 'W',
             customRangeLabel: 'Custom Range',
             daysOfWeek: moment.weekdaysMin(),
@@ -98,7 +98,7 @@
             options.template = '<div class="daterangepicker dropdown-menu">' +
                 '<div class="calendar left">' +
                     '<div class="daterangepicker_input form-group">' +
-                      '<label for="daterangepicker_start">Starting</label>' +
+                      '<label class="label-start" for="daterangepicker_start">Starting</label>' +
                       '<input class="form-control" type="text" name="daterangepicker_start" value="" />' +
                       '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
                       '<div class="calendar-time">' +
@@ -110,7 +110,7 @@
                 '</div>' +
                 '<div class="calendar right">' +
                     '<div class="daterangepicker_input form-group">' +
-                      '<label for="daterangepicker_start">Ending</label>' +
+                      '<label class="label-end" for="daterangepicker_end">Ending</label>' +
                       '<input class="form-control" type="text" name="daterangepicker_end" value="" />' +
                       '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
                       '<div class="calendar-time">' +
@@ -172,6 +172,12 @@
 
             if (typeof options.locale.customRangeLabel === 'string')
               this.locale.customRangeLabel = options.locale.customRangeLabel;
+
+            if (typeof options.locale.fromLabel === 'string')
+              this.locale.fromLabel = options.locale.fromLabel;
+
+            if (typeof options.locale.toLabel === 'string')
+              this.locale.toLabel = options.locale.toLabel;
 
         }
         this.container.addClass(this.locale.direction);
@@ -336,7 +342,7 @@
 
                 // If the end of the range is before the minimum or the start of the range is
                 // after the maximum, don't display this range option at all.
-                if ((this.minDate && end.isBefore(this.minDate, this.timepicker ? 'minute' : 'day')) 
+                if ((this.minDate && end.isBefore(this.minDate, this.timepicker ? 'minute' : 'day'))
                   || (maxDate && start.isAfter(maxDate, this.timepicker ? 'minute' : 'day')))
                     continue;
 
@@ -387,9 +393,11 @@
             this.container.find('.daterangepicker_input input, .daterangepicker_input > i').hide();
             if (this.timePicker) {
                 this.container.find('.ranges ul').hide();
-            } else {
-                this.container.find('.ranges').hide();
             }
+            // We are going to turn on these buttons for single picker design
+            // } else {
+            //     this.container.find('.ranges').hide();
+            // }
         }
 
         if ((typeof options.ranges === 'undefined' && !this.singleDatePicker) || this.alwaysShowCalendars) {
@@ -411,6 +419,10 @@
             this.container.find('.cancelBtn').addClass(this.cancelClass);
         this.container.find('.applyBtn').html(this.locale.applyLabel);
         this.container.find('.cancelBtn').html(this.locale.cancelLabel);
+        
+        this.container.find('.label-start').html(this.locale.fromLabel);
+        this.container.find('.label-end').html(this.locale.toLabel);
+
 
         //
         // event listeners
@@ -555,6 +567,16 @@
             this.updateMonthsInView();
             this.updateCalendars();
             this.updateFormInputs();
+            if (this.singleDatePicker) {
+                this.updateSdpHeader();
+            }
+        },
+
+        // Modify single date picker to use custom text format called out by design
+        updateSdpHeader: function() {
+            var date = $('input[name=daterangepicker_start]').val()
+            var formatedDate = moment(date, 'MM/DD/YYYY').format('ddd, MMM DD');
+            $('.calendar-table').find('.month').text(formatedDate);
         },
 
         updateMonthsInView: function() {
@@ -752,7 +774,14 @@
                 dateHtml = monthHtml + yearHtml;
             }
 
-            html += '<th colspan="6" class="month">' + dateHtml + '</th>';
+            // Modify for single date picker to align correctly with design.
+            var monthColspan = "6"
+
+            if (this.singleDatePicker) {
+                monthColspan = "5"
+            }
+
+            html += '<th colspan=' + monthColspan + ' class="month">' + dateHtml + '</th>';
             if ((!maxDate || maxDate.isAfter(calendar.lastDay)) && (!this.linkedCalendars || side == 'right' || this.singleDatePicker)) {
                 html += '<th class="next available"><i class="fa fa-' + arrow.right + ' glyphicon glyphicon-' + arrow.right + '"></i></th>';
             } else {
@@ -1361,8 +1390,9 @@
 
             if (this.singleDatePicker) {
                 this.setEndDate(this.startDate);
-                if (!this.timePicker)
-                    this.clickApply();
+                // Commented out so we can force the user to use the apply button
+                // if (!this.timePicker)
+                //     this.clickApply();
             }
 
             this.updateView();
@@ -1530,7 +1560,7 @@
             this.container.find('input[name="daterangepicker_start"], input[name="daterangepicker_end"]').removeClass('active');
             $(e.target).addClass('active');
 
-            // Set the state such that if the user goes back to using a mouse, 
+            // Set the state such that if the user goes back to using a mouse,
             // the calendars are aware we're selecting the end of the range, not
             // the start. This allows someone to edit the end of a date range without
             // re-selecting the beginning, by clicking on the end date input then

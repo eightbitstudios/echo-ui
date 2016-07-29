@@ -8,9 +8,9 @@
   .search-form
     margin-right: 25px
 
-
 .search-form
   width: 250px
+  position: relative
   // display: flex
 
   +tablet
@@ -27,10 +27,25 @@
     border-radius: 2px
     background-color: $gray-lightest
     transition: background 0.2s ease-in
-    
+
     &:hover,
     &:focus
       background-color: $gray-light
+
+  .search-help-text
+    color: $gray-mid-light
+    position: absolute
+    top: 10px
+    right: 35px
+    display: none
+    transition: opacity 0.2s ease-in
+
+  .search-form-input:focus + .search-help-text
+    display: block
+
+  .search-form-input:focus + .search-help-text + .btn.btn-icon
+    svg g
+      stroke: $gray-mid-light
 
 .btn.btn-icon
   position: absolute
@@ -108,13 +123,13 @@
       &:last-child
         margin-bottom: 0
         border-bottom: none
-      
+
     .result-title
       color: $gray-darkest
       font-size: 18px
       line-height: 1
       margin-bottom: 5px
-    
+
     .result-phone
       margin-left: auto
 

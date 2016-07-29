@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>icon / new window</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12.9641873,10 L12.9641873,15.9970707 C12.9641873,16.5509732 12.5179307,17 11.9684357,17 L0.995751634,17 C0.445813192,17 0,16.5500512 0,15.9931545 L0,4.00684547 C0,3.45078007 0.454729855,3 0.999026871,3 L6.04995409,3" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="12.9641873" height="14" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Load-Management" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="load-management-details" transform="translate(-220.000000, -844.000000)" stroke="#26C1FC">
+            <g id="pickup" transform="translate(89.000000, 645.000000)">
+                <g id="icon-/-new-window" transform="translate(131.636364, 197.000000)">
+                    <g id="Group-4">
+                        <use id="Rectangle-279" mask="url(#mask-2)" stroke-width="4" xlink:href="#path-1"></use>
+                        <polyline id="Rectangle-12" stroke-width="2" transform="translate(11.717631, 4.250000) rotate(-45.000000) translate(-11.717631, -4.250000) " points="9.95473378 7.78553391 13.4805279 4.25 9.95473378 0.714466094"></polyline>
+                        <path d="M13.1352876,6.82842712 L5.15732612,6.82842712" id="Line" stroke-width="2" stroke-linecap="square" transform="translate(9.146307, 6.828427) rotate(-45.000000) translate(-9.146307, -6.828427) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
