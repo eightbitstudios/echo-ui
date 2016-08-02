@@ -40,7 +40,7 @@ angular.module('echo', [
 
         if (response.status === errorsConfig.UNAUTHORIZED) {
           $location.path('/login.html');
-        } 
+        }
         /** else if(refreshToken) {
           authenticationApi.refresh().finally(function(){
             $location.reload();
@@ -55,9 +55,25 @@ angular.module('echo', [
 
   .controller('AppCtrl', function () { })
 
-  .run(function ($rootScope, $uibModalStack) {
+  .run(function ($rootScope, $uibModalStack, $window, userService, routesConfig, cookieService) {
     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {//jshint unused:false
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {//jshint unused:false
+
+      if (_.get(toState.data, 'auth')) {
+        var jwt = cookieService.getToken();
+        var user;
+
+        if (jwt) {
+          user = userService.mapJwtToUser(jwt);
+          if (_.get(toState.data, 'role') && toState.data.auth === _.get(user, 'role')) {
+            event.preventDefault();
+          }
+        } else {
+          event.preventDefault();
+          $window.location = routesConfig.LOGIN.base.url({ redirect: encodeURIComponent($window.location.hash) });
+        }
+      }
+
       $rootScope.showLoading = true;  //TODO: move to service
     });
 

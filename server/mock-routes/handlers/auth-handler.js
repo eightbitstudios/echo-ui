@@ -38,6 +38,10 @@ module.exports = {
       else if (req.body.password === 'deactivated') {
         res.status(400);
         resTemplate.status.code = 401003;
+      } else {
+        resTemplate.data = {
+          access_token: 'asdasd.eyJ1c2VyX2lkIjogIjEiLCAiY2Fycmllcl9pZCI6ICIxIiwgInJvbGUiOiAiQ2FycmllckFkbWluIn0=.asdasd'
+        };
       }
       res.json(resTemplate);
     }, minDelay, maxDelay);
