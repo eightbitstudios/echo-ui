@@ -30,7 +30,7 @@ angular.module('echo.index.myCarriers.carrierDetails', [
         return carrierApi.fetchCarrierById(carrierId).then(function (carrier) {
           that.carrier = carrier;
 
-          if (that.carrier.isActive) {
+          if (!that.carrier.isInactive()) {
             $q.all([
               carrierApi.fetchCarrierPortalUsers(carrier.carrierId),
               carrierApi.fetchCarrierDriverCount(carrier.carrierId)

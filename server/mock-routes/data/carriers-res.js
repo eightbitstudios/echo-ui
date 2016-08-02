@@ -17,7 +17,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    isActive: false
   }, {
     carrierId: 3,
     repId: 1,
@@ -37,7 +37,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    isActive: false
   }, {
     carrierId: 5,
     repId: 1,
@@ -47,7 +47,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    isActive: false
   }, {
     carrierId: 6,
     repId: 1,
@@ -67,7 +67,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    isActive: false
   }, {
     carrierId: 8,
     repId: 1,
@@ -87,7 +87,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    isActive: false
   }, {
     carrierId: 10,
     repId: 1,
