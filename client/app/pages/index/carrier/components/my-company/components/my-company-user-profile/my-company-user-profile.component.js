@@ -1,5 +1,5 @@
 angular.module('echo.index.carrier.myCompany.userProfile', [
-  'echo.services.portalUser',
+  'echo.api.portalUser',
   'echo.components.portalUsers',
   'echo.components.tabBar',
   'echo.components.passwordValidation',
