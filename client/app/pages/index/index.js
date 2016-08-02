@@ -17,7 +17,7 @@ angular.module('echo.index', [
   'echo.services.user',
   'templates-app'
 ]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig) {
-  $urlRouterProvider.otherwise('/myCarriers');
+  $urlRouterProvider.otherwise('/');
 
   // ROUTES
   $stateProvider

@@ -65,16 +65,16 @@ angular.module('echo', [
 
         if (jwt) {
           user = userService.mapJwtToUser(jwt);
-          if (_.get(toState.data, 'role') && toState.data.auth === _.get(user, 'role')) {
+          if (_.get(toState.data, 'role') && toState.data.role !== _.get(user, 'role')) {
             event.preventDefault();
+          } else {
+            $rootScope.showLoading = true;  //TODO: move to service
           }
         } else {
           event.preventDefault();
           $window.location = routesConfig.LOGIN.base.url({ redirect: encodeURIComponent($window.location.hash) });
         }
       }
-
-      $rootScope.showLoading = true;  //TODO: move to service
     });
 
     $rootScope.$on('$stateChangeSuccess',
