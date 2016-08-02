@@ -8,28 +8,44 @@ angular.module('echo.config.routes', [])
       },
       settings: {
         name: 'index.settings',
-        route:'settings'
+        route: 'settings'
       },
       myCarriers: {
         name: 'index.myCarriers',
-        route:'myCarriers',
+        route: 'myCarriers',
         url: '/#/myCarriers'
       },
       myCarriersDetails: {
         name: 'index.myCarriers.details',
-        route:'/:carrierId'
+        route: '/:carrierId'
       },
       carrier: {
         name: 'index.carrier',
-        route:'carrier/:carrierId?isCarrierAdmin'
+        route: 'carrier/:carrierId?isCarrierAdmin'
       },
       dashboard: {
         name: 'index.carrier.dashboard',
-        route:'/dashboard?isCarrierAdmin'
+        route: '/dashboard?isCarrierAdmin'
+      },
+      loadManagement: {
+        name: 'index.carrier.loadManagement',
+        route: '/loadManagement'
+      },
+      activeLoads: {
+        name: 'index.carrier.loadManagement.activeLoads',
+        route: '/activeLoads'
+      },
+      unbilledLoads: {
+        name: 'index.carrier.loadManagement.unbilledLoads',
+        route: '/unbilledLoads'
+      },
+      upcomingLoads: {
+        name: 'index.carrier.loadManagement.upcomingLoads',
+        route: '/upcomingLoads'
       },
       myCompany: {
         name: 'index.carrier.myCompany',
-        route:'/myCompany?isCarrierAdmin',
+        route: '/myCompany?isCarrierAdmin',
         url: _.template('/#/carrier/${carrierId}/myCompany')
       },
       myCompanyUsers: {

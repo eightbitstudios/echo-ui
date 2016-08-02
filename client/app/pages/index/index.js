@@ -74,6 +74,22 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.dashboard.route,
       template: '<dashboard></dashboard>'
     })
+    .state(routesConfig.INDEX.loadManagement.name, {
+      url: routesConfig.INDEX.loadManagement.route,
+      template: '<load-management></load-management>'
+    })
+    .state(routesConfig.INDEX.activeLoads.name, {
+      url: routesConfig.INDEX.activeLoads.route,
+      template: '<active-loads></active-loads>'
+    })
+    .state(routesConfig.INDEX.unbilledLoads.name, {
+      url: routesConfig.INDEX.unbilledLoads.route,
+      template: '<unbilled-loads></unbilled-loads>'
+    })
+        .state(routesConfig.INDEX.upcomingLoads.name, {
+      url: routesConfig.INDEX.upcomingLoads.route,
+      template: '<upcoming-loads></upcoming-loads>'
+    })
     .state(routesConfig.INDEX.myCarriersDetails.name, {
       url: routesConfig.INDEX.myCarriersDetails.route,
       template: '<carrier-details></carrier-details>'

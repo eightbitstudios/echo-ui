@@ -25,8 +25,6 @@ angular.module('echo.index.carrier.myCompany', [
         icon: 'icon-driver'
       }];
 
-      if($state.current.name === routesConfig.INDEX.myCompany.name){
-        $state.go(routesConfig.INDEX.myCompanyUsers.name);
-      }
+      that.defaultRoute = routesConfig.INDEX.myCompanyUsers.name;
     }
   });
