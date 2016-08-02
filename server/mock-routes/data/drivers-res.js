@@ -6,7 +6,8 @@ module.exports = [{
   tractor: '2003 1234',
   language: 'English',
   isAppInstalled: true,
-  isTrackingEnabled: false
+  isTrackingEnabled: false,
+  isDoNotDisturb: true
 },{
   id: 2,
   firstName: 'Ted',
@@ -15,7 +16,8 @@ module.exports = [{
   tractor: '2003 1234',
   language: 'English',
   isAppInstalled: false,
-  isTrackingEnabled: false
+  isTrackingEnabled: false,
+  isDoNotDisturb: false
 },{
   id: 3,
   firstName: 'Billy',
@@ -24,7 +26,8 @@ module.exports = [{
   tractor: '2003 1234',
   language: 'English',
   isAppInstalled: true,
-  isTrackingEnabled: true
+  isTrackingEnabled: true,
+  isDoNotDisturb: false
 },{
   id: 4,
   firstName: 'Jeff',
@@ -33,7 +36,8 @@ module.exports = [{
   tractor: '2003 1234',
   language: 'English',
   isAppInstalled: true,
-  isTrackingEnabled: true
+  isTrackingEnabled: true,
+  isDoNotDisturb: false
 },{
   id: 5,
   firstName: 'Bob',
@@ -42,5 +46,6 @@ module.exports = [{
   tractor: '2003 1234',
   language: 'English',
   isAppInstalled: true,
-  isTrackingEnabled: true
+  isTrackingEnabled: true,
+  isDoNotDisturb: false
 },];
