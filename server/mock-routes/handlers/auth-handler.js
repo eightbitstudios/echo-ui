@@ -1,4 +1,6 @@
 var ResTemplate = require('../data/res-template.js'),
+  userProfiles = require('../data/user-profiles-res.js'),
+  _ = require('lodash'),
   responseUtil = require('../util/response-util.js');
 
 var maxDelay = 2,
@@ -38,14 +40,17 @@ module.exports = {
       else if (req.body.password === 'deactivated') {
         res.status(400);
         resTemplate.status.code = 401003;
-      } else if(req.body.username === 'echorep@gmail.com') {
-        resTemplate.data = {
-          access_token: 'asdasd.eyJ1c2VyX2lkIjogIjEiLCAiY2Fycmllcl9pZCI6ICIxIiwgInJvbGUiOiAiRWNob1JlcCJ9.asdasd'
-        };
-      }  else if(req.body.username === 'carrieradmin@gmail.com') {
-        resTemplate.data = {
-          access_token: 'asdasd.eyJ1c2VyX2lkIjogIjEiLCAiY2Fycmllcl9pZCI6ICIxIiwgInJvbGUiOiAiQ2FycmllckFkbWluIn0=.asdasd'
-        };
+      } else {
+        var login = _.find(userProfiles, { email: req.body.username });
+
+        if (login) {
+          var padding = 'padding';
+          resTemplate.data = {
+            access_token: _.join([padding, new Buffer(JSON.stringify(login)).toString('base64'), padding], '.')
+          }
+        } else {
+          res.status(401001);
+        }
       }
       res.json(resTemplate);
     }, minDelay, maxDelay);
