@@ -7,6 +7,7 @@ angular.module('echo.index', [
   'echo.index.controller',
   'echo.index.myCarriers',
   'echo.index.settings',
+  'echo.enums.roles',
   'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
@@ -16,7 +17,7 @@ angular.module('echo.index', [
   'echo.services.cookie',
   'echo.services.user',
   'templates-app'
-]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig) {
+]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
   $urlRouterProvider.otherwise('/');
 
   // ROUTES
@@ -65,7 +66,7 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCarriers.route,
       template: '<my-carriers></my-carriers>',
       data: {
-        role: 'RepAdmin'
+        role: RolesEnum.ECHO_REP
       }
     })
     .state(routesConfig.INDEX.myCarriersDetails.name, { // #/myCarrier/:carrierId
