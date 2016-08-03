@@ -68,7 +68,7 @@ angular.module('echo', [
           if (_.get(toState.data, 'role') && toState.data.role !== _.get(user, 'role')) {
             event.preventDefault();
           } else {
-            $rootScope.showLoading = true;  //TODO: move to service
+            $rootScope.showLoading = true;
           }
         } else {
           event.preventDefault();
@@ -80,7 +80,7 @@ angular.module('echo', [
     $rootScope.$on('$stateChangeSuccess',
       function (event, toState, toParams, fromState, fromParams) { //jshint unused:false
         $uibModalStack.dismissAll();
-        $rootScope.showLoading = false; //TODO: move to service
+        $rootScope.showLoading = false;
       }
     );
   });
