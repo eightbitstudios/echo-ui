@@ -40,7 +40,7 @@ angular.module('echo', [
 
         if (response.status === errorsConfig.UNAUTHORIZED) {
           $location.path('/login.html');
-        } 
+        }
         /** else if(refreshToken) {
           authenticationApi.refresh().finally(function(){
             $location.reload();
@@ -55,16 +55,32 @@ angular.module('echo', [
 
   .controller('AppCtrl', function () { })
 
-  .run(function ($rootScope, $uibModalStack) {
+  .run(function ($rootScope, $uibModalStack, $window, userService, routesConfig, cookieService) {
     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {//jshint unused:false
-      $rootScope.showLoading = true;  //TODO: move to service
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {//jshint unused:false
+
+      if (_.get(toState.data, 'auth')) {
+        var jwt = cookieService.getToken();
+        var user;
+
+        if (jwt) {
+          user = userService.mapJwtToUser(jwt);
+          if (_.get(toState.data, 'role') && toState.data.role !== _.get(user, 'role')) {
+            event.preventDefault();
+          } else {
+            $rootScope.showLoading = true;
+          }
+        } else {
+          event.preventDefault();
+          $window.location = routesConfig.LOGIN.base.url({ redirect: encodeURIComponent($window.location.hash) });
+        }
+      }
     });
 
     $rootScope.$on('$stateChangeSuccess',
       function (event, toState, toParams, fromState, fromParams) { //jshint unused:false
         $uibModalStack.dismissAll();
-        $rootScope.showLoading = false; //TODO: move to service
+        $rootScope.showLoading = false;
       }
     );
   });

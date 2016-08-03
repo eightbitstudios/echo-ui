@@ -1,5 +1,4 @@
-var userRes = require('../data/user-res.js'),
-  responseUtil = require('../util/response-util.js'),
+var responseUtil = require('../util/response-util.js'),
   ResTemplate = require('../data/res-template.js');
 
 var maxDelay = 2,
@@ -15,8 +14,7 @@ module.exports = {
     }, minDelay, maxDelay);
   },
   deactivateUserById: function (req, res) {
-    var resTemplate = new ResTemplate()
-    resTemplate.data = userRes;
+    var resTemplate = new ResTemplate();
 
     responseUtil.timeout(function () {
       res.json(resTemplate);
