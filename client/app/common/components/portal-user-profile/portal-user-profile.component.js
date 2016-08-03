@@ -10,7 +10,8 @@ angular.module('echo.components.portalUserProfile', [
   bindings: {
     portalUser: '<',
     userUpdatedHandler: '&',
-    showLoading: '='
+    showLoading: '=',
+    isCarrierAdmin: '<'
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',

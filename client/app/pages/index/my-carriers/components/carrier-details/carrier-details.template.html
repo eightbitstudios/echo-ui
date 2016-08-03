@@ -27,7 +27,7 @@
           <a ng-click="$ctrl.showDetailsHandler()" class="btn btn-link">
             <div class="echo-icon icon-left-arrow"></div>Back to Details
           </a>
-          <portal-user-profile portal-user="$ctrl.portalUser" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.loadCarrierDetails()">
+          <portal-user-profile portal-user="$ctrl.portalUser" is-carrier-admin="$ctrl.isCarrierAdmin" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.loadCarrierDetails()">
             <button class="btn btn-default" ng-click="$ctrl.loadCarrierDetails()">
                 Back to Carrier Details
               </button>
