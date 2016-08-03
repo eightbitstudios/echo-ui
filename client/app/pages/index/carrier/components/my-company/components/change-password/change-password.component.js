@@ -18,6 +18,7 @@ angular.module('echo.index.carrier.myCompany.userProfile.changePassword', [
       that.currentPassword = null;
       that.showButtonLoading = false;
       that.changePasswordForm = null;
+      that.passwordChanged = false;
       that.errorsConfig = errorsConfig;
       that.appConstants = appConstants;
 
@@ -26,7 +27,11 @@ angular.module('echo.index.carrier.myCompany.userProfile.changePassword', [
         if (that.changePasswordForm.$valid) {
           that.serverError = null;
           that.showButtonLoading = true;
-          authenticationApi.changePassword(that.userId, that.currentPassword, that.passwordChange).catch(function (errorCode) {
+          that.passwordChanged = false;
+          authenticationApi.changePassword(that.userId, that.currentPassword, that.passwordChange).then(function () {
+
+            that.passwordChanged = true;
+          }).catch(function (errorCode) {
             that.serverError = errorCode;
           }).finally(function () {
             that.showButtonLoading = false;

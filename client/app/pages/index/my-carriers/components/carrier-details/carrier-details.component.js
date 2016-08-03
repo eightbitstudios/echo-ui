@@ -20,6 +20,7 @@ angular.module('echo.index.myCarriers.carrierDetails', [
       };
 
       that.showLoading = false;
+      that.isCarrierAdmin = false;
 
       that.carrierId = $stateParams.carrierId;
       that.usersRoute = routesConfig.INDEX.myCompanyUsers;

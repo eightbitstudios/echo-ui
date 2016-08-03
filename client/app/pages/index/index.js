@@ -7,6 +7,7 @@ angular.module('echo.index', [
   'echo.index.controller',
   'echo.index.myCarriers',
   'echo.index.settings',
+  'echo.enums.roles',
   'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
@@ -16,21 +17,24 @@ angular.module('echo.index', [
   'echo.services.cookie',
   'echo.services.user',
   'templates-app'
-]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig) {
-  $urlRouterProvider.otherwise('/myCarriers');
+]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
+  $urlRouterProvider.otherwise('/');
 
   // ROUTES
   $stateProvider
     .state(routesConfig.INDEX.base.name, {
       url: routesConfig.INDEX.base.route,
       abstract: true,
+      data: {
+        auth: true
+      },
       resolve: {
         user: function ($q, cookieService, userService) {
           var jwt = cookieService.getToken();
-          
-          if(jwt){
+
+          if (jwt) {
             var userObj = userService.mapJwtToUser(jwt);
-          	userService.setUser(userObj);
+            userService.setUser(userObj);
           }
 
           var user = userService.getUser();
@@ -54,39 +58,42 @@ angular.module('echo.index', [
         }
       }
     })
-    .state(routesConfig.INDEX.settings.name, {
+    .state(routesConfig.INDEX.settings.name, { // #/settings
       url: routesConfig.INDEX.settings.route,
       template: '<settings></settings>'
     })
-    .state(routesConfig.INDEX.myCarriers.name, {
+    .state(routesConfig.INDEX.myCarriers.name, {  // #/myCarrier
       url: routesConfig.INDEX.myCarriers.route,
-      template: '<my-carriers></my-carriers>'
+      template: '<my-carriers></my-carriers>',
+      data: {
+        role: RolesEnum.ECHO_REP
+      }
     })
-    .state(routesConfig.INDEX.carrier.name, {
-      url: routesConfig.INDEX.carrier.route,
-      template: '<carrier></carrier>'
-    })
-    .state(routesConfig.INDEX.myCompany.name, {
-      url: routesConfig.INDEX.myCompany.route,
-      template: '<my-company carrier-id="$ctrl.carrierId"></my-company>'
-    })
-    .state(routesConfig.INDEX.dashboard.name, {
-      url: routesConfig.INDEX.dashboard.route,
-      template: '<dashboard></dashboard>'
-    })
-    .state(routesConfig.INDEX.myCarriersDetails.name, {
+    .state(routesConfig.INDEX.myCarriersDetails.name, { // #/myCarrier/:carrierId
       url: routesConfig.INDEX.myCarriersDetails.route,
       template: '<carrier-details></carrier-details>'
     })
-    .state(routesConfig.INDEX.myCompanyUsers.name, {
+    .state(routesConfig.INDEX.carrier.name, { // #/carrier/:carrierId
+      url: routesConfig.INDEX.carrier.route,
+      template: '<carrier></carrier>'
+    })
+    .state(routesConfig.INDEX.dashboard.name, { // #/carrier/:carrierId/dashboard
+      url: routesConfig.INDEX.dashboard.route,
+      template: '<dashboard></dashboard>'
+    })
+    .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
+      url: routesConfig.INDEX.myCompany.route,
+      template: '<my-company carrier-id="$ctrl.carrierId"></my-company>'
+    })
+    .state(routesConfig.INDEX.myCompanyUsers.name, {  // #/carrier/:carrierId/myCompany/portalUsers
       url: routesConfig.INDEX.myCompanyUsers.route,
       template: '<my-company-portal-users></my-company-portal-users>'
     })
-    .state(routesConfig.INDEX.myCompanyDrivers.name, {
+    .state(routesConfig.INDEX.myCompanyDrivers.name, {  // #/carrier/:carrierId/myCompany/drivers
       url: routesConfig.INDEX.myCompanyDrivers.route,
       template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>'
     })
-    .state(routesConfig.INDEX.myCompanyDriverProfile.name, {
+    .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,
       template: '<my-company-driver-profile carrier-id="$ctrl.carrierId"></my-company-driver-profile>'
     });

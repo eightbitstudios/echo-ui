@@ -4,16 +4,18 @@ angular.module('echo.components.portalUserProfile', [
   'echo.config.routes',
   'echo.models.user',
   'echo.directives.phoneNumberMask',
-  'echo.components.loadingButton'
+  'echo.components.loadingButton',
+  'echo.api.portalUser'
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
     userUpdatedHandler: '&',
-    showLoading: '='
+    showLoading: '=',
+    isCarrierAdmin: '<'
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
-  controller: function ($state, routesConfig, portalUserService) {
+  controller: function ($state, routesConfig, portalUserApi) {
     var that = this;
 
     that.mode = {
@@ -29,7 +31,7 @@ angular.module('echo.components.portalUserProfile', [
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
       that.showButtonLoading = true;
-      portalUserService.upsertPortalUser(portalUser).then(function () {
+      portalUserApi.upsertPortalUser(portalUser).then(function () {
         that.modeShow = that.mode.SENT;
         if (!that.isNewProfile) {
           that.userUpdatedHandler();
@@ -43,7 +45,7 @@ angular.module('echo.components.portalUserProfile', [
 
     that.removeUserHandler = function (portalUser) {
       that.showButtonLoading = true;
-      portalUserService.deactivatePortalUserById(portalUser).then(function () {
+      portalUserApi.deactivatePortalUserById(portalUser).then(function () {
         that.userUpdatedHandler();
       }).catch(function (message) {
         that.serverError = message;

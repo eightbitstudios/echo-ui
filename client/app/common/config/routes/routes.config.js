@@ -21,24 +21,24 @@ angular.module('echo.config.routes', [])
       },
       carrier: {
         name: 'index.carrier',
-        route:'carrier/:carrierId?isCarrierAdmin'
+        route:'carrier/:carrierId'
       },
       dashboard: {
         name: 'index.carrier.dashboard',
-        route:'/dashboard?isCarrierAdmin'
+        route:'/dashboard'
       },
       myCompany: {
         name: 'index.carrier.myCompany',
-        route:'/myCompany?isCarrierAdmin',
+        route:'/myCompany',
         url: _.template('/#/carrier/${carrierId}/myCompany')
       },
       myCompanyUsers: {
         name: 'index.carrier.myCompany.portalUsers',
-        route: '/portalUsers?isCarrierAdmin'
+        route: '/portalUsers'
       },
       myCompanyDrivers: {
         name: 'index.carrier.myCompany.drivers',
-        route: '/drivers?isCarrierAdmin'
+        route: '/drivers'
       },
       myCompanyDriverProfile: {
         name: 'index.carrier.myCompany.driverProfile',
@@ -48,7 +48,8 @@ angular.module('echo.config.routes', [])
     LOGIN: {
       base: {
         name: 'login',
-        route: '/login.html'
+        route: '/login.html',
+        url: _.template('/login.html#/?redirect=${redirect}')
       },
       signIn: {
         name: 'login.signIn',
