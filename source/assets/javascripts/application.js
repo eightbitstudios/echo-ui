@@ -127,7 +127,6 @@ $(window).load(function(){
 
 		function resetSdpTrigger() {
 			$sdpTrigger.html('APPT. Date').removeClass('filter__assigned');
-			$sdpTrigger.removeClass('active');
 			$sdpTrigger.blur();
 		}
 
@@ -182,7 +181,7 @@ $(window).load(function(){
 			resetSdpTrigger();
 		});
 
-		$sdpTrigger.on('blur.daterangepicker', function(ev, picker) {
+		$sdpTrigger.on('hide.daterangepicker', function(ev, picker) {
 			$sdpTrigger.removeClass('active');
 		});
 
@@ -251,6 +250,8 @@ $(window).load(function(){
 				$dropdown = $('.dropdown-filter')
 
 		$dropdownButton.on('click', function(e) {
+
+			$dropdownButton.addClass('btn-active')
 			e.stopPropagation()
 			var left = $(this).position().left,
 			    top = $(this).position().top,
@@ -283,6 +284,9 @@ $(window).load(function(){
 		function resetDropdownFilter() {
 			$dropdown.find('input').val('');
 			$dropdown.hide();
+
+			$sdpTrigger.removeClass('btn-active')
+			$dropdownButton.removeClass('btn-active')
 			$dropdown.find('input[type=checkbox]').prop('checked', false);
 		}
 
@@ -307,6 +311,9 @@ $(window).load(function(){
 				ev.stopPropagation();
 				resetDropdownButton();
 			})
+
+			$dropdownButton.removeClass('btn-active')
+			$sdpTrigger.removeClass('active')
 			$dropdown.toggle()
 		}
 
