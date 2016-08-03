@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('echo.services.portalUser', [
+angular.module('echo.api.portalUser', [
   'echo.config.api',
   'echo.services.portalUserReqConverter'
 ])
-  .factory('portalUserService', function ($http, $q, apiConfig, portalUserReqConverterService) {
+  .factory('portalUserApi', function ($http, $q, apiConfig, portalUserReqConverterService) {
 
     return {
 

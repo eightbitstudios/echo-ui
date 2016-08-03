@@ -1,5 +1,5 @@
 angular.module('echo.index.carrier.myCompany.userProfile', [
-  'echo.services.portalUser',
+  'echo.api.portalUser',
   'echo.components.portalUsers',
   'echo.components.tabBar',
   'echo.components.passwordValidation',
@@ -23,7 +23,7 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
 
       that.passwordChange = new PasswordChangeModel();
       that.currentPassword = null;
-      that.userId = userService.getUser().userId;
+      that.user = userService.getUser();
 
       that.goBackToPortal = function () {
         that.goBackHandler();
