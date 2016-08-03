@@ -37,9 +37,8 @@ angular.module('echo.index', [
           return $q.when(user);
         },
         repDetails: function (repDetailsService, user) {
-          if (_.isFunction(user.isRepAdmin) && !user.isRepAdmin()) {
-            return repDetailsService.fetchRepByCarrierId(user.carrierId);
-          }
+            return repDetailsService.fetchRepByCarrierId(1);
+          
         }
       },
       views: {
