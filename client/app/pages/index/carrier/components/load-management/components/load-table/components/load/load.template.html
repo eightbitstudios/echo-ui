@@ -1,5 +1,7 @@
 <div class="load">
-  <h2 class="load-number"><a href="#">123443211</a></h2>
-  <p class="label">Pro:</p>
-  <p>1234567890</p>
+  <h2 class="load-number"><a href="javascript:void(0)">{{$ctrl.load.loadNumber}}</a></h2>
+  <span ng-if="$ctrl.load.proNumber">
+    <p class="label">Pro:</p>
+    <p>{{$ctrl.load.proNumber}}</p>
+  </span>
 </div>

@@ -12,7 +12,9 @@ angular.module('echo.index.carrier', [
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
   controller: function ($stateParams, carrierApi) {
     var that = this;
-    carrierApi.fetchCarrierById($stateParams.carrierId).then(function (carrierDetails) {
+    that.carrierId = $stateParams.carrierId;
+    
+    carrierApi.fetchCarrierById(that.carrierId).then(function (carrierDetails) {
       that.carrierDetails = carrierDetails;
       that.carrierId = carrierDetails.carrierId;
     });

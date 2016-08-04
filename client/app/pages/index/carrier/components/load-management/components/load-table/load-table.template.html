@@ -2,6 +2,7 @@
   <section>
     <div class="row">
       <div class="col-md-12">
+        {{ctrl.loads}}
         <table class="table table-carrier-dashboard">
           <thead>
             <tr>
@@ -14,24 +15,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr ng-repeat="loadManagement in $ctrl.loads">
               <td class="carrier-dashboard-load">
-                <load></load>
+                <load load="loadManagement.load"></load>
               </td>
               <td class="carrier-dashboard-pickup">
-                <location></location>
+                <shipping-details shipping-details="loadManagement.pickup"></shipping-details>
               </td>
               <td class="carrier-dashboard-arrow">
                 <span class="echo-icon icon-right-arrow-dark"></span>
               </td>
               <td class="carrier-dashboard-delivery">
-                <location></location>
+                <shipping-details shipping-details="loadManagement.delivery"></shipping-details>
               </td>
               <td>
-                <driver></driver>
+                <driver driver="loadManagement.driver"></driver>
               </td>
               <td>
-                <action></action>
+                <action action="loadManagement.action"></action>
               </td>
             </tr>
           </tbody>

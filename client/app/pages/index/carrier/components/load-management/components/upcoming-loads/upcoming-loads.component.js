@@ -1,14 +1,20 @@
 angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
   'echo.index.carrier.loadManagement.loadTable',
-  'echo.components.echoRepContact'
+  'echo.components.echoRepContact',
+  'echo.api.loads'
 ])
   .component('upcomingLoads', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/upcoming-loads/upcoming-loads.template.html',
     bindings: {
-      repDetails: '<'
+      repDetails: '<',
+      carrierId: '<'
     },
-    controller: function () {      
+    controller: function (loadsApi) {
       var that = this;
-      that.showLoading = false;
+      
+      that.showLoading = true;
+      loadsApi.fetchUpcomingLoads(that.carrierId).finally(function () {
+        that.showLoading = false;
+      });
     }
   });

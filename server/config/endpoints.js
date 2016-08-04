@@ -1,6 +1,10 @@
 
 module.exports = {
   api: {
+    availableLoadsByCarrierId: '/mock/api/v1/carriers/:carrierId/loads/active',
+    unbilledLoadsByCarrierId: '/mock/api/v1/carriers/:carrierId/loads/unbilled',
+    upcomingLoadsByCarrierId: '/mock/api/v1/carriers/:carrierId/loads/upcoming',
+    loadCountByCarrierId: '/mock/api/v1/carriers/:carrierId/loads/count',
     carriers: '/mock/api/v1/carriers',
     carrierById: '/mock/api/v1/carriers/:carrierId',
     createPassword: '/mock/api/v1/users/:userId/createPassword',
