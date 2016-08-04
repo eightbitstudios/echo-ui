@@ -141,7 +141,8 @@
     -moz-osx-font-smoothing: grayscale
 
     &:hover,
-    &.active
+    &.active,
+    &.btn-active
       color: #fff
       border-color: $gray-mid-light
       background-color: $gray-mid-light
@@ -149,13 +150,11 @@
 
     &:focus,
     &:active
-      color: $gray-mid-light
-      border-color: $gray-mid-light
+      box-shadow: none
+      color: #fff
       +tablet
-        color: #fff
         border-color: $gray-mid-light
         background-color: $gray-mid-light
-        box-shadow: none
 
     
     &.filter__assigned
@@ -165,7 +164,7 @@
       line-height: 1.4
       letter-spacing: 0
       text-transform: none
-      padding: 9px 25px 10px 15px
+      padding: 9px 45px 10px 15px
       border-color: $bright-blue
       background-color: $bright-blue
       transition: none
@@ -197,14 +196,16 @@
           content: image-url('icon-calendar-white.svg')
 
     span.close
-      position: relative
+      position: absolute
+      z-index: 999999
+      top: 50%
+      right: 15px
+      width: 9px
+      height: 9px
       opacity: 1
       font-size: 0
       line-height: 0
-      width: 12px
-      height: auto
-      margin: 2px -10px 0 20px
-      z-index: 999999
+      margin-top: -6px
 
       &:after,
       &:before
