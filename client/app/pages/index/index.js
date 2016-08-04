@@ -37,7 +37,7 @@ angular.module('echo.index', [
           var user = userService.getUser();
           return $q.when(user);
         },
-        repDetails: function (repApi, user) {
+        repDetails: function (user, repApi) {
           return repApi.fetchRepByCarrierId(user.carrierId);
         }
       },

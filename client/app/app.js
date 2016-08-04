@@ -8,6 +8,7 @@ angular.module('echo', [
   'echo.config.api',
   'echo.config.errors',
   'echo.services.cookie',
+  'echo.services.user',
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -77,7 +78,7 @@ angular.module('echo', [
             $rootScope.showLoading = true;
           }
         } else {
-          event.preventDefault(); //Reroute user to the login page if they are not authenticated
+          event.preventDefault(); // Reroute user to the login page if they are not authenticated
           $window.location = routesConfig.LOGIN.base.url({ redirect: encodeURIComponent($window.location.hash) });
         }
       }
