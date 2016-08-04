@@ -17,13 +17,11 @@ angular.module('echo.index', [
   'echo.services.user',
   'templates-app'
 ]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
-  $urlRouterProvider.otherwise('/myCarrier');
 
   // ROUTES
   $stateProvider
     .state(routesConfig.INDEX.base.name, {
       url: routesConfig.INDEX.base.route,
-      abstract: true,
       data: {
         auth: true
       },
