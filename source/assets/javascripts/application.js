@@ -294,6 +294,7 @@ $(window).load(function(){
 			$btnFilter.blur()
 			$('.close').remove();
 			$('.btn-filter-dropdown').html('Stop Location').removeClass('filter__assigned');
+			resetDropdownFilter()
 		}
 
 		function applyDropdownFilter() {
