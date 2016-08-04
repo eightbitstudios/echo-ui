@@ -17,7 +17,7 @@ angular.module('echo.index', [
   'echo.services.user',
   'templates-app'
 ]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/myCarrier');
 
   // ROUTES
   $stateProvider
@@ -40,7 +40,7 @@ angular.module('echo.index', [
           return $q.when(user);
         },
         repDetails: function (repApi, user) {
-          return repApi.fetchRepByCarrierId(1);
+          return repApi.fetchRepByCarrierId(user.carrierId);
         }
       },
       views: {
@@ -71,7 +71,8 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCarriers.route,
       template: '<my-carriers></my-carriers>',
       data: {
-        role: RolesEnum.ECHO_REP
+        role: RolesEnum.ECHO_REP,
+        reroute: routesConfig.INDEX.carrier.name
       }
     })
     .state(routesConfig.INDEX.myCarriersDetails.name, { // #/myCarrier/:carrierId
@@ -90,19 +91,19 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.dashboard.route,
       template: '<dashboard></dashboard>'
     })
-    .state(routesConfig.INDEX.loadManagement.name, {
+    .state(routesConfig.INDEX.loadManagement.name, { // #/carrier/:carrierId/loadManagement
       url: routesConfig.INDEX.loadManagement.route,
       template: '<load-management rep-details="$ctrl.repDetails"></load-management>'
     })
-    .state(routesConfig.INDEX.activeLoads.name, {
+    .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
       url: routesConfig.INDEX.activeLoads.route,
       template: '<active-loads rep-details="$ctrl.repDetails"></active-loads>'
     })
-    .state(routesConfig.INDEX.unbilledLoads.name, {
+    .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
       url: routesConfig.INDEX.unbilledLoads.route,
       template: '<unbilled-loads rep-details="$ctrl.repDetails"></unbilled-loads>'
     })
-    .state(routesConfig.INDEX.upcomingLoads.name, {
+    .state(routesConfig.INDEX.upcomingLoads.name, { // #/carrier/:carrierId/loadManagement/upcomingLoads
       url: routesConfig.INDEX.upcomingLoads.route,
       template: '<upcoming-loads rep-details="$ctrl.repDetails"></upcoming-loads>'
     })
