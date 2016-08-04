@@ -1,6 +1,5 @@
 angular.module('echo.index.carrier.myCompany.portalUsers', [
   'echo.api.carrier',
-  'echo.services.carrierDetails',
   'echo.config.routes',
   'echo.components.portalUsers',
   'echo.components.portalUserProfile',
@@ -11,7 +10,7 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
   .component('myCompanyPortalUsers', {
     templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html',
     bindings: {},
-    controller: function ($stateParams, $state, carrierApi, carrierDetailsService, UserModel) {
+    controller: function ($stateParams, $state, carrierApi, UserModel) {
       var that = this;
 
       that.mode = {

@@ -2,14 +2,15 @@
 
 angular.module('echo.components.header', [
   'echo.services.user',
-  'echo.services.repDetails',
   'echo.api.authentication'
 ]).component('appHeader', {
+  bindings: {
+    repDetails: '<'
+  },
   templateUrl: 'app/common/components/header/header.template.html',
-  controller: function ($window, routesConfig, repDetailsService, userService, authenticationApi) {
+  controller: function ($window, routesConfig, userService, authenticationApi) {
     var that = this;
 
-    that.repDetails = repDetailsService.getRepDetails();
     that.user = userService.getUser();
     that.routesConfig = routesConfig;
 

@@ -1,20 +1,13 @@
 'use strict';
 
-angular.module('echo.services.repDetails', [
+angular.module('echo.api.rep', [
   'echo.config.api',
   'echo.models.rep'
 ])
-  .factory('repDetailsService', function ($http, apiConfig, RepModel) {
+  .factory('repApi', function ($http, apiConfig, RepModel) {
     var repDetails = {};
 
     return {
-      /**
-       * @description Retrieves stored rep model
-       */
-      getRepDetails: function () {
-        return repDetails;
-      },
-
       /**
        * @description Retrieves a rep for a carrier
        * @param {number} carrierId - Carrier Id for rep

@@ -7,7 +7,9 @@ angular.module('echo.index.carrier.loadManagement', [
 ])
   .component('loadManagement', {
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
-    bindings: {},
+    bindings: {
+      repDetails: '<'
+    },
     controller: function (routesConfig) {
       var that = this;
 

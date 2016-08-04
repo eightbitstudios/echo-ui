@@ -10,8 +10,7 @@ angular.module('echo.index', [
   'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
-  'echo.services.repDetails',
-  'echo.services.carrierDetails',
+  'echo.api.rep',
   'echo.index.carrier.myCompany.driverProfile',
   'echo.services.cookie',
   'echo.services.user',
@@ -27,29 +26,36 @@ angular.module('echo.index', [
       resolve: {
         user: function ($q, cookieService, userService) {
           var jwt = cookieService.getToken();
-          
-          if(jwt){
+
+          if (jwt) {
             var userObj = userService.mapJwtToUser(jwt);
-          	userService.setUser(userObj);
+            userService.setUser(userObj);
           }
 
           var user = userService.getUser();
           return $q.when(user);
         },
-        repDetails: function (repDetailsService, user) {
-            return repDetailsService.fetchRepByCarrierId(1);
-          
+        repDetails: function (repApi, user) {
+          return repApi.fetchRepByCarrierId(1);
         }
       },
       views: {
         'header': {
-          template: '<app-header></app-header>',
+          template: '<app-header rep-details="$ctrl.repDetails"></app-header>',
+          controller: function (repDetails) {
+            this.repDetails = repDetails;
+          },
+          controllerAs: '$ctrl'
         },
         'body': {
           template: '<div ui-view></div>'
         },
         'footer': {
-          template: '<app-footer></app-footer>',
+          template: '<app-footer rep-details="$ctrl.repDetails"></app-footer>',
+          controller: function (repDetails) {
+            this.repDetails = repDetails;
+          },
+          controllerAs: '$ctrl'
         }
       }
     })
@@ -63,7 +69,11 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.carrier.name, {
       url: routesConfig.INDEX.carrier.route,
-      template: '<carrier></carrier>'
+      template: '<carrier rep-details="$ctrl.repDetails"></carrier>',
+      controller: function (repDetails) {
+        this.repDetails = repDetails;
+      },
+      controllerAs: '$ctrl'
     })
     .state(routesConfig.INDEX.myCompany.name, {
       url: routesConfig.INDEX.myCompany.route,
@@ -75,19 +85,19 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.loadManagement.name, {
       url: routesConfig.INDEX.loadManagement.route,
-      template: '<load-management></load-management>'
+      template: '<load-management rep-details="$ctrl.repDetails"></load-management>'
     })
     .state(routesConfig.INDEX.activeLoads.name, {
       url: routesConfig.INDEX.activeLoads.route,
-      template: '<active-loads></active-loads>'
+      template: '<active-loads rep-details="$ctrl.repDetails"></active-loads>'
     })
     .state(routesConfig.INDEX.unbilledLoads.name, {
       url: routesConfig.INDEX.unbilledLoads.route,
-      template: '<unbilled-loads></unbilled-loads>'
+      template: '<unbilled-loads rep-details="$ctrl.repDetails"></unbilled-loads>'
     })
-        .state(routesConfig.INDEX.upcomingLoads.name, {
+    .state(routesConfig.INDEX.upcomingLoads.name, {
       url: routesConfig.INDEX.upcomingLoads.route,
-      template: '<upcoming-loads></upcoming-loads>'
+      template: '<upcoming-loads rep-details="$ctrl.repDetails"></upcoming-loads>'
     })
     .state(routesConfig.INDEX.myCarriersDetails.name, {
       url: routesConfig.INDEX.myCarriersDetails.route,
