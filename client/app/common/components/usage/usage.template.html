@@ -1,10 +1,9 @@
 <section class="content-container">
   <h2 class="section-header">Batmobile Usage</h2>
   <ul class="checklist">
-    <li class="checklist-approved"><span class="echo-icon icon-check-approved"></span>App installed 6 Months Ago</li>
+    <li class="checklist-approved"><span class="echo-icon" ng-class="{'icon-check-approved': $ctrl.driver.isAppInstalled, 'icon-check-grey': !$ctrl.driver.isAppInstalled}"></span>App {{$ctrl.driver.isAppInstalled ? 'Installed' : 'Not Installed'}}</li>
     <li class="checklist-approved">
-      <span class="echo-icon" ng-class="{'icon-check-approved': $ctrl.driver.trackingEnabled, 'icon-check-grey': !$ctrl.driver.trackingEnabled}"></span>
-      Tracking {{$ctrl.driver.trackingEnabled ? 'Enabled' : 'Disabled'}}
+      <span class="echo-icon" ng-class="{'icon-check-approved': $ctrl.driver.isTrackingEnabled, 'icon-check-grey': !$ctrl.driver.isTrackingEnabled}"></span>Tracking {{$ctrl.driver.isTrackingEnabled ? 'Enabled' : 'Disabled'}}
     </li>
     <li class="checklist-approved"><span class="echo-icon icon-check-approved"></span>Last Login: 09:00 CST, Fri Jun 17</li>
   </ul>

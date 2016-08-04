@@ -25,6 +25,14 @@ angular.module('echo.models.user', [
     };
 
     /**
+     * @description If the user is the rep admin
+     * @return {boolean}
+     */
+    User.prototype.isCarrierAdmin = function () {
+      return this.role === RolesEnum.CARRIER_ADMIN;
+    };
+
+    /**
      * @description Returns user role name
      * @return {string}
      */

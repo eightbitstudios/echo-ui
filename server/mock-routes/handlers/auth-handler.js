@@ -1,4 +1,6 @@
 var ResTemplate = require('../data/res-template.js'),
+  userProfiles = require('../data/user-profiles-res.js'),
+  _ = require('lodash'),
   responseUtil = require('../util/response-util.js');
 
 var maxDelay = 2,
@@ -38,6 +40,17 @@ module.exports = {
       else if (req.body.password === 'deactivated') {
         res.status(400);
         resTemplate.status.code = 401003;
+      } else {
+        var login = _.find(userProfiles, { email: req.body.username });
+
+        if (login) {
+          var padding = 'padding';
+          resTemplate.data = {
+            access_token: _.join([padding, new Buffer(JSON.stringify(login)).toString('base64'), padding], '.')
+          }
+        } else {
+          res.status(401001);
+        }
       }
       res.json(resTemplate);
     }, minDelay, maxDelay);

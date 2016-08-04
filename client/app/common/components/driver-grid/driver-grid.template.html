@@ -36,7 +36,7 @@
                 </h3>
               <span><tel>{{driver.phone | phoneNumber}}</tel></span>
             </td>
-            <td class="driverlist-col-usage">App Installed <br>Tracking {{driver.trackingEnabled ? 'Enabled' : 'Disabled'}}</td>
+            <td class="driverlist-col-usage">App {{driver.isAppInstalled ? 'Installed' : 'Not Installed'}} <br>Tracking {{driver.isTrackingEnabled ? 'Enabled' : 'Disabled'}}</td>
             <td class="driverlist-col-tractor">{{driver.tractor}}</td>
             <td class="driverlist-col-lang">{{driver.language}}</td>
             <td class="driverlist-col-current">

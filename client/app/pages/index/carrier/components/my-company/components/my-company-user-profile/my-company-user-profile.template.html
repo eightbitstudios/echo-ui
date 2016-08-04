@@ -3,7 +3,7 @@
     <div class="echo-icon icon-left-arrow" data-grunticon-embed></div>Back To Portal User List</a>
   <div class="row">
     <div class="col-sm-6">
-      <portal-user-profile portal-user="$ctrl.portalUser" show-loading="$ctrl.showLoading" user-updated-handler="$ctrl.userProfileUpdated()">
+      <portal-user-profile portal-user="$ctrl.portalUser" show-loading="$ctrl.showLoading" is-carrier-admin="$ctrl.user.isCarrierAdmin()" user-updated-handler="$ctrl.userProfileUpdated()">
         <button class="btn btn-default" ng-click="$ctrl.userProfileUpdated()">
           Back to Portal User List
         </button>
@@ -11,7 +11,7 @@
     </div>
     <div class="col-sm-6" ng-if="$ctrl.portalUser.id">
       <resend-invite></resend-invite>
-      <change-password ng-if="$ctrl.userId === $ctrl.portalUser.id" user-id="$ctrl.userId"></change-password>
+      <change-password ng-if="$ctrl.user.userId === $ctrl.portalUser.id" user-id="$ctrl.user.userId"></change-password>
     </div>
   </div>
 </div>

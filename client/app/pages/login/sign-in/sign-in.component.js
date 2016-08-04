@@ -6,7 +6,7 @@ angular.module('echo.login.signIn', [
   'echo.config.errors'
 ]).component('signIn', {
   templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
-  controller: function ($window, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, appConstants, userService) {
+  controller: function ($window, $location, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, appConstants, userService) {
     var that = this;
 
     that.routesConfig = routesConfig;
@@ -27,8 +27,10 @@ angular.module('echo.login.signIn', [
         that.showButtonLoading = true;
         authenticationApi.signIn(that.email, that.password).then(function (loginTokens) {
           var user = userService.mapJwtToUser(loginTokens.access_token); // jshint ignore:line
-
-          if(user.isRepAdmin()){
+          var queryParams = $location.search();
+          if(!_.isEmpty(queryParams.redirect)) {
+            $window.location = '/' + queryParams.redirect;
+          } else if(user.isRepAdmin()) {
             $window.location = routesConfig.INDEX.myCarriers.url;
           }else{
             $window.location = routesConfig.INDEX.myCompany.url({carrierId: user.carrierId});
