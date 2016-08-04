@@ -17,6 +17,8 @@ angular.module('echo.config.appConstants', [])
       passwordUpperCase: /[^a-z0-9]/
     },
     ERROR_MESSAGES: {
+      400115: 'Email address already exists',
+      // TODO: Change properties below to proper error codes
       passwordsDoNotMatch: 'Passwords do not match',
       enterYourPassword: 'Enter your password',
       enterYourEmailAddress: 'Enter your email address',
@@ -25,6 +27,5 @@ angular.module('echo.config.appConstants', [])
       invalidPassword: 'Invalid password',
       userDeactivated: 'User account is Deactivated.',
       currentPasswordRequred: 'Current password is required',
-
     }
   });

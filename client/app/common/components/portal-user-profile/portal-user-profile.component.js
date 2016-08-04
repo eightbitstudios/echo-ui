@@ -5,7 +5,8 @@ angular.module('echo.components.portalUserProfile', [
   'echo.models.user',
   'echo.directives.phoneNumberMask',
   'echo.components.loadingButton',
-  'echo.api.portalUser'
+  'echo.api.portalUser',
+  'echo.components.serverErrors'
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
