@@ -33,7 +33,7 @@ module.exports = [{
       lastName: 'Potatoe'
     },
     time: '2014-03-24T01:15:000',
-    nextAction: 'ReportedEmpty',
+    nextAction: 'ReportArrivalAtPickup',
     onTime: true,
     lateBy: null
   },
@@ -73,7 +73,7 @@ module.exports = [{
       lastName: 'Potatoe'
     },
     time: '2014-03-24T01:15:000',
-    nextAction: 'ReportedEmpty',
+    nextAction: 'ReportArrivalAtPickup',
     onTime: false,
     lateBy: null
   },
