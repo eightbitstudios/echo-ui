@@ -47,7 +47,8 @@ angular.module('echo.index.myCarriers.carrierDetails', [
       };
 
       that.showPortalUserHandler = function (user) {
-        that.portalUser = user || new UserModel({carrierId: that.carrier.carrierId});
+        that.portalUser = user || new UserModel();
+        that.portalUser.carrierId = that.carrierId;
         that.showPortalUser();
       };
 
