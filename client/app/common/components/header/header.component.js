@@ -14,7 +14,7 @@ angular.module('echo.components.header', [
     that.routesConfig = routesConfig;
 
     that.signOutHandler = function () {
-      authenticationApi.signOut(that.user.id).then(function () {
+      authenticationApi.signOut(that.user.userId).then(function () {
         $window.location = routesConfig.LOGIN.base.route;
       });
     };
