@@ -21,8 +21,9 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.showLoading = true;
       loadsApi.fetchAvailableLoads(that.carrierId, that.paging).then(function (availableLoadData) {
         that.paging.totalRecords = availableLoadData.totalRecords;
+        that.paging.recordCount = _.size(availableLoadData.data);
         that.activeLoads = availableLoadData.data;
-        that.activeLoadCount = _.size(that.activeLoads);
+        that.activeLoadCount = availableLoadData.totalRecords;
       }).finally(function () {
         that.showLoading = false;
       });

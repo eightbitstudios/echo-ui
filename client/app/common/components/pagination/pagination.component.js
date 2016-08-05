@@ -1,8 +1,11 @@
 'use strict';
 
-angular.module('echo.components.pagination', []).component('pagination', {
+angular.module('echo.components.pagination', [
+  'echo.filters.paging'
+]).component('pagination', {
   bindings: {
     pageClickHandler: '&',
+    recordType: '@',
     pagingModel: '='
   },
   templateUrl: 'app/common/components/pagination/pagination.template.html',

@@ -10,6 +10,7 @@ angular.module('echo.models.paging', []).factory('PagingModel', function () {
     that.offset = 1;
     that.limit = limit;
     that.totalRecords = 0;
+    that.recordCount = 0;
     that.selectedPage = 1;
   }
 

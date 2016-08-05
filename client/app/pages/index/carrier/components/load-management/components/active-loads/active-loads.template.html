@@ -15,6 +15,6 @@
   <loading show-loading="$ctrl.showLoading"></loading>
   <load-table loads="$ctrl.activeLoads" ng-if="!$ctrl.showLoading"></load-table>
   <div class="container main-content">
-    <pagination page-click-handler="$ctrl.getAvailableLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading"></pagination>
+    <pagination page-click-handler="$ctrl.getAvailableLoads()" paging-model="$ctrl.paging" record-type="Active Loads" ng-if="!$ctrl.showLoading"></pagination>
   </div>
 </div>
