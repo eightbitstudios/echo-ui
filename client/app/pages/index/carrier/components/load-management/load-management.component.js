@@ -1,5 +1,6 @@
 angular.module('echo.index.carrier.loadManagement', [
   'echo.components.tabBar',
+  'echo.components.searchBar',
   'echo.config.routes',
   'echo.api.loads',
   'echo.index.carrier.loadManagement.activeLoads',
@@ -15,11 +16,15 @@ angular.module('echo.index.carrier.loadManagement', [
     controller: function (routesConfig) {
       var that = this;
 
+      that.searchText = '';
+      that.activeLoadCount = 0;
+
       //that.showLoading = true;
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
+
       that.tabItems = [{
-        title: '0 Active Loads',
+        title: ' Active Loads',
         link: routesConfig.INDEX.activeLoads.name
       }, {
           title: '0 Unbilled Loads',
@@ -28,6 +33,10 @@ angular.module('echo.index.carrier.loadManagement', [
           title: '0 Upcoming Loads',
           link: routesConfig.INDEX.upcomingLoads.name
         }];
+
+        that.$onChanges = function() {
+              that.tabItems[0].title = that.activeLoadCount + ' Active Loads';
+        };
 
       /*
            loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {

@@ -2,6 +2,7 @@
   <loading show-loading="$ctrl.showLoading"></loading>
   <div ng-if="!$ctrl.showLoading">
     <tab-bar tab-items="$ctrl.tabItems" default-route="$ctrl.defaultRoute">
+      <search-bar search-text="$ctrl.searchText"></search-bar>
     </tab-bar>
     <div ui-view></div>
   </div>

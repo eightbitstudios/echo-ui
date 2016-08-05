@@ -2,7 +2,7 @@ angular.module('echo.index.myCarriers.allCarriers', [
   'echo.api.carrier',
   'echo.config.routes',
   'echo.services.user',
-  'echo.components.searchBar',
+  'echo.components.filterBar',
   'echo.components.loading',
   'echo.components.sidebarList',
   'echo.config.appConstants'
