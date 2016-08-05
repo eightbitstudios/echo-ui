@@ -22,12 +22,21 @@
 
 
 .status-alert
-  
+  color: $warning
+  position: relative
+
   &:before
-    content: ''
+    content: image-url('icon-warning.svg')
+    position: absolute
+    top: 0.25rem
+    left: -16px
+
+.btn.btn-status-alert
+  color: $warning
+  position: relative
+  padding: 0
+
+  &:before
+    content: image-url('icon-warning.svg')
     display: inline-block
-    width: 7px
-    height: 7px
     margin-right: 5px
-    border-radius: 100%
-    background-color: $warning

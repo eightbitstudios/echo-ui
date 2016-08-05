@@ -14,6 +14,7 @@
         %h2.load-number=link_to '123443211', '#'
         %p.label Pro:
         %p 1234567890
+        =link_to 'Details Updated', '#', class: 'btn btn-link btn-status-alert'
       %td.carrier-dashboard-pickup
         .location-pickup.match-height
           .lead
@@ -121,7 +122,8 @@
             Today, Apr 20
       %td
         .carrier-dashboard-driver.match-height
-          =link_to 'Assign Driver', '#', class: 'btn btn-default'
+          %button.btn.btn-default{data: {toggle: 'modal', target: '.modal-assign-driver'}}
+            Assign Driver
       %td
         .carrier-dashboard-action.match-height
           %h3.driver-name=link_to 'Reported Empty'

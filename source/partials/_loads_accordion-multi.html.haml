@@ -13,14 +13,15 @@
         .row
           .details-location.col-sm-4
             %h5.small-header Location
-            %span.loc-name.status-alert Walmart Warehouse A34 
-            %br
-            %span.loc-addr1 555 W. Western
-            %br
-            %span.loc-addr2 Dock #123
-            %br
-            %span.loc-region Bartville, IN
-            %br
+            .status-alert
+              %span.loc-name Walmart Warehouse A34 
+              %br
+              %span.loc-addr1 555 W. Western
+              %br
+              %span.loc-addr2 Dock #123
+              %br
+              %span.loc-region Bartville, IN
+              %br
             =link_to '#' do
               Open in Maps
               =image_tag('icon_window.svg')

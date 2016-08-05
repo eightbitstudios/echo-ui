@@ -8270,21 +8270,12 @@ p.label {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
     /* line 143, base/_buttons.sass */
-    .btn.btn-filter:hover, .btn.btn-filter.active, .btn.btn-filter.btn-active {
+    .btn.btn-filter:hover, .btn.btn-filter.active, .btn.btn-filter:focus, .btn.btn-filter:active, .btn.btn-filter.btn-active {
       color: #fff;
       border-color: #a9adaf;
       background-color: #a9adaf;
       box-shadow: none; }
-    /* line 151, base/_buttons.sass */
-    .btn.btn-filter:focus, .btn.btn-filter:active {
-      box-shadow: none;
-      color: #fff; }
-      @media (min-width: 769px) {
-        /* line 151, base/_buttons.sass */
-        .btn.btn-filter:focus, .btn.btn-filter:active {
-          border-color: #a9adaf;
-          background-color: #a9adaf; } }
-    /* line 160, base/_buttons.sass */
+    /* line 153, base/_buttons.sass */
     .btn.btn-filter.filter__assigned {
       color: #fff;
       font-family: "Open Sans", sans-serif;
@@ -8297,17 +8288,17 @@ p.label {
       background-color: #26c1fb;
       -webkit-transition: none;
       transition: none; }
-      /* line 171, base/_buttons.sass */
+      /* line 164, base/_buttons.sass */
       .btn.btn-filter.filter__assigned:hover {
         border-color: #1e9ac9;
         background-color: #1e9ac9; }
-    /* line 175, base/_buttons.sass */
+    /* line 168, base/_buttons.sass */
     .btn.btn-filter.btn-date-picker {
       padding-left: 45px; }
-      /* line 179, base/_buttons.sass */
+      /* line 172, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker.filter__assigned:before {
         content: url("../images/icon-calendar-white.svg"); }
-      /* line 182, base/_buttons.sass */
+      /* line 175, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker:before {
         content: url("../images/icon-calendar-gray.svg");
         display: inline-block;
@@ -8317,10 +8308,10 @@ p.label {
         width: 18px;
         height: auto;
         margin-right: 6px; }
-      /* line 195, base/_buttons.sass */
+      /* line 188, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker:hover:before, .btn.btn-filter.btn-date-picker:active:before, .btn.btn-filter.btn-date-picker:focus:before {
         content: url("../images/icon-calendar-white.svg"); }
-    /* line 198, base/_buttons.sass */
+    /* line 191, base/_buttons.sass */
     .btn.btn-filter span.close {
       position: absolute;
       z-index: 999999;
@@ -8332,7 +8323,7 @@ p.label {
       font-size: 0;
       line-height: 0;
       margin-top: -6px; }
-      /* line 210, base/_buttons.sass */
+      /* line 203, base/_buttons.sass */
       .btn.btn-filter span.close:after, .btn.btn-filter span.close:before {
         content: "";
         width: 12px;
@@ -8345,11 +8336,11 @@ p.label {
         opacity: 1;
         -webkit-transform: translateX(-50%) rotateZ(45deg);
                 transform: translateX(-50%) rotateZ(45deg); }
-      /* line 223, base/_buttons.sass */
+      /* line 216, base/_buttons.sass */
       .btn.btn-filter span.close:after {
         -webkit-transform: translateX(-50%) rotateZ(-45deg);
                 transform: translateX(-50%) rotateZ(-45deg); }
-  /* line 227, base/_buttons.sass */
+  /* line 220, base/_buttons.sass */
   .btn.btn-document {
     position: relative;
     color: #a9adaf;
@@ -8363,21 +8354,21 @@ p.label {
     background-color: #f7f7f7;
     border-radius: 0;
     border: dotted 1px #a9adaf; }
-    /* line 241, base/_buttons.sass */
+    /* line 234, base/_buttons.sass */
     .btn.btn-document.btn-document_primary {
       color: #26c1fb;
       border: dotted 1px #26c1fb;
       background: rgba(38, 193, 251, 0.2); }
-      /* line 245, base/_buttons.sass */
+      /* line 238, base/_buttons.sass */
       .btn.btn-document.btn-document_primary:hover {
         background-color: rgba(38, 193, 251, 0.4); }
-      /* line 247, base/_buttons.sass */
+      /* line 240, base/_buttons.sass */
       .btn.btn-document.btn-document_primary:before, .btn.btn-document.btn-document_primary:after {
         background-color: #26c1fb; }
-      /* line 251, base/_buttons.sass */
+      /* line 244, base/_buttons.sass */
       .btn.btn-document.btn-document_primary .add-type {
         border-left-color: #26c1fb; }
-    /* line 254, base/_buttons.sass */
+    /* line 247, base/_buttons.sass */
     .btn.btn-document:before, .btn.btn-document:after {
       content: "";
       position: absolute;
@@ -8388,14 +8379,14 @@ p.label {
       margin-top: -2px;
       border-radius: 20px;
       background-color: #a9adaf; }
-    /* line 267, base/_buttons.sass */
+    /* line 260, base/_buttons.sass */
     .btn.btn-document:after {
       -webkit-transform: rotateZ(90deg);
               transform: rotateZ(90deg); }
-    /* line 270, base/_buttons.sass */
+    /* line 263, base/_buttons.sass */
     .btn.btn-document:hover {
       background-color: #f0f0f0; }
-    /* line 273, base/_buttons.sass */
+    /* line 266, base/_buttons.sass */
     .btn.btn-document .add-type {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -8411,7 +8402,7 @@ p.label {
       margin-left: 67px;
       padding: 10px 25px;
       border-left: dotted 1px #a9adaf; }
-      /* line 282, base/_buttons.sass */
+      /* line 275, base/_buttons.sass */
       .btn.btn-document .add-type small {
         color: #a9adaf;
         font-family: "Open Sans", sans-serif;
@@ -8420,26 +8411,26 @@ p.label {
         text-transform: none;
         line-height: 1.3;
         display: block; }
-  /* line 292, base/_buttons.sass */
+  /* line 285, base/_buttons.sass */
   .btn.btn-icon {
     padding: 0;
     border: none;
     background: none; }
-    /* line 297, base/_buttons.sass */
+    /* line 290, base/_buttons.sass */
     .btn.btn-icon:hover {
       background: none; }
-  /* line 301, base/_buttons.sass */
+  /* line 294, base/_buttons.sass */
   .btn.btn-alert {
     padding: 5px 0;
     color: #eb004b; }
-    /* line 304, base/_buttons.sass */
+    /* line 297, base/_buttons.sass */
     .btn.btn-alert img {
       vertical-align: baseline; }
-  /* line 309, base/_buttons.sass */
+  /* line 302, base/_buttons.sass */
   .btn.btn-back:hover {
     color: #1e9ac9;
     text-decoration: none; }
-  /* line 313, base/_buttons.sass */
+  /* line 306, base/_buttons.sass */
   .btn.btn-back img {
     width: 11px;
     vertical-align: baseline; }
@@ -9328,15 +9319,27 @@ header.navbar + .tab-bar {
   .alert.alert-danger {
     background-color: #eb004b; }
 
-/* line 26, components/_alerts.sass */
-.status-alert:before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 5px;
-  border-radius: 100%;
-  background-color: #f18300; }
+/* line 24, components/_alerts.sass */
+.status-alert {
+  color: #f18300;
+  position: relative; }
+  /* line 28, components/_alerts.sass */
+  .status-alert:before {
+    content: url("../images/icon-warning.svg");
+    position: absolute;
+    top: 0.25rem;
+    left: -16px; }
+
+/* line 34, components/_alerts.sass */
+.btn.btn-status-alert {
+  color: #f18300;
+  position: relative;
+  padding: 0; }
+  /* line 39, components/_alerts.sass */
+  .btn.btn-status-alert:before {
+    content: url("../images/icon-warning.svg");
+    display: inline-block;
+    margin-right: 5px; }
 
 /* line 5, layout/_header.sass */
 .navbar {
