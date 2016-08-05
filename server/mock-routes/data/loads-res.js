@@ -101,14 +101,7 @@ module.exports = [{
     },
     time: '2016-08-08T16:20:14-05:00'
   }],
-  driver: {
-    id: 1,
-    isDoNotDisturb: false,
-    firstName: 'John',
-    lastName: 'Smith',
-    phone: '8895351903',
-    isTrackingEnabled: false
-  },
+  driver: {},
   action: {
     currentStatus: 'ReportedEmpty',
     actionByUser: {
