@@ -19,7 +19,7 @@ describe('Filter - Shipping Date filter', function () {
 
   it('should return today if both dates are the same', function () {
     dateCompare.isSame.and.returnValue(true);
-    expect(shippingDate('')).toEqual('Today ');
+    expect(shippingDate('')).toEqual('Today');
   });
 
   it('should not return today if dates are not the same', function () {

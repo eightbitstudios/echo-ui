@@ -34,10 +34,14 @@ describe('Api: loadsApi', function () {
   describe('Function: fetchAvailableLoads', function () {
     it('should make a get request to fetch available loads', function (done) {
       getRes.data = { data: '' };
-      var carrierId = 1;
+      var carrierId = 1,
+        paging = {
+          limit: 10,
+          offset: 1
+        };
 
-      loadsApi.fetchAvailableLoads(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.availableLoadsByCarrierId({carrierId: carrierId}));
+      loadsApi.fetchAvailableLoads(carrierId, paging).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.availableLoadsByCarrierId({ carrierId: carrierId }), {params: paging});
         done();
       });
 
@@ -48,10 +52,14 @@ describe('Api: loadsApi', function () {
   describe('Function: fetchUnbilledLoads', function () {
     it('should make a get request to fetch unbilled loads', function (done) {
       getRes.data = { data: '' };
-      var carrierId = 1;
+      var carrierId = 1,
+        paging = {
+          limit: 10,
+          offset: 1
+        };
 
-      loadsApi.fetchUnbilledLoads(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.unbilledLoadsByCarrierId({carrierId: carrierId}));
+      loadsApi.fetchUnbilledLoads(carrierId, paging).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.unbilledLoadsByCarrierId({ carrierId: carrierId }), {params: paging});
         done();
       });
 
@@ -62,10 +70,14 @@ describe('Api: loadsApi', function () {
   describe('Function: fetchUpcomingLoads', function () {
     it('should make a get request to fetch available loads', function (done) {
       getRes.data = { data: '' };
-      var carrierId = 1;
+      var carrierId = 1,
+        paging = {
+          limit: 10,
+          offset: 1
+        };
 
-      loadsApi.fetchUpcomingLoads(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.upcomingLoadsByCarrierId({carrierId: carrierId}));
+      loadsApi.fetchUpcomingLoads(carrierId, paging).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.upcomingLoadsByCarrierId({ carrierId: carrierId }), {params: paging});
         done();
       });
 
@@ -79,7 +91,7 @@ describe('Api: loadsApi', function () {
       var carrierId = 1;
 
       loadsApi.fetchLoadCount(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.loadCountByCarrierId({carrierId: carrierId}));
+        expect($http.get).toHaveBeenCalledWith(apiConfig.loadCountByCarrierId({ carrierId: carrierId }));
         done();
       });
 

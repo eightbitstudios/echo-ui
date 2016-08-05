@@ -19,13 +19,13 @@ angular.module('echo.index.carrier.loadManagement', [
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
       that.tabItems = [{
-        title: 'Active Loads',
+        title: '0 Active Loads',
         link: routesConfig.INDEX.activeLoads.name
       }, {
-          title: 'Unbilled Loads',
+          title: '0 Unbilled Loads',
           link: routesConfig.INDEX.unbilledLoads.name
         }, {
-          title: 'Upcoming Loads',
+          title: '0 Upcoming Loads',
           link: routesConfig.INDEX.upcomingLoads.name
         }];
 

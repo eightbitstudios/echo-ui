@@ -4,22 +4,40 @@ angular.module('echo.api.loads', [
   'echo.config.api',
 ]).factory('loadsApi', function ($q, $http, apiConfig) {
   return {
-    fetchAvailableLoads: function (carrierId) {
+    fetchAvailableLoads: function (carrierId, paging) {
       var url = apiConfig.availableLoadsByCarrierId({ carrierId: carrierId });
-      return $http.get(url).then(function (resp) {
-        return $q.when(resp.data.data);
+
+      var params = {
+        limit: paging.limit,
+        offset: paging.offset
+      };
+
+      return $http.get(url, {params: params}).then(function (resp) {
+        return $q.when(resp.data);
       });
     },
-    fetchUnbilledLoads: function (carrierId) {
+    fetchUnbilledLoads: function (carrierId, paging) {
       var url = apiConfig.unbilledLoadsByCarrierId({ carrierId: carrierId });
-      return $http.get(url).then(function (resp) {
-        return $q.when(resp.data.data);
+
+      var params = {
+        limit: paging.limit,
+        offset: paging.offset
+      };
+
+      return $http.get(url, {params: params}).then(function (resp) {
+        return $q.when(resp.data);
       });
     },
-    fetchUpcomingLoads: function (carrierId) {
+    fetchUpcomingLoads: function (carrierId, paging) {
       var url = apiConfig.upcomingLoadsByCarrierId({ carrierId: carrierId });
-      return $http.get(url).then(function (resp) {
-        return $q.when(resp.data.data);
+
+      var params = {
+        limit: paging.limit,
+        offset: paging.offset
+      };
+
+      return $http.get(url, {params: params}).then(function (resp) {
+        return $q.when(resp.data);
       });
     },
     fetchLoadCount: function (carrierId) {

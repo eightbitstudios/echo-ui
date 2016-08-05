@@ -3,8 +3,8 @@ angular.module('echo.config.appConstants', [])
     MIN_SEARCH_CHARACTERS: {
       CARRIERS: 3,
     },
-    PAGINATION: {
-      defaultPage: 1
+    LIMIT: {
+      driverList: 10
     },
     LANGUAGES: {
       default: 'English',

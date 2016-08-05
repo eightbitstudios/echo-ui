@@ -11,6 +11,6 @@ module.exports = function ResTemplate() {
       "result": "",
       "timeStamp": ""
     },
-    "pagination": {"totalRecords":80,"totalPages":8,"currentPage":1,"recordsPerPage":10}
+    "totalRecords":12
   }
 };

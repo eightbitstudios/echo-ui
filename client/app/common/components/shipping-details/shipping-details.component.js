@@ -6,5 +6,13 @@ angular.module('echo.components.shippingDetails', [
     bindings: {
       shippingDetails: '<'
     },
-    controller: function () {}
+    controller: function () {
+      var that = this;
+      
+      if(_.isArray(that.shippingDetails)) {
+        that.location = that.shippingDetails[0];
+      } else {
+        that.location = that.shippingDetails;
+      }
+    }
   });

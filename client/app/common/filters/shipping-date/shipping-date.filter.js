@@ -8,7 +8,7 @@ angular.module('echo.filters.shippingDate', [
       var formattedShippingDate = '';
 
       if (moment().isSame(moment(dateTime), 'days')) {
-        formattedShippingDate = 'Today ' + $filter('date')(dateTime, ', MMM d');
+        formattedShippingDate = 'Today' + $filter('date')(dateTime, ', MMM d');
       } else {
         formattedShippingDate = 'Picked Up ' + $filter('date')(dateTime, 'EEE, MMM d');
       }
