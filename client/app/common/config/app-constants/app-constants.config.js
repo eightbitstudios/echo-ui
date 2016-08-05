@@ -4,7 +4,8 @@ angular.module('echo.config.appConstants', [])
       CARRIERS: 3,
     },
     LIMIT: {
-      driverList: 10
+      driverList: 10,
+      loadsList: 10
     },
     LANGUAGES: {
       default: 'English',
