@@ -3,8 +3,9 @@ angular.module('echo.config.appConstants', [])
     MIN_SEARCH_CHARACTERS: {
       CARRIERS: 3,
     },
-    PAGINATION: {
-      defaultPage: 1
+    LIMIT: {
+      driverList: 10,
+      loadsList: 10
     },
     LANGUAGES: {
       default: 'English',
@@ -25,6 +26,22 @@ angular.module('echo.config.appConstants', [])
       invalidPassword: 'Invalid password',
       userDeactivated: 'User account is Deactivated.',
       currentPasswordRequred: 'Current password is required',
-
+    },
+    STATUSES: {
+      ReportedEmpty: 'Reported Empty',
+      ReportedDropped: 'Reported Dropped',
+      ReportedLocation: 'Reported Location',
+      DriverAssigned: 'Driver Assigned',
+      LoadNowActive: 'Load Now Active',
+      ReportedLoaded: 'Reported Loaded',
+      ReportArrivalAtPickup: 'Report Arrival At Pickup',
+      ReportArrivalAtDeliver: 'Report Arrival At Deliver',
+      ReportDelivery: 'Report Delivery',
+      SendLoadUpdate: 'Send Load Update',
+      ReportLoaded: 'Reported Loaded',
+      ReportEmpty: 'Reported Empty',
+      ReportLocation: 'Reported Location',
+      AddDocuments: 'Add Documents',
+      CallToUpdate: 'Call To Update'
     }
   });

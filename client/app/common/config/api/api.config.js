@@ -1,5 +1,9 @@
 angular.module('echo.config.api', [])
   .constant('apiConfig', {
+    availableLoadsByCarrierId: _.template('@availableLoadsByCarrierId@'),
+    unbilledLoadsByCarrierId: _.template('@unbilledLoadsByCarrierId@'),
+    upcomingLoadsByCarrierId: _.template('@upcomingLoadsByCarrierId@'),
+    loadCountByCarrierId: _.template('@loadCountByCarrierId@'),
     carriers: '@carriers@',
     carrierById: _.template('@carrierById@'),
     userById: _.template('@userById@'),

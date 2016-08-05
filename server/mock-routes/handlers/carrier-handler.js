@@ -45,7 +45,6 @@ module.exports = {
   getDrivers: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = driversRes;
-    resTemplate.pagination.currentPage = req.query.page || 1;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

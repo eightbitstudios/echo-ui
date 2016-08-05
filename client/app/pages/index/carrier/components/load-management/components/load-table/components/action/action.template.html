@@ -1,0 +1,8 @@
+<div class="carrier-dashboard-action">
+  <h3 class="driver-name"><a href="javascript:void(0)">{{$ctrl.appConstants.STATUSES[$ctrl.action.currentStatus]}}</a></h3> 
+  By {{$ctrl.action.actionByUser.firstName}} {{$ctrl.action.actionByUser.lastName | firstCharacter}} at {{$ctrl.action.time | reportDate}}
+  <div class="action-align-bottom">
+    <a href="javascript:void(0)" class="btn" ng-class="{'btn-danger': !$ctrl.action.onTime, 'btn-primary': $ctrl.action.onTime}">{{$ctrl.appConstants.STATUSES[$ctrl.action.nextAction]}}</a>
+    <p class="muted" ng-if="!$ctrl.action.onTime">Running 15 Min. Late</p>
+  </div>
+</div>

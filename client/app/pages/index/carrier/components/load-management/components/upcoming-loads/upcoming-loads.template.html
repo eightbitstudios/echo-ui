@@ -1,0 +1,17 @@
+<div>
+  <div class="container-fluid carrier-dashboard-header" ng-if="!$ctrl.showLoading">
+    <div class="container">
+      <ul class="list-inline carrier-dashboard-header_left">
+        <li>
+          <strong>14 Upcoming Loads</strong>
+        </li>
+      </ul>
+      <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
+    </div>
+  </div>
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <load-table loads="$ctrl.upcomingLoads" ng-if="!$ctrl.showLoading"></load-table>
+  <div class="container main-content">
+    <pagination page-click-handler="$ctrl.getUpcomingLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Upcoming Loads"></pagination>
+  </div>
+</div>

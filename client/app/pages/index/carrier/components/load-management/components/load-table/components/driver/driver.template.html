@@ -1,0 +1,15 @@
+<div class="carrier-dashboard-driver">
+  <div ng-if="$ctrl.driver.id">
+    <h3 class="driver-name"><a href="javascript:void(0)">{{$ctrl.driver.firstName}} {{$ctrl.driver.lastName | firstCharacter}}</a></h3>
+    <span><tel>{{$ctrl.driver.phone | phoneNumber}}</tel></span>
+    <div class="driver-status">
+      {{$ctrl.driver.isDoNotDisturb ? 'Active Driver': 'Do Not Disturb'}}
+      <br> Tracking {{$ctrl.driver.isTrackingEnabled ? 'On' : 'Off'}}
+    </div>
+  </div>
+  <div ng-if="!$ctrl.driver.id">
+    <button class="btn btn-default">
+      Assign Driver
+    </button>
+  </div>
+</div>
