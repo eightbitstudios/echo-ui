@@ -3,7 +3,6 @@
 angular.module('echo.components.driverGrid', [
   'echo.components.typeaheadSearch',
   'echo.components.loading',
-  'echo.config.appConstants',
   'echo.config.routes',
   'echo.components.pagination',
   'echo.filters.phoneNumber',
@@ -14,7 +13,7 @@ angular.module('echo.components.driverGrid', [
     carrierId: '<'
   },
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function ($state, routesConfig, carrierApi, appConstants) {
+  controller: function ($state, routesConfig, carrierApi) {
     var that = this;
     that.drivers = null;
     that.pagination = null;
@@ -29,7 +28,7 @@ angular.module('echo.components.driverGrid', [
      */
     function init(changeObject) {
       if (changeObject.carrierId && changeObject.carrierId.currentValue) {
-        that.getDriversForPage(appConstants.PAGINATION.defaultPage);
+        that.getDriversForPage(1); //TODO update to new paging schema
       }
     }
 
