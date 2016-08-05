@@ -20,7 +20,8 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
       that.showLoading = true;
       loadsApi.fetchUpcomingLoads(that.carrierId, that.paging).then(function (upcomingLoadData) {
         that.paging.totalRecords = upcomingLoadData.totalRecords;
-        that.activeLoads = upcomingLoadData.data;
+        that.paging.recordCount = _.size(upcomingLoadData.data);
+        that.upcomingLoads = upcomingLoadData.data;
       }).finally(function () {
         that.showLoading = false;
       });
