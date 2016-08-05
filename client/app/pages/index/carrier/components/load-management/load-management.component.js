@@ -12,27 +12,31 @@ angular.module('echo.index.carrier.loadManagement', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function (loadsApi, routesConfig) {
+    controller: function (routesConfig) {
       var that = this;
 
-      that.showLoading = true;
+      //that.showLoading = true;
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
-
-      loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
-        that.tabItems = [{
-          title: loadCounts.active + ' Active Loads',
-          link: routesConfig.INDEX.activeLoads.name
+      that.tabItems = [{
+        title: 'Active Loads',
+        link: routesConfig.INDEX.activeLoads.name
+      }, {
+          title: 'Unbilled Loads',
+          link: routesConfig.INDEX.unbilledLoads.name
         }, {
-            title: loadCounts.unbilled + ' Unbilled Loads',
-            link: routesConfig.INDEX.unbilledLoads.name
-          }, {
-            title: loadCounts.upcoming + ' Upcoming Loads',
-            link: routesConfig.INDEX.upcomingLoads.name
-          }];
+          title: 'Upcoming Loads',
+          link: routesConfig.INDEX.upcomingLoads.name
+        }];
 
-      }).finally(function () {
-        that.showLoading = false;
-      });
+      /*
+           loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
+             
+     
+           }).finally(function () {
+             that.showLoading = false;
+           });
+     
+           */
     }
   });

@@ -11,9 +11,11 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
     },
     controller: function (loadsApi) {
       var that = this;
-      
+
       that.showLoading = true;
-      loadsApi.fetchUpcomingLoads(that.carrierId).finally(function () {
+      loadsApi.fetchUpcomingLoads(that.carrierId).then(function (activeLoads) {
+        that.activeLoads = activeLoads;
+      }).finally(function () {
         that.showLoading = false;
       });
     }

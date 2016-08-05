@@ -9,7 +9,7 @@ module.exports = [{
       state: 'TN',
       zip: '60655',
     },
-    time: '2014-03-24T01:15:000'
+    time: '2016-08-04T16:20:14-05:00'
   },
   delivery: {
     address: {
@@ -17,7 +17,7 @@ module.exports = [{
       state: 'IL',
       zip: '60601',
     },
-    time: '2014-03-24T01:15:000'
+    time: '2016-08-05T16:20:14-05:00'
   },
   driver: {
     id: 1,
@@ -32,7 +32,7 @@ module.exports = [{
       firstName: 'Mike',
       lastName: 'Potatoe'
     },
-    time: '2014-03-24T01:15:000',
+    time: '1473417000',
     nextAction: 'ReportArrivalAtPickup',
     onTime: true,
     lateBy: null
@@ -49,7 +49,7 @@ module.exports = [{
       state: 'New York',
       zip: '60655',
     },
-    time: '2014-03-24T01:15:000'
+    time: '2016-08-02T16:20:14-05:00'
   },
   delivery: {
     address: {
@@ -57,7 +57,7 @@ module.exports = [{
       state: 'IL',
       zip: '60601',
     },
-    time: '2014-03-24T01:15:000'
+    time: '2016-08-08T16:20:14-05:00'
   },
   driver: {
     id: 1,
@@ -72,8 +72,48 @@ module.exports = [{
       firstName: 'Tim',
       lastName: 'Potatoe'
     },
-    time: '2014-03-24T01:15:000',
+    time: '2016-08-04T16:20:14-05:00',
     nextAction: 'ReportArrivalAtPickup',
+    onTime: false,
+    lateBy: null
+  },
+  isLoadDetailUpdated: false
+}, {
+  load: {
+    loadNumber: 12344321,
+    proNumber: null
+  },
+  pickup: {
+    address: {
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
+    },
+    time: '2016-08-02T16:20:14-05:00'
+  },
+  delivery: {
+    address: {
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
+    },
+    time: '2016-08-08T16:20:14-05:00'
+  },
+  driver: {
+    id: 1,
+    firstName: 'John',
+    lastName: 'Smith',
+    phone: '8895351903',
+    isTrackingEnabled: false
+  },
+  action: {
+    currentStatus: 'ReportedEmpty',
+    actionByUser: {
+      firstName: 'Tim',
+      lastName: 'Potatoe'
+    },
+    time: '2016-08-04T16:20:14-05:00',
+    nextAction: 'ReportLoaded',
     onTime: false,
     lateBy: null
   },

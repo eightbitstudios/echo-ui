@@ -6,7 +6,7 @@
     {{$ctrl.shippingDetails.address.state}}, {{$ctrl.shippingDetails.address.zip}}
   </div>
   <div class="location-time">
-    {{$ctrl.shippingDetails.time}}
-    <br> {{$ctrl.shippingDetails.time}}
+    {{$ctrl.shippingDetails.time | date: 'HH:mm EST'}}
+    <br> {{$ctrl.shippingDetails.time | shippingDate}}
   </div>
 </div>
