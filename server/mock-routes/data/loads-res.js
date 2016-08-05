@@ -17,6 +17,7 @@ module.exports = [{
       state: 'IL',
       zip: '60601',
     },
+    isCurrent: true,
     time: '2016-08-05T16:20:14-05:00'
   }],
   driver: {
@@ -58,6 +59,7 @@ module.exports = [{
       state: 'IL',
       zip: '60601',
     },
+    isCurrent: true,
     time: '2016-08-08T16:20:14-05:00'
   }],
   driver: {
@@ -99,6 +101,15 @@ module.exports = [{
       state: 'IL',
       zip: '60601',
     },
+    isCurrent: false,
+    time: '2016-08-08T16:20:14-05:00'
+  },{
+    address: {
+      city: 'St. Louis',
+      state: 'MO',
+      zip: '60601',
+    },
+    isCurrent: true,
     time: '2016-08-08T16:20:14-05:00'
   }],
   driver: {},
