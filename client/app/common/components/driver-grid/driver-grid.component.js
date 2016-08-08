@@ -7,13 +7,15 @@ angular.module('echo.components.driverGrid', [
   'echo.components.pagination',
   'echo.filters.phoneNumber',
   'echo.directives.dateRangePicker',
+  'echo.models.paging',
+  'echo.config.appConstants',
   'echo.api.carrier'
 ]).component('driverGrid', {
   bindings: {
     carrierId: '<'
   },
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function ($state, routesConfig, carrierApi) {
+  controller: function ($state, routesConfig, carrierApi, PagingModel, appConstants) {
     var that = this;
     that.drivers = null;
     that.pagination = null;
@@ -22,13 +24,14 @@ angular.module('echo.components.driverGrid', [
     that.startDate = null;
     that.endDate = null;
     that.routesConfig = routesConfig;
+    that.paging = new PagingModel(appConstants.LIMIT.driverList);
 
     /**
      * Controller init
      */
     function init(changeObject) {
       if (changeObject.carrierId && changeObject.carrierId.currentValue) {
-        that.getDriversForPage(1); //TODO update to new paging schema
+        that.getDrivers();
       }
     }
 
@@ -68,19 +71,12 @@ angular.module('echo.components.driverGrid', [
 
     /**
      * Calls api to fetch a list of drivers 
-     * @param {number} page - Page number
      */
-    that.getDriversForPage = function (page) {
+    that.getDrivers = function () {
       that.showLoading = true;
-      carrierApi.fetchDrivers(that.carrierId, page).then(function (drivers) {
-        that.pagination = drivers.pagination;
-
-        if (page === 1) {
-          that.firstRecordNumber = 1; //Default first record to one
-        } else {
-          that.firstRecordNumber = (that.pagination.currentPage - 1) * that.pagination.recordsPerPage + 1;
-        }
-        that.drivers = drivers.data;
+      carrierApi.fetchDrivers(that.carrierId, that.paging).then(function (drivers) {
+        that.paging.totalRecords = drivers.totalRecordCount;
+        that.drivers = drivers.drivers;
       }).finally(function () {
         that.showLoading = false;
       });
