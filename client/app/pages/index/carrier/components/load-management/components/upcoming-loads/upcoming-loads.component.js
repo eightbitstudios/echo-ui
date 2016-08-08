@@ -29,8 +29,9 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
 
     that.driverNeededHandler = function(value) {
       that.isDriverNeeded = value;
+      that.paging.reset();
       that.getUpcomingLoads();
-    }
+    };
 
     that.$onInit = that.getUpcomingLoads;
   }

@@ -37,12 +37,14 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.deliveriesTodayHandler = function (value) {
       that.isPickUpToday = false;
       that.isDeliveriesToday = value;
+      that.paging.reset();
       that.getAvailableLoads();
     };
 
     that.pickupsTodayHandler = function (value) {
       that.isDeliveriesToday = false;
       that.isPickUpToday = value;
+      that.paging.reset();
       that.getAvailableLoads();
     };
 

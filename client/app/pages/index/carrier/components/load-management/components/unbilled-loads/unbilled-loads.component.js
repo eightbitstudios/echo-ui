@@ -35,12 +35,14 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
     that.invoiceNeededHandler = function (value) {
       that.isPODNeeded = false;
       that.isInvoiceNeeded = value;
+      that.paging.reset();
       that.getUnbilledLoads();
     };
 
     that.podNeededHandler = function (value) {
       that.isInvoiceNeeded = false;
       that.isPODNeeded = value;
+      that.paging.reset();
       that.getUnbilledLoads();
     };
 

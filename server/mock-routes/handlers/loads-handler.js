@@ -23,7 +23,8 @@ module.exports = {
   getLoadsByCarrierId: function (req, res) {
     var resTemplate = new ResTemplate();
     if (req.query.offset === '21') {
-      resTemplate.data = _.slice(loadsRes, 0, 2);
+      resTemplate.data.loads = _.slice(loadsRes.loads, 0, 2);
+      resTemplate.data.totalLoadCount = loadsRes.totalLoadCount;
     } else {
       resTemplate.data = loadsRes;
     }
