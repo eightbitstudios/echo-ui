@@ -15,31 +15,34 @@ angular.module('echo.api.loads', [
       };
 
       return $http.get(url, {params: params}).then(function (resp) {
-        return $q.when(resp.data);
+        return $q.when(resp.data.data);
       });
     },
-    fetchUnbilledLoads: function (carrierId, paging) {
+    fetchUnbilledLoads: function (carrierId, paging, podNeeded, invoiceNeeded) {
       var url = apiConfig.unbilledLoadsByCarrierId({ carrierId: carrierId });
 
       var params = {
         limit: paging.limit,
-        offset: paging.offset
+        offset: paging.offset,
+        podNeeded: podNeeded,
+        invoiceNeeded: invoiceNeeded
       };
 
       return $http.get(url, {params: params}).then(function (resp) {
-        return $q.when(resp.data);
+        return $q.when(resp.data.data);
       });
     },
-    fetchUpcomingLoads: function (carrierId, paging) {
+    fetchUpcomingLoads: function (carrierId, paging, driverNeeded) {
       var url = apiConfig.upcomingLoadsByCarrierId({ carrierId: carrierId });
 
       var params = {
         limit: paging.limit,
-        offset: paging.offset
+        offset: paging.offset,
+        driverNeeded: driverNeeded
       };
 
       return $http.get(url, {params: params}).then(function (resp) {
-        return $q.when(resp.data);
+        return $q.when(resp.data.data);
       });
     },
     fetchLoadCount: function (carrierId) {

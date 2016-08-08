@@ -14,7 +14,7 @@
       </a>
     </li>
   </ul>
-  <div class="pull-right">
+  <div class="pull-right" ng-if="$ctrl.pages.length > 1">
     {{$ctrl.pagingModel | paging: $ctrl.recordType}}
   </div>
 </nav>

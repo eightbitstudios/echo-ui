@@ -1,20 +1,17 @@
-module.exports = [{
+module.exports = { 
+  loads: [{
   loadNumber: 12344321,
   proNumber: 12345678910,
-  pickup: {
-    address: {
-      city: 'Memphis',
-      state: 'TN',
-      zip: '60655',
-    },
+  pickUp: {
+    city: 'Memphis',
+    state: 'TN',
+    zip: '60655',
     time: '2016-08-04T16:20:14-05:00'
   },
   delivery: [{
-    address: {
-      city: 'Chicago',
-      state: 'IL',
-      zip: '60601',
-    },
+    city: 'Chicago',
+    state: 'IL',
+    zip: '60601',
     isCurrent: true,
     time: '2016-08-05T16:20:14-05:00'
   }],
@@ -33,30 +30,24 @@ module.exports = [{
       lastName: 'Potatoe'
     },
     time: '1473417000',
-    nextAction: 'ReportArrivalAtPickup',
+    nextAction: 'ReportArrivalAtpickUp',
     onTime: true,
     lateBy: null
   },
   isLoadDetailUpdated: false
 }, {
-    load: {
       loadNumber: 12344321,
-      proNumber: null
-    },
-    pickup: {
-      address: {
-        city: 'New York',
-        state: 'New York',
-        zip: '60655',
-      },
+      proNumber: null,
+    pickUp: {
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: true,
       time: '2016-08-08T16:20:14-05:00'
     }],
@@ -75,38 +66,30 @@ module.exports = [{
         lastName: 'Potatoe'
       },
       time: '2016-08-04T16:20:14-05:00',
-      nextAction: 'ReportArrivalAtPickup',
+      nextAction: 'ReportArrivalAtpickUp',
       onTime: false,
       lateBy: null
     },
     isLoadDetailUpdated: false
   }, {
-    load: {
       loadNumber: 12344321,
-      proNumber: null
-    },
-    pickup: {
-      address: {
-        city: 'New York',
-        state: 'New York',
-        zip: '60655',
-      },
+      proNumber: null,
+    pickUp: {
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: false,
       time: '2016-08-08T16:20:14-05:00'
     }, {
-        address: {
-          city: 'St. Louis',
-          state: 'MO',
-          zip: '60601',
-        },
+        city: 'St. Louis',
+        state: 'MO',
+        zip: '60601',
         isCurrent: true,
         time: '2016-08-08T16:20:14-05:00'
       }],
@@ -126,20 +109,16 @@ module.exports = [{
   }, {
     loadNumber: 12344321,
     proNumber: 12345678910,
-    pickup: {
-      address: {
-        city: 'Memphis',
-        state: 'TN',
-        zip: '60655',
-      },
+    pickUp: {
+      city: 'Memphis',
+      state: 'TN',
+      zip: '60655',
       time: '2016-08-04T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: true,
       time: '2016-08-05T16:20:14-05:00'
     }],
@@ -158,7 +137,7 @@ module.exports = [{
         lastName: 'Potatoe'
       },
       time: '1473417000',
-      nextAction: 'ReportArrivalAtPickup',
+      nextAction: 'ReportArrivalAtpickUp',
       onTime: true,
       lateBy: null
     },
@@ -166,20 +145,16 @@ module.exports = [{
   }, {
     loadNumber: 12344321,
     proNumber: null,
-    pickup: {
-      address: {
-        city: 'New York',
-        state: 'New York',
-        zip: '60655',
-      },
+    pickUp: {
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: true,
       time: '2016-08-08T16:20:14-05:00'
     }],
@@ -198,7 +173,7 @@ module.exports = [{
         lastName: 'Potatoe'
       },
       time: '2016-08-04T16:20:14-05:00',
-      nextAction: 'ReportArrivalAtPickup',
+      nextAction: 'ReportArrivalAtpickUp',
       onTime: false,
       lateBy: null
     },
@@ -206,28 +181,22 @@ module.exports = [{
   }, {
     loadNumber: 12344321,
     proNumber: null,
-    pickup: {
-      address: {
-        city: 'New York',
-        state: 'New York',
-        zip: '60655',
-      },
+    pickUp: {
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: false,
       time: '2016-08-08T16:20:14-05:00'
     }, {
-        address: {
-          city: 'St. Louis',
-          state: 'MO',
-          zip: '60601',
-        },
+        city: 'St. Louis',
+        state: 'MO',
+        zip: '60601',
         isCurrent: true,
         time: '2016-08-08T16:20:14-05:00'
       }],
@@ -247,20 +216,16 @@ module.exports = [{
   }, {
     loadNumber: 12344321,
     proNumber: 12345678910,
-    pickup: {
-      address: {
-        city: 'Memphis',
-        state: 'TN',
-        zip: '60655',
-      },
+    pickUp: {
+      city: 'Memphis',
+      state: 'TN',
+      zip: '60655',
       time: '2016-08-04T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: true,
       time: '2016-08-05T16:20:14-05:00'
     }],
@@ -279,7 +244,7 @@ module.exports = [{
         lastName: 'Potatoe'
       },
       time: '1473417000',
-      nextAction: 'ReportArrivalAtPickup',
+      nextAction: 'ReportArrivalAtpickUp',
       onTime: true,
       lateBy: null
     },
@@ -287,20 +252,16 @@ module.exports = [{
   }, {
     loadNumber: 12344321,
     proNumber: null,
-    pickup: {
-      address: {
-        city: 'New York',
-        state: 'New York',
-        zip: '60655',
-      },
+    pickUp: {
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: true,
       time: '2016-08-08T16:20:14-05:00'
     }],
@@ -319,7 +280,7 @@ module.exports = [{
         lastName: 'Potatoe'
       },
       time: '2016-08-04T16:20:14-05:00',
-      nextAction: 'ReportArrivalAtPickup',
+      nextAction: 'ReportArrivalAtpickUp',
       onTime: false,
       lateBy: null
     },
@@ -327,28 +288,22 @@ module.exports = [{
   }, {
     loadNumber: 12344321,
     proNumber: null,
-    pickup: {
-      address: {
-        city: 'New York',
-        state: 'New York',
-        zip: '60655',
-      },
+    pickUp: {
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: false,
       time: '2016-08-08T16:20:14-05:00'
     }, {
-        address: {
-          city: 'St. Louis',
-          state: 'MO',
-          zip: '60601',
-        },
+        city: 'St. Louis',
+        state: 'MO',
+        zip: '60601',
         isCurrent: true,
         time: '2016-08-08T16:20:14-05:00'
       }],
@@ -368,28 +323,22 @@ module.exports = [{
   }, {
     loadNumber: 12344321,
     proNumber: null,
-    pickup: {
-      address: {
-        city: 'New York',
-        state: 'New York',
-        zip: '60655',
-      },
+    pickUp: {
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
     },
     delivery: [{
-      address: {
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-      },
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
       isCurrent: false,
       time: '2016-08-08T16:20:14-05:00'
     }, {
-        address: {
-          city: 'St. Louis',
-          state: 'MO',
-          zip: '60601',
-        },
+        city: 'St. Louis',
+        state: 'MO',
+        zip: '60601',
         isCurrent: true,
         time: '2016-08-08T16:20:14-05:00'
       }],
@@ -406,4 +355,6 @@ module.exports = [{
       lateBy: null
     },
     isLoadDetailUpdated: false
-  }];
+  }],
+  totalLoadCount: 22
+};

@@ -5,7 +5,9 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
   'echo.components.pagination',
   'echo.models.paging',
   'echo.components.pagination',
-  'echo.config.appConstants'
+  'echo.config.appConstants',
+  'echo.index.carrier.loadManagement.loadsFilter',
+  'echo.components.filterButton'
 ]).component('unbilledLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/unbilled-loads/unbilled-loads.template.html',
   bindings: {
@@ -16,16 +18,30 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
+    that.isInvoiceNeeded = false;
+    that.isPODNeeded = false;
 
     that.getUnbilledLoads = function () {
       that.showLoading = true;
-      loadsApi.fetchUnbilledLoads(that.carrierId, that.paging).then(function (unbilledLoadData) {
-        that.paging.totalRecords = unbilledLoadData.totalRecords;
-        that.paging.recordCount = _.size(unbilledLoadData.data);
-        that.unbilledLoads = unbilledLoadData.data;
+      loadsApi.fetchUnbilledLoads(that.carrierId, that.paging, that.isPODNeeded, that.isInvoiceNeeded).then(function (unbilledLoadData) {
+        that.paging.totalRecords = unbilledLoadData.totalLoadCount;
+        that.paging.recordCount = _.size(unbilledLoadData.loads);
+        that.unbilledLoads = unbilledLoadData.loads;
       }).finally(function () {
         that.showLoading = false;
       });
+    };
+
+    that.invoiceNeededHandler = function (value) {
+      that.isPODNeeded = false;
+      that.isInvoiceNeeded = value;
+      that.getUnbilledLoads();
+    };
+
+    that.podNeededHandler = function (value) {
+      that.isInvoiceNeeded = false;
+      that.isPODNeeded = value;
+      that.getUnbilledLoads();
     };
 
     that.$onInit = that.getUnbilledLoads;

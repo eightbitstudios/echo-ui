@@ -5,7 +5,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.pagination',
   'echo.models.paging',
   'echo.config.appConstants',
-  'echo.index.carrier.loadManagement.loadsFilter'
+  'echo.index.carrier.loadManagement.loadsFilter',
+  'echo.components.filterButton'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
@@ -24,10 +25,10 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.getAvailableLoads = function () {
       that.showLoading = true;
       loadsApi.fetchAvailableLoads(that.carrierId, that.paging, that.isPickUpToday, that.isDeliveriesToday).then(function (availableLoadData) {
-        that.paging.totalRecords = availableLoadData.totalRecords;
-        that.paging.recordCount = _.size(availableLoadData.data);
-        that.activeLoads = availableLoadData.data;
-        that.activeLoadCount = availableLoadData.totalRecords;
+        that.paging.totalRecords = availableLoadData.totalLoadCount;
+        that.paging.recordCount = _.size(availableLoadData.loads);
+        that.activeLoads = availableLoadData.loads;
+        that.activeLoadCount = availableLoadData.totalLoadCount;
       }).finally(function () {
         that.showLoading = false;
       });
