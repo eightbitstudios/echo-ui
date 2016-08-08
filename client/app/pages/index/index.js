@@ -91,7 +91,10 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.loadManagement.name, { // #/carrier/:carrierId/loadManagement
       url: routesConfig.INDEX.loadManagement.route,
-      template: '<load-management carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></load-management>'
+      template: '<load-management carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></load-management>',
+      data: {
+        whiteContainer: true
+      }
     })
     .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
       url: routesConfig.INDEX.activeLoads.route,
@@ -115,7 +118,10 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {  // #/carrier/:carrierId/myCompany/drivers
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>'
+      template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>',
+      data: {
+        whiteContainer: true
+      }
     })
     .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,

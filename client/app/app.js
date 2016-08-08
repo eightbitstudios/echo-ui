@@ -55,6 +55,7 @@ angular.module('echo', [
   })
   .controller('AppCtrl', function () { })
   .run(function ($rootScope, $uibModalStack, $window, $state, userService, routesConfig, cookieService) {
+    $rootScope.$state = $state;
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {//jshint unused:false
 
