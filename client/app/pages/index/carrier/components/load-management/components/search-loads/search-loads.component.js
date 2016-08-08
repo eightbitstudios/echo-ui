@@ -17,8 +17,8 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
 
     that.getLoadsBySearchText = function () {
       that.showLoading = true;
-      loadsApi.fetchLoadsBySearchText(that.carrierId, that.searchText).then(function (loads) {
-        that.loads = loads;
+      loadsApi.fetchLoadsBySearchText(that.carrierId, that.searchText).then(function (searchLoads) {
+        that.loads = searchLoads.loads;
       }).finally(function () {
         that.showLoading = false;
       });

@@ -23,7 +23,7 @@ module.exports = {
   getLoadsBySearchText: function (req, res) {
     var resTemplate = new ResTemplate();
     var searchText = req.params.searchText;
-    resTemplate.data = _.filter(loadsRes, function (item) {
+    resTemplate.data.loads = _.filter(loadsRes.loads, function (item) {
       return item.loadNumber.toString().indexOf(searchText) > -1;
     });
 
