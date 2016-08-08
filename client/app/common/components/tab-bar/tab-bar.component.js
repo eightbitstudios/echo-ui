@@ -10,7 +10,7 @@ angular.module('echo.components.tabBar', [])
     },
     transclude: {
       replaceSlot: '?h2',
-      searchSlot: 'searchBar'
+      searchSlot: '?searchBar'
     },
     templateUrl: 'app/common/components/tab-bar/tab-bar.template.html',
     controller: function ($state) {
