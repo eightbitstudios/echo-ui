@@ -1,0 +1,4 @@
+<button ng-click="$ctrl.toggleFilter()" class="btn btn-filter" ng-class="{'filter__assigned': $ctrl.filterEnabled}">
+  {{$ctrl.buttonText}}
+  <span class="echo-icon icon-close" ng-if="$ctrl.filterEnabled" data-grunticon-embed></span>
+</button>

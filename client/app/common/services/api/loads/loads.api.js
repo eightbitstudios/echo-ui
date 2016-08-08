@@ -4,12 +4,14 @@ angular.module('echo.api.loads', [
   'echo.config.api',
 ]).factory('loadsApi', function ($q, $http, apiConfig) {
   return {
-    fetchAvailableLoads: function (carrierId, paging) {
+    fetchAvailableLoads: function (carrierId, paging, pickupsToday, deliveriesToday) {
       var url = apiConfig.availableLoadsByCarrierId({ carrierId: carrierId });
 
       var params = {
         limit: paging.limit,
-        offset: paging.offset
+        offset: paging.offset,
+        pickupsToday: pickupsToday,
+        deliveriesToday: deliveriesToday
       };
 
       return $http.get(url, {params: params}).then(function (resp) {
