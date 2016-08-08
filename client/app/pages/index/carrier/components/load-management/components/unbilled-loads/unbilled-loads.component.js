@@ -20,9 +20,9 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
     that.getUnbilledLoads = function () {
       that.showLoading = true;
       loadsApi.fetchUnbilledLoads(that.carrierId, that.paging).then(function (unbilledLoadData) {
-        that.paging.totalRecords = unbilledLoadData.totalRecords;
-        that.paging.recordCount = _.size(unbilledLoadData.data);
-        that.unbilledLoads = unbilledLoadData.data;
+        that.paging.totalRecords = unbilledLoadData.totalLoadCount;
+        that.paging.recordCount = _.size(unbilledLoadData.loads);
+        that.unbilledLoads = unbilledLoadData.loads;
       }).finally(function () {
         that.showLoading = false;
       });

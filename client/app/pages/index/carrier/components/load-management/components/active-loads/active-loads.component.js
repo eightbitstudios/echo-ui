@@ -20,10 +20,10 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.getAvailableLoads = function () {
       that.showLoading = true;
       loadsApi.fetchAvailableLoads(that.carrierId, that.paging).then(function (availableLoadData) {
-        that.paging.totalRecords = availableLoadData.totalRecords;
-        that.paging.recordCount = _.size(availableLoadData.data);
-        that.activeLoads = availableLoadData.data;
-        that.activeLoadCount = availableLoadData.totalRecords;
+        that.paging.totalRecords = availableLoadData.totalLoadCount;
+        that.paging.recordCount = _.size(availableLoadData.loads);
+        that.activeLoads = availableLoadData.loads;
+        that.activeLoadCount = availableLoadData.totalLoadCount;
       }).finally(function () {
         that.showLoading = false;
       });

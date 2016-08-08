@@ -13,7 +13,7 @@ angular.module('echo.api.loads', [
       };
 
       return $http.get(url, {params: params}).then(function (resp) {
-        return $q.when(resp.data);
+        return $q.when(resp.data.data);
       });
     },
     fetchUnbilledLoads: function (carrierId, paging) {
@@ -25,7 +25,7 @@ angular.module('echo.api.loads', [
       };
 
       return $http.get(url, {params: params}).then(function (resp) {
-        return $q.when(resp.data);
+        return $q.when(resp.data.data);
       });
     },
     fetchUpcomingLoads: function (carrierId, paging) {
@@ -37,7 +37,7 @@ angular.module('echo.api.loads', [
       };
 
       return $http.get(url, {params: params}).then(function (resp) {
-        return $q.when(resp.data);
+        return $q.when(resp.data.data);
       });
     },
     fetchLoadsBySearchText: function (carrierId, searchText) {

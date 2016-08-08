@@ -1,4 +1,5 @@
-module.exports = [{
+module.exports = { 
+  loads: [{
   loadNumber: 12344321,
   proNumber: 12345678910,
   pickUp: {
@@ -354,4 +355,6 @@ module.exports = [{
       lateBy: null
     },
     isLoadDetailUpdated: false
-  }];
+  }],
+  totalLoadCount: 22
+};
