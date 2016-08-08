@@ -2,13 +2,16 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs" ng-if="$ctrl.isTabBarVisible()">
           <li ui-sref-active="active" ng-repeat="tabItem in $ctrl.tabItems">
             <a ui-sref="{{tabItem.link}}">
               <span class="echo-icon {{tabItem.icon}}" data-grunticon-embed></span> {{tabItem.title}}
             </a>
           </li>
         </ul>
+        <h2 ng-if="!$ctrl.isTabBarVisible()">
+          {{$ctrl.tabReplacementText}}
+        </h2>
       </div>
       <div class="col-sm-4">
         <ng-transclude></ng-transclude>

@@ -5,7 +5,8 @@ angular.module('echo.index.carrier.loadManagement', [
   'echo.api.loads',
   'echo.index.carrier.loadManagement.activeLoads',
   'echo.index.carrier.loadManagement.unbilledLoads',
-  'echo.index.carrier.loadManagement.upcomingLoads'
+  'echo.index.carrier.loadManagement.upcomingLoads',
+  'echo.index.carrier.loadManagement.searchLoads'
 ])
   .component('loadManagement', {
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
@@ -13,15 +14,19 @@ angular.module('echo.index.carrier.loadManagement', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function (routesConfig) {
+    controller: function ($stateParams, $state, routesConfig) {
       var that = this;
 
-      that.searchText = '';
       that.activeLoadCount = 0;
+
+      if($stateParams.searchText) {
+        that.tabReplacementText = _.template('Search Results for ${searchText}')({searchText: $stateParams.searchText});
+      }
 
       //that.showLoading = true;
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
+      that.hideOnRoutes = [routesConfig.INDEX.searchLoads.name];
 
       that.tabItems = [{
         title: ' Active Loads',
@@ -35,9 +40,12 @@ angular.module('echo.index.carrier.loadManagement', [
         }];
 
         that.$onChanges = function() {
-              that.tabItems[0].title = that.activeLoadCount + ' Active Loads';
+          that.tabItems[0].title = that.activeLoadCount + ' Active Loads';
         };
 
+        that.routeToSearch = function(searchText){
+          $state.go(routesConfig.INDEX.searchLoads.name, {searchText: searchText});
+        };
       /*
            loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
              
