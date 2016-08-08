@@ -1,6 +1,4 @@
-angular.module('echo.components.shippingDetails', [
-  'echo.filters.shippingDate'
-])
+angular.module('echo.components.shippingDetails', [])
   .component('shippingDetails', {
   templateUrl: 'app/common/components/shipping-details/shipping-details.template.html',
     bindings: {

@@ -1,12 +1,11 @@
 <div class="location">
   <div class="lead">
-    {{$ctrl.location.address.city}}
+    {{$ctrl.location.city}}
   </div>
   <div class="location-state">
-    {{$ctrl.location.address.state}}, {{$ctrl.location.address.zip}}
+    {{$ctrl.location.state}}, {{$ctrl.location.zip}}
   </div>
   <div class="location-time">
-    {{$ctrl.location.time | date: 'HH:mm EST'}}
-    <br> {{$ctrl.location.time | shippingDate}}
+    <br> {{$ctrl.location.time}}
   </div>
 </div>

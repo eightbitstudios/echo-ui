@@ -7,5 +7,9 @@ angular.module('echo.index.carrier.loadManagement.loadTable.driver', [
     bindings: {
       driver: '<'
     },
-    controller: function () {}
+    controller: function () {
+      var that = this;
+
+      that.noDriver = _.isUndefined(that.driver) || _.isNull(that.driver);
+    }
   });

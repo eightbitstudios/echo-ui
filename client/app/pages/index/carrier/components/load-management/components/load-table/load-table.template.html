@@ -17,10 +17,10 @@
           <tbody>
             <tr ng-repeat="loadManagement in $ctrl.loads">
               <td class="carrier-dashboard-load">
-                <load load="loadManagement.load"></load>
+                <load load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber"></load>
               </td>
               <td class="carrier-dashboard-pickup">
-                <shipping-details shipping-details="loadManagement.pickup"></shipping-details>
+                <shipping-details shipping-details="loadManagement.pickUp"></shipping-details>
               </td>
               <td class="carrier-dashboard-arrow">
                 <span class="echo-icon icon-right-arrow-dark"></span>
