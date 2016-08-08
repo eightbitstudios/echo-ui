@@ -20,6 +20,17 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
+  getLoadsBySearchText: function (req, res) {
+    var resTemplate = new ResTemplate();
+    var searchText = req.params.searchText;
+    resTemplate.data = _.filter(loadsRes, function (item) {
+      return item.loadNumber.toString().indexOf(searchText) > -1;
+    });
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
   getLoadsByCarrierId: function (req, res) {
     var resTemplate = new ResTemplate();
     if (req.query.offset === '21') {

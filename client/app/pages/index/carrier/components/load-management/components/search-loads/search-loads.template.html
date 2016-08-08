@@ -5,10 +5,11 @@
         <li>
           <strong>14 Loads Located</strong>
         </li>
+        <li><a ui-sref="{{$ctrl.routesConfig.INDEX.activeLoads.name}}">Back to active loads</a></li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
   <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.activeLoads" ng-if="!$ctrl.showLoading"></load-table>
+  <load-table loads="$ctrl.loads" ng-if="!$ctrl.showLoading"></load-table>
 </div>

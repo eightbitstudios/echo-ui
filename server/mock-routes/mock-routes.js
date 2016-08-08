@@ -8,6 +8,7 @@ var carrierHandler = require('./handlers/carrier-handler'),
 
 module.exports = function (app) {
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
+  app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
   app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.loadCountByCarrierId, loadsHandler.getLoadCount);

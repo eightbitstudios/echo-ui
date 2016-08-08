@@ -19,9 +19,7 @@ angular.module('echo.index.carrier.loadManagement', [
 
       that.activeLoadCount = 0;
 
-      if($stateParams.searchText) {
-        that.tabReplacementText = _.template('Search Results for ${searchText}')({searchText: $stateParams.searchText});
-      }
+      that.stateParams = $stateParams;
 
       //that.showLoading = true;
 

@@ -105,9 +105,9 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.upcomingLoads.route,
       template: '<upcoming-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></upcoming-loads>'
     })
-    .state(routesConfig.INDEX.searchLoads.name, { // #/carrier/:carrierId/loadManagement/upcomingLoads
+    .state(routesConfig.INDEX.searchLoads.name, { // #/carrier/:carrierId/loadManagement/searchText/:searchText
       url: routesConfig.INDEX.searchLoads.route,
-      template: '<search-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></search-loads>'
+      template: '<search-loads search-text="$ctrl.stateParams.searchText" carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></search-loads>'
     })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,

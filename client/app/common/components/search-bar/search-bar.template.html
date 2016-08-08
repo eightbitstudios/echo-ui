@@ -1,7 +1,7 @@
 <div class="search-bar">
   <form class="search-form text-right" role="search">
     <div class="form-group">
-      <input ng-focus="$ctrl.toggleFocus()" ng-blur="$ctrl.toggleFocus()" class="form-control search-form-input search-form-input_dark" ng-model="$ctrl.searchText" placeholder="Load or PRO Number" type="text">
+      <input ng-focus="$ctrl.toggleFocus()" ng-blur="$ctrl.toggleFocus()" ng-keydown="$ctrl.searchKeyDown($event)" class="form-control search-form-input search-form-input_dark" ng-model="$ctrl.searchText" placeholder="Load or PRO Number" type="text">
       <span class="search-icon">
         <span class="search-help-text" style="opacity: 1;" ng-if="$ctrl.searchText.length === 0 && $ctrl.focused"">Press Enter To Search</span>
         <img src="../assets/images/icon-search@2x.png" ng-click="$ctrl.searchHandler()" style="width: 16px; height: 16px;" />

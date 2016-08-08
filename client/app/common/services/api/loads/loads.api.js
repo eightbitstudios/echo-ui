@@ -40,6 +40,13 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data);
       });
     },
+    fetchLoadsBySearchText: function (carrierId, searchText) {
+      var url = apiConfig.loadsBySearchText({ carrierId: carrierId , searchText: searchText});
+
+      return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
     fetchLoadCount: function (carrierId) {
       var url = apiConfig.loadCountByCarrierId({ carrierId: carrierId });
       return $http.get(url).then(function (resp) {
