@@ -5,7 +5,6 @@ angular.module('echo.components.tabBar', [])
     bindings: {
       tabItems: '<',
       defaultRoute: '<',
-      hideOnRoutes: '<',
       tabReplacementText: '<'
     },
     transclude: {
@@ -16,12 +15,10 @@ angular.module('echo.components.tabBar', [])
     controller: function ($state) {
       var that = this;
 
-      that.isTabBarVisible = function () {
-        return !_.includes(that.hideOnRoutes, $state.current.name);
-      };
+      that.state = $state;
 
       that.$onInit = function () {
-        if (!_.some(that.tabItems, { link: $state.current.name }) && that.isTabBarVisible()) {
+        if (!_.some(that.tabItems, { link: $state.current.name }) && !that.hideTabBar) {
           $state.go(that.defaultRoute);
         }
       };

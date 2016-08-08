@@ -24,7 +24,6 @@ angular.module('echo.index.carrier.loadManagement', [
       //that.showLoading = true;
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
-      that.hideOnRoutes = [routesConfig.INDEX.searchLoads.name];
 
       that.tabItems = [{
         title: ' Active Loads',

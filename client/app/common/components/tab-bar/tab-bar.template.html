@@ -2,14 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
-        <ul class="nav nav-tabs" ng-if="$ctrl.isTabBarVisible()">
+        <ul class="nav nav-tabs" ng-if="!$ctrl.state.current.data.hideTabBar">
           <li ui-sref-active="active" ng-repeat="tabItem in $ctrl.tabItems">
             <a ui-sref="{{tabItem.link}}">
               <span class="echo-icon {{tabItem.icon}}" data-grunticon-embed></span> {{tabItem.title}}
             </a>
           </li>
         </ul>
-        <div ng-if="!$ctrl.isTabBarVisible()" ng-transclude="replaceSlot">
+        <div ng-if="$ctrl.state.current.data.hideTabBar" ng-transclude="replaceSlot">
         </div>
       </div>
       <div class="col-sm-4">

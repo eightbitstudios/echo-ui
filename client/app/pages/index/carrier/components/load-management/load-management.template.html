@@ -1,7 +1,7 @@
 <div class="load-management">
   <loading show-loading="$ctrl.showLoading"></loading>
   <div ng-if="!$ctrl.showLoading">
-    <tab-bar tab-items="$ctrl.tabItems" tab-replacement-text="$ctrl.tabReplacementText" hide-on-routes="$ctrl.hideOnRoutes" default-route="$ctrl.defaultRoute">
+    <tab-bar tab-items="$ctrl.tabItems" tab-replacement-text="$ctrl.tabReplacementText" default-route="$ctrl.defaultRoute">
       <h2>Search Results for {{$ctrl.stateParams.searchText}}</h2>
       <search-bar search-callback="$ctrl.routeToSearch(searchText)"></search-bar>
     </tab-bar>
