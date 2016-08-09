@@ -17,7 +17,7 @@
           <tbody>
             <tr ng-repeat="loadManagement in $ctrl.loads">
               <td class="carrier-dashboard-load">
-                <load load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber"></load>
+                <load load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>
               </td>
               <td class="carrier-dashboard-pickup">
                 <shipping-details shipping-details="loadManagement.pickUp"></shipping-details>
