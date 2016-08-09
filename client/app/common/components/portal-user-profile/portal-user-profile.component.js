@@ -16,7 +16,7 @@ angular.module('echo.components.portalUserProfile', [
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
-  controller: function ($state, routesConfig, portalUserApi) {
+  controller: function (routesConfig, portalUserApi) {
     var that = this;
 
     that.mode = {
