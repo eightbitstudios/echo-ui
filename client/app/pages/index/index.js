@@ -98,7 +98,7 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
       url: routesConfig.INDEX.activeLoads.route,
-      template: '<active-loads active-load-count="$ctrl.activeLoadCount" carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></active-loads>'
+      template: '<active-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></active-loads>'
     })
     .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
       url: routesConfig.INDEX.unbilledLoads.route,

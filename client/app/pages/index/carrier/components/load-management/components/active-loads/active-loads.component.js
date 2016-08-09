@@ -10,7 +10,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
     repDetails: '<',
-    activeLoadCount: '=',
     carrierId: '<'
   },
   controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum) {
@@ -25,7 +24,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
         that.paging.totalRecords = availableLoadData.totalLoadCount;
         that.paging.recordCount = _.size(availableLoadData.loads);
         that.activeLoads = availableLoadData.loads;
-        that.activeLoadCount = availableLoadData.totalLoadCount;
       }).finally(function () {
         that.showLoading = false;
       });
