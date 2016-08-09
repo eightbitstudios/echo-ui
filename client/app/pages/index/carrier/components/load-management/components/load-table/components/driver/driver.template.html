@@ -5,7 +5,7 @@
     <div class="driver-status">
       {{$ctrl.driver.isDoNotDisturb ? 'Active Driver': 'Do Not Disturb'}}
       <br> <span ng-if="$ctrl.loadType === $ctrl.loadTypesEnum.ACTIVE">Tracking {{$ctrl.driver.isTrackingEnabled ? 'On' : 'Off'}}</span>
-      <span ng-if="$ctrl.loadType !== $ctrl.loadTypesEnum.ACTIVE && $ctrl.driver.enteredByEcho">Entered By Echo</span>
+      <span ng-if="$ctrl.loadType !== $ctrl.loadTypesEnum.ACTIVE && $ctrl.driver.assignedByEcho">Entered By Echo</span>
     </div>
   </div>
   <div ng-if="$ctrl.noDriver">
