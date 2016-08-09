@@ -44,7 +44,7 @@
 </head>
 
 <body ng-app="echo.index" ng-controller="AppCtrl as appCtrl" id="ng-app">
-  <loading show-loading="showLoading"></loading>
+  <loading show-loading="showLoading" overlay="true"></loading>
   <div ui-view="header"></div>
   <div class="main-content-container" ng-class="{'white-container': $state.current.data.whiteContainer}">
     <!-- body view to load remaining child routes -->

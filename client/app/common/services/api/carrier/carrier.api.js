@@ -90,8 +90,8 @@ angular.module('echo.api.carrier', [
         });
 
         return {
-          drivers: drivers,
-          totalRecords: resp.data.data.totalRecords
+          data: drivers,
+          totalRecordCount: resp.data.data.totalRecordCount
         };
       });
     },
@@ -111,10 +111,7 @@ angular.module('echo.api.carrier', [
           return new DriverModel(driver);
         });
 
-        return {
-          data: drivers,
-          pagination: resp.data.pagination
-        };
+        return drivers;
       });
     }
   };

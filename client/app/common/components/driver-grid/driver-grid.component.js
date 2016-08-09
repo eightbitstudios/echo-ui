@@ -27,15 +27,6 @@ angular.module('echo.components.driverGrid', [
     that.paging = new PagingModel(appConstants.LIMIT.driverList);
 
     /**
-     * Controller init
-     */
-    function init(changeObject) {
-      if (changeObject.carrierId && changeObject.carrierId.currentValue) {
-        that.getDrivers();
-      }
-    }
-
-    /**
      * Call api to search for drivers
      * @param {string} val - Search text
      * @retuns {Promise} - List of drivers formatted for typeahead search
@@ -76,7 +67,8 @@ angular.module('echo.components.driverGrid', [
       that.showLoading = true;
       carrierApi.fetchDrivers(that.carrierId, that.paging).then(function (drivers) {
         that.paging.totalRecords = drivers.totalRecordCount;
-        that.drivers = drivers.drivers;
+        that.paging.recordCount = _.size(drivers.data);
+        that.drivers = drivers.data;
       }).finally(function () {
         that.showLoading = false;
       });
@@ -90,6 +82,6 @@ angular.module('echo.components.driverGrid', [
       $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name, { driverId: driver.id });
     };
 
-    that.$onChanges = init;
+    that.$onInit = that.getDrivers;
   }
 });
