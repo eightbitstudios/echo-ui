@@ -33,7 +33,7 @@ angular.module('echo.components.driverGrid', [
      */
     that.searchDrivers = function (val) {
       return carrierApi.searchDrivers(that.carrierId, val).then(function (drivers) {
-        return _.map(drivers.data, function (driver) {
+        return _.map(drivers, function (driver) {
           return {
             id: driver.id,
             name: driver.getFullName()
