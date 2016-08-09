@@ -13,7 +13,7 @@
     </div>
   </div>
   <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.activeLoads" ng-if="!$ctrl.showLoading"></load-table>
+  <load-table loads="$ctrl.activeLoads" load-type="$ctrl.loadType" ng-if="!$ctrl.showLoading"></load-table>
   <div class="container main-content">
     <pagination page-click-handler="$ctrl.getAvailableLoads()" paging-model="$ctrl.paging" record-type="Active Loads" ng-if="!$ctrl.showLoading"></pagination>
   </div>
