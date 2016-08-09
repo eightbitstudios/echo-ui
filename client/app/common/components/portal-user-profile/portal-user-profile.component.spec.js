@@ -70,4 +70,58 @@ describe('Component: Portal User Profile', function () {
       expect(component.serverError).toEqual(error);
     });
   });
+
+  describe('Function: removeUserHandler', function () {
+
+    it('should call service to deactivate user', function() {
+      portalUserApi.deactivatePortalUserById.and.returnValue($q.defer().promise);
+      component.removeUserHandler(component.portalUser);
+
+      expect(portalUserApi.deactivatePortalUserById).toHaveBeenCalledWith(component.portalUser);
+    });
+
+    it('should call user update handler on success', function() {
+      portalUserApi.deactivatePortalUserById.and.returnValue($q.when());
+      component.removeUserHandler(component.portalUser);
+      scope.$digest();
+      expect(component.userUpdatedHandler).toHaveBeenCalled();
+    });
+
+    it('should set server error message on failure', function () {
+      var error = 'error message';
+      portalUserApi.deactivatePortalUserById.and.returnValue($q.reject(error));
+      component.removeUserHandler();
+
+      scope.$digest();
+
+      expect(component.serverError).toEqual(error);
+    });
+  });
+
+   describe('Function: toggleConfirmation', function () {
+
+    it('should toggle showConfirmation', function() {
+      component.toggleConfirmation();
+      expect(component.showConfirmation).toBeTruthy();
+    });
+  });
+
+   describe('Function: checkIfNewProfile', function () {
+
+    it('should check if it is a new profile', function() {
+      component.checkIfNewProfile({
+        portalUser: {
+          currentValue: true
+        }
+      });
+
+      expect(component.isNewProfile).toBeTruthy();
+    });
+
+    it('should not set new profile flag if portal user is not defined', function() {
+      component.checkIfNewProfile({});
+      
+      expect(component.isNewProfile).toBeUndefined();
+    });
+  });
 });

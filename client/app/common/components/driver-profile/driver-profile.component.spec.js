@@ -127,7 +127,7 @@ describe('Component: Driver Profile', function () {
       expect(driverApi.deactivateDriverById).toHaveBeenCalledWith(carrierId, component.driver);
     });
 
-    it('should call service to deactivate user', function() {
+    it('should call profile update handler on success', function() {
       driverApi.deactivateDriverById.and.returnValue($q.when());
       component.removeUserHandler();
       scope.$digest();
