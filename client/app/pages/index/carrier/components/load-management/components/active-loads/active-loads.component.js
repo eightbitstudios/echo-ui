@@ -6,19 +6,20 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.models.paging',
   'echo.config.appConstants',
   'echo.index.carrier.loadManagement.loadsFilter',
+  'echo.enums.loadTypes',
   'echo.components.filterButton'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
     repDetails: '<',
-    activeLoadCount: '=',
     carrierId: '<'
   },
-  controller: function (loadsApi, PagingModel, appConstants) {
+  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum) {
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
     that.isPickUpToday = false;
+    that.loadType = loadTypesEnum.ACTIVE;
     that.isDeliveriesToday = false;
 
 
@@ -28,7 +29,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
         that.paging.totalRecords = availableLoadData.totalLoadCount;
         that.paging.recordCount = _.size(availableLoadData.loads);
         that.activeLoads = availableLoadData.loads;
-        that.activeLoadCount = availableLoadData.totalLoadCount;
       }).finally(function () {
         that.showLoading = false;
       });

@@ -7,6 +7,7 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
   'echo.components.pagination',
   'echo.config.appConstants',
   'echo.index.carrier.loadManagement.loadsFilter',
+  'echo.enums.loadTypes',
   'echo.components.filterButton'
 ]).component('unbilledLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/unbilled-loads/unbilled-loads.template.html',
@@ -14,11 +15,12 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
     repDetails: '<',
     carrierId: '<'
   },
-  controller: function (loadsApi, PagingModel, appConstants) {
+  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum) {
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
     that.isInvoiceNeeded = false;
+    that.loadType = loadTypesEnum.UNBILLED;
     that.isPODNeeded = false;
 
     that.getUnbilledLoads = function () {

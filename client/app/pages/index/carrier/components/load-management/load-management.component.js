@@ -13,39 +13,29 @@ angular.module('echo.index.carrier.loadManagement', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function (routesConfig) {
+    controller: function (routesConfig, loadsApi) {
       var that = this;
 
       that.searchText = '';
       that.activeLoadCount = 0;
 
-      //that.showLoading = true;
+      that.showLoading = true;
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
 
-      that.tabItems = [{
-        title: ' Active Loads',
-        link: routesConfig.INDEX.activeLoads.name
-      }, {
-          title: '0 Unbilled Loads',
-          link: routesConfig.INDEX.unbilledLoads.name
+      loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
+        that.tabItems = [{
+          title: loadCounts.active + ' Active Loads',
+          link: routesConfig.INDEX.activeLoads.name
         }, {
-          title: '0 Upcoming Loads',
-          link: routesConfig.INDEX.upcomingLoads.name
-        }];
-
-        that.$onChanges = function() {
-              that.tabItems[0].title = that.activeLoadCount + ' Active Loads';
-        };
-
-      /*
-           loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
-             
-     
-           }).finally(function () {
-             that.showLoading = false;
-           });
-     
-           */
+            title: loadCounts.unbilled + ' Unbilled Loads',
+            link: routesConfig.INDEX.unbilledLoads.name
+          }, {
+            title: loadCounts.upcoming + ' Upcoming Loads',
+            link: routesConfig.INDEX.upcomingLoads.name
+          }];
+      }).finally(function () {
+        that.showLoading = false;
+      });
     }
   });
