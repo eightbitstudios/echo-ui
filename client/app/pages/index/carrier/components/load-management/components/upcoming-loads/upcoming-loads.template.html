@@ -10,7 +10,7 @@
     </div>
   </div>
   <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.upcomingLoads" ng-if="!$ctrl.showLoading"></load-table>
+  <load-table loads="$ctrl.upcomingLoads" load-type="$ctrl.loadType" ng-if="!$ctrl.showLoading"></load-table>
   <div class="container main-content">
     <pagination page-click-handler="$ctrl.getUpcomingLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Upcoming Loads"></pagination>
   </div>
