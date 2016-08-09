@@ -4,7 +4,7 @@
     %tr
       %td.carrier-dashboard-load
         %p.label Pro:
-        %p
+        %p.inline-edit-content
           =link_to '#', class: 'btn-inline-edit' do
             12345678910
             =image_tag('add-pencil.svg')
@@ -15,10 +15,10 @@
               %input.form-control{:type => "text", :placeholder => "Update Number"}
             .form-group
               %button.btn.btn-link.btn-sm{type: "submit"} Save
-              =link_to 'Cancel', '#', class: 'btn btn-link btn-sm btn-alt'
-
+              %button.btn.btn-link.btn-sm.btn-alt{type: "reset"} Cancel
+  
         %p.label BOL:
-        %p 12345678910
+        12345678910
       %td.carrier-dashboard-pickup
         .location-pickup.match-height
           .lead

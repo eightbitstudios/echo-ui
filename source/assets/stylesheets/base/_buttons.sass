@@ -139,11 +139,14 @@
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
+    &:focus,
+    &:active
+      background-color: transparent
+      color: $gray-mid-light
+      border-color: $gray-mid-light
 
     &:hover,
     &.active,
-    &:focus,
-    &:active,
     &.btn-active
       color: #fff
       border-color: $gray-mid-light
