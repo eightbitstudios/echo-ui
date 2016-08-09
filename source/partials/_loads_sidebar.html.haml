@@ -4,16 +4,17 @@
     Dry Van 53'<br/>
     HazMat<br/>
     Tractor 093837<br/>
-    =link_to '#', class: 'btn btn-link btn-inline-edit btn-sm' do
-      Add Trailer Number
-      =image_tag('add-pencil.svg')
+    .inline-edit-content
+      =link_to '#', class: 'btn btn-link btn-inline-edit btn-sm' do
+        Add Trailer Number
+        =image_tag('add-pencil.svg')
     %form.form-inline.form-inline-editing{style: "display: none;"}
       .form-group
         %label.hidden Add Trailer Number
         %input.form-control{:type => "text", :placeholder => "Add Trailer Number"}
       .form-group
         %button.btn.btn-link.btn-sm{type: "submit"} Save
-        =link_to 'Cancel', '#', class: 'btn btn-link btn-sm btn-alt', type: 'reset'
+        %button.btn.btn-link.btn-sm.btn-alt{type: "reset"} Cancel
   %br
   .equip-specials
     Drop Trailer at Shipper<br>

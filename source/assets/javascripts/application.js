@@ -14,18 +14,6 @@ $(window).load(function(){
 			$(this).next('.search-help-text').css('opacity', '1')
 	})
 
-	//inline editing buttons
-	/////////
-
-	$('.btn-inline-edit').on('click', function(e){
-		e.preventDefault()
-		$(this).next().slideToggle()
-
-		$('.form-inline-editing').find('[type="reset"]').on('click', function(){
-			$(this).closest('.form-inline-editing').hide()
-		})
-	})
-
 	//load management details panels collapsing script
 	///////////
 
@@ -59,6 +47,49 @@ $(window).load(function(){
 	}
 
 	$(function() {
+
+		$('.btn-read-more').on('click', function(e){
+			e.preventDefault()
+
+			var $readMoreBtn = $(e.target),
+					$readMoreContent = $readMoreBtn.prev('.read-more-content');
+
+			if ($readMoreBtn.hasClass('read-open')) {
+				$readMoreBtn.text('Read More').removeClass('read-open')
+				$readMoreContent.animate({
+					height: '79px'
+				}, 300)
+			} else {
+				$readMoreBtn.text('Show Less').addClass('read-open')
+				$readMoreContent.animate({
+					height: '100%'
+				}, 300)
+			}
+
+		})
+
+
+		//inline editing buttons
+		/////////
+
+		$('.btn-inline-edit').on('click', function(e){
+			inlineContentEdit(this)
+			e.preventDefault()
+		})
+
+		function inlineContentEdit(editBtn) {
+			var $editBtn = $(editBtn),
+					$editParent = $editBtn.parent('.inline-edit-content')
+
+			$editBtn.hide()
+			$editParent.next().slideToggle()
+
+			$('.form-inline-editing').find('[type="reset"]').on('click', function(){
+				$editBtn.show()
+				$(this).closest('.form-inline-editing').hide()
+			})
+
+		}
 
 		/////////////
 		// Match Height for Driver List table sizing
@@ -250,9 +281,14 @@ $(window).load(function(){
 				$dropdown = $('.dropdown-filter')
 
 		$dropdownButton.on('click', function(e) {
-
-			$dropdownButton.addClass('btn-active')
 			e.stopPropagation()
+
+			if ($dropdownButton.hasClass('btn-active')) {
+				$dropdownButton.removeClass('btn-active')
+			} else {
+				$dropdownButton.addClass('btn-active')
+			}
+			
 			var left = $(this).position().left,
 			    top = $(this).position().top,
 			    height = $(this).height(),

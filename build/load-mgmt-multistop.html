@@ -98,7 +98,7 @@
             <tr>
               <td class='carrier-dashboard-load'>
                 <p class='label'>Pro:</p>
-                <p>
+                <p class='inline-edit-content'>
                   <a href="#" class="btn-inline-edit">12345678910
                   <img src="assets/images/add-pencil.svg" alt="Add pencil" />
                   </a>
@@ -109,12 +109,12 @@
                     </div>
                     <div class='form-group'>
                       <button class='btn btn-link btn-sm' type='submit'>Save</button>
-                      <a href="#" class="btn btn-link btn-sm btn-alt">Cancel</a>
+                      <button class='btn btn-link btn-sm btn-alt' type='reset'>Cancel</button>
                     </div>
                   </form>
                 </p>
                 <p class='label'>BOL:</p>
-                <p>12345678910</p>
+                12345678910
               </td>
               <td class='carrier-dashboard-pickup'>
                 <div class='location-pickup match-height'>
@@ -222,8 +222,12 @@
                     </div>
                     <div class='details-notes col-sm-5'>
                       <h5 class='small-header'>Notes from customer</h5>
-                      <p>DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime&hellip</p>
-                      <a href="#">Read more</a>
+                      <div class='read-more-block'>
+                        <div class='read-more-content'>
+                          <p>DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime. DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime. DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime</p>
+                        </div>
+                        <a href="#" class="btn-read-more">Read more</a>
+                      </div>
                     </div>
                   </div>
                   <div class='load-items-details'>
@@ -304,8 +308,12 @@
                     </div>
                     <div class='details-notes col-sm-5'>
                       <h5 class='small-header'>Notes from customer</h5>
-                      <p>DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime...</p>
-                      <a href="#">Read more</a>
+                      <div class='read-more-block'>
+                        <div class='read-more-content'>
+                          <p>DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime. DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime. DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime</p>
+                        </div>
+                        <a href="#" class="btn-read-more">Read more</a>
+                      </div>
                     </div>
                   </div>
                   <div class='load-items-details'>
@@ -380,8 +388,12 @@
                     </div>
                     <div class='details-notes col-sm-5'>
                       <h5 class='small-header'>Notes from customer</h5>
-                      <p>DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime...</p>
-                      <a href="#">Read more</a>
+                      <div class='read-more-block'>
+                        <div class='read-more-content'>
+                          <p>DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime. DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime. DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime</p>
+                        </div>
+                        <a href="#" class="btn-read-more">Read more</a>
+                      </div>
                     </div>
                   </div>
                   <div class='load-items-details'>
@@ -432,9 +444,11 @@
               Dry Van 53'<br/>
               HazMat<br/>
               Tractor 093837<br/>
-              <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
-              <img src="assets/images/add-pencil.svg" alt="Add pencil" />
-              </a>
+              <div class='inline-edit-content'>
+                <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
+                <img src="assets/images/add-pencil.svg" alt="Add pencil" />
+                </a>
+              </div>
               <form class='form-inline form-inline-editing' style='display: none;'>
                 <div class='form-group'>
                   <label class='hidden'>Add Trailer Number</label>
@@ -442,7 +456,7 @@
                 </div>
                 <div class='form-group'>
                   <button class='btn btn-link btn-sm' type='submit'>Save</button>
-                  <a href="#" class="btn btn-link btn-sm btn-alt" type="reset">Cancel</a>
+                  <button class='btn btn-link btn-sm btn-alt' type='reset'>Cancel</button>
                 </div>
               </form>
             </div>
@@ -562,5 +576,5 @@
     //jQuery CDN fallback
     window.jQuery || document.write('<script src="assets/javascripts/vendor/jquery.min.js"><\/script>')
   </script>
-  <script src="assets/javascripts/application.js"></script><script src="assets/javascripts/vendor/transition.js"></script><script src="assets/javascripts/vendor/collapse.js"></script><script src="assets/javascripts/vendor/moment.js"></script><script src="assets/javascripts/vendor/jquery.mCustomScrollbar.min.js"></script><script src="assets/javascripts/vendor/jquery.matchHeight.min.js"></script><script src="assets/javascripts/vendor/daterangepicker-mod.js"></script>
+  <script src="assets/javascripts/application.js"></script><script src="assets/javascripts/vendor/transition.js"></script><script src="assets/javascripts/vendor/collapse.js"></script><script src="assets/javascripts/vendor/modal.js"></script><script src="assets/javascripts/vendor/moment.js"></script><script src="assets/javascripts/vendor/jquery.mCustomScrollbar.min.js"></script><script src="assets/javascripts/vendor/jquery.matchHeight.min.js"></script><script src="assets/javascripts/vendor/daterangepicker-mod.js"></script>
 </html>

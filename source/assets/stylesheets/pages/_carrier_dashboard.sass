@@ -61,6 +61,11 @@
   color: $gray-darkest
 
   tr > td
+    &:first-child
+      +tablet
+        width: 155px
+
+  tr > td
     &.carrier-dashboard-arrow, 
     &.carrier-dashboard-pickup,
       border-right: none
