@@ -8,16 +8,16 @@ angular.module('echo.config.routes', [])
       },
       settings: {
         name: 'index.settings',
-        route:'settings'
+        route: 'settings'
       },
       myCarriers: {
         name: 'index.myCarriers',
-        route:'myCarriers',
+        route: 'myCarriers',
         url: '/#/myCarriers'
       },
       myCarriersDetails: {
         name: 'index.myCarriers.details',
-        route:'/:carrierId'
+        route: '/:carrierId'
       },
       carrier: {
         name: 'index.carrier',
@@ -26,6 +26,22 @@ angular.module('echo.config.routes', [])
       dashboard: {
         name: 'index.carrier.dashboard',
         route:'/dashboard'
+      },
+      loadManagement: {
+        name: 'index.carrier.loadManagement',
+        route: '/loadManagement'
+      },
+      activeLoads: {
+        name: 'index.carrier.loadManagement.activeLoads',
+        route: '/activeLoads'
+      },
+      unbilledLoads: {
+        name: 'index.carrier.loadManagement.unbilledLoads',
+        route: '/unbilledLoads'
+      },
+      upcomingLoads: {
+        name: 'index.carrier.loadManagement.upcomingLoads',
+        route: '/upcomingLoads'
       },
       myCompany: {
         name: 'index.carrier.myCompany',

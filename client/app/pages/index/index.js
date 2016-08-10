@@ -11,20 +11,17 @@ angular.module('echo.index', [
   'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
-  'echo.services.repDetails',
-  'echo.services.carrierDetails',
+  'echo.api.rep',
   'echo.index.carrier.myCompany.driverProfile',
   'echo.services.cookie',
   'echo.services.user',
   'templates-app'
 ]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
-  $urlRouterProvider.otherwise('/');
 
   // ROUTES
   $stateProvider
     .state(routesConfig.INDEX.base.name, {
       url: routesConfig.INDEX.base.route,
-      abstract: true,
       data: {
         auth: true
       },
@@ -40,21 +37,27 @@ angular.module('echo.index', [
           var user = userService.getUser();
           return $q.when(user);
         },
-        repDetails: function (repDetailsService, user) {
-          if (_.isFunction(user.isRepAdmin) && !user.isRepAdmin()) {
-            return repDetailsService.fetchRepByCarrierId(user.carrierId);
-          }
+        repDetails: function (user, repApi) {
+          return repApi.fetchRepByCarrierId(user.carrierId);
         }
       },
       views: {
         'header': {
-          template: '<app-header></app-header>',
+          template: '<app-header rep-details="$ctrl.repDetails"></app-header>',
+          controller: function (repDetails) {
+            this.repDetails = repDetails;
+          },
+          controllerAs: '$ctrl'
         },
         'body': {
           template: '<div ui-view></div>'
         },
         'footer': {
-          template: '<app-footer></app-footer>',
+          template: '<app-footer rep-details="$ctrl.repDetails"></app-footer>',
+          controller: function (repDetails) {
+            this.repDetails = repDetails;
+          },
+          controllerAs: '$ctrl'
         }
       }
     })
@@ -66,7 +69,8 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCarriers.route,
       template: '<my-carriers></my-carriers>',
       data: {
-        role: RolesEnum.ECHO_REP
+        role: RolesEnum.ECHO_REP,
+        reroute: routesConfig.INDEX.carrier.name
       }
     })
     .state(routesConfig.INDEX.myCarriersDetails.name, { // #/myCarrier/:carrierId
@@ -75,11 +79,34 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.carrier.name, { // #/carrier/:carrierId
       url: routesConfig.INDEX.carrier.route,
-      template: '<carrier></carrier>'
+      template: '<carrier rep-details="$ctrl.repDetails"></carrier>',
+      controller: function (repDetails) {
+        this.repDetails = repDetails;
+      },
+      controllerAs: '$ctrl'
     })
     .state(routesConfig.INDEX.dashboard.name, { // #/carrier/:carrierId/dashboard
       url: routesConfig.INDEX.dashboard.route,
       template: '<dashboard></dashboard>'
+    })
+    .state(routesConfig.INDEX.loadManagement.name, { // #/carrier/:carrierId/loadManagement
+      url: routesConfig.INDEX.loadManagement.route,
+      template: '<load-management carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></load-management>',
+      data: {
+        whiteContainer: true
+      }
+    })
+    .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
+      url: routesConfig.INDEX.activeLoads.route,
+      template: '<active-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></active-loads>'
+    })
+    .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
+      url: routesConfig.INDEX.unbilledLoads.route,
+      template: '<unbilled-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></unbilled-loads>'
+    })
+    .state(routesConfig.INDEX.upcomingLoads.name, { // #/carrier/:carrierId/loadManagement/upcomingLoads
+      url: routesConfig.INDEX.upcomingLoads.route,
+      template: '<upcoming-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></upcoming-loads>'
     })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,
@@ -91,7 +118,10 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {  // #/carrier/:carrierId/myCompany/drivers
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>'
+      template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>',
+      data: {
+        whiteContainer: true
+      }
     })
     .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,

@@ -8,6 +8,7 @@ angular.module('echo', [
   'echo.config.api',
   'echo.config.errors',
   'echo.services.cookie',
+  'echo.services.user',
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -52,26 +53,33 @@ angular.module('echo', [
       }
     };
   })
-
   .controller('AppCtrl', function () { })
-
-  .run(function ($rootScope, $uibModalStack, $window, userService, routesConfig, cookieService) {
+  .run(function ($rootScope, $uibModalStack, $window, $state, userService, routesConfig, cookieService) {
+    $rootScope.$state = $state;
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {//jshint unused:false
 
-      if (_.get(toState.data, 'auth')) {
+      if (_.get(toState.data, 'auth')) { // Check if state requires authentication
         var jwt = cookieService.getToken();
-        var user;
 
-        if (jwt) {
-          user = userService.mapJwtToUser(jwt);
-          if (_.get(toState.data, 'role') && toState.data.role !== _.get(user, 'role')) {
+        if (jwt) {  // Check if user is authenticated
+          var user = userService.mapJwtToUser(jwt);
+          if (toState.name === routesConfig.INDEX.base.name) { // Reroute user to their dashboard based on role
+            event.preventDefault();
+            
+            if (user.isRepAdmin()) {
+              $state.go(routesConfig.INDEX.myCarriers.name);
+            } else {
+              $state.go(routesConfig.INDEX.carrier.name, { carrierId: user.carrierId });
+            }
+          } else if (_.get(toState.data, 'role') && toState.data.role !== _.get(user, 'role')) { // Prevent user from going to states they don't 
+                                                                                                // have permissions to.
             event.preventDefault();
           } else {
             $rootScope.showLoading = true;
           }
         } else {
-          event.preventDefault();
+          event.preventDefault(); // Reroute user to the login page if they are not authenticated
           $window.location = routesConfig.LOGIN.base.url({ redirect: encodeURIComponent($window.location.hash) });
         }
       }

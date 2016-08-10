@@ -2,7 +2,6 @@
 
 angular.module('echo.components.driverProfile', [
   'echo.directives.phoneNumberMask',
-  'echo.models.driver',
   'echo.config.appConstants',
   'echo.api.driver'
 ]).component('driverProfile', {
@@ -13,7 +12,7 @@ angular.module('echo.components.driverProfile', [
     profileUpdatedHandler: '&'
   },
   templateUrl: 'app/common/components/driver-profile/driver-profile.template.html',
-  controller: function (DriverModel, driverApi, appConstants) {
+  controller: function (driverApi, appConstants) {
     var that = this;
 
     that.driverProfileForm = null;
@@ -28,6 +27,7 @@ angular.module('echo.components.driverProfile', [
     }
 
     that.saveDriverHandler = function () {
+      
       if (that.driverProfileForm.$valid) {
         that.serverError = null;
         that.showButtonLoading = true;

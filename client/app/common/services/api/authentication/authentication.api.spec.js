@@ -21,7 +21,7 @@ describe('Api: authenticationApi', function () {
       $provide.value('cookieService', cookieService = jasmine.createSpyObj('cookieService', ['setRefreshToken', 'setToken', 'clearToken', 'clearRefreshToken']));
     });
 
-    inject(function ($rootScope, _$q_, _$http_, _apiConfig_, _authenticationApi_) {
+    inject(function ($rootScope, _$q_, _apiConfig_, _authenticationApi_) {
       $scope = $rootScope.$new();
       $q = _$q_;
       apiConfig = _apiConfig_;

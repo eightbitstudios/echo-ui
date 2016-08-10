@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('echo.components.carrierAdminFooter', [
-  'echo.filters.phoneNumber',
-  'echo.config.routes'
+  'echo.components.echoRepContact'
 ]).component('carrierAdminFooter', {
   bindings: {
     repDetails: '='

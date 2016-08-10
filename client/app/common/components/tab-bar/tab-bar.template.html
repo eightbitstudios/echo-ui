@@ -1,12 +1,23 @@
 <div class="tab-bar">
   <div class="container">
-    <ul class="nav nav-tabs">
-      <li ui-sref-active="active" ng-repeat="tabItem in $ctrl.tabItems">
-        <a ui-sref="{{tabItem.link}}">
-          <span class="echo-icon {{tabItem.icon}}" data-grunticon-embed></span>
-          {{tabItem.title}}
-        </a>
-      </li>
-    </ul>
+    <div class="row">
+      <div class="col-xs-12 hidden-lg">
+        <ng-transclude></ng-transclude>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <ul class="nav nav-tabs">
+          <li ui-sref-active="active" ng-repeat="tabItem in $ctrl.tabItems">
+            <a ui-sref="{{tabItem.link}}">
+              <span class="echo-icon {{tabItem.icon}}" data-grunticon-embed></span> {{tabItem.title}}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-4 visible-lg">
+        <ng-transclude></ng-transclude>
+      </div>
+    </div>
   </div>
 </div>

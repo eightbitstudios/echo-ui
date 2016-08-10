@@ -92,7 +92,7 @@ describe('Component: signIn', function () {
 
       scope.$digest();
 
-      expect(window.location).toEqual(routesConfig.INDEX.myCarriers.url);
+      expect(window.location).toEqual(routesConfig.INDEX.base.url);
     });
 
     it('should toggle loading button', function () {

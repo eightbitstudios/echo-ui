@@ -1,9 +1,12 @@
 'use strict';
 
-angular.module('echo.components.pagination', []).component('pagination', {
+angular.module('echo.components.pagination', [
+  'echo.filters.paging'
+]).component('pagination', {
   bindings: {
-    numberOfPages: '<',
-    pageClickHandler: '&'
+    pageClickHandler: '&',
+    recordType: '@',
+    pagingModel: '='
   },
   templateUrl: 'app/common/components/pagination/pagination.template.html',
   controller: function () {
@@ -12,32 +15,29 @@ angular.module('echo.components.pagination', []).component('pagination', {
     that.pages = [];
     that.selectedPage = 1;
 
-    that.createPages = function () {
-      for (var i = 1; i <= that.numberOfPages; i++) {
-        that.pages.push(i);
-      }
-    };
+    that.numberOfPages = Math.ceil(that.pagingModel.totalRecords / that.pagingModel.limit);
+
+    for (var i = 1; i <= that.numberOfPages; i++) {
+      that.pages.push(i);
+    }
 
     that.previousPage = function () {
-      if (that.selectedPage > 1) {
-        --that.selectedPage;
-        that.pageClickHandler({ page: that.selectedPage });
+      if (that.pagingModel.selectedPage > 1) {
+        that.pagingModel.previousPage();
+        that.pageClickHandler();
       }
     };
 
     that.nextPage = function () {
-      if (that.selectedPage < that.numberOfPages) {
-        ++that.selectedPage;
-        that.pageClickHandler({ page: that.selectedPage });
+      if (that.pagingModel.selectedPage < that.numberOfPages) {
+        that.pagingModel.nextPage();
+        that.pageClickHandler();
       }
     };
 
     that.pageClick = function (page) {
-      that.selectedPage = page;
-
-      that.pageClickHandler({ page: page });
+      that.pagingModel.setPage(page);
+      that.pageClickHandler();
     };
-
-    that.$onChanges = that.createPages;
   }
 });

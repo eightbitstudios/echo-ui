@@ -1,0 +1,79 @@
+  .load-management {
+    background-color: @c-white;
+    .tab-bar {
+      margin-bottom: 0;
+    }
+    .search-form {
+      margin-left: auto;
+      margin-top: 20px;
+      .search-help-text {
+        color: #a9adaf;
+      }
+      input.search-form-input_dark {
+        background-color: @c-gray-mid-light;
+        color: #FFF;
+        &:hover, &:focus {
+          background-color: @c-gray-mid-dark;
+        }
+        &::-webkit-input-placeholder {
+          color: #FFF;
+        }
+        &:-moz-placeholder {
+          color: #FFF;
+          opacity: 1;
+        }
+        &::-moz-placeholder {
+          color: #FFF;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #FFF;
+        }
+        &:focus {
+          &::-webkit-input-placeholder {
+            color: @c-gray-mid-dark;
+          }
+          &:-moz-placeholder {
+            color: @c-gray-mid-dark;
+            opacity: 1;
+          }
+          &::-moz-placeholder {
+            color: @c-gray-mid-dark;
+            opacity: 1;
+          }
+          &:-ms-input-placeholder {
+            color: @c-gray-mid-dark;
+          }
+        }
+      }
+    }
+    .carrier-dashboard-header {
+      background: #fff;
+      border-bottom: 1px solid @c-gray-light;
+      margin-bottom: 20px;
+      > div {
+        display: flex;
+      }
+      li {
+        margin-bottom: 0;
+      }
+      .header-label {
+        font-weight: @fw-bold;
+        color: #19468d;
+        margin-right: 5px;
+      }
+    }
+    .carrier-dashboard-header_left {
+      text-transform: uppercase;
+    }
+    .carrier-dashboard-header_right {
+      text-align: right;
+      a {
+        color: @c-dark-grey;
+      }
+      li {
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+    }
+  }
