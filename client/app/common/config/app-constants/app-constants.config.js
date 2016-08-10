@@ -19,7 +19,7 @@ angular.module('echo.config.appConstants', [])
     },
     ERROR_MESSAGES: {
       400115: 'Email address already exists',
-      400110: 'Invalid password',
+      401102: 'Incorrect Password',
       // TODO: Change properties below to proper error codes
       passwordsDoNotMatch: 'Passwords do not match',
       enterYourPassword: 'Enter your password',

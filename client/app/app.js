@@ -32,24 +32,6 @@ angular.module('echo', [
         }
 
         return config;
-      },
-
-      // Intercept 401s and redirect you to login
-      responseError: function (response) {
-
-        //var refreshToken = cookieService.getRefreshToken();
-
-        if (response.status === errorsConfig.UNAUTHORIZED) {
-          $location.path('/login.html');
-        }
-        /** else if(refreshToken) {
-          authenticationApi.refresh().finally(function(){
-            $location.reload();
-          });
-        }
-        **/
-
-        return $q.reject(response);
       }
     };
   })
