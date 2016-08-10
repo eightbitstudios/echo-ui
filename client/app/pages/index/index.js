@@ -12,6 +12,7 @@ angular.module('echo.index', [
   'echo.components.header',
   'echo.components.footer',
   'echo.api.rep',
+  'echo.api.carrier',
   'echo.index.carrier.myCompany.driverProfile',
   'echo.services.cookie',
   'echo.services.user',
@@ -79,9 +80,15 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.carrier.name, { // #/carrier/:carrierId
       url: routesConfig.INDEX.carrier.route,
-      template: '<carrier rep-details="$ctrl.repDetails"></carrier>',
-      controller: function (repDetails) {
+      template: '<carrier rep-details="$ctrl.repDetails" carrier-details="$ctrl.carrierDetails"></carrier>',
+      resolve: {
+        carrierDetails: function($stateParams, carrierApi) {
+          return carrierApi.fetchCarrierById($stateParams.carrierId);
+        }
+      },
+      controller: function (repDetails, carrierDetails) {
         this.repDetails = repDetails;
+        this.carrierDetails = carrierDetails;
       },
       controllerAs: '$ctrl'
     })

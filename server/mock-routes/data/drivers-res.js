@@ -1,4 +1,5 @@
-module.exports = [{
+module.exports = {
+  drivers: [{
   id: 1,
   firstName: 'Julian',
   lastName: 'Turner',
@@ -48,4 +49,6 @@ module.exports = [{
     isAppInstalled: true,
     isTrackingEnabled: true,
     isDoNotDisturb: false
-  }];
+  }],
+  totalRecordCount: 10
+};

@@ -15,16 +15,16 @@ describe('Model: Paging', function () {
     it('should calculate the next offset', function() {
       var paging = new PagingModel(limit);
       paging.nextOffset();
-      expect(paging.offset).toBe(11);
+      expect(paging.offset).toBe(10);
     });
   });
 
   describe('Function: previousOffset', function() {
     it('should calculate the previous offset', function() {
       var paging = new PagingModel(limit);
-      paging.offset = 11;
+      paging.offset = 10;
       paging.previousOffset();
-      expect(paging.offset).toBe(1);
+      expect(paging.offset).toBe(0);
     });
   });
 
@@ -32,7 +32,7 @@ describe('Model: Paging', function () {
     it('should calculate the offset based on page number', function() {
       var paging = new PagingModel(limit);
       paging.setOffset(3);
-      expect(paging.offset).toBe(21);
+      expect(paging.offset).toBe(20);
     });
   });
 
@@ -40,7 +40,7 @@ describe('Model: Paging', function () {
     it('should calculate the offset and next page', function() {
       var paging = new PagingModel(limit);
       paging.nextPage();
-      expect(paging.offset).toBe(11);
+      expect(paging.offset).toBe(10);
       expect(paging.selectedPage).toBe(2);
     });
   });
@@ -51,7 +51,7 @@ describe('Model: Paging', function () {
       paging.nextPage();
       paging.previousPage();
 
-      expect(paging.offset).toBe(1);
+      expect(paging.offset).toBe(0);
       expect(paging.selectedPage).toBe(1);
     });
   });
@@ -60,7 +60,7 @@ describe('Model: Paging', function () {
     it('should calculate the offset and next page', function() {
       var paging = new PagingModel(limit);
       paging.setPage(4);
-      expect(paging.offset).toBe(31);
+      expect(paging.offset).toBe(30);
       expect(paging.selectedPage).toBe(4);
     });
   });

@@ -37,7 +37,7 @@ describe('Component: driverGrid', function () {
     it('should map drivers to typeahead model', function (done) {
       var searchText = 'test',
         drivers = [{ id: 1, firstName: 'Bob', lastName: 'Ted', getFullName: function () { return this.firstName + ' ' + this.lastName; } }]
-      carrierApi.searchDrivers.and.returnValue($q.when({data: drivers}));
+      carrierApi.searchDrivers.and.returnValue($q.when(drivers));
       component.searchDrivers(searchText).then(function (convertedDrivers) {
         expect(convertedDrivers).toEqual([{
           id: 1,
@@ -50,45 +50,13 @@ describe('Component: driverGrid', function () {
     });
   });
 
-  describe('Function: getDriversForPage', function () {
+  describe('Function: getDrivers', function () {
     it('should fetch drivers', function () {
       var page = 2;
-
       carrierApi.fetchDrivers.and.returnValue($q.when());
-      component.getDriversForPage(page);
+      component.getDrivers();
 
-      expect(carrierApi.fetchDrivers).toHaveBeenCalledWith(1, page);
-    });
-
-    it('should set firstRecordNumber to 1 on page 1', function () {
-      var page = 1,
-        pagination = {
-          currentPage: page,
-          recordsPerPage: 10
-        };
-
-      carrierApi.fetchDrivers.and.returnValue($q.when({pagination: pagination}));
-      component.getDriversForPage(page);
-
-      expect(carrierApi.fetchDrivers).toHaveBeenCalledWith(1, page);
-      scope.$digest();
-
-      expect(component.firstRecordNumber).toBe(1);
-    });
-
-    it('should set firstRecordNumber to 11 on page 2', function () {
-      var page = 2,
-        pagination = {
-          currentPage: page,
-          recordsPerPage: 10
-        };
-
-      carrierApi.fetchDrivers.and.returnValue($q.when({pagination: pagination}));
-      component.getDriversForPage(page);
-
-      scope.$digest();
-
-      expect(component.firstRecordNumber).toBe(11);
+      expect(carrierApi.fetchDrivers).toHaveBeenCalled();
     });
   });
 });
