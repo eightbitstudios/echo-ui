@@ -104,13 +104,17 @@ describe('Api: carrierApi', function () {
   describe('Function: fetchDrivers', function () {
     it('should make a get with page number', function (done) {
       var carrierId = '1234',
-        page = 1;
+        page = {
+          offset: 1,
+          limit: 10
+        };
       getRes.data = { data: '' };
 
       carrierApi.fetchDrivers(carrierId, page).then(function () {
         expect($http.get).toHaveBeenCalledWith(apiConfig.drivers({ carrierId: carrierId }), {
           params: {
-            page: page
+            offset: page.offset,
+            limit: page.limit
           }
         });
         done();
