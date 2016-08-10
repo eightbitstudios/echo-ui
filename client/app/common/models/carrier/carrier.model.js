@@ -37,7 +37,7 @@ angular.module('echo.models.carrier', []).factory('CarrierModel', function () {
    * @returns {boolean}
    */
   Carrier.prototype.isInactive = function () {
-    return !this.isActive;
+    return this.userCount === 0;
   };
 
   /**
