@@ -41,6 +41,11 @@ angular.module('echo.models.paging', []).factory('PagingModel', function () {
     this.setOffset(page);
   };
 
+  Paging.prototype.reset = function () {
+    this.selectedPage = 1;
+    this.offset = 1;
+  };
+
   /**
    * Return the constructor function
    */
