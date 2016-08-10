@@ -31,7 +31,7 @@
           </div>
           <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.password.$invalid && $ctrl.signInForm.$submitted}">
             <label>Password</label>
-            <input class="form-control" placeholder="Enter password" name="password" ng-model="$ctrl.password" type="password" required>
+            <input class="form-control" placeholder="*****" name="password" ng-model="$ctrl.password" type="password" required>
              <span class="help-block" ng-if="$ctrl.signInForm.password.$invalid && $ctrl.signInForm.$submitted">{{$ctrl.appConstants.ERROR_MESSAGES.enterYourPassword}}</span>
           </div>
           <div class="form-group">
