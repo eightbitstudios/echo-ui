@@ -122,7 +122,7 @@ angular.module('echo.api.authentication', [
 
       var data = {
         currentPassword: currentPassword,
-        paassword: changePassword.newPassword,
+        password: changePassword.newPassword,
         confirmPassword: changePassword.confirmPassword
       };
 
