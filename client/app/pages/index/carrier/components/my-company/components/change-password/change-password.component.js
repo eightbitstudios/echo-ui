@@ -1,5 +1,6 @@
 angular.module('echo.index.carrier.myCompany.userProfile.changePassword', [
   'echo.components.passwordValidation',
+  'echo.components.serverErrors',
   'echo.config.routes',
   'echo.config.errors',
   'echo.config.appConstants',
