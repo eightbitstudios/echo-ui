@@ -8,11 +8,7 @@ angular.module('echo.components.shippingDetails', [])
       var that = this;
 
       if (_.isArray(that.shippingDetails)) {
-        that.location = _.find(that.shippingDetails, { isCurrent: true });
-
-        if (!that.location && !_.isEmpty(that.shippingDetails)) {
-          that.location = _.last(that.shippingDetails);
-        }
+        that.location = _.find(that.shippingDetails, { isCurrent: true }) ||  _.last(that.shippingDetails);
       } else {
         that.location = that.shippingDetails;
       }
