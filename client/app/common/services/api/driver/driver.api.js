@@ -83,7 +83,7 @@ angular.module('echo.api.driver', [
         var url = apiConfig.driverById({ carrierId: carrierId, driverId: driverId });
         
         return $http.get(url).then(function (resp) {
-          return new DriverModel(resp.data.data);
+          return new DriverModel(driverConverterService.driverResponse(resp.data.data));
         });
       }
   };

@@ -5,6 +5,7 @@ angular.module('echo', [
   'ngSanitize',
   'ui.router',
   'base64',
+  'ui.mask',
   'echo.config.api',
   'echo.config.errors',
   'echo.services.cookie',
