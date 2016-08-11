@@ -141,6 +141,9 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,
-      template: '<my-company-driver-profile carrier-id="$ctrl.carrierId"></my-company-driver-profile>'
+      template: '<my-company-driver-profile carrier-id="$ctrl.carrierId"></my-company-driver-profile>',
+      data: {
+        hideTabBar: true
+      }
     });
 });
