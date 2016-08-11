@@ -3,7 +3,6 @@
 angular.module('echo.components.portalUserProfile', [
   'echo.config.routes',
   'echo.models.user',
-  'echo.directives.phoneNumberMask',
   'echo.components.loadingButton',
   'echo.api.portalUser',
   'echo.components.serverErrors'

@@ -26,7 +26,7 @@ describe('Api: carrierApi', function () {
       expect(driverConverterService.driverRequest(driver, carrierId)).toEqual({
         id: driver.id,
         carrierId: carrierId,
-        phoneNumber: driver.phone
+        phoneNumber: '1' + driver.phone
       });
     });
     
@@ -41,22 +41,8 @@ describe('Api: carrierApi', function () {
       expect(driverConverterService.driverRequest(driver, carrierId)).toEqual({
         id: driver.id,
         carrierId: carrierId,
-        phoneNumber: driver.phone,
+        phoneNumber: '1' + driver.phone,
         language:  driver.otherLanguage
-      });
-    });
-     
-    it('should strip phone number', function () {
-      var driver = {
-        id: 1,
-        phone: '(123) 124-1231'
-      },
-      carrierId = 2;
-
-      expect(driverConverterService.driverRequest(driver, carrierId)).toEqual({
-        id: driver.id,
-        carrierId: carrierId,
-        phoneNumber: '1231241231'
       });
     });
   });

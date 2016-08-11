@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('echo.components.driverProfile', [
-  'echo.directives.phoneNumberMask',
   'echo.config.appConstants',
   'echo.api.driver'
 ]).component('driverProfile', {

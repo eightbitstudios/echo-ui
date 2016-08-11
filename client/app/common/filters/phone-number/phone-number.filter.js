@@ -7,33 +7,21 @@ angular.module('echo.filters.phoneNumber', [])
       if (!phone) { return ''; }
 
       var value = phone.toString().trim().replace(/[\(\)\-\s]+/g, '');
+      var country,
+        city,
+        number;
 
-      var city, number;
-
-      if (value.length <= 3) {
-        city = value;
-      } else if (value.length > 3) {
+      if (value.length === 10) {
+        country = 1;
         city = value.slice(0, 3);
         number = value.slice(3);
+      } else {
+        country = value.slice(0, 1);
+        city = value.slice(1, 4);
+        number = value.slice(4);
       }
 
-      var formattedPhoneNumber = '';
-
-      if (number) {
-        if (number.length > 3) {
-          number = number.slice(0, 3) + '-' + number.slice(3, 7);
-        }
-        else {
-          number = number;
-        }
-
-        formattedPhoneNumber = ('(' + city + ') ' + number).trim();
-      }
-      else {
-        formattedPhoneNumber = '(' + city;
-      }
-
-      return formattedPhoneNumber;
+      return '+' + country + ' (' + city + ') ' + number.slice(0, 3) + '-' + number.slice(3, 7);
 
     };
   });

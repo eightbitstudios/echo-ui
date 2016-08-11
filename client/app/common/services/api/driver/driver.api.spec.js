@@ -19,7 +19,7 @@ describe('Api: driverApi', function () {
       $provide.value('DriverModel', function (data) {
         _.assign(this, data);
       });
-      $provide.value('driverConverterService', driverConverterService = jasmine.createSpyObj('driverConverterService', ['driverRequest']));
+      $provide.value('driverConverterService', driverConverterService = jasmine.createSpyObj('driverConverterService', ['driverRequest', 'driverResponse']));
     });
 
     inject(function ($rootScope, _$q_, _$http_, _apiConfig_, _driverApi_) {

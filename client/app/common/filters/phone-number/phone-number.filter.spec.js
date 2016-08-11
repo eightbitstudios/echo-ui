@@ -11,19 +11,11 @@ describe('Filter - Phone number filter', function () {
     });
   });
 
-  it('should format area code', function () {
-    expect(phoneNumber('123')).toEqual('(123');
-  });
-
-  it('should format area code and start of number', function () {
-    expect(phoneNumber('123) 4')).toEqual('(123) 4');
-  });
-
-  it('should format full phone number', function () {
-    expect(phoneNumber('1234567890')).toEqual('(123) 456-7890');
+  it('should truncate phone number', function () {
+    expect(phoneNumber('1234567891')).toEqual('+1 (123) 456-7891');
   });
 
   it('should truncate phone number', function () {
-    expect(phoneNumber('12345678910')).toEqual('(123) 456-7891');
+    expect(phoneNumber('11234567891')).toEqual('+1 (123) 456-7891');
   });
 });
