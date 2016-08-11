@@ -37,11 +37,21 @@ describe('Api: loadsApi', function () {
       var carrierId = 1,
         paging = {
           limit: 10,
-          offset: 1
-        };
+          offset: 1,
+        },
+        pickupsToday = false,
+        deliveriesToday = false;
 
-      loadsApi.fetchAvailableLoads(carrierId, paging).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.availableLoadsByCarrierId({ carrierId: carrierId }), {params: paging});
+      loadsApi.fetchAvailableLoads(carrierId, paging, pickupsToday, deliveriesToday).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.availableLoadsByCarrierId({ carrierId: carrierId }),
+          {
+            params: {
+              limit: paging.limit,
+              offset: paging.offset,
+              pickupsToday: pickupsToday,
+              deliveriesToday: deliveriesToday
+            }
+          });
         done();
       });
 
@@ -56,10 +66,19 @@ describe('Api: loadsApi', function () {
         paging = {
           limit: 10,
           offset: 1
-        };
+        },
+        podNeeded = false,
+        invoiceNeeded = false;
 
-      loadsApi.fetchUnbilledLoads(carrierId, paging).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.unbilledLoadsByCarrierId({ carrierId: carrierId }), {params: paging});
+      loadsApi.fetchUnbilledLoads(carrierId, paging, podNeeded, invoiceNeeded).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.unbilledLoadsByCarrierId({ carrierId: carrierId }), {
+          params: {
+            limit: paging.limit,
+            offset: paging.offset,
+            podNeeded: podNeeded,
+            invoiceNeeded: invoiceNeeded
+          }
+        });
         done();
       });
 
@@ -74,10 +93,17 @@ describe('Api: loadsApi', function () {
         paging = {
           limit: 10,
           offset: 1
-        };
+        },
+        driverNeeded = false;
 
-      loadsApi.fetchUpcomingLoads(carrierId, paging).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.upcomingLoadsByCarrierId({ carrierId: carrierId }), {params: paging});
+      loadsApi.fetchUpcomingLoads(carrierId, paging, driverNeeded).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.upcomingLoadsByCarrierId({ carrierId: carrierId }), {
+          params: {
+            limit: paging.limit,
+            offset: paging.offset,
+            driverNeeded: driverNeeded
+          }
+        });
         done();
       });
 
