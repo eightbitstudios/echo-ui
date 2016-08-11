@@ -1,16 +1,20 @@
 <div>
-  <div class="container-fluid carrier-dashboard-header" ng-if="!$ctrl.showLoading">
+  <div class="container-fluid carrier-dashboard-header">
     <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <strong>23 Unbilled Loads</strong>
+          <strong>{{$ctrl.paging.totalRecords}} Ubilled Loads</strong>
         </li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
+    <loads-filter filter-text="By Last Delivery Stop" load-count="$ctrl.paging.totalRecords">
+      <filter-button filter-enabled="$ctrl.isPODNeeded" click-handler="$ctrl.podNeededHandler(value)" button-text="POD Needed"></filter-button>
+      <filter-button filter-enabled="$ctrl.isInvoiceNeeded" click-handler="$ctrl.invoiceNeededHandler(value)" button-text="Invoice Needed"></filter-button>
+  </loads-filter>
   <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.unbilledLoads" ng-if="!$ctrl.showLoading"></load-table>
+  <load-table loads="$ctrl.unbilledLoads" load-type="$ctrl.loadType" ng-if="!$ctrl.showLoading"></load-table>
   <div class="container main-content">
     <pagination page-click-handler="$ctrl.getUnbilledLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Unbilled Loads"></pagination>
   </div>

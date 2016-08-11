@@ -14,43 +14,32 @@ angular.module('echo.index.carrier.loadManagement', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function ($stateParams, $state, routesConfig) {
+    controller: function ($stateParams, $state, routesConfig, loadsApi) {
       var that = this;
 
       that.activeLoadCount = 0;
 
       that.stateParams = $stateParams;
-
-      //that.showLoading = true;
+      that.showLoading = true;
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
 
-      that.tabItems = [{
-        title: ' Active Loads',
-        link: routesConfig.INDEX.activeLoads.name
-      }, {
-          title: '0 Unbilled Loads',
-          link: routesConfig.INDEX.unbilledLoads.name
+      loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
+        that.tabItems = [{
+          title: loadCounts.active + ' Active Loads',
+          link: routesConfig.INDEX.activeLoads.name
         }, {
-          title: '0 Upcoming Loads',
-          link: routesConfig.INDEX.upcomingLoads.name
-        }];
-
-        that.$onChanges = function() {
-          that.tabItems[0].title = that.activeLoadCount + ' Active Loads';
-        };
-
+            title: loadCounts.unbilled + ' Unbilled Loads',
+            link: routesConfig.INDEX.unbilledLoads.name
+          }, {
+            title: loadCounts.upcoming + ' Upcoming Loads',
+            link: routesConfig.INDEX.upcomingLoads.name
+          }];
         that.routeToSearch = function(searchText){
           $state.go(routesConfig.INDEX.searchLoads.name, {searchText: searchText});
         };
-      /*
-           loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
-             
-     
-           }).finally(function () {
-             that.showLoading = false;
-           });
-     
-           */
+      }).finally(function () {
+        that.showLoading = false;
+      });
     }
   });

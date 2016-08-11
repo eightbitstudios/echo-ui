@@ -22,7 +22,7 @@
             </tr>
             <tr ng-repeat="loadManagement in $ctrl.loads">
               <td class="carrier-dashboard-load">
-                <load load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber"></load>
+                <load load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>
               </td>
               <td class="carrier-dashboard-pickup">
                 <shipping-details shipping-details="loadManagement.pickUp"></shipping-details>
@@ -34,10 +34,10 @@
                 <shipping-details shipping-details="loadManagement.delivery"></shipping-details>
               </td>
               <td>
-                <driver driver="loadManagement.driver"></driver>
+                <driver driver="loadManagement.driver" assigned-by-echo="loadManagement.assignedByEcho" load-type="$ctrl.loadType"></driver>
               </td>
               <td>
-                <action action="loadManagement.action"></action>
+                <action action="loadManagement.action" load-type="$ctrl.loadType"></action>
               </td>
             </tr>
           </tbody>

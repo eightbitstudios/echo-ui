@@ -1,8 +1,23 @@
 <div class="carrier-dashboard-action">
-  <h3 class="driver-name"><a href="javascript:void(0)">Reported Empty</a></h3> 
-  By Mike P at 13:15 CST today
-  <div class="action-align-bottom">
-    <a href="javascript:void(0)" class="btn btn-danger">Report Arrival At Pickup</a>
-    <p class="muted" ng-if="!$ctrl.action.onTime">Running 15 Min. Late</p>
+  <div ng-if="$ctrl.loadType === $ctrl.loadTypesEnum.ACTIVE">
+    <h3 class="driver-name"><a href="javascript:void(0)">Reported Empty</a></h3> By Mike P at 13:15 CST today
+    <div class="action-align-bottom">
+      <a href="javascript:void(0)" class="btn btn-danger">Report Arrival At Pickup</a>
+      <p class="muted" ng-if="!$ctrl.action.onTime">Running 15 Min. Late</p>
+    </div>
+  </div>
+  <div ng-if="$ctrl.loadType === $ctrl.loadTypesEnum.UNBILLED">
+    <h3 class="driver-name">Bill $1380</h3> Need POD &amp; Invoice
+    <div class="action-align-bottom">
+      <a href="javascript:void(0)" class="btn btn-default">Add Documents</a>
+    </div>
+  </div>
+  <div ng-if="$ctrl.loadType === $ctrl.loadTypesEnum.UPCOMING">
+    <div class="action-text">
+      <p class="upcoming-text">Added at 13:15 CST Today by Patty A.</p>
+      <a href="javascript:void(0)"><span class="echo-icon icon-document"></span>
+        <span>View Rate Confirmation</span>
+      </a>
+    </div>
   </div>
 </div>

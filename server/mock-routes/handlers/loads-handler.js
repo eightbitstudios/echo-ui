@@ -27,6 +27,8 @@ module.exports = {
       return item.loadNumber.toString().indexOf(searchText) > -1;
     });
 
+    resTemplate.data.totalLoadCount = loadsRes.totalLoadCount;
+
     responseUtil.timeout(function () {
       res.json(resTemplate);
     }, minDelay, maxDelay);
@@ -34,7 +36,8 @@ module.exports = {
   getLoadsByCarrierId: function (req, res) {
     var resTemplate = new ResTemplate();
     if (req.query.offset === '21') {
-      resTemplate.data = _.slice(loadsRes, 0, 2);
+      resTemplate.data.loads = _.slice(loadsRes.loads, 0, 2);
+      resTemplate.data.totalLoadCount = loadsRes.totalLoadCount;
     } else {
       resTemplate.data = loadsRes;
     }

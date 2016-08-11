@@ -7,7 +7,8 @@ angular.module('echo.index.carrier.loadManagement.loadTable', [
   .component('loadTable', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-table/load-table.template.html',
     bindings: {
-      loads: '<'
+      loads: '<',
+      loadType: '<'
     },
     controller: function () {}
   });

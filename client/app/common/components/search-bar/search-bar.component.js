@@ -24,6 +24,7 @@ angular.module('echo.components.searchBar', [
       that.searchHandler = function () {
         if (that.searchText.length >= appConstants.MIN_SEARCH_CHARACTERS.loads) {
           that.searchCallback({ searchText: that.searchText });
+          that.searchText = '';
         }
       };
 

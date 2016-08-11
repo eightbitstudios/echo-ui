@@ -92,8 +92,10 @@
   //// Button saving animated gif
   &.btn-filter {
     position: relative;
+    background: transparent;
     color: @c-gray-mid-light;
     border-color: @c-gray-mid-light;
+    border-width: 2px;
     .echo-icon {
       margin-right: 10px;
     }
@@ -105,10 +107,7 @@
       border-color: @c-bright-blue;
       background-color: @c-bright-blue;
       transition: none;
-      &:before {
-        content: image-url('icon-calendar-white.svg');
-      }
-      &:hover {
+      &:hover, &:focus {
         border-color: @c-bright-blue-dark;
         background-color: @c-bright-blue-dark;
       }
@@ -181,6 +180,13 @@
       width: 11px;
       vertical-align: baseline;
     }
+  }
+
+  &.btn-status-alert {
+    position: relative;
+    color: @c-alert;
+    text-align: left;
+    padding: 0;
   }
 }
 

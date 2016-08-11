@@ -3,13 +3,16 @@
     <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <strong>14 Loads Located</strong>
+          <strong>{{$ctrl.paging.totalRecords}} Loads Located</strong>
         </li>
-        <li><a ui-sref="{{$ctrl.routesConfig.INDEX.activeLoads.name}}">Back to active loads</a></li>
+        <li><a ui-sref="{{$ctrl.previousRoute}}">Back to {{$ctrl.previousRouteName}}</a></li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
   <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.loads" ng-if="!$ctrl.showLoading"></load-table>
+  <load-table loads="$ctrl.loads" ng-if="!$ctrl.showLoading" load-type="$ctrl.loadType"></load-table>
+  <div class="container main-content">
+    <pagination page-click-handler="$ctrl.getLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Loads"></pagination>
+  </div>
 </div>
