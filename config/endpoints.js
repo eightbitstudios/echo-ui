@@ -3,6 +3,7 @@ module.exports = {
   unbilledLoadsByCarrierId: '/api/v1/carriers/${carrierId}/loads/unbilled',
   upcomingLoadsByCarrierId: '/api/v1/carriers/${carrierId}/loads/upcoming',
   loadCountByCarrierId: '/api/v1/carriers/${carrierId}/loads/count',
+  loadsBySearchText: '/api/v1/carriers/${carrierId}/loads/${searchText}',
   carriers: '/api/v1/carriers',
   carrierById: '/api/v1/carriers/${carrierId}',
   userById: '/api/v1/users/${userId}',

@@ -286,7 +286,7 @@ module.exports = {
     },
     isLoadDetailUpdated: false
   }, {
-    loadNumber: 12344321,
+    loadNumber: 5555555555,
     proNumber: null,
     pickUp: {
       city: 'New York',

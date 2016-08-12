@@ -2,7 +2,6 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
   'echo.index.carrier.loadManagement.loadTable',
   'echo.components.echoRepContact',
   'echo.api.loads',
-  'echo.components.pagination',
   'echo.models.paging',
   'echo.components.pagination',
   'echo.config.appConstants',

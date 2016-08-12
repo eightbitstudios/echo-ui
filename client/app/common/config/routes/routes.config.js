@@ -43,6 +43,10 @@ angular.module('echo.config.routes', [])
         name: 'index.carrier.loadManagement.upcomingLoads',
         route: '/upcomingLoads'
       },
+      searchLoads: {
+        name: 'index.carrier.loadManagement.searchLoads',
+        route: '/searchLoads/{searchText}'
+      },
       myCompany: {
         name: 'index.carrier.myCompany',
         route:'/myCompany',

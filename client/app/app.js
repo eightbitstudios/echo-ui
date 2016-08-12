@@ -40,11 +40,13 @@ angular.module('echo', [
   .run(function ($rootScope, $uibModalStack, $window, $state, userService, routesConfig, cookieService) {
     $rootScope.$state = $state;
     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {//jshint unused:false
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, from) {//jshint unused:false
 
       if (_.get(toState.data, 'auth')) { // Check if state requires authentication
         var jwt = cookieService.getToken();
-
+        if(from.name !== toState.name){
+          $state.previous = from;
+        }
         if (jwt) {  // Check if user is authenticated
           var user = userService.mapJwtToUser(jwt);
           if (toState.name === routesConfig.INDEX.base.name) { // Reroute user to their dashboard based on role

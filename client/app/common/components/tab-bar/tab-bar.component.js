@@ -4,15 +4,23 @@ angular.module('echo.components.tabBar', [])
   .component('tabBar', {
     bindings: {
       tabItems: '<',
-      defaultRoute: '<'
+      defaultRoute: '<',
+      tabReplacementText: '<'
     },
-    transclude: true,
+    transclude: {
+      replaceSlot: '?h2',
+      searchSlot: '?searchBar'
+    },
     templateUrl: 'app/common/components/tab-bar/tab-bar.template.html',
     controller: function ($state) {
       var that = this;
 
-        if (!_.some(that.tabItems, { link: $state.current.name })) {
+      that.state = $state;
+
+      that.$onInit = function () {
+        if (!_.some(that.tabItems, { link: $state.current.name }) && !that.hideTabBar) {
           $state.go(that.defaultRoute);
         }
+      };
     }
   });

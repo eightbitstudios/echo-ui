@@ -15,6 +15,11 @@
             </tr>
           </thead>
           <tbody>
+            <tr ng-if="$ctrl.loads.length === 0">
+              <td colspan="6" class="text-center">
+                <h3>No loads found</h3>
+              </td>
+            </tr>
             <tr ng-repeat="loadManagement in $ctrl.loads">
               <td class="carrier-dashboard-load">
                 <load load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>

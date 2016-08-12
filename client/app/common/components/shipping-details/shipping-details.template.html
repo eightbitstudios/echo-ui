@@ -1,11 +1,14 @@
 <div class="location">
-  <div class="lead">
-    {{$ctrl.location.city}}
-  </div>
-  <div class="location-state">
-    {{$ctrl.location.state}}, {{$ctrl.location.zip}}
+  <div class="place">
+    <div class="lead">
+      {{$ctrl.location.city}}
+    </div>
+    <div class="location-state">
+      {{$ctrl.location.state}}, {{$ctrl.location.zip}}
+    </div>
   </div>
   <div class="location-time">
-    <br> {{$ctrl.location.time}}
+    {{$ctrl.location.time}}
+    <br> {{$ctrl.location.day}}
   </div>
 </div>

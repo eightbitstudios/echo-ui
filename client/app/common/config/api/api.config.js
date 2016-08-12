@@ -4,6 +4,7 @@ angular.module('echo.config.api', [])
     unbilledLoadsByCarrierId: _.template('@unbilledLoadsByCarrierId@'),
     upcomingLoadsByCarrierId: _.template('@upcomingLoadsByCarrierId@'),
     loadCountByCarrierId: _.template('@loadCountByCarrierId@'),
+    loadsBySearchText: _.template('@loadsBySearchText@'),
     carriers: '@carriers@',
     carrierById: _.template('@carrierById@'),
     userById: _.template('@userById@'),

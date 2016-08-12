@@ -105,15 +105,31 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
       url: routesConfig.INDEX.activeLoads.route,
-      template: '<active-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></active-loads>'
+      template: '<active-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></active-loads>',
+      data: {
+        name: 'active loads'
+      }
     })
     .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
       url: routesConfig.INDEX.unbilledLoads.route,
-      template: '<unbilled-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></unbilled-loads>'
+      template: '<unbilled-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></unbilled-loads>',
+      data: {
+        name: 'unbilled loads'
+      }
     })
     .state(routesConfig.INDEX.upcomingLoads.name, { // #/carrier/:carrierId/loadManagement/upcomingLoads
       url: routesConfig.INDEX.upcomingLoads.route,
-      template: '<upcoming-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></upcoming-loads>'
+      template: '<upcoming-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></upcoming-loads>',
+      data: {
+        name: 'upcoming loads'
+      }
+    })
+    .state(routesConfig.INDEX.searchLoads.name, { // #/carrier/:carrierId/loadManagement/searchText/:searchText
+      url: routesConfig.INDEX.searchLoads.route,
+      template: '<search-loads search-text="$ctrl.stateParams.searchText" carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></search-loads>',
+      data: {
+        hideTabBar: true
+      }
     })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,
@@ -132,6 +148,9 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,
-      template: '<my-company-driver-profile carrier-id="$ctrl.carrierId"></my-company-driver-profile>'
+      template: '<my-company-driver-profile carrier-id="$ctrl.carrierId"></my-company-driver-profile>',
+      data: {
+        hideTabBar: true
+      }
     });
 });

@@ -45,6 +45,18 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
+    fetchLoadsBySearchText: function (carrierId, searchText, paging) {
+      var url = apiConfig.loadsBySearchText({ carrierId: carrierId , searchText: searchText});
+
+      var params = {
+        limit: paging.limit,
+        offset: paging.offset,
+      };
+
+      return $http.get(url, {params: params}).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
     fetchLoadCount: function (carrierId) {
       var url = apiConfig.loadCountByCarrierId({ carrierId: carrierId });
       return $http.get(url).then(function (resp) {

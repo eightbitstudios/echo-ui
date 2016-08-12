@@ -5,7 +5,8 @@ angular.module('echo.index.carrier.loadManagement', [
   'echo.api.loads',
   'echo.index.carrier.loadManagement.activeLoads',
   'echo.index.carrier.loadManagement.unbilledLoads',
-  'echo.index.carrier.loadManagement.upcomingLoads'
+  'echo.index.carrier.loadManagement.upcomingLoads',
+  'echo.index.carrier.loadManagement.searchLoads'
 ])
   .component('loadManagement', {
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
@@ -13,12 +14,12 @@ angular.module('echo.index.carrier.loadManagement', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function (routesConfig, loadsApi) {
+    controller: function ($stateParams, $state, routesConfig, loadsApi) {
       var that = this;
 
-      that.searchText = '';
       that.activeLoadCount = 0;
 
+      that.stateParams = $stateParams;
       that.showLoading = true;
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
@@ -34,6 +35,9 @@ angular.module('echo.index.carrier.loadManagement', [
             title: loadCounts.upcoming + ' Upcoming Loads',
             link: routesConfig.INDEX.upcomingLoads.name
           }];
+        that.routeToSearch = function(searchText){
+          $state.go(routesConfig.INDEX.searchLoads.name, {searchText: searchText});
+        };
       }).finally(function () {
         that.showLoading = false;
       });
