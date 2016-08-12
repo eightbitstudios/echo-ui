@@ -5,10 +5,10 @@
         <billing-questions phone-number="$ctrl.repDetails.getPhoneNumber()"></billing-questions>
       </div>
       <ul class='eyebrow-nav list-inline navbar-right'>
-        <li ui-sref-active="active">
+        <li ui-sref-active="active" ng-if="$ctrl.user.isRepAdmin()">
           <a ui-sref="{{::$ctrl.routesConfig.INDEX.myCarriers.name}}" class="link-mycarriers">My Carriers</a>
         </li>
-        <li ui-sref-active="active">
+        <li ui-sref-active="active" ng-if="$ctrl.user.isCarrierAdmin()">
           <a ui-sref="{{::$ctrl.routesConfig.INDEX.settings.name}}" class="link-settings">Settings</a>
         </li>
         <li>

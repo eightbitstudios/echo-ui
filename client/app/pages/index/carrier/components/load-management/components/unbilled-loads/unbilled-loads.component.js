@@ -21,6 +21,8 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
     that.isInvoiceNeeded = false;
     that.loadType = loadTypesEnum.UNBILLED;
     that.isPODNeeded = false;
+    var defaultFilterText = 'By Last Delivery Stop';
+    that.filterText = defaultFilterText;
 
     that.getUnbilledLoads = function () {
       that.showLoading = true;
@@ -34,6 +36,11 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
     };
 
     that.invoiceNeededHandler = function (value) {
+      if (!value) {
+        that.filterText = defaultFilterText;
+      } else {
+        that.filterText = 'By Invoice Needed';
+      }
       that.isPODNeeded = false;
       that.isInvoiceNeeded = value;
       that.paging.reset();
@@ -41,6 +48,11 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
     };
 
     that.podNeededHandler = function (value) {
+      if (!value) {
+        that.filterText = defaultFilterText;
+      } else {
+        that.filterText = 'By POD Needed';
+      }
       that.isInvoiceNeeded = false;
       that.isPODNeeded = value;
       that.paging.reset();

@@ -3,7 +3,7 @@ angular.module('echo.index.carrier.loadManagement.loadsFilter', [
 ]).component('loadsFilter', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/loads-filter/loads-filter.template.html',
   bindings: {
-    filterText: '@',
+    filterText: '<',
     loadCount: '<'
   },
   transclude: true,

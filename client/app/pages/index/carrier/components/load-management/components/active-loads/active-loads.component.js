@@ -21,7 +21,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.isPickUpToday = false;
     that.loadType = loadTypesEnum.ACTIVE;
     that.isDeliveriesToday = false;
-
+    var defaultFilterText = 'By Next Appointment';
+    that.filterText = defaultFilterText;
 
     that.getAvailableLoads = function () {
       that.showLoading = true;
@@ -35,6 +36,12 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     };
 
     that.deliveriesTodayHandler = function (value) {
+      if (!value) {
+        that.filterText = defaultFilterText;
+      } else {
+        that.filterText = 'By Next Delivery';
+      }
+
       that.isPickUpToday = false;
       that.isDeliveriesToday = value;
       that.paging.reset();
@@ -42,6 +49,11 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     };
 
     that.pickupsTodayHandler = function (value) {
+      if (!value) {
+        that.filterText = defaultFilterText;
+      } else {
+        that.filterText = 'By Next Pickup';
+      }
       that.isDeliveriesToday = false;
       that.isPickUpToday = value;
       that.paging.reset();

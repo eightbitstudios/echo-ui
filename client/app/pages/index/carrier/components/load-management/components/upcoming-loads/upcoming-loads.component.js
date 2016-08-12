@@ -17,6 +17,8 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
     that.loadType = loadTypesEnum.UPCOMING;
+    var defaultFilterText = 'By First Pickup Stop';
+    that.filterText = defaultFilterText;
 
     that.getUpcomingLoads = function () {
       that.showLoading = true;
@@ -30,6 +32,11 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
     };
 
     that.driverNeededHandler = function(value) {
+      if (!value) {
+        that.filterText = defaultFilterText;
+      } else {
+        that.filterText = 'By Driver Needed';
+      }
       that.isDriverNeeded = value;
       that.paging.reset();
       that.getUpcomingLoads();

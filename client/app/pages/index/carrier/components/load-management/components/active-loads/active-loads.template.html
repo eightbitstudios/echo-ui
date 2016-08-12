@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="carrier-map-spacer"></div>
-  <loads-filter filter-text="By Next Appointment" load-count="$ctrl.paging.totalRecords">
+  <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
       <filter-button filter-enabled="$ctrl.isPickUpToday" click-handler="$ctrl.pickupsTodayHandler(value)" button-text="Pickups Today"></filter-button>
       <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
   </loads-filter>
