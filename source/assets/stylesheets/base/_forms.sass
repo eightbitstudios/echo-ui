@@ -69,8 +69,17 @@ input[type="radio"],
 input[type="checkbox"]
   margin-top: 0
 
-.control
+.select
+  select
+    padding-left: 0
+    border-radius: 0
+    border-bottom: 1px solid $gray-mid-light
+    background-color: transparent
 
+    &:focus
+      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $gray-mid-light
+
+.control
   input:checked ~ .control-indicator
     background-color: $gray-light
     background-image: image_url('checkbox-check.svg')
@@ -81,19 +90,6 @@ input[type="checkbox"]
   input:focus ~ .control-indicator
     box-shadow: 0 0 0 0
 
-.checkbox
-  .control-indicator
-    border-radius: 0
-
-.select
-  select
-    padding-left: 0
-    border-radius: 0
-    border-bottom: 1px solid $gray-mid-light
-    background-color: transparent
-
-    &:focus
-      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $gray-mid-light
 
 .checkbox,
 .radio
@@ -110,6 +106,28 @@ input[type="checkbox"]
 
   &.control
     display: block
+
+
+.checkbox
+  .control-indicator
+    border-radius: 0
+
+  &.control-x
+    padding-left: 30px
+    .checkbox input[type="checkbox"]
+      margin-left: -40px
+
+    .control-indicator
+      top: -0.5rem
+      width: 30px
+      height: 30px
+      border-radius: 4px
+      background-color: #fff
+      border: solid 1px $gray-light
+
+    input:checked ~ .control-indicator
+      background-color: #fff
+      background-image: image-url("icon-remove.svg")
 
 /////////////
 // form info classes

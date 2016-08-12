@@ -1,0 +1,33 @@
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar'
+
+  %section.modal-main-content
+
+    %form.search-form{role:"search"}
+      .form-group
+        %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+        %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-x
+          %input.checkbox{type:'checkbox', checked: 'checked'}
+          %span.control-indicator
+      
+      .card-details
+        %h4.small-header Chosen Driver
+        %a{href: '#'} Alfonzo Ali
+        .span.pull-right (888) 278-8892
+
+    .message.message-danger
+      %p.text-danger
+        Alfonzo Ali is currently assigned to load 74662029, which conflicts with the timing of this load.
+
+    .modal-action-links
+      %a.btn.btn-link Invite a New Driver
+      %a.btn.btn-link View All Drivers
+
+.modal-footer
+  %button.btn.btn-default{type: 'button', date: {dismiss: 'modal'}} Assign Anyway
+  %button.btn.btn-link.btn-alt{type: "button"} CLOSE  

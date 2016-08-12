@@ -1,0 +1,43 @@
+%article.sidebar-content
+  %h4.small-header Pickup
+  .load-citystate
+    .load-city Memphis
+    .load-st TN, 60655
+  .load-datetime 
+    14:00-15:00 EST
+    %br
+    Today, Apr 20
+
+%article.sidebar-content
+  %h4.small-header Delivery
+  .load-citystate
+    .load-city Winchester-on-the-Severn
+    .load-st TX, 50968
+  .load-datetime
+    16:00-18:00 EST
+    %br
+    Fri, May 23
+
+%article.sidebar-content
+  %h4.small-header Equipment
+  .equip-specials
+    Dry Van 53', HazMat
+    %br
+    .inline-edit-content
+      =link_to '#', class: 'btn btn-link btn-inline-edit btn-sm' do
+        Add Trailer Number
+        =image_tag('add-pencil.svg')
+    %form.form-inline.form-inline-editing{style: "display: none;"}
+      .form-group
+        %label.hidden Add Trailer Number
+        %input.form-control{:type => "text", :placeholder => "Add Trailer Number"}
+      .form-group
+        %button.btn.btn-link.btn-sm{type: "submit"} Save
+        %button.btn.btn-link.btn-sm.btn-alt{type: "reset"} Cancel
+  %br
+  .equip-specials
+    Drop Trailer at Shipper
+    %br
+    No Reefers
+
+  %a.btn.btn-link.btn-show Show More

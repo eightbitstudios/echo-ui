@@ -5,9 +5,13 @@
 +tablet
   .modal-dialog
     width: 725px
+    margin-top: 130px
 
 .modal-content
-  padding: 30px 45px
+  padding: 0 45px 0
+  border: none
+  border-radius: 2px
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
 
 .modal-dialog
   .modal-header,
@@ -15,3 +19,29 @@
   .modal-footer
     padding-left: 0
     padding-right: 0
+
+.modal-header
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  padding-top: 30px
+
+  .close
+    position: absolute
+    top: -30px
+    right: 0
+    margin-top: -2px
+
+.modal-footer
+  display: flex
+  align-items: center
+  justify-content: center
+  padding-bottom: 20px
+  border-top: solid 1px $gray-light
+
+  .btn
+    margin: 0 10px
+
+
+
+

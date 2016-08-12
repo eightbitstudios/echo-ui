@@ -1,44 +1,25 @@
-.modal.fade.modal-assign-driver{tabindex: "-1", role: "dialog"}
+.modal.fade.modal-assign-driver.modal-load-mgmt{tabindex: "-1", role: "dialog"}
   .modal-dialog{role:"document"}
     .modal-content
+
       .modal-header
-        %button.close{type: "button", data:{dismiss:"modal"}, aria:{label: "Close"}}
+        %button.close.btn-close{type: "button", data:{dismiss:"modal"}, aria:{label: "Close"}}
           %span{aria:{hidden:"true"}} &times;
-        %h4.modal-title
-          .assign-action-type
-            Assign Driver
-          .assign-action-to
-            to Load 345674556
 
-        PRO 12423423524543543
+        = partial 'partials/modals/modal-header'
 
-      .modal-body
-        .modal-sidebar
-          %h4.section-header Pickup
-          Memphis
-          TN, 60655
-          14:00-15:00 EST
-          Today, Apr 20
+      - if modal == 'assign-driver-1'
+        = partial 'partials/modals/assign-driver-1'
 
-          .h4.section-header Delivery
-          Winchester-on-the-Severn
-          TX, 50968
-          16:00-18:00 EST
-          Fri, May 23
+      - elsif modal == 'assign-driver-2'
+        = partial 'partials/modals/assign-driver-2'
 
-          .h4.section-header Equipment
-          Dry Van 53', HazMat
-          %a.btn.btn-link.btn-edit Add Trailer Number
+      - elsif modal == 'assign-driver-3'
+        = partial 'partials/modals/assign-driver-3'
 
-          Drop Trailer at Shipper
-          No Reefers
+      - elsif modal == 'assign-driver-4'
+        = partial 'partials/modals/assign-driver-4'
 
-          %a.btn.btn-link.btn-show Show More
+      - else
+        %h2 This modal does not exist
 
-
-        .modal-main-content
-          %p One fine body &hellip;
-
-      .modal-footer
-        %button.btn.btn-default{type: 'button', date: {dismiss: 'modal'}} Close
-        %button.btn.btn-link{type: "button"} Close        

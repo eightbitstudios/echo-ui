@@ -1,0 +1,63 @@
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar'
+
+  %section.modal-main-content
+    %form.search-form{role:"search"}
+      .form-group
+        %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+        %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+
+    %table.table.table-condensed.table-assign-driver
+      %thead
+        %tr
+          %th{colspan: '3'} Unassigned drivers for this time
+
+    .table-modal-scroll
+      %table.table.table-condensed.table-assign-driver
+        %tbody
+          %tr
+            %td.driver-name 
+              %a{href: "#"} Alfonzo Ali
+            %td.driver-contact (888) 278-8892
+            %td.driver-status
+              %a Select
+          %tr
+            %td.driver-name 
+              %a{href: "#"} Charlotte McGuire
+            %td.driver-contact (888) 278-8892
+            %td.driver-status
+              %a Select
+          %tr.selected
+            %td.driver-name 
+              %a{href: "#"} Lydia Franklin
+            %td.driver-contact (888) 278-8892
+            %td.driver-status
+              %a Selected
+          %tr
+            %td.driver-name 
+              %a{href: "#"} Alfonzo Ali
+            %td.driver-contact (888) 278-8892
+            %td.driver-status
+              %a Select
+          %tr
+            %td.driver-name 
+              %a{href: "#"} Charlotte McGuire
+            %td.driver-contact (888) 278-8892
+            %td.driver-status
+              %a Select
+          %tr
+            %td.driver-name 
+              %a{href: "#"} Lydia Franklin
+            %td.driver-contact (888) 278-8892
+            %td.driver-status
+              %a Select
+
+    .modal-action-links
+      %a.btn.btn-link Invite a New Driver
+      %a.btn.btn-link View All Drivers
+
+.modal-footer
+  %button.btn.btn-default{type: 'button', date: {dismiss: 'modal'}} Assign
+  %button.btn.btn-link.btn-alt{type: "button"} CLOSE 
+        
