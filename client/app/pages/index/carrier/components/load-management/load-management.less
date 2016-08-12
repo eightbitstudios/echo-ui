@@ -7,27 +7,27 @@
       margin-left: auto;
       margin-top: 20px;
       .search-help-text {
-        color: #a9adaf;
+        color: @c-gray-heavy-light;
       }
       input.search-form-input_dark {
         background-color: @c-gray-mid-light;
-        color: #FFF;
+        color: @c-white;
         &:hover, &:focus {
           background-color: @c-gray-mid-dark;
         }
         &::-webkit-input-placeholder {
-          color: #FFF;
+          color: @c-white;
         }
         &:-moz-placeholder {
-          color: #FFF;
+          color: @c-white;
           opacity: 1;
         }
         &::-moz-placeholder {
-          color: #FFF;
+          color: @c-white;
           opacity: 1;
         }
         &:-ms-input-placeholder {
-          color: #FFF;
+          color: @c-white;
         }
         &:focus {
           &::-webkit-input-placeholder {
@@ -48,9 +48,8 @@
       }
     }
     .carrier-dashboard-header {
-      background: #fff;
+      background: @c-white;
       border-bottom: 1px solid @c-gray-light;
-      margin-bottom: 20px;
       > div {
         display: flex;
       }
@@ -59,7 +58,7 @@
       }
       .header-label {
         font-weight: @fw-bold;
-        color: #19468d;
+        color: @c-blue;
         margin-right: 5px;
       }
     }
