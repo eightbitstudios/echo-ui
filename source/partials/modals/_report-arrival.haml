@@ -1,0 +1,50 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Arrival For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-arrival'
+
+  %section.modal-main-content
+
+    %h4.content-header What time did the driver arrive at the pickup stop?
+    %p.text-muted.disclaimer [Legal disclaimer such as: For communication purposes only. Detention is calculated using customer policies and documents provided at the stop location.] 
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-lrg
+          %input.checkbox{type:'checkbox'}
+          %span.control-indicator
+      
+      .card-details
+        %p 
+          %strong With The Right Equipment
+        %p 
+          53' Dry Van, HazMat <br/>
+          Vertical E-track, 8-10 ratchet straps
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-lrg
+          %input.checkbox{type:'checkbox'}
+          %span.control-indicator
+      
+      .card-details
+        %p 
+          %strong Providing The Service
+        %p Drop Trailer at Shipper
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-lrg
+          %input.checkbox{type:'checkbox'}
+          %span.control-indicator
+      
+      .card-details
+        %p 
+          %strong Follow The Instructions
+        %p ** MUST REPORT DETENTION AND LUMPERS WITHIN 24 HRS **
+
+
+.modal-footer
+  %button.btn.btn-default{type: 'button'} CONFIRM EMPTY
+  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE  

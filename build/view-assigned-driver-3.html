@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      Load Management - Active
+      View Assigned Driver 3 - Overlay
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -813,49 +813,162 @@
         </div>
       </section>
     </div>
-    <div class='modal fade modal-assign-driver' role='dialog' tabindex='-1'>
+    <div class='modal fade modal-assign-driver modal-load-mgmt' role='dialog' tabindex='-1'>
       <div class='modal-dialog' role='document'>
         <div class='modal-content'>
           <div class='modal-header'>
-            <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+            <button aria-label='Close' class='close btn-close' data-dismiss='modal' type='button'>
               <span aria-hidden='true'>&times;</span>
             </button>
-            <h4 class='modal-title'>
-              <div class='assign-action-type'>
-                Assign Driver
-              </div>
-              <div class='assign-action-to'>
-                to Load 345674556
-              </div>
-            </h4>
-            PRO 12423423524543543
+            <h1 class='modal-title'>
+              <span class='assign-action-type'>
+                Change driver for
+              </span>
+              <span class='assign-action-to'>
+                Load 345674556
+              </span>
+            </h1>
+            <div class='modal-subheading'>PRO 12423423524543543</div>
           </div>
           <div class='modal-body'>
-            <div class='modal-sidebar'>
-              <h4 class='section-header'>Pickup</h4>
-              Memphis
-              TN, 60655
-              14:00-15:00 EST
-              Today, Apr 20
-              <div class='h4 section-header'>Delivery</div>
-              Winchester-on-the-Severn
-              TX, 50968
-              16:00-18:00 EST
-              Fri, May 23
-              <div class='h4 section-header'>Equipment</div>
-              Dry Van 53', HazMat
-              <a class='btn btn-link btn-edit'>Add Trailer Number</a>
-              Drop Trailer at Shipper
-              No Reefers
-              <a class='btn btn-link btn-show'>Show More</a>
-            </div>
-            <div class='modal-main-content'>
-              <p>One fine body &hellip;</p>
-            </div>
+            <section class='modal-sidebar'>
+              <article class='sidebar-content'>
+                <h4 class='small-header'>Pickup</h4>
+                <div class='load-citystate'>
+                  <div class='load-city'>Memphis</div>
+                  <div class='load-st'>TN, 60655</div>
+                </div>
+                <div class='load-datetime'>
+                  14:00-15:00 EST
+                  <br>
+                  Today, Apr 20
+                </div>
+              </article>
+              <article class='sidebar-content'>
+                <h4 class='small-header'>Delivery</h4>
+                <div class='load-citystate'>
+                  <div class='load-city'>Winchester-on-the-Severn</div>
+                  <div class='load-st'>TX, 50968</div>
+                </div>
+                <div class='load-datetime'>
+                  16:00-18:00 EST
+                  <br>
+                  Fri, May 23
+                </div>
+              </article>
+              <article class='sidebar-content'>
+                <h4 class='small-header'>Equipment</h4>
+                <div class='equip-specials'>
+                  Dry Van 53', HazMat
+                  <br>
+                  <div class='inline-edit-content'>
+                    <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
+                    <img src="assets/images/add-pencil.svg" alt="Add pencil" />
+                    </a>
+                  </div>
+                  <form class='form-inline form-inline-editing' style='display: none;'>
+                    <div class='form-group'>
+                      <label class='hidden'>Add Trailer Number</label>
+                      <input class='form-control' placeholder='Add Trailer Number' type='text'>
+                    </div>
+                    <div class='form-group'>
+                      <button class='btn btn-link btn-sm' type='submit'>Save</button>
+                      <button class='btn btn-link btn-sm btn-alt' type='reset'>Cancel</button>
+                    </div>
+                  </form>
+                </div>
+                <br>
+                <div class='equip-specials'>
+                  Drop Trailer at Shipper
+                  <br>
+                  No Reefers
+                </div>
+                <a class='btn btn-link btn-show'>Show More</a>
+              </article>
+            </section>
+            <section class='modal-main-content'>
+              <form class='search-form' role='search'>
+                <div class='form-group'>
+                  <input class='form-control search-form-input' placeholder='Find A Driver' type='text'>
+                  <button class='btn btn-default btn-icon' type='submit'><img src="assets/images/icon-search@2x.png" width="16px" height="16px" alt="Icon search@2x" /></button>
+                </div>
+              </form>
+              <table class='table table-condensed table-assign-driver'>
+                <thead>
+                  <tr>
+                    <th colspan='3'>Unassigned drivers for this time</th>
+                  </tr>
+                </thead>
+              </table>
+              <div class='table-modal-scroll'>
+                <table class='table table-condensed table-assign-driver'>
+                  <tbody>
+                    <tr class='selected'>
+                      <td class='driver-name'>
+                        <a href='#'>Alfonzo Ali</a>
+                      </td>
+                      <td class='driver-contact'>(888) 278-8892</td>
+                      <td class='driver-status'>
+                        <a>Select</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='driver-name'>
+                        <a href='#'>Charlotte McGuire</a>
+                      </td>
+                      <td class='driver-contact'>(888) 278-8892</td>
+                      <td class='driver-status'>
+                        <a>Select</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='driver-name'>
+                        <a href='#'>Lydia Franklin</a>
+                      </td>
+                      <td class='driver-contact'>(888) 278-8892</td>
+                      <td class='driver-status'>
+                        <a>Selected</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='driver-name'>
+                        <a href='#'>Alfonzo Ali</a>
+                      </td>
+                      <td class='driver-contact'>(888) 278-8892</td>
+                      <td class='driver-status'>
+                        <a>Select</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='driver-name'>
+                        <a href='#'>Charlotte McGuire</a>
+                      </td>
+                      <td class='driver-contact'>(888) 278-8892</td>
+                      <td class='driver-status'>
+                        <a>Select</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='driver-name'>
+                        <a href='#'>Lydia Franklin</a>
+                      </td>
+                      <td class='driver-contact'>(888) 278-8892</td>
+                      <td class='driver-status'>
+                        <a>Select</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class='modal-action-links'>
+                <a class='btn btn-link'>Invite a New Driver</a>
+                <a class='btn btn-link'>View All Drivers</a>
+              </div>
+            </section>
           </div>
           <div class='modal-footer'>
-            <button class='btn btn-default' date-dismiss='modal' type='button'>Close</button>
-            <button class='btn btn-link' type='button'>Close</button>
+            <button class='btn btn-default' type='button'>Replace Alfonzo</button>
+            <button class='btn btn-link btn-alt' date-dismiss='modal' type='button'>CANCEL</button>
           </div>
         </div>
       </div>

@@ -112,22 +112,37 @@ input[type="checkbox"]
   .control-indicator
     border-radius: 0
 
-  &.control-x
+  &.control-x,
+  &.control-lrg
     padding-left: 30px
+    height: 30px
+    margin-top: 0
+    margin-bottom: 0
+
     .checkbox input[type="checkbox"]
       margin-left: -40px
 
     .control-indicator
-      top: -0.5rem
+      top: 0
       width: 30px
       height: 30px
       border-radius: 4px
       background-color: #fff
       border: solid 1px $gray-light
 
+  &.control-x
     input:checked ~ .control-indicator
       background-color: #fff
       background-image: image-url("icon-remove.svg")
+
+  &.control-lrg
+    .control-indicator
+      
+    input:checked ~ .control-indicator
+      border: solid 1px $green
+      background-color: $green
+      background-image: image-url("icon-checkmark-wht.svg")
+
 
 /////////////
 // form info classes

@@ -34,6 +34,9 @@ h5
   font-size: 20px
   line-height: 1.6
 
+h6
+  font-size: 14px
+  font-weight: 600
 
 ul, ol
   padding-left: 20px
@@ -41,6 +44,9 @@ ul, ol
 
 ul > li
   margin-bottom: 10px
+
+p
+  margin: 0 0 20px
 
 a
   color: $bright-blue
@@ -85,13 +91,6 @@ p.label
 
 // headers styles for sections
 
-.content-header
-  color: $gray-darkest
-  font-size: 18px
-  font-weight: 600
-  line-height: 1.3
-  margin: 0 0 15px
-
 .small-header
   color: $gray-mid-dark
   font-size: 10px
@@ -99,6 +98,19 @@ p.label
   letter-spacing: 1px
   text-transform: uppercase
   margin: 0 0 5px
+
+.medium-header
+  font-size: 18px
+  line-height: 1.3
+  color: $gray-darkest
+  margin: 10px 0 30px
+
+.content-header
+  color: $gray-darkest
+  font-size: 18px
+  font-weight: 600
+  line-height: 1.3
+  margin: 0 0 15px
 
 .section-header
   color: $gray-darkest
@@ -123,4 +135,9 @@ p.label
 // helper classes
 
 .text-muted
+  color: $gray-mid-light
+
+.disclaimer
+  font-size: 12px
+  line-height: 1.3
   color: $gray-mid-light

@@ -1,3 +1,5 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Assign Driver to'}
+
 .modal-body
   %section.modal-sidebar
     = partial 'partials/modals/modal-sidebar'
@@ -29,5 +31,5 @@
       %a.btn.btn-link View All Drivers
 
 .modal-footer
-  %button.btn.btn-default{type: 'button', date: {dismiss: 'modal'}} Assign Anyway
-  %button.btn.btn-link.btn-alt{type: "button"} CLOSE  
+  %button.btn.btn-default{type: 'button'} Assign Anyway
+  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE  

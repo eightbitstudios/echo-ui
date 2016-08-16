@@ -3,6 +3,7 @@
 // Place any jQuery/helper plugins in here.
 $(window).load(function(){
 
+	$('.modal').modal('show');
 
 	//helper for search box text
 	/////////
@@ -38,6 +39,10 @@ $(window).load(function(){
 	//Echo Rep search sidebar custom scrollbar
 	///////////
 
+	$('.table-modal-scroll').mCustomScrollbar({
+		theme: 'minimal-dark'
+	});
+
 	if ($('.sidebar-list.search-results').length) {
 		
 		$('.sidebar-list').mCustomScrollbar({
@@ -46,7 +51,11 @@ $(window).load(function(){
 
 	}
 
+
 	$(function() {
+
+	//Read more toggle
+	///////////
 
 		$('.btn-read-more').on('click', function(e){
 			e.preventDefault()

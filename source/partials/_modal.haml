@@ -2,12 +2,6 @@
   .modal-dialog{role:"document"}
     .modal-content
 
-      .modal-header
-        %button.close.btn-close{type: "button", data:{dismiss:"modal"}, aria:{label: "Close"}}
-          %span{aria:{hidden:"true"}} &times;
-
-        = partial 'partials/modals/modal-header'
-
       - if modal == 'assign-driver-1'
         = partial 'partials/modals/assign-driver-1'
 
@@ -19,6 +13,30 @@
 
       - elsif modal == 'assign-driver-4'
         = partial 'partials/modals/assign-driver-4'
+
+      - elsif modal == 'view-assigned-driver-1'
+        = partial 'partials/modals/view-assigned-driver-1'
+
+      - elsif modal == 'view-assigned-driver-2'
+        = partial 'partials/modals/view-assigned-driver-2'
+
+      - elsif modal == 'view-assigned-driver-3'
+        = partial 'partials/modals/view-assigned-driver-3'
+
+      - elsif modal == 'verify-driver'
+        = partial 'partials/modals/verify-driver'
+
+      - elsif modal == 'verify-driver-2'
+        = partial 'partials/modals/verify-driver-2'
+
+      - elsif modal == 'report-empty'
+        = partial 'partials/modals/report-empty'
+
+      - elsif modal == 'report-empty-2'
+        = partial 'partials/modals/report-empty-2'
+
+      - elsif modal == 'report-arrival'
+        = partial 'partials/modals/report-arrival'
 
       - else
         %h2 This modal does not exist
