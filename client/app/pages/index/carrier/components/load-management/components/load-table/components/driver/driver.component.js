@@ -22,10 +22,7 @@ angular.module('echo.index.carrier.loadManagement.loadTable.driver', [
 
       that.showAssignDriverModal = function () {
         modalService.open({
-          component: 'assign-driver-modal',
-          bindings: {
-            loadTypeEnum: that.loadTypesEnum
-          }
+          component: 'assign-driver-modal'
         });
       };
     }

@@ -13,7 +13,7 @@ angular.module('echo.services.modal', [
     keyboard: true,
     modalFade: true,
     template: '',
-    size: 'md'
+    size: 'lg'
   };
 
   /**
@@ -67,7 +67,7 @@ angular.module('echo.services.modal', [
             binding: key,
             ctrlName: extModalOptions.controllerAs
           });
-        })
+        }) || ''
       });
 
       // Modal Options
