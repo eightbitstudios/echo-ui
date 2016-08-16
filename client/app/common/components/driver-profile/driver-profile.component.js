@@ -2,7 +2,8 @@
 
 angular.module('echo.components.driverProfile', [
   'echo.config.appConstants',
-  'echo.api.driver'
+  'echo.api.driver',
+  'echo.components.serverErrors'
 ]).component('driverProfile', {
   bindings: {
     carrierId: '<',

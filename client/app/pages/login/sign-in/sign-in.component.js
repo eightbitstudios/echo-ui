@@ -2,7 +2,8 @@ angular.module('echo.login.signIn', [
   'echo.api.authentication',
   'echo.config.routes',
   'echo.config.appConstants',
-  'echo.config.errors'
+  'echo.config.errors',
+  'echo.components.serverErrors'
 ]).component('signIn', {
   templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
   controller: function ($window, $location, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, appConstants) {
@@ -34,9 +35,8 @@ angular.module('echo.login.signIn', [
         }).catch(function (errorCode) {
           if (errorCode === errorsConfig.LOCKED) {
             $state.go(routesConfig.LOGIN.forgotPassword.name);
-          } else {
-            that.serverError = errorCode;
           }
+          that.serverError = errorCode;
         }).finally(function () {
           that.showButtonLoading = false;
         });
