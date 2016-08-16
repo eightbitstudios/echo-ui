@@ -18,20 +18,14 @@ angular.module('echo.services.modal', [
 
   /**
    * These are the config properties that are required to correctly setup and initialize the modal
-   * @property {string} headerText        - Header Text that will display at the header location of the modal
-   * @property {string} bodyTemplateUrl   - Url of the template html to include in the body of the modal
-   * @property {string} bodyTemplateUrl   - Name of the Controller to initialize with the modal
-   * @property {boolean} scrollable       - Boolean indicator if the modal-body should be scrollable
-   * @property {string} modalBodyTopId    - id to be generated and given to the top of the body
-   * @property {number} scrollToSpeed     - scroll to top speed
+   * @property {string} headerText - Header Text that will display at the header location of the modal
+   * @property {string} template - Html to include in the body of the modal
    */
   var config = {
     headerText: '',                 // Header
     template: undefined,            // Path to the URL to use
     controllerAs: undefined,        // Name of the controller to use
-    scrollable: true,               // Indicting that the modal-body is scrollable.  Defaults to true
-    scrollToSpeed: 1,               // Speed at which to animate the scroll to top
-    showHeaderClose: true           // Indicting that the header close button should be shown.  Defaults to true
+    scrollable: true               // Indicting that the modal-body is scrollable.  Defaults to true
   };
 
   return {
