@@ -9,6 +9,7 @@ angular.module('echo', [
   'echo.config.api',
   'echo.config.errors',
   'echo.services.cookie',
+  'echo.api.authentication',
   'echo.services.user',
   'ui.bootstrap'
 ])
@@ -18,7 +19,7 @@ angular.module('echo', [
     $httpProvider.interceptors.push('authInterceptor');
   })
 
-  .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location, errorsConfig, cookieService, apiConfig) {
+  .factory('authInterceptor', function ($rootScope, $injector, $window, $q, errorsConfig, routesConfig, cookieService, apiConfig) {
     return {
       // Add authorization token to headers
       request: function (config) {
@@ -33,6 +34,24 @@ angular.module('echo', [
         }
 
         return config;
+      },
+      responseError: function (rejection) {
+        var refreshCookie = cookieService.getRefreshToken();
+        if (_.get(rejection, 'data.status.code') === errorsConfig.UNAUTHORIZED && refreshCookie) {
+
+          $rootScope.showLoading = true;
+          var authenticationApi = $injector.get('authenticationApi'); // Avoid circular dependency
+          authenticationApi.refresh().then(function () {
+            $window.location.reload();
+          }).catch(function() {  
+            cookieService.clearToken();
+            cookieService.clearRefreshToken(); 
+            $window.location = routesConfig.LOGIN.base.url({ redirect: encodeURIComponent($window.location.hash) });
+          }).finally(function() {
+            $rootScope.showLoading = false;
+          });
+        }
+        return $q.reject(rejection);
       }
     };
   })
@@ -44,21 +63,21 @@ angular.module('echo', [
 
       if (_.get(toState.data, 'auth')) { // Check if state requires authentication
         var jwt = cookieService.getToken();
-        if(from.name !== toState.name){
+        if (from.name !== toState.name) {
           $state.previous = from;
         }
         if (jwt) {  // Check if user is authenticated
           var user = userService.mapJwtToUser(jwt);
           if (toState.name === routesConfig.INDEX.base.name) { // Reroute user to their dashboard based on role
             event.preventDefault();
-            
+
             if (user.isRepAdmin()) {
               $state.go(routesConfig.INDEX.myCarriers.name);
             } else {
               $state.go(routesConfig.INDEX.carrier.name, { carrierId: user.carrierId });
             }
           } else if (_.get(toState.data, 'role') && toState.data.role !== _.get(user, 'role')) { // Prevent user from going to states they don't 
-                                                                                                // have permissions to.
+            // have permissions to.
             event.preventDefault();
           } else {
             $rootScope.showLoading = true;

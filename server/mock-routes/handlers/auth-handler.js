@@ -46,7 +46,8 @@ module.exports = {
         if (login) {
           var padding = 'padding';
           resTemplate.data = {
-            access_token: _.join([padding, new Buffer(JSON.stringify(login)).toString('base64'), padding], '.')
+            access_token: _.join([padding, new Buffer(JSON.stringify(login)).toString('base64'), padding], '.'),
+            refresh_token: '1234'
           }
         } else {
           res.status(401001);

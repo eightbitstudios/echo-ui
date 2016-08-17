@@ -17,7 +17,7 @@ module.exports = {
     forgotPassword: '/mock/api/v1/auth/forgotPassword',
     signIn: '/mock/api/v1/auth/signIn',
     signOut: '/mock/api/v1/auth/signOut',
-    refresh: '/mock/api/v1/refresh',
+    refresh: '/mock/api/v1/auth/refresh/:userId',
     userById: '/mock/api/v1/users/:userId',
     driverById: '/mock/api/v1/users/drivers/:driverId',
     deactivateDriverById: '/mock/api/v1/carriers/:carrierId/drivers/:driverId/deactivate',
