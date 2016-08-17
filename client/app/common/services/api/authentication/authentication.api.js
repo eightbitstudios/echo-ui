@@ -3,7 +3,8 @@
 angular.module('echo.api.authentication', [
   'echo.config.api',
   'echo.services.cookie',
-]).factory('authenticationApi', function ($base64, $q, $http, cookieService, apiConfig) {
+  'echo.services.user'
+]).factory('authenticationApi', function ($base64, $q, $http, cookieService, apiConfig, userService) {
   return {
     /**
      * @description Creates a password
@@ -62,15 +63,20 @@ angular.module('echo.api.authentication', [
      * @returns {Promise} - Users recieves new auth token
      */
     refresh: function () {
-      var url = apiConfig.refresh;
+
+      var user = userService.mapJwtToUser(cookieService.getToken());
+      var url = apiConfig.refresh({userId: user.userId});
+
+      cookieService.setToken(cookieService.getRefreshToken());
 
       return $http.get(url).then(function (resp) {
         cookieService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
         cookieService.setToken(resp.data.data.access_token); // jshint ignore:line
-        return resp.data.data;
-      }).catch(function() {
+        return $q.when();
+      }).catch(function () {
         cookieService.clearToken();
         cookieService.clearRefreshToken();
+        return $q.reject();
       });
     },
 
@@ -118,7 +124,7 @@ angular.module('echo.api.authentication', [
      * @returns {Promise} - Users change password request has been sent
      */
     changePassword: function (userId, currentPassword, changePassword) {
-      var url = apiConfig.changePassword({userId: userId});
+      var url = apiConfig.changePassword({ userId: userId });
 
       var data = {
         currentPassword: currentPassword,

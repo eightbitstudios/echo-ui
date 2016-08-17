@@ -11,7 +11,7 @@ module.exports = {
   user: '/api/v1/users',
   signIn: '/api/v1/auth/signIn',
   signOut: '/api/v1/auth/signOut',
-  refresh: '/api/v1/auth/refresh',
+  refresh: '/api/v1/auth/refresh/${userId}',
   createPassword: '/api/v1/users/${userId}/createPassword',
   repByCarrierId: '/api/v1/carriers/${carrierId}/echorep',
   portalUsers: '/api/v1/carriers/${carrierId}/portalusers',
