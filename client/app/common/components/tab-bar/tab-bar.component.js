@@ -18,7 +18,7 @@ angular.module('echo.components.tabBar', [])
       that.state = $state;
 
       that.$onInit = function () {
-        if (!_.some(that.tabItems, { link: $state.current.name }) && !that.hideTabBar) {
+        if (!_.some(that.tabItems, { link: $state.current.name }) && !that.state.current.data.hideTabBar) {
           $state.go(that.defaultRoute);
         }
       };

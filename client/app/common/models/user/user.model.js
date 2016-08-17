@@ -37,7 +37,7 @@ angular.module('echo.models.user', [
      * @return {string}
      */
     User.prototype.getRoleName = function () {
-      return _.startCase(this.oneLoginRoleName);
+      return _.startCase(this.role);
     };
 
     /**
