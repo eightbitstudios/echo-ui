@@ -12,6 +12,6 @@ describe('Filter - Paging filter', function () {
   });
 
   it('should return a valid string for pagination', function () {
-    expect(paging({offset: 0, recordCount: 5, totalRecords: 30}, 'Drivers')).toEqual('Showing 1-5 of 30 Drivers');
+    expect(paging({offset: 0, recordCount: 5, totalRecords: 30}, 'Drivers', 0)).toEqual('Showing 1-5 of 30 Drivers');
   });
 });
