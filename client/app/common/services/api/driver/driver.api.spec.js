@@ -81,7 +81,7 @@ describe('Api: driverApi', function () {
 
       putRes.data = {
         status: {
-          message: 'error'
+          code: 'error'
         }
       };
 
@@ -90,7 +90,7 @@ describe('Api: driverApi', function () {
       driverConverterService.driverRequest.and.returnValue(driver);
 
       driverApi.updateDriverById(carrierId, driver).catch(function (error) {
-        expect(error).toEqual(putRes.data.status.message);
+        expect(error).toEqual(putRes.data.status.code);
         done();
       });
 
@@ -119,14 +119,14 @@ describe('Api: driverApi', function () {
 
       putRes.data = {
         status: {
-          message: 'error'
+          code: 'error'
         }
       };
 
       $http.put.and.returnValue($q.reject(putRes));
 
       driverApi.deactivateDriverById(carrierId, driver).catch(function (error) {
-        expect(error).toEqual(putRes.data.status.message);
+        expect(error).toEqual(putRes.data.status.code);
         done();
       });
 
@@ -157,7 +157,7 @@ describe('Api: driverApi', function () {
 
       postRes.data = {
         status: {
-          message: 'error'
+          code: 'error'
         }
       };
 
@@ -166,7 +166,7 @@ describe('Api: driverApi', function () {
       driverConverterService.driverRequest.and.returnValue(driver);
 
       driverApi.insertDriver(carrierId, driver).catch(function (error) {
-        expect(error).toEqual(postRes.data.status.message);
+        expect(error).toEqual(postRes.data.status.code);
         done();
       });
 
