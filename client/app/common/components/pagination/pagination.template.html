@@ -15,6 +15,6 @@
     </li>
   </ul>
   <div class="pull-right" ng-if="$ctrl.pages.length > 1">
-    {{$ctrl.pagingModel | paging: $ctrl.recordType}}
+    {{$ctrl.pagingModel | paging: $ctrl.recordType:$ctrl.pagingModel.offset}}
   </div>
 </nav>

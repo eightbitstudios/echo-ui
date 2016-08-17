@@ -94,7 +94,10 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.dashboard.name, { // #/carrier/:carrierId/dashboard
       url: routesConfig.INDEX.dashboard.route,
-      template: '<dashboard></dashboard>'
+      template: '<dashboard carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></dashboard>',
+      data: {
+        whiteContainer: true
+      }
     })
     .state(routesConfig.INDEX.loadManagement.name, { // #/carrier/:carrierId/loadManagement
       url: routesConfig.INDEX.loadManagement.route,

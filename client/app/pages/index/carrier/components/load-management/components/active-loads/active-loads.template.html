@@ -12,14 +12,13 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <div class="carrier-map-spacer"></div>
+  <map-placeholder></map-placeholder>
   <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
-      <filter-button filter-enabled="$ctrl.isPickUpToday" click-handler="$ctrl.pickupsTodayHandler(value)" button-text="Pickups Today"></filter-button>
-      <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
+    <filter-button filter-enabled="$ctrl.isPickUpToday" click-handler="$ctrl.pickupsTodayHandler(value)" button-text="Pickups Today"></filter-button>
+    <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
   </loads-filter>
-  <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.activeLoads" load-type="$ctrl.loadType" ng-if="!$ctrl.showLoading"></load-table>
   <div class="container main-content">
+    <load-table loads="$ctrl.activeLoads" load-type="$ctrl.loadType" show-loading="$ctrl.showLoading"></load-table>
     <pagination page-click-handler="$ctrl.getAvailableLoads()" paging-model="$ctrl.paging" record-type="Active Loads" ng-if="!$ctrl.showLoading"></pagination>
   </div>
 </div>

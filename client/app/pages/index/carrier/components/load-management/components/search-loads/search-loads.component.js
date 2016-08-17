@@ -1,5 +1,5 @@
 angular.module('echo.index.carrier.loadManagement.searchLoads', [
-  'echo.index.carrier.loadManagement.loadTable',
+  'echo.components.loadTable',
   'echo.api.loads',
   'echo.components.echoRepContact',
   'echo.models.paging',

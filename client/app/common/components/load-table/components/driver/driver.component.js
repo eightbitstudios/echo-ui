@@ -1,4 +1,4 @@
-angular.module('echo.index.carrier.loadManagement.loadTable.driver', [
+angular.module('echo.components.loadTable.driver', [
   'echo.filters.phoneNumber',
   'echo.filters.firstCharacter',
   'echo.enums.loadTypes',
@@ -6,7 +6,7 @@ angular.module('echo.index.carrier.loadManagement.loadTable.driver', [
   'echo.filters.driverStatus'
 ])
   .component('driver', {
-    templateUrl: 'app/pages/index/carrier/components/load-management/components/load-table/components/driver/driver.template.html',
+    templateUrl: 'app/common/components/load-table/components/driver/driver.template.html',
     bindings: {
       driver: '<',
       loadType: '<',

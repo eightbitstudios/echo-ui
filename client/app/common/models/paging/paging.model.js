@@ -46,6 +46,11 @@ angular.module('echo.models.paging', []).factory('PagingModel', function () {
     this.offset = 1;
   };
 
+  Paging.prototype.setRecords = function (totalRecords, recordCount) {
+    this.totalRecords = totalRecords;
+    this.recordCount = recordCount;
+  };
+
   /**
    * Return the constructor function
    */
