@@ -1,0 +1,42 @@
+<table class="table table-carrier-dashboard">
+  <tbody>
+    <tr>
+      <td class="carrier-dashboard-load">
+        <p class="label">Pro:</p>
+        <p class="inline-edit-content">
+          <a href="#" class="btn-inline-edit">12345678910
+                  <img src="assets/images/add-pencil.svg" alt="Add pencil">
+                  </a>
+        </p>
+        <form class="form-inline form-inline-editing" style="display: none;">
+          <div class="form-group">
+            <label class="hidden">Update Number</label>
+            <input class="form-control" placeholder="Update Number" type="text">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-link btn-sm" type="submit">Save</button>
+            <button class="btn btn-link btn-sm btn-alt" type="reset">Cancel</button>
+          </div>
+        </form>
+        <p></p>
+        <p class="label">BOL:</p>
+        12345678910
+      </td>
+      <td class="carrier-dashboard-pickup">
+        <shipping-details shipping-details="loadManagement.pickUp"></shipping-details>
+      </td>
+      <td class="carrier-dashboard-arrow">
+        <span class="echo-icon icon-right-arrow-dark"></span>
+      </td>
+      <td class="carrier-dashboard-delivery">
+        <shipping-details shipping-details="loadManagement.delivery"></shipping-details>
+      </td>
+      <td>
+        <driver driver="loadManagement.driver" assigned-by-echo="loadManagement.assignedByEcho" load-type="$ctrl.loadType"></driver>
+      </td>
+      <td>
+        <action action="loadManagement.action" load-type="$ctrl.loadType"></action>
+      </td>
+    </tr>
+  </tbody>
+</table>
