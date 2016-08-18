@@ -6,7 +6,8 @@ angular.module('echo.components.pagination', [
   bindings: {
     pageClickHandler: '&',
     recordType: '@',
-    pagingModel: '='
+    pagingModel: '=',
+    onlyShowCurrentPage: '<'
   },
   templateUrl: 'app/common/components/pagination/pagination.template.html',
   controller: function () {

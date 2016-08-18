@@ -5,8 +5,11 @@
         <span class="echo-icon icon-left-chevron"></span>
       </a>
     </li>
-    <li ng-repeat="page in $ctrl.pages" ng-class="{'active-page': $ctrl.pagingModel.selectedPage === page}">
+    <li ng-if="!$ctrl.onlyShowCurrentPage" ng-repeat="page in $ctrl.pages" ng-class="{'active-page': $ctrl.pagingModel.selectedPage === page}">
       <a ng-click="$ctrl.pageClick(page)" href="javascript:void(0)">{{page}}</a>
+    </li>
+    <li class="show-current-page" ng-if="$ctrl.onlyShowCurrentPage">
+      <a href="javascript:void(0)">{{$ctrl.pagingModel.selectedPage}}/{{$ctrl.numberOfPages}}</a>
     </li>
     <li>
       <a ng-click="$ctrl.nextPage()" href="javascript:void(0)">
@@ -14,7 +17,7 @@
       </a>
     </li>
   </ul>
-  <div class="pull-right" ng-if="$ctrl.pages.length > 1">
+  <div class="pull-right" ng-if="$ctrl.pages.length > 1 && cytl.recordType">
     {{$ctrl.pagingModel | paging: $ctrl.recordType:$ctrl.pagingModel.offset}}
   </div>
 </nav>
