@@ -8,8 +8,9 @@
       <a href="javascript:void(0)">{{portalUser.email}}</a>
     </div>
     <div class="user-phone">{{portalUser.phone | phoneNumber}}</div>
-    <footer class="user-action">
-      <div class="user-action-note">Invitation Sent</div>
+    <footer class="user-action">      
+      <div class="user-action-note" ng-if="portalUser.lastLogin === 'Never'">Invitation Sent</div>
+      <div class="user-action-note" ng-if="portalUser.lastLogin !== 'Never'">Last login {{portalUser.lastLogin}}</div>
     </footer>
   </article>
   <article class="portal-user">
