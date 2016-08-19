@@ -12,9 +12,10 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <div class="container-fluid load-table_detail">
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div ng-if="!$ctrl.showLoading" class="container-fluid load-table_detail">
     <div class="container">
-      <load-detail></load-detail>
+      <load-detail load-detail="$ctrl.loadDetails"></load-detail>
     </div>
   </div>
   <div class="container main-content">

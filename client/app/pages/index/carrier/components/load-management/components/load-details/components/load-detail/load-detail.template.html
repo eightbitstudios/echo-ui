@@ -3,19 +3,19 @@
     <tbody>
       <tr>
         <td class="carrier-dashboard-load">
-          <pro-number></pro-number>
+          <pro-number pro-number="$ctrl.loadDetail.proNumber"></pro-number>
         </td>
         <td class="carrier-dashboard-pickup">
-          <shipping-details shipping-details="$ctrl.delivery"></shipping-details>
+          <shipping-details shipping-details="$ctrl.loadDetail.delivery"></shipping-details>
         </td>
         <td class="carrier-dashboard-arrow">
           <span class="echo-icon icon-right-arrow-dark"></span>
         </td>
         <td class="carrier-dashboard-delivery">
-          <shipping-details shipping-details="$ctrl.delivery"></shipping-details>
+          <shipping-details shipping-details="$ctrl.loadDetail.pickUp"></shipping-details>
         </td>
         <td>
-          <driver assigned-by-echo="loadManagement.assignedByEcho" load-type="$ctrl.loadType"></driver>
+          <driver assigned-by-echo="loadManagement.assignedByEcho" driver="$ctrl.loadDetail.driver"></driver>
         </td>
         <td>
           <action load-type="0"></action>

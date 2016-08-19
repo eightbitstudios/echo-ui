@@ -24,5 +24,6 @@ angular.module('echo.config.api', [])
     driver: '@driver@',
     driverById: _.template('@driverById@'),
     searchDrivers: _.template('@searchDrivers@'),
+    loadById: _.template('@loadById@'),
     language: '@language@',
   });
