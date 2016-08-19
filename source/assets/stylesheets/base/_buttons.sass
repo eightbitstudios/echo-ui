@@ -45,7 +45,7 @@ fieldset[disabled] .btn
       color: #fff
       outline: none
       box-shadow: none
-      border: solid 2px $bright-blue
+      border: solid 2px darken($bright-blue, 10%)
       background-color: darken($bright-blue, 10%)
 
     &.btn-disabled
@@ -55,6 +55,10 @@ fieldset[disabled] .btn
         padding: 10px 19px 7px
         border: solid 2px $bright-blue
         background-color: transparent
+
+    &[disabled]:hover,
+    &.disabled:hover
+      border: solid 2px $bright-blue
 
   //////
   &.btn-primary
@@ -119,6 +123,10 @@ fieldset[disabled] .btn
     letter-spacing: 0
     padding: 10px 0
 
+    &:hover,
+    &:focus
+      color: $bright-blue-dark
+      text-decoration: none
 
     &.btn-alt
       text-decoration: underline

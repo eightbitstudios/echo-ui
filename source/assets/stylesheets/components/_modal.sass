@@ -2,16 +2,22 @@
     // #modal
 //------------------------------------
 
+.modal
+  // -webkit-overflow-scrolling: auto
+
 +tablet
   .modal-dialog
     width: 725px
-    margin-top: 130px
+    margin-top: 10vh
 
 .modal-content
   padding: 0 45px 0
   border: none
   border-radius: 2px
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
+
+.modal-title
+  font-size: 30px
 
 .modal-dialog
   .modal-header,
@@ -24,7 +30,7 @@
   display: flex
   align-items: center
   justify-content: flex-start
-  padding-top: 30px
+  padding-top: 20px
 
   .close
     position: absolute
@@ -43,5 +49,9 @@
     margin: 0 10px
 
 
+// modal inactive when editing is active
+.modal-body-inactive
+  opacity: 0.3
+  pointer-events: none
 
 

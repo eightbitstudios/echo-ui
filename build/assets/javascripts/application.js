@@ -82,22 +82,35 @@ $(window).load(function(){
 		/////////
 
 		$('.btn-inline-edit').on('click', function(e){
-			inlineContentEdit(this)
+			var $editBtn = $(this),
+					modalBody = $editBtn.closest('.modal-body').find('.modal-main-content');
+			inlineOpenEdit($editBtn, modalBody)
+			inlineCloseEdit($editBtn, modalBody)
 			e.preventDefault()
 		})
 
-		function inlineContentEdit(editBtn) {
-			var $editBtn = $(editBtn),
-					$editParent = $editBtn.parent('.inline-edit-content')
-
-			$editBtn.hide()
-			$editParent.next().slideToggle()
-
-			$('.form-inline-editing').find('[type="reset"]').on('click', function(){
-				$editBtn.show()
-				$(this).closest('.form-inline-editing').hide()
+		function inlineOpenEdit(editBtn, modalBody) {
+			var $editParent = editBtn.parent('.inline-edit-content');
+			editBtn.animate({
+				opacity: 0
+			}, 100, function(){
+				$(this).hide()
 			})
+			$editParent.next().slideDown()
+			$(modalBody).addClass('modal-body-inactive')
 
+		}
+
+		function inlineCloseEdit(editBtn, modalBody) {
+			$('.form-inline-editing').find('[type="reset"]').on('click', function(){
+				editBtn.animate({
+					opacity: 1
+				}, 100, function(){
+					$(this).show()
+				})
+				$(this).closest('.form-inline-editing').slideUp()
+				$(modalBody).removeClass('modal-body-inactive')
+			})	
 		}
 
 		/////////////

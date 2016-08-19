@@ -28,7 +28,7 @@
 
 .modal-action-links
   margin-top: auto
-  flex: 0
+  margin-bottom: -10px
 
   .btn-link + .btn-link
     margin-left: 15px
@@ -45,7 +45,7 @@
 //////////////
 
 .table-modal-scroll
-  height: 310px
+  height: 300px
   overflow-y: scroll
   padding-right: 25px
   border-bottom: solid 1px $gray-mid-dark
@@ -70,3 +70,40 @@
 
   .driver-name
     font-size: 14px
+
+
+// Arrive Time Picker
+//////
+
+.form-arrival-time
+ 
+  .form-group
+    margin: 0 0 0 20px
+    width: 60px
+
+    .form-control
+      width: 100%
+
+  .btn-modal-dp
+    padding-left: 45px
+
+    &.filter__assigned
+      &:before
+        content: image-url('icon-calendar-white.svg')
+
+    &:before
+      content: image-url('icon-calendar-gray.svg')
+      display: inline-block
+      position: absolute
+      top: 10px
+      left: 15px
+      width: 18px
+      height: auto
+      margin-right: 6px
+
+    &:hover,
+    &:active,
+    &:focus
+      &:before
+        content: image-url('icon-calendar-white.svg')
+

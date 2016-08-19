@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      View Assigned Driver Overlay
+      Report Arrival Overlay
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -822,7 +822,7 @@
             </button>
             <h1 class='modal-title'>
               <span class='assign-action-type'>
-                Asssigned driver for
+                Report Arrival For
               </span>
               <span class='assign-action-to'>
                 Load 345674556
@@ -833,82 +833,39 @@
           <div class='modal-body'>
             <section class='modal-sidebar'>
               <article class='sidebar-content'>
-                <h4 class='small-header'>Pickup</h4>
+                <h4 class='small-header'>Reporting Arrival At</h4>
                 <div class='load-citystate'>
-                  <div class='load-city'>Memphis</div>
-                  <div class='load-st'>TN, 60655</div>
-                </div>
-                <div class='load-datetime'>
-                  14:00-15:00 EST
-                  <br>
-                  Today, Apr 20
-                </div>
-              </article>
-              <article class='sidebar-content'>
-                <h4 class='small-header'>Delivery</h4>
-                <div class='load-citystate'>
-                  <div class='load-city'>Winchester-on-the-Severn</div>
-                  <div class='load-st'>TX, 50968</div>
-                </div>
-                <div class='load-datetime'>
-                  16:00-18:00 EST
-                  <br>
-                  Fri, May 23
-                </div>
-              </article>
-              <article class='sidebar-content'>
-                <h4 class='small-header'>Equipment</h4>
-                <div class='equip-specials'>
-                  Dry Van 53', HazMat
-                  <br>
-                  <div class='inline-edit-content'>
-                    <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
-                    <img src="assets/images/add-pencil.svg" alt="Add pencil" />
-                    </a>
+                  <div class='load-city'>Walmart  Warehouse A24</div>
+                  <div class='load-st'>
+                    555 W. Western <br>
+                    Dock #123 <br>
+                    Bartville, IN
                   </div>
-                  <form class='form-inline form-inline-editing' style='display: none;'>
-                    <div class='form-group'>
-                      <label class='hidden'>Add Trailer Number</label>
-                      <input class='form-control' placeholder='Add Trailer Number' type='text'>
-                    </div>
-                    <div class='form-group'>
-                      <button class='btn btn-link' type='submit'>Save</button>
-                      <button class='btn btn-link btn-alt' type='reset'>Cancel</button>
-                    </div>
-                  </form>
                 </div>
-                <br>
-                <div class='equip-specials'>
-                  Drop Trailer at Shipper
-                  <br>
-                  No Reefers
+              </article>
+              <article class='sidebar-content'>
+                <h4 class='small-header'>Driver</h4>
+                <div class='load-citystate'>
+                  <div class='load-city'>Mike P.</div>
+                  <div class='load-st'>(312) 555-1212</div>
                 </div>
-                <a class='btn btn-link btn-show'>Show More</a>
               </article>
             </section>
             <section class='modal-main-content'>
-              <div class='well'>
-                <h2 class='driver-name'>
-                  <a href='#'>Alfonzo Ali</a>
-                </h2>
-                <h3 class='medium-header'>(888) 278-8892</h3>
-                <strong class='small-header'>
-                  Email
-                </strong>
-                <p>ali@email.com</p>
-                <strong class='small-header'>Tractor Number</strong>
-                <p>Tractor 12345677</p>
-                <strong class='small-header'>Preferred Language</strong>
-                <p>English</p>
-              </div>
-              <div class='modal-action-links'>
-                <a class='btn btn-link' href='#'>Change Driver</a>
-                <a class='btn btn-link' href='#'>View All Drivers</a>
-              </div>
+              <h4 class='content-header'>What time did the driver arrive at the pickup stop?</h4>
+              <p class='text-muted disclaimer'>[Legal disclaimer such as: For communication purposes only. Detention is calculated using customer policies and documents provided at the stop location.] </p>
+              <form class='form-inline'>
+                <div class='form-group'>
+                  <label class='hidden'>Time</label>
+                  <input class='form-control' placeholder='12:00' type='time'>
+                </div>
+              </form>
+              <div class='date-select'></div>
             </section>
           </div>
           <div class='modal-footer'>
-            <button class='btn btn-link btn-alt' date-dismiss='modal' type='button'>CLOSE</button>
+            <button class='btn btn-default' type='button'>CONFIRM EMPTY</button>
+            <button class='btn btn-link btn-alt' data-dismiss='modal' type='button'>CLOSE</button>
           </div>
         </div>
       </div>

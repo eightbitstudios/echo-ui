@@ -9,40 +9,26 @@
     %h4.content-header What time did the driver arrive at the pickup stop?
     %p.text-muted.disclaimer [Legal disclaimer such as: For communication purposes only. Detention is calculated using customer policies and documents provided at the stop location.] 
 
-    .card.card-driver
-      .card-action
-        %label.checkbox.control.control-lrg
-          %input.checkbox{type:'checkbox'}
-          %span.control-indicator
-      
-      .card-details
-        %p 
-          %strong With The Right Equipment
-        %p 
-          53' Dry Van, HazMat <br/>
-          Vertical E-track, 8-10 ratchet straps
+    %form.form-inline.form-arrival-time
+      .filter-drivers.pull-left
+        %button.btn.btn-default.btn-filter.btn-modal-dp
+          Thu, Aug 18
+        .datepicker
 
-    .card.card-driver
-      .card-action
-        %label.checkbox.control.control-lrg
-          %input.checkbox{type:'checkbox'}
-          %span.control-indicator
-      
-      .card-details
-        %p 
-          %strong Providing The Service
-        %p Drop Trailer at Shipper
+      .form-group
+        %label.hidden Time
+        %input.form-control{:type => "text", :placeholder => "12:00"}
+      .form-group
+        %label.hidden Time Zone
+        .select
+          %select.form-control{:type => "select", :placeholder => "Select one..."}
+            %option EST
+            %option CST
+            %option MST
+            %option PST
 
-    .card.card-driver
-      .card-action
-        %label.checkbox.control.control-lrg
-          %input.checkbox{type:'checkbox'}
-          %span.control-indicator
-      
-      .card-details
-        %p 
-          %strong Follow The Instructions
-        %p ** MUST REPORT DETENTION AND LUMPERS WITHIN 24 HRS **
+    .date-select
+
 
 
 .modal-footer
