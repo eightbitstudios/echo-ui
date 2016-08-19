@@ -1,0 +1,118 @@
+//------------------------------------
+//    #reporting and tracking modals
+//------------------------------------
+
+/// Custom styles for Load Management modals
+////////////
+
+.modal-load-mgmt
+  .modal-body
+    padding: 0
+    display: flex
+    flex-direction: row
+
+  .modal-sidebar
+    width: calc(100%/3)
+    min-width: 175px
+    padding: 25px 25px 25px 0
+    border-right: solid 1px $gray-light
+
+  .modal-main-content
+    padding: 25px 0 25px 25px
+    flex: 1
+    display: flex
+    flex-direction: column
+
+.modal-subheading
+  margin-left: auto
+
+.modal-action-links
+  margin-top: auto
+  margin-bottom: -10px
+
+  .btn-link + .btn-link
+    margin-left: 15px
+
+  &.modal-action-split
+    display: flex
+    align-items: flex-end
+    justify-content: space-between
+
+    svg
+      vertical-align: middle
+
+// Assign Driver Modals
+//////////////
+
+.table-modal-scroll
+  height: 300px
+  overflow-y: scroll
+  padding-right: 25px
+  border-bottom: solid 1px $gray-mid-dark
+  
+  table
+    tr > td:last-child
+      padding-right: 0
+
+.table-assign-driver
+  margin-bottom: 0
+
+  .driver-status,
+  .driver-contact
+    text-align: right
+
+  td.driver-contact
+    color: $gray-mid-light
+    width: 120px
+
+  td.driver-status
+    width: 60px
+
+  .driver-name
+    font-size: 14px
+
+
+// Arrive Time Picker
+//////
+
+.form-arrival-time
+ 
+  .form-group
+    margin: 0 0 0 20px
+    width: 60px
+
+    .form-control
+      width: 100%
+
+  .btn-modal-dp
+    padding-left: 45px
+
+    &.filter__assigned
+      &:before
+        content: image-url('icon-calendar-white.svg')
+
+    &:before
+      content: image-url('icon-calendar-gray.svg')
+      display: inline-block
+      position: absolute
+      top: 10px
+      left: 15px
+      width: 18px
+      height: auto
+      margin-right: 6px
+
+    &:hover,
+    &:active,
+    &:focus
+      &:before
+        content: image-url('icon-calendar-white.svg')
+
+
+.daterangepicker.single.show-calendar
+  display: flex
+  flex-direction: column
+  width: 275px
+  .calendar
+    width: 100%
+  .daterangepicker_input
+    display: none

@@ -155,7 +155,7 @@ DEPENDENCIES
   middleman-compass (>= 4.0.1)
   middleman-deploy!
   middleman-livereload
-  middleman-sprockets (>= 4.0.0)
+  middleman-sprockets (~> 4.0.0.rc.1)
 
 BUNDLED WITH
    1.12.5

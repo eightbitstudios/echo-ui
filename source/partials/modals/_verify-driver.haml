@@ -1,0 +1,39 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Verify Driver for'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar'
+
+  %section.modal-main-content
+
+    .message.message-danger
+      %p.text-danger
+        An Echo Representative has entered this information about the driver for this load.
+
+      %p.driver-searched
+        %strong Gregory M
+        &nbsp;
+        &nbsp;
+        %span.text-muted (343) 890-1203
+
+      %p.text-danger.message-noicon
+        This matches a possible driver listed below. Please confirm  or find a replacement.
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-x
+          %input.checkbox{type:'checkbox', checked: 'checked'}
+          %span.control-indicator
+      
+      .card-details
+        %h4.small-header Possible Driver
+        %a{href: '#'} James Blake
+        .span.pull-right (888) 278-8892
+
+    .modal-action-links
+      %a.btn.btn-link Invite New Driver
+      %a.btn.btn-link View All Drivers
+
+.modal-footer
+  %button.btn.btn-default{type: 'button'} Verify James
+  %button.btn.btn-link.btn-alt{type: "button", date: {dismiss: 'modal'}} CLOSE  

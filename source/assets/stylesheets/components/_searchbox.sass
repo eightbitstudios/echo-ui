@@ -7,22 +7,23 @@
 
   .search-form
     margin-right: 25px
+    margin-bottom: 0
+    width: 250px
+
+    +tablet
+      width: 350px
 
 .search-form
-  width: 250px
   position: relative
-  // display: flex
-
-  +tablet
-    width: 350px
-
+  margin-bottom: 15px
+  
   .form-group
     position: relative
 
   .form-control.search-form-input
     height: auto
     width: 100%
-    padding: 10px 14px
+    padding: 10px 35px 10px 14px
     border: none
     border-radius: 2px
     background-color: $gray-lightest

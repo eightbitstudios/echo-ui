@@ -60,22 +60,45 @@ table.table
     &:last-child
       border-right: none
 
-  tr:hover
+  tr:hover,
+  tr.selected
     td:first-child
       padding-left: 11px
       border-left: 4px solid $bright-blue
 
 
+/// table, a bit smaller w/o white striping
+
 .table.table-condensed
-  margin: 20px 0
-  border-top: 1px solid $gray-lightest
+
+  tr > th
+    color: $gray-darkest
+    font-size: 14px
+    text-transform: none
+    padding: 10px 0
+    border-top: 0
+    border-bottom: 1px solid $gray-darkest
+
   tr > td
     border-right: none
+    padding-left: 10px
+    padding-right: 10px
 
     &:after
       display: none
 
-  tr:hover
+
+.table.table-log
+  margin: 20px 0
+  border-top: 1px solid $gray-lightest
+
+  tr
     td:first-child
       padding-left: 0
       border-left: none
+
+    &:hover
+      td:first-child
+        padding-left: 0
+        border-left: none
+

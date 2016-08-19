@@ -3,6 +3,41 @@
 // Place any jQuery/helper plugins in here.
 $(window).load(function(){
 
+	$('.modal').modal('show');
+
+
+	//MODAL FIX FOR iOS?
+
+		// iOS check...ugly but necessary
+	if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+	    $('.modal').on('show.bs.modal', function() {
+	        // Position modal absolute and bump it down to the scrollPosition
+	        $(this)
+	            .css({
+	                position: 'absolute',
+	                marginTop: $(window).scrollTop() + 'px',
+	                bottom: 'auto'
+	            });
+	        // Position backdrop absolute and make it span the entire page
+	        //
+	        // Also dirty, but we need to tap into the backdrop after Boostrap 
+	        // positions it but before transitions finish.
+	        //
+	        setTimeout( function() {
+	            $('.modal-backdrop').css({
+	                position: 'absolute', 
+	                top: 0, 
+	                left: 0,
+	                width: '100%',
+	                height: Math.max(
+	                    document.body.scrollHeight, document.documentElement.scrollHeight,
+	                    document.body.offsetHeight, document.documentElement.offsetHeight,
+	                    document.body.clientHeight, document.documentElement.clientHeight
+	                ) + 'px'
+	            });
+	        }, 0);
+	    });
+	}
 
 	//helper for search box text
 	/////////
@@ -38,6 +73,10 @@ $(window).load(function(){
 	//Echo Rep search sidebar custom scrollbar
 	///////////
 
+	$('.table-modal-scroll').mCustomScrollbar({
+		theme: 'minimal-dark'
+	});
+
 	if ($('.sidebar-list.search-results').length) {
 		
 		$('.sidebar-list').mCustomScrollbar({
@@ -46,7 +85,11 @@ $(window).load(function(){
 
 	}
 
+
 	$(function() {
+
+	//Read more toggle
+	///////////
 
 		$('.btn-read-more').on('click', function(e){
 			e.preventDefault()
@@ -73,22 +116,35 @@ $(window).load(function(){
 		/////////
 
 		$('.btn-inline-edit').on('click', function(e){
-			inlineContentEdit(this)
+			var $editBtn = $(this),
+					modalBody = $editBtn.closest('.modal-body').find('.modal-main-content');
+			inlineOpenEdit($editBtn, modalBody)
+			inlineCloseEdit($editBtn, modalBody)
 			e.preventDefault()
 		})
 
-		function inlineContentEdit(editBtn) {
-			var $editBtn = $(editBtn),
-					$editParent = $editBtn.parent('.inline-edit-content')
-
-			$editBtn.hide()
-			$editParent.next().slideToggle()
-
-			$('.form-inline-editing').find('[type="reset"]').on('click', function(){
-				$editBtn.show()
-				$(this).closest('.form-inline-editing').hide()
+		function inlineOpenEdit(editBtn, modalBody) {
+			var $editParent = editBtn.parent('.inline-edit-content');
+			editBtn.animate({
+				opacity: 0
+			}, 100, function(){
+				$(this).hide()
 			})
+			$editParent.next().slideDown()
+			$(modalBody).addClass('modal-body-inactive')
 
+		}
+
+		function inlineCloseEdit(editBtn, modalBody) {
+			$('.form-inline-editing').find('[type="reset"]').on('click', function(){
+				editBtn.animate({
+					opacity: 1
+				}, 100, function(){
+					$(this).show()
+				})
+				$(this).closest('.form-inline-editing').slideUp()
+				$(modalBody).removeClass('modal-body-inactive')
+			})	
 		}
 
 		/////////////
@@ -123,7 +179,39 @@ $(window).load(function(){
 	  	$('.filter-bar').find('.close').remove()
 	  	$('.filter__assigned').removeClass('filter__assigned');
 	  }
-		
+
+		/////////////
+	  // Modal Singel Date Picker
+		/////////////		
+
+		var $mdpTrigger = $('.btn-modal-dp')
+
+	  // if ($mdpTrigger.hasClass('filter__assigned')) {
+	  //   resetSdpTrigger
+	  // }
+
+		$mdpTrigger.daterangepicker({
+			singleDatePicker: true,
+			parentEl: '.form-arrival-time .datepicker',
+			buttonClasses: "btn",
+			applyClass: "btn-default",
+			cancelClass: "btn-link btn-alt",
+			autoApply: false,
+			locale: {
+				format: "MM/DD/YYYY",
+				cancelLabel: "Clear",
+				daysOfWeek: [
+					"Sun",
+					"Mon",
+					"Tue",
+					"Wed",
+					"Thu",
+					"Fri",
+					"Sat"
+			  ]
+			}
+		});
+
 		/////////////
 	  // Single Date Picker JS
 		/////////////
