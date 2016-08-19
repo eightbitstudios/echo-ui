@@ -1,0 +1,9 @@
+<div class="read-more-block">
+  <div class="read-more-content" ng-class="$ctrl.isOpen">
+    <p>{{$ctrl.truncatedText}}</p>
+  </div>
+  <a href="javascript:void(0)" ng-click="$ctrl.clickHandler()" class="btn-read-more" ng-if="$ctrl.showReadMore">
+    <span ng-if="$ctrl.isOpen">Show less</span>
+    <span ng-if="!$ctrl.isOpen">Read more</span>    
+    </a>
+</div>
