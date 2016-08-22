@@ -25,6 +25,9 @@ module.exports = {
     deactivateUserById: '/mock/api/v1/users/:userId/deactivate',
     drivers: '/mock/api/v1/users/drivers',
     loadById: '/mock/api/v1/loads/:loadId',
-    language: '/mock/api/v1/preferredLanguages'
+    language: '/mock/api/v1/preferredLanguages',
+    assignDriverByLoadId: '/mock/api/v1/loads/:loadId/assign/:userId',
+    unassignDriverByLoadId: '/mock/api/v1/loads/:loadId/unassign',
+    reassignDriverByLoadId: '/mock/api/v1/loads/:loadId/reassign/:userId'
   }
 };

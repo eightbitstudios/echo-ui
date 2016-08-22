@@ -1,6 +1,7 @@
 angular.module('echo.components.modal.assignDriver', [
   'echo.components.equipment',
   'echo.models.driver',
+  'echo.api.loads',
   'echo.components.shippingDetails',
   'echo.components.modal.assignDriver.loadDriver'
 ])
@@ -11,7 +12,7 @@ angular.module('echo.components.modal.assignDriver', [
       load: '<',
       carrierId: '<'
     },
-    controller: function (DriverModel) {
+    controller: function (loadsApi, DriverModel) {
       var that = this;
 
       that.states = {
@@ -21,12 +22,23 @@ angular.module('echo.components.modal.assignDriver', [
       };
 
       that.newDriver = null;
+      that.state = null;
 
       that.newDriverSelected = function (driver) {
         that.newDriver = driver;
       };
 
-      that.state = null;
+      that.assignDriver = function () {
+        loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id);
+      };
+
+      that.reassignDriver = function () {
+        loadsApi.reassignDriver(that.load.loadNumber, that.newDriver.id);
+      };
+
+      that.unassignDriver = function () {
+        loadsApi.unassignDriver(that.load.loadNumber);
+      };
 
       that.$onInit = function () {
         that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));

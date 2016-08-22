@@ -24,5 +24,8 @@ module.exports = {
   language: '/api/v1/preferredLanguages',
   forgotPassword: '/api/v1/auth/forgotPassword',
   loadById: '/api/v1/loads/${loadId}',
-  changePassword: '/api/v1/users/${userId}/setPassword'
+  changePassword: '/api/v1/users/${userId}/setPassword',
+  assignDriverByLoadId: '/api/v1/loads/${loadId}/assign/${userId}',
+  unassignDriverByLoadId: '/api/v1/loads/${loadId}/unassign',
+  reassignDriverByLoadId: '/api/v1/loads/${loadId}/reassign/${userId}'
 };

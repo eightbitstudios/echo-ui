@@ -58,8 +58,26 @@ angular.module('echo.api.loads', [
       });
     },
     fetchLoadDetails: function (loadId) {
-      var url = apiConfig.loadById({ loadId: loadId});
+      var url = apiConfig.loadById({ loadId: loadId });
       return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    assignDriver: function (loadId, driverId) {
+      var url = apiConfig.assignDriverByLoadId({ loadId: loadId, userId: driverId });
+      return $http.post(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    unassignDriver: function (loadId) {
+      var url = apiConfig.unassignDriverByLoadId({ loadId: loadId });
+      return $http.put(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    reassignDriver: function (loadId, driverId) {
+      var url = apiConfig.reassignDriverByLoadId({ loadId: loadId, userId: driverId });
+      return $http.put(url).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },

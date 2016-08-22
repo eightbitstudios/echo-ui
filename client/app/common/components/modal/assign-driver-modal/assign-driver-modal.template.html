@@ -38,11 +38,17 @@
     </section>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-default" type="button" ng-click="$ctrl.modalActions.close()" ng-if="$ctrl.state && $ctrl.state !== $ctrl.states.assignedDriverProfile">
-      <span ng-if="!$ctrl.noDriver && $ctrl.newDriver">Replace {{$ctrl.driver.firstName}}</span>
-      <span ng-if="!$ctrl.noDriver && !$ctrl.newDriver">Unassign {{$ctrl.driver.firstName}}</span>
-      <span ng-if="$ctrl.noDriver">Assign</span>
+    <div ng-if="$ctrl.state && $ctrl.state !== $ctrl.states.assignedDriverProfile">
+    <button class="btn btn-default" type="button" ng-click="$ctrl.assignDriver()" ng-if="$ctrl.noDriver">
+      Assign
     </button>
+    <button class="btn btn-default" type="button" ng-click="$ctrl.reassignDriver()" ng-if="!$ctrl.noDriver && $ctrl.newDriver">
+      Replace {{$ctrl.driver.firstName}}
+    </button>
+    <button class="btn btn-default" type="button" ng-click="$ctrl.unassignDriver()" ng-if="!$ctrl.noDriver && !$ctrl.newDriver">
+      Unassign {{$ctrl.driver.firstName}}
+    </button>
+    </div>
     <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close()">Close</button>
   </div>
 </div>

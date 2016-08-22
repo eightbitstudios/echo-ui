@@ -53,6 +53,7 @@ module.exports = {
         res.status(400).json(resTemplate);
       } else {
         resTemplate.data = req.body;
+         resTemplate.data.id = 99;
         res.json(resTemplate);
       }
     }, minDelay, maxDelay);
