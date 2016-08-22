@@ -23,35 +23,22 @@
         <h4 class="small-header">Delivery</h4>
         <shipping-details shipping-details="$ctrl.delivery"></shipping-details>
       </article>
-      <article class="sidebar-content">
+      <section class="sidebar-content">
         <h4 class="small-header">Equipment</h4>
-        <div class="equip-specials">
-          Dry Van 53', HazMat
-          <br>
-          <div class="inline-edit-content">
-            <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
-                    <img src="assets/images/add-pencil.svg" alt="Add pencil">
-                    </a>
-          </div>
-          <form class="form-inline form-inline-editing" style="display: none;">
-            <div class="form-group">
-              <label class="hidden">Add Trailer Number</label>
-              <input class="form-control" placeholder="Add Trailer Number" type="text">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-link" type="submit">Save</button>
-              <button class="btn btn-link btn-alt" type="reset">Cancel</button>
-            </div>
-          </form>
+        <div class="equip-list">
+          Dry Van 53'<br> HazMat
+          <br> Tractor 093837<br>
+          <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
+                  <span class="echo-icon icon-add-pencil"></span>
+              </a>
         </div>
         <br>
         <div class="equip-specials">
-          Drop Trailer at Shipper
-          <br> No Reefers
+          Drop Trailer at Shipper<br> No Reefers<br>
         </div>
         <a class="btn btn-link btn-show">Show More</a>
-      </article>
-    </section>
+        </article>
+      </section>
   </div>
   <div class="modal-footer">
     <button class="btn btn-default" type="button" ng-click="$ctrl.modalActions.close()">Assign</button>
