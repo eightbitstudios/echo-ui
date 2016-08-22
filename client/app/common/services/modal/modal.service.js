@@ -67,7 +67,7 @@ angular.module('echo.services.modal', [
             binding: key,
             ctrlName: extModalOptions.controllerAs
           });
-        }) || ''
+        }).join(' ') || ''
       });
 
       // Modal Options

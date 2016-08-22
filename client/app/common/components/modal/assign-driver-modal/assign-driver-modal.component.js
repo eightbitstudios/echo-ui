@@ -1,24 +1,36 @@
-angular.module('echo.components.modal.assignDriver', [])
+angular.module('echo.components.modal.assignDriver', [
+  'echo.components.equipment',
+  'echo.models.driver',
+  'echo.components.shippingDetails',
+  'echo.components.modal.assignDriver.loadDriver'
+])
   .component('assignDriverModal', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/assign-driver-modal.template.html',
     bindings: {
-      modalActions: '<'
+      modalActions: '<',
+      load: '<',
+      carrierId: '<'
     },
-    controller: function () {
+    controller: function (DriverModel) {
       var that = this;
 
-      that.pickup = [{
-        city: 'New York',
-        state: 'New York',
-        zip: '60655',
-        time: '2016-08-02T16:20:14-05:00'
-      }];
-      that.delivery = [{
-        city: 'Chicago',
-        state: 'IL',
-        zip: '60601',
-        isCurrent: true,
-        time: '2016-08-08T16:20:14-05:00'
-      }];
+      that.states = {
+        unassignedDriver: 1,
+        newDriver: 2,
+        assignedDriverProfile: 3
+      };
+
+      that.newDriver = null;
+
+      that.newDriverSelected = function (driver) {
+        that.newDriver = driver;
+      };
+
+      that.state = null;
+
+      that.$onInit = function () {
+        that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
+        that.driver = new DriverModel(that.load.driver);
+      };
     }
   });

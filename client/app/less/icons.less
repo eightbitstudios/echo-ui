@@ -10,12 +10,6 @@
   display: inline-block;
 }
 
-
-.icon-left-arrow {
-  background: url("../assets/images/iconarrow-blue@2x.png");
-  background-size: cover;
-}
-
 .icon-portal-user {
   height: 17px;
   width: 19px;
@@ -84,3 +78,15 @@
   height: 14px;
   width: 10px;
 }
+
+.icon-left-arrow, .icon-right-arrow {
+    height: 12px;
+    width: 12px;
+}
+  .btn-alt {
+    .icon-left-arrow {
+      polyline, path {
+        stroke: @c-gray-heavy-light !important;
+      }
+    }
+  }

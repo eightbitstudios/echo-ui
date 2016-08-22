@@ -10,19 +10,22 @@ angular.module('echo.index.carrier.loadManagement.loadTable.driver', [
   .component('driver', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-table/components/driver/driver.template.html',
     bindings: {
-      driver: '<',
+      load: '<',
       loadType: '<',
-      assignedByEcho: '<'
+      carrierId: '<'
     },
     controller: function (loadTypesEnum, modalService) {
       var that = this;
 
-      that.noDriver = _.isUndefined(_.get(that.driver, 'id'));
+      that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
       that.loadTypesEnum = loadTypesEnum;
-
       that.showAssignDriverModal = function () {
         modalService.open({
-          component: 'assign-driver-modal'
+          component: 'assign-driver-modal',
+          bindings: {
+            load: that.load,
+            carrierId: that.carrierId
+          }
         });
       };
     }

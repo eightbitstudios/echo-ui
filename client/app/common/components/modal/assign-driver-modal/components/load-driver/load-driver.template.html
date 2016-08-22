@@ -1,0 +1,3 @@
+<unassigned-driver ng-if="$ctrl.state === $ctrl.states.unassignedDriver" invite-new-driver-callback="$ctrl.inviteNewDriver()" selected-driver-callback="$ctrl.setNewDriver(driver)"></unassigned-driver>
+<new-driver ng-if="$ctrl.state === $ctrl.states.newDriver" continue-callback="$ctrl.newDriverCreated(driver)" cancel-callback="$ctrl.cancelNewDriver()" carrier-id="$ctrl.carrierId"></new-driver>
+<assigned-driver-profile ng-if="$ctrl.state === $ctrl.states.assignedDriverProfile" driver="$ctrl.driver" change-driver-callback="$ctrl.changeDriver()"></assigned-driver-profile>

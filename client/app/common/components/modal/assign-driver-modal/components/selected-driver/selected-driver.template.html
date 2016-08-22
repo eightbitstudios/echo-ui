@@ -1,0 +1,10 @@
+<div class="card card-driver">
+  <div class="card-action">
+    <span class="echo-icon icon-remove control-indicator" ng-click="$ctrl.removeCallback()"></span>
+  </div>
+  <div class="card-details">
+    <h4 class="small-header">Chosen Driver</h4>
+    <a href="#">{{$ctrl.driver.name}}</a>
+    <div class="span pull-right">{{$ctrl.driver.phone | phoneNumber}}</div>
+  </div>
+</div>

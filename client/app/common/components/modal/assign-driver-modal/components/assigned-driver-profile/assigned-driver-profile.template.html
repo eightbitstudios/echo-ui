@@ -1,0 +1,20 @@
+<div class="assigned-driver-profile">
+  <div class="well">
+    <h2 class="driver-name">
+                  <a href="#">{{$ctrl.driver.getFullName()}}</a>
+                </h2>
+    <h3 class="medium-header">{{$ctrl.driver.phone | phoneNumber}}</h3>
+    <strong class="small-header">
+                  Email
+                </strong>
+    <p>{{$ctrl.driver.email}}</p>
+    <strong class="small-header">Tractor Number</strong>
+    <p>Tractor {{$ctrl.driver.tractorNumber}}</p>
+    <strong class="small-header">Preferred Language</strong>
+    <p>{{$ctrl.driver.preferredLanguage}}</p>
+  </div>
+  <div class="modal-action-links">
+    <a class="btn btn-link" href="javascript:void(0)" ng-click="$ctrl.changeDriverCallback()">Change Driver</a>
+    <a class="btn btn-link" href="#">View All Drivers</a>
+  </div>
+</div>

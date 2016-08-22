@@ -1,11 +1,11 @@
 <div class="carrier-dashboard-driver">
   <div ng-if="!$ctrl.noDriver">
-    <h3 class="driver-name"><a href="javascript:void(0)" ng-click="$ctrl.showAssignDriverModal()">{{$ctrl.driver.firstName}} {{$ctrl.driver.lastName | firstCharacter}}</a></h3>
-    <span><tel>{{$ctrl.driver.phone | phoneNumber}}</tel></span>
+    <h3 class="driver-name"><a href="javascript:void(0)" ng-click="$ctrl.showAssignDriverModal()">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</a></h3>
+    <span><tel>{{$ctrl.load.driver.phone | phoneNumber}}</tel></span>
     <div class="driver-status">
-      {{$ctrl.driver.isDoNotDisturb | driverStatus}}
-      <br> <span ng-if="$ctrl.loadType === $ctrl.loadTypesEnum.ACTIVE">Tracking {{$ctrl.driver.isTrackingEnabled | onOff}}</span>
-      <span ng-if="$ctrl.loadType !== $ctrl.loadTypesEnum.ACTIVE && $ctrl.assignedByEcho">Entered By Echo</span>
+      {{$ctrl.load.driver.isDoNotDisturb | driverStatus}}
+      <br> <span ng-if="$ctrl.loadType === $ctrl.loadTypesEnum.ACTIVE">Tracking {{$ctrl.load.driver.isTrackingEnabled | onOff}}</span>
+      <span ng-if="$ctrl.loadType !== $ctrl.loadTypesEnum.ACTIVE && $ctrl.load.assignedByEcho">Entered By Echo</span>
     </div>
   </div>
   <div ng-if="$ctrl.noDriver">

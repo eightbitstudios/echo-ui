@@ -34,6 +34,7 @@ module.exports = {
       if (resTemplate.status.error) {
         res.status(400).json(resTemplate);
       } else {
+        resTemplate.data = req.body;
         res.json(resTemplate);
       }
     }, minDelay, maxDelay);
@@ -51,6 +52,7 @@ module.exports = {
       if (resTemplate.status.error) {
         res.status(400).json(resTemplate);
       } else {
+        resTemplate.data = req.body;
         res.json(resTemplate);
       }
     }, minDelay, maxDelay);

@@ -1,0 +1,8 @@
+<div class="unassigned-driver">
+  <typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.onSelectCallback(selection)"></typeahead-search>
+  <selected-driver ng-if="$ctrl.state === $ctrl.states.selectedDriver" driver="$ctrl.selectedDriver" remove-callback="$ctrl.removeDriverCallback()"></selected-driver>
+  <div class="modal-action-links">
+    <a class="btn btn-link" ng-click="$ctrl.inviteNewDriverCallback()">Invite a New Driver</a>
+    <a class="btn btn-link">View All Drivers</a>
+  </div>
+</div>

@@ -10,7 +10,7 @@
               <span ng-if="$ctrl.driver.id">{{::$ctrl.driver.getFullName()}}</span>
             </h1>
   <form name="$ctrl.driverProfileForm" novalidate>
-    <fieldset class="fieldset">
+    <fieldset class="fieldset personal-information">
       <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.firstName.$invalid && $ctrl.driverProfileForm.firstName.$touched}">
         <label>First Name</label>
         <input class="form-control" required ng-model="$ctrl.driver.firstName" name="firstName" placeholder="Driver Name" type="text">
@@ -30,7 +30,7 @@
         <input ng-if="$ctrl.driver.language === $ctrl.other" class="form-control" ng-model="$ctrl.driver.otherLanguage" placeholder="Language" type="text">
       </div>
     </fieldset>
-    <fieldset class="fieldset">
+    <fieldset class="fieldset contact-information">
       <legend>Contact Information</legend>
       <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.email.$invalid && $ctrl.driverProfileForm.email.$touched}">
         <label>Email Address</label>

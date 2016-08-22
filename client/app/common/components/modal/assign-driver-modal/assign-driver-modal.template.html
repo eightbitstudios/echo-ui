@@ -4,44 +4,45 @@
       <span aria-hidden="true">×</span>
     </button>
     <h1 class="modal-title">
-              <span class="assign-action-type">
-                Assign Driver to
-              </span>
-              <span class="assign-action-to">
-                Load 345674556
-              </span>
-            </h1>
-    <div class="modal-subheading">PRO 12423423524543543</div>
+      <span class="assign-action-type" ng-if="$ctrl.noDriver">
+        Assign Driver to
+      </span>
+      <span class="assign-action-type" ng-if="$ctrl.state === $ctrl.states.assignedDriverProfile">
+        Assigned Driver for
+      </span>
+      <span class="assign-action-type" ng-if="!$ctrl.noDriver && $ctrl.state !== $ctrl.states.assignedDriverProfile">
+        Change Driver for
+      </span>
+      <span class="assign-action-to">
+        Load {{$ctrl.load.loadNumber}}
+      </span>
+    </h1>
+    <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
     <section class="modal-sidebar">
       <article class="sidebar-content">
         <h4 class="small-header">Pickup</h4>
-        <shipping-details shipping-details="$ctrl.pickup"></shipping-details>
+        <shipping-details shipping-details="$ctrl.load.pickUp"></shipping-details>
       </article>
       <article class="sidebar-content">
         <h4 class="small-header">Delivery</h4>
-        <shipping-details shipping-details="$ctrl.delivery"></shipping-details>
+        <shipping-details shipping-details="$ctrl.load.delivery"></shipping-details>
       </article>
-      <section class="sidebar-content">
-        <h4 class="small-header">Equipment</h4>
-        <div class="equip-list">
-          Dry Van 53'<br> HazMat
-          <br> Tractor 093837<br>
-          <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
-                  <span class="echo-icon icon-add-pencil"></span>
-              </a>
-        </div>
-        <br>
-        <div class="equip-specials">
-          Drop Trailer at Shipper<br> No Reefers<br>
-        </div>
-        <a class="btn btn-link btn-show">Show More</a>
-        </article>
-      </section>
+      <article class="sidebar-content">
+        <equipment></equipment>
+      </article>
+    </section>
+    <section class="modal-main-content">
+      <load-driver driver="$ctrl.driver" state="$ctrl.state" carrier-id="$ctrl.carrierId" new-driver-callback="$ctrl.newDriverSelected(driver)"></load-driver>
+    </section>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-default" type="button" ng-click="$ctrl.modalActions.close()">Assign</button>
+    <button class="btn btn-default" type="button" ng-click="$ctrl.modalActions.close()" ng-if="$ctrl.state && $ctrl.state !== $ctrl.states.assignedDriverProfile">
+      <span ng-if="!$ctrl.noDriver && $ctrl.newDriver">Replace {{$ctrl.driver.firstName}}</span>
+      <span ng-if="!$ctrl.noDriver && !$ctrl.newDriver">Unassign {{$ctrl.driver.firstName}}</span>
+      <span ng-if="$ctrl.noDriver">Assign</span>
+    </button>
     <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close()">Close</button>
   </div>
 </div>

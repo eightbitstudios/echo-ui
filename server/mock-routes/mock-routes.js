@@ -29,6 +29,7 @@ module.exports = function (app) {
   app.get(endpoints.api.driverById, driverHandler.getDriverById);
   app.put(endpoints.api.driverById, driverHandler.updateDriverById);
   app.put(endpoints.api.deactivateDriverById, driverHandler.deactivateDriverById);
+  app.get(endpoints.api.searchDrivers, carrierHandler.getDrivers);
   app.get(endpoints.api.drivers, carrierHandler.getDrivers);
   app.get(endpoints.api.portalUsers, carrierHandler.getPortalUsers);
   app.get(endpoints.api.carriers, carrierHandler.getCarriers);

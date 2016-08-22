@@ -20,9 +20,10 @@ module.exports = {
     refresh: '/mock/api/v1/auth/refresh/:userId',
     userById: '/mock/api/v1/users/:userId',
     driverById: '/mock/api/v1/users/drivers/:driverId',
+    searchDrivers: '/mock/api/v1/carriers/:carrierId/drivers/:searchTerm',
     deactivateDriverById: '/mock/api/v1/carriers/:carrierId/drivers/:driverId/deactivate',
     deactivateUserById: '/mock/api/v1/users/:userId/deactivate',
-    drivers: '/mock/api/v1/carriers/:carrierId/drivers',
+    drivers: '/mock/api/v1/users/drivers',
     loadById: '/mock/api/v1/loads/:loadId',
     language: '/mock/api/v1/preferredLanguages'
   }
