@@ -1,32 +1,57 @@
-<div class="modal-content assign-driver-modal">
+<div class="assign-driver-modal">
   <div class="modal-header">
-    <button aria-label="Close" class="close" ng-click="$ctrl.modalActions.close()" data-dismiss="modal" type="button">
-        <span aria-hidden="true">×</span>
-      </button>
-    <h4 class="modal-title">
-          Assign Driver to Load 345674556
-      </h4>
-    <div>PRO 12423423524543543</div>
+    <button aria-label="Close" class="close btn-close" data-dismiss="modal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h1 class="modal-title">
+              <span class="assign-action-type">
+                Assign Driver to
+              </span>
+              <span class="assign-action-to">
+                Load 345674556
+              </span>
+            </h1>
+    <div class="modal-subheading">PRO 12423423524543543</div>
   </div>
   <div class="modal-body">
-    <div class="row">
-      <div class="col-xs-4 side-bar">
-        <div class="pickup">
-          <label>Pickup</label>
-          <shipping-details shipping-details="$ctrl.pickup"></shipping-details>
+    <section class="modal-sidebar">
+      <article class="sidebar-content">
+        <h4 class="small-header">Pickup</h4>
+        <shipping-details shipping-details="$ctrl.pickup"></shipping-details>
+      </article>
+      <article class="sidebar-content">
+        <h4 class="small-header">Delivery</h4>
+        <shipping-details shipping-details="$ctrl.delivery"></shipping-details>
+      </article>
+      <article class="sidebar-content">
+        <h4 class="small-header">Equipment</h4>
+        <div class="equip-specials">
+          Dry Van 53', HazMat
+          <br>
+          <div class="inline-edit-content">
+            <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
+                    <img src="assets/images/add-pencil.svg" alt="Add pencil">
+                    </a>
+          </div>
+          <form class="form-inline form-inline-editing" style="display: none;">
+            <div class="form-group">
+              <label class="hidden">Add Trailer Number</label>
+              <input class="form-control" placeholder="Add Trailer Number" type="text">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-link" type="submit">Save</button>
+              <button class="btn btn-link btn-alt" type="reset">Cancel</button>
+            </div>
+          </form>
         </div>
-        <div class="delivery">
-          <label>Delivery</label>
-          <shipping-details shipping-details="$ctrl.delivery"></shipping-details>
+        <br>
+        <div class="equip-specials">
+          Drop Trailer at Shipper
+          <br> No Reefers
         </div>
-        <div class="equipment">
-          <label>Equipment</label>
-        </div>
-      </div>
-      <div class="col-xs-8">
-        <h2>Assign driver placeholder</h2>
-      </div>
-    </div>
+        <a class="btn btn-link btn-show">Show More</a>
+      </article>
+    </section>
   </div>
   <div class="modal-footer">
     <button class="btn btn-default" type="button" ng-click="$ctrl.modalActions.close()">Assign</button>

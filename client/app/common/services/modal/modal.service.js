@@ -13,7 +13,7 @@ angular.module('echo.services.modal', [
     keyboard: true,
     modalFade: true,
     template: '',
-    size: 'lg'
+    size: 'md'
   };
 
   /**
