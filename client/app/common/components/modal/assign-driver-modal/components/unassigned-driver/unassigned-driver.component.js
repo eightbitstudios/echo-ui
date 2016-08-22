@@ -8,7 +8,8 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
     bindings: {
       carrierId: '<',
       inviteNewDriverCallback: '&',
-      selectedDriverCallback: '&'
+      selectedDriverCallback: '&',
+      newDriver: '<'
     },
     controller: function (carrierApi) {
       var that = this;
@@ -36,16 +37,23 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
         });
       };
 
-      that.removeDriverCallback = function (){
+      that.removeDriverCallback = function () {
         that.selectedDriver = null;
-        that.selectedDriverCallback({driver: that.selectedDriver});
+        that.selectedDriverCallback({ driver: that.selectedDriver });
         that.state = that.states.driverList;
       };
 
       that.onSelectCallback = function (driver) {
         that.selectedDriver = driver;
-        that.selectedDriverCallback({driver: that.selectedDriver});
+        that.selectedDriverCallback({ driver: that.selectedDriver });
         that.state = that.states.selectedDriver;
+      };
+
+      that.$onInit = function () {
+        if (that.newDriver) {
+          that.selectedDriver = that.newDriver;
+          that.state = that.states.selectedDriver;
+        }
       };
     }
   });

@@ -4,7 +4,7 @@
   </div>
   <div class="card-details">
     <h4 class="small-header">Chosen Driver</h4>
-    <a href="#">{{$ctrl.driver.name}}</a>
+    <a href="#">{{$ctrl.driver.name || $ctrl.driver.getFullName()}}</a>
     <div class="span pull-right">{{$ctrl.driver.phone | phoneNumber}}</div>
   </div>
 </div>

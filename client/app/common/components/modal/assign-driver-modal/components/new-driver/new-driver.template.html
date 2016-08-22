@@ -6,7 +6,7 @@
     <a class="btn btn-link btn-alt" href="javascript:void(0)" ng-click="$ctrl.cancelCallback()">
       <span data-grunticon-embed class="echo-icon icon-left-arrow"></span> Cancel Invitation
     </a>
-    <a class="btn btn-link" href="javascript:void(0)" ng-click="$ctrl.saveNewDriver()">
+    <a class="btn btn-link" href="javascript:void(0)" ng-click="$ctrl.saveNewDriver()" ng-if="!$ctrl.showLoading">
       Invite &amp; Continue<span class="echo-icon icon-right-arrow"></span>
     </a>
   </div>

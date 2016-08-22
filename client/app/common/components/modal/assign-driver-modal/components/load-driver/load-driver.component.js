@@ -1,6 +1,7 @@
 angular.module('echo.components.modal.assignDriver.loadDriver', [
   'echo.components.modal.assignDriver.unassignedDriver',
   'echo.components.modal.assignDriver.newDriver',
+  'echo.models.driver',
   'echo.components.modal.assignDriver.assignedDriverProfile'
 ])
   .component('loadDriver', {
@@ -11,7 +12,7 @@ angular.module('echo.components.modal.assignDriver.loadDriver', [
       newDriverCallback: '&',
       carrierId: '<'
     },
-    controller: function () {
+    controller: function (DriverModel) {
       var that = this;
 
       that.states = {
@@ -34,6 +35,7 @@ angular.module('echo.components.modal.assignDriver.loadDriver', [
 
       that.newDriverCreated = function (driver) {
         that.state = that.states.unassignedDriver;
+        that.newDriver = new DriverModel(driver);
         that.setNewDriver(driver);
       };
 
