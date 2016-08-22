@@ -6,7 +6,8 @@ angular.module('echo.index.carrier.loadManagement', [
   'echo.index.carrier.loadManagement.activeLoads',
   'echo.index.carrier.loadManagement.unbilledLoads',
   'echo.index.carrier.loadManagement.upcomingLoads',
-  'echo.index.carrier.loadManagement.searchLoads'
+  'echo.index.carrier.loadManagement.searchLoads',
+  'echo.index.carrier.loadManagement.loadDetails'
 ])
   .component('loadManagement', {
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
@@ -21,6 +22,8 @@ angular.module('echo.index.carrier.loadManagement', [
 
       that.stateParams = $stateParams;
       that.showLoading = true;
+      that.state = $state;
+      that.routesConfig = routesConfig;
 
       that.defaultRoute = routesConfig.INDEX.activeLoads.name;
 

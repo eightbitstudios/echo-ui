@@ -36,7 +36,7 @@ angular.module('echo.api.driver', [
         return $http.put(url, data).then(function (resp) {
           return resp.data.data;
         }).catch(function (resp) {
-          return $q.reject(resp.data.status.message);
+          return $q.reject(resp.data.status.code);
         });
       },
 
@@ -52,7 +52,7 @@ angular.module('echo.api.driver', [
         return $http.put(url, driver).then(function (resp) {
           return resp.data.data;
         }).catch(function (resp) {
-          return $q.reject(resp.data.status.message);
+          return $q.reject(resp.data.status.code);
         });
       },
       /**
@@ -68,7 +68,7 @@ angular.module('echo.api.driver', [
         return $http.post(url, data).then(function (resp) {
           return resp.data.data;
         }).catch(function (resp) {
-          return $q.reject(resp.data.status.message);
+          return $q.reject(resp.data.status.code);
         });
       },      
       

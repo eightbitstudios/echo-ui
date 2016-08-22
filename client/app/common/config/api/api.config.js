@@ -13,7 +13,7 @@ angular.module('echo.config.api', [])
     createPassword: _.template('@createPassword@'),
     signIn: '@signIn@',
     signOut: '@signOut@',
-    refresh: '@refresh@',
+    refresh: _.template('@refresh@'),
     repByCarrierId:  _.template('@repByCarrierId@'),
     forgotPassword: '@forgotPassword@',
     changePassword: _.template('@changePassword@'),
@@ -24,5 +24,6 @@ angular.module('echo.config.api', [])
     driver: '@driver@',
     driverById: _.template('@driverById@'),
     searchDrivers: _.template('@searchDrivers@'),
+    loadById: _.template('@loadById@'),
     language: '@language@',
   });

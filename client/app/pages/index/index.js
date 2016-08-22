@@ -82,7 +82,7 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.carrier.route,
       template: '<carrier rep-details="$ctrl.repDetails" carrier-details="$ctrl.carrierDetails"></carrier>',
       resolve: {
-        carrierDetails: function($stateParams, carrierApi) {
+        carrierDetails: function ($stateParams, carrierApi) {
           return carrierApi.fetchCarrierById($stateParams.carrierId);
         }
       },
@@ -129,6 +129,14 @@ angular.module('echo.index', [
       template: '<search-loads search-text="$ctrl.stateParams.searchText" carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></search-loads>',
       data: {
         hideTabBar: true
+      }
+    })
+    .state(routesConfig.INDEX.loadDetails.name, { // #/carrier/:carrierId/loadManagement/loadDetails/:loadId
+      url: routesConfig.INDEX.loadDetails.route,
+      template: '<load-details load-id="$ctrl.stateParams.loadId" rep-details="$ctrl.repDetails"></load-details>',
+      data: {
+        hideTabBar: true,
+        whiteContainer: false
       }
     })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany

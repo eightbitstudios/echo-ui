@@ -4,6 +4,9 @@ angular.module('echo.config.appConstants', [])
       CARRIERS: 3,
       loads: 3
     },
+    TEXT_TRUNCATE: {
+      readMore: 140
+    },
     LIMIT: {
       driverList: 5,
       loadsList: 10
@@ -19,16 +22,21 @@ angular.module('echo.config.appConstants', [])
       passwordUpperCase: /[^a-z0-9]/
     },
     ERROR_MESSAGES: {
-      400115: 'Email address already exists',
-      401102: 'Incorrect Password',
-      // TODO: Change properties below to proper error codes
-      passwordsDoNotMatch: 'Passwords do not match',
-      enterYourPassword: 'Enter your password',
-      enterYourEmailAddress: 'Enter your email address',
-      invalidUsernameOrPassword: 'Invalid Username or Password.',
-      invalidEmailAddress: 'Invalid Email Address.',
-      userDeactivated: 'User account is Deactivated.',
-      currentPasswordRequred: 'Current password is required'
+      400: 'An error occured',
+      400103: 'Invalid username',
+      400105: 'First name is required',
+      400106: 'Phone number is required',
+      400107: 'Email Address is required',
+      400110: 'Invalid password',
+      400111: 'Invalid current password',
+      400112: 'Passwords do not match',
+      400115: 'Password and Confirm Password do not match',
+      401101: 'User account is deactivated',
+      401102: 'Invalid Username or Password',
+      500: 'An unexpected error has occurred',
+      500100: 'Unable to change current password',
+      500101: 'Duplicate username',
+      500103: 'Unable to create user'
     },
     STATUSES: {
       ReportedEmpty: 'Reported Empty',

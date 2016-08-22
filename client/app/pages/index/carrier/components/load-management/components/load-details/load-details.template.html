@@ -1,0 +1,54 @@
+<div class="load-details">
+  <div class="container-fluid carrier-dashboard-header">
+    <div class="container">
+      <ul class="list-inline carrier-dashboard-header_left">
+        <li>
+          <strong>9 Loads Located</strong>
+        </li>
+        <li>
+          <a href="javascript:void(0)">View Full Map</a>
+        </li>
+      </ul>
+      <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
+    </div>
+  </div>
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div ng-if="!$ctrl.showLoading" class="container-fluid load-table_detail">
+    <div class="container">
+      <load-detail load-detail="$ctrl.loadDetails"></load-detail>
+    </div>
+  </div>
+  <div class="container main-content">
+    <div class="section-head">
+      <h1 class="section-label">
+          STOPS
+        </h1>
+    </div>
+    <div class="row">
+      <section class="col-md-8">
+        <stop-accordion></stop-accordion>
+        <stop-accordion></stop-accordion>
+      </section>
+      <div class="col-md-4">
+        <section class="sidebar-container">
+          <h4 class="section-header sh-short">Equipment</h4>
+          <div class="equip-list">
+            Dry Van 53'<br> HazMat
+            <br> Tractor 093837<br>
+            <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
+                  <span class="echo-icon icon-add-pencil"></span>
+              </a>
+          </div>
+          <br>
+          <div class="equip-specials">
+            Drop Trailer at Shipper<br> No Reefers<br>
+          </div>
+        </section>
+        <section class="sidebar-container">
+          <h4 class="section-header sh-short">General Instructions</h4>
+          <p>POD Required within 24-48 hours after delivery.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

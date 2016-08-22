@@ -11,7 +11,7 @@ module.exports = {
   user: '/api/v1/users',
   signIn: '/api/v1/auth/signIn',
   signOut: '/api/v1/auth/signOut',
-  refresh: '/api/v1/auth/refresh',
+  refresh: '/api/v1/auth/refresh/${userId}',
   createPassword: '/api/v1/users/${userId}/createPassword',
   repByCarrierId: '/api/v1/carriers/${carrierId}/echorep',
   portalUsers: '/api/v1/carriers/${carrierId}/portalusers',
@@ -23,5 +23,6 @@ module.exports = {
   portalUserById: '/api/v1/carriers/${carrierId}/portalusers/${userId}',
   language: '/api/v1/preferredLanguages',
   forgotPassword: '/api/v1/auth/forgotPassword',
+  loadById: '/api/v1/loads/${loadId}',
   changePassword: '/api/v1/users/${userId}/setPassword'
 };

@@ -9,6 +9,8 @@
   border-radius: 2px;
   transition: all 0.2s ease-in;
   white-space: normal;
+  font-size: 22px;
+  font-family: @heading-font;
   /////////////
   // General button styles
   /////////////
@@ -94,8 +96,8 @@
   &.btn-filter {
     position: relative;
     background: transparent;
-    color: @c-gray-mid-light;
-    border-color: @c-gray-mid-light;
+    color: @c-gray-heavy-light;
+    border-color: @c-gray-heavy-light;
     border-width: 2px;
     .echo-icon {
       margin-right: 10px;
@@ -144,14 +146,11 @@
     }
     &:hover {
       color: @c-white;
-      background-color: @c-gray-mid-light;
-      &:before {
-        content: image-url('icon-calendar-white.svg');
-      }
+      background-color: @c-gray-heavy-light;
     }
     &:active, &:focus {
       color: @c-white;
-      background-color: @c-gray-mid-light;
+      background-color: @c-gray-heavy-light;
     }
   }
   //////
