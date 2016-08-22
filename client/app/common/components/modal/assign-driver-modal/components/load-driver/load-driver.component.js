@@ -11,9 +11,9 @@ angular.module('echo.components.modal.assignDriver.loadDriver', [
       newDriverCallback: '&',
       carrierId: '<'
     },
-    controller: function ($q) {
+    controller: function () {
       var that = this;
-      
+
       that.states = {
         unassignedDriver: 1,
         newDriver: 2,
