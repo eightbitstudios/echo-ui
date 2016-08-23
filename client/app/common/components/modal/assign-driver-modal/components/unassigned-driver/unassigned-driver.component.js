@@ -2,7 +2,8 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
   'echo.components.typeaheadSearch',
   'echo.api.carrier',
   'echo.components.modal.assignDriver.selectedDriver',
-  'echo.components.modal.assignDriver.unassignedDriverList'
+  'echo.components.modal.assignDriver.unassignedDriverList',
+  'echo.config.routes'
 ])
   .component('unassignedDriver', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/unassigned-driver/unassigned-driver.template.html',
@@ -13,7 +14,7 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
       selectedDriverCallback: '&',
       newDriver: '='
     },
-    controller: function (carrierApi) {
+    controller: function (carrierApi, routesConfig) {
       var that = this;
       that.states = {
         driverList: 1,
@@ -21,6 +22,7 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
       };
 
       that.state = that.states.driverList;
+      that.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
 
       /**
        * Call api to search for drivers

@@ -1,5 +1,6 @@
 angular.module('echo.components.modal.assignDriver.assignedDriverProfile', [
-  'echo.filters.phoneNumber'
+  'echo.filters.phoneNumber',
+  'echo.config.routes'
 ])
   .component('assignedDriverProfile', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/assigned-driver-profile/assigned-driver-profile.template.html',
@@ -7,6 +8,7 @@ angular.module('echo.components.modal.assignDriver.assignedDriverProfile', [
       assignedDriver: '<',
       changeDriverCallback: '&'
     },
-    controller: function () {
+    controller: function (routesConfig) {
+      this.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
     }
   });

@@ -87,6 +87,12 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
+    fetchDriverStatusByLoadId: function (loadId, driverId) {
+      var url = apiConfig.driverStatusByLoadId({ loadId: loadId, userId: driverId });
+      return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
     fetchLoadCount: function (carrierId) {
       var url = apiConfig.loadCountByCarrierId({ carrierId: carrierId });
       return $http.get(url).then(function (resp) {

@@ -5,7 +5,7 @@
   .delivery, .equipment {
     padding-top: 20px;
   }
-  .new-driver, .unassigned-driver-list{
+  .new-driver, .unassigned-driver-list, .unassigned-driver {
     position: relative;
   }
   .new-driver, .unassigned-driver, .assigned-driver-profile, load-driver {
@@ -24,9 +24,6 @@
   }
   .side-bar {
     border-right: 1px solid #e5e5e5;
-  }
-  td.driver-name {
-    width: auto !important;
   }
   .modal-footer {
     text-align: center;
@@ -49,10 +46,24 @@
     .small-header;
   }
   .table-modal-scroll {
-    height: 300px;
-    overflow-y: scroll;
-    //padding-right: 25px;
     border-bottom: solid 1px #505c61;
+    table tbody, table thead {
+      display: block;
+    }
+    table {
+      tbody {
+        height: 305px;
+        padding-right: 25px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        tr > td {
+          position: inherit;
+          &:after {
+            position: inherit;
+          }
+        }
+      }
+    }
   }
   .table-assign-driver {
     margin-bottom: 0;
@@ -82,8 +93,20 @@
   .unassigned-driver-list .loading {
     margin-top: 20px;
   }
-  .new-driver .loading .loading-text, .unassigned-driver-list .loading .loading-text {
+  .new-driver .loading .loading-text, .unassigned-driver-list .loading .loading-text, .unassigned-driver .loading .loading-text {
     top: 42%;
     left: 42%;
+  }
+  .icon-warning {
+    position: absolute;
+  }
+  .text-danger {
+    padding-left: 25px;
+    position: relative;
+    display: inline-block;
+  }
+  .typeahead-search .loading .loading-text {
+    left: 0;
+    top: 10%;
   }
 }
