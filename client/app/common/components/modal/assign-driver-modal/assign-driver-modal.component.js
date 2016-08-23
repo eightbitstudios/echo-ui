@@ -22,23 +22,30 @@ angular.module('echo.components.modal.assignDriver', [
       that.state = null;
 
       that.assignDriver = function () {
-        loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id);
+        loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
+          that.modalActions.close();
+        });
       };
 
       that.reassignDriver = function () {
-        loadsApi.reassignDriver(that.load.loadNumber, that.newDriver.id);
+        loadsApi.reassignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
+          that.modalActions.close();
+        });
       };
 
       that.unassignDriver = function () {
-        loadsApi.unassignDriver(that.load.loadNumber).then(function(){});
+        loadsApi.unassignDriver(that.load.loadNumber);
       };
 
-      that.noNewDriver = function() {
+      that.noNewDriver = function () {
         return _.isUndefined(_.get(that.newDriver, 'id'));
       };
 
+      that.noAssignedDriver = function () {
+        return _.isUndefined(_.get(that.load.driver, 'id'));
+      };
+
       that.$onInit = function () {
-        that.noAssignedDriver = _.isUndefined(_.get(that.load.driver, 'id'));
         that.assignedDriver = new DriverModel(that.load.driver);
       };
     }

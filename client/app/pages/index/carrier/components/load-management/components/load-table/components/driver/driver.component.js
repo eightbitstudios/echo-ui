@@ -12,7 +12,8 @@ angular.module('echo.index.carrier.loadManagement.loadTable.driver', [
     bindings: {
       load: '<',
       loadType: '<',
-      carrierId: '<'
+      carrierId: '<',
+      driverChangedCallback: '&'
     },
     controller: function (loadTypesEnum, modalService) {
       var that = this;
@@ -20,12 +21,16 @@ angular.module('echo.index.carrier.loadManagement.loadTable.driver', [
       that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
       that.loadTypesEnum = loadTypesEnum;
       that.showAssignDriverModal = function () {
-        modalService.open({
+        var modalInstance = modalService.open({
           component: 'assign-driver-modal',
           bindings: {
             load: that.load,
             carrierId: that.carrierId
           }
+        }).result;
+        
+        modalInstance.then(function () {
+          that.driverChangedCallback();
         });
       };
     }

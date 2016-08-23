@@ -9,7 +9,8 @@ angular.module('echo.index.carrier.loadManagement.loadTable', [
     bindings: {
       loads: '<',
       loadType: '<',
-      carrierId: '<'
+      carrierId: '<',
+      refreshTableCallback: '&'
     },
     controller: function () {}
   });

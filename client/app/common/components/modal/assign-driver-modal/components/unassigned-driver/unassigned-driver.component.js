@@ -1,12 +1,14 @@
 angular.module('echo.components.modal.assignDriver.unassignedDriver', [
   'echo.components.typeaheadSearch',
   'echo.api.carrier',
-  'echo.components.modal.assignDriver.selectedDriver'
+  'echo.components.modal.assignDriver.selectedDriver',
+  'echo.components.modal.assignDriver.unassignedDriverList'
 ])
   .component('unassignedDriver', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/unassigned-driver/unassigned-driver.template.html',
     bindings: {
       carrierId: '<',
+      loadId: '<',
       inviteNewDriverCallback: '&',
       selectedDriverCallback: '&',
       newDriver: '='
@@ -14,8 +16,8 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
     controller: function (carrierApi) {
       var that = this;
       that.states = {
-        driverList: 0,
-        selectedDriver: 1,
+        driverList: 1,
+        selectedDriver: 2,
       };
 
       that.state = that.states.driverList;
@@ -26,7 +28,7 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
        * @retuns {Promise} - List of drivers formatted for typeahead search
        */
       that.searchDrivers = function (val) {
-        return carrierApi.searchDrivers(2, val).then(function (drivers) {
+        return carrierApi.searchDrivers(that.carrierId, val).then(function (drivers) {
           return _.map(drivers, function (driver) {
             return {
               id: driver.id,

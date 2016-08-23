@@ -28,6 +28,7 @@ module.exports = {
     language: '/mock/api/v1/preferredLanguages',
     assignDriverByLoadId: '/mock/api/v1/loads/:loadId/assign/:userId',
     unassignDriverByLoadId: '/mock/api/v1/loads/:loadId/unassign',
-    reassignDriverByLoadId: '/mock/api/v1/loads/:loadId/reassign/:userId'
+    reassignDriverByLoadId: '/mock/api/v1/loads/:loadId/reassign/:userId',
+    unassignedDriversByLoadId: '/mock/api/v1/carriers/:carrierId/loads/:loadId/unassignedDrivers'
   }
 };

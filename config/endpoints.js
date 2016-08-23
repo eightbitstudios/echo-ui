@@ -27,5 +27,6 @@ module.exports = {
   changePassword: '/api/v1/users/${userId}/setPassword',
   assignDriverByLoadId: '/api/v1/loads/${loadId}/assign/${userId}',
   unassignDriverByLoadId: '/api/v1/loads/${loadId}/unassign',
-  reassignDriverByLoadId: '/api/v1/loads/${loadId}/reassign/${userId}'
+  reassignDriverByLoadId: '/api/v1/loads/${loadId}/reassign/${userId}',
+  unassignedDriversByLoadId: '/api/v1/carriers/${carrierId}/loads/${loadId}/unassignedDrivers'
 };
