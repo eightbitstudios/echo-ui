@@ -34,7 +34,9 @@ angular.module('echo.components.modal.assignDriver', [
       };
 
       that.unassignDriver = function () {
-        loadsApi.unassignDriver(that.load.loadNumber);
+        loadsApi.unassignDriver(that.load.loadNumber).then(function () {
+          that.assignedDriver = null;
+        });
       };
 
       that.noNewDriver = function () {
@@ -42,7 +44,7 @@ angular.module('echo.components.modal.assignDriver', [
       };
 
       that.noAssignedDriver = function () {
-        return _.isUndefined(_.get(that.load.driver, 'id'));
+        return _.isUndefined(_.get(that.assignedDriver, 'id'));
       };
 
       that.$onInit = function () {

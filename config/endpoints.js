@@ -28,6 +28,6 @@ module.exports = {
   assignDriverByLoadId: '/api/v1/loads/${loadId}/assign/${userId}',
   unassignDriverByLoadId: '/api/v1/loads/${loadId}/unassign',
   reassignDriverByLoadId: '/api/v1/loads/${loadId}/reassign/${userId}',
-  unassignedDriversByLoadId: '/api/v1/carriers/${carrierId}/loads/${loadId}/unassignedDrivers',
+  unassignedDriversByLoadId: '/api/v1/unassignedDrivers/${loadId}/${carrierId}',
   driverStatusByLoadId: '/api/v1/loads/${loadId}/driver/${userId}/status'
 };
