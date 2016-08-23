@@ -13,7 +13,7 @@
 
   .modal-sidebar
     width: calc(100%/3)
-    min-width: 175px
+    width: 175px
     padding: 25px 25px 25px 0
     border-right: solid 1px $gray-light
 
@@ -22,6 +22,10 @@
     flex: 1
     display: flex
     flex-direction: column
+
+  .modal-footer
+    position: relative
+
 
 .modal-subheading
   margin-left: auto
@@ -40,6 +44,14 @@
 
     svg
       vertical-align: middle
+
+.btn-group-left
+  margin-left: -5px
+
+.btn-group-right
+  margin-right: 0
+  > .btn
+    margin: 0
 
 // Assign Driver Modals
 //////////////
@@ -71,12 +83,37 @@
   .driver-name
     font-size: 14px
 
+////////////
+// Custom Modal Elements
+////////////
+
+.document-add
+  display: flex
+  align-items: center
+  margin-bottom: 10px
+
+  .btn
+    flex: 0 0 auto
+    width: 255px
+    margin-bottom: 0
+
+  .btn-note
+    color: $gray-mid-light
+    margin: 0 0 0 20px
+
+
+.card-group
+  max-height: 235px
+  overflow-y: scroll
+  padding: 2px 15px 0 2px
+  margin-bottom: 20px
 
 // Arrive Time Picker
 //////
 
 .form-arrival-time
- 
+  margin: 10px 0 40px
+
   .form-group
     margin: 0 0 0 20px
     width: 60px
@@ -107,3 +144,12 @@
       &:before
         content: image-url('icon-calendar-white.svg')
 
+
+.daterangepicker.single.show-calendar
+  display: flex
+  flex-direction: column
+  width: 275px
+  .calendar
+    width: 100%
+  .daterangepicker_input
+    display: none

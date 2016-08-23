@@ -1,0 +1,52 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Delivery For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-report'
+
+  %section.modal-main-content
+
+    %h4.content-header Optional Documents
+
+    .document-add
+      %button.btn.btn-document
+        .add-type
+          PROOF OF DELIVERY
+      
+      %p.btn-note You can add this later but it is required if your driver lumps.
+
+    .document-add
+      %button.btn.btn-document
+        .add-type
+          LUMPER RECEIPT
+
+    .document-add
+      %button.btn.btn-document
+        .add-type
+          SCALE TICKET
+
+    .modal-action-links.modal-action-split
+      .rating
+        %p
+          %strong How was your experience with Echo?
+        %ul.list-inline
+          %li=image_tag('icon-star-filled.svg')
+          %li=image_tag('icon-star-filled.svg')
+          %li=image_tag('icon-star.svg')
+          %li=image_tag('icon-star.svg')
+
+      %a.btn.btn-link{href: '#'}
+        Add a comment
+        = partial 'partials/icon-next'
+
+.modal-footer.modal-footer-splits
+  .btn-group-left
+    %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CANCEL
+
+  %ul.progress-indicator
+    %li Step 1
+    %li Step 2
+
+  .btn-group-right
+    %button.btn.btn-secondary{type: 'button'} Next
+    %button.btn.btn-default{type: 'button'} Confirm Delivery

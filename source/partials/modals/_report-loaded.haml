@@ -1,0 +1,50 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Loaded For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-report'
+
+  %section.modal-main-content
+
+    %h4.content-header Confirm the following items are loaded.
+    %p If the items received by the driver differ from what you see here, please call Echo.
+
+    %h4.content-header Items
+    %h4.section-header.sh-med.sh-no_border
+      PICKUP #
+      %em 567834253, 567834253, 567834253
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-lrg
+          %input.checkbox{type:'checkbox'}
+          %span.control-indicator
+      
+      .card-details
+        %p 
+          %strong Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs
+        %p 1 EA, Floor Handling Unit, 5000 lb 
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-lrg
+          %input.checkbox{type:'checkbox'}
+          %span.control-indicator
+      
+      .card-details
+        %p 
+          %strong Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @8500lbs
+        %p 1 EA, Floor Handling Unit 8500 lb
+
+
+.modal-footer.modal-footer-splits
+  .btn-group-left
+    %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE
+
+  %ul.progress-indicator
+    %li.step-complete Step 1
+    %li Step 2
+    %li Step 3
+
+  .btn-group-right
+    %button.btn.btn-default{type: 'button'} Next

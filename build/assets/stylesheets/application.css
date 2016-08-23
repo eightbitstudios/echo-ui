@@ -9468,29 +9468,29 @@ header.navbar + .tab-bar {
     left: 0; }
 
 @media (min-width: 769px) {
-  /* line 6, components/_modal.sass */
+  /* line 9, components/_modal.sass */
   .modal-dialog {
     width: 725px;
     margin-top: 10vh; } }
-/* line 10, components/_modal.sass */
+/* line 13, components/_modal.sass */
 .modal-content {
   padding: 0 45px 0;
   border: none;
   border-radius: 2px;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1); }
 
-/* line 16, components/_modal.sass */
+/* line 19, components/_modal.sass */
 .modal-title {
   font-size: 30px; }
 
-/* line 20, components/_modal.sass */
+/* line 23, components/_modal.sass */
 .modal-dialog .modal-header,
 .modal-dialog .modal-body,
 .modal-dialog .modal-footer {
   padding-left: 0;
   padding-right: 0; }
 
-/* line 26, components/_modal.sass */
+/* line 29, components/_modal.sass */
 .modal-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9502,14 +9502,14 @@ header.navbar + .tab-bar {
       -ms-flex-pack: start;
           justify-content: flex-start;
   padding-top: 20px; }
-  /* line 32, components/_modal.sass */
+  /* line 35, components/_modal.sass */
   .modal-header .close {
     position: absolute;
     top: -30px;
     right: 0;
     margin-top: -2px; }
 
-/* line 38, components/_modal.sass */
+/* line 41, components/_modal.sass */
 .modal-footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9522,11 +9522,11 @@ header.navbar + .tab-bar {
           justify-content: center;
   padding-bottom: 20px;
   border-top: solid 1px #e1e2e3; }
-  /* line 45, components/_modal.sass */
+  /* line 48, components/_modal.sass */
   .modal-footer .btn {
     margin: 0 10px; }
 
-/* line 50, components/_modal.sass */
+/* line 53, components/_modal.sass */
 .modal-body-inactive {
   opacity: 0.3;
   pointer-events: none; }
@@ -10729,3 +10729,30 @@ body.load-management-detail {
   /* line 71, pages/_reporting_modals.sass */
   .table-assign-driver .driver-name {
     font-size: 14px; }
+
+/* line 80, pages/_reporting_modals.sass */
+.form-arrival-time .form-group {
+  margin: 0 0 0 20px;
+  width: 60px; }
+  /* line 84, pages/_reporting_modals.sass */
+  .form-arrival-time .form-group .form-control {
+    width: 100%; }
+/* line 87, pages/_reporting_modals.sass */
+.form-arrival-time .btn-modal-dp {
+  padding-left: 45px; }
+  /* line 91, pages/_reporting_modals.sass */
+  .form-arrival-time .btn-modal-dp.filter__assigned:before {
+    content: url("../images/icon-calendar-white.svg"); }
+  /* line 94, pages/_reporting_modals.sass */
+  .form-arrival-time .btn-modal-dp:before {
+    content: url("../images/icon-calendar-gray.svg");
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 18px;
+    height: auto;
+    margin-right: 6px; }
+  /* line 107, pages/_reporting_modals.sass */
+  .form-arrival-time .btn-modal-dp:hover:before, .form-arrival-time .btn-modal-dp:active:before, .form-arrival-time .btn-modal-dp:focus:before {
+    content: url("../images/icon-calendar-white.svg"); }
