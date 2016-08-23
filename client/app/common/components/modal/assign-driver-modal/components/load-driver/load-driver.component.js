@@ -2,24 +2,21 @@ angular.module('echo.components.modal.assignDriver.loadDriver', [
   'echo.components.modal.assignDriver.unassignedDriver',
   'echo.components.modal.assignDriver.newDriver',
   'echo.models.driver',
-  'echo.components.modal.assignDriver.assignedDriverProfile'
+  'echo.components.modal.assignDriver.assignedDriverProfile',
+  'echo.components.modal.assignDriver.enums.assignedDriver'
 ])
   .component('loadDriver', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/load-driver/load-driver.template.html',
     bindings: {
-      driver: '<',
+      assignedDriver: '<',
       state: '=',
-      newDriverCallback: '&',
+      newDriver: '=',
       carrierId: '<'
     },
-    controller: function (DriverModel) {
+    controller: function (DriverModel, assignedDriverEnum) {
       var that = this;
 
-      that.states = {
-        unassignedDriver: 1,
-        newDriver: 2,
-        assignedDriverProfile: 3
-      };
+      that.states = assignedDriverEnum.state;
 
       that.cancelNewDriver = function () {
         that.state = that.states.unassignedDriver;
@@ -35,16 +32,15 @@ angular.module('echo.components.modal.assignDriver.loadDriver', [
 
       that.newDriverCreated = function (driver) {
         that.state = that.states.unassignedDriver;
-        that.newDriver = new DriverModel(driver);
         that.setNewDriver(driver);
       };
 
       that.setNewDriver = function (driver) {
-        that.newDriverCallback({driver: driver});
+        that.newDriver = new DriverModel(driver);
       };
 
       that.$onInit = function () {
-        if (that.driver.id) {
+        if (_.get(that.assignedDriver, 'id')) {
           that.state = that.states.assignedDriverProfile;
         } else {
           that.state = that.states.unassignedDriver;

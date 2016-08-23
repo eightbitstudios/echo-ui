@@ -16,20 +16,22 @@ angular.module('echo.components.modal.assignDriver.newDriver', [
 
       that.newDriver = new DriverModel();
 
-      that.saveNewDriver = function() {
-        that.showLoading = true;
-        driverApi.insertDriver(that.carrierId, that.newDriver).then(function(newDriver) {
-          that.continueCallback({driver: newDriver});
-        }).finally(function() {
-          that.showLoading = false;
-        });
+      that.saveNewDriver = function () {
+        if (!_.isEmpty(that.newDriver.firstName) && !_.isEmpty(that.newDriver.phone)) {
+          that.showLoading = true;
+          driverApi.insertDriver(that.carrierId, that.newDriver).then(function (newDriver) {
+            that.continueCallback({ driver: newDriver });
+          }).finally(function () {
+            that.showLoading = false;
+          });
+        }
       };
 
-      that.$onInit = function() {
+      that.$onInit = function () {
         that.showLoading = true;
-        languageApi.fetchLanguages().then(function(languages){
+        languageApi.fetchLanguages().then(function (languages) {
           that.languages = languages;
-        }).finally(function() {
+        }).finally(function () {
           that.showLoading = false;
         });
       };

@@ -3,7 +3,8 @@ angular.module('echo.components.modal.assignDriver', [
   'echo.models.driver',
   'echo.api.loads',
   'echo.components.shippingDetails',
-  'echo.components.modal.assignDriver.loadDriver'
+  'echo.components.modal.assignDriver.loadDriver',
+  'echo.components.modal.assignDriver.enums.assignedDriver'
 ])
   .component('assignDriverModal', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/assign-driver-modal.template.html',
@@ -12,21 +13,13 @@ angular.module('echo.components.modal.assignDriver', [
       load: '<',
       carrierId: '<'
     },
-    controller: function (loadsApi, DriverModel) {
+    controller: function (loadsApi, DriverModel, assignedDriverEnum) {
       var that = this;
 
-      that.states = {
-        unassignedDriver: 1,
-        newDriver: 2,
-        assignedDriverProfile: 3
-      };
+      that.states = assignedDriverEnum.state;
 
-      that.newDriver = null;
+      that.newDriver = {};
       that.state = null;
-
-      that.newDriverSelected = function (driver) {
-        that.newDriver = driver;
-      };
 
       that.assignDriver = function () {
         loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id);
@@ -37,12 +30,16 @@ angular.module('echo.components.modal.assignDriver', [
       };
 
       that.unassignDriver = function () {
-        loadsApi.unassignDriver(that.load.loadNumber);
+        loadsApi.unassignDriver(that.load.loadNumber).then(function(){});
+      };
+
+      that.noNewDriver = function() {
+        return _.isUndefined(_.get(that.newDriver, 'id'));
       };
 
       that.$onInit = function () {
-        that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
-        that.driver = new DriverModel(that.load.driver);
+        that.noAssignedDriver = _.isUndefined(_.get(that.load.driver, 'id'));
+        that.assignedDriver = new DriverModel(that.load.driver);
       };
     }
   });

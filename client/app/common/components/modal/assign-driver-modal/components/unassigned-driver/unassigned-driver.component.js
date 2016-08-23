@@ -9,7 +9,7 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
       carrierId: '<',
       inviteNewDriverCallback: '&',
       selectedDriverCallback: '&',
-      newDriver: '<'
+      newDriver: '='
     },
     controller: function (carrierApi) {
       var that = this;
@@ -50,7 +50,7 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
       };
 
       that.$onInit = function () {
-        if (that.newDriver) {
+        if (!_.isUndefined(_.get(that.newDriver, 'id'))) {
           that.selectedDriver = that.newDriver;
           that.state = that.states.selectedDriver;
         }
