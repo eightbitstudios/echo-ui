@@ -7,6 +7,9 @@ module.exports = function(grunt) {
     demo: {
       NODE_ENV: 'demo'
     },
+    stage: {
+      NODE_ENV: 'stage'
+    },
     dev: {
       NODE_ENV: 'dev'
     },
