@@ -13,7 +13,7 @@ angular.module('echo.components.showMore', [
     controller: function () {
       var that = this;
 
-      that.firstRecord = 0;
+      that.firstRecord = 1;
 
       that.showMoreHandler = function (){
         that.pagingModel.nextOffset();

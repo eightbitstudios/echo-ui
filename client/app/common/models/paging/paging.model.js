@@ -7,7 +7,7 @@ angular.module('echo.models.paging', []).factory('PagingModel', function () {
   function Paging(limit) {
 
     var that = this;
-    that.offset = 0;
+    that.offset = 1;
     that.limit = limit;
     that.totalRecords = 0;
     that.recordCount = 0;

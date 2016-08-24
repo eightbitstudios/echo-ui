@@ -17,7 +17,7 @@
       </a>
     </li>
   </ul>
-  <div class="pull-right" ng-if="$ctrl.pages.length > 1 && cytl.recordType">
+  <div class="pull-right" ng-if="$ctrl.pages.length > 1 && $ctrl.recordType">
     {{$ctrl.pagingModel | paging: $ctrl.recordType:$ctrl.pagingModel.offset}}
   </div>
 </nav>

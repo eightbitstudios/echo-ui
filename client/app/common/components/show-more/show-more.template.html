@@ -2,7 +2,7 @@
   <div class="pull-left">
     <a href="javascript:void(0)" ng-click="$ctrl.showMoreHandler()">{{$ctrl.pagingModel | showMore}}</a>
   </div>
-  <div class="pull-right" ng-if="$ctrl.pages.recordCount > 0">
+  <div class="pull-right" ng-if="$ctrl.pagingModel.recordCount > 0">
     {{$ctrl.pagingModel | paging: $ctrl.recordType:$ctrl.firstRecord}}
   </div>
 </nav>
