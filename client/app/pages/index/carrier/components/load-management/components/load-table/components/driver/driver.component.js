@@ -28,9 +28,11 @@ angular.module('echo.index.carrier.loadManagement.loadTable.driver', [
             carrierId: that.carrierId
           }
         }).result;
-        
-        modalInstance.then(function () {
-          that.driverChangedCallback();
+
+        modalInstance.then(function (driverChanged) {
+          if (driverChanged) {
+            that.driverChangedCallback();
+          }
         });
       };
     }

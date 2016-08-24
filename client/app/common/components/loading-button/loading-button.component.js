@@ -10,6 +10,7 @@ angular.module('echo.components.loadingButton', [
     disableButton: '<',
     clickHandler: '&'
   },
+  transclude: true,
   templateUrl: 'app/common/components/loading-button/loading-button.template.html',
   controller: function() {}
 });

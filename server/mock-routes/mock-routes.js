@@ -7,6 +7,9 @@ var carrierHandler = require('./handlers/carrier-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
+  app.post(endpoints.api.assignDriverByLoadId, loadsHandler.getLoadCount);
+  app.put(endpoints.api.unassignDriverByLoadId, loadsHandler.getLoadCount);
+  app.put(endpoints.api.reassignDriverByLoadId, loadsHandler.getLoadCount);
   app.get(endpoints.api.driverStatusByLoadId, loadsHandler.getDriverStatus);
   app.get(endpoints.api.loadById, loadsHandler.getLoadDetails);
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);

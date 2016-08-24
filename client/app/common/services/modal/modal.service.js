@@ -9,7 +9,7 @@ angular.module('echo.services.modal', [
    * @property {string} headerText        - Header Text that will display at the header location of the modal
    */
   var modalOptions = {
-    backdrop: true,
+    backdrop: 'static',
     keyboard: true,
     modalFade: true,
     template: '',

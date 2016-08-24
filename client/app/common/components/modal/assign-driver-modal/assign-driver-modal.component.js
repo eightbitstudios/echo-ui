@@ -2,6 +2,7 @@ angular.module('echo.components.modal.assignDriver', [
   'echo.components.equipment',
   'echo.models.driver',
   'echo.api.loads',
+  'echo.components.loadingButton',
   'echo.components.shippingDetails',
   'echo.components.modal.assignDriver.loadDriver',
   'echo.components.modal.assignDriver.enums.assignedDriver'
@@ -20,22 +21,36 @@ angular.module('echo.components.modal.assignDriver', [
 
       that.newDriver = {};
       that.state = null;
+      that.driverChanged = false;
+      that.showButtonLoading = false;
 
       that.assignDriver = function () {
+        that.showButtonLoading = true;
         loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
-          that.modalActions.close();
+          that.driverChanged = true;
+          that.modalActions.close(that.driverChanged);
+        }).finally(function () {
+          that.showButtonLoading = false;
         });
       };
 
       that.reassignDriver = function () {
+        that.showButtonLoading = true;
         loadsApi.reassignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
-          that.modalActions.close();
+          that.driverChanged = true;
+          that.modalActions.close(that.driverChanged);
+        }).finally(function () {
+          that.showButtonLoading = false;
         });
       };
 
       that.unassignDriver = function () {
+        that.showButtonLoading = true;
         loadsApi.unassignDriver(that.load.loadNumber).then(function () {
+          that.driverChanged = true;
           that.assignedDriver = null;
+        }).finally(function () {
+          that.showButtonLoading = false;
         });
       };
 

@@ -21,14 +21,10 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-    getDriverStatus: function (req, res) {
+  getDriverStatus: function (req, res) {
     var resTemplate = new ResTemplate();
     var searchText = req.params.searchText;
-    resTemplate.data.loads = _.filter(loadsRes.loads, function (item) {
-      return item.loadNumber.toString().indexOf(searchText) > -1;
-    });
-
-    resTemplate.data.totalLoadCount = loadsRes.totalLoadCount;
+    resTemplate.data = false;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);
