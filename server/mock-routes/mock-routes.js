@@ -20,7 +20,7 @@ module.exports = function (app) {
   app.post(endpoints.api.signIn, authHandler.signIn);
   app.put(endpoints.api.changePassword,  authHandler.changePassword);
   app.post(endpoints.api.signOut, authHandler.signOut);
-  app.post(endpoints.api.refresh, authHandler.refresh);
+  app.get(endpoints.api.refresh, authHandler.refresh);
   app.post(endpoints.api.createPassword, authHandler.createPassword);
   app.post(endpoints.api.forgotPassword, authHandler.forgotPassword);
   app.post(endpoints.api.deactivateUserById, userHandler.deactivateUserById);

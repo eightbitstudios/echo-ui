@@ -37,7 +37,7 @@ angular.module('echo.api.portalUser', [
         return $http.put(url, data).then(function (resp) {
           return resp.data.data;
         }).catch(function (resp) {
-          return $q.reject(resp.data.status.message);
+          return $q.reject(resp.data.status.code);
         });
       },
 
@@ -54,7 +54,7 @@ angular.module('echo.api.portalUser', [
         return $http.put(url, data).then(function (resp) {
           return resp.data.data;
         }).catch(function (resp) {
-          return $q.reject(resp.data.status.message);
+          return $q.reject(resp.data.status.code);
         });
       },
       /**
@@ -70,7 +70,7 @@ angular.module('echo.api.portalUser', [
         return $http.post(url, data).then(function (resp) {
           return resp.data.data;
         }).catch(function (resp) {
-          return $q.reject(resp.data.status.message);
+          return $q.reject(resp.data.status.code);
         });
       },
 
