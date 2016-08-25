@@ -133,7 +133,7 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.loadDetails.name, { // #/carrier/:carrierId/loadManagement/loadDetails/:loadId
       url: routesConfig.INDEX.loadDetails.route,
-      template: '<load-details carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></load-details>',
+      template: '<load-details load-id="$ctrl.stateParams.loadId" rep-details="$ctrl.repDetails"></load-details>',
       data: {
         hideTabBar: true,
         whiteContainer: false

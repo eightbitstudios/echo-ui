@@ -12,9 +12,10 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <div class="container-fluid load-table_detail">
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div ng-if="!$ctrl.showLoading" class="container-fluid load-table_detail">
     <div class="container">
-      <load-detail></load-detail>
+      <load-detail load-detail="$ctrl.loadDetails"></load-detail>
     </div>
   </div>
   <div class="container main-content">
@@ -30,32 +31,11 @@
       </section>
       <div class="col-md-4">
         <section class="sidebar-container">
-          <h4 class="section-header sh-short">Equipment</h4>
-          <div class="equip-list">
-            Dry Van 53â€™<br> HazMat
-            <br> Tractor 093837<br>
-            <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
-              <img src="assets/images/add-pencil.svg" alt="Add pencil">
-              </a>
-            <form class="form-inline form-inline-editing" style="display: none;">
-              <div class="form-group">
-                <label class="hidden">Add Trailer Number</label>
-                <input class="form-control" placeholder="Add Trailer Number" type="text">
-              </div>
-              <div class="form-group">
-                <button class="btn btn-link btn-sm" type="submit">Save</button>
-                <a href="#" class="btn btn-link btn-sm btn-alt">Cancel</a>
-              </div>
-            </form>
-          </div>
-          <br>
-          <div class="equip-specials">
-            Drop Trailer at Shipper<br> No Reefers<br>
-          </div>
+          <equipment></equipment>
         </section>
         <section class="sidebar-container">
           <h4 class="section-header sh-short">General Instructions</h4>
-          <p>POD Required within 24-48 hours after delivery.Â&nbsp;</p>
+          <p>POD Required within 24-48 hours after delivery.</p>
         </section>
       </div>
     </div>
