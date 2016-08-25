@@ -1,5 +1,5 @@
 <div class="load">
-  <h2 class="load-number"><a href="javascript:void(0)">{{$ctrl.loadNumber}}</a></h2>
+  <h2 class="load-number"><a ui-sref="{{$ctrl.loadDetails}}({loadId: $ctrl.loadNumber})">{{$ctrl.loadNumber}}</a></h2>
   <span ng-if="$ctrl.proNumber">
     <p class="label">Pro:</p>
     <p>{{$ctrl.proNumber}}</p>

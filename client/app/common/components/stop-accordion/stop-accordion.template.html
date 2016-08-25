@@ -1,20 +1,15 @@
 <uib-accordion class="stop-accordion" ng-class="{'panel-closed': !$ctrl.isOpen}">
   <div uib-accordion-group is-open="$ctrl.isOpen">
-    <uib-accordion-heading><strong>PICKUP</strong> Memphis, TN 60655
+    <uib-accordion-heading><strong>{{$ctrl.stop.stopType}}</strong> {{$ctrl.stop.city}}, {{$ctrl.stop.state}} {{$ctrl.stop.zip}}
       <span class="stops-date">
-                    Today from 14:00-15:00 EST
+                    {{$ctrl.stop.arrivalDate}}
                     <div class="caret"></div>
                   </span>
     </uib-accordion-heading>
     <div class="row">
-      <details-location>
-      </details-location>
-      <details-contact>
-      </details-contact>
-          <div class="read-more-content">
-          </div>
-          <a href="#" class="btn-read-more">Read more</a>
+      <details-location/>
+      <details-contact/>
+      <details-notes/>
     </div>
-    <load-item-details>
-    </load-item-details>
+    <load-item-details/>
   </div>

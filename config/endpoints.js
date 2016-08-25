@@ -23,7 +23,7 @@ module.exports = {
   portalUserById: '/api/v1/carriers/${carrierId}/portalusers/${userId}',
   language: '/api/v1/preferredLanguages',
   forgotPassword: '/api/v1/auth/forgotPassword',
-  loadById: '/api/v1/loads/${loadId}',
+  loadById: '/api/v1/loads/${loadId}/details',
   changePassword: '/api/v1/users/${userId}/setPassword',
   loadsNeedingAction: '/api/v1/carriers/${carrierId}/loads/needsAction',
   multiStopLoads: '/api/v1/carriers/${carrierId}/loads/upcomingMultiStop'

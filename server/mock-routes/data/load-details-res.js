@@ -1,19 +1,45 @@
 module.exports = {
   loadNumber: 12344321,
   proNumber: 12345678910,
-  pickUp: [{
-    city: 'Memphis',
-    state: 'TN',
+  stops: [{
+    stopType: 'Pickup',
+    arrivalDate: 'Today from 14:00-15:00 EST',
+    contactName: 'Bob Peterson',
+    contactPhone: '3125551212',
+    name: 'Walmart Warehouse A34',
+    address1: '555 W. Western',
+    address2: 'Dock #123',
+    city: 'Bartville',
+    state: 'IN',
     zip: '60655',
-    time: '2016-08-04T16:20:14-05:00'
-  }],
-  delivery: [{
-    city: 'Chicago',
-    state: 'IL',
-    zip: '60601',
-    isCurrent: true,
-    time: '2016-08-05T16:20:14-05:00'
-  }],
+    notes: 'Test note',
+    shipmentItems: [{
+      itemNumber: '',
+      itemName: '',
+      estimatedWeight: '',
+      quantity: '',
+      description: ''
+    }]
+  }, {
+      stopType: 'Delivery',
+      arrivalDate: 'Today from 14:00-15:00 EST',
+      contactName: 'Bob Peterson',
+      contactPhone: '3125551212',
+      name: 'Walmart Warehouse A34',
+      address1: '555 W. Western',
+      address2: 'Dock #123',
+      city: 'Bartville',
+      state: 'IN',
+      zip: '60655',
+      notes: 'Test note',
+      shipmentItems: [{
+        itemNumber: '',
+        itemName: '',
+        estimatedWeight: '',
+        quantity: '',
+        description: ''
+      }]
+    }],
   driver: {
     id: 1,
     isDoNotDisturb: false,

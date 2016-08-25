@@ -10,25 +10,28 @@ angular.module('echo.components.readMore', [
   controller: function (appConstants) {
     var that = this;
 
-    that.truncatedText = _.truncate(that.text, {
-      length: appConstants.TEXT_TRUNCATE.readMore,
-      separator: ' '
-    });
-
-    that.showReadMore = _.size(that.text) > appConstants.TEXT_TRUNCATE.readMore;
-
     that.clickHandler = function () {
       that.isOpen = !that.isOpen;
       if (that.isOpen) {
         that.truncatedText = that.text;
       } else {
-        that.truncatedText = _.truncate(that.text, {
-          length: appConstants.TEXT_TRUNCATE.readMore,
-          separator: ' '
-        });
+        that.truncatedText = that.truncate(that.text);
       }
     };
 
-    that.isOpen = false;
+    that.truncate = function (text) {
+      return _.truncate(text, {
+        length: appConstants.TEXT_TRUNCATE.readMore,
+        separator: ' '
+      });
+    };
+
+    that.$onInit = function () {
+      that.truncatedText = that.truncate(that.text);
+
+      that.showReadMore = _.size(that.text) > appConstants.TEXT_TRUNCATE.readMore;
+      that.isOpen = false;
+    };
+
   }
 });

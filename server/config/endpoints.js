@@ -23,7 +23,7 @@ module.exports = {
     deactivateDriverById: '/mock/api/v1/carriers/:carrierId/drivers/:driverId/deactivate',
     deactivateUserById: '/mock/api/v1/users/:userId/deactivate',
     drivers: '/mock/api/v1/carriers/:carrierId/drivers',
-    loadById: '/mock/api/v1/loads/:loadId',
+    loadById: '/mock/api/v1/loads/:loadId/details',
     language: '/mock/api/v1/preferredLanguages',
     loadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction',
     multiStopLoads: '/mock/api/v1/carriers/:carrierId/loads/upcomingMultiStop'

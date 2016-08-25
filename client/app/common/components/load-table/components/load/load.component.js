@@ -6,5 +6,7 @@ angular.module('echo.components.loadTable.load', [])
       proNumber: '<',
       isDetailsUpdated: '<'
     },
-    controller: function () {}
+    controller: function (routesConfig) {
+      this.loadDetails = routesConfig.INDEX.loadDetails.name;
+    }
   });

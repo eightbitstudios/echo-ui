@@ -7,6 +7,5 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail', [
       loadDetail: '<'
     },
     controller: function () {
-      console.log(this.loadDetails);
     }
   });
