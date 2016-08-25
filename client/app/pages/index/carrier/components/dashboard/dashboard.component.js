@@ -18,28 +18,30 @@ angular.module('echo.index.carrier.dashboard', [
 
       that.showActionLoadsLoading = false;
       that.showMultiStopLoading = false;
+      that.showMoreActionLoadsLoading = false;
+      that.showMoreMultiStopLoading = false;
       that.pagingActionLoads = new PagingModel(5);
       that.pagingMultistopLoads = new PagingModel(5);
       that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
       that.loadType = loadTypesEnum.ACTIVE;
 
       that.showMoreActionLoadsHandler = function () {
-        that.showActionLoadsLoading = true;
+        that.showMoreActionLoadsLoading = true;
         loadsApi.fetchLoadsNeedingAction(that.carrierId, that.pagingActionLoads).then(function (loadsNeedingAction) {
           that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
           that.activeLoads = _.concat(that.activeLoads, loadsNeedingAction.loads);
         }).finally(function () {
-          that.showActionLoadsLoading = false;
+          that.showMoreActionLoadsLoading = false;
         });
       };
 
       that.showMoreMultiStopLoadsHandler = function () {
-        that.showMultiStopLoading = true;
+        that.showMoreMultiStopLoading = true;
         loadsApi.fetchMultiStopLoads(that.carrierId, that.pagingMultistopLoads).then(function (multiStopLoads) {
           that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
           that.multiStopLoads = _.concat(that.multiStopLoads, multiStopLoads.loads);
         }).finally(function () {
-          that.showMultiStopLoading = false;
+          that.showMoreMultiStopLoading = false;
         });
       };
 

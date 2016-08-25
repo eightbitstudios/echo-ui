@@ -29,7 +29,7 @@
         <h3>You have no loads that need online actions right now.</h3>
         <div>You have <a ui-sref="{{$ctrl.activeLoadsRoute}}">{{$ctrl.activeLoadCount}} active loads</a> at this time.</div>
       </div>
-      <show-more ng-if="!$ctrl.showActionLoadsLoading" paging-model="$ctrl.pagingActionLoads" record-type="Loads Needing Action" click-handler="$ctrl.showMoreActionLoadsHandler()"></show-more>
+      <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads Needing Action" click-handler="$ctrl.showMoreActionLoadsHandler()"></show-more>
     </section>
     <section class="multi-stop-loads">
       <div class="section-head">
@@ -41,7 +41,7 @@
           </h1>
       </div>
       <load-table loads="$ctrl.multiStopLoads" load-type="$ctrl.loadType" show-loading="$ctrl.showMultiStopLoading"></load-table>
-      <show-more ng-if="!$ctrl.showMultiStopLoading" paging-model="$ctrl.pagingMultistopLoads" record-type="Multi Stop Loads" click-handler="$ctrl.showMoreMultiStopLoadsHandler()"></show-more>
+      <show-more show-loading="$ctrl.showMoreMultiStopLoading" paging-model="$ctrl.pagingMultistopLoads" record-type="Multi Stop Loads" click-handler="$ctrl.showMoreMultiStopLoadsHandler()"></show-more>
     </section>
   </div>
 </div>

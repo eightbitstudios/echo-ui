@@ -7,7 +7,8 @@ angular.module('echo.components.showMore', [
     bindings: {
       clickHandler: '&',
       recordType: '@',
-      pagingModel: '='
+      pagingModel: '=',
+      showLoading: '<'
     },
     templateUrl: 'app/common/components/show-more/show-more.template.html',
     controller: function () {
