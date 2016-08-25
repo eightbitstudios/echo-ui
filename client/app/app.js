@@ -74,7 +74,7 @@ angular.module('echo', [
             if (user.isRepAdmin()) {
               $state.go(routesConfig.INDEX.myCarriers.name);
             } else {
-              $state.go(routesConfig.INDEX.activeLoads.name, { carrierId: user.carrierId });
+              $state.go(routesConfig.INDEX.dashboard.name, { carrierId: user.carrierId });
             }
           } else if (_.get(toState.data, 'role') && toState.data.role !== _.get(user, 'role')) { // Prevent user from going to states they don't 
             // have permissions to.
