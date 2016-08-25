@@ -24,6 +24,8 @@ module.exports = {
     deactivateUserById: '/mock/api/v1/users/:userId/deactivate',
     drivers: '/mock/api/v1/carriers/:carrierId/drivers',
     loadById: '/mock/api/v1/loads/:loadId',
-    language: '/mock/api/v1/preferredLanguages'
+    language: '/mock/api/v1/preferredLanguages',
+    loadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction',
+    multiStopLoads: '/mock/api/v1/carriers/:carrierId/loads/upcomingMultiStop'
   }
 };

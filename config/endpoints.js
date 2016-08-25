@@ -24,5 +24,7 @@ module.exports = {
   language: '/api/v1/preferredLanguages',
   forgotPassword: '/api/v1/auth/forgotPassword',
   loadById: '/api/v1/loads/${loadId}',
-  changePassword: '/api/v1/users/${userId}/setPassword'
+  changePassword: '/api/v1/users/${userId}/setPassword',
+  loadsNeedingAction: '/api/v1/carriers/${carrierId}/loads/needsAction',
+  multiStopLoads: '/api/v1/carriers/${carrierId}/loads/upcomingMultiStop'
 };

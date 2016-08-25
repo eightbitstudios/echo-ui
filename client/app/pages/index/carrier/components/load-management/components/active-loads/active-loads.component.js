@@ -1,5 +1,5 @@
 angular.module('echo.index.carrier.loadManagement.activeLoads', [
-  'echo.index.carrier.loadManagement.loadTable',
+  'echo.components.loadTable',
   'echo.api.loads',
   'echo.components.echoRepContact',
   'echo.components.pagination',
@@ -7,6 +7,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.config.appConstants',
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
+  'echo.components.mapPlaceholder',
   'echo.components.filterButton'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
