@@ -23,8 +23,8 @@ angular.module('echo.components.modal.assignDriver.unassignedDriverList', [
 
       that.$onInit = function () {
         that.showLoading = true;
-        loadsApi.fetchUnassignedDriversByLoadId(that.loadId, that.carrierId).then(function (drivers) {
-          that.drivers = drivers;
+        loadsApi.fetchUnassignedDriversByLoadId(that.loadId, that.carrierId).then(function (data) {
+          that.drivers = data.drivers;
         }).finally(function () {
           that.showLoading = false;
         });
