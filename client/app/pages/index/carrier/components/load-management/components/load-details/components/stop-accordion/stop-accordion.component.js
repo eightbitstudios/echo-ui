@@ -11,8 +11,8 @@ angular.module('echo.components.stopAccordion', [
     stop: '<',
     stopType: '@'
   },
-  templateUrl: 'app/common/components/stop-accordion/stop-accordion.template.html',
-  controller: function() { 
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/stop-accordion.template.html',
+  controller: function () {
     var that = this;
     that.isOpen = true;
   }

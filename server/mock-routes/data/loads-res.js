@@ -28,39 +28,39 @@ module.exports = {
     items: [{
       quantity: 2,
       description: 'Floor Handling Unit',
-      estimatedWeight: '1000  lbs'
+      estimatedWeight: 1000
     },{
       quantity: 1,
       description: 'Floor Handling Unit',
-      estimatedWeight: '800  lbs'
+      estimatedWeight: 800
     },{
       quantity: 5,
       description: 'Floor Handling Unit',
-      estimatedWeight: '2500  lbs'
+      estimatedWeight: 200
     },{
       quantity: 2,
       description: 'Floor Handling Unit',
-      estimatedWeight: '100  lbs'
+      estimatedWeight: 44
     },{
       quantity: 1,
       description: 'Floor Handling Unit',
-      estimatedWeight: '100  lbs'
+      estimatedWeight: 12
     },{
       quantity: 5,
       description: 'Floor Handling Unit',
-      estimatedWeight: '100  lbs'
+      estimatedWeight: 10
     },{
       quantity: 2,
       description: 'Floor Handling Unit',
-      estimatedWeight: '100  lbs'
+      estimatedWeight: 800
     },{
       quantity: 1,
       description: 'Floor Handling Unit',
-      estimatedWeight: '100  lbs'
+      estimatedWeight: 200
     },{
       quantity: 5,
       description: 'Floor Handling Unit',
-      estimatedWeight: '100  lbs'
+      estimatedWeight: 50
     }]
   }],
   delivery: [{

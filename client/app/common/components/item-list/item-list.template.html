@@ -2,14 +2,14 @@
   <div class="items-lists row">
     <section class="item-list well col-xs-6" ng-repeat="item in $ctrl.firstTwoItems">
       <article class="item-content">
-        <p>{{item.quantity}} {{item.description}}</br>Estimated weight: {{item.estimatedWeight}}</p>
+        <p>{{item.quantity}} {{item.description}}</br>Estimated weight: {{item.estimatedWeight}} lbs</p>
       </article>
     </section>
   </div>
     <div class="items-lists row" uib-collapse="!$ctrl.isOpen" ng-if="$ctrl.otherItems">
       <section class="item-list well col-xs-6" ng-repeat="item in $ctrl.otherItems">
         <article class="item-content">
-        <p>{{item.quantity}} {{item.description}}</br>Estimated weight: {{item.estimatedWeight}}</p>
+        <p>{{item.quantity}} {{item.description}}</br>Estimated weight: {{item.estimatedWeight}} lbs</p>
         </article>
       </section>
     </div>

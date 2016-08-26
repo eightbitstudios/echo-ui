@@ -6,7 +6,7 @@ angular.module('echo.components.detailsContact', [
   bindings: {
     stop: '<'
   },
-  templateUrl: 'app/common/components/stop-accordion/components/details-contact/details-contact.template.html',
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/components/details-contact/details-contact.template.html',
   controller: function() { 
   }
 });

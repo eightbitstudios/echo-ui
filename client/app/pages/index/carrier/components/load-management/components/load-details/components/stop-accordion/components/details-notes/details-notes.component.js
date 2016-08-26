@@ -6,7 +6,7 @@ angular.module('echo.components.detailsNotes', [
   bindings: {
     notes: '<'
   },
-  templateUrl: 'app/common/components/stop-accordion/components/details-notes/details-notes.template.html',
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/components/details-notes/details-notes.template.html',
   controller: function () {
   }
 });
