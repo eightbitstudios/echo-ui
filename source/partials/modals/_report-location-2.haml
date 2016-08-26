@@ -1,0 +1,60 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Location For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-report'
+
+  %section.modal-main-content
+
+    %h4.content-header Enter the driver's location
+    %p Drivers can help you bypass this step by enabling tracking for the app in their phone's Settings.
+
+    .search-location
+      %form.search-form.search-form-modal.search-form_searching.pull-left{role:"search"}
+        .form-group
+          %input.form-control.search-form-input.search-form-input_dark{type: "text", placeholder:"Enter City and State"}
+          %button.btn.btn-default.btn-icon{type:"submit"}
+            %svg{:height => "18px", :version => "1.1", :viewbox => "0 0 18 18", :width => "18px", :xmlns => "http://www.w3.org/2000/svg"}
+              %g.search-svg{:fill => "none", "fill-rule" => "evenodd", :stroke => "none", "stroke-width" => "1"}
+                %g#patterns{:stroke => "#FFFFFF", "stroke-width" => "2", :transform => "translate(-521.000000, -5581.000000)"}
+                  %g{:id => "icon-search", :transform => "translate(522.000000, 5582.000000)"}
+                    %circle#Oval{:cx => "6.33333333", :cy => "6.33333333", :r => "6"}
+                    %path#Shape{:d => "M10.5753333,10.576 L15.5,15.5"}
+
+          %span.search-results_count 3 Results
+          %span.search-results_close
+            = partial 'partials/icon-close-sm'
+
+          %ul.search-results_overlay
+            %li.results-row Jonathan Williams
+            %li.results-row Mablelle William-shire
+            %li.results-row Ethel Williamson
+
+
+      .location-map
+        =image_tag('map-placeholder.png')
+
+    %p
+      %strong
+        When did the driver finish unloading?
+    %form.form-inline.form-arrival-time
+      .filter-drivers.pull-left
+        %button.btn.btn-default.btn-filter.btn-modal-dp
+          Thu, Aug 18
+        .datepicker
+
+      .form-group
+        %label.hidden Time
+        %input.form-control{:type => "text", :placeholder => "12:00"}
+      .form-group
+        %label.hidden Time Zone
+        .select
+          %select.form-control{:type => "select", :placeholder => "Select one..."}
+            %option EST
+            %option CST
+            %option MST
+            %option PST
+
+.modal-footer
+  %button.btn.btn-default{type: 'button', disabled: 'disabled'} Confirm Location
+  %button.btn.btn-link.btn-alt{type: "button", disabled: 'disabled', data: {dismiss: 'modal'}} CANCEL

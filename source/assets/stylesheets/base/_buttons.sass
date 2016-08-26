@@ -2,8 +2,8 @@
     #buttons
 //------------------------------------
 
-.btn.disabled, 
-.btn[disabled], 
+.btn.disabled,
+.btn[disabled],
 fieldset[disabled] .btn
   opacity: 0.35
 
@@ -18,17 +18,25 @@ fieldset[disabled] .btn
   border-radius: 2px
   transition: all 0.2s ease-in
   white-space: normal
+  font-smoothing: antialiased
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+  &:active,
+  &:focus,
+  &:active:focus
+    outline: none
+    box-shadow: none
 
   /////////////
   // General button styles
   /////////////
   &.btn-link
     color: $bright-blue
-    
 
   &.btn-default
     color: $bright-blue
-    padding: 10px 19px 7px
+    padding: 10px 16px 7px
     border: solid 2px $bright-blue
     background-color: transparent
     font-smoothing: antialiased
@@ -59,6 +67,29 @@ fieldset[disabled] .btn
     &[disabled]:hover,
     &.disabled:hover
       border: solid 2px $bright-blue
+
+  //////
+  &.btn-secondary
+    color: $gray-mid-light
+    padding: 10px 16px 7px
+    border: solid 2px $gray-mid-light
+    background-color: transparent
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover
+      +tablet
+        color: #fff
+        background-color: $gray-mid-light
+
+    &:active,
+    &:focus
+      color: #fff
+      outline: none
+      box-shadow: none
+      border: solid 2px darken($gray-mid-light, 10%)
+      background-color: darken($gray-mid-light, 10%)
 
   //////
   &.btn-primary
@@ -155,6 +186,7 @@ fieldset[disabled] .btn
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
+
     &:focus,
     &:active
       background-color: transparent
@@ -168,7 +200,7 @@ fieldset[disabled] .btn
       border-color: $gray-mid-light
       background-color: $gray-mid-light
       box-shadow: none
-    
+
     &.filter__assigned
       color: #fff
       font-family: $body-font
@@ -184,7 +216,8 @@ fieldset[disabled] .btn
         border-color: $bright-blue-dark
         background-color: $bright-blue-dark
 
-    &.btn-date-picker
+    &.btn-date-picker,
+    &.btn-modal-dp
       padding-left: 45px
 
       &.filter__assigned
@@ -201,9 +234,7 @@ fieldset[disabled] .btn
         height: auto
         margin-right: 6px
 
-      &:hover,
-      &:active,
-      &:focus
+      &:hover
         &:before
           content: image-url('icon-calendar-white.svg')
 
@@ -212,12 +243,12 @@ fieldset[disabled] .btn
       z-index: 999999
       top: 50%
       right: 15px
-      width: 9px
-      height: 9px
+      width: 1rem
+      height: 0.95rem
       opacity: 1
       font-size: 0
       line-height: 0
-      margin-top: -6px
+      margin-top: -5px
 
       &:after,
       &:before
@@ -228,12 +259,18 @@ fieldset[disabled] .btn
         border-radius: 3px
         position: absolute
         top: 50%
-        left: 50%
+        margin-top: -1px
         opacity: 1
         transform: translateX(-50%) rotateZ(45deg)
+        transform-origin: 50% 50%
+        -webkit-backface-visibility: hidden
 
       &:after
         transform: translateX(-50%) rotateZ(-45deg)
+        // becuase i'm desperate
+        // IE hack
+        @media screen and (min-width:0\0)
+          left: 0
 
   ///////
   &.btn-document
@@ -269,12 +306,13 @@ fieldset[disabled] .btn
       position: absolute
       top: 50%
       left: 25px
-      width: 2.8rem
-      height: 0.3rem
+      width: 27px
+      height: 3px
       margin-top: -2px
       border-radius: 20px
       background-color: $gray-mid-light
-      // transition: transform 0.25s cubic-bezier(.71,.48,.3,.9)
+      transform-origin: 50% 50%
+      -webkit-backface-visibility: hidden
 
     &:after
       transform: rotateZ(90deg)
@@ -286,9 +324,10 @@ fieldset[disabled] .btn
       display: flex
       flex-direction: column
       justify-content: center
-      min-height: 57px
+      height: 57px
       margin-left: 67px
-      padding: 10px 25px
+      padding: 10px 10px 10px 25px
+      letter-spacing: 0
       border-left: dotted 1px $gray-mid-light
 
       small
@@ -326,6 +365,8 @@ fieldset[disabled] .btn
       width: 11px
       vertical-align: baseline
 
+  &.btn-show
+    padding-bottom: 0
 
 // Used in Modals
 /////////////

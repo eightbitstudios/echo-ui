@@ -16,11 +16,11 @@
 .search-form
   position: relative
   margin-bottom: 15px
-  
+
   .form-group
     position: relative
 
-  .form-control.search-form-input
+  .search-form-input
     height: auto
     width: 100%
     padding: 10px 35px 10px 14px
@@ -47,6 +47,38 @@
   .search-form-input:focus + .search-help-text + .btn.btn-icon
     svg g
       stroke: $gray-mid-light
+
+  // Dark Version
+  .search-form-input_dark.search-form-input
+    background-color: $gray-mid-light
+    color: #FFF
+
+    &:hover,
+    &:focus
+      background-color: $gray-mid-dark
+
+    &::-webkit-input-placeholder
+      color: #FFF
+    &:-moz-placeholder
+      color: #FFF
+      opacity: 1
+    &::-moz-placeholder
+      color: #FFF
+      opacity: 1
+    &:-ms-input-placeholder
+      color: #FFF
+
+    &:focus
+      &::-webkit-input-placeholder
+        color: $gray-mid-dark
+      &:-moz-placeholder
+        color: $gray-mid-dark
+        opacity: 1
+      &::-moz-placeholder
+        color: $gray-mid-dark
+        opacity: 1
+      &:-ms-input-placeholder
+        color: $gray-mid-dark
 
 .btn.btn-icon
   position: absolute
@@ -95,42 +127,64 @@
     left: -30px
     top: 10px
 
+.search-results_overlay
+  list-style: none
+  position: absolute
+  z-index: 100
+  top: 100%
+  left: 0
+  width: 370px
+  margin: 0
+  padding: 30px 30px 20px
+  border-radius: 2px
+  background-color: #fff
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
+
+  .results-row
+    color: $gray-mid-light
+    line-height: 1.4
+    margin-bottom: 10px
+    padding: 5px 0 15px
+    border-bottom: 1px solid $gray-light
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+
+    &:hover
+      cursor: pointer
+
+    &:last-child
+      margin-bottom: 0
+      border-bottom: none
+
+  .result-title
+    color: $gray-darkest
+    font-size: 18px
+    line-height: 1
+    margin-bottom: 5px
+
+  .result-phone
+    margin-left: auto
+
+.search-form-modal
   .search-results_overlay
-    list-style: none
-    position: absolute
-    z-index: 100
-    top: 100%
-    left: 0
-    width: 370px
-    margin: 0
-    padding: 30px 30px 20px
-    border-radius: 2px
+    padding: 5px 15px 5px 5px
+    width: 220px
+    height: 115px
+    overflow-y: scroll
     background-color: #fff
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
-
     .results-row
-      color: $gray-mid-light
-      line-height: 1.4
-      margin-bottom: 10px
-      padding: 5px 0 15px
-      border-bottom: 1px solid $gray-light
-      display: flex
-      justify-content: space-between
-      flex-wrap: wrap
-
-      &:hover
-        cursor: pointer
-
-      &:last-child
-        margin-bottom: 0
-        border-bottom: none
-
-    .result-title
       color: $gray-darkest
-      font-size: 18px
-      line-height: 1
-      margin-bottom: 5px
+      padding: 10px 10px
+      margin-bottom: 0
+      border-bottom: 0
+      &:hover
+        background: $gray-lightest
 
-    .result-phone
-      margin-left: auto
+  svg g
+    stroke: #fff
 
+  svg .icon-clear
+    stroke: none
+    fill: #fff

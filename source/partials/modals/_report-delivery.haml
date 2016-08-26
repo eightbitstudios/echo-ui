@@ -1,0 +1,69 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Delivery For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-report'
+
+  %section.modal-main-content
+
+    %h4.content-header You're reporting the driver's delivery of
+
+    .card-group
+      .card.card-driver
+        .card-details
+          %p
+            %strong Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs
+          %p
+            1 EA, Floor Handling Unit,
+            %br 5000 lb
+
+      .card.card-driver
+        .card-details
+          %p
+            %strong Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @8500lbs
+          %p
+            1 EA, Floor Handling Unit
+            %br 8500 lb
+
+      .card.card-driver
+        .card-details
+          %p
+            %strong Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @8500lbs
+          %p
+            1 EA, Floor Handling Unit
+            %br 8500 lb
+
+
+    %p
+      %strong When was the driver at this location?
+
+    %p.text-muted.disclaimer [Legal disclaimer such as: For communication purposes only. Detention is calculated using customer policies and documents provided at the stop location.]
+
+    %form.form-inline.form-arrival-time
+      .filter-drivers.pull-left
+        %button.btn.btn-default.btn-filter.btn-modal-dp
+          Thu, Aug 18
+        .datepicker
+
+      .form-group
+        %label.hidden Time
+        %input.form-control{:type => "text", :placeholder => "12:00"}
+      .form-group
+        %label.hidden Time Zone
+        .select
+          %select.form-control{:type => "select", :placeholder => "Select one..."}
+            %option EST
+            %option CST
+            %option MST
+            %option PST
+
+.modal-footer.modal-footer-splits
+  .btn-group-left
+    %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CANCEL
+
+  %ul.progress-indicator
+    %li.step-complete Step 1
+    %li Step 2
+
+  .btn-group-right
+    %button.btn.btn-default{type: 'button'} Next

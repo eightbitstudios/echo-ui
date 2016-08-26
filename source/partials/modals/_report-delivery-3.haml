@@ -1,0 +1,34 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Delivery For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-report'
+
+  %section.modal-main-content
+
+    %h4.content-header Send a comment to Echo
+
+    %p Please share your thoughts with Echo so that we can continue to improve the way loads are managed.
+
+    %form
+      %textarea.form-control{placeholder: 'Enter your comments here'}
+
+    .modal-action-links.modal-action-split
+      %a.btn.btn-link.btn-alt{href: '#'}
+        = partial 'partials/icon-prev'
+        Cancel Comment
+
+      %a.btn.btn-link{href: '#'}
+        Save Comment
+
+.modal-footer.modal-footer-splits
+  .btn-group-left
+    %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CANCEL
+
+  %ul.progress-indicator
+    %li Step 1
+    %li Step 2
+
+  .btn-group-right
+    %button.btn.btn-secondary{type: 'button', disabled: 'disabled'} Back
+    %button.btn.btn-default{type: 'button', disabled: 'disabled'} Confirm Delivery

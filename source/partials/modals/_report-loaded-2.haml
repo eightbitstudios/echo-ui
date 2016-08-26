@@ -1,0 +1,52 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Loaded For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-report'
+
+  %section.modal-main-content
+
+    %h4.content-header What Time Did The Driver Finish Loading?
+    %p.text-muted.disclaimer [Legal disclaimer such as: For communication purposes only. Detention is calculated using customer policies and documents provided at the stop location.]
+
+    %form.form-inline.form-arrival-time
+      .filter-drivers.pull-left
+        %button.btn.btn-default.btn-filter.btn-modal-dp
+          Thu, Aug 18
+        .datepicker
+
+      .form-group
+        %label.hidden Time
+        %input.form-control{:type => "text", :placeholder => "12:00"}
+      .form-group
+        %label.hidden Time Zone
+        .select
+          %select.form-control{:type => "select", :placeholder => "Select one..."}
+            %option EST
+            %option CST
+            %option MST
+            %option PST
+
+    %p
+      %strong Estimated Load Weight
+      %br The expected weight for all items picked up here is below. If your load appears to be significantly off, please call Echo.
+
+    %form
+      .form-group
+        %label.checkbox.control
+          %input.checkbox{type:'checkbox', checked: 'checked'}
+          %span.control-indicator
+          The total weight at this pickup seems to be about <strong>13,500 LBS</strong>
+
+.modal-footer.modal-footer-splits
+  .btn-group-left
+    %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE
+
+  %ul.progress-indicator
+    %li.step-complete Step 1
+    %li.step-complete Step 2
+    %li Step 3
+
+  .btn-group-right
+    %button.btn.btn-secondary{type: 'button'} Back
+    %button.btn.btn-default{type: 'button'} Next

@@ -20,6 +20,7 @@ label
   color: $gray-mid-dark
   line-height: 1.3
   letter-spacing: 1.1px
+  margin-bottom: 0
   text-transform: uppercase
   transition: color 0.2s ease-in
 
@@ -73,14 +74,28 @@ input[type="checkbox"]
   margin-top: 0
 
 .select
+  padding-left: 10px
+  margin-right: -10px
+  //sloppy hack to fix IE dropdown background
   select
     padding-left: 0
+    padding-right: 0
+    margin: 0 -10px
     border-radius: 0
     border-bottom: 1px solid $gray-mid-light
-    background-color: transparent
+    background-color: #fff
+
+  &:after
+    content: image-url('icon-down-carat.svg')
+    border: none !important
+    margin-top: -1rem
+    margin-right: 1rem
 
     &:focus
-      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $gray-mid-light
+      box-shadow: none
+
+  select::-ms-expand
+    display: none
 
 .control
   input:checked ~ .control-indicator
@@ -96,11 +111,17 @@ input[type="checkbox"]
 
 .checkbox,
 .radio
+  text-transform: none
+  letter-spacing: 0
+  font-size: 14px
+  font-weight: 300
+
   label
     letter-spacing: 0
     font-weight: 300 !important
 
   &:hover
+    font-weight: 300 !important
     label
       font-weight: 300
 
@@ -109,7 +130,12 @@ input[type="checkbox"]
 
   &.control
     display: block
+    margin-right: 16px
+    padding-left: 25px
 
+  .control-indicator
+    top: 0
+    margin-right: 5px
 
 .checkbox
   .control-indicator
@@ -121,6 +147,7 @@ input[type="checkbox"]
     height: 30px
     margin-top: 0
     margin-bottom: 0
+    margin-right: 0
 
     .checkbox input[type="checkbox"]
       margin-left: -40px
@@ -140,12 +167,19 @@ input[type="checkbox"]
 
   &.control-lrg
     .control-indicator
-      
+
     input:checked ~ .control-indicator
       border: solid 1px $green
       background-color: $green
       background-image: image-url("icon-checkmark-wht.svg")
 
+
+textarea.form-control
+  height: 150px
+  padding: 10px
+  border: 0
+  border-radius: 2px
+  background-color: $gray-lightest
 
 /////////////
 // form info classes
@@ -157,6 +191,12 @@ input[type="checkbox"]
   margin-bottom: -10px
 
 .has-error
+
+  label
+    font-weight: 600
+    line-height: 1.4
+    color: $danger
+
   .form-control
     box-shadow: none
     border-color: $danger
@@ -166,6 +206,7 @@ input[type="checkbox"]
       border-color: $danger
 
   .help-block
+    font-size: 400
     color: $danger
 
 .is-approved
