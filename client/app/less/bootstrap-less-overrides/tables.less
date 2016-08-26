@@ -16,6 +16,10 @@ table.table {
       border-color: @c-black;
     }
   }
+  tr.selected td:first-child {
+    padding-left: 11px;
+    border-left: 4px solid #26c1fb;
+  }
   tr > td {
     padding-left: 10px;
     padding-right: 10px;
@@ -55,6 +59,19 @@ table.table {
       padding-left: 11px;
       border-left: 4px solid @c-bright-blue;
     }
+  }
+  &.table-condensed tr > th {
+    color: #2b363b;
+    font-size: 14px;
+    text-transform: none;
+    padding: 10px 0;
+    border-top: 0;
+    border-bottom: 1px solid #2b363b;
+  }
+  &.table-condensed tr > td {
+    border-right: none;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 

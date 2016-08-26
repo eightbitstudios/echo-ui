@@ -1,0 +1,26 @@
+<div class="load-detail">
+  <table class="table table-carrier-dashboard">
+    <tbody>
+      <tr>
+        <td class="carrier-dashboard-load">
+          <pro-number pro-number="$ctrl.loadDetail.proNumber"></pro-number>
+        </td>
+        <td class="carrier-dashboard-pickup">
+          <shipping-details shipping-details="$ctrl.loadDetail.delivery"></shipping-details>
+        </td>
+        <td class="carrier-dashboard-arrow">
+          <span class="echo-icon icon-right-arrow-dark"></span>
+        </td>
+        <td class="carrier-dashboard-delivery">
+          <shipping-details shipping-details="$ctrl.loadDetail.pickUp"></shipping-details>
+        </td>
+        <td>
+          <driver load="$ctrl.loadDetail" carrier-id="$ctrl.carrierId"></driver>
+        </td>
+        <td>
+          <action load-type="0"></action>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
