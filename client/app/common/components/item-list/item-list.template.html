@@ -1,42 +1,24 @@
 <div class="shipping-item-list">
-  <div class="items-lists">
-    <section class="item-list well">
+  <div class="items-lists row">
+    <section class="item-list well col-xs-6" ng-class="{even: $index % 2 === 0}"  ng-repeat="item in $ctrl.firstTwoItems">
       <article class="item-content">
-        <p>Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs</p>
-        <p>1 EA, Floor Handling Unit</p>
-        <p>This could contain more items in plain text</p>
-        <p>This could contain more items in plain text</p>
-      </article>
-    </section>
-    <section class="item-list well">
-      <article class="item-content">
-        <p>Paper Goods</p>
-        <p>Skids Handling Unit <br>13680 lb</p>
+        <p>{{item.quantity}} {{item.description}}</br>Estimated weight: {{item.estimatedWeight}}</p>
       </article>
     </section>
   </div>
-  <div uib-collapse="!$ctrl.isOpen">
-    <div class="items-lists">
-      <section class="item-list well">
+    <div class="items-lists row" uib-collapse="!$ctrl.isOpen" ng-if="$ctrl.otherItems">
+      <section class="item-list well col-xs-6" ng-class="{even: $index % 2 === 0}" ng-repeat="item in $ctrl.otherItems">
         <article class="item-content">
-          <p>Ser# A84884-516A (1) Lektro Pushback 17' x 8' x 6' @5000lbs</p>
-          <p>1 EA, Floor Handling Unit</p>
-          <p>This could contain more items in plain text</p>
-          <p>This could contain more items in plain text</p>
-        </article>
-      </section>
-      <section class="item-list well">
-        <article class="item-content">
-          <p>Paper Goods</p>
-          <p>Skids Handling Unit <br>13680 lb</p>
+        <p>{{item.quantity}} {{item.description}}</br>Estimated weight: {{item.estimatedWeight}}</p>
         </article>
       </section>
     </div>
-  </div>
-  <div>
+</div>
+<div class="row" ng-if="$ctrl.otherItems">
+  <div class="col-xs-12">
     <a href="javascript:void(0)" ng-click="$ctrl.isOpen = !$ctrl.isOpen">
       <span ng-if="!$ctrl.isOpen">Show More</span>
       <span ng-if="$ctrl.isOpen">Show Less</span>
-      </a>
+    </a>
   </div>
 </div>

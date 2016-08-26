@@ -2,7 +2,8 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail.proNumb
   .component('proNumber', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/load-detail/components/pro-number/pro-number.template.html',
     bindings: {
-      proNumber: '<'
+      proNumber: '<',
+      bolNumber: '<'
     },
     controller: function () {
     }

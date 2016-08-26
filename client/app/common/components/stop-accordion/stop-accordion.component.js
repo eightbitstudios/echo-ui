@@ -8,7 +8,8 @@ angular.module('echo.components.stopAccordion', [
   'echo.components.loadItemDetails'
 ]).component('stopAccordion', {
   bindings: {
-    stop: '<'
+    stop: '<',
+    stopType: '@'
   },
   templateUrl: 'app/common/components/stop-accordion/stop-accordion.template.html',
   controller: function() { 

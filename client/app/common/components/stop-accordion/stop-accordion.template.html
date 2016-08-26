@@ -1,15 +1,15 @@
 <uib-accordion class="stop-accordion" ng-class="{'panel-closed': !$ctrl.isOpen}">
   <div uib-accordion-group is-open="$ctrl.isOpen">
-    <uib-accordion-heading><strong>{{$ctrl.stop.stopType}}</strong> {{$ctrl.stop.city}}, {{$ctrl.stop.state}} {{$ctrl.stop.zip}}
+    <uib-accordion-heading><strong>{{$ctrl.stopType}}</strong> {{$ctrl.stop.city}}, {{$ctrl.stop.state}} {{$ctrl.stop.zip}}
       <span class="stops-date">
-                    {{$ctrl.stop.arrivalDate}}
+                    {{$ctrl.stop.day}} from {{$ctrl.stop.time}}
                     <div class="caret"></div>
                   </span>
     </uib-accordion-heading>
     <div class="row">
-      <details-location/>
-      <details-contact/>
-      <details-notes/>
+      <details-location stop="$ctrl.stop"/>
+      <details-contact stop="$ctrl.stop"/>
+      <details-notes notes="$ctrl.stop.notes"/>
     </div>
-    <load-item-details/>
+    <load-item-details items="$ctrl.stop.items"/>
   </div>

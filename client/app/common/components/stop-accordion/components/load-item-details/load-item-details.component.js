@@ -2,7 +2,9 @@
 
 angular.module('echo.components.loadItemDetails', [
 ]).component('loadItemDetails', {
-  bindings: {},
+  bindings: {
+    items: '<'
+  },
   templateUrl: 'app/common/components/stop-accordion/components/load-item-details/load-item-details.template.html',
   controller: function() { 
   }

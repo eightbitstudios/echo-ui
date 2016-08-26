@@ -2,18 +2,91 @@ module.exports = {
   loads: [{
   loadNumber: 12344321,
   proNumber: 12345678910,
+  bolNumber: 1412341234,
+  generalInstructions: 'Test general instructions',
+  equipmentName: [{
+    name: 'Equiment 1'
+  },{
+    name: 'Equiment 2'
+  },{
+    name: 'Equiment 3'
+  },{
+    name: 'Equiment 4'
+  }],
+  trailerNumber: '512341234',
   pickUp: [{
+    name: 'Test 1',
+    address: '1234 Test St.',
     city: 'Memphis',
     state: 'TN',
     zip: '60655',
-    time: '2016-08-04T16:20:14-05:00'
+    day: 'Tuesday',
+    time: '14:00 CST',
+    contactName: 'Bill Test',
+    contactPhone: '1235125454',
+    notes: 'Test note',
+    items: [{
+      quantity: 2,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '1000  lbs'
+    },{
+      quantity: 1,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '800  lbs'
+    },{
+      quantity: 5,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '2500  lbs'
+    },{
+      quantity: 2,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '100  lbs'
+    },{
+      quantity: 1,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '100  lbs'
+    },{
+      quantity: 5,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '100  lbs'
+    },{
+      quantity: 2,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '100  lbs'
+    },{
+      quantity: 1,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '100  lbs'
+    },{
+      quantity: 5,
+      description: 'Floor Handling Unit',
+      estimatedWeight: '100  lbs'
+    }]
   }],
   delivery: [{
-    city: 'Chicago',
-    state: 'IL',
-    zip: '60601',
-    isCurrent: true,
-    time: '2016-08-05T16:20:14-05:00'
+    name: 'Test 2',
+    address: '1234 Test St.',
+    city: 'Memphis',
+    state: 'TN',
+    zip: '60655',
+    day: 'Tuesday',
+    time: '14:00 CST',
+    contactName: 'Bill Test',
+    contactPhone: '1235125454',
+    notes: 'Test note',
+    items: [{
+      quantity: 2,
+      description: 'Floor Handling Unit',
+      estimatedWeight: 1000
+    },{
+      quantity: 1,
+      description: 'Floor Handling Unit',
+      estimatedWeight: 800
+    },{
+      quantity: 5,
+      description: 'Floor Handling Unit',
+      estimatedWeight: 2500
+    }]
   }],
   driver: {
     id: 1,
@@ -21,6 +94,7 @@ module.exports = {
     firstName: 'Fred',
     lastName: 'Fernando',
     phone: '8895840803',
+    tractorNumber: '1241234',
     isTrackingEnabled: true
   },
   action: {

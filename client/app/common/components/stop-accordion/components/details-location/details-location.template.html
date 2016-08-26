@@ -1,10 +1,10 @@
 <div class="details-location col-sm-4">
     <h5 class="small-header">Location</h5>
-    <span class="loc-name">Walmart Warehouse A34</span>
+    <span class="loc-name">{{$ctrl.stop.name}}</span>
     <br>
-    <span class="loc-addr1">555 W. Western</span>
+    <span class="loc-addr1">{{$ctrl.stop.address}}</span>
     <br>
-    <span class="loc-addr2">Dock #123</span>
+    <span class="loc-addr2">{{$ctrl.stop.address2}}</span>
     <br>
-    <span class="loc-region">Bartville, IN</span>
+    <span class="loc-region">{{$ctrl.stop.city}}, {{$ctrl.stop.state}}</span>
 </div>
