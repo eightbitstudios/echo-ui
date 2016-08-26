@@ -1,0 +1,50 @@
+<div class="assign-driver-modal">
+  <div class="modal-header">
+    <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)" data-close="modal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h1 class="modal-title">
+      <span class="assign-action-type" ng-if="$ctrl.noAssignedDriver()">
+        Assign Driver to
+      </span>
+      <span class="assign-action-type" ng-if="$ctrl.state === $ctrl.states.assignedDriverProfile">
+        Assigned Driver for
+      </span>
+      <span class="assign-action-type" ng-if="!$ctrl.noAssignedDriver() && $ctrl.state !== $ctrl.states.assignedDriverProfile">
+        Change Driver for
+      </span>
+      <span class="assign-action-to">
+        Load {{$ctrl.load.loadNumber}}
+      </span>
+    </h1>
+    <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
+  </div>
+  <div class="modal-body">
+    <section class="modal-sidebar">
+      <article class="sidebar-content">
+        <h4 class="small-header">Pickup</h4>
+        <shipping-details shipping-details="$ctrl.load.pickUp"></shipping-details>
+      </article>
+      <article class="sidebar-content">
+        <h4 class="small-header">Delivery</h4>
+        <shipping-details shipping-details="$ctrl.load.delivery"></shipping-details>
+      </article>
+      <article class="sidebar-content">
+        <equipment></equipment>
+      </article>
+    </section>
+    <section class="modal-main-content">
+      <load-driver assigned-driver="$ctrl.assignedDriver" state="$ctrl.state" carrier-id="$ctrl.carrierId" load-id="$ctrl.load.loadNumber" new-driver="$ctrl.newDriver"></load-driver>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <div ng-if="$ctrl.state && $ctrl.state !== $ctrl.states.assignedDriverProfile">
+      <loading-button show-loading="$ctrl.showButtonLoading" button-class="btn-default" disable-button="$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">
+        <span ng-click="$ctrl.assignDriver()" ng-if="$ctrl.noAssignedDriver()">Assign</span>
+        <span ng-click="$ctrl.reassignDriver()" ng-if="!$ctrl.noAssignedDriver() && !$ctrl.noNewDriver()">Replace {{$ctrl.assignedDriver.firstName}}</span>
+        <span ng-click="$ctrl.unassignDriver()" ng-if="!$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">Unassign {{$ctrl.assignedDriver.firstName}}</span>
+      </loading-button>
+    </div>
+    <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Close</button>
+  </div>
+</div>

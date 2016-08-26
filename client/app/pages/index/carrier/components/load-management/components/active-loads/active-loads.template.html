@@ -18,7 +18,7 @@
       <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
   </loads-filter>
   <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.activeLoads" load-type="$ctrl.loadType" ng-if="!$ctrl.showLoading"></load-table>
+  <load-table loads="$ctrl.activeLoads" refresh-table-callback="$ctrl.getAvailableLoads()" load-type="$ctrl.loadType" ng-if="!$ctrl.showLoading" carrier-id="$ctrl.carrierId"></load-table>
   <div class="container main-content">
     <pagination page-click-handler="$ctrl.getAvailableLoads()" paging-model="$ctrl.paging" record-type="Active Loads" ng-if="!$ctrl.showLoading"></pagination>
   </div>

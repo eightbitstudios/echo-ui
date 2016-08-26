@@ -8,7 +8,9 @@ angular.module('echo.index.carrier.loadManagement.loadTable', [
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-table/load-table.template.html',
     bindings: {
       loads: '<',
-      loadType: '<'
+      loadType: '<',
+      carrierId: '<',
+      refreshTableCallback: '&'
     },
     controller: function () {}
   });

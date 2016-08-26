@@ -4,6 +4,9 @@ angular.module('echo.config.appConstants', [])
       CARRIERS: 3,
       loads: 3
     },
+    TEXT_TRUNCATE: {
+      readMore: 140
+    },
     LIMIT: {
       driverList: 5,
       loadsList: 10

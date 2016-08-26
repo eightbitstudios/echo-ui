@@ -66,7 +66,7 @@ angular.module('echo.api.driver', [
         var data = driverConverterService.driverRequest(driver, carrierId);
 
         return $http.post(url, data).then(function (resp) {
-          return resp.data.data;
+          return $q.when(resp.data.data);
         }).catch(function (resp) {
           return $q.reject(resp.data.status.code);
         });

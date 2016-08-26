@@ -1,0 +1,28 @@
+<div class="unassigned-driver-list">
+  <table class="table table-condensed table-assign-driver">
+    <thead>
+      <tr>
+        <th colspan="3">Unassigned drivers for this time</th>
+      </tr>
+    </thead>
+  </table>
+  <div>
+  <div class="unassigned-driver-results table-modal-scroll">
+    <loading show-loading="$ctrl.showLoading"></loading>
+    <table class="table table-condensed table-assign-driver">
+      <tbody>
+        <tr ng-repeat="driver in $ctrl.drivers" ng-class="{selected: $ctrl.selectedDriver.id === driver.id}">
+          <td class="driver-name">
+            <a href="javascript:void(0)">{{driver | fullName}}</a>
+          </td>
+          <td class="driver-contact">{{driver.phone | phoneNumber}}</td>
+          <td class="driver-status">
+            <a href="javascript:void(0)" class="select-driver" ng-click="$ctrl.selectDriver(driver)">Select</a>
+            <a href="javascript:void(0)" class="selected-driver" ng-click="$ctrl.deselectDriver()">Selected</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>

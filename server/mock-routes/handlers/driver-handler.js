@@ -9,7 +9,7 @@ var maxDelay = 2,
 module.exports = {
   getDriverById: function (req, res) {
     var resTemplate = new ResTemplate()
-    resTemplate.data = _.find(driversRes, {id: _.parseInt(req.params.driverId)});
+    resTemplate.data = _.find(driversRes, { id: _.parseInt(req.params.driverId) });
 
     responseUtil.timeout(function () {
       res.json(resTemplate);
@@ -34,6 +34,7 @@ module.exports = {
       if (resTemplate.status.error) {
         res.status(400).json(resTemplate);
       } else {
+        resTemplate.data = req.body;
         res.json(resTemplate);
       }
     }, minDelay, maxDelay);
@@ -51,6 +52,8 @@ module.exports = {
       if (resTemplate.status.error) {
         res.status(400).json(resTemplate);
       } else {
+        resTemplate.data = req.body;
+        resTemplate.data.id = 99;
         res.json(resTemplate);
       }
     }, minDelay, maxDelay);

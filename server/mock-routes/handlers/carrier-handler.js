@@ -44,7 +44,7 @@ module.exports = {
   },
   getDrivers: function (req, res) {
     var resTemplate = new ResTemplate();
-    resTemplate.data = driversRes;
+    resTemplate.data = driversRes.drivers;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);
