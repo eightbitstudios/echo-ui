@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('echo.components.typeaheadSearch', [])
-  .component('typeaheadSearch', {
+angular.module('echo.components.typeaheadSearch', [
+  'echo.filters.phoneNumber'
+  ]).component('typeaheadSearch', {
     bindings: {
       searchService: '&',
       onSelectCallback: '&'

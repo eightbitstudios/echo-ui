@@ -5,7 +5,6 @@ angular.module('echo.components.driverGrid', [
   'echo.components.loading',
   'echo.config.routes',
   'echo.components.pagination',
-  'echo.filters.phoneNumber',
   'echo.directives.dateRangePicker',
   'echo.models.paging',
   'echo.config.appConstants',
@@ -15,7 +14,7 @@ angular.module('echo.components.driverGrid', [
     carrierId: '<'
   },
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function ($state, routesConfig, carrierApi, PagingModel, appConstants, $filter) {
+  controller: function ($state, routesConfig, carrierApi, PagingModel, appConstants) {
     var that = this;
     that.drivers = null;
     that.pagination = null;
@@ -37,7 +36,7 @@ angular.module('echo.components.driverGrid', [
           return {
             id: driver.id,
             name: driver.getFullName(),
-            phone: $filter('phoneNumber')(driver.phone),
+            phone: driver.phone,
             tractorNumber: driver.tractorNumber
           };
         });
