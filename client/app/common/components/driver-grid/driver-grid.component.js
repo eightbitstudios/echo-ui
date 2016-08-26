@@ -15,7 +15,7 @@ angular.module('echo.components.driverGrid', [
     carrierId: '<'
   },
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function ($state, routesConfig, carrierApi, PagingModel, appConstants) {
+  controller: function ($state, routesConfig, carrierApi, PagingModel, appConstants, $filter) {
     var that = this;
     that.drivers = null;
     that.pagination = null;
@@ -36,7 +36,9 @@ angular.module('echo.components.driverGrid', [
         return _.map(drivers, function (driver) {
           return {
             id: driver.id,
-            name: driver.getFullName()
+            name: driver.getFullName(),
+            phone: $filter('phoneNumber')(driver.phone),
+            tractorNumber: driver.tractorNumber
           };
         });
       });

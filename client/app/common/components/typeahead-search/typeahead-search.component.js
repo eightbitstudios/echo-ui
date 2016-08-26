@@ -24,10 +24,12 @@ angular.module('echo.components.typeaheadSearch', [])
       };
 
       that.searchServiceHandler = function (selection) {
-        return that.searchService({ val: selection }).then(function (results) {
-          that.numberOfSearchResults = _.size(results);
-          return $q.when(results);
-        });
+        return that.searchService({ val: selection }).then(
+          function (results) {
+            that.numberOfSearchResults = _.size(results);
+            return $q.when(results);
+          }
+        );
       };
 
       that.clearSearchHandler = function () {
