@@ -73,7 +73,7 @@ module.exports = {
     time: '14:00 CST',
     contactName: 'Bill Test',
     contactPhone: '1235125454',
-    notes: 'Test note',
+    notes: 'DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime. DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime. DROP trailer 24/7.STRICT DELIVERY DATE. ***TRAILER WILL NOT GET UNLOADED UNTIL THE END OF THE DELIVERY WINDOW DATE*** Can drop @ anytime',
     items: [{
       quantity: 2,
       description: 'Floor Handling Unit',
