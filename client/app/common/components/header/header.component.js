@@ -1,17 +1,17 @@
 'use strict';
 
 angular.module('echo.components.header', [
-  'echo.services.user',
+  'echo.services.userProfile',
   'echo.api.authentication'
 ]).component('appHeader', {
   bindings: {
     repDetails: '<'
   },
   templateUrl: 'app/common/components/header/header.template.html',
-  controller: function ($window, routesConfig, userService, authenticationApi) {
+  controller: function ($window, routesConfig, userProfileService, authenticationApi) {
     var that = this;
 
-    that.user = userService.getUser();
+    that.user = userProfileService.getUser();
     that.routesConfig = routesConfig;
 
     that.signOutHandler = function () {

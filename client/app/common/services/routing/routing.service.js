@@ -2,10 +2,10 @@
 
 angular.module('echo.services.routing', [
   'echo.services.cookie',
-  'echo.services.user',
+  'echo.services.userProfile',
   'echo.config.routes'
 ])
-  .factory('routingService', function ($rootScope, $window, $state, userService, routesConfig, cookieService) {
+  .factory('routingService', function ($rootScope, $window, $state, userProfileService, routesConfig, cookieService) {
     return {
       handleRouting: function (event, toState, from) {
         if (_.get(toState.data, 'auth')) { // Check if state requires authentication
@@ -14,7 +14,7 @@ angular.module('echo.services.routing', [
             $state.previous = from;
           }
           if (jwt) {  // Check if user is authenticated
-            var user = userService.mapJwtToUser(jwt);
+            var user = userProfileService.mapJwtToUser(jwt);
             if (toState.name === routesConfig.INDEX.base.name) { // Reroute user to their dashboard based on role
               event.preventDefault();
 

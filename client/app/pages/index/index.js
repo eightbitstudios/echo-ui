@@ -15,7 +15,7 @@ angular.module('echo.index', [
   'echo.api.carrier',
   'echo.index.carrier.myCompany.driverProfile',
   'echo.services.cookie',
-  'echo.services.user',
+  'echo.services.userProfile',
   'templates-app'
 ]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
 
@@ -27,15 +27,15 @@ angular.module('echo.index', [
         auth: true
       },
       resolve: {
-        user: function ($q, cookieService, userService) {
+        user: function ($q, cookieService, userProfileService) {
           var jwt = cookieService.getToken();
 
           if (jwt) {
-            var userObj = userService.mapJwtToUser(jwt);
-            userService.setUser(userObj);
+            var userObj = userProfileService.mapJwtToUser(jwt);
+            userProfileService.setUser(userObj);
           }
 
-          var user = userService.getUser();
+          var user = userProfileService.getUser();
           return $q.when(user);
         },
         repDetails: function (user, repApi) {
