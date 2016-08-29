@@ -19,14 +19,6 @@ angular.module('echo.models.rep', [])
     }
 
     /**
-     * @description Returns a Rep's full name
-     * @returns {string} - Rep's full name
-     */
-    Rep.prototype.getFullName = function () {
-      return _([this.firstName, this.lastName]).join(' ');
-    };
-
-    /**
      * @description Returns a Reps phone number
      * @returns {string} - Rep phone number
      */

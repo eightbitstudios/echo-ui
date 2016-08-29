@@ -9,13 +9,14 @@ angular.module('echo.components.driverGrid', [
   'echo.directives.dateRangePicker',
   'echo.models.paging',
   'echo.config.appConstants',
-  'echo.api.carrier'
+  'echo.api.carrier',
+  'echo.filters.fullName'
 ]).component('driverGrid', {
   bindings: {
     carrierId: '<'
   },
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function ($state, routesConfig, carrierApi, PagingModel, appConstants) {
+  controller: function ($state, $filter, routesConfig, carrierApi, PagingModel, appConstants) {
     var that = this;
     that.drivers = null;
     that.pagination = null;
@@ -36,7 +37,7 @@ angular.module('echo.components.driverGrid', [
         return _.map(drivers, function (driver) {
           return {
             id: driver.id,
-            name: driver.getFullName()
+            name: $filter('fullName')(driver)
           };
         });
       });

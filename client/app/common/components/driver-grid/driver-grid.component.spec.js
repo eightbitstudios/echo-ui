@@ -36,7 +36,7 @@ describe('Component: driverGrid', function () {
 
     it('should map drivers to typeahead model', function (done) {
       var searchText = 'test',
-        drivers = [{ id: 1, firstName: 'Bob', lastName: 'Ted', getFullName: function () { return this.firstName + ' ' + this.lastName; } }]
+        drivers = [{ id: 1, firstName: 'Bob', lastName: 'Ted'}]
       carrierApi.searchDrivers.and.returnValue($q.when(drivers));
       component.searchDrivers(searchText).then(function (convertedDrivers) {
         expect(convertedDrivers).toEqual([{

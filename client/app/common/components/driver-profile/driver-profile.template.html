@@ -7,7 +7,7 @@
   <h1 class="profile-name profile-name_driver">
               <div class="echo-icon icon-driver"></div> 
               <span ng-if="!$ctrl.driver.id">New Driver</span>
-              <span ng-if="$ctrl.driver.id">{{::$ctrl.driver.getFullName()}}</span>
+              <span ng-if="$ctrl.driver.id">{{::$ctrl.driver | fullName}}</span>
             </h1>
   <form name="$ctrl.driverProfileForm" novalidate>
     <fieldset class="fieldset personal-information">
