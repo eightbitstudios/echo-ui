@@ -3,11 +3,9 @@
     <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <strong>9 Loads Located</strong>
+          <strong>Load {{$ctrl.loadDetails.loadNumber}}</strong>
         </li>
-        <li>
-          <a href="javascript:void(0)">View Full Map</a>
-        </li>
+        <li ng-if="$ctrl.previousRouteName"><a ui-sref="{{$ctrl.previousRoute}}">Back to {{$ctrl.previousRouteName}}</a></li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
@@ -26,18 +24,19 @@
     </div>
     <div class="row">
       <section class="col-md-8">
-        <stop-accordion></stop-accordion>
-        <stop-accordion></stop-accordion>
+        <stop-accordion ng-repeat="pickUp in $ctrl.loadDetails.pickUp" stop-type="Pickup" stop="pickUp" />
+        <stop-accordion ng-repeat="delivery in $ctrl.loadDetails.delivery" stop-type="Delivery" stop="delivery" />
       </section>
       <div class="col-md-4">
         <section class="sidebar-container">
-          <equipment></equipment>
+          <equipment equipment="$ctrl.loadDetails.equipments" trailer-number="$ctrl.loadDetails.trailerNumber" tractor-number="$ctrl.loadDetails.driver.tractorNumber" />
         </section>
         <section class="sidebar-container">
           <h4 class="section-header sh-short">General Instructions</h4>
-          <p>POD Required within 24-48 hours after delivery.</p>
+          <p>{{$ctrl.loadDetails.generalInstructions}}</p>
         </section>
+        <section class="sidebar-container">
+          <documents />
       </div>
     </div>
   </div>
-</div>

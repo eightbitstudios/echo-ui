@@ -1,29 +1,25 @@
 angular.module('echo.index.carrier.loadManagement.loadDetails', [
   'echo.components.echoRepContact',
   'echo.components.stopAccordion',
-  'echo.api.loads',
   'echo.components.equipment',
-  'echo.index.carrier.loadManagement.loadDetails.loadDetail'
+  'echo.index.carrier.loadManagement.loadDetails.loadDetail',
+  'echo.index.carrier.loadManagement.loadDetails.documents'
 ])
   .component('loadDetails', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/load-details.template.html',
     bindings: {
       repDetails: '<',
       carrierId: '<',
-      loadId: '<'
+      loadDetails: '<'
     },
-    controller: function (loadsApi) {
+    controller: function ($state) {
       var that = this;
-
-      that.showLoading = false;
-
+      
       that.$onInit = function () {
-        that.showLoading = true;
-        loadsApi.fetchLoadDetails(that.loadId).then(function (loadDetails) {
-          that.loadDetails = loadDetails;
-        }).finally(function () {
-          that.showLoading = false;
-        });
+        if ($state.previous.data) {
+          that.previousRouteName = $state.previous.data.name;
+          that.previousRoute = $state.previous.name;
+        }
       };
     }
   });

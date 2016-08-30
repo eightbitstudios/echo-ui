@@ -1,6 +1,5 @@
 var responseUtil = require('../util/response-util.js'),
   loadsRes = require('../data/loads-res'),
-  loadDetailsRes = require('../data/load-details-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
 
@@ -55,7 +54,7 @@ module.exports = {
   },
   getLoadDetails: function (req, res) {
     var resTemplate = new ResTemplate();
-    resTemplate.data = loadDetailsRes;
+    resTemplate.data = loadsRes.loads[0];
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

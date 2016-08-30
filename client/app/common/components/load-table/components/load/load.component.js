@@ -4,7 +4,10 @@ angular.module('echo.components.loadTable.load', [])
     bindings: {
       loadNumber: '<',
       proNumber: '<',
+      loadGuid: '<',
       isDetailsUpdated: '<'
     },
-    controller: function () {}
+    controller: function (routesConfig) {
+      this.loadDetails = routesConfig.INDEX.loadDetails.name;
+    }
   });

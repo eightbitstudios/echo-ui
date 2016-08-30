@@ -136,10 +136,22 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.loadDetails.name, { // #/carrier/:carrierId/loadManagement/loadDetails/:loadId
       url: routesConfig.INDEX.loadDetails.route,
-      template: '<load-details load-id="$ctrl.stateParams.loadId" rep-details="$ctrl.repDetails" carrier-id="$ctrl.carrierId"></load-details>',
+      template: '<load-details load-id="$ctrl.stateParams.loadId" rep-details="$ctrl.repDetails" carrier-id="$ctrl.carrierId" load-details="$ctrl.loadDetails"></load-details>',
+      controller: function($stateParams, repDetails, loadDetails){
+        this.repDetails = repDetails;
+        this.loadDetails = loadDetails;
+        this.carrierId = $stateParams.carrierId;
+      },
+      controllerAs: '$ctrl',
       data: {
         hideTabBar: true,
         whiteContainer: false
+      }, 
+      resolve: {
+        loadDetails: function(loadsApi, $stateParams) {
+          var loadId = $stateParams.loadId;
+          return loadsApi.fetchLoadDetails(loadId);
+        }
       }
     })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
