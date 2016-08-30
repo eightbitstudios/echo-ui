@@ -1,5 +1,5 @@
 angular.module('echo.index.carrier.loadManagement.searchLoads', [
-  'echo.index.carrier.loadManagement.loadTable',
+  'echo.components.loadTable',
   'echo.api.loads',
   'echo.components.echoRepContact',
   'echo.models.paging',
@@ -32,6 +32,7 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
 
     that.getLoads = function () {
       that.showLoading = true;
+      that.loads = [];
       loadsApi.fetchLoadsBySearchText(that.carrierId, that.searchText, that.paging).then(function (searchLoads) {
         that.paging.totalRecords = searchLoads.totalLoadCount;
         that.paging.recordCount = _.size(searchLoads.loads);

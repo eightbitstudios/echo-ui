@@ -9,7 +9,7 @@ var maxDelay = 2,
 module.exports = {
   getDriverById: function (req, res) {
     var resTemplate = new ResTemplate()
-    resTemplate.data = _.find(driversRes, { id: _.parseInt(req.params.driverId) });
+    resTemplate.data = _.find(driversRes.drivers, { id: _.parseInt(req.params.driverId) });
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

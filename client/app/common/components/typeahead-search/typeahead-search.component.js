@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('echo.components.typeaheadSearch', [])
-  .component('typeaheadSearch', {
+angular.module('echo.components.typeaheadSearch', [
+  'echo.filters.phoneNumber'
+  ]).component('typeaheadSearch', {
     bindings: {
       searchService: '&',
       onSelectCallback: '&'
@@ -24,10 +25,12 @@ angular.module('echo.components.typeaheadSearch', [])
       };
 
       that.searchServiceHandler = function (selection) {
-        return that.searchService({ val: selection }).then(function (results) {
-          that.numberOfSearchResults = _.size(results);
-          return $q.when(results);
-        });
+        return that.searchService({ val: selection }).then(
+          function (results) {
+            that.numberOfSearchResults = _.size(results);
+            return $q.when(results);
+          }
+        );
       };
 
       that.clearSearchHandler = function () {

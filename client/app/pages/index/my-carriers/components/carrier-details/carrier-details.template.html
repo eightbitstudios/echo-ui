@@ -4,21 +4,21 @@
       <loading show-loading="$ctrl.showLoading"></loading>
       <div ng-if="!$ctrl.showLoading">
         <header class="selection-name">
-          <a href="#" class="btn btn-default pull-right">View Dashboard</a>
+          <a ui-sref="{{$ctrl.dashboardRoute.name}}({carrierId: $ctrl.carrierId})" class="btn btn-default pull-right">View Dashboard</a>
           <h1 class="selection-company">{{$ctrl.carrier.carrierName}}</h1> {{$ctrl.carrier.getFullAddress()}}
         </header>
         <div ng-if="$ctrl.showMode === $ctrl.mode.DETAILS">
           <article class="selection-users">
             <header class="selection-header">
               Portal Users
-              <a href="#" class="btn btn-link btn-sm" ui-sref="{{$ctrl.usersRoute.name}}({carrierId: $ctrl.carrierId})">View Portal Users List</a>
+              <a class="btn btn-link btn-sm" ui-sref="{{$ctrl.usersRoute.name}}({carrierId: $ctrl.carrierId})">View Portal Users List</a>
             </header>
             <portal-users portal-users="$ctrl.portalUsers" click-handler="$ctrl.showPortalUserHandler(user)"></portal-users>
           </article>
           <article class="selection-users">
             <header class="selection-header">
               Drivers
-              <a href="#" ui-sref="{{$ctrl.driverRoute.name}}({carrierId: $ctrl.carrierId})" class="btn btn-link btn-sm">View Driver List</a>
+              <a ui-sref="{{$ctrl.driverRoute.name}}({carrierId: $ctrl.carrierId})" class="btn btn-link btn-sm">View Driver List</a>
             </header>
             <driver-list driver-count="$ctrl.driverCount" driver-route="$ctrl.driverRoute.name" carrier-id="$ctrl.carrierId"></driver-list>
           </article>

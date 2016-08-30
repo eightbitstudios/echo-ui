@@ -10,11 +10,10 @@
     </div>
   </div>
   <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
-      <filter-button filter-enabled="$ctrl.isDriverNeeded" click-handler="$ctrl.driverNeededHandler(value)" button-text="Driver Needed"></filter-button>
+    <filter-button filter-enabled="$ctrl.isDriverNeeded" click-handler="$ctrl.driverNeededHandler(value)" button-text="Driver Needed"></filter-button>
   </loads-filter>
-  <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.upcomingLoads" load-type="$ctrl.loadType" ng-if="!$ctrl.showLoading" refresh-table-callback="$ctrl.getUpcomingLoads()" carrier-id="$ctrl.carrierId"></load-table>
   <div class="container main-content">
+    <load-table loads="$ctrl.upcomingLoads" show-loading="$ctrl.showLoading" load-type="$ctrl.loadType"  refresh-table-callback="$ctrl.getUpcomingLoads()" carrier-id="$ctrl.carrierId"/>
     <pagination page-click-handler="$ctrl.getUpcomingLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Upcoming Loads"></pagination>
   </div>
 </div>

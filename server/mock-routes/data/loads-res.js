@@ -2,12 +2,12 @@ module.exports = {
   loads: [{
   loadNumber: 12344321,
   proNumber: 12345678910,
-  pickUp: {
+  pickUp: [{
     city: 'Memphis',
     state: 'TN',
     zip: '60655',
     time: '2016-08-04T16:20:14-05:00'
-  },
+  }],
   delivery: [{
     city: 'Chicago',
     state: 'IL',
@@ -38,12 +38,19 @@ module.exports = {
 }, {
       loadNumber: 12344321,
       proNumber: null,
-    pickUp: {
+    pickUp: [{
       city: 'New York',
       state: 'New York',
       zip: '60655',
+      isCurrent: false,
       time: '2016-08-02T16:20:14-05:00'
-    },
+    }, {
+      city: 'LA',
+      state: 'California',
+      zip: '60655',
+      isCurrent: true,
+      time: '2016-08-02T16:20:14-05:00'
+    }],
     delivery: [{
       city: 'Chicago',
       state: 'IL',
@@ -74,12 +81,12 @@ module.exports = {
   }, {
       loadNumber: 12344321,
       proNumber: null,
-    pickUp: {
+    pickUp: [{
       city: 'New York',
       state: 'New York',
       zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
-    },
+    }],
     delivery: [{
       city: 'Chicago',
       state: 'IL',
@@ -109,12 +116,12 @@ module.exports = {
   }, {
     loadNumber: 12344321,
     proNumber: 12345678910,
-    pickUp: {
+    pickUp: [{
       city: 'Memphis',
       state: 'TN',
       zip: '60655',
       time: '2016-08-04T16:20:14-05:00'
-    },
+    }],
     delivery: [{
       city: 'Chicago',
       state: 'IL',
@@ -145,12 +152,12 @@ module.exports = {
   }, {
     loadNumber: 12344321,
     proNumber: null,
-    pickUp: {
+    pickUp: [{
       city: 'New York',
       state: 'New York',
       zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
-    },
+    }],
     delivery: [{
       city: 'Chicago',
       state: 'IL',
@@ -181,12 +188,12 @@ module.exports = {
   }, {
     loadNumber: 12344321,
     proNumber: null,
-    pickUp: {
+    pickUp: [{
       city: 'New York',
       state: 'New York',
       zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
-    },
+    }],
     delivery: [{
       city: 'Chicago',
       state: 'IL',
@@ -216,12 +223,12 @@ module.exports = {
   }, {
     loadNumber: 12344321,
     proNumber: 12345678910,
-    pickUp: {
+    pickUp: [{
       city: 'Memphis',
       state: 'TN',
       zip: '60655',
       time: '2016-08-04T16:20:14-05:00'
-    },
+    }],
     delivery: [{
       city: 'Chicago',
       state: 'IL',
@@ -252,12 +259,12 @@ module.exports = {
   }, {
     loadNumber: 12344321,
     proNumber: null,
-    pickUp: {
+    pickUp: [{
       city: 'New York',
       state: 'New York',
       zip: '60655',
       time: '2016-08-02T16:20:14-05:00'
-    },
+    }],
     delivery: [{
       city: 'Chicago',
       state: 'IL',
@@ -287,6 +294,76 @@ module.exports = {
     isLoadDetailUpdated: false
   }, {
     loadNumber: 5555555555,
+    proNumber: null,
+    pickUp: [{
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
+      time: '2016-08-02T16:20:14-05:00'
+    }],
+    delivery: [{
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
+      isCurrent: false,
+      time: '2016-08-08T16:20:14-05:00'
+    }, {
+        city: 'St. Louis',
+        state: 'MO',
+        zip: '60601',
+        isCurrent: true,
+        time: '2016-08-08T16:20:14-05:00'
+      }],
+    driver: {},
+    action: {
+      currentStatus: 'ReportedEmpty',
+      actionByUser: {
+        firstName: 'Tim',
+        lastName: 'Potatoe'
+      },
+      time: '2016-08-04T16:20:14-05:00',
+      nextAction: 'ReportLoaded',
+      onTime: false,
+      lateBy: null
+    },
+    isLoadDetailUpdated: false
+  }, {
+    loadNumber: 12344321,
+    proNumber: null,
+    pickUp: [{
+      city: 'New York',
+      state: 'New York',
+      zip: '60655',
+      time: '2016-08-02T16:20:14-05:00'
+    }],
+    delivery: [{
+      city: 'Chicago',
+      state: 'IL',
+      zip: '60601',
+      isCurrent: false,
+      time: '2016-08-08T16:20:14-05:00'
+    }, {
+        city: 'St. Louis',
+        state: 'MO',
+        zip: '60601',
+        isCurrent: true,
+        time: '2016-08-08T16:20:14-05:00'
+      }],
+    driver: {},
+    action: {
+      currentStatus: 'ReportedEmpty',
+      actionByUser: {
+        firstName: 'Tim',
+        lastName: 'Potatoe'
+      },
+      time: '2016-08-04T16:20:14-05:00',
+      nextAction: 'ReportLoaded',
+      onTime: false,
+      lateBy: null
+    },
+    isLoadDetailUpdated: false
+  }, {
+    loadNumber: 12344321,
     proNumber: null,
     pickUp: {
       city: 'New York',

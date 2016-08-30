@@ -45,12 +45,9 @@ module.exports = {
   },
   getLoadsByCarrierId: function (req, res) {
     var resTemplate = new ResTemplate();
-    if (req.query.offset === '21') {
-      resTemplate.data.loads = _.slice(loadsRes.loads, 0, 2);
-      resTemplate.data.totalLoadCount = loadsRes.totalLoadCount;
-    } else {
-      resTemplate.data = loadsRes;
-    }
+    
+    resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset), _.parseInt(req.query.offset) + _.parseInt(req.query.limit));
+    resTemplate.data.totalLoadCount = loadsRes.loads.length;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);
