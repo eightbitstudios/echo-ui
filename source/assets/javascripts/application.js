@@ -5,57 +5,54 @@ $(window).load(function(){
 
 	$('.modal').modal('show');
 
+  // DEMO active search box in Report Location modal
+  var demoFocus = setTimeout(function(){
+	  $('.search-form-modal .search-form-input').focus()
+  }, 1000)
+	////////////////////
 
-	//MODAL FIX FOR iOS?
+  /// Modal Sidebar 'Show More' toggle
+  /////////////
+	$('.btn-show').on('click', function(e){
+    var $showBtn = $(this),
+      $sidebar = $showBtn.closest('.modal-sidebar'),
+      sidebarHeight = $sidebar.outerHeight(),
+      $sidebarOverflow = $('.equip-overflow');
 
-		// iOS check...ugly but necessary
-	if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
-	    $('.modal').on('show.bs.modal', function() {
-	        // Position modal absolute and bump it down to the scrollPosition
-	        $(this)
-	            .css({
-	                position: 'absolute',
-	                marginTop: $(window).scrollTop() + 'px',
-	                bottom: 'auto'
-	            });
-	        // Position backdrop absolute and make it span the entire page
-	        //
-	        // Also dirty, but we need to tap into the backdrop after Boostrap 
-	        // positions it but before transitions finish.
-	        //
-	        setTimeout( function() {
-	            $('.modal-backdrop').css({
-	                position: 'absolute', 
-	                top: 0, 
-	                left: 0,
-	                width: '100%',
-	                height: Math.max(
-	                    document.body.scrollHeight, document.documentElement.scrollHeight,
-	                    document.body.offsetHeight, document.documentElement.offsetHeight,
-	                    document.body.clientHeight, document.documentElement.clientHeight
-	                ) + 'px'
-	            });
-	        }, 0);
-	    });
-	}
+    if ($showBtn.hasClass('btn-show-expanded')) {
+
+      $showBtn.html('Show More').removeClass('btn-show-expanded')
+      $sidebarOverflow.slideUp(function(){
+        $sidebar.css({'height': 'auto', 'overflow-y' : 'hidden'})
+      })
+
+    } else {
+
+      $sidebarOverflow.show()
+      $showBtn.html('Display Less').addClass('btn-show-expanded')
+      $sidebar.css({'height': sidebarHeight, 'overflow-y' : 'scroll'})
+      $sidebar.animate({scrollTop : $sidebar[0].scrollHeight}, 800)
+    }
+	})
+
 
 	//helper for search box text
 	/////////
 
-	$('input.search-form-input').on('change keyup click paste', function() {
-		if ($(this).val().length > 0) 
-			$(this).next('.search-help-text').css('opacity', '0')
-		else
-			$(this).next('.search-help-text').css('opacity', '1')
-	})
+  $('input.search-form-input').on('change keyup click paste', function() {
+    if ($(this).val().length > 0)
+      $(this).next('.search-help-text').css('opacity', '0')
+    else
+      $(this).next('.search-help-text').css('opacity', '1')
+  })
 
 	//load management details panels collapsing script
 	///////////
 
-	if ($('#loads-accordion').length) {
+  if ($('#loads-accordion').length) {
 
-		$('.panel')
-			.on('show.bs.collapse', function (e) {
+    $('.panel')
+      .on('show.bs.collapse', function (e) {
 		  	$(this)
 		  		.find('.panel-heading')
 		  		.removeClass('panel-closed')
@@ -78,7 +75,7 @@ $(window).load(function(){
 	});
 
 	if ($('.sidebar-list.search-results').length) {
-		
+
 		$('.sidebar-list').mCustomScrollbar({
 			theme: 'minimal-dark'
 		});
@@ -144,7 +141,7 @@ $(window).load(function(){
 				})
 				$(this).closest('.form-inline-editing').slideUp()
 				$(modalBody).removeClass('modal-body-inactive')
-			})	
+			})
 		}
 
 		/////////////
@@ -158,21 +155,22 @@ $(window).load(function(){
 	  var $btnFilter = $(".btn-filter")
 
 	  $btnFilter.on('click', function(e) {
-	  	e.preventDefault();
-	  	width = $(this).width()
-
-	  	if (!$(this).is('.btn-date-picker, .btn-single-dp, .btn-filter-dropdown')) {
+      $curBtn = $(this)
+      e.preventDefault();
+      if (!$curBtn.is('.btn-date-picker, .btn-single-dp, .btn-modal-dp, .btn-filter-dropdown')) {
 	  		resetDropdownButton();
 	  		resetSdpTrigger();
 
-	  		if ($(this).hasClass('filter__assigned')) {
+	  		if ($curBtn.hasClass('filter__assigned')) {
 	  			resetFilterBtns();
 	  			$btnFilter.blur()
 	  		} else {
 	  			resetFilterBtns();
-	  			$(this).addClass('filter__assigned').append('<span class="close">X</span>');
+	  			$curBtn.addClass('filter__assigned').append('<span class="close">X</span>');
 	  		}
-	  	}
+	  	} else {
+        console.log('this should fire')
+      }
 	  });
 
 	  function resetFilterBtns() {
@@ -182,40 +180,73 @@ $(window).load(function(){
 
 		/////////////
 	  // Modal Singel Date Picker
-		/////////////		
+		/////////////
 
 		var $mdpTrigger = $('.btn-modal-dp')
+		// Display current date
+		$mdpTrigger.html(moment().format('ddd, MMM DD'))
+		// Display current time
+		$mdpTrigger.parent().next('.form-group').find('input.form-control').val(moment().format('HH:mm'))
 
-	  // if ($mdpTrigger.hasClass('filter__assigned')) {
-	  //   resetSdpTrigger
-	  // }
+    $mdpTrigger.daterangepicker({
+      singleDatePicker: true,
+      parentEl: '.form-arrival-time .datepicker',
+      buttonClasses: "btn",
+      applyClass: "btn-default",
+      cancelClass: "btn-link btn-alt",
+      autoApply: false,
+      maxDate: new Date(),
+      locale: {
+        format: "MM/DD/YYYY",
+        cancelLabel: "Clear",
+        daysOfWeek: [
+    			"Sun",
+    			"Mon",
+    			"Tue",
+    			"Wed",
+    			"Thu",
+    			"Fri",
+    			"Sat"
+    	  ]
+    	}
+    });
 
-		$mdpTrigger.daterangepicker({
-			singleDatePicker: true,
-			parentEl: '.form-arrival-time .datepicker',
-			buttonClasses: "btn",
-			applyClass: "btn-default",
-			cancelClass: "btn-link btn-alt",
-			autoApply: false,
-			locale: {
-				format: "MM/DD/YYYY",
-				cancelLabel: "Clear",
-				daysOfWeek: [
-					"Sun",
-					"Mon",
-					"Tue",
-					"Wed",
-					"Thu",
-					"Fri",
-					"Sat"
-			  ]
-			}
-		});
+		$mdpTrigger.on('show.daterangepicker', function(ev, picker) {
+			$mdpTrigger.addClass('active');
+		})
+		$mdpTrigger.on('apply.daterangepicker', function(ev, picker) {
+			var filterStartDate = picker.startDate,
+					availString = filterStartDate.format('ddd, MMM DD')
+
+			$mdpTrigger.html(availString).addClass('filter__assigned').append('<span class="close">X</span>');
+			$mdpTrigger.removeClass('active');
+
+      $mdpTrigger.find('.close').on('click', function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        resetMdpTrigger();
+      })
+    });
+
+    $mdpTrigger.on('cancel.daterangepicker', function(ev, picker) {
+      resetMdpTrigger();
+    });
+
+    $mdpTrigger.on('hide.daterangepicker', function(ev, picker) {
+      $mdpTrigger.removeClass('active');
+    });
+
+
+		function resetMdpTrigger() {
+				var curDay = moment().format('ddd, MMM DD')
+				$mdpTrigger.html(curDay).removeClass('active').removeClass('filter__assigned');
+				$mdpTrigger.blur();
+		}
 
 		/////////////
 	  // Single Date Picker JS
 		/////////////
-	  
+
 	  var $sdpTrigger = $('.btn-single-dp')
 
 	  if ($sdpTrigger.hasClass('filter__assigned')) {
@@ -252,7 +283,7 @@ $(window).load(function(){
 		$sdpTrigger.on('show.daterangepicker', function(ev, picker) {
 			$sdpTrigger.addClass('active');
 			$('label[for=daterangepicker_start]').remove();
-			
+
 			var $sdpContainer = $(picker.container)
 			$sdpContainer.addClass('single-datepicker');
 
@@ -376,7 +407,7 @@ $(window).load(function(){
 			} else {
 				$dropdownButton.addClass('btn-active')
 			}
-			
+
 			var left = $(this).position().left,
 			    top = $(this).position().top,
 			    height = $(this).height(),
@@ -416,7 +447,7 @@ $(window).load(function(){
 
 		function resetDropdownButton() {
 			$btnFilter.blur()
-			$('.close').remove();
+			$btnFilter.find('.close').remove();
 			$('.btn-filter-dropdown').html('Stop Location').removeClass('filter__assigned');
 			resetDropdownFilter()
 		}

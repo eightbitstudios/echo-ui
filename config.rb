@@ -91,6 +91,7 @@ end
 
 
 activate :deploy do |deploy|
+  deploy.build_before   = true
   deploy.deploy_method  = :ftp
   deploy.port           = 22
   deploy.host           = "8bitstudios.com"

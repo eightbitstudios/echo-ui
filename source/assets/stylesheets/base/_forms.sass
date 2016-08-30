@@ -74,14 +74,28 @@ input[type="checkbox"]
   margin-top: 0
 
 .select
+  padding-left: 10px
+  margin-right: -10px
+  //sloppy hack to fix IE dropdown background
   select
     padding-left: 0
+    padding-right: 0
+    margin: 0 -10px
     border-radius: 0
     border-bottom: 1px solid $gray-mid-light
-    background-color: transparent
+    background-color: #fff
+
+  &:after
+    content: image-url('icon-down-carat.svg')
+    border: none !important
+    margin-top: -1rem
+    margin-right: 1rem
 
     &:focus
-      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $gray-mid-light
+      box-shadow: none
+
+  select::-ms-expand
+    display: none
 
 .control
   input:checked ~ .control-indicator
@@ -153,7 +167,7 @@ input[type="checkbox"]
 
   &.control-lrg
     .control-indicator
-      
+
     input:checked ~ .control-indicator
       border: solid 1px $green
       background-color: $green

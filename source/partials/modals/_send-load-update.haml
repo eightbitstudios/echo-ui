@@ -8,22 +8,25 @@
 
     %h4.content-header What kind of update do you want to send?
 
+    .card.card-link
+      .card-details
+        %strong Location
+      .card-next
+        =image_tag('icon-right-carat.svg')
+
+    .card.card-link
+      .card-details
+        %strong Trailer Drop at Yard
+      .card-next
+        =image_tag('icon-right-carat.svg')
+
+    .card.card-link
+      .card-details
+        %strong Arrival at Delivery
+      .card-next
+        =image_tag('icon-right-carat.svg')
+
     %p For other situations that could cause a missed <br>appointment, such as a breakdown or shortage of <br>hours, please call Echo at (333) 343-3333
-
-    .card
-      .card-details
-        %p 
-          %strong Location
-
-    .card
-      .card-details
-        %p 
-          %strong Trailer Drop at Yard
-
-    .card
-      .card-details
-        %p 
-          %strong Arrival at Delivery
 
 .modal-footer
   %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE

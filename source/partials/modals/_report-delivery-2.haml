@@ -10,18 +10,21 @@
 
     .document-add
       %button.btn.btn-document
+        .btn-plus-sign
         .add-type
           PROOF OF DELIVERY
-      
+
       %p.btn-note You can add this later but it is required if your driver lumps.
 
     .document-add
       %button.btn.btn-document
+        .btn-plus-sign
         .add-type
           LUMPER RECEIPT
 
     .document-add
       %button.btn.btn-document
+        .btn-plus-sign
         .add-type
           SCALE TICKET
 
@@ -44,9 +47,9 @@
     %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CANCEL
 
   %ul.progress-indicator
-    %li Step 1
+    %li.step-complete Step 1
     %li Step 2
 
   .btn-group-right
-    %button.btn.btn-secondary{type: 'button'} Next
+    %button.btn.btn-secondary{type: 'button'} Back
     %button.btn.btn-default{type: 'button'} Confirm Delivery
