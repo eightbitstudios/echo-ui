@@ -7,7 +7,7 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
   'echo.components.loading',
   'echo.config.routes',
   'echo.models.passwordChange',
-  'echo.services.user',
+  'echo.services.userProfile',
   'echo.index.carrier.myCompany.userProfile.changePassword'
 ])
   .component('myCompanyUserProfile', {
@@ -18,12 +18,12 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
       reloadPortalHandler: '&',
       showLoading: '='
     },
-    controller: function (userService, PasswordChangeModel) {
+    controller: function (userProfileService, PasswordChangeModel) {
       var that = this;
 
       that.passwordChange = new PasswordChangeModel();
       that.currentPassword = null;
-      that.user = userService.getUser();
+      that.user = userProfileService.getUser();
 
       that.goBackToPortal = function () {
         that.goBackHandler();

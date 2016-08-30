@@ -3,8 +3,8 @@
 angular.module('echo.api.authentication', [
   'echo.config.api',
   'echo.services.cookie',
-  'echo.services.user'
-]).factory('authenticationApi', function ($base64, $q, $http, cookieService, apiConfig, userService) {
+  'echo.services.userProfile'
+]).factory('authenticationApi', function ($base64, $q, $http, cookieService, apiConfig, userProfileService) {
   return {
     /**
      * @description Creates a password
@@ -64,7 +64,7 @@ angular.module('echo.api.authentication', [
      */
     refresh: function () {
 
-      var user = userService.mapJwtToUser(cookieService.getToken());
+      var user = userProfileService.mapJwtToUser(cookieService.getToken());
       var url = apiConfig.refresh({userId: user.userId});
 
       cookieService.setToken(cookieService.getRefreshToken());
