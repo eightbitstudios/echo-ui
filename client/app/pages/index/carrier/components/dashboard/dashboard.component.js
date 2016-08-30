@@ -45,22 +45,37 @@ angular.module('echo.index.carrier.dashboard', [
         });
       };
 
-      that.$onInit = function () {
-        that.showMultiStopLoading = true;
+      that.fetchLoadsNeedingAction = function () {
         that.showActionLoadsLoading = true;
-        $q.all([loadsApi.fetchLoadsNeedingAction(that.carrierId, that.pagingActionLoads),
-          loadsApi.fetchMultiStopLoads(that.carrierId, that.pagingMultistopLoads),
-          loadsApi.fetchLoadCount(that.carrierId)])
-          .then(_.spread(function (loadsNeedingAction, multiStopLoads, loadCounts) {
+        that.pagingActionLoads.reset();
+        return loadsApi.fetchLoadsNeedingAction(that.carrierId, that.pagingActionLoads)
+          .then(function (loadsNeedingAction) {
             that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
-            that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
             that.activeLoads = loadsNeedingAction.loads;
-            that.activeLoadCount = loadCounts.active;
-            that.multiStopLoads = multiStopLoads.loads;
-          })).finally(function () {
-            that.showMultiStopLoading = false;
+          }).finally(function () {
             that.showActionLoadsLoading = false;
           });
+      };
+
+      that.fetchMultiStopLoads = function () {
+        that.showMultiStopLoading = true;
+        that.pagingMultistopLoads.reset();
+        return loadsApi.fetchMultiStopLoads(that.carrierId, that.pagingMultistopLoads)
+          .then(function (multiStopLoads) {
+            that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
+            that.multiStopLoads = multiStopLoads.loads;
+          }).finally(function () {
+            that.showMultiStopLoading = false;
+          });
+      };
+
+      that.$onInit = function () {
+        $q.all([that.fetchLoadsNeedingAction(),
+          that.fetchMultiStopLoads(),
+          loadsApi.fetchLoadCount(that.carrierId)])
+          .then(_.spread(function (loadsNeedingAction, multiStopLoads, loadCounts) {
+            that.activeLoadCount = loadCounts.active;
+          }));
       };
     }
   });
