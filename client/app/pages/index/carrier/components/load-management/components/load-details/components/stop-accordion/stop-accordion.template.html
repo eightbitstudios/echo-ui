@@ -2,7 +2,7 @@
   <div uib-accordion-group is-open="$ctrl.isOpen">
     <uib-accordion-heading><strong>{{$ctrl.stopType}}</strong> {{$ctrl.stop.city}}, {{$ctrl.stop.state}} {{$ctrl.stop.zip}}
       <span class="stops-date">
-                    {{$ctrl.stop.day}} from {{$ctrl.stop.time}}
+                    {{$ctrl.stop.formattedDayTime}}
                     <div class="caret"></div>
                   </span>
     </uib-accordion-heading>

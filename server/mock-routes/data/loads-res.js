@@ -13,6 +13,7 @@ module.exports = {
       "zip": "85674",
       "country": "USA",
       "time": "14:00-16:00 ET",
+      formattedDayTime: 'Today from 16:00-21:00',
       day: 'Today',
       "orderOfService": 1,
       "isCurrent": true,
@@ -43,6 +44,7 @@ module.exports = {
       "state": "IL",
       "zip": "60696",
       "country": "USA",
+      formattedDayTime: 'Fri, May 23 CT from 16:00-21:00',
       "time": "16:00-21:00 CT",
       day: 'Fri, May 23',
       "orderOfService": 1,
@@ -92,11 +94,11 @@ module.exports = {
       }, {
         "id": 28569,
         "displayName": "Drop Trailer At Shipper",
-        "isSpecialService": false
+        "isSpecialService": true
       }, {
         "id": 25697,
         "displayName": "No Reefers",
-        "isSpecialService": false
+        "isSpecialService": true
       }    ],
     "trailerNumber": "8956 7412",
     "tractorNumber": "7894 9216"
