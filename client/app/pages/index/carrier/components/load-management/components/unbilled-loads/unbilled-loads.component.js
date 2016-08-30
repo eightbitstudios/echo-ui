@@ -1,5 +1,5 @@
 angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
-  'echo.index.carrier.loadManagement.loadTable',
+  'echo.components.loadTable',
   'echo.components.echoRepContact',
   'echo.api.loads',
   'echo.models.paging',
@@ -26,6 +26,7 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
 
     that.getUnbilledLoads = function () {
       that.showLoading = true;
+      that.unbilledLoads = [];
       loadsApi.fetchUnbilledLoads(that.carrierId, that.paging, that.isPODNeeded, that.isInvoiceNeeded).then(function (unbilledLoadData) {
         that.paging.totalRecords = unbilledLoadData.totalLoadCount;
         that.paging.recordCount = _.size(unbilledLoadData.loads);
