@@ -41,7 +41,9 @@ describe('Component: driverGrid', function () {
       component.searchDrivers(searchText).then(function (convertedDrivers) {
         expect(convertedDrivers).toEqual([{
           id: 1,
-          name: 'Bob Ted'
+          name: 'Bob Ted',
+          phone: undefined, 
+          tractorNumber: undefined
         }]);
         done();
       });
