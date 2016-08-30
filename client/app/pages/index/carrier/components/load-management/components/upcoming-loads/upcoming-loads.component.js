@@ -1,5 +1,5 @@
 angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
-  'echo.index.carrier.loadManagement.loadTable',
+  'echo.components.loadTable',
   'echo.components.echoRepContact',
   'echo.api.loads',
   'echo.components.pagination',
@@ -22,6 +22,7 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
 
     that.getUpcomingLoads = function () {
       that.showLoading = true;
+      that.upcomingLoads = [];
       loadsApi.fetchUpcomingLoads(that.carrierId, that.paging, that.isDriverNeeded).then(function (upcomingLoadData) {
         that.paging.totalRecords = upcomingLoadData.totalLoadCount;
         that.paging.recordCount = _.size(upcomingLoadData.loads);

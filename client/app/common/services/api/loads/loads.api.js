@@ -45,6 +45,32 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
+    fetchLoadsNeedingAction: function (carrierId, paging, driverNeeded) {
+      var url = apiConfig.loadsNeedingAction({ carrierId: carrierId });
+
+      var params = {
+        limit: paging.limit,
+        offset: paging.offset,
+        driverNeeded: driverNeeded
+      };
+
+      return $http.get(url, {params: params}).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    fetchMultiStopLoads: function (carrierId, paging, driverNeeded) {
+      var url = apiConfig.multiStopLoads({ carrierId: carrierId });
+
+      var params = {
+        limit: paging.limit,
+        offset: paging.offset,
+        driverNeeded: driverNeeded
+      };
+
+      return $http.get(url, {params: params}).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
     fetchLoadsBySearchText: function (carrierId, searchText, paging) {
       var url = apiConfig.loadsBySearchText({ carrierId: carrierId, searchText: searchText });
 

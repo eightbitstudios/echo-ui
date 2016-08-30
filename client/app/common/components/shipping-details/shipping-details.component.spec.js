@@ -52,17 +52,4 @@ describe('Component: shippingDetails', function () {
 
     expect(component.location).toEqual(shippingDetails[2]);
   });
-
-  it('should set location if shipping details is not an array', function () {
-    var shippingDetails = {
-        id: 1
-      };
-
-    component = $componentController('shippingDetails', null, {
-      shippingDetails: shippingDetails
-    });
-
-    expect(component.location).toEqual(shippingDetails);
-  });
-  
 });

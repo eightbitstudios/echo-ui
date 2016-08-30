@@ -1,10 +1,10 @@
-angular.module('echo.index.carrier.loadManagement.loadTable.action', [
+angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
   'echo.config.appConstants',
   'echo.enums.loadTypes'
 ])
   .component('action', {
-    templateUrl: 'app/pages/index/carrier/components/load-management/components/load-table/components/action/action.template.html',
+    templateUrl: 'app/common/components/load-table/components/action/action.template.html',
     bindings: {
       action: '<',
       loadType: '<'

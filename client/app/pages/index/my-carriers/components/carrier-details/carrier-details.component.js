@@ -25,6 +25,7 @@ angular.module('echo.index.myCarriers.carrierDetails', [
       that.carrierId = $stateParams.carrierId;
       that.usersRoute = routesConfig.INDEX.myCompanyUsers;
       that.driverRoute = routesConfig.INDEX.myCompanyDrivers;
+      that.dashboardRoute = routesConfig.INDEX.dashboard;
 
       that.getCarrier = function (carrierId) {
         that.showLoading = true;
