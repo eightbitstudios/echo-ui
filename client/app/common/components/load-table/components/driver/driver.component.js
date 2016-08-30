@@ -17,7 +17,6 @@ angular.module('echo.components.loadTable.driver', [
     },
     controller: function (loadTypesEnum, modalService) {
       var that = this;
-
       that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
       that.loadTypesEnum = loadTypesEnum;
       that.showAssignDriverModal = function () {

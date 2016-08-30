@@ -4,6 +4,7 @@ module.exports = function (grunt) {
   var apiConfigLocal = require('./config/api-config-local.js')(grunt);
   var apiConfigDev = require('./config/api-config-dev.js')(grunt);
   var apiConfigDemo = require('./config/api-config-demo.js')(grunt);
+  var apiConfigStage = require('./config/api-config-stage.js')(grunt);
 
   var userConfig = require('./build.config.js')(grunt);
   grunt.initConfig(userConfig);
@@ -23,6 +24,16 @@ module.exports = function (grunt) {
     } else if (target === 'demo') {
       grunt.log.write("LOADING CONFIGS FOR DEMO");
       grunt.config.merge(apiConfigDemo);
+
+      grunt.task.run([
+        'build',
+        'env:local',
+        'express:dev',
+        'watch'
+      ]);
+    } else if (target === 'stage') {
+      grunt.log.write("LOADING CONFIGS FOR STAGING");
+      grunt.config.merge(apiConfigStage);
 
       grunt.task.run([
         'build',
@@ -61,6 +72,18 @@ module.exports = function (grunt) {
       'install',
       'grunticon',
       'env:demo',
+      'express:dist'
+    ]);
+  });
+
+  grunt.registerTask('stage', function (target) {
+    grunt.config.merge(apiConfigStage);
+    grunt.task.run([
+      'dist',
+      'copy:deploy',
+      'install',
+      'grunticon',
+      'env:stage',
       'express:dist'
     ]);
   });

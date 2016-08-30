@@ -1,7 +1,7 @@
 angular.module('echo.index.myCarriers.allCarriers', [
   'echo.api.carrier',
   'echo.config.routes',
-  'echo.services.user',
+  'echo.services.userProfile',
   'echo.components.filterBar',
   'echo.components.loading',
   'echo.components.sidebarList',
@@ -10,7 +10,7 @@ angular.module('echo.index.myCarriers.allCarriers', [
   .component('allCarriers', {
     templateUrl: 'app/pages/index/my-carriers/components/all-carriers/all-carriers.template.html',
     bindings: {},
-    controller: function ($stateParams, routesConfig, carrierApi, appConstants, userService) {
+    controller: function ($stateParams, routesConfig, carrierApi, appConstants, userProfileService) {
       var that = this;
 
       that.routesConfig = routesConfig;
@@ -18,7 +18,7 @@ angular.module('echo.index.myCarriers.allCarriers', [
       that.searchParam = '';
       that.minSearchCharacters = appConstants.MIN_SEARCH_CHARACTERS.CARRIERS;
 
-      var repId = userService.getUser().userId;
+      var repId = userProfileService.getUser().userId;
 
       carrierApi.fetchCarriers(repId).then(function (carriers) {
 

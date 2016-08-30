@@ -1,6 +1,6 @@
 
 describe('Component: signIn', function () {
-  var component, $q, window, scope, state, userService, element, authenticationApi, routesConfig, stateParams, errorsConfig, user;
+  var component, $q, window, scope, state, userProfileService, element, authenticationApi, routesConfig, stateParams, errorsConfig, user;
 
   beforeEach(function () {
     module('app/pages/login/sign-in/sign-in.template.html');
@@ -9,7 +9,7 @@ describe('Component: signIn', function () {
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
       $provide.value('$window', window = { location: null });
-      $provide.value('userService', userService = jasmine.createSpyObj('userService', ['mapJwtToUser']));
+      $provide.value('userProfileService', userProfileService = jasmine.createSpyObj('userProfileService', ['mapJwtToUser']));
     });
   });
 
@@ -25,7 +25,7 @@ describe('Component: signIn', function () {
     scope.$digest();
 
     component = $componentController('signIn', null, {});
-    userService.mapJwtToUser.and.returnValue(user = jasmine.createSpyObj('user', ['isRepAdmin']));
+    userProfileService.mapJwtToUser.and.returnValue(user = jasmine.createSpyObj('user', ['isRepAdmin']));
   }));
 
   describe('Function: signIn', function () {

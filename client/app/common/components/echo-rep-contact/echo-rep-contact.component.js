@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('echo.components.echoRepContact', [
-  'echo.filters.phoneNumber'
+  'echo.filters.phoneNumber',
+  'echo.filters.fullName'
 ]).component('echoRepContact', {
   bindings: {
     repDetails: '='
