@@ -3,7 +3,8 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
   'echo.api.carrier',
   'echo.components.modal.assignDriver.selectedDriver',
   'echo.components.modal.assignDriver.unassignedDriverList',
-  'echo.config.routes'
+  'echo.config.routes',
+  'echo.filters.fullName'
 ])
   .component('unassignedDriver', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/unassigned-driver/unassigned-driver.template.html',
@@ -14,7 +15,7 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
       selectedDriverCallback: '&',
       newDriver: '='
     },
-    controller: function (carrierApi, routesConfig) {
+    controller: function ($filter, carrierApi, routesConfig) {
       var that = this;
       that.states = {
         driverList: 1,
@@ -34,7 +35,7 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
           return _.map(drivers, function (driver) {
             return {
               id: driver.id,
-              name: driver.getFullName(),
+              name: $filter('fullName')(driver),
               phone: driver.phone
             };
           });

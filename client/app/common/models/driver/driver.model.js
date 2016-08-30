@@ -20,10 +20,6 @@ angular.module('echo.models.driver', [
       _.assign(that, defaults, userData);
     }
 
-    Driver.prototype.getFullName = function() {
-      return _.join([this.firstName, this.lastName], ' ');
-    };
-
     /**
      * Return the constructor function
      */
