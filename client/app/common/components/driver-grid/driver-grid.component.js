@@ -5,7 +5,6 @@ angular.module('echo.components.driverGrid', [
   'echo.components.loading',
   'echo.config.routes',
   'echo.components.pagination',
-  'echo.filters.phoneNumber',
   'echo.directives.dateRangePicker',
   'echo.models.paging',
   'echo.config.appConstants',
@@ -36,7 +35,9 @@ angular.module('echo.components.driverGrid', [
         return _.map(drivers, function (driver) {
           return {
             id: driver.id,
-            name: driver.getFullName()
+            name: driver.getFullName(),
+            phone: driver.phone,
+            tractorNumber: driver.tractorNumber
           };
         });
       });
