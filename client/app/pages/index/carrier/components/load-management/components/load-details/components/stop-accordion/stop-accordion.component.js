@@ -15,5 +15,6 @@ angular.module('echo.components.stopAccordion', [
   controller: function () {
     var that = this;
     that.isOpen = true;
+    that.formattedCity =  _.startCase(_.lowerCase(that.stop.city));
   }
 });
