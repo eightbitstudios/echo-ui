@@ -36,7 +36,7 @@ angular.module('echo.components.driverGrid', [
         return _.map(drivers, function (driver) {
           return {
             id: driver.id,
-            name: $filter('fullName')(driver)
+            name: $filter('fullName')(driver),
             phone: driver.phone,
             tractorNumber: driver.tractorNumber
           };
