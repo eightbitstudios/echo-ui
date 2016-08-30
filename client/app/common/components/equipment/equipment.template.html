@@ -1,14 +1,11 @@
 <div>
   <h4 class="equipment-header">Equipment</h4>
   <div class="equip-list">
-    <div ng-repeat="equipment in $ctrl.equipment">{{equipment.name}}</div>
+    <div ng-repeat="equipment in $ctrl.equipment">{{equipment.displayName}}</div>
+    <br/>
     <div>Tractor {{$ctrl.tractorNumber}}<div>
     <a href="javascript:void(0)" class="btn btn-link btn-inline-edit btn-sm">{{$ctrl.trailerNumber || 'Add Trailer Number'}}
                   <span class="echo-icon icon-add-pencil"></span>
               </a>
-  </div>
-  <br>
-  <div class="equip-specials">
-    Drop Trailer at Shipper<br> No Reefers<br>
   </div>
 </div>
