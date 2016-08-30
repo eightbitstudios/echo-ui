@@ -14,7 +14,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     },
     controller: function ($state) {
       var that = this;
-
+      
       that.$onInit = function () {
         if ($state.previous.data) {
           that.previousRouteName = $state.previous.data.name;

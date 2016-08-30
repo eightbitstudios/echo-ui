@@ -7,6 +7,11 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail', [
       loadDetail: '<',
       carrierId: '<'
     },
-    controller: function () {
+    controller: function ($state) {
+      var that = this;
+      
+      that.reloadState = function () {
+        $state.reload();
+      };
     }
   });
