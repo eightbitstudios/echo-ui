@@ -4,6 +4,7 @@ angular.module('echo.components.loadTable.load', [])
     bindings: {
       loadNumber: '<',
       proNumber: '<',
+      loadGuid: '<',
       isDetailsUpdated: '<'
     },
     controller: function (routesConfig) {
