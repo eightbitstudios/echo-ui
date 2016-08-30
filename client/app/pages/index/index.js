@@ -137,9 +137,10 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.loadDetails.name, { // #/carrier/:carrierId/loadManagement/loadDetails/:loadId
       url: routesConfig.INDEX.loadDetails.route,
       template: '<load-details load-id="$ctrl.stateParams.loadId" rep-details="$ctrl.repDetails" carrier-id="$ctrl.carrierId" load-details="$ctrl.loadDetails"></load-details>',
-      controller: function(repDetails, loadDetails){
+      controller: function($stateParams, repDetails, loadDetails){
         this.repDetails = repDetails;
         this.loadDetails = loadDetails;
+        this.carrierId = $stateParams.carrierId;
       },
       controllerAs: '$ctrl',
       data: {
