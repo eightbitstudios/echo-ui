@@ -32,7 +32,7 @@
           <tr ng-repeat="driver in $ctrl.drivers">
             <td class="driverlist-col-driver">
               <h3 class="driver-name">
-                <a ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyDriverProfile.name}}({driverId: driver.id})">{{driver.getFullName()}}</a>
+                <a ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyDriverProfile.name}}({driverId: driver.id})">{{driver | fullName}}</a>
                 </h3>
               <span><tel>{{driver.phone | phoneNumber}}</tel></span>
             </td>

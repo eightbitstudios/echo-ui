@@ -5,13 +5,13 @@
   </div>
   <div class="card-details">
     <h4 class="small-header">Chosen Driver</h4>
-    <a href="#">{{$ctrl.driver.name || $ctrl.driver.getFullName()}}</a>
+    <a href="#">{{$ctrl.driver.name || $ctrl.driver | fullName}}</a>
     <div class="span pull-right">{{$ctrl.driver.phone | phoneNumber}}</div>
   </div>
 </div>
 <div class="message message-danger" ng-if="$ctrl.isDriverAlreadyAssigned">
   <span class="echo-icon icon-warning" data-grunticon-embed></span>
   <p class="text-danger">
-    {{$ctrl.driver.name || $ctrl.driver.getFullName()}} is currently assigned to a load, which conflicts with the timing of this load.
+    {{$ctrl.driver.name || $ctrl.driver | fullName}} is currently assigned to a load, which conflicts with the timing of this load.
   </p>
 </div>

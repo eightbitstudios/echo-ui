@@ -6,7 +6,7 @@ describe('Component: driverGrid', function () {
     module('app/common/components/driver-grid/driver-grid.template.html');
     module('echo.components.driverGrid', function ($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchDrivers', 'searchDrivers']));
-      $provide.value('$state', state =  jasmine.createSpyObj('$state', ['go']));
+      $provide.value('$state', state = jasmine.createSpyObj('$state', ['go']));
     });
   });
 
@@ -21,7 +21,7 @@ describe('Component: driverGrid', function () {
     scope.$digest();
 
     carrierApi.fetchDrivers.and.returnValue($q.when({}));
-    component = $componentController('driverGrid', null, {carrierId: 1});
+    component = $componentController('driverGrid', null, { carrierId: 1 });
   }));
 
   describe('Function: searchDrivers', function () {
@@ -36,12 +36,14 @@ describe('Component: driverGrid', function () {
 
     it('should map drivers to typeahead model', function (done) {
       var searchText = 'test',
-        drivers = [{ id: 1, firstName: 'Bob', lastName: 'Ted', getFullName: function () { return this.firstName + ' ' + this.lastName; } }]
+        drivers = [{ id: 1, firstName: 'Bob', lastName: 'Ted' }]
       carrierApi.searchDrivers.and.returnValue($q.when(drivers));
       component.searchDrivers(searchText).then(function (convertedDrivers) {
         expect(convertedDrivers).toEqual([{
           id: 1,
-          name: 'Bob Ted'
+          name: 'Bob Ted',
+          phone: undefined,
+          tractorNumber: undefined
         }]);
         done();
       });
