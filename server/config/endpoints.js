@@ -20,12 +20,18 @@ module.exports = {
     refresh: '/mock/api/v1/auth/refresh/:userId',
     userById: '/mock/api/v1/users/:userId',
     driverById: '/mock/api/v1/users/drivers/:driverId',
+    searchDrivers: '/mock/api/v1/carriers/:carrierId/drivers/:searchTerm',
     deactivateDriverById: '/mock/api/v1/carriers/:carrierId/drivers/:driverId/deactivate',
     deactivateUserById: '/mock/api/v1/users/:userId/deactivate',
     drivers: '/mock/api/v1/carriers/:carrierId/drivers',
     loadById: '/mock/api/v1/loads/:loadId/details',
     language: '/mock/api/v1/preferredLanguages',
     loadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction',
-    multiStopLoads: '/mock/api/v1/carriers/:carrierId/loads/upcomingMultiStop'
+    multiStopLoads: '/mock/api/v1/carriers/:carrierId/loads/upcomingMultiStop',
+    assignDriverByLoadId: '/mock/api/v1/loads/:loadId/assign/:userId',
+    unassignDriverByLoadId: '/mock/api/v1/loads/:loadId/unassign',
+    reassignDriverByLoadId: '/mock/api/v1/loads/:loadId/reassign/:userId',
+    unassignedDriversByLoadId: '/mock/api/v1/carriers/:carrierId/loads/:loadId/unassignedDrivers',
+    driverStatusByLoadId: '/mock/api/v1/loads/:loadId/driver/:userId/status'
   }
 };

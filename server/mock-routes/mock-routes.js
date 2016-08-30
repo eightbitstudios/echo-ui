@@ -7,10 +7,13 @@ var carrierHandler = require('./handlers/carrier-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
-
-  app.get(endpoints.api.loadById, loadsHandler.getLoadDetails);
   app.get(endpoints.api.loadsNeedingAction, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.multiStopLoads, loadsHandler.getLoadsByCarrierId);
+  app.post(endpoints.api.assignDriverByLoadId, loadsHandler.getLoadCount);
+  app.put(endpoints.api.unassignDriverByLoadId, loadsHandler.getLoadCount);
+  app.put(endpoints.api.reassignDriverByLoadId, loadsHandler.getLoadCount);
+  app.get(endpoints.api.driverStatusByLoadId, loadsHandler.getDriverStatus);
+  app.get(endpoints.api.loadById, loadsHandler.getLoadDetails);
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
@@ -20,7 +23,7 @@ module.exports = function (app) {
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);
   app.post(endpoints.api.signIn, authHandler.signIn);
-  app.put(endpoints.api.changePassword,  authHandler.changePassword);
+  app.put(endpoints.api.changePassword, authHandler.changePassword);
   app.post(endpoints.api.signOut, authHandler.signOut);
   app.get(endpoints.api.refresh, authHandler.refresh);
   app.post(endpoints.api.createPassword, authHandler.createPassword);
@@ -31,6 +34,8 @@ module.exports = function (app) {
   app.get(endpoints.api.driverById, driverHandler.getDriverById);
   app.put(endpoints.api.driverById, driverHandler.updateDriverById);
   app.put(endpoints.api.deactivateDriverById, driverHandler.deactivateDriverById);
+  app.get(endpoints.api.unassignedDriversByLoadId, carrierHandler.getDrivers);
+  app.get(endpoints.api.searchDrivers, carrierHandler.getDrivers);
   app.get(endpoints.api.drivers, carrierHandler.getDrivers);
   app.get(endpoints.api.portalUsers, carrierHandler.getPortalUsers);
   app.get(endpoints.api.carriers, carrierHandler.getCarriers);

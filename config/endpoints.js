@@ -26,5 +26,11 @@ module.exports = {
   loadById: '/api/v1/loads/${loadId}/details',
   changePassword: '/api/v1/users/${userId}/setPassword',
   loadsNeedingAction: '/api/v1/carriers/${carrierId}/loads/needsAction',
-  multiStopLoads: '/api/v1/carriers/${carrierId}/loads/upcomingMultiStop'
+  multiStopLoads: '/api/v1/carriers/${carrierId}/loads/upcomingMultiStop',
+  changePassword: '/api/v1/users/${userId}/setPassword',
+  assignDriverByLoadId: '/api/v1/loads/${loadId}/assign/${userId}',
+  unassignDriverByLoadId: '/api/v1/loads/${loadId}/unassign',
+  reassignDriverByLoadId: '/api/v1/loads/${loadId}/reassign/${userId}',
+  unassignedDriversByLoadId: '/api/v1/carriers/${carrierId}/loads/${loadId}/unassignedDrivers',
+  driverStatusByLoadId: '/api/v1/loads/${loadId}/driver/${userId}/status'
 };

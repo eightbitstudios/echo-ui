@@ -32,6 +32,7 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
 
     that.getLoads = function () {
       that.showLoading = true;
+      that.loads = [];
       loadsApi.fetchLoadsBySearchText(that.carrierId, that.searchText, that.paging).then(function (searchLoads) {
         that.paging.totalRecords = searchLoads.totalLoadCount;
         that.paging.recordCount = _.size(searchLoads.loads);

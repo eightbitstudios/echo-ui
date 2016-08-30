@@ -10,9 +10,8 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <loading show-loading="$ctrl.showLoading"></loading>
-  <load-table loads="$ctrl.loads" ng-if="!$ctrl.showLoading" load-type="$ctrl.loadType"></load-table>
   <div class="container main-content">
+    <load-table loads="$ctrl.loads" ng-if="!$ctrl.showLoading" refresh-table-callback="$ctrl.getLoads()" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId"></load-table>
     <pagination page-click-handler="$ctrl.getLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Loads"></pagination>
   </div>
 </div>

@@ -1,0 +1,12 @@
+<svg width="13px" height="14px" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Reporting" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="assign-driver-4---overlay" transform="translate(-687.000000, -581.000000)" stroke="#26C1FB" stroke-width="2">
+            <g id="invite-btn" transform="translate(568.000000, 577.000000)">
+                <g id="icon/arrow-dark" transform="translate(118.000000, 5.000000)">
+                    <polyline id="Rectangle-12" transform="translate(6.251337, 5.711134) scale(-1, 1) rotate(-135.000000) translate(-6.251337, -5.711134) " points="2.19251337 1.72478992 10.3101604 1.72478992 10.3101604 9.69747899"></polyline>
+                    <path d="M10.7914439,5.83193277 L2.79144385,5.83193277" id="Line" stroke-linecap="square"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

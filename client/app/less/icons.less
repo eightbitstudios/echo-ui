@@ -1,19 +1,13 @@
 // A list of all icons. Note that grunticon is not in this boilerplate. For automation of icon creation, add that and
 // use this file just to set the width/height/margin/padding/color/etc of icons.
 .fill-echo-icon(@color) {
-   g {
+  g {
     fill: @color;
   }
 }
 
 .echo-icon {
   display: inline-block;
-}
-
-
-.icon-left-arrow {
-  background: url("../assets/images/iconarrow-blue@2x.png");
-  background-size: cover;
 }
 
 .icon-portal-user {
@@ -61,13 +55,13 @@
 }
 
 .icon-right-arrow-dark {
-    height: 18px;
-    width: 23px;
+  height: 18px;
+  width: 23px;
 }
 
 .icon-dnd {
-    height: 14px;
-    width: 14px;
+  height: 14px;
+  width: 14px;
 }
 
 .icon-document {
@@ -83,6 +77,25 @@
 .icon-add-pencil {
   height: 14px;
   width: 10px;
+}
+
+.icon-left-arrow, .icon-right-arrow {
+  height: 12px;
+  width: 12px;
+}
+
+.btn-alt {
+  .icon-left-arrow {
+    polyline, path {
+      stroke: @c-gray-heavy-light !important;
+    }
+  }
+}
+
+.message.message-danger {
+  .icon-warning circle {
+    fill: @c-danger;
+  }
 }
 
 .icon-window{

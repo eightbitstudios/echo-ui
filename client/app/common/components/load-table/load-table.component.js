@@ -8,7 +8,9 @@ angular.module('echo.components.loadTable', [
     bindings: {
       loads: '<',
       loadType: '<',
-      showLoading: '<'
+      showLoading: '<',
+      carrierId: '<',
+      refreshTableCallback: '&'
     },
     controller: function () {}
   });
