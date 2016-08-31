@@ -96,7 +96,8 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.dashboard.route,
       template: '<dashboard carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></dashboard>',
       data: {
-        whiteContainer: true
+        whiteContainer: true,
+        hideTabBar: true
       }
     })
     .state(routesConfig.INDEX.loadManagement.name, { // #/carrier/:carrierId/loadManagement

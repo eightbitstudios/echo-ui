@@ -33,7 +33,7 @@
         </section>
         <section class="sidebar-container">
           <h4 class="section-header sh-short">General Instructions</h4>
-          <p>{{$ctrl.loadDetails.generalInstructions}}</p>
+          <p>{{$ctrl.loadDetails.generalInstructions || 'No Additional Instructions'}}</p>
         </section>
         <section class="sidebar-container">
           <documents />
