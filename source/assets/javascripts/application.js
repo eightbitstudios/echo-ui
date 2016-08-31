@@ -5,6 +5,27 @@ $(window).load(function(){
 
 	$('.modal').modal('show');
 
+  $('.modal').on('shown.bs.modal', function (e) {
+    positionDatePicker()
+  })
+
+  // positioning for modal on tablets
+  function positionDatePicker() {
+    var winHeight = $(window).height(),
+        calBtnPos = $('.btn-modal-dp').offset().top,
+        $cal = $('.btn-modal-dp').next('.datepicker').find('.daterangepicker')
+        calH = $cal.outerHeight(true);
+
+    $cal.removeClass('datepicker-offbottom')
+
+    if (calBtnPos + (calH / 2) > winHeight) {
+      $cal.addClass('datepicker-offbottom').css('top', '-'+calH+'px !important')
+    }
+  }
+
+
+
+
   // DEMO active search box in Report Location modal
   var demoFocus = setTimeout(function(){
 	  $('.search-form-modal .search-form-input').focus()
@@ -168,9 +189,7 @@ $(window).load(function(){
 	  			resetFilterBtns();
 	  			$curBtn.addClass('filter__assigned').append('<span class="close">X</span>');
 	  		}
-	  	} else {
-        console.log('this should fire')
-      }
+	  	}
 	  });
 
 	  function resetFilterBtns() {
@@ -213,6 +232,7 @@ $(window).load(function(){
 
 		$mdpTrigger.on('show.daterangepicker', function(ev, picker) {
 			$mdpTrigger.addClass('active');
+      positionDatePicker()
 		})
 		$mdpTrigger.on('apply.daterangepicker', function(ev, picker) {
 			var filterStartDate = picker.startDate,

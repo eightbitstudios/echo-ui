@@ -8306,19 +8306,23 @@ fieldset[disabled] .btn {
     transition: font-size 0s;
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; }
-    /* line 190, base/_buttons.sass */
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: all;
+       -moz-user-select: all;
+        -ms-user-select: all;
+            user-select: all; }
+    /* line 191, base/_buttons.sass */
     .btn.btn-filter:focus, .btn.btn-filter:active {
       background-color: transparent;
       color: #a9adaf;
       border-color: #a9adaf; }
-    /* line 196, base/_buttons.sass */
+    /* line 197, base/_buttons.sass */
     .btn.btn-filter:hover, .btn.btn-filter.active, .btn.btn-filter.btn-active {
       color: #fff;
       border-color: #a9adaf;
       background-color: #a9adaf;
       box-shadow: none; }
-    /* line 204, base/_buttons.sass */
+    /* line 205, base/_buttons.sass */
     .btn.btn-filter.filter__assigned {
       color: #fff;
       font-family: "Open Sans", sans-serif;
@@ -8331,17 +8335,17 @@ fieldset[disabled] .btn {
       background-color: #26c1fb;
       -webkit-transition: none;
       transition: none; }
-      /* line 215, base/_buttons.sass */
+      /* line 216, base/_buttons.sass */
       .btn.btn-filter.filter__assigned:hover {
         border-color: #1e9ac9;
         background-color: #1e9ac9; }
-    /* line 219, base/_buttons.sass */
+    /* line 220, base/_buttons.sass */
     .btn.btn-filter.btn-date-picker, .btn.btn-filter.btn-modal-dp {
       padding-left: 45px; }
-      /* line 224, base/_buttons.sass */
+      /* line 225, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker.filter__assigned:before, .btn.btn-filter.btn-modal-dp.filter__assigned:before {
         content: url("../images/icon-calendar-white.svg"); }
-      /* line 227, base/_buttons.sass */
+      /* line 228, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker:before, .btn.btn-filter.btn-modal-dp:before {
         content: url("../images/icon-calendar-gray.svg");
         display: inline-block;
@@ -8351,10 +8355,10 @@ fieldset[disabled] .btn {
         width: 18px;
         height: auto;
         margin-right: 6px; }
-      /* line 238, base/_buttons.sass */
+      /* line 239, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker:hover:before, .btn.btn-filter.btn-modal-dp:hover:before {
         content: url("../images/icon-calendar-white.svg"); }
-    /* line 241, base/_buttons.sass */
+    /* line 242, base/_buttons.sass */
     .btn.btn-filter span.close {
       position: absolute;
       z-index: 999999;
@@ -8366,11 +8370,11 @@ fieldset[disabled] .btn {
       font-size: 0;
       line-height: 0;
       margin-top: -5px; }
-      /* line 253, base/_buttons.sass */
+      /* line 255, base/_buttons.sass */
       .btn.btn-filter span.close:after, .btn.btn-filter span.close:before {
         content: "";
         width: 12px;
-        height: 2px;
+        height: 0.22rem;
         background: #fff;
         border-radius: 3px;
         position: absolute;
@@ -8382,15 +8386,16 @@ fieldset[disabled] .btn {
         -webkit-transform-origin: 50% 50%;
                 transform-origin: 50% 50%;
         -webkit-backface-visibility: hidden; }
-      /* line 268, base/_buttons.sass */
+        @media screen and (min-width: 0\0) {
+          /* line 255, base/_buttons.sass */
+          .btn.btn-filter span.close:after, .btn.btn-filter span.close:before {
+            -webkit-transform: translateX(0%) rotateZ(45deg);
+                    transform: translateX(0%) rotateZ(45deg); } }
+      /* line 274, base/_buttons.sass */
       .btn.btn-filter span.close:after {
         -webkit-transform: translateX(-50%) rotateZ(-45deg);
                 transform: translateX(-50%) rotateZ(-45deg); }
-        @media screen and (min-width: 0\0) {
-          /* line 268, base/_buttons.sass */
-          .btn.btn-filter span.close:after {
-            left: 0; } }
-  /* line 276, base/_buttons.sass */
+  /* line 278, base/_buttons.sass */
   .btn.btn-document {
     position: relative;
     color: #a9adaf;
@@ -8404,21 +8409,21 @@ fieldset[disabled] .btn {
     background-color: #f7f7f7;
     border-radius: 0;
     border: dotted 1px #a9adaf; }
-    /* line 290, base/_buttons.sass */
+    /* line 292, base/_buttons.sass */
     .btn.btn-document.btn-document_primary {
       color: #26c1fb;
       border: dotted 1px #26c1fb;
       background: rgba(38, 193, 251, 0.2); }
-      /* line 294, base/_buttons.sass */
+      /* line 296, base/_buttons.sass */
       .btn.btn-document.btn-document_primary:hover {
         background-color: rgba(38, 193, 251, 0.4); }
-      /* line 296, base/_buttons.sass */
+      /* line 298, base/_buttons.sass */
       .btn.btn-document.btn-document_primary:before, .btn.btn-document.btn-document_primary:after {
         background-color: #26c1fb; }
-      /* line 300, base/_buttons.sass */
+      /* line 302, base/_buttons.sass */
       .btn.btn-document.btn-document_primary .add-type {
         border-left-color: #26c1fb; }
-    /* line 303, base/_buttons.sass */
+    /* line 305, base/_buttons.sass */
     .btn.btn-document:before, .btn.btn-document:after {
       content: "";
       position: absolute;
@@ -8432,14 +8437,14 @@ fieldset[disabled] .btn {
       -webkit-transform-origin: 50% 50%;
               transform-origin: 50% 50%;
       -webkit-backface-visibility: hidden; }
-    /* line 317, base/_buttons.sass */
+    /* line 319, base/_buttons.sass */
     .btn.btn-document:after {
       -webkit-transform: rotateZ(90deg);
               transform: rotateZ(90deg); }
-    /* line 320, base/_buttons.sass */
+    /* line 322, base/_buttons.sass */
     .btn.btn-document:hover {
       background-color: #f0f0f0; }
-    /* line 323, base/_buttons.sass */
+    /* line 325, base/_buttons.sass */
     .btn.btn-document .add-type {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -8456,7 +8461,7 @@ fieldset[disabled] .btn {
       padding: 10px 10px 10px 25px;
       letter-spacing: 0;
       border-left: dotted 1px #a9adaf; }
-      /* line 333, base/_buttons.sass */
+      /* line 335, base/_buttons.sass */
       .btn.btn-document .add-type small {
         color: #a9adaf;
         font-family: "Open Sans", sans-serif;
@@ -8465,34 +8470,34 @@ fieldset[disabled] .btn {
         text-transform: none;
         line-height: 1.3;
         display: block; }
-  /* line 343, base/_buttons.sass */
+  /* line 345, base/_buttons.sass */
   .btn.btn-icon {
     padding: 0;
     border: none;
     background: none; }
-    /* line 348, base/_buttons.sass */
+    /* line 350, base/_buttons.sass */
     .btn.btn-icon:hover {
       background: none; }
-  /* line 352, base/_buttons.sass */
+  /* line 354, base/_buttons.sass */
   .btn.btn-alert {
     padding: 5px 0;
     color: #eb004b; }
-    /* line 355, base/_buttons.sass */
+    /* line 357, base/_buttons.sass */
     .btn.btn-alert img {
       vertical-align: baseline; }
-  /* line 360, base/_buttons.sass */
+  /* line 362, base/_buttons.sass */
   .btn.btn-back:hover {
     color: #1e9ac9;
     text-decoration: none; }
-  /* line 364, base/_buttons.sass */
+  /* line 366, base/_buttons.sass */
   .btn.btn-back img {
     width: 11px;
     vertical-align: baseline; }
-  /* line 368, base/_buttons.sass */
+  /* line 370, base/_buttons.sass */
   .btn.btn-show {
     padding-bottom: 0; }
 
-/* line 374, base/_buttons.sass */
+/* line 376, base/_buttons.sass */
 .btn-close.close {
   position: relative;
   opacity: 1;
@@ -8501,7 +8506,7 @@ fieldset[disabled] .btn {
   width: 2rem;
   height: 2rem;
   z-index: 999999; }
-  /* line 382, base/_buttons.sass */
+  /* line 384, base/_buttons.sass */
   .btn-close.close:after, .btn-close.close:before {
     content: "";
     height: 3px;
@@ -8516,7 +8521,7 @@ fieldset[disabled] .btn {
     transition: all 0.3s cubic-bezier(0.71, 0.48, 0.3, 0.9);
     -webkit-transform: translateX(-50%) rotateZ(45deg);
             transform: translateX(-50%) rotateZ(45deg); }
-  /* line 396, base/_buttons.sass */
+  /* line 398, base/_buttons.sass */
   .btn-close.close:after {
     -webkit-transform: translateX(-50%) rotateZ(-45deg);
             transform: translateX(-50%) rotateZ(-45deg); }
