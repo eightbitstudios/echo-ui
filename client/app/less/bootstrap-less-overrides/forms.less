@@ -216,3 +216,67 @@ select {
 select:focus {
   box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.1rem #a9adaf;
 }
+
+.control input:checked ~ .control-indicator {
+  background-color: #e1e2e3;
+  background-image: url("../images/checkbox-check.svg");
+}
+
+.control input:active ~ .control-indicator {
+  background-color: #f7f7f7;
+}
+
+.control input:focus ~ .control-indicator {
+  box-shadow: 0 0 0 0;
+}
+
+.checkbox, .radio {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.checkbox label, .checkbox p.label, .radio label, .radio p.label {
+  letter-spacing: 0;
+  font-weight: 300 !important;
+}
+
+.checkbox:hover, .radio:hover {
+  font-weight: 300 !important;
+}
+
+.checkbox:hover label, .checkbox:hover p.label, .radio:hover label, .radio:hover p.label {
+  font-weight: 300;
+}
+
+.checkbox .control:hover .control-indicator, .radio .control:hover .control-indicator {
+  background: #e1e2e3;
+}
+
+.checkbox.control, .radio.control {
+  display: block;
+  margin-right: 16px;
+  padding-left: 25px;
+}
+
+.checkbox .control-indicator, .radio .control-indicator {
+  top: 0;
+  margin-right: 5px;
+}
+
+.checkbox .control-indicator {
+  border-radius: 0;
+}
+
+.checkbox.control-x, .checkbox.control-lrg {
+  padding-left: 30px;
+  height: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.checkbox.control-x .checkbox input[type="checkbox"], .checkbox.control-lrg .checkbox input[type="checkbox"] {
+  margin-left: -40px;
+}
