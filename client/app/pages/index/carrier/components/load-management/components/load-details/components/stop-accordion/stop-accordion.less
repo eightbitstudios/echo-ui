@@ -6,6 +6,10 @@
         color: @c-gray-darkest;
         &:hover {
           background-color: @c-gray-light;
+          .caret {
+            -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+          }
         }
         .caret {
           -webkit-transform: rotateZ(0deg);
@@ -73,12 +77,14 @@
     }
   }
   .load-items-details {
-  margin-top: 50px; }
-
-.section-header_items span {
-  margin-left: 20px; }
-.section-header_items em {
-  margin-left: 5px;
-  font-style: normal;
-  font-weight: 300; }
+    margin-top: 50px;
+  }
+  .section-header_items span {
+    margin-left: 20px;
+  }
+  .section-header_items em {
+    margin-left: 5px;
+    font-style: normal;
+    font-weight: 300;
+  }
 }
