@@ -54,7 +54,7 @@ angular.module('echo.api.loads', [
         driverNeeded: driverNeeded
       };
 
-      return $http.get(url, {params: params}).then(function (resp) {
+      return $http.get(url, { params: params }).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },
@@ -67,7 +67,7 @@ angular.module('echo.api.loads', [
         driverNeeded: driverNeeded
       };
 
-      return $http.get(url, {params: params}).then(function (resp) {
+      return $http.get(url, { params: params }).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },
@@ -115,6 +115,12 @@ angular.module('echo.api.loads', [
     },
     fetchDriverStatusByLoadId: function (loadId, driverId) {
       var url = apiConfig.driverStatusByLoadId({ loadId: loadId, userId: driverId });
+      return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    fetchActivityLogByLoadId: function (loadId) {
+      var url = apiConfig.activityLogByLoadId({ loadId: loadId });
       return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);
       });
