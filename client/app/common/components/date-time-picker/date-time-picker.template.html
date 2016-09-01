@@ -1,0 +1,21 @@
+<div class="date-time-picker">
+  <form class="form-inline form-arrival-time">
+    <div class="filter-drivers pull-left">
+      <div class="btn btn-default btn-filter btn-modal-dp">Wed, Aug 31</div>
+      <div class="form-group">
+        <label class="hidden">Time</label>
+        <input class="form-control" ui-mask="99:99" type="text" ng-model="$ctrl.time">
+      </div>
+      <div class="form-group">
+        <label class="hidden">Time Zone</label>
+        <div class="select">
+          <select class="form-control" placeholder="Select one..." type="select">
+            <option>EST</option>
+            <option>CST</option>
+            <option>MST</option>
+            <option>PST</option>
+          </select>
+        </div>
+      </div>
+  </form>
+  </div>

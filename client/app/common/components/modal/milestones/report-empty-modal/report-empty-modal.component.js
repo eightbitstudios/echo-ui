@@ -1,6 +1,9 @@
 angular.module('echo.components.modal.milestones.reportEmpty', [
   'echo.components.modal.milestones.milestoneSidebar',
-  'echo.components.modal.milestones.checkboxCard'
+  'echo.components.modal.milestones.checkboxCard',
+  'echo.components.modal.milestones.progressIndicator',
+  'echo.components.modal.milestones.modalSteps',
+  'echo.components.dateTimePicker'
 ])
   .component('reportEmptyModal', {
     templateUrl: 'app/common/components/modal/milestones/report-empty-modal/report-empty-modal.template.html',
@@ -9,5 +12,18 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
       load: '<'
     },
     controller: function () {
+      var that = this;
+      that.modes = {
+        confirm: 1,
+        location: 2
+      };
+
+      that.items = [{isChecked: false}, {isChecked: false}, {isChecked: false}];
+      that.steps = [that.modes.confirm, that.modes.location];
+      that.currentStep = that.modes.confirm;
+
+      that.isNextStepEnabled = function() {
+        return _.every(that.items, {isChecked: true});
+      };
     }
   });

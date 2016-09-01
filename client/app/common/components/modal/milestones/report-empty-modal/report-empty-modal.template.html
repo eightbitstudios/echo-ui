@@ -1,6 +1,6 @@
 <div class="assign-driver-modal">
   <div class="modal-header">
-    <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)" data-close="modal" type="button">
+    <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close()" data-close="modal" type="button">
       <span aria-hidden="true">×</span>
     </button>
     <h1 class="modal-title">
@@ -14,16 +14,22 @@
     <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
-    <milestone-sidebar load="$ctrl.load"/>
+    <milestone-sidebar load="$ctrl.load" />
     <section class="modal-main-content">
-      <h4 class="content-header">Confirm Empty</h4>
-      <p>If the driver can meet these customer needs.  <br>If not, please call your Echo rep.</p>
-      <checkbox-card />
-      <checkbox-card />
-      <checkbox-card />
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.confirm">
+        <h4 class="content-header">Confirm Empty</h4>
+        <p>If the driver can meet these customer needs. <br>If not, please call your Echo rep.</p>
+        <checkbox-card item="item" ng-repeat="item in $ctrl.items" />
+      </div>
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
+        <h4 class="content-header">Location</h4>
+        <date-time-picker time="$ctrl.time" />
+      </div>
     </section>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Close</button>
+    <modal-steps current-step="$ctrl.currentStep" is-next-disabled="!$ctrl.isNextStepEnabled()" steps="$ctrl.steps" modal-actions="$ctrl.modalActions">
+      <button class="btn btn-default" type="button">Confirm Empty</button>
+    </modal-steps>
   </div>
 </div>
