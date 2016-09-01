@@ -14,6 +14,7 @@ module.exports = function (app) {
   app.put(endpoints.api.reassignDriverByLoadId, loadsHandler.getLoadCount);
   app.get(endpoints.api.driverStatusByLoadId, loadsHandler.getDriverStatus);
   app.get(endpoints.api.loadById, loadsHandler.getLoadDetails);
+  app.put(endpoints.api.loadById, loadsHandler.updateLoadDetails);
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);

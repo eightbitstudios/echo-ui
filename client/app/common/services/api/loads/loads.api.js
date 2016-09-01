@@ -124,6 +124,12 @@ angular.module('echo.api.loads', [
       return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);
       });
+    },
+    updateLoad: function (loadId, load) {
+      var url = apiConfig.loadById({ loadId: loadId });
+      return $http.put(url, load).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
     }
   };
 });
