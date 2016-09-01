@@ -155,7 +155,7 @@ angular.module('echo.index', [
           return loadsApi.fetchLoadDetails(loadId);
         },
         activityLog: function(loadsApi, loadDetails) {
-          return loadsApi.fetchActivityLogByLoadId(loadDetails.loadId);
+          return loadsApi.fetchActivityLogByLoadId(loadDetails.loadNumber);
         }
       }
     })
