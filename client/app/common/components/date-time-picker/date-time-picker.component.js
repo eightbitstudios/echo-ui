@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('echo.components.dateTimePicker', [])
+angular.module('echo.components.dateTimePicker', [
+  'echo.directives.datePicker'
+])
   .component('dateTimePicker', {
     bindings: {
       time: '='
