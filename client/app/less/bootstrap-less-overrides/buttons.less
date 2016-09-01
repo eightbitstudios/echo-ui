@@ -189,34 +189,45 @@
       margin-right: 10px;
     }
     &.filter__assigned {
-      color: @c-white;
-      font-size: @fs-large;
+      color: #fff;
+      font-family: @body-font;
+      font-size: 14px;
+      line-height: 1.4;
       letter-spacing: 0;
       text-transform: none;
+      padding: 9px 45px 10px 15px;
+      padding-right: 15px;
       border-color: @c-bright-blue;
       background-color: @c-bright-blue;
       transition: none;
-      &:hover, &:focus {
+      &:hover {
         border-color: @c-bright-blue-dark;
         background-color: @c-bright-blue-dark;
       }
-      .icon-close {
+    }
+    &.btn-date-picker, &.btn-modal-dp {
+      padding-left: 45px;
+      &.filter__assigned:before {
+        content: url('../assets/images/icon-calendar-white.svg');
+      }
+      &:before {
+        content: url('../assets/images/icon-calendar-gray.svg');
         display: inline-block;
-        margin-left: 10px;
-        .fill-echo-icon(@c-white);
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 18px;
+        height: auto;
+        margin-right: 6px;
       }
-      .icon-calendar {
-        vertical-align: middle;
-        use {
-          stroke: @c-white;
-        }
-        path {
-          fill: @c-white !important;
-        }
+      &:hover:before, &:focus:before {
+        content: url('../assets/images/icon-calendar-white.svg');
       }
-      &:after {
-        transform: translateX(-50%) rotateZ(-45deg);
-      }
+    }
+    &.filter__assigned .icon-close {
+      display: inline-block;
+      margin-left: 10px;
+      .fill-echo-icon(@c-white);
     }
     .icon-close {
       display: none;

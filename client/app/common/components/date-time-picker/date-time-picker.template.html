@@ -1,8 +1,11 @@
 <div class="date-time-picker">
   <form class="form-inline form-arrival-time">
     <div class="filter-drivers pull-left">
-      <date-picker>
-        <div class="btn btn-default btn-filter btn-modal-dp">Wed, Aug 31</div>
+      <date-picker date="$ctrl.date">
+        <button class="btn btn-default btn-date-picker btn-filter" ng-class="{'filter__assigned': $ctrl.date}">
+            {{$ctrl.date | datePicker}}
+            <span class="echo-icon icon-close" ng-click="$ctrl.clearDate($event)" data-grunticon-embed></span>
+        </button>
       </date-picker>
       <div class="form-group">
         <label class="hidden">Time</label>
@@ -19,5 +22,6 @@
           </select>
         </div>
       </div>
+      <div class="datepicker"></div>
   </form>
   </div>
