@@ -5,7 +5,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.pagination',
   'echo.models.paging',
   'echo.config.appConstants',
-  'echo.components.dateTimePicker',
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
   'echo.components.mapPlaceholder',
