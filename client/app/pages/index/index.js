@@ -154,9 +154,8 @@ angular.module('echo.index', [
           var loadId = $stateParams.loadId;
           return loadsApi.fetchLoadDetails(loadId);
         },
-        activityLog: function(loadsApi, $stateParams) {
-          var loadId = $stateParams.loadId;
-          return loadsApi.fetchActivityLogByLoadId(loadId);
+        activityLog: function(loadsApi, loadDetails) {
+          return loadsApi.fetchActivityLogByLoadId(loadDetails.loadId);
         }
       }
     })
