@@ -5,6 +5,28 @@ $(window).load(function(){
 
 	$('.modal').modal('show');
 
+  $('.modal').on('shown.bs.modal', function (e) {
+    //if datepicker
+    if ($('.btn-modal-dp').length) {
+      positionDatePicker()
+    }
+  })
+
+  // positioning for modal on tablets
+  function positionDatePicker() {
+    var winHeight = $(window).height(),
+        calBtnPos = $('.btn-modal-dp').offset().top,
+        $cal = $('.btn-modal-dp').next('.datepicker').find('.daterangepicker')
+        calH = $cal.outerHeight(true);
+
+    $cal.removeClass('datepicker-offbottom')
+
+    if (calBtnPos + (calH / 2) > winHeight) {
+      $cal.addClass('datepicker-offbottom')
+    }
+  }
+
+
   // DEMO active search box in Report Location modal
   var demoFocus = setTimeout(function(){
 	  $('.search-form-modal .search-form-input').focus()
@@ -155,17 +177,18 @@ $(window).load(function(){
 	  var $btnFilter = $(".btn-filter")
 
 	  $btnFilter.on('click', function(e) {
+      $curBtn = $(this)
       e.preventDefault();
-      if (!$(this).is('.btn-date-picker, .btn-single-dp, .btn-modal-dp, .btn-filter-dropdown')) {
+      if (!$curBtn.is('.btn-date-picker, .btn-single-dp, .btn-modal-dp, .btn-filter-dropdown')) {
 	  		resetDropdownButton();
 	  		resetSdpTrigger();
 
-	  		if ($(this).hasClass('filter__assigned')) {
+	  		if ($curBtn.hasClass('filter__assigned')) {
 	  			resetFilterBtns();
 	  			$btnFilter.blur()
 	  		} else {
 	  			resetFilterBtns();
-	  			$(this).addClass('filter__assigned').append('<span class="close">X</span>');
+	  			$curBtn.addClass('filter__assigned').append('<span class="close">X</span>');
 	  		}
 	  	}
 	  });
@@ -210,6 +233,7 @@ $(window).load(function(){
 
 		$mdpTrigger.on('show.daterangepicker', function(ev, picker) {
 			$mdpTrigger.addClass('active');
+      positionDatePicker()
 		})
 		$mdpTrigger.on('apply.daterangepicker', function(ev, picker) {
 			var filterStartDate = picker.startDate,

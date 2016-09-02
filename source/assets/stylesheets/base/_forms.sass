@@ -24,55 +24,6 @@ label
   text-transform: uppercase
   transition: color 0.2s ease-in
 
-.form-group
-  margin-bottom: 30px
-  position: relative
-
-  &:last-child
-    margin-bottom: 0
-
-  &:hover
-    label
-      color: $gray-darkest
-      font-weight: 600
-
-    .form-control
-      border-color: $gray-darkest
-
-.form-control
-  color: $gray-darkest
-  box-shadow: none
-  padding-left: 0
-  border-radius: 0
-  border-width: 0 0 1px 0
-  border-color: $gray-mid-light
-
-  &::-webkit-input-placeholder
-    color: $gray-mid-light
-  &::-moz-placeholder
-    color: $gray-mid-light
-  &:-ms-input-placeholder
-    color: $gray-mid-light
-
-  &:focus
-    box-shadow: none
-    outline: none
-    border-color: $gray-darkest
-
-.form-group-inline
-  display: inline-block
-
-.form-inline-editing
-  .form-control
-    background-color: transparent
-
-  .btn-link + .btn-link
-    margin-left: 10px
-
-input[type="radio"],
-input[type="checkbox"]
-  margin-top: 0
-
 .select
   padding-left: 10px
   margin-right: -10px
@@ -97,17 +48,62 @@ input[type="checkbox"]
   select::-ms-expand
     display: none
 
-.control
-  input:checked ~ .control-indicator
-    background-color: $gray-light
-    background-image: image_url('checkbox-check.svg')
+//////////
 
-  input:active ~ .control-indicator
-    background-color: #f7f7f7
+.form-group
+  margin-bottom: 30px
+  position: relative
 
-  input:focus ~ .control-indicator
-    box-shadow: 0 0 0 0
+  &:last-child
+    margin-bottom: 0
 
+  &:hover
+    label
+      color: $gray-darkest
+      font-weight: 600
+
+    .form-control
+      border-color: $gray-darkest
+
+//////////
+
+.form-control
+  color: $gray-darkest
+  box-shadow: none
+  padding-left: 0
+  border-radius: 0
+  border-width: 0 0 1px 0
+  border-color: $gray-mid-light
+
+  &::-webkit-input-placeholder
+    color: $gray-mid-light
+  &::-moz-placeholder
+    color: $gray-mid-light
+  &:-ms-input-placeholder
+    color: $gray-mid-light
+
+  &:focus
+    box-shadow: none
+    outline: none
+    border-color: $gray-darkest
+
+
+.form-group-inline
+  display: inline-block
+
+.form-inline-editing
+  .form-control
+    background-color: transparent
+
+  .btn-link + .btn-link
+    margin-left: 10px
+
+
+// Checkbox & Radio
+
+input[type="radio"],
+input[type="checkbox"]
+  margin-top: 0
 
 .checkbox,
 .radio
@@ -136,6 +132,31 @@ input[type="checkbox"]
   .control-indicator
     top: 0
     margin-right: 5px
+
+
+/// Customized WTFForms Checkbox
+//////////
+
+.control
+  input:checked ~ .control-indicator
+    background-color: $gray-light
+
+  input:active ~ .control-indicator
+    background-color: #f7f7f7
+
+  input:focus ~ .control-indicator
+    box-shadow: 0 0 0 0
+
+  &.radio
+    input:checked ~ .control-indicator
+      border: solid 1px $gray-light
+      background-color: $gray-lightest
+      background-image: image_url('radial-selected.svg')
+      background-size: 10px
+
+  &.checkbox
+    input:checked ~ .control-indicator
+      background-image: image_url('checkbox-check.svg')
 
 .checkbox
   .control-indicator
@@ -174,6 +195,25 @@ input[type="checkbox"]
       background-image: image-url("icon-checkmark-wht.svg")
 
 
+/// Customized Inline form elements
+/////////
+
+.form-inline
+  legend
+    display: inline-block
+    margin: 0 15px 0 0
+    width: auto
+
+  .checkbox.control,
+  .radio.control
+    display: inline-block
+
+    input[type="radio"],
+    input[type="checkbox"]
+      margin-left: -15px
+
+
+
 textarea.form-control
   height: 150px
   padding: 10px
@@ -206,7 +246,7 @@ textarea.form-control
       border-color: $danger
 
   .help-block
-    font-size: 400
+    font-weight: 400
     color: $danger
 
 .is-approved

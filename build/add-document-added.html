@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      Assign Driver 4 - Overlay
+      Add Document - Added
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -822,7 +822,7 @@
             </button>
             <h1 class='modal-title'>
               <span class='assign-action-type'>
-                Assign Driver to
+                Add Document for
               </span>
               <span class='assign-action-to'>
                 Load 345674556
@@ -832,140 +832,98 @@
           </div>
           <div class='modal-body'>
             <section class='modal-sidebar'>
-              <article class='sidebar-content'>
-                <h4 class='small-header'>Pickup</h4>
-                <div class='load-citystate'>
-                  <div class='load-city'>Memphis</div>
-                  <div class='load-st'>TN, 60655</div>
-                </div>
-                <div class='load-datetime'>
-                  14:00-15:00 EST
-                  <br>
-                  Today, Apr 20
-                </div>
-              </article>
-              <article class='sidebar-content'>
-                <h4 class='small-header'>Delivery</h4>
-                <div class='load-citystate'>
-                  <div class='load-city'>Winchester-on-the-Severn</div>
-                  <div class='load-st'>TX, 50968</div>
-                </div>
-                <div class='load-datetime'>
-                  16:00-18:00 EST
-                  <br>
-                  Fri, May 23
-                </div>
-              </article>
-              <article class='sidebar-content'>
-                <h4 class='small-header'>Equipment</h4>
-                <div class='equip-specials'>
-                  Dry Van 53', HazMat
-                  <br>
-                  <div class='inline-edit-content'>
-                    <a href="#" class="btn btn-link btn-inline-edit btn-sm">Add Trailer Number
-                    <img src="assets/images/add-pencil.svg" alt="Add pencil" />
-                    </a>
-                  </div>
-                  <form class='form-inline form-inline-editing' style='display: none;'>
-                    <div class='form-group'>
-                      <label class='hidden'>Add Trailer Number</label>
-                      <input class='form-control' placeholder='Add Trailer Number' type='text'>
-                    </div>
-                    <div class='form-group'>
-                      <button class='btn btn-link' type='submit'>Save</button>
-                      <button class='btn btn-link btn-alt' type='reset'>Cancel</button>
-                    </div>
-                  </form>
-                </div>
-                <br>
-                <div class='equip-specials'>
-                  Drop Trailer at Shipper
-                  <br>
-                  No Reefers
-                  <div class='equip-overflow' style='display: none;'>
-                    Extra Text 1
-                    <br>
-                    Extra Text 2
-                    <br>
-                    No Reefers
-                    <br>
-                    Drop Trailer at Shipper
-                    <br>
-                    No Reefers
-                    <br>
-                    Drop Trailer at Shipper
-                    <br>
-                    No Reefers
+              <p>
+                <strong>Document Guidelines</strong>
+              </p>
+              <ul>
+                <li>Accepted File Types: JPEG, PDF, PNG</li>
+                <li>Max File Size: 20mb</li>
+              </ul>
+              <p>
+                <strong>Documents Added</strong>
+              </p>
+              <div class='load-doc'>
+                <div class='doc-descrip'>
+                  <div class='doc-data'>
+                    <h5>PROOF OF DELIVERY #1</h5>
+                    Added 06:45 CST, Today
+                    By Echo
                   </div>
                 </div>
-                <a class='btn btn-link btn-show'>Show More</a>
-              </article>
+              </div>
+              <div class='load-doc'>
+                <div class='doc-descrip'>
+                  <div class='doc-data'>
+                    <h5>LUMPER RECEIPT</h5>
+                    Added 05:45 CST, Today
+                    By Echo
+                  </div>
+                </div>
+              </div>
             </section>
             <section class='modal-main-content'>
-              <h4 class='content-header'>Invite A New Driver</h4>
-              <form>
-                <div class='row'>
-                  <div class='col-sm-6'>
-                    <div class='form-group'>
-                      <label>First Name (Required)</label>
-                      <input class='form-control' placeholder='' type='text'>
-                    </div>
-                    <div class='form-group'>
-                      <label>Last Name</label>
-                      <input class='form-control' placeholder='' type='text'>
-                    </div>
-                    <div class='form-group'>
-                      <label>Tractor Number</label>
-                      <input class='form-control' placeholder='e.g. 432019-900' type='text'>
-                    </div>
-                  </div>
-                  <div class='col-sm-6'>
-                    <div class='form-group'>
-                      <label>Email Address</label>
-                      <input class='form-control' placeholder='name@company.com' type='email'>
-                    </div>
-                    <div class='form-group'>
-                      <label>Phone Number (Required)</label>
-                      <input class='form-control' placeholder='( _ _ _ ) _ _ _ - _ _ _ _' type='tel'>
-                    </div>
-                    <div class='form-group'>
-                      <label>Preferred Languange</label>
-                      <div class='select'>
-                        <select class='form-control' placeholder='Select one...' type='select'>
-                          <option>English</option>
-                          <option>Spanish</option>
-                          <option>Latin</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
+              <div class='btn btn-document btn-dropzone-lg'>
+                <div class='add-type'>
+                  ADD A DOCUMENT
+                  <small>You can also drag and drop</small>
                 </div>
+              </div>
+              <form class='form-inline'>
+                <legend>TYPE</legend>
+                <label class='radio control'>
+                  <input checked='checked' name='optionsRadios1' type='radio'>
+                  <span class='control-indicator'></span>
+                  Load Document
+                </label>
+                <label class='radio control'>
+                  <input name='optionsRadios1' type='radio'>
+                  <span class='control-indicator'></span>
+                  Invoice
+                </label>
               </form>
-              <div class='modal-action-links modal-action-split'>
-                <a class='btn btn-link btn-alt' href='#'>
-                  <svg width="13" height="14" viewBox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
-                      <g class="icon-prev link-icon" stroke="#A9ADAF" stroke-width="2" fill="none" fill-rule="evenodd">
-                          <path d="M7.8 12.4L2.06 6.66l5.637-5.638"/>
-                          <path d="M3.21 6.832h8" stroke-linecap="square"/>
-                      </g>
-                  </svg>
-                  Cancel Invitation
-                </a>
-                <a class='btn btn-link' href='#'>
-                  Invite &amp; Continue
-                  <svg width="13" height="14" viewBox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
-                      <g class="link-icon icon-next" stroke="#26C1FB" stroke-width="2" fill="none" fill-rule="evenodd">
-                          <path d="M5.2 12.4l5.74-5.74-5.637-5.638"/>
-                          <path d="M9.79 6.832h-8" stroke-linecap="square"/>
-                      </g>
-                  </svg>
-                </a>
+              <hr class='hr'>
+              <form class='form-doc-upload'>
+                <label class='radio control'>
+                  <input name='optionsRadios1' type='radio'>
+                  <span class='control-indicator'></span>
+                  Proof of Delivery #2 (2 Needed)
+                </label>
+                <label class='radio control'>
+                  <input name='optionsRadios1' type='radio'>
+                  <span class='control-indicator'></span>
+                  Fuel Receipts
+                </label>
+                <label class='radio control'>
+                  <input name='optionsRadios1' type='radio'>
+                  <span class='control-indicator'></span>
+                  Lumper Receipt
+                </label>
+                <label class='radio control'>
+                  <input name='optionsRadios1' type='radio'>
+                  <span class='control-indicator'></span>
+                  Scale Tickets
+                </label>
+                <label class='radio control'>
+                  <input name='optionsRadios1' type='radio'>
+                  <span class='control-indicator'></span>
+                  Bill of Lading
+                </label>
+                <label class='radio control'>
+                  <input name='optionsRadios1' type='radio'>
+                  <span class='control-indicator'></span>
+                  Other
+                </label>
+              </form>
+              <div class='modal-action-links has-message'>
+                <button class='btn btn-default disabled' disabled='disabled' type='button'>Add Document</button>
+                <div class='text-success'>
+                  Document successfully added
+                </div>
               </div>
             </section>
           </div>
           <div class='modal-footer'>
-            <button class='btn btn-default disabled' disabled='disabled' type='button'>Assign Anyway</button>
-            <button class='btn btn-link btn-alt disabled' data-dismiss='modal' disabled='disabled' type='button'>CLOSE</button>
+            <button class='btn btn-link btn-alt' data-dismiss='modal' type='button'>CLOSE</button>
           </div>
         </div>
       </div>
