@@ -7,5 +7,9 @@ angular.module('echo.enums.actions', [])
     REPORTED_EMPTY: {
       description: 'Reported empty',
       value: 1
+    },
+    REPORTED_ARRIVAL_AT_PICKUP: {
+      description: 'Report Arrival At Pickup',
+      value: 2
     }
   });

@@ -17,8 +17,8 @@ angular.module('echo.components.loadTable.action', [
 
       that.appConstants = appConstants;
       that.showButtonLoading = false;
-      that.currentStatus = _.capitalize(_.lowerCase(that.load.action.currentStatus));
-      that.nextAction = _.capitalize(_.lowerCase(that.load.action.nextAction));
+      that.currentStatus = _.find(actionEnums, {value: that.load.action.lastAction});
+      that.nextAction = _.find(actionEnums, {value: that.load.action.nextAction});
 
       var actionHandler = {};
 

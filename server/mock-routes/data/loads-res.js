@@ -135,13 +135,13 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentStatus: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 1,
+        nextAction: 2,
         onTime: false,
         lateBy: null
       },
@@ -170,7 +170,7 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
@@ -207,7 +207,7 @@ module.exports = {
         isTrackingEnabled: true
       },
       action: {
-        currentAction: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Mike',
           lastName: 'Potatoe'
@@ -244,7 +244,7 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentAction: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
@@ -279,13 +279,13 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentAction: 0,
+        lastAction: 1,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 1,
+        nextAction: 2,
         onTime: false,
         lateBy: null
       },
@@ -316,7 +316,7 @@ module.exports = {
         isTrackingEnabled: true
       },
       action: {
-        currentAction: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Mike',
           lastName: 'Potatoe'
@@ -353,7 +353,7 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentAction: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
@@ -388,7 +388,7 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentAction: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
@@ -424,7 +424,7 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentAction: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
@@ -459,7 +459,7 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentAction: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
@@ -495,7 +495,7 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentAction: 0,
+        lastAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
