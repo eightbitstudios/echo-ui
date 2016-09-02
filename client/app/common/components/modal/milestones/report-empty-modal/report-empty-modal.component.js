@@ -30,13 +30,13 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
 
       that.checkboxItems = {
         isEquipmentChecked: {
-          isChecked = false
+          isChecked: false
         },
         isServicesChecked: {
-          isChecked = false
+          isChecked: false
         },
         isInstrunctionChecked: {
-          isChecked = false
+          isChecked: false
         }
       };
 
