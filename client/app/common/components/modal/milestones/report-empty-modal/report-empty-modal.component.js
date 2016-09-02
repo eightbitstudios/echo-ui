@@ -19,6 +19,8 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
         location: 2
       };
       that.date = undefined;
+      that.timeZone = 'CST';
+      that.minDate = moment();
       that.time = moment().format('HHmm');
       that.items = [{isChecked: false}, {isChecked: false}, {isChecked: false}];
       that.steps = [that.modes.confirm, that.modes.location];

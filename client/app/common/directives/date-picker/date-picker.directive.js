@@ -5,7 +5,8 @@ angular.module('echo.directives.datePicker', [])
     return {
       restrict: 'E',
       scope: {
-        date: '='
+        date: '=',
+        minDate: '='
       },
       transclude: true,
       template: '<ng-transclude></ng-transclude>',
@@ -21,6 +22,7 @@ angular.module('echo.directives.datePicker', [])
           autoApply: false,
           autoUpdateInput: false,
           singleDatePicker: true,
+          minDate: scope.minDate,
           locale: {
             format: 'MM/DD/YYYY',
             cancelLabel: 'Clear',

@@ -1,7 +1,7 @@
 <div class="date-time-picker">
   <form class="form-inline form-arrival-time">
     <div class="filter-drivers pull-left">
-      <date-picker date="$ctrl.date">
+      <date-picker date="$ctrl.date" min-date="$ctrl.minDate">
         <button class="btn btn-default btn-date-picker btn-filter" ng-class="{'filter__assigned': $ctrl.date}">
             {{$ctrl.date | datePicker}}
             <span class="echo-icon icon-close" ng-click="$ctrl.clearDate($event)" data-grunticon-embed></span>
@@ -14,11 +14,11 @@
       <div class="form-group">
         <label class="hidden">Time Zone</label>
         <div class="select">
-          <select class="form-control" placeholder="Select one..." type="select">
-            <option>EST</option>
-            <option>CST</option>
-            <option>MST</option>
-            <option>PST</option>
+          <select class="form-control" ng-model="$ctrl.timeZone" type="select">
+            <option val="EST">EST</option>
+            <option val="CST">CST</option>
+            <option val="MST">MST</option>
+            <option val="PST">PST</option>
           </select>
         </div>
       </div>
