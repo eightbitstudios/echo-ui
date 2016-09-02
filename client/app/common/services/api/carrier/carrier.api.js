@@ -107,7 +107,7 @@ angular.module('echo.api.carrier', [
       var url = apiConfig.searchDrivers({ carrierId: carrierId, searchTerm: searchTerm });
 
       return $http.get(url).then(function (resp) {
-        var drivers = _.map(resp.data.data.drivers, function (driver) {
+        var drivers = _.map(resp.data.data, function (driver) {
           return new DriverModel(driver);
         });
 
