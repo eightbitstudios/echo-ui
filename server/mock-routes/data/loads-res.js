@@ -103,6 +103,7 @@ module.exports = {
     "trailerNumber": "8956 7412",
     "tractorNumber": "7894 9216"
   }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -181,6 +182,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: 12345678910,
       pickUp: [{
@@ -217,6 +219,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -288,6 +291,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: 12345678910,
       pickUp: [{
@@ -324,6 +328,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -395,6 +400,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -465,6 +471,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: {

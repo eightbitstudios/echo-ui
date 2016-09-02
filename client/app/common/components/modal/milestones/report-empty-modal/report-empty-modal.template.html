@@ -17,18 +17,16 @@
     <milestone-sidebar load="$ctrl.load" />
     <section class="modal-main-content">
       <div ng-if="$ctrl.currentStep === $ctrl.modes.confirm">
-        <h4 class="content-header">Confirm Empty</h4>
-        <p>If the driver can meet these customer needs. <br>If not, please call your Echo rep.</p>
-        <checkbox-card item="item" ng-repeat="item in $ctrl.items" />
+        <confirm-empty report-empty="$ctrl.reportEmpty" checkbox-items="$ctrl.checkboxItems"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
         <h4 class="content-header">Enter the driver's current location</h4>
         <p>Drivers can help you bypass this step by enabling tracking for the app in their phone's Settings.</p>
-        <location-search />
+        <location-search location="$ctrl.location" />
         <p>
           <strong>When did the driver report empty?</strong>
         </p>
-        <date-time-picker time="$ctrl.time" date="$ctrl.date" time-zone="$ctrl.timeZone" min-date="$ctrl.minDate"/>
+        <date-time-picker date-time="$ctrl.dateTimePicker" />
       </div>
     </section>
   </div>

@@ -5,11 +5,13 @@ angular.module('echo.components.modal.milestones.locationSearch', [
   .component('locationSearch', {
     templateUrl: 'app/common/components/modal/milestones/components/location-search/location-search.template.html',
     bindings: {
+      location: '='
     },
     controller: function (locationApi) {
       var that = this;
 
-      that.selected = null;
+      that.selected = '';
+      that.defaultLocation = that.location.getLocationString();
 
       that.searchLocation = function(val) {
         return locationApi.fetchLocations(val).then(function(locations){
@@ -22,7 +24,7 @@ angular.module('echo.components.modal.milestones.locationSearch', [
       };
 
       that.selectedLocation = function(selected) {
-        that.selected = selected;
+        that.location.setLocation(selected.name);
       };
     }
   });

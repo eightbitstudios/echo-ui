@@ -6,17 +6,14 @@ angular.module('echo.components.dateTimePicker', [
 ])
   .component('dateTimePicker', {
     bindings: {
-      time: '=',
-      date: '=',
-      timeZone: '=',
-      minDate: '<'
+      dateTime: '='
     },
     templateUrl: 'app/common/components/date-time-picker/date-time-picker.template.html',
     controller: function () {
       var that = this;
 
       that.clearDate = function ($event) {
-        that.date = undefined;
+        that.dateTime.date = undefined;
         $event.stopPropagation();
       };
     }

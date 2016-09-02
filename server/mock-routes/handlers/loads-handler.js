@@ -1,5 +1,6 @@
 var responseUtil = require('../util/response-util.js'),
   loadsRes = require('../data/loads-res'),
+  reportEmptyRes = require('../data/report-empty-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
 
@@ -38,6 +39,20 @@ module.exports = {
 
     resTemplate.data.totalLoadCount = loadsRes.totalLoadCount;
 
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getReportEmptyModalAction: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = reportEmptyRes;
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  createModalAction: function (req, res) {
+    var resTemplate = new ResTemplate();
+    
     responseUtil.timeout(function () {
       res.json(resTemplate);
     }, minDelay, maxDelay);
