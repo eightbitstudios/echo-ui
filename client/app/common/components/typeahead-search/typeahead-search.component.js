@@ -7,7 +7,8 @@ angular.module('echo.components.typeaheadSearch', [
       searchService: '&',
       onSelectCallback: '&',
       template: '@',
-      placeholderText: '@'
+      placeholderText: '@',
+      darkTheme: '<'
     },
     templateUrl: 'app/common/components/typeahead-search/typeahead-search.template.html',
     controller: function ($q) {

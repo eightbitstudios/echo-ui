@@ -22,12 +22,18 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
       that.timeZone = 'CST';
       that.minDate = moment();
       that.time = moment().format('HHmm');
-      that.items = [{isChecked: false}, {isChecked: false}, {isChecked: false}];
+      that.items = [{ isChecked: false }, { isChecked: false }, { isChecked: false }];
       that.steps = [that.modes.confirm, that.modes.location];
       that.currentStep = that.modes.confirm;
+      that.showButtonLoading = false;
 
-      that.isNextStepEnabled = function() {
-        return _.every(that.items, {isChecked: true});
+      that.isNextStepEnabled = function () {
+        return _.every(that.items, { isChecked: true });
+      };
+
+      that.saveReportEmpty = function () {
+        that.showButtonLoading = true;
+
       };
     }
   });

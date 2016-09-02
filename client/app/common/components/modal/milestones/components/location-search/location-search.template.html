@@ -1,4 +1,4 @@
 <div class="location-search">
-  <typeahead-search search-service="$ctrl.searchLocation(val)" template="app/common/components/typeahead-search/templates/location-results/location-results.template.html" on-select-callback="$ctrl.selectedLocation(selection)" placeholder-text="Enter City and State" />
+  <typeahead-search dark-theme="true" search-service="$ctrl.searchLocation(val)" template="app/common/components/typeahead-search/templates/location-results/location-results.template.html" on-select-callback="$ctrl.selectedLocation(selection)" placeholder-text="Enter City and State" />
   <img ng-if="$ctrl.selected" src="assets/images/map-placeholder-small.png"/>
 </div>

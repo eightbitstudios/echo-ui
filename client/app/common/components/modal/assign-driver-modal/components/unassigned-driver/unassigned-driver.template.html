@@ -1,5 +1,5 @@
 <div class="unassigned-driver">
-  <typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.onSelectCallback(selection)"></typeahead-search>
+  <typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.onSelectCallback(selection)" template="app/common/components/typeahead-search/templates/driver-results/driver-results.template.html" on-select-callback="$ctrl.selectedLocation(selection)" placeholder-text="Find a Driver"></typeahead-search>
   <unassigned-driver-list ng-if="$ctrl.state === $ctrl.states.driverList" selected-driver="$ctrl.newDriver" carrier-id="$ctrl.carrierId" load-id="$ctrl.loadId" remove-callback="$ctrl.removeDriverCallback()"></unassigned-driver-list>
   <selected-driver ng-if="$ctrl.state === $ctrl.states.selectedDriver" driver="$ctrl.selectedDriver"  remove-callback="$ctrl.removeDriverCallback()" load-id="$ctrl.loadId"></selected-driver>
   <div class="modal-action-links">
