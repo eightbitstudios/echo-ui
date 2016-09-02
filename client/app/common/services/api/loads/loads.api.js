@@ -125,9 +125,15 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    updateLoad: function (loadId, load) {
-      var url = apiConfig.loadById({ loadId: loadId });
-      return $http.put(url, load).then(function (resp) {
+    updateProNumber: function (loadId, payload) {
+      var url = apiConfig.proNumberByLoadId({ loadId: loadId });
+      return $http.put(url, payload).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    updateTrailerNumber: function (loadId, payload) {
+      var url = apiConfig.trailerNumberByLoadId({ loadId: loadId });
+      return $http.put(url, payload).then(function (resp) {
         return $q.when(resp.data.data);
       });
     }

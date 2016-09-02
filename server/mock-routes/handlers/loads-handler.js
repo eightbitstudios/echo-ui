@@ -60,12 +60,20 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  updateLoadDetails: function (req, res) {
+  updateProNumber: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadsRes.loads[0];
     if (req.body.proNumber != null) {
       resTemplate.data.proNumber = req.body.proNumber;
     }
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  updateTrailerNumber: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = loadsRes.loads[0];
     if (req.body.trailerNumber != null) {
       resTemplate.data.trailerNumber = req.body.trailerNumber;
     }

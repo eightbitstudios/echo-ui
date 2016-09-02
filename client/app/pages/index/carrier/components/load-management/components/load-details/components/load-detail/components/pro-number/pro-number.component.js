@@ -13,7 +13,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail.proNumb
       var that = this;
 
       that.updateProNumber = function (newProNumber) {
-        return loadsApi.updateLoad(that.loadGuid, { proNumber: newProNumber }).then(function (loadDetails) {
+        return loadsApi.updateProNumber(that.loadGuid, { proNumber: newProNumber }).then(function (loadDetails) {
           that.proNumber = loadDetails.proNumber;
         });
       };
