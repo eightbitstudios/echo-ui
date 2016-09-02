@@ -1,9 +1,6 @@
 module.exports = {
   lastActionDate: '2016-09-02T13:41:23-05:00',
-  driverLocation: {
-    cityName: 'CHICAGO',
-    stateName: 'IL'
-  },
+  driverLocation: {},
   generalInstructions: "Test Load Detail",
   equipment: [{
     "id": 15268,

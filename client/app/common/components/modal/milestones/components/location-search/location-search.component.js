@@ -10,7 +10,6 @@ angular.module('echo.components.modal.milestones.locationSearch', [
     controller: function (locationApi) {
       var that = this;
 
-      that.selected = '';
       that.defaultLocation = that.location.getLocationString();
 
       that.searchLocation = function(val) {

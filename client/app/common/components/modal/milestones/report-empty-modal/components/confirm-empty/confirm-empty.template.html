@@ -1,6 +1,6 @@
 <h4 class="content-header">Confirm Empty</h4>
 <p>If the driver can meet these customer needs. <br>If not, please call your Echo rep.</p>
-<checkbox-card is-checked="$ctrl.isEquipmentChecked">
+<checkbox-card is-checked="$ctrl.checkboxItems.equipmentCheckbox">
   <p>
     <strong>With The Right Equipment</strong>
   </p>
@@ -8,7 +8,7 @@
     {{$ctrl.equipment}}
   </p>
 </checkbox-card>
-<checkbox-card is-checked="$ctrl.isServicesChecked">
+<checkbox-card is-checked="$ctrl.checkboxItems.seviceCheckbox">
   <p>
     <strong>With The Right Services</strong>
   </p>
@@ -16,7 +16,7 @@
     {{$ctrl.services}}
   </p>
 </checkbox-card>
-<checkbox-card is-checked="$ctrl.isInstrunctionChecked">
+<checkbox-card is-checked="$ctrl.checkboxItems.instrunctionCheckbox">
   <p>
     <strong>With The Right Instruction</strong>
   </p>

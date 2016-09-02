@@ -21,7 +21,7 @@ angular.module('echo.models.location', [])
     };
 
     Location.prototype.getLocationString = function () {
-      var cityState;
+      var cityState = '';
 
       if (!_.isEmpty(this.city) && !_.isEmpty(this.state)) {
         cityState = _.join([this.city, this.state], ', ');

@@ -20,13 +20,7 @@
         <confirm-empty report-empty="$ctrl.reportEmpty" checkbox-items="$ctrl.checkboxItems"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
-        <h4 class="content-header">Enter the driver's current location</h4>
-        <p>Drivers can help you bypass this step by enabling tracking for the app in their phone's Settings.</p>
-        <location-search location="$ctrl.location" />
-        <p>
-          <strong>When did the driver report empty?</strong>
-        </p>
-        <date-time-picker date-time="$ctrl.dateTimePicker" />
+        <driver-location location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker"/>
       </div>
     </section>
   </div>
