@@ -5,7 +5,7 @@
     <tbody>
       <tr ng-repeat="activity in $ctrl.activityLog" ng-if="$ctrl.isOpen || $index === 0">
         <td class="log-note">{{activity.description}}</td>
-        <td class="log-driver">{{activity.user.oneLoginRole}} {{activity.user.firstName}} {{activity.user.lastName | firstCharacter}}</td>
+        <td class="log-driver">{{activity.user.oneLoginRoleName}} {{activity.user.firstName}} {{activity.user.lastName | firstCharacter}}</td>
         <td class="log-time">{{activity.time}}</td>
         <td class="log-day">{{activity.day}}</td>
       </tr>
