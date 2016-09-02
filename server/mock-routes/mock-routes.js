@@ -4,9 +4,11 @@ var carrierHandler = require('./handlers/carrier-handler'),
   languageHandler = require('./handlers/language-handler'),
   driverHandler = require('./handlers/driver-handler'),
   loadsHandler = require('./handlers/loads-handler'),
+  locationHandler = require('./handlers/location-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
+  app.get(endpoints.api.location, locationHandler.getLocation);
   app.get(endpoints.api.loadsNeedingAction, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.multiStopLoads, loadsHandler.getLoadsByCarrierId);
   app.post(endpoints.api.assignDriverByLoadId, loadsHandler.getLoadCount);

@@ -26,6 +26,7 @@ module.exports = {
     drivers: '/mock/api/v1/carriers/:carrierId/drivers',
     loadById: '/mock/api/v1/loads/:loadId/details',
     language: '/mock/api/v1/preferredLanguages',
+    location: '/mock/api/v1/location',
     loadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction',
     multiStopLoads: '/mock/api/v1/carriers/:carrierId/loads/upcomingMultiStop',
     assignDriverByLoadId: '/mock/api/v1/loads/:loadId/assign/:userId',

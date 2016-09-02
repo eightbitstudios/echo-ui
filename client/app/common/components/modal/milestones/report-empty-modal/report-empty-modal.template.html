@@ -22,8 +22,13 @@
         <checkbox-card item="item" ng-repeat="item in $ctrl.items" />
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
-        <h4 class="content-header">Location</h4>
-        <date-time-picker time="$ctrl.time" />
+        <h4 class="content-header">Enter the driver's location</h4>
+        <p>Drivers can help you bypass this step by enabling tracking for the app in their phone's Settings.</p>
+        <location-search />
+        <p>
+          <strong>When did the driver finish unloading?</strong>
+        </p>
+        <date-time-picker time="$ctrl.time" date="$ctrl.time" />
       </div>
     </section>
   </div>

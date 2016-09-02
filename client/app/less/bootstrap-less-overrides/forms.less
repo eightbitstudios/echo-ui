@@ -281,3 +281,41 @@ select:focus {
 .checkbox.control-x .checkbox input[type="checkbox"], .checkbox.control-lrg .checkbox input[type="checkbox"] {
   margin-left: -40px;
 }
+
+.search-form input.search-form-input.form-control.search-form-input_dark {
+  background-color: #a9adaf;
+  color: @c-white;
+  &:hover, &:focus {
+    background-color: @c-gray-mid-dark;
+  }
+  &::-webkit-input-placeholder {
+    color: @c-white;
+  }
+  &:-moz-placeholder {
+    color: @c-white;
+    opacity: 1;
+  }
+  &::-moz-placeholder {
+    color: @c-white;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: @c-white;
+  }
+  &:focus {
+    &::-webkit-input-placeholder {
+      color: @c-gray-mid-dark;
+    }
+    &:-moz-placeholder {
+      color: @c-gray-mid-dark;
+      opacity: 1;
+    }
+    &::-moz-placeholder {
+      color: @c-gray-mid-dark;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: @c-gray-mid-dark;
+    }
+  }
+}

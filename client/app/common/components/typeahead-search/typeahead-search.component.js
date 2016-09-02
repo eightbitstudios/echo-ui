@@ -5,7 +5,9 @@ angular.module('echo.components.typeaheadSearch', [
   ]).component('typeaheadSearch', {
     bindings: {
       searchService: '&',
-      onSelectCallback: '&'
+      onSelectCallback: '&',
+      template: '@',
+      placeholderText: '@'
     },
     templateUrl: 'app/common/components/typeahead-search/typeahead-search.template.html',
     controller: function ($q) {
@@ -35,6 +37,7 @@ angular.module('echo.components.typeaheadSearch', [
 
       that.clearSearchHandler = function () {
         that.selection = '';
+        that.onSelectCallback({ selection: that.selection });
       };
     }
   });
