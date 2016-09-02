@@ -135,13 +135,13 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentStatus: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportArrivalAtpickUp',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
@@ -170,13 +170,13 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentStatus: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
@@ -207,13 +207,13 @@ module.exports = {
         isTrackingEnabled: true
       },
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Mike',
           lastName: 'Potatoe'
         },
         time: '1473417000',
-        nextAction: 'ReportArrivalAtpickUp',
+        nextAction: 1,
         onTime: true,
         lateBy: null
       },
@@ -244,13 +244,13 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportArrivalAtpickUp',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
@@ -279,13 +279,13 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
@@ -316,13 +316,13 @@ module.exports = {
         isTrackingEnabled: true
       },
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Mike',
           lastName: 'Potatoe'
         },
         time: '1473417000',
-        nextAction: 'ReportArrivalAtpickUp',
+        nextAction: 1,
         onTime: true,
         lateBy: null
       },
@@ -353,13 +353,13 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportArrivalAtpickUp',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
@@ -388,13 +388,13 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
@@ -424,13 +424,13 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
@@ -459,13 +459,13 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
@@ -495,13 +495,13 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
+        currentAction: 0,
         actionByUser: {
           firstName: 'Tim',
           lastName: 'Potatoe'
         },
         time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },

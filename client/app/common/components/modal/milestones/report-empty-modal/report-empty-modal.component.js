@@ -35,7 +35,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
           stateName: that.location.state,
           date: that.dateTimePicker.getDateTime()
         }).then(function () {
-          that.modalActions.close();
+          that.modalActions.close(true);
         }).finally(function () {
           that.showButtonLoading = false;
         });
