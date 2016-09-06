@@ -2,6 +2,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
+  'echo.components.modal.milestones.reportLoaded',
   'echo.services.modal',
   'echo.api.loads',
   'echo.enums.actions'
@@ -34,9 +35,21 @@ angular.module('echo.components.loadTable.action', [
         });
       };
 
+      actionHandler[actionEnums.REPORT_LOADED.value] = function (loadGuid) {
+        return loadsApi.fetchReportEmptyByLoadGuid(loadGuid).then(function (reportLoaded) {
+          return modalService.open({
+            component: 'report-loaded-modal',
+            bindings: {
+              load: that.load,
+              reportLoaded: reportLoaded
+            }
+          });
+        });
+      };
+
       that.openMilestone = function () {
         that.showButtonLoading = true;
-        actionHandler[actionEnums.REPORTED_EMPTY.value](that.load.loadGuid)
+        actionHandler[actionEnums.REPORT_LOADED.value](that.load.loadGuid)
           .then(function (modalInstance) {
 
             modalInstance.result.then(function (changedAction) {
