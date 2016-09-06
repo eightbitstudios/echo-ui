@@ -34,13 +34,13 @@ angular.module('echo.components.loadTable.action', [
         });
       };
 
-      that.openMilestone = function () {
+      that.openMilestone = function (action) {
         that.showButtonLoading = true;
-        actionHandler[actionEnums.REPORTED_EMPTY.value](that.load.loadGuid)
+        actionHandler[action](that.load.loadGuid)
           .then(function (modalInstance) {
 
-            modalInstance.result.then(function (changedAction) {
-              if (changedAction) {
+            modalInstance.result.then(function (actionChanged) {
+              if (actionChanged) {
                 that.actionChangedCallback();
               }
             });
