@@ -14,7 +14,8 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
     bindings: {
       modalActions: '<',
       load: '<',
-      reportEmpty: '<'
+      reportEmpty: '<',
+      timeZones: '<'
     },
     controller: function (loadsApi, LocationModel, DateTimePickerModel, CheckboxModel) {
       var that = this;
@@ -25,7 +26,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
       };
 
       that.isNextStepEnabled = function () {
-        return that.checkboxItems.equipmentCheckbox.isChecked && that.checkboxItems.seviceCheckbox.isChecked && that.checkboxItems.instrunctionCheckbox.isChecked;
+        return that.checkboxItems.equipmentCheckbox.isChecked && that.checkboxItems.seviceCheckbox.isChecked && that.checkboxItems.instructionCheckbox.isChecked;
       };
 
       that.saveReportEmpty = function () {

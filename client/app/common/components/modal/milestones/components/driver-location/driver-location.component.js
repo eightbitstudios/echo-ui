@@ -6,7 +6,8 @@ angular.module('echo.components.modal.milestones.driverLocation', [
     templateUrl: 'app/common/components/modal/milestones/components/driver-location/driver-location.template.html',
     bindings: {
       location: '=',
-      dateTimePicker: '='
+      dateTimePicker: '=',
+      timeZones: '<'
     },
     controller: function () {
     }

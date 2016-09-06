@@ -4,7 +4,8 @@ angular.module('echo.components.loadTable.action', [
   'echo.components.modal.milestones.reportEmpty',
   'echo.services.modal',
   'echo.api.loads',
-  'echo.enums.actions'
+  'echo.enums.actions',
+  'echo.api.timeZone'
 ])
   .component('action', {
     templateUrl: 'app/common/components/load-table/components/action/action.template.html',
@@ -12,7 +13,7 @@ angular.module('echo.components.loadTable.action', [
       load: '<',
       actionChangedCallback: '&'
     },
-    controller: function (appConstants, actionEnums, modalService, loadsApi) {
+    controller: function ($q, appConstants, actionEnums, modalService, loadsApi, timeZoneApi) {
       var that = this;
 
       that.appConstants = appConstants;
@@ -23,15 +24,17 @@ angular.module('echo.components.loadTable.action', [
       var actionHandler = {};
 
       actionHandler[actionEnums.REPORTED_EMPTY.value] = function (loadGuid) {
-        return loadsApi.fetchReportEmptyByLoadGuid(loadGuid).then(function (reportEmpty) {
+        return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid), 
+        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
           return modalService.open({
             component: 'report-empty-modal',
             bindings: {
               load: that.load,
-              reportEmpty: reportEmpty
+              reportEmpty: reportEmpty,
+              timeZones: timeZones
             }
           });
-        });
+        }));
       };
 
       that.openMilestone = function (action) {

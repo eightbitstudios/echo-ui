@@ -6,7 +6,8 @@ angular.module('echo.components.dateTimePicker', [
 ])
   .component('dateTimePicker', {
     bindings: {
-      dateTime: '='
+      dateTime: '=',
+      timeZones: '<'
     },
     templateUrl: 'app/common/components/date-time-picker/date-time-picker.template.html',
     controller: function () {
