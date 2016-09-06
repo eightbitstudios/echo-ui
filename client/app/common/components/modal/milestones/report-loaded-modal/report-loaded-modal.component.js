@@ -3,12 +3,10 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
   'echo.components.modal.milestones.progressIndicator',
   'echo.components.modal.milestones.modalSteps',
   'echo.api.loads',
-  'echo.components.modal.milestones.driverLocation',
   'echo.components.modal.milestones.reportEmpty.confirmEmpty',
   'echo.components.modal.milestones.reportLoaded.confirmItems',
   'echo.components.modal.milestones.reportLoaded.finishLoading',
   'echo.components.modal.milestones.reportLoaded.optionalDocuments',
-  'echo.models.location',
   'echo.models.dateTimePicker'
 ])
   .component('reportLoadedModal', {
@@ -18,17 +16,13 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
       load: '<',
       reportLoaded: '<'
     },
-    controller: function (loadsApi, LocationModel, DateTimePickerModel) {
+    controller: function (loadsApi, DateTimePickerModel) {
       var that = this;
 
       that.modes = {
         confirmItems: 1,
         finishLoading: 2,
         optionalDocuments: 3
-      };
-
-      that.isNextStepEnabled = function () {
-        return true;
       };
 
       that.saveReportEmpty = function () {
@@ -49,23 +43,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         that.steps = [that.modes.confirmItems, that.modes.finishLoading, that.modes.optionalDocuments];
         that.currentStep = that.modes.confirmItems;
         that.showButtonLoading = false;
-
-        that.location = new LocationModel();
-
         that.dateTimePicker = new DateTimePickerModel();
-
-        that.checkboxItems = {
-          equipmentCheckbox: {
-            isChecked: false
-          },
-          seviceCheckbox: {
-            isChecked: false
-          },
-          instrunctionCheckbox: {
-            isChecked: false
-          }
-        };
-
       };
     }
   });
