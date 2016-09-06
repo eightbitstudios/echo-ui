@@ -18,8 +18,8 @@ angular.module('echo.components.loadTable.action', [
 
       that.appConstants = appConstants;
       that.showButtonLoading = false;
-      that.currentStatus = _.find(actionEnums, {value: that.load.action.lastAction});
-      that.nextAction = _.find(actionEnums, {value: that.load.action.nextAction});
+      that.currentStatus = _.find(actionEnums, { value: that.load.action.lastAction });
+      that.nextAction = _.find(actionEnums, { value: that.load.action.nextAction });
 
       var actionHandler = {};
 
@@ -47,13 +47,13 @@ angular.module('echo.components.loadTable.action', [
         });
       };
 
-      that.openMilestone = function () {
+      that.openMilestone = function (action) {
         that.showButtonLoading = true;
-        actionHandler[actionEnums.REPORT_LOADED.value](that.load.loadGuid)
+        actionHandler[action](that.load.loadGuid)
           .then(function (modalInstance) {
 
-            modalInstance.result.then(function (changedAction) {
-              if (changedAction) {
+            modalInstance.result.then(function (actionChanged) {
+              if (actionChanged) {
                 that.actionChangedCallback();
               }
             });
