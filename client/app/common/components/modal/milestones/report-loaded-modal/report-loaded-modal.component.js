@@ -7,7 +7,8 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
   'echo.components.modal.milestones.reportLoaded.confirmItems',
   'echo.components.modal.milestones.reportLoaded.finishLoading',
   'echo.components.modal.milestones.reportLoaded.optionalDocuments',
-  'echo.models.dateTimePicker'
+  'echo.models.dateTimePicker',
+  'echo.models.checkbox'
 ])
   .component('reportLoadedModal', {
     templateUrl: 'app/common/components/modal/milestones/report-loaded-modal/report-loaded-modal.template.html',
@@ -18,7 +19,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
       reportLoaded: '<',
       timeZones: '<'
     },
-    controller: function (loadsApi, DateTimePickerModel) {
+    controller: function (loadsApi, DateTimePickerModel, CheckboxModel) {
       var that = this;
 
       that.modes = {
@@ -28,6 +29,12 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
       };
 
       that.totalWeight = _.sumBy(that.items, 'estimatedWeight');
+
+      that.isNextStepEnabled = function () {
+        return _.every(that.checkboxItems, function(checkboxItem){
+          return checkboxItem.isChecked;
+        });
+      };
 
       that.saveReportEmpty = function () {
         that.showButtonLoading = true;
@@ -42,7 +49,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         });
       };
 
-      that.pickupNumbers = _.map(that.load.pickUp, function(pickup){
+      that.pickupNumbers = _.map(that.load.pickUp, function (pickup) {
         return pickup.pickupNumber;
       });
 
@@ -50,6 +57,9 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         that.steps = [that.modes.confirmItems, that.modes.finishLoading, that.modes.optionalDocuments];
         that.currentStep = that.modes.confirmItems;
         that.showButtonLoading = false;
+        that.checkboxItems = _.map(that.items, function () {
+          return new CheckboxModel();
+        });
         that.dateTimePicker = new DateTimePickerModel({
           minDate: moment(that.reportLoaded.lastActionDate)
         });
