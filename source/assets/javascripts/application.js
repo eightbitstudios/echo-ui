@@ -6,7 +6,10 @@ $(window).load(function(){
 	$('.modal').modal('show');
 
   $('.modal').on('shown.bs.modal', function (e) {
-    positionDatePicker()
+    //if datepicker
+    if ($('.btn-modal-dp').length) {
+      positionDatePicker()
+    }
   })
 
   // positioning for modal on tablets
@@ -19,11 +22,9 @@ $(window).load(function(){
     $cal.removeClass('datepicker-offbottom')
 
     if (calBtnPos + (calH / 2) > winHeight) {
-      $cal.addClass('datepicker-offbottom').css('top', '-'+calH+'px !important')
+      $cal.addClass('datepicker-offbottom')
     }
   }
-
-
 
 
   // DEMO active search box in Report Location modal

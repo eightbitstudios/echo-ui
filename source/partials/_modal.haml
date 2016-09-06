@@ -65,6 +65,18 @@
       - elsif modal == 'report-location-2'
         = partial 'partials/modals/report-location-2'
 
+      - elsif modal == 'add-document'
+        = partial 'partials/modals/add-document'
+
+      - elsif modal == 'add-document-error'
+        = partial 'partials/modals/add-document-error'
+
+      - elsif modal == 'add-document-added'
+        = partial 'partials/modals/add-document-added'
+
+      - elsif modal == 'add-document-2'
+        = partial 'partials/modals/add-document-2'
+
       - else
         %h2 This modal does not exist
 

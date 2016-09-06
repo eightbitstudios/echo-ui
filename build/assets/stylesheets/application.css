@@ -8015,50 +8015,51 @@ h4 {
 /* line 33, base/_typography.sass */
 h5 {
   font-size: 20px;
+  font-weight: 300;
   line-height: 1.6; }
 
-/* line 37, base/_typography.sass */
+/* line 38, base/_typography.sass */
 h6 {
   font-size: 14px;
   font-weight: 600; }
 
-/* line 41, base/_typography.sass */
+/* line 42, base/_typography.sass */
 ul, ol {
   padding-left: 20px;
   margin: 20px 0; }
 
-/* line 45, base/_typography.sass */
+/* line 46, base/_typography.sass */
 ul > li {
   margin-bottom: 10px; }
 
-/* line 48, base/_typography.sass */
+/* line 49, base/_typography.sass */
 p {
   margin: 0 0 20px; }
 
-/* line 51, base/_typography.sass */
+/* line 52, base/_typography.sass */
 a {
   color: #26c1fb;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in; }
-  /* line 54, base/_typography.sass */
+  /* line 55, base/_typography.sass */
   a:hover {
     color: #1E9AC9;
     text-decoration: none; }
 
-/* line 58, base/_typography.sass */
+/* line 59, base/_typography.sass */
 .lead {
   font-size: 18px; }
 
-/* line 61, base/_typography.sass */
+/* line 62, base/_typography.sass */
 .brand {
   font-weight: 400;
   font-family: "Teko", sans-serif;
   text-transform: uppercase; }
-  /* line 66, base/_typography.sass */
+  /* line 67, base/_typography.sass */
   .brand.brand-lg {
     margin-bottom: 60px; }
 
-/* line 71, base/_typography.sass */
+/* line 72, base/_typography.sass */
 .section-label {
   color: #2b363b;
   font-size: 30px;
@@ -8066,7 +8067,7 @@ a {
   letter-spacing: 0.5px;
   text-transform: none; }
 
-/* line 78, base/_typography.sass */
+/* line 79, base/_typography.sass */
 .section-sub-label {
   color: #a9adaf;
   font-size: 20px;
@@ -8074,14 +8075,14 @@ a {
   text-transform: none;
   letter-spacing: 0.5px; }
 
-/* line 85, base/_typography.sass */
+/* line 86, base/_typography.sass */
 p.label {
   padding: 0;
   text-align: left;
   display: block;
   color: #505c61; }
 
-/* line 94, base/_typography.sass */
+/* line 95, base/_typography.sass */
 .small-header {
   color: #505c61;
   font-size: 11px;
@@ -8090,14 +8091,14 @@ p.label {
   text-transform: uppercase;
   margin: 0 0 5px; }
 
-/* line 102, base/_typography.sass */
+/* line 103, base/_typography.sass */
 .medium-header {
   font-size: 18px;
   line-height: 1.3;
   color: #2b363b;
   margin: 10px 0 30px; }
 
-/* line 108, base/_typography.sass */
+/* line 109, base/_typography.sass */
 .content-header {
   color: #2b363b;
   font-size: 18px;
@@ -8105,7 +8106,7 @@ p.label {
   line-height: 1.3;
   margin: 0 0 20px; }
 
-/* line 115, base/_typography.sass */
+/* line 116, base/_typography.sass */
 .section-header {
   color: #2b363b;
   font-size: 14px;
@@ -8115,27 +8116,27 @@ p.label {
   padding-bottom: 15px;
   margin: 0 0 10px;
   border-bottom: solid 1px #e1e2e3; }
-  /* line 124, base/_typography.sass */
+  /* line 125, base/_typography.sass */
   .section-header em {
     font-weight: 300;
     font-style: normal; }
-  /* line 128, base/_typography.sass */
+  /* line 129, base/_typography.sass */
   .section-header.sh-no_border {
     padding-bottom: 0;
     margin-bottom: 0 !important;
     border-bottom: none; }
-  /* line 133, base/_typography.sass */
+  /* line 134, base/_typography.sass */
   .section-header.sh-short {
     padding-bottom: 5px; }
-  /* line 136, base/_typography.sass */
+  /* line 137, base/_typography.sass */
   .section-header.sh-med {
     padding-bottom: 10px; }
 
-/* line 141, base/_typography.sass */
+/* line 142, base/_typography.sass */
 .text-muted {
   color: #a9adaf; }
 
-/* line 144, base/_typography.sass */
+/* line 145, base/_typography.sass */
 .disclaimer {
   font-size: 12px;
   line-height: 1.3;
@@ -8470,34 +8471,99 @@ fieldset[disabled] .btn {
         text-transform: none;
         line-height: 1.3;
         display: block; }
-  /* line 345, base/_buttons.sass */
+    /* line 347, base/_buttons.sass */
+    .btn.btn-document.btn-dropzone-lg {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      height: 140px;
+      padding: 0; }
+      /* line 355, base/_buttons.sass */
+      .btn.btn-document.btn-dropzone-lg:before, .btn.btn-document.btn-dropzone-lg:after {
+        top: calc(32px + 27px/2);
+        left: 50%;
+        margin-left: calc(-27px/2); }
+      /* line 361, base/_buttons.sass */
+      .btn.btn-document.btn-dropzone-lg .add-type {
+        text-align: center;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+        margin-left: 0;
+        height: auto;
+        padding: 27px;
+        border-left: none; }
+    /* line 370, base/_buttons.sass */
+    .btn.btn-document.btn-add-doc {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      height: 140px;
+      width: 130px;
+      padding: 0; }
+      /* line 379, base/_buttons.sass */
+      .btn.btn-document.btn-add-doc:before, .btn.btn-document.btn-add-doc:after {
+        top: calc(40px + 27px/2);
+        left: 50%;
+        margin-left: calc(-27px/2); }
+      /* line 385, base/_buttons.sass */
+      .btn.btn-document.btn-add-doc .add-type {
+        text-align: center;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+        margin-left: 0;
+        height: auto;
+        padding: 40px 0;
+        border-left: none; }
+  /* line 394, base/_buttons.sass */
   .btn.btn-icon {
     padding: 0;
     border: none;
     background: none; }
-    /* line 350, base/_buttons.sass */
+    /* line 399, base/_buttons.sass */
     .btn.btn-icon:hover {
       background: none; }
-  /* line 354, base/_buttons.sass */
+  /* line 403, base/_buttons.sass */
   .btn.btn-alert {
     padding: 5px 0;
     color: #eb004b; }
-    /* line 357, base/_buttons.sass */
+    /* line 406, base/_buttons.sass */
     .btn.btn-alert img {
       vertical-align: baseline; }
-  /* line 362, base/_buttons.sass */
+  /* line 411, base/_buttons.sass */
   .btn.btn-back:hover {
     color: #1e9ac9;
     text-decoration: none; }
-  /* line 366, base/_buttons.sass */
+  /* line 415, base/_buttons.sass */
   .btn.btn-back img {
     width: 11px;
     vertical-align: baseline; }
-  /* line 370, base/_buttons.sass */
+  /* line 419, base/_buttons.sass */
   .btn.btn-show {
     padding-bottom: 0; }
 
-/* line 376, base/_buttons.sass */
+/* line 425, base/_buttons.sass */
 .btn-close.close {
   position: relative;
   opacity: 1;
@@ -8506,7 +8572,7 @@ fieldset[disabled] .btn {
   width: 2rem;
   height: 2rem;
   z-index: 999999; }
-  /* line 384, base/_buttons.sass */
+  /* line 433, base/_buttons.sass */
   .btn-close.close:after, .btn-close.close:before {
     content: "";
     height: 3px;
@@ -8521,7 +8587,7 @@ fieldset[disabled] .btn {
     transition: all 0.3s cubic-bezier(0.71, 0.48, 0.3, 0.9);
     -webkit-transform: translateX(-50%) rotateZ(45deg);
             transform: translateX(-50%) rotateZ(45deg); }
-  /* line 398, base/_buttons.sass */
+  /* line 447, base/_buttons.sass */
   .btn-close.close:after {
     -webkit-transform: translateX(-50%) rotateZ(-45deg);
             transform: translateX(-50%) rotateZ(-45deg); }
@@ -8553,64 +8619,10 @@ label, p.label {
   transition: color 0.2s ease-in; }
 
 /* line 27, base/_forms.sass */
-.form-group {
-  margin-bottom: 30px;
-  position: relative; }
-  /* line 31, base/_forms.sass */
-  .form-group:last-child {
-    margin-bottom: 0; }
-  /* line 35, base/_forms.sass */
-  .form-group:hover label, .form-group:hover p.label {
-    color: #2b363b;
-    font-weight: 600; }
-  /* line 39, base/_forms.sass */
-  .form-group:hover .form-control {
-    border-color: #2b363b; }
-
-/* line 42, base/_forms.sass */
-.form-control {
-  color: #2b363b;
-  box-shadow: none;
-  padding-left: 0;
-  border-radius: 0;
-  border-width: 0 0 1px 0;
-  border-color: #a9adaf; }
-  /* line 50, base/_forms.sass */
-  .form-control::-webkit-input-placeholder {
-    color: #a9adaf; }
-  /* line 52, base/_forms.sass */
-  .form-control::-moz-placeholder {
-    color: #a9adaf; }
-  /* line 54, base/_forms.sass */
-  .form-control:-ms-input-placeholder {
-    color: #a9adaf; }
-  /* line 57, base/_forms.sass */
-  .form-control:focus {
-    box-shadow: none;
-    outline: none;
-    border-color: #2b363b; }
-
-/* line 62, base/_forms.sass */
-.form-group-inline {
-  display: inline-block; }
-
-/* line 66, base/_forms.sass */
-.form-inline-editing .form-control {
-  background-color: transparent; }
-/* line 69, base/_forms.sass */
-.form-inline-editing .btn-link + .btn-link {
-  margin-left: 10px; }
-
-/* line 72, base/_forms.sass */
-input[type="radio"],
-input[type="checkbox"] {
-  margin-top: 0; }
-
-/* line 76, base/_forms.sass */
 .select {
   padding-left: 10px;
   margin-right: -10px; }
-  /* line 80, base/_forms.sass */
+  /* line 31, base/_forms.sass */
   .select select {
     padding-left: 0;
     padding-right: 0;
@@ -8618,82 +8630,144 @@ input[type="checkbox"] {
     border-radius: 0;
     border-bottom: 1px solid #a9adaf;
     background-color: #fff; }
-  /* line 88, base/_forms.sass */
+  /* line 39, base/_forms.sass */
   .select:after {
     content: url("../images/icon-down-carat.svg");
     border: none !important;
     margin-top: -1rem;
     margin-right: 1rem; }
-    /* line 94, base/_forms.sass */
+    /* line 45, base/_forms.sass */
     .select:after:focus {
       box-shadow: none; }
-  /* line 97, base/_forms.sass */
+  /* line 48, base/_forms.sass */
   .select select::-ms-expand {
     display: none; }
 
-/* line 101, base/_forms.sass */
-.control input:checked ~ .control-indicator {
-  background-color: #e1e2e3;
-  background-image: url("../images/checkbox-check.svg"); }
-/* line 105, base/_forms.sass */
-.control input:active ~ .control-indicator {
-  background-color: #f7f7f7; }
-/* line 108, base/_forms.sass */
-.control input:focus ~ .control-indicator {
-  box-shadow: 0 0 0 0; }
+/* line 53, base/_forms.sass */
+.form-group {
+  margin-bottom: 30px;
+  position: relative; }
+  /* line 57, base/_forms.sass */
+  .form-group:last-child {
+    margin-bottom: 0; }
+  /* line 61, base/_forms.sass */
+  .form-group:hover label, .form-group:hover p.label {
+    color: #2b363b;
+    font-weight: 600; }
+  /* line 65, base/_forms.sass */
+  .form-group:hover .form-control {
+    border-color: #2b363b; }
 
-/* line 112, base/_forms.sass */
+/* line 70, base/_forms.sass */
+.form-control {
+  color: #2b363b;
+  box-shadow: none;
+  padding-left: 0;
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+  border-color: #a9adaf; }
+  /* line 78, base/_forms.sass */
+  .form-control::-webkit-input-placeholder {
+    color: #a9adaf; }
+  /* line 80, base/_forms.sass */
+  .form-control::-moz-placeholder {
+    color: #a9adaf; }
+  /* line 82, base/_forms.sass */
+  .form-control:-ms-input-placeholder {
+    color: #a9adaf; }
+  /* line 85, base/_forms.sass */
+  .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: #2b363b; }
+
+/* line 91, base/_forms.sass */
+.form-group-inline {
+  display: inline-block; }
+
+/* line 95, base/_forms.sass */
+.form-inline-editing .form-control {
+  background-color: transparent; }
+/* line 98, base/_forms.sass */
+.form-inline-editing .btn-link + .btn-link {
+  margin-left: 10px; }
+
+/* line 104, base/_forms.sass */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-top: 0; }
+
+/* line 108, base/_forms.sass */
 .checkbox,
 .radio {
   text-transform: none;
   letter-spacing: 0;
   font-size: 14px;
   font-weight: 300; }
-  /* line 119, base/_forms.sass */
+  /* line 115, base/_forms.sass */
   .checkbox label, .checkbox p.label,
   .radio label,
   .radio p.label {
     letter-spacing: 0;
     font-weight: 300 !important; }
-  /* line 123, base/_forms.sass */
+  /* line 119, base/_forms.sass */
   .checkbox:hover,
   .radio:hover {
     font-weight: 300 !important; }
-    /* line 125, base/_forms.sass */
+    /* line 121, base/_forms.sass */
     .checkbox:hover label, .checkbox:hover p.label,
     .radio:hover label,
     .radio:hover p.label {
       font-weight: 300; }
-  /* line 128, base/_forms.sass */
+  /* line 124, base/_forms.sass */
   .checkbox .control:hover .control-indicator,
   .radio .control:hover .control-indicator {
     background: #e1e2e3; }
-  /* line 131, base/_forms.sass */
+  /* line 127, base/_forms.sass */
   .checkbox.control,
   .radio.control {
     display: block;
     margin-right: 16px;
     padding-left: 25px; }
-  /* line 136, base/_forms.sass */
+  /* line 132, base/_forms.sass */
   .checkbox .control-indicator,
   .radio .control-indicator {
     top: 0;
     margin-right: 5px; }
 
 /* line 141, base/_forms.sass */
+.control input:checked ~ .control-indicator {
+  background-color: #e1e2e3; }
+/* line 144, base/_forms.sass */
+.control input:active ~ .control-indicator {
+  background-color: #f7f7f7; }
+/* line 147, base/_forms.sass */
+.control input:focus ~ .control-indicator {
+  box-shadow: 0 0 0 0; }
+/* line 151, base/_forms.sass */
+.control.radio input:checked ~ .control-indicator {
+  border: solid 1px #e1e2e3;
+  background-color: #f0f0f0;
+  background-image: url("../images/radial-selected.svg");
+  background-size: 10px; }
+/* line 158, base/_forms.sass */
+.control.checkbox input:checked ~ .control-indicator {
+  background-image: url("../images/checkbox-check.svg"); }
+
+/* line 162, base/_forms.sass */
 .checkbox .control-indicator {
   border-radius: 0; }
-/* line 144, base/_forms.sass */
+/* line 165, base/_forms.sass */
 .checkbox.control-x, .checkbox.control-lrg {
   padding-left: 30px;
   height: 30px;
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 0; }
-  /* line 152, base/_forms.sass */
+  /* line 173, base/_forms.sass */
   .checkbox.control-x .checkbox input[type="checkbox"], .checkbox.control-lrg .checkbox input[type="checkbox"] {
     margin-left: -40px; }
-  /* line 155, base/_forms.sass */
+  /* line 176, base/_forms.sass */
   .checkbox.control-x .control-indicator, .checkbox.control-lrg .control-indicator {
     top: 0;
     width: 30px;
@@ -8701,17 +8775,33 @@ input[type="checkbox"] {
     border-radius: 4px;
     background-color: #fff;
     border: solid 1px #e1e2e3; }
-/* line 164, base/_forms.sass */
+/* line 185, base/_forms.sass */
 .checkbox.control-x input:checked ~ .control-indicator {
   background-color: #fff;
   background-image: url("../images/icon-remove.svg"); }
-/* line 171, base/_forms.sass */
+/* line 192, base/_forms.sass */
 .checkbox.control-lrg input:checked ~ .control-indicator {
   border: solid 1px #3daf2c;
   background-color: #3daf2c;
   background-image: url("../images/icon-checkmark-wht.svg"); }
 
-/* line 177, base/_forms.sass */
+/* line 202, base/_forms.sass */
+.form-inline legend {
+  display: inline-block;
+  margin: 0 15px 0 0;
+  width: auto; }
+/* line 207, base/_forms.sass */
+.form-inline .checkbox.control,
+.form-inline .radio.control {
+  display: inline-block; }
+  /* line 211, base/_forms.sass */
+  .form-inline .checkbox.control input[type="radio"],
+  .form-inline .checkbox.control input[type="checkbox"],
+  .form-inline .radio.control input[type="radio"],
+  .form-inline .radio.control input[type="checkbox"] {
+    margin-left: -15px; }
+
+/* line 217, base/_forms.sass */
 textarea.form-control {
   height: 150px;
   padding: 10px;
@@ -8719,31 +8809,31 @@ textarea.form-control {
   border-radius: 2px;
   background-color: #f0f0f0; }
 
-/* line 188, base/_forms.sass */
+/* line 228, base/_forms.sass */
 .help-block {
   font-size: 12px;
   line-height: 1.3;
   margin-bottom: -10px; }
 
-/* line 195, base/_forms.sass */
+/* line 235, base/_forms.sass */
 .has-error label, .has-error p.label {
   font-weight: 600;
   line-height: 1.4;
   color: #eb004b; }
-/* line 200, base/_forms.sass */
+/* line 240, base/_forms.sass */
 .has-error .form-control {
   box-shadow: none;
   border-color: #eb004b; }
-  /* line 204, base/_forms.sass */
+  /* line 244, base/_forms.sass */
   .has-error .form-control:focus {
     box-shadow: none;
     border-color: #eb004b; }
-/* line 208, base/_forms.sass */
+/* line 248, base/_forms.sass */
 .has-error .help-block {
-  font-size: 400;
+  font-weight: 400;
   color: #eb004b; }
 
-/* line 213, base/_forms.sass */
+/* line 253, base/_forms.sass */
 .is-approved:before {
   content: url("../images/icon-approve.svg");
   position: absolute;
@@ -8751,7 +8841,7 @@ textarea.form-control {
   bottom: 7px;
   width: 11px; }
   @media (min-width: 769px) {
-    /* line 213, base/_forms.sass */
+    /* line 253, base/_forms.sass */
     .is-approved:before {
       left: -20px; } }
 
@@ -9932,6 +10022,10 @@ html, body {
     .content-container {
       padding: 30px 40px; } }
 
+/* line 31, layout/_main.sass */
+hr {
+  width: 100%; }
+
 /* line 5, layout/_sidebar.sass */
 .sidebar-container {
   padding: 10px 20px;
@@ -10834,7 +10928,7 @@ body.load-management-detail {
   .doc-descrip h5 {
     font-size: 14px;
     text-transform: uppercase;
-    margin: 0; }
+    margin: 0 0 3px; }
 
 /* line 6, pages/_load_management.sass */
 .load-management .tab-bar {
@@ -10882,7 +10976,7 @@ body.load-management-detail {
 /* line 14, pages/_reporting_modals.sass */
 .modal-load-mgmt .modal-sidebar {
   width: calc(100%/3);
-  width: 175px;
+  width: 177px;
   padding: 25px 25px 25px 0;
   border-right: solid 1px #e1e2e3; }
 /* line 20, pages/_reporting_modals.sass */
@@ -10927,95 +11021,94 @@ body.load-management-detail {
     /* line 45, pages/_reporting_modals.sass */
     .modal-action-links.modal-action-split svg {
       vertical-align: middle; }
+  /* line 48, pages/_reporting_modals.sass */
+  .modal-action-links.has-error, .modal-action-links.has-message {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 0;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    /* line 54, pages/_reporting_modals.sass */
+    .modal-action-links.has-error .btn, .modal-action-links.has-message .btn {
+      margin-right: 20px; }
+    /* line 56, pages/_reporting_modals.sass */
+    .modal-action-links.has-error .help-block, .modal-action-links.has-message .help-block {
+      font-size: 14px; }
 
-/* line 48, pages/_reporting_modals.sass */
+/* line 59, pages/_reporting_modals.sass */
 .btn-group-left {
   margin-left: -5px; }
 
-/* line 51, pages/_reporting_modals.sass */
+/* line 62, pages/_reporting_modals.sass */
 .btn-group-right {
   margin-right: 0; }
-  /* line 53, pages/_reporting_modals.sass */
+  /* line 64, pages/_reporting_modals.sass */
   .btn-group-right > .btn {
     margin: 0; }
 
-/* line 60, pages/_reporting_modals.sass */
+/* line 71, pages/_reporting_modals.sass */
 .modal-main-content .content-header + p {
   margin-top: -15px; }
 
-/* line 66, pages/_reporting_modals.sass */
+/* line 76, pages/_reporting_modals.sass */
+.modal-sidebar .load-doc {
+  padding: 0;
+  border-bottom: none; }
+
+/* line 83, pages/_reporting_modals.sass */
 .table-modal-scroll {
   height: 300px;
   overflow-y: scroll;
   padding-right: 25px;
   border-bottom: solid 1px #505c61; }
-  /* line 73, pages/_reporting_modals.sass */
+  /* line 90, pages/_reporting_modals.sass */
   .table-modal-scroll table tr > td:last-child {
     padding-right: 0; }
 
-/* line 76, pages/_reporting_modals.sass */
+/* line 93, pages/_reporting_modals.sass */
 .table-assign-driver {
   margin-bottom: 0; }
-  /* line 79, pages/_reporting_modals.sass */
+  /* line 96, pages/_reporting_modals.sass */
   .table-assign-driver .driver-status,
   .table-assign-driver .driver-contact {
     text-align: right; }
-  /* line 83, pages/_reporting_modals.sass */
+  /* line 100, pages/_reporting_modals.sass */
   .table-assign-driver td.driver-contact {
     color: #a9adaf;
     width: 120px; }
-  /* line 87, pages/_reporting_modals.sass */
+  /* line 104, pages/_reporting_modals.sass */
   .table-assign-driver td.driver-status {
     width: 60px; }
-  /* line 90, pages/_reporting_modals.sass */
+  /* line 107, pages/_reporting_modals.sass */
   .table-assign-driver .driver-name {
     font-size: 14px; }
 
-/* line 97, pages/_reporting_modals.sass */
-.document-add {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 10px; }
-  /* line 102, pages/_reporting_modals.sass */
-  .document-add .btn {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-    width: 255px;
-    margin-bottom: 0; }
-  /* line 107, pages/_reporting_modals.sass */
-  .document-add .btn-note {
-    color: #a9adaf;
-    margin: 0 0 0 20px; }
-
-/* line 112, pages/_reporting_modals.sass */
+/* line 115, pages/_reporting_modals.sass */
 .card-group {
   max-height: 235px;
   overflow-y: scroll;
   padding: 2px 15px 0 2px;
   margin-bottom: 20px; }
 
-/* line 121, pages/_reporting_modals.sass */
+/* line 124, pages/_reporting_modals.sass */
 .form-arrival-time {
   margin: 10px 0 40px; }
-  /* line 124, pages/_reporting_modals.sass */
+  /* line 127, pages/_reporting_modals.sass */
   .form-arrival-time .form-group {
     margin: 0 0 0 20px;
     width: 60px; }
-    /* line 128, pages/_reporting_modals.sass */
+    /* line 131, pages/_reporting_modals.sass */
     .form-arrival-time .form-group .form-control {
       width: 100%; }
-  /* line 131, pages/_reporting_modals.sass */
+  /* line 134, pages/_reporting_modals.sass */
   .form-arrival-time .btn-modal-dp {
     padding-left: 45px; }
-    /* line 135, pages/_reporting_modals.sass */
+    /* line 138, pages/_reporting_modals.sass */
     .form-arrival-time .btn-modal-dp.filter__assigned:before {
       content: url("../images/icon-calendar-white.svg"); }
-    /* line 138, pages/_reporting_modals.sass */
+    /* line 141, pages/_reporting_modals.sass */
     .form-arrival-time .btn-modal-dp:before {
       content: url("../images/icon-calendar-gray.svg");
       display: inline-block;
@@ -11025,16 +11118,19 @@ body.load-management-detail {
       width: 18px;
       height: auto;
       margin-right: 6px; }
-    /* line 152, pages/_reporting_modals.sass */
+    /* line 155, pages/_reporting_modals.sass */
     .form-arrival-time .btn-modal-dp:hover:before, .form-arrival-time .btn-modal-dp.active:before, .form-arrival-time .btn-modal-dp:active:before, .form-arrival-time .btn-modal-dp:focus:before {
       content: url("../images/icon-calendar-white.svg"); }
-  /* line 156, pages/_reporting_modals.sass */
+  /* line 159, pages/_reporting_modals.sass */
   .form-arrival-time .daterangepicker.single.show-calendar {
     left: 150px !important;
     top: calc(-370px /2) !important;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.3); }
+    /* line 164, pages/_reporting_modals.sass */
+    .form-arrival-time .daterangepicker.single.show-calendar.datepicker-offbottom {
+      top: -370px !important; }
 
-/* line 161, pages/_reporting_modals.sass */
+/* line 170, pages/_reporting_modals.sass */
 .search-location {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11045,6 +11141,125 @@ body.load-management-detail {
   min-height: 60px;
   margin-top: 20px;
   margin-bottom: 30px; }
-  /* line 168, pages/_reporting_modals.sass */
+  /* line 177, pages/_reporting_modals.sass */
   .search-location .form-control {
     width: 220px; }
+
+/* line 185, pages/_reporting_modals.sass */
+.document-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px; }
+  /* line 190, pages/_reporting_modals.sass */
+  .document-add .btn {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 255px;
+    margin-bottom: 0; }
+  /* line 195, pages/_reporting_modals.sass */
+  .document-add .btn-note {
+    color: #a9adaf;
+    margin: 0 0 0 20px; }
+
+/* line 201, pages/_reporting_modals.sass */
+.form-doc-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 30px; }
+  /* line 209, pages/_reporting_modals.sass */
+  .form-doc-upload .control {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+    width: 35%;
+    margin: 0 0 20px; }
+    /* line 213, pages/_reporting_modals.sass */
+    .form-doc-upload .control:nth-child(odd) {
+      width: 60%; }
+
+/* line 218, pages/_reporting_modals.sass */
+.document-uploading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  padding-top: 20px;
+  width: 433px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; }
+  /* line 226, pages/_reporting_modals.sass */
+  .document-uploading > div {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    margin-right: 20px; }
+
+/* line 230, pages/_reporting_modals.sass */
+.added-document {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 130px;
+  height: 140px;
+  text-align: center;
+  padding: 20px 15px 10px;
+  background-color: #f7f7f7; }
+  /* line 242, pages/_reporting_modals.sass */
+  .added-document .close {
+    position: absolute;
+    top: calc(-24px/2);
+    right: calc(-24px/2);
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: #fff;
+    -webkit-transition: box-shadow 0.1s ease-in;
+    transition: box-shadow 0.1s ease-in;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+    /* line 253, pages/_reporting_modals.sass */
+    .added-document .close:hover {
+      background: #f7f7f7;
+      box-shadow: 0 0 0 transparent; }
+    /* line 257, pages/_reporting_modals.sass */
+    .added-document .close:after, .added-document .close:before {
+      width: 2px;
+      height: 1.4rem;
+      margin-top: -6px;
+      background: #eb004b; }
+
+/* line 264, pages/_reporting_modals.sass */
+.added-doc-text {
+  color: #a9adaf; }

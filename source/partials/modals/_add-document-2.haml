@@ -1,0 +1,88 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Add Document for'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-documents'
+
+  %section.modal-main-content
+
+    .document-uploading
+      .btn.btn-document.btn-add-doc
+        .add-type
+          ADD PAGE
+
+      .added-document
+        .btn-close.close X
+        .added-doc-thumb
+          =image_tag('document_image.png')
+        .added-doc-text
+          Pages 1-4
+
+      .added-document
+        .btn-close.close X
+        .added-doc-thumb
+          =image_tag('doc-TEMP-image.png')
+        .added-doc-text
+          Page 5
+
+      .added-document
+        .btn-close.close X
+        .added-doc-thumb
+          =image_tag('document-image-temp.png')
+        .added-doc-text
+          Page 6
+
+      .added-document
+        .btn-close.close X
+        .added-doc-thumb
+          =image_tag('doc-TEMP-image.png')
+        .added-doc-text
+          Page 7-10
+
+
+    %form.form-inline
+      %legend TYPE
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios1", :checked => "checked"}
+        %span.control-indicator
+        Load Document
+
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios1"}
+        %span.control-indicator
+        Invoice
+
+    %hr.hr
+
+    %form.form-doc-upload
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios"}
+        %span.control-indicator
+        Proof of Delivery #2 (2 Needed)
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios"}
+        %span.control-indicator
+        Fuel Receipts
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios", :checked => "checked"}
+        %span.control-indicator
+        Lumper Receipt
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios"}
+        %span.control-indicator
+        Scale Tickets
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios"}
+        %span.control-indicator
+        Bill of Lading
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios"}
+        %span.control-indicator
+        Other
+
+
+    .modal-action-links
+      %button.btn.btn-default{type: 'button'} Add Document
+
+.modal-footer
+  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE
