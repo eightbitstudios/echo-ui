@@ -5,9 +5,11 @@ var carrierHandler = require('./handlers/carrier-handler'),
   driverHandler = require('./handlers/driver-handler'),
   loadsHandler = require('./handlers/loads-handler'),
   locationHandler = require('./handlers/location-handler'),
+  timeZonesHandler = require('./handlers/time-zones-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
+  app.get(endpoints.api.timeZones, timeZonesHandler.getTimeZones);
   app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
   app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
   app.get(endpoints.api.location, locationHandler.getLocation);

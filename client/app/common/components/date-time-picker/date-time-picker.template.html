@@ -15,10 +15,7 @@
         <label class="hidden">Time Zone</label>
         <div class="select">
           <select class="form-control" ng-model="$ctrl.dateTime.timeZone" type="select">
-            <option val="EST">EST</option>
-            <option val="CST">CST</option>
-            <option val="MST">MST</option>
-            <option val="PST">PST</option>
+            <option ng-repeat="timeZone in $ctrl.timeZones" val="{{timeZone}}">{{timeZone}}</option>
           </select>
         </div>
       </div>

@@ -6,16 +6,18 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
   'echo.components.modal.milestones.driverLocation',
   'echo.components.modal.milestones.reportEmpty.confirmEmpty',
   'echo.models.location',
-  'echo.models.dateTimePicker'
+  'echo.models.dateTimePicker',
+  'echo.models.checkbox'
 ])
   .component('reportEmptyModal', {
     templateUrl: 'app/common/components/modal/milestones/report-empty-modal/report-empty-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',
-      reportEmpty: '<'
+      reportEmpty: '<',
+      timeZones: '<'
     },
-    controller: function (loadsApi, LocationModel, DateTimePickerModel) {
+    controller: function (loadsApi, LocationModel, DateTimePickerModel, CheckboxModel) {
       var that = this;
 
       that.modes = {
@@ -24,7 +26,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
       };
 
       that.isNextStepEnabled = function () {
-        return that.checkboxItems.equipmentCheckbox.isChecked && that.checkboxItems.seviceCheckbox.isChecked && that.checkboxItems.instrunctionCheckbox.isChecked;
+        return that.checkboxItems.equipmentCheckbox.isChecked && that.checkboxItems.seviceCheckbox.isChecked && that.checkboxItems.instructionCheckbox.isChecked;
       };
 
       that.saveReportEmpty = function () {
@@ -56,17 +58,10 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
         });
 
         that.checkboxItems = {
-          equipmentCheckbox: {
-            isChecked: false
-          },
-          seviceCheckbox: {
-            isChecked: false
-          },
-          instrunctionCheckbox: {
-            isChecked: false
-          }
+          equipmentCheckbox: new CheckboxModel(),
+          seviceCheckbox: new CheckboxModel(),
+          instructionCheckbox: new CheckboxModel()
         };
-
       };
     }
   });
