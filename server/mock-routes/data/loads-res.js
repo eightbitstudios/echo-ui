@@ -147,6 +147,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -256,6 +257,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -365,6 +367,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 5555555555,
       proNumber: null,
       pickUp: [{
@@ -436,6 +439,7 @@ module.exports = {
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: {
