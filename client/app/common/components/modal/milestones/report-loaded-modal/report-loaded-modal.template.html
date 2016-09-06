@@ -17,10 +17,10 @@
     <milestone-sidebar load="$ctrl.load" />
     <section class="modal-main-content">
       <div ng-if="$ctrl.currentStep === $ctrl.modes.confirmItems">
-        <confirm-items items="$ctrl.items"/>
+        <confirm-items items="$ctrl.items" pickup-numbers="$ctrl.pickupNumbers"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.finishLoading">
-        <finish-loading date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+        <finish-loading total-weight="$ctrl.totalWeight" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.optionalDocuments">
         <optional-documents/>

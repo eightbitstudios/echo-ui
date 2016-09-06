@@ -27,13 +27,14 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         optionalDocuments: 3
       };
 
+      that.totalWeight = _.sumBy(that.items, 'estimatedWeight');
+
       that.saveReportEmpty = function () {
         that.showButtonLoading = true;
-        loadsApi.createReportEmpty(that.load.loadGuid, {
+        loadsApi.createReportLoaded(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          cityName: that.location.city,
-          stateName: that.location.state,
-          date: that.dateTimePicker.getDateTime()
+          departureDate: that.dateTimePicker.getDateTime(),
+          loadGuid: that.load.loadGuid
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
@@ -41,11 +42,17 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         });
       };
 
+      that.pickupNumbers = _.map(that.load.pickUp, function(pickup){
+        return pickup.pickupNumber;
+      });
+
       that.$onInit = function () {
         that.steps = [that.modes.confirmItems, that.modes.finishLoading, that.modes.optionalDocuments];
         that.currentStep = that.modes.confirmItems;
         that.showButtonLoading = false;
-        that.dateTimePicker = new DateTimePickerModel();
+        that.dateTimePicker = new DateTimePickerModel({
+          minDate: moment(that.reportLoaded.lastActionDate)
+        });
       };
     }
   });

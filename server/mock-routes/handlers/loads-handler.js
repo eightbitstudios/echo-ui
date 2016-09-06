@@ -59,6 +59,13 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
+  getReportLoadedModalAction: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = reportEmptyRes;
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
   createModalAction: function (req, res) {
     var resTemplate = new ResTemplate();
     

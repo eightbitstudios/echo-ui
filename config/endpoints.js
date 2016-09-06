@@ -35,5 +35,6 @@ module.exports = {
   unassignedDriversByLoadId: '/api/v1/carriers/${carrierId}/loads/${loadId}/unassignedDrivers',
   driverStatusByLoadId: '/api/v1/loads/${loadId}/driver/${userId}/status',
   reportEmptyByLoadGuid: '/api/v1/loads/${loadGuid}/reportEmpty',
+  reportLoadedByLoadGuid: '/api/v1/loads/${loadGuid}/reportLoaded',
   itemsByLoadGuid: '/api/v1/loads/${loadGuid}/items',
 };

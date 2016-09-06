@@ -36,5 +36,6 @@ angular.module('echo.config.api', [])
     location: '@location@',
     timeZones: '@timeZones@',
     itemsByLoadGuid: _.template('@itemsByLoadGuid@'),
-    reportEmptyByLoadGuid: _.template('@reportEmptyByLoadGuid@')
+    reportEmptyByLoadGuid: _.template('@reportEmptyByLoadGuid@'),
+    reportLoadedByLoadGuid: _.template('@reportLoadedByLoadGuid@')
   });
