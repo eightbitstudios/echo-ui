@@ -14,7 +14,9 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
     bindings: {
       modalActions: '<',
       load: '<',
-      reportLoaded: '<'
+      items: '<',
+      reportLoaded: '<',
+      timeZones: '<'
     },
     controller: function (loadsApi, DateTimePickerModel) {
       var that = this;

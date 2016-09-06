@@ -32,6 +32,7 @@ module.exports = {
     multiStopLoads: '/mock/api/v1/carriers/:carrierId/loads/upcomingMultiStop',
     assignDriverByLoadId: '/mock/api/v1/loads/:loadId/assign/:userId',
     unassignDriverByLoadId: '/mock/api/v1/loads/:loadId/unassign',
+    itemsByLoadGuid: '/mock/api/v1/loads/:loadGuid/items',
     reassignDriverByLoadId: '/mock/api/v1/loads/:loadId/reassign/:userId',
     unassignedDriversByLoadId: '/mock/api/v1/carriers/:carrierId/loads/:loadId/unassignedDrivers',
     driverStatusByLoadId: '/mock/api/v1/loads/:loadId/driver/:userId/status',

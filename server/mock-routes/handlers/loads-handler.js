@@ -8,6 +8,15 @@ var maxDelay = 2,
   minDelay = 1;
 
 module.exports = {
+  getItemsByLoadGuid: function (req, res) {
+    var resTemplate = new ResTemplate();
+
+    resTemplate.data = loadsRes.loads[0].pickUp[0].items;
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
   getLoadCount: function (req, res) {
     var resTemplate = new ResTemplate();
 

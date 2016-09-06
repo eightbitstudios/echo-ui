@@ -17,10 +17,10 @@
     <milestone-sidebar load="$ctrl.load" />
     <section class="modal-main-content">
       <div ng-if="$ctrl.currentStep === $ctrl.modes.confirmItems">
-        <confirm-items report-empty="$ctrl.reportEmpty" checkbox-items="$ctrl.checkboxItems"/>
+        <confirm-items items="$ctrl.items"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.finishLoading">
-        <finish-loading location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker"/>
+        <finish-loading date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.optionalDocuments">
         <optional-documents/>

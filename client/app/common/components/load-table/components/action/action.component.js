@@ -39,15 +39,19 @@ angular.module('echo.components.loadTable.action', [
       };
 
       actionHandler[actionEnums.REPORT_LOADED.value] = function (loadGuid) {
-        return loadsApi.fetchReportEmptyByLoadGuid(loadGuid).then(function (reportLoaded) {
+        return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
+        loadsApi.fetchItemsByLoadGuid(loadGuid), 
+        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportLoaded, items, timeZones) {
           return modalService.open({
             component: 'report-loaded-modal',
             bindings: {
               load: that.load,
-              reportLoaded: reportLoaded
+              reportLoaded: reportLoaded,
+              items: items,
+              timeZones: timeZones
             }
           });
-        });
+        }));
       };
 
       that.openMilestone = function (action) {

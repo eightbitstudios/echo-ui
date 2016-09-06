@@ -131,9 +131,15 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    fetchReportEmptyByLoadGuid: function (loadGuid, reportEmpty) {
+    fetchItemsByLoadGuid: function (loadGuid) {
+      var url = apiConfig.itemsByLoadGuid({ loadGuid: loadGuid });
+      return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    fetchReportEmptyByLoadGuid: function (loadGuid) {
       var url = apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid });
-      return $http.get(url, reportEmpty).then(function (resp) {
+      return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);
       });
     }
