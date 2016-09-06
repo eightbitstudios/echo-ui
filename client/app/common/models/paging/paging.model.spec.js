@@ -32,7 +32,7 @@ describe('Model: Paging', function () {
     it('should calculate the offset based on page number', function() {
       var paging = new PagingModel(limit);
       paging.setOffset(3);
-      expect(paging.offset).toBe(20);
+      expect(paging.offset).toBe(21);
     });
   });
 
@@ -60,7 +60,7 @@ describe('Model: Paging', function () {
     it('should calculate the offset and next page', function() {
       var paging = new PagingModel(limit);
       paging.setPage(4);
-      expect(paging.offset).toBe(30);
+      expect(paging.offset).toBe(31);
       expect(paging.selectedPage).toBe(4);
     });
   });

@@ -2,9 +2,11 @@ angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
+  'echo.components.modal.milestones.reportArrival',
   'echo.services.modal',
   'echo.api.loads',
-  'echo.enums.actions'
+  'echo.enums.actions',
+  'echo.enums.arrivalTypes'
 ])
   .component('action', {
     templateUrl: 'app/common/components/load-table/components/action/action.template.html',
@@ -12,7 +14,7 @@ angular.module('echo.components.loadTable.action', [
       load: '<',
       actionChangedCallback: '&'
     },
-    controller: function (appConstants, actionEnums, modalService, loadsApi) {
+    controller: function (appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi) {
       var that = this;
 
       that.appConstants = appConstants;
@@ -29,6 +31,19 @@ angular.module('echo.components.loadTable.action', [
             bindings: {
               load: that.load,
               reportEmpty: reportEmpty
+            }
+          });
+        });
+      };
+
+      actionHandler[actionEnums.REPORTED_ARRIVAL_AT_PICKUP.value] = function (loadGuid) {
+        return loadsApi.fetchReportArrivalByLoadGuid(loadGuid).then(function (reportArrival) {
+          return modalService.open({
+            component: 'report-arrival-modal',
+            bindings: {
+              load: that.load,
+              reportArrival: reportArrival,
+              arrivalType: arrivalTypeEnums.PICKUP.description
             }
           });
         });

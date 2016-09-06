@@ -69,7 +69,7 @@ module.exports = {
         }]
     }],
     "driver": {
-      "id": 0,
+      "id": 1,
       "firstName": "Sam",
       "lastName": "Smith",
       "phone": "13124551234",
@@ -79,6 +79,17 @@ module.exports = {
       "isAppInstalled": true,
       "isTrackingEnabled": false,
       "isDoNotDisturb": true
+    },
+    "action": {
+      lastAction: 0,
+      actionByUser: {
+        firstName: 'Tim',
+        lastName: 'Potatoe'
+      },
+      time: '2016-08-04T16:20:14-05:00',
+      nextAction: 2,
+      onTime: false,
+      lateBy: null
     },
     "isDetailsUpdated": false,
     "assignedByEcho": false,
