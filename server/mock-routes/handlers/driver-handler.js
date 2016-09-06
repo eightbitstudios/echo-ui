@@ -48,6 +48,10 @@ module.exports = {
       resTemplate.status.error = true;
     }
 
+    resTemplate.data = req.body;
+    resTemplate.data.id = 1;
+    resTemplate.data.phone = req.body.phoneNumber;
+
     responseUtil.timeout(function () {
       if (resTemplate.status.error) {
         res.status(400).json(resTemplate);

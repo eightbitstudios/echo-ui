@@ -2,6 +2,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
+  'echo.components.modal.milestones.test',
   'echo.services.modal',
   'echo.api.loads',
   'echo.enums.actions',
@@ -12,7 +13,8 @@ angular.module('echo.components.loadTable.action', [
     templateUrl: 'app/common/components/load-table/components/action/action.template.html',
     bindings: {
       load: '<',
-      actionChangedCallback: '&'
+      actionChangedCallback: '&',
+      carrierId: '<'
     },
     controller: function ($q, appConstants, actionEnums, modalService, loadsApi, timeZoneApi) {
       var that = this;
@@ -28,11 +30,12 @@ angular.module('echo.components.loadTable.action', [
         return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid), 
         timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
           return modalService.open({
-            component: 'report-empty-modal',
+            component: 'test-modal',
             bindings: {
               load: that.load,
               reportEmpty: reportEmpty,
-              timeZones: timeZones
+              timeZones: timeZones,
+              carrierId: that.carrierId
             }
           });
         }));
