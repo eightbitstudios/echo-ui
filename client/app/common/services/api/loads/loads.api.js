@@ -154,6 +154,18 @@ angular.module('echo.api.loads', [
       return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);
       });
-    }
+    },
+    fetchReportDeliveredByLoadGuid: function (loadGuid) {
+      var url = apiConfig.reportDeliveredByLoadGuid({ loadGuid: loadGuid });
+      return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    createReportDelivered: function (loadGuid, reportDelivered) {
+      var url = apiConfig.reportDeliveredByLoadGuid({ loadGuid: loadGuid });
+      return $http.post(url, reportDelivered).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },  
   };
 });

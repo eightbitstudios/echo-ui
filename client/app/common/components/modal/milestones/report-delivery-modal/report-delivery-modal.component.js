@@ -29,7 +29,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
 
       that.saveReportEmpty = function () {
         that.showButtonLoading = true;
-        loadsApi.createReportEmpty(that.load.loadGuid, {
+        loadsApi.createReportDelivered(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           rating: that.rating,
           comment: that.comment,

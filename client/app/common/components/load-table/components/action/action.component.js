@@ -41,7 +41,7 @@ angular.module('echo.components.loadTable.action', [
       };
 
       actionHandler[actionEnums.REPORT_DELIVERY.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid), 
+        return $q.all([loadsApi.fetchReportDeliveredByLoadGuid(loadGuid), 
         loadsApi.fetchItemsByLoadGuid(loadGuid),
         timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportDelivery, items, timeZones) {
           return modalService.open({
