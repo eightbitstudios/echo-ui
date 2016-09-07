@@ -2,6 +2,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
+  'echo.components.modal.milestones.reportLoaded',
   'echo.services.modal',
   'echo.api.loads',
   'echo.enums.actions',
@@ -19,8 +20,8 @@ angular.module('echo.components.loadTable.action', [
 
       that.appConstants = appConstants;
       that.showButtonLoading = false;
-      that.currentStatus = _.find(actionEnums, {value: that.load.action.lastAction});
-      that.nextAction = _.find(actionEnums, {value: that.load.action.nextAction});
+      that.currentStatus = _.find(actionEnums, { value: that.load.action.lastAction });
+      that.nextAction = _.find(actionEnums, { value: that.load.action.nextAction });
 
       var actionHandler = {};
 
@@ -32,6 +33,22 @@ angular.module('echo.components.loadTable.action', [
             bindings: {
               load: that.load,
               reportEmpty: reportEmpty,
+              timeZones: timeZones
+            }
+          });
+        }));
+      };
+
+      actionHandler[actionEnums.REPORT_LOADED.value] = function (loadGuid) {
+        return $q.all([loadsApi.fetchReportLoadedByLoadGuid(loadGuid),
+        loadsApi.fetchItemsByLoadGuid(loadGuid), 
+        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportLoaded, items, timeZones) {
+          return modalService.open({
+            component: 'report-loaded-modal',
+            bindings: {
+              load: that.load,
+              reportLoaded: reportLoaded,
+              items: items,
               timeZones: timeZones
             }
           });

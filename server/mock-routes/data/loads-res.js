@@ -116,12 +116,14 @@ module.exports = {
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
+        pickupNumber: 56985478,
         city: 'New York',
         state: 'New York',
         zip: '60655',
         isCurrent: false,
         time: '2016-08-02T16:20:14-05:00'
       }, {
+          pickupNumber: 5698543478,
           city: 'LA',
           state: 'California',
           zip: '60655',
@@ -148,7 +150,7 @@ module.exports = {
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
-        nextAction: 2,
+        nextAction: 3,
         onTime: false,
         lateBy: null
       },
