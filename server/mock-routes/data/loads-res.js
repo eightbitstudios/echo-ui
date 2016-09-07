@@ -80,6 +80,15 @@ module.exports = {
       "isTrackingEnabled": false,
       "isDoNotDisturb": true
     },
+    action: {
+      lastAction: 0,
+      firstName: 'Tim',
+      lastName: 'Potatoe',
+      actionPerformed: '13:50 CST Today',
+      nextAction: 1,
+      onTime: false,
+      lateBy: null
+    },
     "isDetailsUpdated": false,
     "assignedByEcho": false,
     "generalInstructions": "Test Load Detail",
@@ -138,11 +147,9 @@ module.exports = {
       },
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 3,
         onTime: false,
         lateBy: null
@@ -174,11 +181,9 @@ module.exports = {
       driver: {},
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -211,12 +216,11 @@ module.exports = {
       },
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Mike',
-          lastName: 'Potatoe'
-        },
+        firstName: 'Tim',
+        lastName: 'Potatoe',
         time: '1473417000',
         nextAction: 1,
+        actionPerformed: '13:50 CST Today',
         onTime: true,
         lateBy: null
       },
@@ -248,11 +252,9 @@ module.exports = {
       },
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -284,11 +286,9 @@ module.exports = {
       driver: {},
       action: {
         lastAction: 1,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 2,
         onTime: false,
         lateBy: null
@@ -321,11 +321,9 @@ module.exports = {
       },
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Mike',
-          lastName: 'Potatoe'
-        },
-        time: '1473417000',
+        firstName: 'Mike',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 1,
         onTime: true,
         lateBy: null
@@ -358,11 +356,9 @@ module.exports = {
       },
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -394,11 +390,9 @@ module.exports = {
       driver: {},
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -430,11 +424,9 @@ module.exports = {
       driver: {},
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -466,11 +458,9 @@ module.exports = {
       driver: {},
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -502,11 +492,9 @@ module.exports = {
       driver: {},
       action: {
         lastAction: 0,
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null

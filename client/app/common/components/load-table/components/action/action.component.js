@@ -6,7 +6,8 @@ angular.module('echo.components.loadTable.action', [
   'echo.services.modal',
   'echo.api.loads',
   'echo.enums.actions',
-  'echo.api.timeZone'
+  'echo.api.timeZone',
+  'echo.filters.firstCharacter'
 ])
   .component('action', {
     templateUrl: 'app/common/components/load-table/components/action/action.template.html',
