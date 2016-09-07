@@ -3,6 +3,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
   'echo.components.modal.milestones.reportLoaded',
+  'echo.components.modal.milestones.reportDelivery',
   'echo.services.modal',
   'echo.api.loads',
   'echo.enums.actions',
@@ -33,6 +34,22 @@ angular.module('echo.components.loadTable.action', [
             bindings: {
               load: that.load,
               reportEmpty: reportEmpty,
+              timeZones: timeZones
+            }
+          });
+        }));
+      };
+
+      actionHandler[actionEnums.REPORT_DELIVERY.value] = function (loadGuid) {
+        return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid), 
+        loadsApi.fetchItemsByLoadGuid(loadGuid),
+        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, items, timeZones) {
+          return modalService.open({
+            component: 'report-delivery-modal',
+            bindings: {
+              load: that.load,
+              reportEmpty: reportEmpty,
+              items: items,
               timeZones: timeZones
             }
           });

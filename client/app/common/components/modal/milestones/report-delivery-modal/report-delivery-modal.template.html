@@ -1,0 +1,32 @@
+<div class="report-empty-modal">
+  <div class="modal-header">
+    <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close()" data-close="modal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h1 class="modal-title">
+      <span class="assign-action-type">
+        Report Delivery for
+      </span>
+      <span class="assign-action-to">
+        Load {{$ctrl.load.loadNumber}}
+      </span>
+    </h1>
+    <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
+  </div>
+  <div class="modal-body">
+    <milestone-sidebar load="$ctrl.load" />
+    <section class="modal-main-content">
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.deliveryItems">
+        <delivery-items items="$ctrl.items" date-time-picker="$ctrl.dateTimePicker"/>
+      </div>
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.optionalDocuments">
+        <report-delivery-optional-documents rating="$ctrl.rating"/>
+      </div>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <modal-steps current-step="$ctrl.currentStep" is-next-disabled="false" steps="$ctrl.steps" modal-actions="$ctrl.modalActions">
+      <loading-button button-text="Confirm Delivery" click-handler="$ctrl.saveReportEmpty()" show-loading="$ctrl.showButtonLoading"></loading-button>
+    </modal-steps>
+  </div>
+</div>

@@ -15,5 +15,9 @@ angular.module('echo.enums.actions', [])
     REPORT_LOADED: {
       description: 'Report Loaded',
       value: 3
+    },
+    REPORT_DELIVERY: {
+      description: 'Report Delivery',
+      value: 4
     }
   });
