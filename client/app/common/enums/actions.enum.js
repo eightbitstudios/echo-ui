@@ -1,7 +1,7 @@
 angular.module('echo.enums.actions', [])
   .constant('actionEnums', {
-    REPORTED_START: {
-      description: 'Reported Start',
+    REPORTED_BOOKED: {
+      description: 'Reported Booked',
       value: 0
     },
     REPORTED_EMPTY: {
