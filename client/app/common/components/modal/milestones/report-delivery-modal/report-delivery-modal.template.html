@@ -17,16 +17,16 @@
     <milestone-sidebar load="$ctrl.load" />
     <section class="modal-main-content">
       <div ng-if="$ctrl.currentStep === $ctrl.modes.deliveryItems">
-        <delivery-items items="$ctrl.items" date-time-picker="$ctrl.dateTimePicker"/>
+        <delivery-items items="$ctrl.items" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.optionalDocuments">
-        <report-delivery-optional-documents rating="$ctrl.rating"/>
+        <report-delivery-optional-documents comment="$ctrl.comment" rating="$ctrl.rating" buttons-disabled="$ctrl.buttonsDisabled"/>
       </div>
     </section>
   </div>
   <div class="modal-footer">
-    <modal-steps current-step="$ctrl.currentStep" is-next-disabled="false" steps="$ctrl.steps" modal-actions="$ctrl.modalActions">
-      <loading-button button-text="Confirm Delivery" click-handler="$ctrl.saveReportEmpty()" show-loading="$ctrl.showButtonLoading"></loading-button>
+    <modal-steps current-step="$ctrl.currentStep" is-next-disabled="false" is-back-disabled="$ctrl.buttonsDisabled" steps="$ctrl.steps" modal-actions="$ctrl.modalActions">
+      <loading-button button-text="Confirm Delivery" disable-button="$ctrl.buttonsDisabled" click-handler="$ctrl.saveReportEmpty()" show-loading="$ctrl.showButtonLoading"></loading-button>
     </modal-steps>
   </div>
 </div>

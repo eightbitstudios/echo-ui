@@ -6,8 +6,8 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
   'echo.components.modal.milestones.driverLocation',
   'echo.components.modal.milestones.reportEmpty.confirmEmpty',
   'echo.components.modal.milestones.deliveryItems',
+  'echo.components.modal.milestones.reportDelivery.comment',
   'echo.components.modal.milestones.reportDelivery.optionalDocuments',
-  'echo.models.location',
   'echo.models.dateTimePicker'
 ])
   .component('reportDeliveryModal', {
@@ -19,7 +19,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
       reportDelivery: '<',
       timeZones: '<'
     },
-    controller: function (loadsApi, LocationModel, DateTimePickerModel) {
+    controller: function (loadsApi, DateTimePickerModel) {
       var that = this;
 
       that.modes = {
@@ -31,8 +31,8 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.showButtonLoading = true;
         loadsApi.createReportEmpty(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          cityName: that.location.city,
-          stateName: that.location.state,
+          rating: that.rating,
+          comment: that.comment,
           date: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
@@ -45,11 +45,14 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.steps = [that.modes.deliveryItems, that.modes.optionalDocuments];
         that.currentStep = that.modes.deliveryItems;
         that.showButtonLoading = false;
+        that.buttonsDisabled = false;
+        that.comment = null;
 
-        that.location = new LocationModel();
         that.rating = {};
 
-        that.dateTimePicker = new DateTimePickerModel();
+        that.dateTimePicker = new DateTimePickerModel({
+          minDate: moment(that.reportDelivery.lastActionDate)
+        });
       };
     }
   });

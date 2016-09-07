@@ -1,3 +1,4 @@
+<div ng-if="$ctrl.currentStep === $ctrl.modes.documents">
 <h4 class="content-header">Optional Documents</h4>
 <div class="optional-documents">
   <div class="document-add">
@@ -32,7 +33,7 @@
       </p>
       <rating rating="$ctrl.rating" />
     </div>
-    <a class="btn btn-link" href="#">Add a comment
+    <a class="btn btn-link" ng-click="$ctrl.addComment()">{{$ctrl.comment ? 'Edit' : 'Add a'}} comment
       <svg width="13" height="14" viewBox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
                       <g class="link-icon icon-next" stroke="#26C1FB" stroke-width="2" fill="none" fill-rule="evenodd">
                           <path d="M5.2 12.4l5.74-5.74-5.637-5.638"></path>
@@ -41,4 +42,8 @@
                   </svg>
     </a>
   </div>
+</div>
+</div>
+<div ng-if="$ctrl.currentStep === $ctrl.modes.comment">
+  <comment comment="$ctrl.comment" cancel-callback="$ctrl.exitComment()" save-callback="$ctrl.saveComment(comment)"/>
 </div>
