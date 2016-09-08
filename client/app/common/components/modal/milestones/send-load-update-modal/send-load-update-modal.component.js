@@ -63,7 +63,9 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       that.$onInit = function () {
         that.currentStep = that.modes.overview;
         that.location = new LocationModel();
-        that.dateTimePicker = new DateTimePickerModel();
+        that.dateTimePicker = new DateTimePickerModel({
+          minDate: moment(that.sendLoadUpdate.lastActionDate)
+        });
       };
     }
   });
