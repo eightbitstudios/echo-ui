@@ -43,7 +43,21 @@ angular.module('echo.components.loadTable.action', [
             bindings: {
               load: that.load,
               reportArrival: reportArrival,
-              arrivalType: arrivalTypeEnums.PICKUP.description
+              arrivalType: arrivalTypeEnums.PICKUP
+            }
+          });
+        });
+      };
+
+
+      actionHandler[actionEnums.REPORTED_ARRIVAL_AT_DELIVERY.value] = function (loadGuid) {
+        return loadsApi.fetchReportArrivalByLoadGuid(loadGuid).then(function (reportArrival) {
+          return modalService.open({
+            component: 'report-arrival-modal',
+            bindings: {
+              load: that.load,
+              reportArrival: reportArrival,
+              arrivalType: arrivalTypeEnums.DELIVERY
             }
           });
         });
