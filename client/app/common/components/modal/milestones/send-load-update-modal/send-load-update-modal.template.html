@@ -4,8 +4,11 @@
       <span aria-hidden="true">×</span>
     </button>
     <h1 class="modal-title">
-      <span class="assign-action-type">
+      <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.overview">
         Send Load Update for
+      </span>      
+      <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.location">
+        Report Location for
       </span>
       <span class="assign-action-to">
         Load {{$ctrl.load.loadNumber}}
