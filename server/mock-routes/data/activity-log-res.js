@@ -1,7 +1,7 @@
 module.exports = [{
   description: 'Do not Disturb On',
   user: {
-    role: 'Driver',
+    oneLoginRoleName: 'Driver',
     firstName: 'Mike',
     lastName: 'Peterson'
   },
@@ -10,7 +10,7 @@ module.exports = [{
 },{
   description: 'Do not Disturb On',
   user: {
-    role: 'Driver',
+    oneLoginRoleName: 'Driver',
     firstName: 'Mike',
     lastName: 'Peterson'
   },
@@ -19,7 +19,7 @@ module.exports = [{
 },{
   description: 'Reported Arrival at Pickup: Memphis TN',
   user: {
-    role: 'Driver',
+    oneLoginRoleName: 'Driver',
     firstName: 'Mike',
     lastName: 'Peterson'
   },
