@@ -32,6 +32,7 @@ module.exports = {
     unassignDriverByLoadId: '/mock/api/v1/loads/:loadId/unassign',
     reassignDriverByLoadId: '/mock/api/v1/loads/:loadId/reassign/:userId',
     unassignedDriversByLoadId: '/mock/api/v1/carriers/:carrierId/loads/:loadId/unassignedDrivers',
-    driverStatusByLoadId: '/mock/api/v1/loads/:loadId/driver/:userId/status'
+    driverStatusByLoadId: '/mock/api/v1/loads/:loadId/driver/:userId/status',
+    activityLogByLoadId: '/mock/api/v1/loads/:loadId/activity',
   }
 };
