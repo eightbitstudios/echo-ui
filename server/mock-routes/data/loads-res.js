@@ -253,7 +253,7 @@ module.exports = {
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
-        nextAction: 1,
+        nextAction: 3,
         onTime: false,
         lateBy: null
       },

@@ -12,6 +12,7 @@ module.exports = function (app) {
   app.get(endpoints.api.timeZones, timeZonesHandler.getTimeZones);
   app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
   app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
+  app.get(endpoints.api.loadUpdateOptionsByLoadGuid, loadsHandler.getLoadUpdateOptions);
   app.get(endpoints.api.location, locationHandler.getLocation);
   app.get(endpoints.api.loadsNeedingAction, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.multiStopLoads, loadsHandler.getLoadsByCarrierId);
