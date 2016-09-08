@@ -25,6 +25,8 @@ module.exports = function (app) {
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.loadCountByCarrierId, loadsHandler.getLoadCount);
   app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
+  app.get(endpoints.api.reportArrivalByLoadGuid, loadsHandler.fetchReportArrivalByLoadGuid);
+  app.put(endpoints.api.reportArrivalByLoadGuid, loadsHandler.updateReportArrivalByLoadGuid);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);

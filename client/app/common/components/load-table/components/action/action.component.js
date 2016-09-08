@@ -2,9 +2,11 @@ angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
+  'echo.components.modal.milestones.reportArrival',
   'echo.services.modal',
   'echo.api.loads',
   'echo.enums.actions',
+  'echo.enums.arrivalTypes',
   'echo.api.timeZone',
   'echo.filters.firstCharacter'
 ])
@@ -14,7 +16,7 @@ angular.module('echo.components.loadTable.action', [
       load: '<',
       actionChangedCallback: '&'
     },
-    controller: function ($q, appConstants, actionEnums, modalService, loadsApi, timeZoneApi) {
+    controller: function ($q, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
       var that = this;
 
       that.appConstants = appConstants;
@@ -25,7 +27,7 @@ angular.module('echo.components.loadTable.action', [
       var actionHandler = {};
 
       actionHandler[actionEnums.REPORTED_EMPTY.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid), 
+        return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
         timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
           return modalService.open({
             component: 'report-empty-modal',
@@ -33,6 +35,21 @@ angular.module('echo.components.loadTable.action', [
               load: that.load,
               reportEmpty: reportEmpty,
               timeZones: timeZones
+            }
+          });
+        }));
+      };
+
+      actionHandler[actionEnums.REPORTED_ARRIVAL_AT_PICKUP.value] = function (loadGuid) {
+        return $q.all([loadsApi.fetchReportArrivalByLoadGuid(loadGuid),
+          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportArrival, timeZones) {
+          return modalService.open({
+            component: 'report-arrival-modal',
+            bindings: {
+              load: that.load,
+              reportArrival: reportArrival,
+              timeZones: timeZones,
+              arrivalType: arrivalTypeEnums.PICKUP.description
             }
           });
         }));
