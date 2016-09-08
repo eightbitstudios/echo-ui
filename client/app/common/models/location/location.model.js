@@ -29,6 +29,11 @@ angular.module('echo.models.location', [])
       return cityState;
     };
 
+    Location.prototype.isValid = function () {
+
+      return !_.isEmpty(this.city) && !_.isEmpty(this.state);
+    };
+
     /**
      * Return the constructor function
      */
