@@ -1,0 +1,29 @@
+<div class="report-empty-modal">
+  <div class="modal-header">
+    <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close()" data-close="modal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h1 class="modal-title">
+      <span class="assign-action-type">
+        Send Load Update for
+      </span>
+      <span class="assign-action-to">
+        Load {{$ctrl.load.loadNumber}}
+      </span>
+    </h1>
+    <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
+  </div>
+  <div class="modal-body">
+    <milestone-sidebar load="$ctrl.load" />
+    <section class="modal-main-content">
+      <h4 class="content-header">What kind of update do you want to send?</h4>
+      <card ng-repeat="option in $ctrl.sendLoadUpdate.options">
+        <strong>{{$ctrl.translateCardLabel(option)}}</strong>
+      </card>
+      <p>For other situations that could cause a missed <br>appointment, such as a breakdown or shortage of <br>hours, please call Echo at (333) 343-3333</p>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
+  </div>
+</div>

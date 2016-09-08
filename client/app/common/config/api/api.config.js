@@ -35,5 +35,6 @@ angular.module('echo.config.api', [])
     driverStatusByLoadId: _.template('@driverStatusByLoadId@'),
     location: '@location@',
     timeZones: '@timeZones@',
-    reportEmptyByLoadGuid: _.template('@reportEmptyByLoadGuid@')
+    reportEmptyByLoadGuid: _.template('@reportEmptyByLoadGuid@'),
+    loadUpdateOptionsByLoadGuid: _.template('@loadUpdateOptionsByLoadGuid@')
   });

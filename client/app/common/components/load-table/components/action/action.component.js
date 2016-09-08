@@ -2,10 +2,12 @@ angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
+  'echo.components.modal.milestones.sendLoadUpdate',
   'echo.services.modal',
   'echo.api.loads',
   'echo.enums.actions',
-  'echo.api.timeZone'
+  'echo.api.timeZone',
+  'echo.filters.firstCharacter'
 ])
   .component('action', {
     templateUrl: 'app/common/components/load-table/components/action/action.template.html',
@@ -24,7 +26,7 @@ angular.module('echo.components.loadTable.action', [
       var actionHandler = {};
 
       actionHandler[actionEnums.REPORTED_EMPTY.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid), 
+        return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
         timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
           return modalService.open({
             component: 'report-empty-modal',
@@ -35,6 +37,18 @@ angular.module('echo.components.loadTable.action', [
             }
           });
         }));
+      };
+
+      actionHandler[actionEnums.SENT_LOAD_UPDATE.value] = function (loadGuid) {
+        return loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid).then(function (sendLoadUpdate) {
+          return modalService.open({
+            component: 'send-load-update-modal',
+            bindings: {
+              load: that.load,
+              sendLoadUpdate: sendLoadUpdate
+            }
+          });
+        });
       };
 
       that.openMilestone = function (action) {
