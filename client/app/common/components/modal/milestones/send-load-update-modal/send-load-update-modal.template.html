@@ -29,6 +29,7 @@
     </section>
   </div>
   <div class="modal-footer">
+     <loading-button button-text="Confirm Location" ng-if="$ctrl.currentStep === $ctrl.modes.location" show-loading="$ctrl.showButtonLoading" ng-click="$ctrl.confirmLocation()"></loading-button>
     <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
   </div>
 </div>

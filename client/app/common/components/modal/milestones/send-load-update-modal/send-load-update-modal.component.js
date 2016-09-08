@@ -46,6 +46,20 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         }
       };
 
+      that.confirmLocation = function () {
+        that.showButtonLoading = true;
+        loadsApi.createReportLocation(that.load.loadGuid, {
+          timeZone: that.dateTimePicker.timeZone,
+          cityName: that.location.city,
+          stateName: that.location.state,
+          date: that.dateTimePicker.getDateTime()
+        }).then(function () {
+          that.modalActions.close(true);
+        }).finally(function () {
+          that.showButtonLoading = false;
+        });
+      };
+
       that.$onInit = function () {
         that.currentStep = that.modes.overview;
         that.location = new LocationModel();

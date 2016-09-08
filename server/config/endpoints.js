@@ -36,6 +36,7 @@ module.exports = {
     unassignedDriversByLoadId: '/mock/api/v1/carriers/:carrierId/loads/:loadId/unassignedDrivers',
     driverStatusByLoadId: '/mock/api/v1/loads/:loadId/driver/:userId/status',
     reportEmptyByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportEmpty',
-    loadUpdateOptionsByLoadGuid: '/mock/api/v1/loads/:loadGuid/loadUpdateOptions'
+    loadUpdateOptionsByLoadGuid: '/mock/api/v1/loads/:loadGuid/loadUpdateOptions',
+    reportLocation: '/mock/api/v1/loads/:loadGuid/reportLocation'
   }
 };
