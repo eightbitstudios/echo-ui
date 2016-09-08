@@ -155,7 +155,7 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    fetchReportEmptyByLoadGuid: function (loadGuid, reportEmpty) {
+    fetchReportEmptyByLoadGuid: function (loadGuid) {
       var url = apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid });
       return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);

@@ -6,9 +6,12 @@
     <h1 class="modal-title">
       <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.overview">
         Send Load Update for
-      </span>      
+      </span>
       <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.location">
         Report Location for
+      </span>
+      <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.trailerDropOff">
+        Report Drop of Trailer at Yard for
       </span>
       <span class="assign-action-to">
         Load {{$ctrl.load.loadNumber}}
@@ -28,6 +31,9 @@
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
         <driver-location location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+      </div>
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.trailerDropOff">
+        <dropped-load location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
       </div>
     </section>
   </div>

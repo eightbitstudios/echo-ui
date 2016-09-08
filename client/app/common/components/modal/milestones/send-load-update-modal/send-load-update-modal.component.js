@@ -2,6 +2,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
   'echo.components.modal.milestones.milestoneSidebar',
   'echo.api.loads',
   'echo.components.modal.milestones.driverLocation',
+  'echo.components.modal.milestones.sendLoadUpdate.droppedLoad',
   'echo.components.modal.milestones.card',
   'echo.enums.loadUpdateOptions',
   'echo.models.location',
@@ -43,6 +44,9 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
             break;
           case loadUpdateOptionEnums.ARRIVAL_AT_DELIVERY.value:
             that.currentStep = that.modes.arrivalAtDelivery;
+            break;
+          default:
+            that.currentStep = that.modes.overview;
         }
       };
 
