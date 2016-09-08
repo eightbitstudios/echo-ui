@@ -11,7 +11,8 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
     bindings: {
       load: '<',
       carrierId: '<',
-      timeZones: '<'
+      timeZones: '<',
+      assignedDriver: '='
     },
     controller: function ($filter, carrierApi, DateTimePickerModel) {
       var that = this;
