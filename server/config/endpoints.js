@@ -38,6 +38,7 @@ module.exports = {
     driverStatusByLoadId: '/mock/api/v1/loads/:loadId/driver/:userId/status',
     reportEmptyByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportEmpty',
     reportLoadedByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportLoaded',
-    loadUpdateOptionsByLoadGuid: '/mock/api/v1/loads/:loadGuid/loadUpdateOptions'
+    loadUpdateOptionsByLoadGuid: '/mock/api/v1/loads/:loadGuid/loadUpdateOptions',
+    reportLocation: '/mock/api/v1/loads/:loadGuid/reportLocation'
   }
 };

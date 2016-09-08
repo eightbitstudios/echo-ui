@@ -14,6 +14,7 @@ module.exports = function (app) {
   app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
   app.post(endpoints.api.reportLoadedByLoadGuid, loadsHandler.createModalAction);
   app.get(endpoints.api.reportLoadedByLoadGuid, loadsHandler.getReportLoadedModalAction);
+  app.post(endpoints.api.reportLocation, loadsHandler.createModalAction);
   app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
   app.get(endpoints.api.loadUpdateOptionsByLoadGuid, loadsHandler.getLoadUpdateOptions);
   app.get(endpoints.api.location, locationHandler.getLocation);
