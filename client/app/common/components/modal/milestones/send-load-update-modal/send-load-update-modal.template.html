@@ -16,11 +16,16 @@
   <div class="modal-body">
     <milestone-sidebar load="$ctrl.load" />
     <section class="modal-main-content">
-      <h4 class="content-header">What kind of update do you want to send?</h4>
-      <card ng-repeat="option in $ctrl.sendLoadUpdate.options">
-        <strong>{{$ctrl.translateCardLabel(option)}}</strong>
-      </card>
-      <p>For other situations that could cause a missed <br>appointment, such as a breakdown or shortage of <br>hours, please call Echo at (333) 343-3333</p>
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.overview">
+        <h4 class="content-header">What kind of update do you want to send?</h4>
+        <card ng-repeat="option in $ctrl.sendLoadUpdate.options" ng-click="$ctrl.showOption(option)">
+          <strong>{{$ctrl.translateCardLabel(option)}}</strong>
+        </card>
+        <p>For other situations that could cause a missed <br>appointment, such as a breakdown or shortage of <br>hours, please call Echo at (333) 343-3333</p>
+      </div>
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
+        <driver-location location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+      </div>
     </section>
   </div>
   <div class="modal-footer">

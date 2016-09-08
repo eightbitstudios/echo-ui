@@ -20,35 +20,37 @@ angular.module('echo.components.loadTable.action', [
 
       that.appConstants = appConstants;
       that.showButtonLoading = false;
-      that.currentStatus = _.find(actionEnums, {value: that.load.action.lastAction});
-      that.nextAction = _.find(actionEnums, {value: that.load.action.nextAction});
+      that.currentStatus = _.find(actionEnums, { value: that.load.action.lastAction });
+      that.nextAction = _.find(actionEnums, { value: that.load.action.nextAction });
 
       var actionHandler = {};
 
       actionHandler[actionEnums.REPORTED_EMPTY.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
-        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
-          return modalService.open({
-            component: 'report-empty-modal',
-            bindings: {
-              load: that.load,
-              reportEmpty: reportEmpty,
-              timeZones: timeZones
-            }
-          });
-        }));
+          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
+            return modalService.open({
+              component: 'report-empty-modal',
+              bindings: {
+                load: that.load,
+                reportEmpty: reportEmpty,
+                timeZones: timeZones
+              }
+            });
+          }));
       };
 
       actionHandler[actionEnums.SENT_LOAD_UPDATE.value] = function (loadGuid) {
-        return loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid).then(function (sendLoadUpdate) {
-          return modalService.open({
-            component: 'send-load-update-modal',
-            bindings: {
-              load: that.load,
-              sendLoadUpdate: sendLoadUpdate
-            }
-          });
-        });
+        return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid), timeZoneApi.fetchTimeZones()])
+          .then(_.spread(function (sendLoadUpdate, timeZones) {
+            return modalService.open({
+              component: 'send-load-update-modal',
+              bindings: {
+                load: that.load,
+                sendLoadUpdate: sendLoadUpdate,
+                timeZones: timeZones
+              }
+            });
+          }));
       };
 
       that.openMilestone = function (action) {
