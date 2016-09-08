@@ -37,5 +37,7 @@ module.exports = {
   reportEmptyByLoadGuid: '/api/v1/loads/${loadGuid}/reportEmpty',
   reportLoadedByLoadGuid: '/api/v1/loads/${loadGuid}/reportLoaded',
   itemsByLoadGuid: '/api/v1/loads/${loadGuid}/items',
+  loadUpdateOptionsByLoadGuid: '/api/v1/loads/{loadGuid}/loadUpdateOptions',
+  reportLocation: '/api/v1/loads/${loadGuid}/reportLocation',
   reportDeliveredByLoadGuid: '/api/v1/loads/${loadGuid}/reportDelivered',
 };

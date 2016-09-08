@@ -13,10 +13,12 @@ module.exports = function (app) {
   app.get(endpoints.api.itemsByLoadGuid, loadsHandler.getItemsByLoadGuid);
   app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
   app.post(endpoints.api.reportDeliveredByLoadGuid, loadsHandler.createModalAction);
+  app.post(endpoints.api.reportLocation, loadsHandler.createModalAction);
   app.post(endpoints.api.reportLoadedByLoadGuid, loadsHandler.createModalAction);
   app.get(endpoints.api.reportLoadedByLoadGuid, loadsHandler.getReportLoadedModalAction);
   app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
   app.get(endpoints.api.reportDeliveredByLoadGuid, loadsHandler.getReportEmptyModalAction);
+  app.get(endpoints.api.loadUpdateOptionsByLoadGuid, loadsHandler.getLoadUpdateOptions);
   app.get(endpoints.api.location, locationHandler.getLocation);
   app.get(endpoints.api.loadsNeedingAction, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.multiStopLoads, loadsHandler.getLoadsByCarrierId);
