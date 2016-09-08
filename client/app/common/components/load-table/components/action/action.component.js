@@ -41,16 +41,18 @@ angular.module('echo.components.loadTable.action', [
       };
 
       actionHandler[actionEnums.REPORTED_ARRIVAL_AT_PICKUP.value] = function (loadGuid) {
-        return loadsApi.fetchReportArrivalByLoadGuid(loadGuid).then(function (reportArrival) {
+        return $q.all([loadsApi.fetchReportArrivalByLoadGuid(loadGuid),
+          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportArrival, timeZones) {
           return modalService.open({
             component: 'report-arrival-modal',
             bindings: {
               load: that.load,
               reportArrival: reportArrival,
+              timeZones: timeZones,
               arrivalType: arrivalTypeEnums.PICKUP.description
             }
           });
-        });
+        }));
       };
 
       that.openMilestone = function (action) {

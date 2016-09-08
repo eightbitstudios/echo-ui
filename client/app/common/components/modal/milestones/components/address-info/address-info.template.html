@@ -1,8 +1,8 @@
 <div class="load-citystate">
   <div class="load-city">{{$ctrl.address.name}}</div>
   <div class="load-st">
-    {{$ctrl.address.address}}<br>
-    Dock #123 <br>
-    {{$ctrl.formatCityAndState()}}
+    {{$ctrl.address.address}} <br ng-if="$ctrl.address.address">
+    {{$ctrl.address.address2}} <br ng-if="$ctrl.address.address2">
+    {{$ctrl.address | formatCityState}}
   </div>
 </div>
