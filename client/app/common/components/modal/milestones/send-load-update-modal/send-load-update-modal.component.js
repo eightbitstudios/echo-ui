@@ -21,8 +21,8 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       that.modes = {
         overview: 1,
         location: 2,
-        pickup: 3,
-        dropOff: 4,
+        trailerPickup: 3,
+        trailerDropOff: 4,
         arrivalAtDelivery: 5
       };
 
@@ -36,10 +36,10 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
             that.currentStep = that.modes.location;
             break;
           case loadUpdateOptionEnums.TRAILER_DROP.value:
-            that.currentStep = that.modes.dropOff;
+            that.currentStep = that.modes.trailerDropOff;
             break;
           case loadUpdateOptionEnums.TRAILER_PICKUP.value:
-            that.currentStep = that.modes.pickup;
+            that.currentStep = that.modes.trailerPickup;
             break;
           case loadUpdateOptionEnums.ARRIVAL_AT_DELIVERY.value:
             that.currentStep = that.modes.arrivalAtDelivery;
