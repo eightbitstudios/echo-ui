@@ -12,8 +12,12 @@ angular.module('echo.enums.actions', [])
       description: 'Report Arrival At Pickup',
       value: 2
     },
+    REPORT_LOADED: {
+      description: 'Report Loaded',
+      value: 3
+    },
     SENT_LOAD_UPDATE: {
       description: 'Send Load Update',
-      value: 3
+      value: 4
     }
   });
