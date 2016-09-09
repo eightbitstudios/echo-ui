@@ -4,10 +4,16 @@ var carrierHandler = require('./handlers/carrier-handler'),
   languageHandler = require('./handlers/language-handler'),
   driverHandler = require('./handlers/driver-handler'),
   loadsHandler = require('./handlers/loads-handler'),
+  locationHandler = require('./handlers/location-handler'),
+  timeZonesHandler = require('./handlers/time-zones-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
+  app.get(endpoints.api.timeZones, timeZonesHandler.getTimeZones);
   app.get(endpoints.api.activityLogByLoadId, loadsHandler.getActivityLogByLoadId);
+  app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
+  app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
+  app.get(endpoints.api.location, locationHandler.getLocation);
   app.get(endpoints.api.loadsNeedingAction, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.multiStopLoads, loadsHandler.getLoadsByCarrierId);
   app.post(endpoints.api.assignDriverByLoadId, loadsHandler.getLoadCount);
@@ -22,6 +28,8 @@ module.exports = function (app) {
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.loadCountByCarrierId, loadsHandler.getLoadCount);
   app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
+  app.get(endpoints.api.reportArrivalByLoadGuid, loadsHandler.fetchReportArrivalByLoadGuid);
+  app.put(endpoints.api.reportArrivalByLoadGuid, loadsHandler.updateReportArrivalByLoadGuid);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);

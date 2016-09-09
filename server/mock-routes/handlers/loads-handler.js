@@ -1,6 +1,8 @@
 var responseUtil = require('../util/response-util.js'),
   loadsRes = require('../data/loads-res'),
+  reportEmptyRes = require('../data/report-empty-res'),
   activityLogRes = require('../data/activity-log-res'),
+  reportArrivalRes = require('../data/report-arrival-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
 
@@ -51,10 +53,23 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getLoadsByCarrierId: function (req, res) {
+  getReportEmptyModalAction: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = reportEmptyRes;
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  createModalAction: function (req, res) {
     var resTemplate = new ResTemplate();
 
-    resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset), _.parseInt(req.query.offset) + _.parseInt(req.query.limit));
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getLoadsByCarrierId: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
     resTemplate.data.totalLoadCount = loadsRes.loads.length;
 
     responseUtil.timeout(function () {
@@ -69,6 +84,13 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
+  fetchReportArrivalByLoadGuid: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = reportArrivalRes;
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
   updateProNumber: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadsRes.loads[0];
@@ -76,6 +98,14 @@ module.exports = {
       resTemplate.data.proNumber = req.body.proNumber;
     }
 
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+
+  updateReportArrivalByLoadGuid: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = reportArrivalRes;
     responseUtil.timeout(function () {
       res.json(resTemplate);
     }, minDelay, maxDelay);

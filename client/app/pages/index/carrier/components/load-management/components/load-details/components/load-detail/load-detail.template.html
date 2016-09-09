@@ -18,7 +18,7 @@
           <driver load="$ctrl.loadDetail" carrier-id="$ctrl.carrierId" driver-changed-callback="$ctrl.reloadState()"></driver>
         </td>
         <td>
-          <action load-type="0"></action>
+          <action load="$ctrl.loadDetail" action-changed-callback="$ctrl.reloadState()" load-type="0"></action>
         </td>
       </tr>
     </tbody>

@@ -26,6 +26,8 @@ module.exports = {
     drivers: '/mock/api/v1/carriers/:carrierId/drivers',
     loadById: '/mock/api/v1/loads/:loadId/details',
     language: '/mock/api/v1/preferredLanguages',
+    location: '/mock/api/v1/location',
+    timeZones: '/mock/api/v1/timezones',
     loadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction',
     multiStopLoads: '/mock/api/v1/carriers/:carrierId/loads/upcomingMultiStop',
     assignDriverByLoadId: '/mock/api/v1/loads/:loadId/assign/:userId',
@@ -33,8 +35,10 @@ module.exports = {
     reassignDriverByLoadId: '/mock/api/v1/loads/:loadId/reassign/:userId',
     unassignedDriversByLoadId: '/mock/api/v1/carriers/:carrierId/loads/:loadId/unassignedDrivers',
     driverStatusByLoadId: '/mock/api/v1/loads/:loadId/driver/:userId/status',
+    reportEmptyByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportEmpty',
     proNumberByLoadId: '/mock/api/v1/loads/:loadId/proNumber',
     trailerNumberByLoadId: '/mock/api/v1/loads/:loadId/trailerNumber',
+    reportArrivalByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportArrival',
     activityLogByLoadId: '/mock/api/v1/loads/:loadId/activity'
   }
 };

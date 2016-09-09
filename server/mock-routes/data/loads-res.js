@@ -69,7 +69,7 @@ module.exports = {
         }]
     }],
     "driver": {
-      "id": 0,
+      "id": 1,
       "firstName": "Sam",
       "lastName": "Smith",
       "phone": "13124551234",
@@ -79,6 +79,15 @@ module.exports = {
       "isAppInstalled": true,
       "isTrackingEnabled": false,
       "isDoNotDisturb": true
+    },
+    action: {
+      lastAction: 0,
+      firstName: 'Tim',
+      lastName: 'Potatoe',
+      actionPerformed: '13:50 CST Today',
+      nextAction: 1,
+      onTime: false,
+      lateBy: null
     },
     "isDetailsUpdated": false,
     "assignedByEcho": false,
@@ -103,6 +112,7 @@ module.exports = {
     "trailerNumber": "8956 7412",
     "tractorNumber": "7894 9216"
   }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -134,18 +144,17 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportArrivalAtpickUp',
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 2,
         onTime: false,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -169,18 +178,17 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: 12345678910,
       pickUp: [{
@@ -205,18 +213,18 @@ module.exports = {
         isTrackingEnabled: true
       },
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Mike',
-          lastName: 'Potatoe'
-        },
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
         time: '1473417000',
-        nextAction: 'ReportArrivalAtpickUp',
+        nextAction: 1,
+        actionPerformed: '13:50 CST Today',
         onTime: true,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -241,18 +249,17 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportArrivalAtpickUp',
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -276,18 +283,17 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        lastAction: 1,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 2,
         onTime: false,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: 12345678910,
       pickUp: [{
@@ -312,18 +318,17 @@ module.exports = {
         isTrackingEnabled: true
       },
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Mike',
-          lastName: 'Potatoe'
-        },
-        time: '1473417000',
-        nextAction: 'ReportArrivalAtpickUp',
+        lastAction: 0,
+        firstName: 'Mike',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 1,
         onTime: true,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -348,18 +353,17 @@ module.exports = {
         isTrackingEnabled: false
       },
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportArrivalAtpickUp',
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 5555555555,
       proNumber: null,
       pickUp: [{
@@ -383,18 +387,17 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
@@ -418,18 +421,17 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: {
@@ -453,18 +455,17 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },
       isLoadDetailUpdated: false
     }, {
+    "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: {
@@ -488,13 +489,11 @@ module.exports = {
         }],
       driver: {},
       action: {
-        currentStatus: 'ReportedEmpty',
-        actionByUser: {
-          firstName: 'Tim',
-          lastName: 'Potatoe'
-        },
-        time: '2016-08-04T16:20:14-05:00',
-        nextAction: 'ReportLoaded',
+        lastAction: 0,
+        firstName: 'Tim',
+        lastName: 'Potatoe',
+        actionPerformed: '13:50 CST Today',
+        nextAction: 1,
         onTime: false,
         lateBy: null
       },

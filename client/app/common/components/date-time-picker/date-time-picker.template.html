@@ -1,0 +1,25 @@
+<div class="date-time-picker">
+  <form class="form-inline form-arrival-time">
+    <div class="filter-drivers pull-left">
+      <date-picker date="$ctrl.dateTime.date" min-date="$ctrl.dateTime.minDate">
+        <button class="btn btn-default btn-date-picker btn-filter" ng-class="{'filter__assigned': $ctrl.dateTime.date}">
+            {{$ctrl.dateTime.date | datePicker}}
+            <span class="echo-icon icon-close" ng-click="$ctrl.clearDate($event)" data-grunticon-embed></span>
+        </button>
+      </date-picker>
+      <div class="form-group">
+        <label class="hidden">Time</label>
+        <input class="form-control" ui-mask="99:99" type="text" ng-model="$ctrl.dateTime.time">
+      </div>
+      <div class="form-group">
+        <label class="hidden">Time Zone</label>
+        <div class="select">
+          <select class="form-control" ng-model="$ctrl.dateTime.timeZone" type="select">
+            <option ng-repeat="timeZone in $ctrl.timeZones" val="{{timeZone}}">{{timeZone}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="datepicker"></div>
+    </div>
+  </form>
+</div>

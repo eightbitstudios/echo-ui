@@ -1,0 +1,7 @@
+<div class="driver-info">
+  <div class="driver-name">
+    <span>{{$ctrl.driver.firstName}} {{$ctrl.driver.lastName | firstCharacter}}</span>
+    <span ng-if="!$ctrl.driver.id">No driver assigned</span>
+  </div>
+  <div class="driver-phone">{{$ctrl.driver.phone | phoneNumber}}</div>
+</div>

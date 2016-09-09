@@ -36,7 +36,7 @@
               <driver load="loadManagement" load-type="$ctrl.loadType" driver-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId"></driver>
             </td>
             <td>
-              <action action="loadManagement.action" load-type="$ctrl.loadType"></action>
+              <action load="loadManagement" load-type="$ctrl.loadType" action-changed-callback="$ctrl.refreshTableCallback()" ></action>
             </td>
           </tr>
         </tbody>

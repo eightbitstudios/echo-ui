@@ -1,0 +1,23 @@
+.checkbox {
+  input[type="checkbox"] {
+    position: absolute;
+    margin-left: -20px;
+    z-index: -1;
+    opacity: 0;
+  }
+  .control-indicator {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: solid 1px #e1e2e3;
+  }
+  input:checked ~ .control-indicator {
+    border: solid 1px @c-green-1;
+    background-color: @c-green-1;
+    background-image: url("../assets/images/icon-checkmark-wht.svg");
+  }
+}

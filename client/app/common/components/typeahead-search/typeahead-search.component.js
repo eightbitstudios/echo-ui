@@ -5,7 +5,10 @@ angular.module('echo.components.typeaheadSearch', [
   ]).component('typeaheadSearch', {
     bindings: {
       searchService: '&',
-      onSelectCallback: '&'
+      onSelectCallback: '&',
+      template: '@',
+      placeholderText: '@',
+      darkTheme: '<'
     },
     templateUrl: 'app/common/components/typeahead-search/typeahead-search.template.html',
     controller: function ($q) {
@@ -13,7 +16,7 @@ angular.module('echo.components.typeaheadSearch', [
 
       that.debounce = 250;
       that.typeaheadMinLength = 3;
-      that.selection = '';
+      that.selection = null;
       that.showLoadingButton = false;
       that.numberOfSearchResults = null;
       that.isTypeaheadOpen = null;
@@ -21,6 +24,7 @@ angular.module('echo.components.typeaheadSearch', [
       that.onSelect = function () {
         if (_.isObject(that.selection)) {
           that.onSelectCallback({ selection: that.selection });
+          that.selection = '';
         }
       };
 
@@ -35,6 +39,7 @@ angular.module('echo.components.typeaheadSearch', [
 
       that.clearSearchHandler = function () {
         that.selection = '';
+        that.onSelectCallback({ selection: that.selection });
       };
     }
   });
