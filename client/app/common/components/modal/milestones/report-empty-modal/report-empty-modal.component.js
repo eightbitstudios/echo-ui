@@ -26,7 +26,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
       };
 
       that.isNextStepEnabled = function () {
-        return that.checkboxItems.equipmentCheckbox.isChecked && that.checkboxItems.seviceCheckbox.isChecked && that.checkboxItems.instructionCheckbox.isChecked;
+        return that.checkboxItems.equipmentCheckbox.isChecked && that.checkboxItems.serviceCheckbox.isChecked && that.checkboxItems.instructionCheckbox.isChecked;
       };
 
       that.saveReportEmpty = function () {
@@ -59,7 +59,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
 
         that.checkboxItems = {
           equipmentCheckbox: new CheckboxModel(),
-          seviceCheckbox: new CheckboxModel(),
+          serviceCheckbox: new CheckboxModel(),
           instructionCheckbox: new CheckboxModel()
         };
       };
