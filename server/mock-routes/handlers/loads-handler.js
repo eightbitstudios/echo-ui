@@ -1,6 +1,8 @@
 var responseUtil = require('../util/response-util.js'),
   loadsRes = require('../data/loads-res'),
   reportEmptyRes = require('../data/report-empty-res'),
+  activityLogRes = require('../data/activity-log-res'),
+  reportArrivalRes = require('../data/report-arrival-res'),
   loadUpdateOptionsRes = require('../data/load-update-options-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
@@ -17,6 +19,14 @@ module.exports = {
       unbilled: 13,
       upcoming: 4
     };
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getActivityLogByLoadId: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = activityLogRes;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);
@@ -61,7 +71,7 @@ module.exports = {
   getLoadsByCarrierId: function (req, res) {
     var resTemplate = new ResTemplate();
 
-    resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset), _.parseInt(req.query.offset) + _.parseInt(req.query.limit));
+    resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
     resTemplate.data.totalLoadCount = loadsRes.loads.length;
 
     responseUtil.timeout(function () {
@@ -79,6 +89,22 @@ module.exports = {
   getLoadUpdateOptions: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadUpdateOptionsRes;
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  fetchReportArrivalByLoadGuid: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = reportArrivalRes;
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  updateReportArrivalByLoadGuid: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = reportArrivalRes;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

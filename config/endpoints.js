@@ -28,6 +28,7 @@ module.exports = {
   loadsNeedingAction: '/api/v1/carriers/${carrierId}/loads/needsAction',
   multiStopLoads: '/api/v1/carriers/${carrierId}/loads/upcomingMultiStop',
   location: '/api/v1/location',
+  activityLogByLoadId: '/api/v1/loads/${loadId}/activity',
   timeZones: '/api/v1/timezones',
   assignDriverByLoadId: '/api/v1/loads/${loadId}/assign/${userId}',
   unassignDriverByLoadId: '/api/v1/loads/${loadId}/unassign',
@@ -35,6 +36,7 @@ module.exports = {
   unassignedDriversByLoadId: '/api/v1/carriers/${carrierId}/loads/${loadId}/unassignedDrivers',
   driverStatusByLoadId: '/api/v1/loads/${loadId}/driver/${userId}/status',
   reportEmptyByLoadGuid: '/api/v1/loads/${loadGuid}/reportEmpty',
+  reportArrivalByLoadGuid: '/api/v1/loads/${loadGuid}/reportArrival',
   loadUpdateOptionsByLoadGuid: '/api/v1/loads/{loadGuid}/loadUpdateOptions',
   reportLocation: '/api/v1/loads/${loadGuid}/reportLocation'
 };
