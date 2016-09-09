@@ -61,14 +61,15 @@ angular.module('echo.index', [
           controllerAs: '$ctrl'
         }
       }
+
     })
     .state(routesConfig.INDEX.settings.name, { // #/settings
       url: routesConfig.INDEX.settings.route,
-      template: '<settings></settings>'
+      component: 'settings'
     })
     .state(routesConfig.INDEX.myCarriers.name, {  // #/myCarrier
       url: routesConfig.INDEX.myCarriers.route,
-      template: '<my-carriers></my-carriers>',
+      component: 'my-carriers',
       data: {
         role: RolesEnum.ECHO_REP,
         reroute: routesConfig.INDEX.carrier.name
@@ -76,25 +77,23 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCarriersDetails.name, { // #/myCarrier/:carrierId
       url: routesConfig.INDEX.myCarriersDetails.route,
-      template: '<carrier-details></carrier-details>'
+      component: 'carrier-details'
     })
     .state(routesConfig.INDEX.carrier.name, { // #/carrier/:carrierId
       url: routesConfig.INDEX.carrier.route,
-      template: '<carrier rep-details="$ctrl.repDetails" carrier-details="$ctrl.carrierDetails"></carrier>',
+      component: 'carrier',
       resolve: {
-        carrierDetails: function ($stateParams, carrierApi) {
-          return carrierApi.fetchCarrierById($stateParams.carrierId);
+        carrierId: function($stateParams) {
+          return $stateParams.carrierId;
+        },
+        carrierDetails: function (carrierId, carrierApi) {
+          return carrierApi.fetchCarrierById(carrierId);
         }
-      },
-      controller: function (repDetails, carrierDetails) {
-        this.repDetails = repDetails;
-        this.carrierDetails = carrierDetails;
-      },
-      controllerAs: '$ctrl'
+      }
     })
     .state(routesConfig.INDEX.dashboard.name, { // #/carrier/:carrierId/dashboard
       url: routesConfig.INDEX.dashboard.route,
-      template: '<dashboard carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></dashboard>',
+      component: 'dashboard',
       data: {
         whiteContainer: true,
         hideTabBar: true
@@ -102,81 +101,76 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.loadManagement.name, { // #/carrier/:carrierId/loadManagement
       url: routesConfig.INDEX.loadManagement.route,
-      template: '<load-management carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></load-management>',
+      component: 'load-management',
       data: {
         whiteContainer: true
       }
     })
     .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
       url: routesConfig.INDEX.activeLoads.route,
-      template: '<active-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></active-loads>',
+      component: 'active-loads',
       data: {
         name: 'active loads'
       }
     })
     .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
       url: routesConfig.INDEX.unbilledLoads.route,
-      template: '<unbilled-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></unbilled-loads>',
+      component: 'unbilled-loads',
       data: {
         name: 'unbilled loads'
       }
     })
     .state(routesConfig.INDEX.upcomingLoads.name, { // #/carrier/:carrierId/loadManagement/upcomingLoads
       url: routesConfig.INDEX.upcomingLoads.route,
-      template: '<upcoming-loads carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></upcoming-loads>',
+      component: 'upcoming-loads',
       data: {
         name: 'upcoming loads'
       }
     })
     .state(routesConfig.INDEX.searchLoads.name, { // #/carrier/:carrierId/loadManagement/searchText/:searchText
       url: routesConfig.INDEX.searchLoads.route,
-      template: '<search-loads search-text="$ctrl.stateParams.searchText" carrier-id="$ctrl.carrierId" rep-details="$ctrl.repDetails"></search-loads>',
+      component: 'search-loads',
       data: {
         hideTabBar: true
       }
     })
     .state(routesConfig.INDEX.loadDetails.name, { // #/carrier/:carrierId/loadManagement/loadDetails/:loadId
       url: routesConfig.INDEX.loadDetails.route,
-      template: '<load-details load-id="$ctrl.stateParams.loadId" rep-details="$ctrl.repDetails" carrier-id="$ctrl.carrierId" load-details="$ctrl.loadDetails" activity-log="$ctrl.activityLog"></load-details>',
-      controller: function($stateParams, repDetails, loadDetails, activityLog){
-        this.repDetails = repDetails;
-        this.loadDetails = loadDetails;
-        this.carrierId = $stateParams.carrierId;
-        this.activityLog = activityLog;
-      },
-      controllerAs: '$ctrl',
+      component: 'load-details',
       data: {
         hideTabBar: true,
         whiteContainer: false
-      }, 
+      },
       resolve: {
-        loadDetails: function(loadsApi, $stateParams) {
-          var loadId = $stateParams.loadId;
+        loadId: function($stateParams) {
+          return $stateParams.loadId;
+        },
+        loadDetails: function (loadsApi, loadId) {
           return loadsApi.fetchLoadDetails(loadId);
         },
-        activityLog: function(loadsApi, loadDetails) {
+        activityLog: function (loadsApi, loadDetails) {
           return loadsApi.fetchActivityLogByLoadId(loadDetails.loadNumber);
         }
       }
     })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,
-      template: '<my-company carrier-id="$ctrl.carrierId"></my-company>'
+      component: 'my-company'
     })
     .state(routesConfig.INDEX.myCompanyUsers.name, {  // #/carrier/:carrierId/myCompany/portalUsers
       url: routesConfig.INDEX.myCompanyUsers.route,
-      template: '<my-company-portal-users></my-company-portal-users>'
+      component: 'my-company-portal-users'
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, {  // #/carrier/:carrierId/myCompany/drivers
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      template: '<driver-grid carrier-id="$ctrl.carrierId"></driver-grid>',
+      component: 'driver-grid',
       data: {
         whiteContainer: true
       }
     })
     .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,
-      template: '<my-company-driver-profile carrier-id="$ctrl.carrierId"></my-company-driver-profile>',
+      component: 'my-company-driver-profile',
       data: {
         hideTabBar: true
       }
