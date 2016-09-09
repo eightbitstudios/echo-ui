@@ -35,4 +35,5 @@ angular.module('echo.config.api', [])
     driverStatusByLoadId: _.template('@driverStatusByLoadId@'),
     proNumberByLoadId: _.template('@proNumberByLoadId@'),
     trailerNumberByLoadId: _.template('@trailerNumberByLoadId@'),
+    activityLogByLoadId: _.template('@activityLogByLoadId@')
   });

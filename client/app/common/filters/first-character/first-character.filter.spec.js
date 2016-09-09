@@ -16,6 +16,6 @@ describe('Filter - First character filter', function () {
   });
 
   it('should get first character in string', function () {
-    expect(firstCharacter('Test')).toEqual('T');
+    expect(firstCharacter('Test')).toEqual('T.');
   });
 });

@@ -1,5 +1,6 @@
 var responseUtil = require('../util/response-util.js'),
   loadsRes = require('../data/loads-res'),
+  activityLogRes = require('../data/activity-log-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
 
@@ -15,6 +16,14 @@ module.exports = {
       unbilled: 13,
       upcoming: 4
     };
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getActivityLogByLoadId: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = activityLogRes;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

@@ -2,7 +2,8 @@
 
 angular.module('echo.api.loads', [
   'echo.config.api',
-]).factory('loadsApi', function ($q, $http, apiConfig) {
+  'echo.models.user'
+]).factory('loadsApi', function ($q, $http, apiConfig, UserModel) {
   return {
     fetchAvailableLoads: function (carrierId, paging, pickupsToday, deliveriesToday) {
       var url = apiConfig.availableLoadsByCarrierId({ carrierId: carrierId });
@@ -54,7 +55,7 @@ angular.module('echo.api.loads', [
         driverNeeded: driverNeeded
       };
 
-      return $http.get(url, {params: params}).then(function (resp) {
+      return $http.get(url, { params: params }).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },
@@ -67,7 +68,7 @@ angular.module('echo.api.loads', [
         driverNeeded: driverNeeded
       };
 
-      return $http.get(url, {params: params}).then(function (resp) {
+      return $http.get(url, { params: params }).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },
@@ -117,6 +118,15 @@ angular.module('echo.api.loads', [
       var url = apiConfig.driverStatusByLoadId({ loadId: loadId, userId: driverId });
       return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);
+      });
+    },
+    fetchActivityLogByLoadId: function (loadId) {
+      var url = apiConfig.activityLogByLoadId({ loadId: loadId });
+      return $http.get(url).then(function (resp) {
+        return $q.when(_.map(resp.data.data, function(activity) {
+          activity.user = new UserModel(activity.user);
+          return activity;
+        }));
       });
     },
     fetchLoadCount: function (carrierId) {
