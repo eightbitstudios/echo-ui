@@ -53,7 +53,7 @@ module.exports = {
   },
   getLoadsByCarrierId: function (req, res) {
     var resTemplate = new ResTemplate();
-    
+
     resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset), _.parseInt(req.query.offset) + _.parseInt(req.query.limit));
     resTemplate.data.totalLoadCount = loadsRes.loads.length;
 
@@ -64,6 +64,28 @@ module.exports = {
   getLoadDetails: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadsRes.loads[0];
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  updateProNumber: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = loadsRes.loads[0];
+    if (req.body.proNumber != null) {
+      resTemplate.data.proNumber = req.body.proNumber;
+    }
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  updateTrailerNumber: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = loadsRes.loads[0];
+    if (req.body.trailerNumber != null) {
+      resTemplate.data.trailerNumber = req.body.trailerNumber;
+    }
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

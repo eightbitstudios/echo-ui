@@ -33,5 +33,7 @@ angular.module('echo.config.api', [])
     reassignDriverByLoadId: _.template('@reassignDriverByLoadId@'),
     unassignedDriversByLoadId: _.template('@unassignedDriversByLoadId@'),
     driverStatusByLoadId: _.template('@driverStatusByLoadId@'),
+    proNumberByLoadId: _.template('@proNumberByLoadId@'),
+    trailerNumberByLoadId: _.template('@trailerNumberByLoadId@'),
     activityLogByLoadId: _.template('@activityLogByLoadId@')
   });

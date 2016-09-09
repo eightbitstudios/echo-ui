@@ -4,7 +4,6 @@ angular.module('echo', [
   'ngCookies',
   'ngSanitize',
   'ui.router',
-  'ngAnimate',
   'base64',
   'ui.mask',
   'echo.services.routing',
