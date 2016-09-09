@@ -41,12 +41,12 @@ module.exports = function (app) {
   app.post(endpoints.api.forgotPassword, authHandler.forgotPassword);
   app.post(endpoints.api.deactivateUserById, userHandler.deactivateUserById);
   app.get(endpoints.api.driverCount, carrierHandler.getDriverCount);
-  app.post(endpoints.api.drivers, driverHandler.insertDriver);
+  app.post(endpoints.api.driver, driverHandler.insertDriver);
   app.get(endpoints.api.driverById, driverHandler.getDriverById);
   app.put(endpoints.api.driverById, driverHandler.updateDriverById);
   app.put(endpoints.api.deactivateDriverById, driverHandler.deactivateDriverById);
   app.get(endpoints.api.unassignedDriversByLoadId, carrierHandler.getDrivers);
-  app.get(endpoints.api.searchDrivers, carrierHandler.getDrivers);
+  app.get(endpoints.api.searchDrivers, carrierHandler.searchDrivers);
   app.get(endpoints.api.drivers, carrierHandler.getDrivers);
   app.get(endpoints.api.portalUsers, carrierHandler.getPortalUsers);
   app.get(endpoints.api.carriers, carrierHandler.getCarriers);
