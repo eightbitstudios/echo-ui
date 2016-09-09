@@ -33,6 +33,16 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         return _.find(loadUpdateOptionEnums, { value: optionIndex }).description;
       };
 
+      that.determineTrailerReportType = function() {
+        if (that.currentStep === that.modes.trailerPickup) {
+          return loadUpdateOptionEnums.TRAILER_PICKUP.typeFlag;
+        } else if (that.currentStep === that.modes.trailerDropOff) {
+          return loadUpdateOptionEnums.TRAILER_DROP.typeFlag;
+        } else {
+          return null;
+        }
+      };
+
       that.showOption = function (option) {
         switch (option) {
           case loadUpdateOptionEnums.LOCATION.value:
@@ -59,6 +69,21 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
           cityName: that.location.city,
           stateName: that.location.state,
           date: that.dateTimePicker.getDateTime()
+        }).then(function () {
+          that.modalActions.close(true);
+        }).finally(function () {
+          that.showButtonLoading = false;
+        });
+      };
+
+      that.confirmDropOff = function () {
+        that.showButtonLoading = true;
+        loadsApi.createReportTrailer(that.load.loadGuid, {
+          timeZone: that.dateTimePicker.timeZone,
+          date: that.dateTimePicker.getDateTime(),
+          cityName: that.location.city,
+          stateName: that.location.state,
+          reportType: that.determineTrailerReportType()
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {

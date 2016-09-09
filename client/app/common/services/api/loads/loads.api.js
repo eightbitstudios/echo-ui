@@ -166,6 +166,12 @@ angular.module('echo.api.loads', [
       return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);
       });
+    },
+    createReportTrailer: function (loadGuid, reportTrailer) {
+      var url = apiConfig.reportTrailerByLoadGuid({ loadGuid: loadGuid });
+      return $http.post(url, reportTrailer).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
     }
   };
 });

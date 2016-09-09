@@ -40,6 +40,7 @@ module.exports = {
     reportEmptyByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportEmpty',
     reportLoadedByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportLoaded',
     loadUpdateOptionsByLoadGuid: '/mock/api/v1/loads/:loadGuid/loadUpdateOptions',
-    reportLocation: '/mock/api/v1/loads/:loadGuid/reportLocation'
+    reportLocation: '/mock/api/v1/loads/:loadGuid/reportLocation',
+    reportTrailerByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportTrailer'
   }
 };
