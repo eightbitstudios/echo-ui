@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      Add Document 2
+      Add Document - Invoice
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -864,47 +864,10 @@
               </div>
             </section>
             <section class='modal-main-content'>
-              <div class='document-uploading'>
-                <div class='btn btn-document btn-add-doc'>
-                  <div class='add-type'>
-                    ADD PAGE
-                  </div>
-                </div>
-                <div class='added-document'>
-                  <div class='btn-close close'>X</div>
-                  <div class='added-doc-thumb'>
-                    <img src="assets/images/document_image.png" alt="Document image" />
-                  </div>
-                  <div class='added-doc-text'>
-                    Pages 1-4
-                  </div>
-                </div>
-                <div class='added-document'>
-                  <div class='btn-close close'>X</div>
-                  <div class='added-doc-thumb'>
-                    <img src="assets/images/doc-TEMP-image.png" alt="Doc temp image" />
-                  </div>
-                  <div class='added-doc-text'>
-                    Page 5
-                  </div>
-                </div>
-                <div class='added-document'>
-                  <div class='btn-close close'>X</div>
-                  <div class='added-doc-thumb'>
-                    <img src="assets/images/document-image-temp.png" alt="Document image temp" />
-                  </div>
-                  <div class='added-doc-text'>
-                    Page 6
-                  </div>
-                </div>
-                <div class='added-document'>
-                  <div class='btn-close close'>X</div>
-                  <div class='added-doc-thumb'>
-                    <img src="assets/images/doc-TEMP-image.png" alt="Doc temp image" />
-                  </div>
-                  <div class='added-doc-text'>
-                    Page 7-10
-                  </div>
+              <div class='btn btn-document btn-dropzone-lg'>
+                <div class='add-type'>
+                  ADD A DOCUMENT
+                  <small>You can also drag and drop</small>
                 </div>
               </div>
               <form class='form-inline'>
@@ -923,49 +886,29 @@
               <hr class='hr'>
               <form>
                 <div class='row'>
-                  <div class='col-sm-7'>
-                    <label class='radio control'>
-                      <input name='optionsRadios' type='radio'>
-                      <span class='control-indicator'></span>
-                      Proof of Delivery #2 (2 Needed)
-                    </label>
-                    <label class='radio control'>
-                      <input checked='checked' name='optionsRadios' type='radio'>
-                      <span class='control-indicator'></span>
-                      Lumper Receipt
-                    </label>
-                    <label class='radio control'>
-                      <input name='optionsRadios' type='radio'>
-                      <span class='control-indicator'></span>
-                      Bill of Lading
-                    </label>
-                  </div>
-                  <div class='col-sm-5'>
-                    <label class='radio control'>
-                      <input name='optionsRadios' type='radio'>
-                      <span class='control-indicator'></span>
-                      Fuel Receipts
-                    </label>
-                    <label class='radio control'>
-                      <input name='optionsRadios' type='radio'>
-                      <span class='control-indicator'></span>
-                      Scale Tickets
-                    </label>
-                    <label class='radio control'>
-                      <input name='optionsRadios' type='radio'>
-                      <span class='control-indicator'></span>
-                      Other
-                    </label>
+                  <div class='col-sm-6'>
+                    <div class='form-group'>
+                      <label>Invoice Number</label>
+                      <input class='form-control' placeholder='e.g. 123456789' type='text'>
+                    </div>
+                    <div class='form-group'>
+                      <label>Original Bill Rate: $1,500</label>
+                      <input class='form-control' placeholder='Invoice amount if different' type='text'>
+                    </div>
+                    <div class='form-group'>
+                      <label>Invoice Date</label>
+                      <input class='form-control input-modal-dp' placeholder='MM/DD/YYYY' type='text'>
+                    </div>
                   </div>
                 </div>
               </form>
               <div class='modal-action-links'>
-                <button class='btn btn-default' type='button'>Add Document</button>
+                <button class='btn btn-default' type='button'>Send Invoice</button>
               </div>
             </section>
           </div>
           <div class='modal-footer'>
-            <button class='btn btn-link btn-alt' data-dismiss='modal' type='button'>CANCEL</button>
+            <button class='btn btn-link btn-alt' data-dismiss='modal' type='button'>CLOSE</button>
           </div>
         </div>
       </div>

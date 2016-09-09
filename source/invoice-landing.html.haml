@@ -1,0 +1,16 @@
+-@title= 'Invoice Landing'
+-@page_classes= 'load-management load-management-active'
+
+= partial 'partials/header_load_invoice', locals: {link: 'active'}
+= partial 'partials/header_carrier_invoice', locals: {loads: '9 Loads Located', map: true}
+= partial 'partials/map_spacer'
+
+.container.main-content
+  %section
+    .section-head
+      = partial 'partials/filter_bar_invoice'
+    .row
+      .col-md-12
+        = partial 'partials/load_management_active_invoice'
+
+        = partial 'partials/load_management_pagination'

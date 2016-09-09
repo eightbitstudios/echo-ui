@@ -178,21 +178,23 @@ fieldset[disabled] .btn
 
   &.btn-filter
     position: relative
-    color: $gray-mid-light
-    border-color: $gray-mid-light
-    border-width: 2px
-    font-weight: normal
     transition: font-size 0s
+    color: $gray-mid-light
+    font-weight: normal
+    border-width: 2px
+    border-color: $gray-mid-light
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
-    user-select: all
+    display: flex
+    flex-direction: column
+    justify-content: center
 
     &:focus,
     &:active
-      background-color: transparent
       color: $gray-mid-light
       border-color: $gray-mid-light
+      background-color: transparent
 
     &:hover,
     &.active,
@@ -375,6 +377,7 @@ fieldset[disabled] .btn
       height: 140px
       width: 130px
       padding: 0
+      margin-bottom: 0
 
       &:before,
       &:after

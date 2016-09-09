@@ -8299,31 +8299,37 @@ fieldset[disabled] .btn {
   /* line 179, base/_buttons.sass */
   .btn.btn-filter {
     position: relative;
-    color: #a9adaf;
-    border-color: #a9adaf;
-    border-width: 2px;
-    font-weight: normal;
     -webkit-transition: font-size 0s;
     transition: font-size 0s;
+    color: #a9adaf;
+    font-weight: normal;
+    border-width: 2px;
+    border-color: #a9adaf;
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-user-select: all;
-       -moz-user-select: all;
-        -ms-user-select: all;
-            user-select: all; }
-    /* line 191, base/_buttons.sass */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    /* line 193, base/_buttons.sass */
     .btn.btn-filter:focus, .btn.btn-filter:active {
-      background-color: transparent;
       color: #a9adaf;
-      border-color: #a9adaf; }
-    /* line 197, base/_buttons.sass */
+      border-color: #a9adaf;
+      background-color: transparent; }
+    /* line 199, base/_buttons.sass */
     .btn.btn-filter:hover, .btn.btn-filter.active, .btn.btn-filter.btn-active {
       color: #fff;
       border-color: #a9adaf;
       background-color: #a9adaf;
       box-shadow: none; }
-    /* line 205, base/_buttons.sass */
+    /* line 207, base/_buttons.sass */
     .btn.btn-filter.filter__assigned {
       color: #fff;
       font-family: "Open Sans", sans-serif;
@@ -8336,17 +8342,17 @@ fieldset[disabled] .btn {
       background-color: #26c1fb;
       -webkit-transition: none;
       transition: none; }
-      /* line 216, base/_buttons.sass */
+      /* line 218, base/_buttons.sass */
       .btn.btn-filter.filter__assigned:hover {
         border-color: #1e9ac9;
         background-color: #1e9ac9; }
-    /* line 220, base/_buttons.sass */
+    /* line 222, base/_buttons.sass */
     .btn.btn-filter.btn-date-picker, .btn.btn-filter.btn-modal-dp {
       padding-left: 45px; }
-      /* line 225, base/_buttons.sass */
+      /* line 227, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker.filter__assigned:before, .btn.btn-filter.btn-modal-dp.filter__assigned:before {
         content: url("../images/icon-calendar-white.svg"); }
-      /* line 228, base/_buttons.sass */
+      /* line 230, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker:before, .btn.btn-filter.btn-modal-dp:before {
         content: url("../images/icon-calendar-gray.svg");
         display: inline-block;
@@ -8356,10 +8362,10 @@ fieldset[disabled] .btn {
         width: 18px;
         height: auto;
         margin-right: 6px; }
-      /* line 239, base/_buttons.sass */
+      /* line 241, base/_buttons.sass */
       .btn.btn-filter.btn-date-picker:hover:before, .btn.btn-filter.btn-modal-dp:hover:before {
         content: url("../images/icon-calendar-white.svg"); }
-    /* line 242, base/_buttons.sass */
+    /* line 244, base/_buttons.sass */
     .btn.btn-filter span.close {
       position: absolute;
       z-index: 999999;
@@ -8371,7 +8377,7 @@ fieldset[disabled] .btn {
       font-size: 0;
       line-height: 0;
       margin-top: -5px; }
-      /* line 255, base/_buttons.sass */
+      /* line 257, base/_buttons.sass */
       .btn.btn-filter span.close:after, .btn.btn-filter span.close:before {
         content: "";
         width: 12px;
@@ -8388,15 +8394,15 @@ fieldset[disabled] .btn {
                 transform-origin: 50% 50%;
         -webkit-backface-visibility: hidden; }
         @media screen and (min-width: 0\0) {
-          /* line 255, base/_buttons.sass */
+          /* line 257, base/_buttons.sass */
           .btn.btn-filter span.close:after, .btn.btn-filter span.close:before {
             -webkit-transform: translateX(0%) rotateZ(45deg);
                     transform: translateX(0%) rotateZ(45deg); } }
-      /* line 274, base/_buttons.sass */
+      /* line 276, base/_buttons.sass */
       .btn.btn-filter span.close:after {
         -webkit-transform: translateX(-50%) rotateZ(-45deg);
                 transform: translateX(-50%) rotateZ(-45deg); }
-  /* line 278, base/_buttons.sass */
+  /* line 280, base/_buttons.sass */
   .btn.btn-document {
     position: relative;
     color: #a9adaf;
@@ -8410,21 +8416,21 @@ fieldset[disabled] .btn {
     background-color: #f7f7f7;
     border-radius: 0;
     border: dotted 1px #a9adaf; }
-    /* line 292, base/_buttons.sass */
+    /* line 294, base/_buttons.sass */
     .btn.btn-document.btn-document_primary {
       color: #26c1fb;
       border: dotted 1px #26c1fb;
       background: rgba(38, 193, 251, 0.2); }
-      /* line 296, base/_buttons.sass */
+      /* line 298, base/_buttons.sass */
       .btn.btn-document.btn-document_primary:hover {
         background-color: rgba(38, 193, 251, 0.4); }
-      /* line 298, base/_buttons.sass */
+      /* line 300, base/_buttons.sass */
       .btn.btn-document.btn-document_primary:before, .btn.btn-document.btn-document_primary:after {
         background-color: #26c1fb; }
-      /* line 302, base/_buttons.sass */
+      /* line 304, base/_buttons.sass */
       .btn.btn-document.btn-document_primary .add-type {
         border-left-color: #26c1fb; }
-    /* line 305, base/_buttons.sass */
+    /* line 307, base/_buttons.sass */
     .btn.btn-document:before, .btn.btn-document:after {
       content: "";
       position: absolute;
@@ -8438,14 +8444,14 @@ fieldset[disabled] .btn {
       -webkit-transform-origin: 50% 50%;
               transform-origin: 50% 50%;
       -webkit-backface-visibility: hidden; }
-    /* line 319, base/_buttons.sass */
+    /* line 321, base/_buttons.sass */
     .btn.btn-document:after {
       -webkit-transform: rotateZ(90deg);
               transform: rotateZ(90deg); }
-    /* line 322, base/_buttons.sass */
+    /* line 324, base/_buttons.sass */
     .btn.btn-document:hover {
       background-color: #f0f0f0; }
-    /* line 325, base/_buttons.sass */
+    /* line 327, base/_buttons.sass */
     .btn.btn-document .add-type {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -8462,7 +8468,7 @@ fieldset[disabled] .btn {
       padding: 10px 10px 10px 25px;
       letter-spacing: 0;
       border-left: dotted 1px #a9adaf; }
-      /* line 335, base/_buttons.sass */
+      /* line 337, base/_buttons.sass */
       .btn.btn-document .add-type small {
         color: #a9adaf;
         font-family: "Open Sans", sans-serif;
@@ -8471,7 +8477,7 @@ fieldset[disabled] .btn {
         text-transform: none;
         line-height: 1.3;
         display: block; }
-    /* line 347, base/_buttons.sass */
+    /* line 349, base/_buttons.sass */
     .btn.btn-document.btn-dropzone-lg {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -8488,12 +8494,12 @@ fieldset[disabled] .btn {
               flex-direction: column;
       height: 140px;
       padding: 0; }
-      /* line 355, base/_buttons.sass */
+      /* line 357, base/_buttons.sass */
       .btn.btn-document.btn-dropzone-lg:before, .btn.btn-document.btn-dropzone-lg:after {
         top: calc(32px + 27px/2);
         left: 50%;
         margin-left: calc(-27px/2); }
-      /* line 361, base/_buttons.sass */
+      /* line 363, base/_buttons.sass */
       .btn.btn-document.btn-dropzone-lg .add-type {
         text-align: center;
         -webkit-box-pack: end;
@@ -8503,7 +8509,7 @@ fieldset[disabled] .btn {
         height: auto;
         padding: 27px;
         border-left: none; }
-    /* line 370, base/_buttons.sass */
+    /* line 372, base/_buttons.sass */
     .btn.btn-document.btn-add-doc {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -8520,13 +8526,14 @@ fieldset[disabled] .btn {
               flex-direction: column;
       height: 140px;
       width: 130px;
-      padding: 0; }
-      /* line 379, base/_buttons.sass */
+      padding: 0;
+      margin-bottom: 0; }
+      /* line 382, base/_buttons.sass */
       .btn.btn-document.btn-add-doc:before, .btn.btn-document.btn-add-doc:after {
         top: calc(40px + 27px/2);
         left: 50%;
         margin-left: calc(-27px/2); }
-      /* line 385, base/_buttons.sass */
+      /* line 388, base/_buttons.sass */
       .btn.btn-document.btn-add-doc .add-type {
         text-align: center;
         -webkit-box-pack: end;
@@ -8536,34 +8543,34 @@ fieldset[disabled] .btn {
         height: auto;
         padding: 40px 0;
         border-left: none; }
-  /* line 394, base/_buttons.sass */
+  /* line 397, base/_buttons.sass */
   .btn.btn-icon {
     padding: 0;
     border: none;
     background: none; }
-    /* line 399, base/_buttons.sass */
+    /* line 402, base/_buttons.sass */
     .btn.btn-icon:hover {
       background: none; }
-  /* line 403, base/_buttons.sass */
+  /* line 406, base/_buttons.sass */
   .btn.btn-alert {
     padding: 5px 0;
     color: #eb004b; }
-    /* line 406, base/_buttons.sass */
+    /* line 409, base/_buttons.sass */
     .btn.btn-alert img {
       vertical-align: baseline; }
-  /* line 411, base/_buttons.sass */
+  /* line 414, base/_buttons.sass */
   .btn.btn-back:hover {
     color: #1e9ac9;
     text-decoration: none; }
-  /* line 415, base/_buttons.sass */
+  /* line 418, base/_buttons.sass */
   .btn.btn-back img {
     width: 11px;
     vertical-align: baseline; }
-  /* line 419, base/_buttons.sass */
+  /* line 422, base/_buttons.sass */
   .btn.btn-show {
     padding-bottom: 0; }
 
-/* line 425, base/_buttons.sass */
+/* line 428, base/_buttons.sass */
 .btn-close.close {
   position: relative;
   opacity: 1;
@@ -8572,7 +8579,7 @@ fieldset[disabled] .btn {
   width: 2rem;
   height: 2rem;
   z-index: 999999; }
-  /* line 433, base/_buttons.sass */
+  /* line 436, base/_buttons.sass */
   .btn-close.close:after, .btn-close.close:before {
     content: "";
     height: 3px;
@@ -8587,7 +8594,7 @@ fieldset[disabled] .btn {
     transition: all 0.3s cubic-bezier(0.71, 0.48, 0.3, 0.9);
     -webkit-transform: translateX(-50%) rotateZ(45deg);
             transform: translateX(-50%) rotateZ(45deg); }
-  /* line 447, base/_buttons.sass */
+  /* line 450, base/_buttons.sass */
   .btn-close.close:after {
     -webkit-transform: translateX(-50%) rotateZ(-45deg);
             transform: translateX(-50%) rotateZ(-45deg); }
@@ -8703,71 +8710,72 @@ input[type="checkbox"] {
   text-transform: none;
   letter-spacing: 0;
   font-size: 14px;
-  font-weight: 300; }
-  /* line 115, base/_forms.sass */
+  font-weight: 300;
+  margin-bottom: 25px; }
+  /* line 116, base/_forms.sass */
   .checkbox label, .checkbox p.label,
   .radio label,
   .radio p.label {
     letter-spacing: 0;
     font-weight: 300 !important; }
-  /* line 119, base/_forms.sass */
+  /* line 120, base/_forms.sass */
   .checkbox:hover,
   .radio:hover {
     font-weight: 300 !important; }
-    /* line 121, base/_forms.sass */
+    /* line 122, base/_forms.sass */
     .checkbox:hover label, .checkbox:hover p.label,
     .radio:hover label,
     .radio:hover p.label {
       font-weight: 300; }
-  /* line 124, base/_forms.sass */
+  /* line 125, base/_forms.sass */
   .checkbox .control:hover .control-indicator,
   .radio .control:hover .control-indicator {
     background: #e1e2e3; }
-  /* line 127, base/_forms.sass */
+  /* line 128, base/_forms.sass */
   .checkbox.control,
   .radio.control {
     display: block;
     margin-right: 16px;
     padding-left: 25px; }
-  /* line 132, base/_forms.sass */
+  /* line 133, base/_forms.sass */
   .checkbox .control-indicator,
   .radio .control-indicator {
     top: 0;
     margin-right: 5px; }
 
-/* line 141, base/_forms.sass */
+/* line 143, base/_forms.sass */
 .control input:checked ~ .control-indicator {
   background-color: #e1e2e3; }
-/* line 144, base/_forms.sass */
+/* line 146, base/_forms.sass */
 .control input:active ~ .control-indicator {
   background-color: #f7f7f7; }
-/* line 147, base/_forms.sass */
+/* line 149, base/_forms.sass */
 .control input:focus ~ .control-indicator {
   box-shadow: 0 0 0 0; }
-/* line 151, base/_forms.sass */
+/* line 153, base/_forms.sass */
 .control.radio input:checked ~ .control-indicator {
   border: solid 1px #e1e2e3;
   background-color: #f0f0f0;
   background-image: url("../images/radial-selected.svg");
   background-size: 10px; }
-/* line 158, base/_forms.sass */
+/* line 160, base/_forms.sass */
 .control.checkbox input:checked ~ .control-indicator {
   background-image: url("../images/checkbox-check.svg"); }
 
-/* line 162, base/_forms.sass */
+/* line 164, base/_forms.sass */
 .checkbox .control-indicator {
   border-radius: 0; }
-/* line 165, base/_forms.sass */
+/* line 167, base/_forms.sass */
 .checkbox.control-x, .checkbox.control-lrg {
   padding-left: 30px;
   height: 30px;
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 0; }
-  /* line 173, base/_forms.sass */
+  /* line 175, base/_forms.sass */
   .checkbox.control-x .checkbox input[type="checkbox"], .checkbox.control-lrg .checkbox input[type="checkbox"] {
     margin-left: -40px; }
-  /* line 176, base/_forms.sass */
+  /* line 178, base/_forms.sass */
   .checkbox.control-x .control-indicator, .checkbox.control-lrg .control-indicator {
     top: 0;
     width: 30px;
@@ -8775,33 +8783,34 @@ input[type="checkbox"] {
     border-radius: 4px;
     background-color: #fff;
     border: solid 1px #e1e2e3; }
-/* line 185, base/_forms.sass */
+/* line 187, base/_forms.sass */
 .checkbox.control-x input:checked ~ .control-indicator {
   background-color: #fff;
   background-image: url("../images/icon-remove.svg"); }
-/* line 192, base/_forms.sass */
+/* line 194, base/_forms.sass */
 .checkbox.control-lrg input:checked ~ .control-indicator {
   border: solid 1px #3daf2c;
   background-color: #3daf2c;
   background-image: url("../images/icon-checkmark-wht.svg"); }
 
-/* line 202, base/_forms.sass */
+/* line 204, base/_forms.sass */
 .form-inline legend {
   display: inline-block;
+  float: left;
   margin: 0 15px 0 0;
   width: auto; }
-/* line 207, base/_forms.sass */
+/* line 210, base/_forms.sass */
 .form-inline .checkbox.control,
 .form-inline .radio.control {
   display: inline-block; }
-  /* line 211, base/_forms.sass */
+  /* line 214, base/_forms.sass */
   .form-inline .checkbox.control input[type="radio"],
   .form-inline .checkbox.control input[type="checkbox"],
   .form-inline .radio.control input[type="radio"],
   .form-inline .radio.control input[type="checkbox"] {
     margin-left: -15px; }
 
-/* line 217, base/_forms.sass */
+/* line 220, base/_forms.sass */
 textarea.form-control {
   height: 150px;
   padding: 10px;
@@ -8809,41 +8818,45 @@ textarea.form-control {
   border-radius: 2px;
   background-color: #f0f0f0; }
 
-/* line 228, base/_forms.sass */
+/* line 231, base/_forms.sass */
 .help-block {
   font-size: 12px;
   line-height: 1.3;
   margin-bottom: -10px; }
 
-/* line 235, base/_forms.sass */
+/* line 237, base/_forms.sass */
 .has-error label, .has-error p.label {
   font-weight: 600;
   line-height: 1.4;
   color: #eb004b; }
-/* line 240, base/_forms.sass */
+/* line 242, base/_forms.sass */
 .has-error .form-control {
   box-shadow: none;
   border-color: #eb004b; }
-  /* line 244, base/_forms.sass */
+  /* line 246, base/_forms.sass */
   .has-error .form-control:focus {
     box-shadow: none;
     border-color: #eb004b; }
-/* line 248, base/_forms.sass */
+/* line 250, base/_forms.sass */
 .has-error .help-block {
   font-weight: 400;
   color: #eb004b; }
 
-/* line 253, base/_forms.sass */
+/* line 255, base/_forms.sass */
 .is-approved:before {
   content: url("../images/icon-approve.svg");
   position: absolute;
   left: -15px;
-  bottom: 7px;
+  top: 0.05rem;
   width: 11px; }
   @media (min-width: 769px) {
-    /* line 253, base/_forms.sass */
+    /* line 255, base/_forms.sass */
     .is-approved:before {
       left: -20px; } }
+/* line 266, base/_forms.sass */
+.is-approved.form-group:before {
+  bottom: 7px;
+  top: auto; }
 
 /* line 6, base/_tables.sass */
 table.table {
@@ -9503,37 +9516,41 @@ header.navbar + .tab-bar {
   position: relative; }
   /* line 4, components/_filterbox.sass */
   .filter-bar-wrap .filter-bar {
-    background-color: #f7f7f7;
-    padding: 30px;
     color: #a9adaf;
     text-transform: uppercase;
+    padding: 30px;
     margin: 20px 0;
+    background-color: #f7f7f7;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
-            justify-content: space-between; }
+            justify-content: space-between;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch; }
     /* line 14, components/_filterbox.sass */
     .filter-bar-wrap .filter-bar .label {
-      font-size: 10px;
-      line-height: 14px;
       color: #505c61;
+      font-size: 10px;
       font-weight: normal;
-      margin-right: 20px; }
-    /* line 21, components/_filterbox.sass */
+      line-height: 14px;
+      margin-right: 20px;
+      -ms-flex-item-align: center;
+          align-self: center; }
+    /* line 22, components/_filterbox.sass */
     .filter-bar-wrap .filter-bar .btn-filter {
       margin-right: 10px; }
-    /* line 24, components/_filterbox.sass */
+    /* line 25, components/_filterbox.sass */
     .filter-bar-wrap .filter-bar .filter-summary {
-      text-align: center;
       font-size: 12px;
+      text-align: center;
       line-height: 16px;
-      margin-left: auto; }
-      /* line 30, components/_filterbox.sass */
+      margin-left: auto;
+      -ms-flex-item-align: center;
+          align-self: center; }
+      /* line 32, components/_filterbox.sass */
       .filter-bar-wrap .filter-bar .filter-summary h5 {
         font-family: "Teko", sans-serif;
         font-size: 20px;
@@ -10024,7 +10041,8 @@ html, body {
 
 /* line 31, layout/_main.sass */
 hr {
-  width: 100%; }
+  width: 100%;
+  border-top-color: #e1e2e3; }
 
 /* line 5, layout/_sidebar.sass */
 .sidebar-container {
@@ -10605,8 +10623,8 @@ body.user-profile {
 
 /* line 30, pages/_carrier_dashboard.sass */
 .carrier-dashboard-header_label {
-  font-weight: bold;
   color: #19468d;
+  font-weight: bold;
   margin-right: 5px; }
 
 /* line 40, pages/_carrier_dashboard.sass */
@@ -10626,8 +10644,8 @@ body.user-profile {
   margin-bottom: 20px; }
 /* line 49, pages/_carrier_dashboard.sass */
 .carrier-dashboard .section-label, .carrier-dashboard .section-sub-label {
-  text-transform: uppercase;
   font-weight: normal;
+  text-transform: uppercase;
   margin-bottom: 0; }
 /* line 54, pages/_carrier_dashboard.sass */
 .carrier-dashboard .section-sub-label {
@@ -10881,6 +10899,7 @@ body.load-management-detail {
 
 /* line 96, pages/_load_details.sass */
 .load-doc {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10895,7 +10914,7 @@ body.load-management-detail {
   padding: 0px 10px 15px;
   border-bottom: 1px solid #e1e2e3; }
 
-/* line 104, pages/_load_details.sass */
+/* line 105, pages/_load_details.sass */
 .doc-image {
   height: 70px;
   width: 65px;
@@ -10912,7 +10931,7 @@ body.load-management-detail {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  /* line 113, pages/_load_details.sass */
+  /* line 114, pages/_load_details.sass */
   .doc-image img {
     width: auto;
     height: auto;
@@ -10920,11 +10939,11 @@ body.load-management-detail {
         -ms-flex: 0 0 auto;
             flex: 0 0 auto; }
 
-/* line 118, pages/_load_details.sass */
+/* line 119, pages/_load_details.sass */
 .doc-descrip {
   font-size: 12px;
   line-height: 1.3; }
-  /* line 121, pages/_load_details.sass */
+  /* line 122, pages/_load_details.sass */
   .doc-descrip h5 {
     font-size: 14px;
     text-transform: uppercase;
@@ -11002,12 +11021,13 @@ body.load-management-detail {
 
 /* line 33, pages/_reporting_modals.sass */
 .modal-action-links {
+  padding-top: 20px;
   margin-top: auto;
   margin-bottom: -10px; }
-  /* line 37, pages/_reporting_modals.sass */
+  /* line 38, pages/_reporting_modals.sass */
   .modal-action-links .btn-link + .btn-link {
     margin-left: 15px; }
-  /* line 40, pages/_reporting_modals.sass */
+  /* line 41, pages/_reporting_modals.sass */
   .modal-action-links.modal-action-split {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -11018,10 +11038,10 @@ body.load-management-detail {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between; }
-    /* line 45, pages/_reporting_modals.sass */
+    /* line 46, pages/_reporting_modals.sass */
     .modal-action-links.modal-action-split svg {
       vertical-align: middle; }
-  /* line 48, pages/_reporting_modals.sass */
+  /* line 49, pages/_reporting_modals.sass */
   .modal-action-links.has-error, .modal-action-links.has-message {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -11030,85 +11050,85 @@ body.load-management-detail {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-    /* line 54, pages/_reporting_modals.sass */
+    /* line 55, pages/_reporting_modals.sass */
     .modal-action-links.has-error .btn, .modal-action-links.has-message .btn {
       margin-right: 20px; }
-    /* line 56, pages/_reporting_modals.sass */
+    /* line 57, pages/_reporting_modals.sass */
     .modal-action-links.has-error .help-block, .modal-action-links.has-message .help-block {
       font-size: 14px; }
 
-/* line 59, pages/_reporting_modals.sass */
+/* line 60, pages/_reporting_modals.sass */
 .btn-group-left {
   margin-left: -5px; }
 
-/* line 62, pages/_reporting_modals.sass */
+/* line 63, pages/_reporting_modals.sass */
 .btn-group-right {
   margin-right: 0; }
-  /* line 64, pages/_reporting_modals.sass */
+  /* line 65, pages/_reporting_modals.sass */
   .btn-group-right > .btn {
     margin: 0; }
 
-/* line 71, pages/_reporting_modals.sass */
+/* line 72, pages/_reporting_modals.sass */
 .modal-main-content .content-header + p {
   margin-top: -15px; }
 
-/* line 76, pages/_reporting_modals.sass */
+/* line 77, pages/_reporting_modals.sass */
 .modal-sidebar .load-doc {
   padding: 0;
   border-bottom: none; }
 
-/* line 83, pages/_reporting_modals.sass */
+/* line 84, pages/_reporting_modals.sass */
 .table-modal-scroll {
   height: 300px;
   overflow-y: scroll;
   padding-right: 25px;
   border-bottom: solid 1px #505c61; }
-  /* line 90, pages/_reporting_modals.sass */
+  /* line 91, pages/_reporting_modals.sass */
   .table-modal-scroll table tr > td:last-child {
     padding-right: 0; }
 
-/* line 93, pages/_reporting_modals.sass */
+/* line 94, pages/_reporting_modals.sass */
 .table-assign-driver {
   margin-bottom: 0; }
-  /* line 96, pages/_reporting_modals.sass */
+  /* line 97, pages/_reporting_modals.sass */
   .table-assign-driver .driver-status,
   .table-assign-driver .driver-contact {
     text-align: right; }
-  /* line 100, pages/_reporting_modals.sass */
+  /* line 101, pages/_reporting_modals.sass */
   .table-assign-driver td.driver-contact {
     color: #a9adaf;
     width: 120px; }
-  /* line 104, pages/_reporting_modals.sass */
+  /* line 105, pages/_reporting_modals.sass */
   .table-assign-driver td.driver-status {
     width: 60px; }
-  /* line 107, pages/_reporting_modals.sass */
+  /* line 108, pages/_reporting_modals.sass */
   .table-assign-driver .driver-name {
     font-size: 14px; }
 
-/* line 115, pages/_reporting_modals.sass */
+/* line 116, pages/_reporting_modals.sass */
 .card-group {
   max-height: 235px;
   overflow-y: scroll;
   padding: 2px 15px 0 2px;
   margin-bottom: 20px; }
 
-/* line 124, pages/_reporting_modals.sass */
+/* line 125, pages/_reporting_modals.sass */
 .form-arrival-time {
   margin: 10px 0 40px; }
-  /* line 127, pages/_reporting_modals.sass */
+  /* line 128, pages/_reporting_modals.sass */
   .form-arrival-time .form-group {
     margin: 0 0 0 20px;
     width: 60px; }
-    /* line 131, pages/_reporting_modals.sass */
+    /* line 132, pages/_reporting_modals.sass */
     .form-arrival-time .form-group .form-control {
       width: 100%; }
-  /* line 134, pages/_reporting_modals.sass */
+  /* line 135, pages/_reporting_modals.sass */
   .form-arrival-time .btn-modal-dp {
     padding-left: 45px; }
-    /* line 138, pages/_reporting_modals.sass */
+    /* line 139, pages/_reporting_modals.sass */
     .form-arrival-time .btn-modal-dp.filter__assigned:before {
       content: url("../images/icon-calendar-white.svg"); }
-    /* line 141, pages/_reporting_modals.sass */
+    /* line 142, pages/_reporting_modals.sass */
     .form-arrival-time .btn-modal-dp:before {
       content: url("../images/icon-calendar-gray.svg");
       display: inline-block;
@@ -11118,19 +11138,25 @@ body.load-management-detail {
       width: 18px;
       height: auto;
       margin-right: 6px; }
-    /* line 155, pages/_reporting_modals.sass */
+    /* line 156, pages/_reporting_modals.sass */
     .form-arrival-time .btn-modal-dp:hover:before, .form-arrival-time .btn-modal-dp.active:before, .form-arrival-time .btn-modal-dp:active:before, .form-arrival-time .btn-modal-dp:focus:before {
       content: url("../images/icon-calendar-white.svg"); }
-  /* line 159, pages/_reporting_modals.sass */
+  /* line 160, pages/_reporting_modals.sass */
   .form-arrival-time .daterangepicker.single.show-calendar {
     left: 150px !important;
     top: calc(-370px /2) !important;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.3); }
-    /* line 164, pages/_reporting_modals.sass */
+    /* line 165, pages/_reporting_modals.sass */
     .form-arrival-time .daterangepicker.single.show-calendar.datepicker-offbottom {
       top: -370px !important; }
 
-/* line 170, pages/_reporting_modals.sass */
+/* line 169, pages/_reporting_modals.sass */
+.input-modal-dp {
+  background-image: url("../images/icon-calendar-gray-sm.svg");
+  background-position: center right;
+  background-repeat: no-repeat; }
+
+/* line 176, pages/_reporting_modals.sass */
 .search-location {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11141,11 +11167,11 @@ body.load-management-detail {
   min-height: 60px;
   margin-top: 20px;
   margin-bottom: 30px; }
-  /* line 177, pages/_reporting_modals.sass */
+  /* line 183, pages/_reporting_modals.sass */
   .search-location .form-control {
     width: 220px; }
 
-/* line 185, pages/_reporting_modals.sass */
+/* line 191, pages/_reporting_modals.sass */
 .document-add {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11154,38 +11180,20 @@ body.load-management-detail {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 10px; }
-  /* line 190, pages/_reporting_modals.sass */
+  /* line 196, pages/_reporting_modals.sass */
   .document-add .btn {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: 255px;
     margin-bottom: 0; }
-  /* line 195, pages/_reporting_modals.sass */
+  /* line 201, pages/_reporting_modals.sass */
   .document-add .btn-note {
     color: #a9adaf;
     margin: 0 0 0 20px; }
 
-/* line 202, pages/_reporting_modals.sass */
-.added-document {
-  position: relative;
-  display: inline-block;
-  width: 130px;
-  height: 140px;
-  text-align: center;
-  padding: 20px 15px;
-  background-color: #f7f7f7; }
-  /* line 211, pages/_reporting_modals.sass */
-  .added-document .close {
-    position: absolute;
-    top: calc(-24px/2);
-    right: calc(-24px/2);
-    width: 24px;
-    height: 24px;
-    box-shadow: 0 2px 4px rgba(250, 250, 250, 0.5); }
-
-/* line 219, pages/_reporting_modals.sass */
-.form-doc-upload {
+/* line 207, pages/_reporting_modals.sass */
+.form-2-col {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11202,13 +11210,86 @@ body.load-management-detail {
       -ms-flex-pack: start;
           justify-content: flex-start;
   margin-bottom: 30px; }
-  /* line 227, pages/_reporting_modals.sass */
-  .form-doc-upload .control {
+  /* line 215, pages/_reporting_modals.sass */
+  .form-2-col .control {
     -webkit-box-flex: 1;
         -ms-flex: 1 0 auto;
             flex: 1 0 auto;
     width: 35%;
     margin: 0 0 20px; }
-    /* line 231, pages/_reporting_modals.sass */
-    .form-doc-upload .control:nth-child(odd) {
+    /* line 219, pages/_reporting_modals.sass */
+    .form-2-col .control:nth-child(odd) {
       width: 60%; }
+
+/* line 224, pages/_reporting_modals.sass */
+.document-uploading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 433px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translate3d(0, 0, 0); }
+  /* line 237, pages/_reporting_modals.sass */
+  .document-uploading > div {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    margin-right: 20px; }
+
+/* line 241, pages/_reporting_modals.sass */
+.added-document {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 130px;
+  height: 140px;
+  text-align: center;
+  padding: 20px 15px 10px;
+  background-color: #f7f7f7; }
+  /* line 253, pages/_reporting_modals.sass */
+  .added-document .close {
+    position: absolute;
+    top: calc(-24px/2);
+    right: calc(-24px/2);
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: #fff;
+    -webkit-transition: box-shadow 0.1s ease-in;
+    transition: box-shadow 0.1s ease-in;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+    /* line 264, pages/_reporting_modals.sass */
+    .added-document .close:hover {
+      background: #f7f7f7;
+      box-shadow: 0 0 0 transparent; }
+    /* line 268, pages/_reporting_modals.sass */
+    .added-document .close:after, .added-document .close:before {
+      width: 2px;
+      height: 1.4rem;
+      margin-top: -6px;
+      background: #eb004b; }
+
+/* line 275, pages/_reporting_modals.sass */
+.added-doc-text {
+  color: #a9adaf; }

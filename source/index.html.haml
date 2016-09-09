@@ -11,14 +11,14 @@
 
       .well
         %h3 Eightbit Staging links: Reporting &amp; Tracking Overlays
-        %h5 Batch 2
+
+        %h5 Batch 4
         %ul
-          %li=link_to 'Report Loaded', '/clients/echo/report-loaded.html'
-          %li=link_to 'Report Loaded 2', '/clients/echo/report-loaded-2.html'
-          %li=link_to 'Report Loaded 3', '/clients/echo/report-loaded-3.html'
-          %li=link_to 'Report Arrival', '/clients/echo/report-arrival.html'
-          %li=link_to 'Report Empty', '/clients/echo/report-empty.html'
-          %li=link_to 'Report Empty 2', '/clients/echo/report-empty-2.html'
+          %li=link_to 'Add Document - Invoice', '/clients/echo/add-document-invoice.html'
+          %li=link_to 'Add Document', '/clients/echo/add-document.html'
+          %li=link_to 'Add Document - Error', '/clients/echo/add-document-error.html'
+          %li=link_to 'Add Document - Added', '/clients/echo/add-document-added.html'
+          %li=link_to 'Add Document 2', '/clients/echo/add-document-2.html'
 
         %h5 Batch 3
         %ul
@@ -29,6 +29,15 @@
           %li=link_to 'Report Location 1', '/clients/echo/report-location.html'
           %li=link_to 'Report Location 2', '/clients/echo/report-location-2.html'
           %li=link_to 'Send Load Update', '/clients/echo/send-load-update.html'
+
+        %h5 Batch 2
+        %ul
+          %li=link_to 'Report Loaded', '/clients/echo/report-loaded.html'
+          %li=link_to 'Report Loaded 2', '/clients/echo/report-loaded-2.html'
+          %li=link_to 'Report Loaded 3', '/clients/echo/report-loaded-3.html'
+          %li=link_to 'Report Arrival', '/clients/echo/report-arrival.html'
+          %li=link_to 'Report Empty', '/clients/echo/report-empty.html'
+          %li=link_to 'Report Empty 2', '/clients/echo/report-empty-2.html'
 
         %h5 Batch 1 (Approved)
         %ul
@@ -43,6 +52,12 @@
           %li=link_to 'View Assigned Driver 3','/clients/echo/view-assigned-driver-3.html'
 
       %h3 Reporting &amp; Tracking Overlays
+
+      %ul
+        %li=link_to 'Add Document', '/add-document.html'
+        %li=link_to 'Add Document - Error', '/add-document-error.html'
+        %li=link_to 'Add Document - Added', '/add-document-added.html'
+        %li=link_to 'Add Document 2', '/add-document-2.html'
 
       %ul
         %li=link_to 'Report Loaded', '/report-loaded.html'
