@@ -39,6 +39,8 @@ module.exports = {
     activityLogByLoadId: '/mock/api/v1/loads/:loadId/activity',
     reportArrivalByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportArrival',
     loadUpdateOptionsByLoadGuid: '/mock/api/v1/loads/:loadGuid/loadUpdateOptions',
-    reportLocation: '/mock/api/v1/loads/:loadGuid/reportLocation'
+    reportLocation: '/mock/api/v1/loads/:loadGuid/reportLocation',
+    proNumberByLoadId: '/mock/api/v1/loads/:loadId/proNumber',
+    trailerNumberByLoadId: '/mock/api/v1/loads/:loadId/trailerNumber'
   }
 };

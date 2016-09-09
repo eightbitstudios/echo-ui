@@ -138,6 +138,12 @@ angular.module('echo.api.loads', [
     createReportEmpty: function (loadGuid, reportEmpty) {
       var url = apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid });
       return $http.post(url, reportEmpty).then(function (resp) {
+      	return $q.when(resp.data.data);
+      });
+    },
+    updateProNumber: function (loadId, payload) {
+      var url = apiConfig.proNumberByLoadId({ loadId: loadId });
+      return $http.put(url, payload).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },
@@ -150,6 +156,12 @@ angular.module('echo.api.loads', [
     fetchReportEmptyByLoadGuid: function (loadGuid, reportEmpty) {
       var url = apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid });
       return $http.get(url, reportEmpty).then(function (resp) {
+      	return $q.when(resp.data.data);
+      });
+    },
+    updateTrailerNumber: function (loadId, payload) {
+      var url = apiConfig.trailerNumberByLoadId({ loadId: loadId });
+      return $http.put(url, payload).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },

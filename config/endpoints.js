@@ -38,5 +38,7 @@ module.exports = {
   reportEmptyByLoadGuid: '/api/v1/loads/${loadGuid}/reportEmpty',
   reportArrivalByLoadGuid: '/api/v1/loads/${loadGuid}/reportArrival',
   loadUpdateOptionsByLoadGuid: '/api/v1/loads/{loadGuid}/loadUpdateOptions',
-  reportLocation: '/api/v1/loads/${loadGuid}/reportLocation'
+  reportLocation: '/api/v1/loads/${loadGuid}/reportLocation',
+  proNumberByLoadId: '/api/v1/loads/${loadId}/proNumber',
+  trailerNumberByLoadId: '/api/v1/loads/${loadId}/trailerNumber'
 };
