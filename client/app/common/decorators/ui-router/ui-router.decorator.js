@@ -9,7 +9,7 @@ angular.module('echo.decorators.uiRouter', [])
         state.self.controllerAs = '$ctrl';
         
         /**
-         * Grabs all resolve property names from the state object.
+         * Grabs all resolve property keys from the state object.
          * example - ['carrierId', 'portalUsers']
          */
         var resolve = _(state.path).map(function (value) {
