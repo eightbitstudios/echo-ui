@@ -2,7 +2,7 @@
 
 .modal-body
   %section.modal-sidebar
-    = partial 'partials/modals/modal-sidebar-documents'
+    = partial 'partials/modals/modal-sidebar-documents', locals: {load_doc: ''}
 
   %section.modal-main-content
 
@@ -53,36 +53,38 @@
         Invoice
 
     %hr.hr
+    %form
+      .row
+        .col-sm-7
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Proof of Delivery #2 (2 Needed)
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios", :checked => "checked"}
+            %span.control-indicator
+            Lumper Receipt
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Bill of Lading
 
-    %form.form-doc-upload
-      %label.radio.control
-        %input{:type => "radio", :name => "optionsRadios"}
-        %span.control-indicator
-        Proof of Delivery #2 (2 Needed)
-      %label.radio.control
-        %input{:type => "radio", :name => "optionsRadios"}
-        %span.control-indicator
-        Fuel Receipts
-      %label.radio.control
-        %input{:type => "radio", :name => "optionsRadios", :checked => "checked"}
-        %span.control-indicator
-        Lumper Receipt
-      %label.radio.control
-        %input{:type => "radio", :name => "optionsRadios"}
-        %span.control-indicator
-        Scale Tickets
-      %label.radio.control
-        %input{:type => "radio", :name => "optionsRadios"}
-        %span.control-indicator
-        Bill of Lading
-      %label.radio.control
-        %input{:type => "radio", :name => "optionsRadios"}
-        %span.control-indicator
-        Other
-
+        .col-sm-5
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Fuel Receipts
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Scale Tickets
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Other
 
     .modal-action-links
       %button.btn.btn-default{type: 'button'} Add Document
 
 .modal-footer
-  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE
+  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CANCEL

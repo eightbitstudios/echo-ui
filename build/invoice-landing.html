@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta content='telephone=no' name='format-detection'>
+    <title>
+      Invoice Landing
+    </title>
+    <!-- / stylesheets -->
+    <link href="assets/stylesheets/application.css" rel="stylesheet" />
+    <link crossorigin='anonymous' href='//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' integrity='sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700|Teko' rel='stylesheet'>
+    <link href='/humans.txt' rel='author' type='text/plain'>
+    <!-- / favicons -->
+    <link href='favicon.png' rel='icon'>
+    <!--[if IE]>
+      <link rel="shortcut icon" href="favicon.ico">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class='load-management load-management-active'>
+    <header class='navbar'>
+      <div class='eyebrow-header'>
+        <div class='container'>
+          <div class='eyebrow-text pull-left'>
+            BILLING QUESTIONS? 610-555-1212
+          </div>
+          <ul class='eyebrow-nav list-inline navbar-right'>
+            <li><a href="#" class="link-mycarriers">My Carriers</a></li>
+            <li><a href="#" class="link-settings">Settings</a></li>
+            <li>
+              <a href="#" class="link-signout">Sign Out
+              <img src="assets/images/icon-signout@2x.png" class="" alt="Icon signout@2x" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class='container'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle collapsed' data-target='#main-nav' data-toggle='collapse' type='button'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <div class='navbar-brand'>
+            ECHO
+            <small class='brand-carrier'>Carrier Company "A" Name</small>
+          </div>
+        </div>
+        <nav class='collapse navbar-collapse' id='main-nav'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li><a href="#" class="">Dashboard</a></li>
+            <li class='active'><a href="#" class="">Load Management</a></li>
+            <li><a href="#" class="">Invoicing</a></li>
+            <li><a href="#" class="">My Company</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class='tab-bar'>
+      <div class='container'>
+        <ul class='nav nav-tabs'>
+          <li class='active'>
+            <a href="#">200 Active Invoices</a>
+          </li>
+          <li class=''>
+            <a href="#">1000+ Archived Invoices</a>
+          </li>
+        </ul>
+        <form class='search-form pull-right' role='search'>
+          <div class='form-group'>
+            <input class='form-control search-form-input search-form-input_dark' placeholder='Load or PRO Number' type='text'>
+            <span class='search-help-text'>Find an invoice</span>
+            <button class='btn btn-default btn-icon' type='submit'>
+              <svg height='18px' version='1.1' viewbox='0 0 18 18' width='18px' xmlns='http://www.w3.org/2000/svg'>
+                <g class='search-svg' fill-rule='evenodd' fill='none' id='States,-Interactions,-Misc' stroke-width='1' stroke='none'>
+                  <g id='patterns' stroke-width='2' stroke='#FFFFFF' transform='translate(-521.000000, -5581.000000)'>
+                    <g id='icon-/-search' transform='translate(522.000000, 5582.000000)'>
+                      <circle cx='6.33333333' cy='6.33333333' id='Oval' r='6'></circle>
+                      <path d='M10.5753333,10.576 L15.5,15.5' id='Shape'></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <small>Search by Invoice Number, PRO Number or Load Number</small>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class='container-fluid carrier-dashboard-header'>
+      <div class='container'>
+        <ul class='list-inline carrier-dashboard-header_left'>
+          <li>
+            <a href="#">159 Loads unbilled</a>
+          </li>
+          <li>
+            Worth $273,432.55
+          </li>
+        </ul>
+        <ul class='list-inline carrier-dashboard-header_right'>
+          <li>
+            <span class='carrier-dashboard-header_label'>ECHO REP</span>
+            Danielle John
+          </li>
+          <li>
+            <img src="assets/images/mail-icon-gray@2x.png" width="15px" height="15px" alt="Mail icon gray@2x" />
+            <a href="mailto:danielle.john@echoLogistics.com">danielle.john@echoLogistics.com</a>
+          </li>
+          <li>
+            (610) 555-1212
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class='carrier-map-spacer'></div>
+    <div class='container main-content'>
+      <section>
+        <div class='section-head'>
+          <div class='filter-bar-wrap'>
+            <div class='filter-bar'>
+              <div class='label'>Filter By</div>
+              <a href="#" class="btn btn-filter">Submitted
+              <br>
+              <small>$398,9876.54</small>
+              </a>
+              <a href="#" class="btn btn-filter">In Review
+              <br>
+              <small>$9876.54</small>
+              </a>
+              <a href="#" class="btn btn-filter">Approved</a>
+              <a href="#" class="btn btn-filter">Paid</a>
+              <span class='filter-summary'>
+                <h5>119 Invoices</h5>
+                By received date
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-md-12'>
+            <table class='table table-carrier-dashboard'>
+              <thead>
+                <tr>
+                  <th>Load</th>
+                  <th>Received Date</th>
+                  <th>
+                    Status
+                    <hr>
+                    Reason Code
+                  </th>
+                  <th>
+                    Load Number
+                  </th>
+                  <th>
+                    Lane ID
+                  </th>
+                  <th>
+                    Scheduled
+                    <hr>
+                    Delivered
+                  </th>
+                  <th>
+                    Invoice Total
+                    <hr>
+                    Balance Due
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class='carrier-dashboard-load'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-load-number'>
+                    <div class='load-number'><a href="#">123443211</a></div>
+                    <p class='label'>Pro:</p>
+                    <p>1234567890</p>
+                  </td>
+                  <td class='invoice-lane'>
+                    <div class='location-pickup'>
+                      <div class='lead'>
+                        Washington-on-the-Brazos
+                      </div>
+                    </div>
+                    <div class='carrier-dashboard-arrow'>
+                      <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
+                    </div>
+                    <div class='location-delivery'>
+                      <div class='lead'>
+                        Winchester-on-the-Severn
+                      </div>
+                    </div>
+                  </td>
+                  <td class='invoice-dates'>
+                    Feb 3 2016
+                    <br>
+                    Feb 6 2016
+                  </td>
+                  <td class='invoice-total'>
+                    $10,202.00
+                    <br>
+                    <div class='text-alert'>
+                      $10,202.00
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <nav class='pull-left'>
+              <ul class='pagination'>
+                <li>
+                  <a href="#"><span>
+                    <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
+                  </span>
+                  </a>
+                </li>
+                <li class='active-page'><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                  <a href="#"><span>
+                    <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
+                  </span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div class='results-count pull-right'>
+              Showing 1-10 of 40 Loads Needing Action
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class='footer'>
+      <div class='footer-primary'>
+        <div class='container'>
+          <div class='pull-left'>
+            <div class='navbar-brand'>
+              ECHO
+            </div>
+          </div>
+          <div class='pull-right'>
+            <ul class='list-inline footer-nav navbar-right'>
+              <li>
+                <strong>ECHO REP</strong>
+                Danielle John
+              </li>
+              <li>
+                <img src="assets/images/mail-icon@2x.png" width="15px" height="15px" alt="Mail icon@2x" />
+                <a href="mailto:danielle.john@echoLogistics.com">danielle.john@echoLogistics.com</a>
+              </li>
+              <li>
+                (610) 555-1212
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class='footer-secondary'>
+        <div class='container'>
+          <div class='pull-left'>
+            BILLING QUESTIONS? 610-555-1212
+          </div>
+          <div class='pull-right'>
+            <span class='copyright'>
+              Copyright
+              <script>
+                document.write(new Date().getFullYear())
+              </script>
+              Echo Global Logistics
+            </span>
+            <ul class='list-inline footer-nav navbar-right'>
+              <li><a href="#" class="">Terms &amp; Conditions</a></li>
+              <li><a href="#" class="">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    //jQuery CDN fallback
+    window.jQuery || document.write('<script src="assets/javascripts/vendor/jquery.min.js"><\/script>')
+  </script>
+  <script src="assets/javascripts/application.js"></script><script src="assets/javascripts/vendor/transition.js"></script><script src="assets/javascripts/vendor/collapse.js"></script><script src="assets/javascripts/vendor/alert.js"></script><script src="assets/javascripts/vendor/modal.js"></script><script src="assets/javascripts/vendor/moment.js"></script><script src="assets/javascripts/vendor/jquery.mCustomScrollbar.min.js"></script><script src="assets/javascripts/vendor/jquery.matchHeight.min.js"></script><script src="assets/javascripts/vendor/daterangepicker-mod.js"></script>
+</html>

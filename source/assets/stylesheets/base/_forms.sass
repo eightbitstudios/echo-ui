@@ -111,6 +111,7 @@ input[type="checkbox"]
   letter-spacing: 0
   font-size: 14px
   font-weight: 300
+  margin-bottom: 25px
 
   label
     letter-spacing: 0
@@ -138,6 +139,7 @@ input[type="checkbox"]
 //////////
 
 .control
+
   input:checked ~ .control-indicator
     background-color: $gray-light
 
@@ -201,6 +203,7 @@ input[type="checkbox"]
 .form-inline
   legend
     display: inline-block
+    float: left
     margin: 0 15px 0 0
     width: auto
 
@@ -231,7 +234,6 @@ textarea.form-control
   margin-bottom: -10px
 
 .has-error
-
   label
     font-weight: 600
     line-height: 1.4
@@ -254,8 +256,13 @@ textarea.form-control
     content: image-url('icon-approve.svg')
     position: absolute
     left: -15px
-    bottom: 7px
+    top: 0.05rem
     width: 11px
 
     +tablet
       left: -20px
+
+  &.form-group
+    &:before
+      bottom: 7px
+      top: auto

@@ -178,21 +178,28 @@ fieldset[disabled] .btn
 
   &.btn-filter
     position: relative
-    color: $gray-mid-light
-    border-color: $gray-mid-light
-    border-width: 2px
-    font-weight: normal
     transition: font-size 0s
+    color: $gray-mid-light
+    font-weight: normal
+    border-width: 2px
+    border-color: $gray-mid-light
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
-    user-select: all
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    small
+      font-size: 14px
+      font-family: $body-font
+      letter-spacing: 0
 
     &:focus,
     &:active
-      background-color: transparent
       color: $gray-mid-light
       border-color: $gray-mid-light
+      background-color: transparent
 
     &:hover,
     &.active,
@@ -216,6 +223,20 @@ fieldset[disabled] .btn
       &:hover
         border-color: $bright-blue-dark
         background-color: $bright-blue-dark
+
+    &.btn-filter-invoice
+      small
+        display: none
+
+      &.filter__assigned
+        font-size: 22px
+        font-family: $heading-font
+        text-transform: uppercase
+        text-align: left
+        line-height: 1
+        small
+          display: block
+
 
     &.btn-date-picker,
     &.btn-modal-dp
@@ -375,6 +396,7 @@ fieldset[disabled] .btn
       height: 140px
       width: 130px
       padding: 0
+      margin-bottom: 0
 
       &:before,
       &:after

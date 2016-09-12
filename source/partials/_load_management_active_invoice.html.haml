@@ -1,0 +1,55 @@
+%table.table.table-carrier-dashboard
+  %thead
+    %tr
+      %th Load
+      %th Received Date
+      %th
+        Status
+        %hr
+        Reason Code
+      %th
+        Load Number
+      %th
+        Lane ID
+      %th
+        Scheduled
+        %hr
+        Delivered
+      %th
+        Invoice Total
+        %hr
+        Balance Due
+  %tbody
+
+    %tr
+      %td.carrier-dashboard-load
+        =link_to '123443211', '#'
+
+      %td.invoice-received-date
+        Feb 3 2016
+      %td.invoice-status
+        %strong In Review
+        %br
+        Weight Discrepancy
+      %td.invoice-load-number
+        .load-number=link_to '123443211', '#'
+        %p.label Pro:
+        %p 1234567890
+      %td.invoice-lane
+        .location-pickup
+          .lead
+            Washington-on-the-Brazos
+        .carrier-dashboard-arrow
+          = image_tag 'icon-right-arrow-dark@2x.png'
+        .location-delivery
+          .lead
+            Winchester-on-the-Severn
+      %td.invoice-dates
+        Feb 3 2016
+        %br
+        Feb 6 2016
+      %td.invoice-total
+        $10,202.00
+        %br
+        .text-alert
+          $10,202.00

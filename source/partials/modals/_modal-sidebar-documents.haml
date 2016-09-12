@@ -8,16 +8,45 @@
 %p
   %strong Documents Added
 
-.load-doc
-  .doc-descrip
-    .doc-data
-      %h5 PROOF OF DELIVERY #1
-      Added 06:45 CST, Today
-      By Echo
+- if load_doc == 'approved'
 
-.load-doc
-  .doc-descrip
-    .doc-data
-      %h5 LUMPER RECEIPT
-      Added 05:45 CST, Today
-      By Echo
+  .load-doc.is-approved
+    .doc-descrip
+      .doc-data
+        %h5 LUMPER RECEIPT
+        Added 07:45 CST, Today
+        %br
+        By Echo
+
+  .load-doc
+    .doc-descrip
+      .doc-data
+        %h5 PROOF OF DELIVERY #1
+        Added 06:45 CST, Today
+        %br
+        By Echo
+
+  .load-doc
+    .doc-descrip
+      .doc-data
+        %h5 LUMPER RECEIPT
+        Added 05:45 CST, Today
+        %br
+        By Echo
+- else
+
+  .load-doc
+    .doc-descrip
+      .doc-data
+        %h5 PROOF OF DELIVERY #1
+        Added 06:45 CST, Today
+        %br
+        By Echo
+
+  .load-doc
+    .doc-descrip
+      .doc-data
+        %h5 LUMPER RECEIPT
+        Added 05:45 CST, Today
+        %br
+        By Echo

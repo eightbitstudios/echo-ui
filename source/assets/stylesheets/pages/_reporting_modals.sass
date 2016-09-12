@@ -31,6 +31,7 @@
   margin-left: auto
 
 .modal-action-links
+  padding-top: 20px
   margin-top: auto
   margin-bottom: -10px
 
@@ -165,6 +166,11 @@
       top: -370px !important
 
 
+.input-modal-dp
+  background-image: image-url('icon-calendar-gray-sm.svg')
+  background-position: center right
+  background-repeat: no-repeat
+
 // Delivery Location component
 
 .search-location
@@ -198,7 +204,7 @@
 
 // two column radio buttons
 
-.form-doc-upload
+.form-2-col
   display: flex
   flex-direction: row
   flex-wrap: wrap
@@ -219,10 +225,15 @@
   display: flex
   flex-direction: row
   flex-wrap: nowrap
-  padding-top: 20px
   width: 433px
+  padding-top: 20px
+  padding-bottom: 10px
+  margin-bottom: 15px
   overflow-x: auto
+  overflow-y: hidden
   -webkit-overflow-scrolling: touch
+  -webkit-transform: translate3d(0,0,0)
+
   > div
     flex-shrink: 0
     margin-right: 20px
