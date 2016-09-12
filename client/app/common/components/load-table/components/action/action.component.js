@@ -22,12 +22,12 @@ angular.module('echo.components.loadTable.action', [
 
       that.appConstants = appConstants;
       that.showButtonLoading = false;
-      that.currentStatus = _.find(actionEnums, { value: _.get(that.load.action, 'lastAction') });
-      that.nextAction = _.find(actionEnums, { value: _.get(that.load.action, 'nextAction') });
+      that.currentStatus = _.find(actionEnums.LAST_ACTION, { value: _.get(that.load.nextAction, 'lastAction') });
+      that.nextAction = _.find(actionEnums.AVAILABLE_ACTIONS, { value: _.get(that.load.nextAction, 'nextAction') });
 
       var actionHandler = {};
 
-      actionHandler[actionEnums.REPORTED_EMPTY.value] = function (loadGuid) {
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_EMPTY.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
           timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
             return modalService.open({
@@ -41,7 +41,7 @@ angular.module('echo.components.loadTable.action', [
           }));
       };
 
-      actionHandler[actionEnums.SENT_LOAD_UPDATE.value] = function (loadGuid) {
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid), timeZoneApi.fetchTimeZones()])
           .then(_.spread(function (sendLoadUpdate, timeZones) {
             return modalService.open({
@@ -55,7 +55,7 @@ angular.module('echo.components.loadTable.action', [
           }));
       };
 
-      actionHandler[actionEnums.REPORTED_ARRIVAL_AT_PICKUP.value] = function (loadGuid) {
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVED_AT_PICKUP.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchReportArrivalByLoadGuid(loadGuid),
           timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportArrival, timeZones) {
           return modalService.open({
