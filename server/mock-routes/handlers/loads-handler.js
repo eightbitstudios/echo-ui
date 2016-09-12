@@ -3,6 +3,7 @@ var responseUtil = require('../util/response-util.js'),
   reportEmptyRes = require('../data/report-empty-res'),
   activityLogRes = require('../data/activity-log-res'),
   reportArrivalRes = require('../data/report-arrival-res'),
+  loadUpdateOptionsRes = require('../data/load-update-options-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
 
@@ -79,6 +80,14 @@ module.exports = {
   getLoadDetails: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadsRes.loads[0];
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getLoadUpdateOptions: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = loadUpdateOptionsRes;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

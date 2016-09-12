@@ -7,7 +7,8 @@ angular.module('echo.components.modal.milestones.driverLocation', [
     bindings: {
       location: '=',
       dateTimePicker: '=',
-      timeZones: '<'
+      timeZones: '<',
+      dateTimePickerText: '@'
     },
     controller: function () {
     }

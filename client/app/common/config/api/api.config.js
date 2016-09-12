@@ -39,5 +39,7 @@ angular.module('echo.config.api', [])
     trailerNumberByLoadId: _.template('@trailerNumberByLoadId@'),
     timeZones: '@timeZones@',
     reportEmptyByLoadGuid: _.template('@reportEmptyByLoadGuid@'),
-    reportArrivalByLoadGuid: _.template('@reportArrivalByLoadGuid@')
+    reportArrivalByLoadGuid: _.template('@reportArrivalByLoadGuid@'),
+    loadUpdateOptionsByLoadGuid: _.template('@loadUpdateOptionsByLoadGuid@'),
+    reportLocation: _.template('@reportLocation@')
   });
