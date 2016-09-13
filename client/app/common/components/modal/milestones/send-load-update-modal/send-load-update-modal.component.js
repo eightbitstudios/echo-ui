@@ -2,6 +2,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
   'echo.components.modal.milestones.milestoneSidebar',
   'echo.api.loads',
   'echo.components.modal.milestones.driverLocation',
+  'echo.components.modal.milestones.pickupAtYard',
   'echo.components.modal.milestones.card',
   'echo.enums.loadUpdateOptions',
   'echo.models.location',
@@ -15,6 +16,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       load: '<',
       timeZones: '<',
       sendLoadUpdate: '<',
+      carrierId: '<',
       items: '<'
     },
     controller: function (loadsApi, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService) {
@@ -71,6 +73,22 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         }).finally(function () {
           that.showButtonLoading = false;
         });
+      };
+
+      that.confirmPickup = function () {
+        that.showButtonLoading = true;
+        loadsApi.createReportLocation(that.load.loadGuid, {
+          timeZone: that.dateTimePicker.timeZone,
+          date: that.dateTimePicker.getDateTime()
+        }).then(function () {
+          that.modalActions.close(true);
+        }).finally(function () {
+          that.showButtonLoading = false;
+        });
+      };
+
+      that.confirmPickupEnabled = function() {
+        return !_.get(that.assignedDriver, 'id');
       };
 
       that.$onInit = function () {
