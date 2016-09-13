@@ -15,7 +15,8 @@ angular.module('echo.components.modal.milestones.locationSearch', [
         return locationApi.fetchLocations(val).then(function(locations){
           return _.map(locations, function(location){
             return {
-              name: _.join([location.cityName, location.stateCode], ', ')
+              name: _.join([location.cityName, location.stateCode], ', '),
+              stateId: location.stateId
             };
           });
         });
@@ -23,6 +24,7 @@ angular.module('echo.components.modal.milestones.locationSearch', [
 
       that.selectedLocation = function(selected) {
         that.location.setLocation(_.get(selected, 'name'));
+        that.location.stateId = _.get(selected, 'stateId');
       };
     }
   });

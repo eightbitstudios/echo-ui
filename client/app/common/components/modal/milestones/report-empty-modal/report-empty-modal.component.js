@@ -33,10 +33,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
         that.showButtonLoading = true;
         loadsApi.createReportEmpty(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          driverLocation: {
-            cityName: that.location.city,
-            stateCode: that.location.state
-          },
+          driverLocation: that.location,
           eventTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
@@ -51,8 +48,9 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
         that.showButtonLoading = false;
 
         that.location = new LocationModel({
-          city: that.reportEmpty.driverLocation.cityName,
-          state: that.reportEmpty.driverLocation.stateCode
+          cityName: that.reportEmpty.driverLocation.cityName,
+          stateCode: that.reportEmpty.driverLocation.stateCode,
+          stateId: that.reportEmpty.driverLocation.stateId
         });
 
         that.dateTimePicker = new DateTimePickerModel({

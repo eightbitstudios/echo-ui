@@ -79,10 +79,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.showButtonLoading = true;
         loadsApi.updateReportLocation(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          location: {
-            cityName: that.location.city,
-            stateCode: that.location.state
-          },
+          location:  that.location,
           locationTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
@@ -96,10 +93,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
-          driverLocation: {
-            cityName: that.location.city,
-            stateCode: that.location.state
-          },
+          driverLocation:  that.location,
           reportType: that.determineTrailerReportType()
         }).then(function () {
           that.modalActions.close(true);
