@@ -40,8 +40,8 @@ angular.module('echo.config.api', [])
     timeZones: '@timeZones@',
     itemsByLoadGuid: _.template('@itemsByLoadGuid@'),
     reportEmptyByLoadGuid: _.template('@reportEmptyByLoadGuid@'),
-    reportLoadedByLoadGuid: _.template('@reportLoadedByLoadGuid@'),
     reportArrivalByLoadGuid: _.template('@reportArrivalByLoadGuid@'),
+    reportLoadedByLoadGuid: _.template('@reportLoadedByLoadGuid@'),
     loadUpdateOptionsByLoadGuid: _.template('@loadUpdateOptionsByLoadGuid@'),
     reportLocation: _.template('@reportLocation@'),
     reportDeliveredByLoadGuid: _.template('@reportDeliveredByLoadGuid@')
