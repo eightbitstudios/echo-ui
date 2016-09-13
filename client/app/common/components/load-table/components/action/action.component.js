@@ -48,15 +48,15 @@ angular.module('echo.components.loadTable.action', [
         return $q.all([loadsApi.fetchReportLoadedByLoadGuid(loadGuid),
           loadsApi.fetchItemsByLoadGuid(loadGuid),
           timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportLoaded, items, timeZones) {
-          return modalService.open({
-            component: 'report-loaded-modal',
-            bindings: {
-              load: that.load,
-              reportLoaded: reportLoaded,
-              items: items,
-              timeZones: timeZones
-            }
-          });
+            return modalService.open({
+              component: 'report-loaded-modal',
+              bindings: {
+                load: that.load,
+                reportLoaded: reportLoaded,
+                items: items,
+                timeZones: timeZones
+              }
+            });
         }));
       };
 
