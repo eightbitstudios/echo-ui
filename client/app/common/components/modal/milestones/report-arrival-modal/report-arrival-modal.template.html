@@ -16,7 +16,7 @@
   <div class="modal-body">
     <arrival-sidebar load="$ctrl.load" report-arrival="$ctrl.reportArrival" />
     <section class="modal-main-content">
-      <h4 class="content-header">What time did the driver arrive<br> at the pickup stop?</h4>
+      <h4 class="content-header">What time did the driver arrive<br> at the {{$ctrl.arrivalType.description}} stop?</h4>
       <p class="text-muted disclaimer">[Legal disclaimer such as: For communication purposes only. Detention is calculated using customer policies and documents provided at the stop location.]</p>
       <date-time-picker time-zones="$ctrl.timeZones" date-time="$ctrl.dateTimePicker" />
       <div class="date-select"></div>

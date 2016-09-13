@@ -147,6 +147,12 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
+    createReportTrailer: function (loadGuid, reportTrailer) {
+      var url = apiConfig.reportTrailerByLoadGuid({ loadGuid: loadGuid });
+      return $http.post(url, reportTrailer).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
     createReportLoaded: function (loadGuid, reportLoaded) {
       var url = apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid });
       return $http.post(url, reportLoaded).then(function (resp) {
@@ -162,6 +168,12 @@ angular.module('echo.api.loads', [
     fetchReportLoadedByLoadGuid: function (loadGuid) {
       var url = apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid });
       return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    updateReportLocation: function (loadGuid, reportLocation) {
+      var url = apiConfig.reportLocation({ loadGuid: loadGuid });
+      return $http.put(url, reportLocation).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },
@@ -198,12 +210,6 @@ angular.module('echo.api.loads', [
     fetchLoadUpdateOptionsByLoadGuid: function (loadGuid) {
       var url = apiConfig.loadUpdateOptionsByLoadGuid({ loadGuid: loadGuid });
       return $http.get(url).then(function (resp) {
-        return $q.when(resp.data.data);
-      });
-    },
-    createReportTrailer: function (loadGuid, reportTrailer) {
-      var url = apiConfig.reportTrailerByLoadGuid({ loadGuid: loadGuid });
-      return $http.post(url, reportTrailer).then(function (resp) {
         return $q.when(resp.data.data);
       });
     },
