@@ -76,7 +76,7 @@ angular.module('echo.components.loadTable.action', [
         }));
       };
 
-      actionHandler[actionEnums.SENT_LOAD_UPDATE.value] = function (loadGuid) {
+      actionHandler[actionEnums.SEND_LOAD_UPDATE.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid), timeZoneApi.fetchTimeZones()])
           .then(_.spread(function (sendLoadUpdate, timeZones) {
             return modalService.open({
