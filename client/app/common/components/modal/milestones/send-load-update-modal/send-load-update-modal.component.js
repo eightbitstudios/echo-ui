@@ -7,7 +7,8 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
   'echo.enums.loadUpdateOptions',
   'echo.models.location',
   'echo.models.dateTimePicker',
-  'echo.services.modal'
+  'echo.services.modal',
+  'echo.enums.arrivalTypes'
 ])
   .component('sendLoadUpdateModal', {
     templateUrl: 'app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.template.html',
@@ -16,10 +17,10 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       load: '<',
       timeZones: '<',
       sendLoadUpdate: '<',
+      reportArrival: '<',
       carrierId: '<',
-      items: '<'
     },
-    controller: function (loadsApi, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService) {
+    controller: function (loadsApi, arrivalTypeEnums, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService) {
       var that = this;
 
       that.modes = {
@@ -32,6 +33,15 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
 
       that.translateCardLabel = function (optionIndex) {
         return _.find(loadUpdateOptionEnums, { value: optionIndex }).description;
+      };
+
+      that.determineTrailerReportType = function () {
+        if (that.currentStep === that.modes.trailerPickup) {
+          return loadUpdateOptionEnums.TRAILER_PICKUP.typeFlag;
+        } else if (that.currentStep === that.modes.trailerDropOff) {
+          return loadUpdateOptionEnums.TRAILER_DROP.typeFlag;
+        }
+        return null;
       };
 
       that.showOption = function (option) {
@@ -47,27 +57,28 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
             break;
           case loadUpdateOptionEnums.ARRIVAL_AT_DELIVERY.value:
             var modalInstance = modalService.open({
-              component: 'report-delivery-modal',
+              component: 'report-arrival-modal',
               bindings: {
                 load: that.load,
-                reportDelivery: that.sendLoadUpdate,
-                items: that.items,
-                timeZones: that.timeZones
+                reportArrival: that.reportArrival,
+                timeZones: that.timeZones,
+                arrivalType: arrivalTypeEnums.DELIVERY.description
               }
             }).result;
+
             that.modalActions.close(modalInstance);
         }
       };
 
       that.confirmLocation = function () {
         that.showButtonLoading = true;
-        loadsApi.createReportLocation(that.load.loadGuid, {
+        loadsApi.updateReportLocation(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          driverLocation: {
+          location: {
             cityName: that.location.city,
             stateCode: that.location.state
           },
-          eventTime: that.dateTimePicker.getDateTime()
+          locationTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
@@ -77,9 +88,10 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
 
       that.confirmPickup = function () {
         that.showButtonLoading = true;
-        loadsApi.createReportLocation(that.load.loadGuid, {
+        loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          date: that.dateTimePicker.getDateTime()
+          eventTime: that.dateTimePicker.getDateTime(),
+          stopType: that.determineTrailerReportType()
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
@@ -87,7 +99,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         });
       };
 
-      that.confirmPickupEnabled = function() {
+      that.confirmPickupEnabled = function () {
         return !_.get(that.assignedDriver, 'id');
       };
 

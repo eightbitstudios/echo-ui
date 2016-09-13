@@ -34,7 +34,7 @@ angular.module('echo.components.loadTable.action', [
         return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
           timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
             return modalService.open({
-            component: 'report-empty-modal',
+              component: 'report-empty-modal',
               bindings: {
                 load: that.load,
                 reportEmpty: reportEmpty,
@@ -62,17 +62,17 @@ angular.module('echo.components.loadTable.action', [
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid),
-          timeZoneApi.fetchTimeZones(),
-          loadsApi.fetchItemsByLoadGuid(loadGuid)])
-          .then(_.spread(function (sendLoadUpdate, timeZones, items) {
+          loadsApi.fetchReportArrivalByLoadGuid(loadGuid),
+          timeZoneApi.fetchTimeZones()])
+          .then(_.spread(function (sendLoadUpdate, reportArrival, timeZones) {
             return modalService.open({
               component: 'send-load-update-modal',
               bindings: {
                 load: that.load,
                 sendLoadUpdate: sendLoadUpdate,
+                reportArrival: reportArrival,
                 timeZones: timeZones,
-                carrierId: that.carrierId,
-                items: items
+                carrierId: that.carrierId
               }
             });
           }));
@@ -100,9 +100,12 @@ angular.module('echo.components.loadTable.action', [
           timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportArrival, timeZones) {
             return modalService.open({
               component: 'report-arrival-modal',
-              reportArrival: reportArrival,
-              timeZones: timeZones,
-              arrivalType: arrivalTypeEnums.PICKUP.description
+              bindings: {
+                load: that.load,
+                carrierId: that.carrierId,
+                reportArrival: reportArrival,
+                timeZones: timeZones
+              }
             });
           }));
       };

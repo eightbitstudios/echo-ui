@@ -45,6 +45,7 @@ module.exports = {
     loadUpdateOptionsByLoadGuid: '/mock/api/v1/loads/:loadGuid/loadUpdateOptions',
     reportLocation: '/mock/api/v1/loads/:loadGuid/reportLocation',
     proNumberByLoadId: '/mock/api/v1/loads/:loadId/proNumber',
-    trailerNumberByLoadId: '/mock/api/v1/loads/:loadId/trailerNumber'
+    trailerNumberByLoadId: '/mock/api/v1/loads/:loadId/trailerNumber',
+    reportTrailerByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportTrailer'
   }
 };
