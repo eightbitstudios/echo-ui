@@ -57,7 +57,7 @@ angular.module('echo.components.loadTable.action', [
                 timeZones: timeZones
               }
             });
-          }));
+        }));
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {

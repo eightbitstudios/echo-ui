@@ -6,12 +6,15 @@
     <h1 class="modal-title">
       <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.overview">
         Send Load Update for
-      </span>      
+      </span>
       <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup">
-        REPORT PICKUP OF TRAILER AT YARD for
+        Report Pickup of Trailer at Yard for
       </span>
       <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.location">
         Report Location for
+      </span>
+      <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.trailerDropOff">
+        Report Drop of Trailer at Yard for
       </span>
       <span class="assign-action-to">
         Load {{$ctrl.load.loadNumber}}
@@ -32,14 +35,18 @@
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
         <driver-location location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
       </div>
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.trailerDropOff">
+        <dropped-load location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+      </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup" class="trailer-pickup">
         <pickup-at-yard load="$ctrl.load" carrier-id="$ctrl.carrierId" time-zones="$ctrl.timeZones" assigned-driver="$ctrl.assignedDriver"/>
       </div>
     </section>
   </div>
   <div class="modal-footer">
-     <loading-button button-text="Confirm Pickup" disable-button="$ctrl.confirmPickupEnabled()" ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.confirmPickup()"></loading-button>
-     <loading-button button-text="Confirm Location" disable-button="!$ctrl.location.isValid()" ng-if="$ctrl.currentStep === $ctrl.modes.location" show-loading="$ctrl.showButtonLoading" ng-click="$ctrl.confirmLocation()"></loading-button>
+    <loading-button button-text="Confirm Pickup" disable-button="$ctrl.confirmPickupEnabled()" ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.confirmPickup()"></loading-button>
+    <loading-button button-text="Confirm Drop" ng-if="$ctrl.currentStep === $ctrl.modes.trailerDropOff" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.confirmDropOff()"></loading-button>
+    <loading-button button-text="Confirm Location" disable-button="!$ctrl.location.isValid()" ng-if="$ctrl.currentStep === $ctrl.modes.location" show-loading="$ctrl.showButtonLoading" ng-click="$ctrl.confirmLocation()"></loading-button>
     <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
   </div>
 </div>

@@ -2,6 +2,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
   'echo.components.modal.milestones.milestoneSidebar',
   'echo.api.loads',
   'echo.components.modal.milestones.driverLocation',
+  'echo.components.modal.milestones.sendLoadUpdate.droppedLoad',
   'echo.components.modal.milestones.pickupAtYard',
   'echo.components.modal.milestones.card',
   'echo.enums.loadUpdateOptions',
@@ -18,7 +19,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       timeZones: '<',
       sendLoadUpdate: '<',
       reportArrival: '<',
-      carrierId: '<',
+      carrierId: '<'
     },
     controller: function (loadsApi, arrivalTypeEnums, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService) {
       var that = this;
@@ -35,13 +36,14 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         return _.find(loadUpdateOptionEnums, { value: optionIndex }).description;
       };
 
-      that.determineTrailerReportType = function () {
+      that.determineTrailerReportType = function() {
         if (that.currentStep === that.modes.trailerPickup) {
           return loadUpdateOptionEnums.TRAILER_PICKUP.typeFlag;
         } else if (that.currentStep === that.modes.trailerDropOff) {
           return loadUpdateOptionEnums.TRAILER_DROP.typeFlag;
+        } else {
+          return null;
         }
-        return null;
       };
 
       that.showOption = function (option) {
@@ -67,6 +69,9 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
             }).result;
 
             that.modalActions.close(modalInstance);
+            break;
+          default:
+            that.currentStep = that.modes.overview;
         }
       };
 
@@ -79,6 +84,21 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
             stateCode: that.location.state
           },
           locationTime: that.dateTimePicker.getDateTime()
+        }).then(function () {
+          that.modalActions.close(true);
+        }).finally(function () {
+          that.showButtonLoading = false;
+        });
+      };
+
+      that.confirmDropOff = function () {
+        that.showButtonLoading = true;
+        loadsApi.createReportTrailer(that.load.loadGuid, {
+          timeZone: that.dateTimePicker.timeZone,
+          date: that.dateTimePicker.getDateTime(),
+          cityName: that.location.city,
+          stateName: that.location.state,
+          reportType: that.determineTrailerReportType()
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
