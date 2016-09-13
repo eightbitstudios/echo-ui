@@ -22,7 +22,7 @@ angular.module('echo.config.appConstants', [])
       passwordUpperCase: /[^a-z0-9]/
     },
     ERROR_MESSAGES: {
-      400: 'An error occured',
+      400: 'An error occurred',
       400103: 'Invalid username',
       400105: 'First name is required',
       400106: 'Phone number is required',
@@ -33,6 +33,7 @@ angular.module('echo.config.appConstants', [])
       400115: 'Password and Confirm Password do not match',
       401101: 'User account is deactivated',
       401102: 'Invalid Username or Password',
+      401105: 'User Role Not Allowed To Reset Password in Portal',
       500: 'An unexpected error has occurred',
       500100: 'Unable to change current password',
       500101: 'Duplicate username',
