@@ -39,4 +39,9 @@ module.exports = {
   reportLoadedByLoadGuid: '/api/v1/loads/${loadGuid}/reportLoaded',
   reportArrivalByLoadGuid: '/api/v1/loads/${loadGuid}/reportArrival',
   itemsByLoadGuid: '/api/v1/loads/${loadGuid}/items',
+  reportArrivalByLoadGuid: '/api/v1/loads/${loadGuid}/reportArrival',
+  loadUpdateOptionsByLoadGuid: '/api/v1/loads/{loadGuid}/loadUpdateOptions',
+  reportLocation: '/api/v1/loads/${loadGuid}/reportLocation',
+  proNumberByLoadId: '/api/v1/loads/${loadId}/proNumber',
+  trailerNumberByLoadId: '/api/v1/loads/${loadId}/trailerNumber'
 };
