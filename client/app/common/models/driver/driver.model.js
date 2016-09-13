@@ -14,9 +14,9 @@ angular.module('echo.models.driver', [
       var that = this;
 
       var defaults = {
-        language: appConstants.LANGUAGES.default
+        preferredLanguage: appConstants.LANGUAGES.default
       };
- 
+
       _.assign(that, defaults, userData);
     }
 
