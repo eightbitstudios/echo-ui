@@ -3,11 +3,13 @@ angular.module('echo.components.loadTable.action', [
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
   'echo.components.modal.milestones.reportLoaded',
+  'echo.components.modal.milestones.reportArrival',
   'echo.components.modal.milestones.sendLoadUpdate',
   'echo.components.modal.milestones.reportDelivery',
   'echo.services.modal',
   'echo.api.loads',
   'echo.enums.actions',
+  'echo.enums.arrivalTypes',
   'echo.api.timeZone',
   'echo.filters.firstCharacter'
 ])
@@ -17,17 +19,17 @@ angular.module('echo.components.loadTable.action', [
       load: '<',
       actionChangedCallback: '&'
     },
-    controller: function ($q, appConstants, actionEnums, modalService, loadsApi, timeZoneApi) {
+    controller: function ($q, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
       var that = this;
 
       that.appConstants = appConstants;
       that.showButtonLoading = false;
-      that.currentStatus = _.find(actionEnums, { value: that.load.action.lastAction });
-      that.nextAction = _.find(actionEnums, { value: that.load.action.nextAction });
+      that.currentStatus = _.find(actionEnums.LAST_ACTION, { value: _.get(that.load.nextAction, 'lastAction') });
+      that.nextAction = _.find(actionEnums.AVAILABLE_ACTIONS, { value: _.get(that.load.nextAction, 'nextAction') });
 
       var actionHandler = {};
 
-      actionHandler[actionEnums.REPORTED_EMPTY.value] = function (loadGuid) {
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_EMPTY.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
           timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
             return modalService.open({
@@ -41,23 +43,7 @@ angular.module('echo.components.loadTable.action', [
         }));
       };
 
-      actionHandler[actionEnums.REPORT_DELIVERY.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportDeliveredByLoadGuid(loadGuid), 
-        loadsApi.fetchItemsByLoadGuid(loadGuid),
-        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportDelivery, items, timeZones) {
-          return modalService.open({
-            component: 'report-delivery-modal',
-            bindings: {
-              load: that.load,
-              reportDelivery: reportDelivery,
-              items: items,
-              timeZones: timeZones
-            }
-          });
-        }));
-      };
-
-      actionHandler[actionEnums.REPORT_LOADED.value] = function (loadGuid) {
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_LOADED.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchReportLoadedByLoadGuid(loadGuid),
         loadsApi.fetchItemsByLoadGuid(loadGuid), 
         timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportLoaded, items, timeZones) {
@@ -73,7 +59,7 @@ angular.module('echo.components.loadTable.action', [
           }));
       };
 
-      actionHandler[actionEnums.SENT_LOAD_UPDATE.value] = function (loadGuid) {
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid), 
         timeZoneApi.fetchTimeZones(),
         loadsApi.fetchItemsByLoadGuid(loadGuid)])
@@ -88,6 +74,21 @@ angular.module('echo.components.loadTable.action', [
               }
             });
           }));
+      };
+
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVED_AT_PICKUP.value] = function (loadGuid) {
+        return $q.all([loadsApi.fetchReportArrivalByLoadGuid(loadGuid),
+          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportArrival, timeZones) {
+          return modalService.open({
+            component: 'report-arrival-modal',
+            bindings: {
+              load: that.load,
+              reportArrival: reportArrival,
+              timeZones: timeZones,
+              arrivalType: arrivalTypeEnums.PICKUP.description
+            }
+          });
+        }));
       };
 
       that.openMilestone = function (action) {

@@ -69,7 +69,7 @@ module.exports = {
         }]
     }],
     "driver": {
-      "id": 0,
+      "id": 1,
       "firstName": "Sam",
       "lastName": "Smith",
       "phone": "13124551234",
@@ -80,8 +80,8 @@ module.exports = {
       "isTrackingEnabled": false,
       "isDoNotDisturb": true
     },
-    action: {
-      lastAction: 0,
+    nextAction: {
+      lastAction: 1,
       firstName: 'Tim',
       lastName: 'Potatoe',
       actionPerformed: '13:50 CST Today',
@@ -145,8 +145,8 @@ module.exports = {
         phone: '8895351903',
         isTrackingEnabled: false
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -179,8 +179,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -214,8 +214,8 @@ module.exports = {
         phone: '8895840803',
         isTrackingEnabled: true
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         time: '1473417000',
@@ -250,8 +250,8 @@ module.exports = {
         phone: '8895351903',
         isTrackingEnabled: false
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -284,7 +284,7 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
+      nextAction: {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
@@ -319,8 +319,8 @@ module.exports = {
         phone: '8895840803',
         isTrackingEnabled: true
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Mike',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -354,8 +354,8 @@ module.exports = {
         phone: '8895351903',
         isTrackingEnabled: false
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -388,8 +388,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -422,8 +422,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -456,8 +456,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -490,8 +490,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
