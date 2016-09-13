@@ -17,12 +17,24 @@ angular.module('echo.enums.actions', [])
         value: 4,
         description: 'Send Load Update'
       },
-      REPORT_ARRIVED_AT_DELIVERY: {
+      TRAILER_DROP_AT_YARD: {
         value: 5,
+        description: 'Trailer Drop At Yard'
+      },
+      TRAILER_PICKUP_AT_YARD: {
+        value: 6,
+        description: 'Trailer Pickup At Yard'
+      },
+      REPORT_LOCATION: {
+        value: 7,
+        description: 'Report Location'
+      },
+      REPORT_ARRIVED_AT_DELIVERY: {
+        value: 8,
         description: 'Report Arrived At Delivery'
       },
       REPORT_DELIVERY: {
-        value: 6,
+        value: 9,
         description: 'Report Delivery'
       }
     },
@@ -78,6 +90,14 @@ angular.module('echo.enums.actions', [])
       DOCUMENT_ADDED: {
         value: 13,
         description: 'Document Added'
+      },
+      REPORTED_LOCATION: {
+        value: 14,
+        description: 'Reported Location'
+      },
+      TRAILER_DROPPED: {
+        value: 15,
+        description: 'Trailer Dropped'
       }
     }
   });
