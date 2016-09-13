@@ -1,0 +1,18 @@
+<h4 class="content-header">You're reporting the driver's delivery of</h4>
+<div class="card-group">
+  <div class="card card-driver" ng-repeat="item in $ctrl.items">
+    <div class="card-details">
+      <p>
+        <strong>{{item.description}}</strong>
+      </p>
+      <p>
+        <span ng-if="item.quantity">{{item.quantity}} EA,</span> {{$ctrl.handlingUnit}}</br>{{item.estimatedWeight}} lbs
+      </p>
+    </div>
+  </div>
+</div>
+<p>
+  <strong>When was the driver at this location?</strong>
+</p>
+<p class="text-muted disclaimer">[Legal disclaimer such as: For communication purposes only. Detention is calculated using customer policies and documents provided at the stop location.]</p>
+<date-time-picker date-time="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>

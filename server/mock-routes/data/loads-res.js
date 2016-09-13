@@ -150,7 +150,7 @@ module.exports = {
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
-        nextAction: 3,
+        nextAction: 6,
         onTime: false,
         lateBy: null
       },
@@ -255,7 +255,7 @@ module.exports = {
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
-        nextAction: 3,
+        nextAction: 4,
         onTime: false,
         lateBy: null
       },

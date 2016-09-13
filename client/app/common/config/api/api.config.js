@@ -43,5 +43,6 @@ angular.module('echo.config.api', [])
     reportArrivalByLoadGuid: _.template('@reportArrivalByLoadGuid@'),
     reportLoadedByLoadGuid: _.template('@reportLoadedByLoadGuid@'),
     loadUpdateOptionsByLoadGuid: _.template('@loadUpdateOptionsByLoadGuid@'),
-    reportLocation: _.template('@reportLocation@')
+    reportLocation: _.template('@reportLocation@'),
+    reportDeliveredByLoadGuid: _.template('@reportDeliveredByLoadGuid@')
   });

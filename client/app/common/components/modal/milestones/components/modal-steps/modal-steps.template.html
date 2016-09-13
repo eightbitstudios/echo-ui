@@ -6,7 +6,7 @@
     <progress-indicator current-step="$ctrl.currentStep" steps="$ctrl.steps" />
   </div>
   <div class="col-xs-6 text-right">
-    <button class="btn btn-secondary" ng-click="$ctrl.previousStep()" type="button" ng-class="{hidden: $ctrl.currentStep === 1}">Back</button>
+    <button class="btn btn-secondary" ng-click="$ctrl.previousStep()" type="button" ng-disabled="$ctrl.isBackDisabled" ng-class="{hidden: $ctrl.currentStep === 1}">Back</button>
     <button class="btn btn-default" ng-click="$ctrl.nextStep()" type="button" ng-disabled="$ctrl.isNextDisabled" ng-class="{hidden: $ctrl.currentStep === $ctrl.maxStep}">Next</button>
     <ng-transclude ng-class="{hidden: $ctrl.currentStep < $ctrl.maxStep}"></ng-transclude>
   </div>

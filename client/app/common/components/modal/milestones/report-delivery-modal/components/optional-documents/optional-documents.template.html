@@ -1,0 +1,49 @@
+<div ng-if="$ctrl.currentStep === $ctrl.modes.documents">
+<h4 class="content-header">Optional Documents</h4>
+<div class="optional-documents">
+  <div class="document-add">
+    <button class="btn btn-document">
+                  <div class="btn-plus-sign"></div>
+                  <div class="add-type">
+                    PROOF OF DELIVERY
+                  </div>
+                </button>
+    <p class="btn-note">You can add this later but it is required if your driver lumps.</p>
+  </div>
+  <div class="document-add">
+    <button class="btn btn-document">
+                  <div class="btn-plus-sign"></div>
+                  <div class="add-type">
+                    LUMPER RECEIPT
+                  </div>
+                </button>
+  </div>
+  <div class="document-add">
+    <button class="btn btn-document">
+                  <div class="btn-plus-sign"></div>
+                  <div class="add-type">
+                    SCALE TICKET
+                  </div>
+                </button>
+  </div>
+  <div class="modal-action-links modal-action-split">
+    <div class="rating">
+      <p>
+        <strong>How was your experience with Echo?</strong>
+      </p>
+      <rating rating="$ctrl.rating" />
+    </div>
+    <a class="btn btn-link" ng-click="$ctrl.addComment()">{{$ctrl.comment ? 'Edit' : 'Add a'}} comment
+      <svg width="13" height="14" viewBox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
+                      <g class="link-icon icon-next" stroke="#26C1FB" stroke-width="2" fill="none" fill-rule="evenodd">
+                          <path d="M5.2 12.4l5.74-5.74-5.637-5.638"></path>
+                          <path d="M9.79 6.832h-8" stroke-linecap="square"></path>
+                      </g>
+                  </svg>
+    </a>
+  </div>
+</div>
+</div>
+<div ng-if="$ctrl.currentStep === $ctrl.modes.comment">
+  <comment comment="$ctrl.comment" cancel-callback="$ctrl.exitComment()" save-callback="$ctrl.saveComment(comment)"/>
+</div>
