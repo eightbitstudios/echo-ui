@@ -60,37 +60,6 @@ angular.module('echo.components.loadTable.action', [
         }));
       };
 
-      actionHandler[actionEnums.REPORT_LOADED.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportLoadedByLoadGuid(loadGuid),
-        loadsApi.fetchItemsByLoadGuid(loadGuid),
-        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportLoaded, items, timeZones) {
-          return modalService.open({
-            component: 'report-loaded-modal',
-            bindings: {
-              load: that.load,
-              reportLoaded: reportLoaded,
-              items: items,
-              timeZones: timeZones
-            }
-          });
-        }));
-      };
-
-      actionHandler[actionEnums.SEND_LOAD_UPDATE.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid), timeZoneApi.fetchTimeZones()])
-          .then(_.spread(function (sendLoadUpdate, timeZones) {
-            return modalService.open({
-              component: 'send-load-update-modal',
-              bindings: {
-                load: that.load,
-                sendLoadUpdate: sendLoadUpdate,
-                timeZones: timeZones,
-                carrierId: that.carrierId
-              }
-            });
-          }));
-      };
-
       actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid),
           timeZoneApi.fetchTimeZones(),
