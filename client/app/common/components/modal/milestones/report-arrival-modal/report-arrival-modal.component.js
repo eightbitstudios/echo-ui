@@ -10,7 +10,8 @@ angular.module('echo.components.modal.milestones.reportArrival', [
       modalActions: '<',
       load: '<',
       reportArrival: '<',
-      arrivalType: '<'
+      arrivalType: '<',
+      timeZones: '<'
     },
     controller: function (loadsApi, DateTimePickerModel) {
       var that = this;

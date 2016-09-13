@@ -137,11 +137,12 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.loadDetails.name, { // #/carrier/:carrierId/loadManagement/loadDetails/:loadId
       url: routesConfig.INDEX.loadDetails.route,
-      template: '<load-details load-id="$ctrl.stateParams.loadId" rep-details="$ctrl.repDetails" carrier-id="$ctrl.carrierId" load-details="$ctrl.loadDetails"></load-details>',
-      controller: function($stateParams, repDetails, loadDetails){
+      template: '<load-details load-id="$ctrl.stateParams.loadId" rep-details="$ctrl.repDetails" carrier-id="$ctrl.carrierId" load-details="$ctrl.loadDetails" activity-log="$ctrl.activityLog"></load-details>',
+      controller: function($stateParams, repDetails, loadDetails, activityLog){
         this.repDetails = repDetails;
         this.loadDetails = loadDetails;
         this.carrierId = $stateParams.carrierId;
+        this.activityLog = activityLog;
       },
       controllerAs: '$ctrl',
       data: {
@@ -152,6 +153,9 @@ angular.module('echo.index', [
         loadDetails: function(loadsApi, $stateParams) {
           var loadId = $stateParams.loadId;
           return loadsApi.fetchLoadDetails(loadId);
+        },
+        activityLog: function(loadsApi, loadDetails) {
+          return loadsApi.fetchActivityLogByLoadId(loadDetails.loadNumber);
         }
       }
     })

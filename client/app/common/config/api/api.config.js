@@ -34,6 +34,16 @@ angular.module('echo.config.api', [])
     unassignedDriversByLoadId: _.template('@unassignedDriversByLoadId@'),
     driverStatusByLoadId: _.template('@driverStatusByLoadId@'),
     location: '@location@',
+    activityLogByLoadId: _.template('@activityLogByLoadId@'),
+    proNumberByLoadId: _.template('@proNumberByLoadId@'),
+    trailerNumberByLoadId: _.template('@trailerNumberByLoadId@'),
+    timeZones: '@timeZones@',
+    itemsByLoadGuid: _.template('@itemsByLoadGuid@'),
     reportEmptyByLoadGuid: _.template('@reportEmptyByLoadGuid@'),
-    reportArrivalByLoadGuid: _.template('@reportArrivalByLoadGuid@')
+    reportArrivalByLoadGuid: _.template('@reportArrivalByLoadGuid@'),
+    reportLoadedByLoadGuid: _.template('@reportLoadedByLoadGuid@'),
+    loadUpdateOptionsByLoadGuid: _.template('@loadUpdateOptionsByLoadGuid@'),
+    reportLocation: _.template('@reportLocation@'),
+    reportTrailerByLoadGuid: _.template('@reportTrailerByLoadGuid@'),
+    reportDeliveredByLoadGuid: _.template('@reportDeliveredByLoadGuid@')
   });

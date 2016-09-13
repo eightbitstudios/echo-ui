@@ -218,11 +218,6 @@ select:focus {
   box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.1rem #a9adaf;
 }
 
-.control input:checked ~ .control-indicator {
-  background-color: #e1e2e3;
-  background-image: url("../images/checkbox-check.svg");
-}
-
 .control input:active ~ .control-indicator {
   background-color: #f7f7f7;
 }
@@ -318,4 +313,12 @@ select:focus {
       color: @c-gray-mid-dark;
     }
   }
+}
+textarea.form-control {
+    height: 150px;
+    padding: 10px;
+    border: 0;
+    resize: none;
+    border-radius: 2px;
+    background-color: @c-gray-lightest;
 }

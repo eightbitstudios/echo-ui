@@ -1,7 +1,7 @@
 module.exports = {
   lastActionDate: '2016-09-06T13:41:23-05:00',
   proNumber: "1200987860859657",
-  location: {
+  address: {
     "name": "Walmart Warehouse",
     "address": "123 Main Street",
     "address2": "Dock #123",

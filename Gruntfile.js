@@ -5,6 +5,7 @@ module.exports = function (grunt) {
   var apiConfigDev = require('./config/api-config-dev.js')(grunt);
   var apiConfigDemo = require('./config/api-config-demo.js')(grunt);
   var apiConfigStage = require('./config/api-config-stage.js')(grunt);
+  var apiConfigMocks = require('./config/api-config-mocks.js')(grunt);
 
   var userConfig = require('./build.config.js')(grunt);
   grunt.initConfig(userConfig);
@@ -51,9 +52,19 @@ module.exports = function (grunt) {
         'express:dev',
         'watch'
       ]);
-    } else {
+    } else if (target === 'local') {
       grunt.log.write("LOADING CONFIGS FOR LOCAL");
       grunt.config.merge(apiConfigLocal);
+
+      grunt.task.run([
+        'build',
+        'env:local',
+        'express:dev',
+        'watch'
+      ]);
+    } else {
+      grunt.log.write("LOADING CONFIGS FOR MOCKS");
+      grunt.config.merge(apiConfigMocks);
 
       grunt.task.run([
         'build',
@@ -72,6 +83,18 @@ module.exports = function (grunt) {
       'install',
       'grunticon',
       'env:demo',
+      'express:dist'
+    ]);
+  });
+
+  grunt.registerTask('dev', function (target) {
+    grunt.config.merge(apiConfigDev);
+    grunt.task.run([
+      'dist',
+      'copy:deploy',
+      'install',
+      'grunticon',
+      'env:dev',
       'express:dist'
     ]);
   });

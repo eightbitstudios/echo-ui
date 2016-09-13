@@ -1,0 +1,45 @@
+<div class="send-load-update-modal">
+  <div class="modal-header">
+    <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close()" data-close="modal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h1 class="modal-title">
+      <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.overview">
+        Send Load Update for
+      </span>      
+      <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup">
+        REPORT PICKUP OF TRAILER AT YARD for
+      </span>
+      <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.location">
+        Report Location for
+      </span>
+      <span class="assign-action-to">
+        Load {{$ctrl.load.loadNumber}}
+      </span>
+    </h1>
+    <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
+  </div>
+  <div class="modal-body">
+    <milestone-sidebar load="$ctrl.load" />
+    <section class="modal-main-content">
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.overview">
+        <h4 class="content-header">What kind of update do you want to send?</h4>
+        <card ng-repeat="option in $ctrl.sendLoadUpdate.options" ng-click="$ctrl.showOption(option)">
+          <strong>{{$ctrl.translateCardLabel(option)}}</strong>
+        </card>
+        <p>For other situations that could cause a missed <br>appointment, such as a breakdown or shortage of <br>hours, please call Echo at (333) 343-3333</p>
+      </div>
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
+        <driver-location location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+      </div>
+      <div ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup" class="trailer-pickup">
+        <pickup-at-yard load="$ctrl.load" carrier-id="$ctrl.carrierId" time-zones="$ctrl.timeZones" assigned-driver="$ctrl.assignedDriver"/>
+      </div>
+    </section>
+  </div>
+  <div class="modal-footer">
+     <loading-button button-text="Confirm Pickup" disable-button="$ctrl.confirmPickupEnabled()" ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.confirmPickup()"></loading-button>
+     <loading-button button-text="Confirm Location" disable-button="!$ctrl.location.isValid()" ng-if="$ctrl.currentStep === $ctrl.modes.location" show-loading="$ctrl.showButtonLoading" ng-click="$ctrl.confirmLocation()"></loading-button>
+    <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
+  </div>
+</div>

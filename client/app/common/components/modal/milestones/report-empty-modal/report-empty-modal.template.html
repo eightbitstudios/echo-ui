@@ -20,7 +20,7 @@
         <confirm-empty report-empty="$ctrl.reportEmpty" checkbox-items="$ctrl.checkboxItems"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
-        <driver-location location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker"/>
+        <driver-location time-zones="$ctrl.timeZones" date-time-picker-text="When did the driver report empty?" location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker"/>
       </div>
     </section>
   </div>

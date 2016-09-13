@@ -30,7 +30,9 @@ describe('Component: typeaheadSearch', function () {
 
       spyOn(component, 'onSelectCallback');
       component.onSelect();
-      expect(component.onSelectCallback).toHaveBeenCalledWith({ selection: component.selection });
+      expect(component.onSelectCallback).toHaveBeenCalledWith({ selection: {
+        val: 'test'
+      }});
     });
 
     it('should not accept a value that is not an object', function () {

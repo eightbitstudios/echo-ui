@@ -4,7 +4,8 @@ angular.module('echo.components.modal.milestones.reportArrivalModal.components.a
 ]).component('arrivalSidebar', {
   templateUrl: 'app/common/components/modal/milestones/report-arrival-modal/components/arrival-sidebar/arrival-sidebar.template.html',
   bindings: {
-    load: '<'
+    load: '<',
+    reportArrival: '<'
   },
   controller: function () {
   }

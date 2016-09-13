@@ -6,16 +6,18 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
   'echo.components.modal.milestones.driverLocation',
   'echo.components.modal.milestones.reportEmpty.confirmEmpty',
   'echo.models.location',
-  'echo.models.dateTimePicker'
+  'echo.models.dateTimePicker',
+  'echo.models.checkbox'
 ])
   .component('reportEmptyModal', {
     templateUrl: 'app/common/components/modal/milestones/report-empty-modal/report-empty-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',
-      reportEmpty: '<'
+      reportEmpty: '<',
+      timeZones: '<'
     },
-    controller: function (loadsApi, LocationModel, DateTimePickerModel) {
+    controller: function (loadsApi, LocationModel, DateTimePickerModel, CheckboxModel) {
       var that = this;
 
       that.modes = {
@@ -24,16 +26,18 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
       };
 
       that.isNextStepEnabled = function () {
-        return that.checkboxItems.equipmentCheckbox.isChecked && that.checkboxItems.seviceCheckbox.isChecked && that.checkboxItems.instrunctionCheckbox.isChecked;
+        return that.checkboxItems.equipmentCheckbox.isChecked && that.checkboxItems.serviceCheckbox.isChecked && that.checkboxItems.instructionCheckbox.isChecked;
       };
 
       that.saveReportEmpty = function () {
         that.showButtonLoading = true;
         loadsApi.createReportEmpty(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          cityName: that.location.city,
-          stateName: that.location.state,
-          date: that.dateTimePicker.getDateTime()
+          driverLocation: {
+            cityName: that.location.city,
+            stateCode: that.location.state
+          },
+          eventTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
@@ -48,7 +52,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
 
         that.location = new LocationModel({
           city: that.reportEmpty.driverLocation.cityName,
-          state: that.reportEmpty.driverLocation.stateName
+          state: that.reportEmpty.driverLocation.stateCode
         });
 
         that.dateTimePicker = new DateTimePickerModel({
@@ -56,17 +60,10 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
         });
 
         that.checkboxItems = {
-          equipmentCheckbox: {
-            isChecked: false
-          },
-          seviceCheckbox: {
-            isChecked: false
-          },
-          instrunctionCheckbox: {
-            isChecked: false
-          }
+          equipmentCheckbox: new CheckboxModel(),
+          serviceCheckbox: new CheckboxModel(),
+          instructionCheckbox: new CheckboxModel()
         };
-
       };
     }
   });

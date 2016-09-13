@@ -28,11 +28,21 @@ module.exports = {
   loadsNeedingAction: '/api/v1/carriers/${carrierId}/loads/needsAction',
   multiStopLoads: '/api/v1/carriers/${carrierId}/loads/upcomingMultiStop',
   location: '/api/v1/location',
+  activityLogByLoadId: '/api/v1/loads/${loadId}/activity',
+  timeZones: '/api/v1/timezones',
   assignDriverByLoadId: '/api/v1/loads/${loadId}/assign/${userId}',
   unassignDriverByLoadId: '/api/v1/loads/${loadId}/unassign',
   reassignDriverByLoadId: '/api/v1/loads/${loadId}/reassign/${userId}',
   unassignedDriversByLoadId: '/api/v1/carriers/${carrierId}/loads/${loadId}/unassignedDrivers',
   driverStatusByLoadId: '/api/v1/loads/${loadId}/driver/${userId}/status',
   reportEmptyByLoadGuid: '/api/v1/loads/${loadGuid}/reportEmpty',
-  reportArrivalByLoadGuid: '/api/v1/loads/${loadGuid}/reportArrival'
+  reportLoadedByLoadGuid: '/api/v1/loads/${loadGuid}/reportLoaded',
+  reportArrivalByLoadGuid: '/api/v1/loads/${loadGuid}/reportArrival',
+  reportTrailerByLoadGuid: '/api/v1/loads/${loadGuid}/reportTrailer',
+  itemsByLoadGuid: '/api/v1/loads/${loadGuid}/items',
+  loadUpdateOptionsByLoadGuid: '/api/v1/loads/{loadGuid}/loadUpdateOptions',
+  reportLocation: '/api/v1/loads/${loadGuid}/reportLocation',
+  reportDeliveredByLoadGuid: '/api/v1/loads/${loadGuid}/reportDelivered',
+  proNumberByLoadId: '/api/v1/loads/${loadId}/proNumber',
+  trailerNumberByLoadId: '/api/v1/loads/${loadId}/trailerNumber'
 };

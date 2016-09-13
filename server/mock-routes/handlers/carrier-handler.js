@@ -50,6 +50,14 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
+  searchDrivers: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = driversRes.drivers;
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
   getDriverCount: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = {
