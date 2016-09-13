@@ -34,6 +34,7 @@ angular.module('echo.config.appConstants', [])
       401101: 'User account is deactivated',
       401102: 'Invalid Username or Password',
       401105: 'User Role Not Allowed To Reset Password in Portal',
+      404: 'Username does not exist',
       500: 'An unexpected error has occurred',
       500100: 'Unable to change current password',
       500101: 'Duplicate username',
