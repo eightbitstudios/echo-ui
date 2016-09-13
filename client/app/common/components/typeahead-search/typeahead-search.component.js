@@ -8,8 +8,7 @@ angular.module('echo.components.typeaheadSearch', [
       onSelectCallback: '&',
       template: '@',
       placeholderText: '@',
-      darkTheme: '<',
-      defaultText: '<'
+      darkTheme: '<'
     },
     templateUrl: 'app/common/components/typeahead-search/typeahead-search.template.html',
     controller: function ($q) {
@@ -17,7 +16,7 @@ angular.module('echo.components.typeaheadSearch', [
 
       that.debounce = 250;
       that.typeaheadMinLength = 3;
-      that.selection = that.defaultText;
+      that.selection = null;
       that.showLoadingButton = false;
       that.numberOfSearchResults = null;
       that.isTypeaheadOpen = null;
@@ -25,6 +24,7 @@ angular.module('echo.components.typeaheadSearch', [
       that.onSelect = function () {
         if (_.isObject(that.selection)) {
           that.onSelectCallback({ selection: that.selection });
+          that.selection = '';
         }
       };
 

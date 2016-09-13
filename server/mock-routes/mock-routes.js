@@ -11,12 +11,16 @@ var carrierHandler = require('./handlers/carrier-handler'),
 module.exports = function (app) {
   app.get(endpoints.api.timeZones, timeZonesHandler.getTimeZones);
   app.get(endpoints.api.itemsByLoadGuid, loadsHandler.getItemsByLoadGuid);
+  app.get(endpoints.api.activityLogByLoadId, loadsHandler.getActivityLogByLoadId);
   app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
-  app.post(endpoints.api.reportLoadedByLoadGuid, loadsHandler.createModalAction);
-  app.get(endpoints.api.reportLoadedByLoadGuid, loadsHandler.getReportLoadedModalAction);
+  app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
+  app.post(endpoints.api.reportDeliveredByLoadGuid, loadsHandler.createModalAction);
+  app.get(endpoints.api.reportDeliveredByLoadGuid, loadsHandler.getReportEmptyModalAction);
   app.post(endpoints.api.reportLocation, loadsHandler.createModalAction);
   app.post(endpoints.api.reportTrailerByLoadGuid, loadsHandler.createModalAction);
-  app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
+  app.post(endpoints.api.reportLoadedByLoadGuid, loadsHandler.createModalAction);
+  app.get(endpoints.api.reportLoadedByLoadGuid, loadsHandler.getReportLoadedModalAction);
+  app.get(endpoints.api.reportLoadedByLoadGuid, loadsHandler.getReportLoadedModalAction);
   app.get(endpoints.api.loadUpdateOptionsByLoadGuid, loadsHandler.getLoadUpdateOptions);
   app.get(endpoints.api.location, locationHandler.getLocation);
   app.get(endpoints.api.loadsNeedingAction, loadsHandler.getLoadsByCarrierId);
@@ -26,11 +30,15 @@ module.exports = function (app) {
   app.put(endpoints.api.reassignDriverByLoadId, loadsHandler.getLoadCount);
   app.get(endpoints.api.driverStatusByLoadId, loadsHandler.getDriverStatus);
   app.get(endpoints.api.loadById, loadsHandler.getLoadDetails);
+  app.put(endpoints.api.proNumberByLoadId, loadsHandler.updateProNumber);
+  app.put(endpoints.api.trailerNumberByLoadId, loadsHandler.updateTrailerNumber);
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.loadCountByCarrierId, loadsHandler.getLoadCount);
   app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
+  app.get(endpoints.api.reportArrivalByLoadGuid, loadsHandler.fetchReportArrivalByLoadGuid);
+  app.put(endpoints.api.reportArrivalByLoadGuid, loadsHandler.updateReportArrivalByLoadGuid);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);

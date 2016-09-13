@@ -28,7 +28,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         optionalDocuments: 3
       };
 
-      that.totalWeight = _.sumBy(that.items, 'estimatedWeight');
+      that.totalWeight = _.ceil(_.sumBy(that.items, 'estimatedWeight'));
 
       that.isNextStepEnabled = function () {
         return _.every(that.checkboxItems, function(checkboxItem){

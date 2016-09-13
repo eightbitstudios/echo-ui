@@ -26,10 +26,11 @@
       <section class="col-md-8">
         <stop-accordion ng-repeat="pickUp in $ctrl.loadDetails.pickUp" stop-type="Pickup" stop="pickUp" />
         <stop-accordion ng-repeat="delivery in $ctrl.loadDetails.delivery" stop-type="Delivery" stop="delivery" />
+        <activity-log activity-log="$ctrl.activityLog" />
       </section>
       <div class="col-md-4">
         <section class="sidebar-container">
-          <equipment equipment="$ctrl.loadDetails.equipments" trailer-number="$ctrl.loadDetails.trailerNumber" tractor-number="$ctrl.loadDetails.driver.tractorNumber" />
+          <equipment equipment="$ctrl.loadDetails.equipments" trailer-number="$ctrl.loadDetails.trailerNumber" tractor-number="$ctrl.loadDetails.driver.tractorNumber" load-guid="$ctrl.loadDetails.loadGuid" />
         </section>
         <section class="sidebar-container">
           <h4 class="section-header sh-short">General Instructions</h4>
