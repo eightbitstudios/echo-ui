@@ -19,7 +19,7 @@ describe('Component: Driver Profile', function () {
 
     carrierId = 1;
     driver = {
-      language: 'English'
+      preferredLanguage: 'English'
     };
     languages = [{
       language: 'English'
@@ -32,7 +32,7 @@ describe('Component: Driver Profile', function () {
   }));
 
   it('should set other language', function () {
-    driver.language = 'German';
+    driver.preferredLanguage = 'German';
 
     component = $componentController('driverProfile', null, {
       carrierId: carrierId,
