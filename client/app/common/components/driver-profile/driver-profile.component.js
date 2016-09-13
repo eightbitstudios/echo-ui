@@ -32,6 +32,10 @@ angular.module('echo.components.driverProfile', [
       if (that.driverProfileForm.$valid) {
         that.serverError = null;
         that.showButtonLoading = true;
+        if (that.driver.preferredLanguage !== appConstants.LANGUAGES.other) {
+          delete that.driver.otherLanguage;
+        }
+
         driverApi.upsertDriver(that.carrierId, that.driver).then(function () {
           that.profileUpdatedHandler();
         }).catch(function(errorMessage){
