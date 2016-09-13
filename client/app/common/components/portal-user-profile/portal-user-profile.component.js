@@ -11,7 +11,8 @@ angular.module('echo.components.portalUserProfile', [
     portalUser: '<',
     userUpdatedHandler: '&',
     showLoading: '=',
-    isCarrierAdmin: '<'
+    isCarrierAdmin: '<',
+    carrierId: '<'
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
@@ -31,6 +32,10 @@ angular.module('echo.components.portalUserProfile', [
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
       that.showButtonLoading = true;
+      if (!!that.carrierId) {
+        portalUser.carrierId = that.carrierId;
+      }
+
       portalUserApi.upsertPortalUser(portalUser).then(function () {
         that.modeShow = that.mode.SENT;
         if (!that.isNewProfile) {
