@@ -36,7 +36,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         return _.find(loadUpdateOptionEnums, { value: optionIndex }).description;
       };
 
-      that.determineTrailerReportType = function() {
+      that.determineTrailerReportType = function () {
         if (that.currentStep === that.modes.trailerPickup) {
           return loadUpdateOptionEnums.TRAILER_PICKUP.typeFlag;
         } else if (that.currentStep === that.modes.trailerDropOff) {
@@ -95,9 +95,11 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.showButtonLoading = true;
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          date: that.dateTimePicker.getDateTime(),
-          cityName: that.location.city,
-          stateName: that.location.state,
+          eventTime: that.dateTimePicker.getDateTime(),
+          driverLocation: {
+            cityName: that.location.city,
+            stateCode: that.location.state
+          },
           reportType: that.determineTrailerReportType()
         }).then(function () {
           that.modalActions.close(true);
@@ -119,8 +121,12 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         });
       };
 
-      that.confirmPickupEnabled = function () {
+      that.confirmPickupDisabled = function () {
         return !_.get(that.assignedDriver, 'id');
+      };
+
+      that.confirmDropOffDisabled = function () {
+        return !that.location.isValid();
       };
 
       that.$onInit = function () {
