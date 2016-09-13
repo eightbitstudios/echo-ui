@@ -91,11 +91,11 @@ angular.module('echo.enums.actions', [])
         value: 13,
         description: 'Document Added'
       },
-      ReportedLocation: {
+      REPORTED_LOCATION: {
         value: 14,
         description: 'Reported Location'
       },
-      TrailerDropped: {
+      TRAILER_DROPPED: {
         value: 15,
         description: 'Trailer Dropped'
       }
