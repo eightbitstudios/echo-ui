@@ -2,6 +2,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
+  'echo.components.modal.milestones.reportLoaded',
   'echo.components.modal.milestones.reportArrival',
   'echo.components.modal.milestones.sendLoadUpdate',
   'echo.services.modal',
@@ -35,6 +36,22 @@ angular.module('echo.components.loadTable.action', [
               bindings: {
                 load: that.load,
                 reportEmpty: reportEmpty,
+              timeZones: timeZones
+            }
+          });
+        }));
+      };
+
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_LOADED.value] = function (loadGuid) {
+        return $q.all([loadsApi.fetchReportLoadedByLoadGuid(loadGuid),
+        loadsApi.fetchItemsByLoadGuid(loadGuid), 
+        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportLoaded, items, timeZones) {
+          return modalService.open({
+            component: 'report-loaded-modal',
+            bindings: {
+              load: that.load,
+              reportLoaded: reportLoaded,
+              items: items,
                 timeZones: timeZones
               }
             });

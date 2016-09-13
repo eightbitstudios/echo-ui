@@ -10,9 +10,12 @@ var carrierHandler = require('./handlers/carrier-handler'),
 
 module.exports = function (app) {
   app.get(endpoints.api.timeZones, timeZonesHandler.getTimeZones);
+  app.get(endpoints.api.itemsByLoadGuid, loadsHandler.getItemsByLoadGuid);
   app.get(endpoints.api.activityLogByLoadId, loadsHandler.getActivityLogByLoadId);
   app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
+  app.post(endpoints.api.reportLoadedByLoadGuid, loadsHandler.createModalAction);
   app.post(endpoints.api.reportLocation, loadsHandler.createModalAction);
+  app.get(endpoints.api.reportLoadedByLoadGuid, loadsHandler.getReportLoadedModalAction);
   app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
   app.get(endpoints.api.loadUpdateOptionsByLoadGuid, loadsHandler.getLoadUpdateOptions);
   app.get(endpoints.api.location, locationHandler.getLocation);

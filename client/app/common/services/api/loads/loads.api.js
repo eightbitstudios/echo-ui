@@ -141,10 +141,22 @@ angular.module('echo.api.loads', [
       	return $q.when(resp.data.data);
       });
     },
+    createReportLoaded: function (loadGuid, reportLoaded) {
+      var url = apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid });
+      return $http.post(url, reportLoaded).then(function (resp) {
+              return $q.when(resp.data.data);
+      });
+    },
     updateProNumber: function (loadId, payload) {
       var url = apiConfig.proNumberByLoadId({ loadId: loadId });
       return $http.put(url, payload).then(function (resp) {
         return $q.when(resp.data.data);
+      });
+    },    
+    fetchReportLoadedByLoadGuid: function (loadGuid) {
+      var url = apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid });
+      return $http.get(url).then(function (resp) {
+              return $q.when(resp.data.data);
       });
     },
     createReportLocation: function (loadGuid, reportLocation) {
@@ -153,9 +165,15 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    fetchReportEmptyByLoadGuid: function (loadGuid, reportEmpty) {
+    fetchItemsByLoadGuid: function (loadGuid) {
+      var url = apiConfig.itemsByLoadGuid({ loadGuid: loadGuid });
+      return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
+    },
+    fetchReportEmptyByLoadGuid: function (loadGuid) {
       var url = apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid });
-      return $http.get(url, reportEmpty).then(function (resp) {
+      return $http.get(url).then(function (resp) {
       	return $q.when(resp.data.data);
       });
     },
