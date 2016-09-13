@@ -69,7 +69,7 @@ module.exports = {
         }]
     }],
     "driver": {
-      "id": 0,
+      "id": 1,
       "firstName": "Sam",
       "lastName": "Smith",
       "phone": "13124551234",
@@ -80,8 +80,8 @@ module.exports = {
       "isTrackingEnabled": false,
       "isDoNotDisturb": true
     },
-    action: {
-      lastAction: 0,
+    nextAction: {
+      lastAction: 1,
       firstName: 'Tim',
       lastName: 'Potatoe',
       actionPerformed: '13:50 CST Today',
@@ -116,12 +116,14 @@ module.exports = {
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
+        pickupNumber: 56985478,
         city: 'New York',
         state: 'New York',
         zip: '60655',
         isCurrent: false,
         time: '2016-08-02T16:20:14-05:00'
       }, {
+          pickupNumber: 5698543478,
           city: 'LA',
           state: 'California',
           zip: '60655',
@@ -143,12 +145,12 @@ module.exports = {
         phone: '8895351903',
         isTrackingEnabled: false
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
-        nextAction: 2,
+        nextAction: 6,
         onTime: false,
         lateBy: null
       },
@@ -177,12 +179,12 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
-        nextAction: 1,
+        nextAction: 3,
         onTime: false,
         lateBy: null
       },
@@ -212,8 +214,8 @@ module.exports = {
         phone: '8895840803',
         isTrackingEnabled: true
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         time: '1473417000',
@@ -248,12 +250,12 @@ module.exports = {
         phone: '8895351903',
         isTrackingEnabled: false
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
-        nextAction: 3,
+        nextAction: 4,
         onTime: false,
         lateBy: null
       },
@@ -282,7 +284,7 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
+      nextAction: {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
@@ -317,8 +319,8 @@ module.exports = {
         phone: '8895840803',
         isTrackingEnabled: true
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Mike',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -352,8 +354,8 @@ module.exports = {
         phone: '8895351903',
         isTrackingEnabled: false
       },
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -386,8 +388,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -420,8 +422,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -454,8 +456,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
@@ -488,8 +490,8 @@ module.exports = {
           time: '2016-08-08T16:20:14-05:00'
         }],
       driver: {},
-      action: {
-        lastAction: 0,
+      nextAction: {
+        lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',

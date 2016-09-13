@@ -6,7 +6,8 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
   'echo.components.modal.milestones.card',
   'echo.enums.loadUpdateOptions',
   'echo.models.location',
-  'echo.models.dateTimePicker'
+  'echo.models.dateTimePicker',
+  'echo.services.modal'
 ])
   .component('sendLoadUpdateModal', {
     templateUrl: 'app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.template.html',
@@ -15,9 +16,10 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       load: '<',
       timeZones: '<',
       sendLoadUpdate: '<',
-      carrierId: '<'
+      carrierId: '<',
+      items: '<'
     },
-    controller: function (loadsApi, loadUpdateOptionEnums, LocationModel, DateTimePickerModel) {
+    controller: function (loadsApi, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService) {
       var that = this;
 
       that.modes = {
@@ -44,7 +46,16 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
             that.currentStep = that.modes.trailerPickup;
             break;
           case loadUpdateOptionEnums.ARRIVAL_AT_DELIVERY.value:
-            that.currentStep = that.modes.arrivalAtDelivery;
+            var modalInstance = modalService.open({
+              component: 'report-delivery-modal',
+              bindings: {
+                load: that.load,
+                reportDelivery: that.sendLoadUpdate,
+                items: that.items,
+                timeZones: that.timeZones
+              }
+            }).result;
+            that.modalActions.close(modalInstance);
         }
       };
 
@@ -52,9 +63,11 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.showButtonLoading = true;
         loadsApi.createReportLocation(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          cityName: that.location.city,
-          stateName: that.location.state,
-          date: that.dateTimePicker.getDateTime()
+          driverLocation: {
+            cityName: that.location.city,
+            stateCode: that.location.state
+          },
+          eventTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {

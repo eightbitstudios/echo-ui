@@ -5,6 +5,7 @@ angular.module('echo.components.modal.milestones.modalSteps', [])
       currentStep: '=',
       steps: '<',
       isNextDisabled: '<',
+      isBackDisabled: '<',
       modalActions: '<'
     },
     transclude: true,

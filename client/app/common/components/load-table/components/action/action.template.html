@@ -1,5 +1,5 @@
 <div class="carrier-dashboard-action">
-  <h3 class="driver-name"><a href="javascript:void(0)">{{$ctrl.currentStatus.description}}</a></h3> By {{$ctrl.load.action.firstName}} {{$ctrl.load.action.lastName | firstCharacter}} at {{$ctrl.load.action.actionPerformed}}
+  <h3 class="driver-name"><a href="javascript:void(0)">{{$ctrl.currentStatus.description}}</a></h3> By {{$ctrl.load.nextAction.firstName}} {{$ctrl.load.nextAction.lastName | firstCharacter}} at {{$ctrl.load.nextAction.actionPerformed}}
   <div class="action-align-bottom">
     <loading-button button-text="{{$ctrl.nextAction.description}}" click-handler="$ctrl.openMilestone($ctrl.nextAction.value)" show-loading="$ctrl.showButtonLoading"></loading-button>
   </div>
