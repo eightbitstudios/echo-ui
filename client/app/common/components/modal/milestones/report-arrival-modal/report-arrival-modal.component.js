@@ -27,7 +27,7 @@ angular.module('echo.components.modal.milestones.reportArrival', [
         loadsApi.updateReportArrivalByLoadGuid(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           date: that.dateTimePicker.getDateTime(),
-          stopType: that.arrivalType.description
+          stopType: _.toUpper(that.arrivalType.description)
         }).then(function() {
           that.modalActions.close();
         }).finally(function () {
