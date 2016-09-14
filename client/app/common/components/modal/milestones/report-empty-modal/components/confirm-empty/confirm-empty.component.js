@@ -15,15 +15,15 @@ angular.module('echo.components.modal.milestones.reportEmpty.confirmEmpty', [
         that.equipment = _(that.reportEmpty.equipment).filter({ isSpecialService: false }).map('displayName').join(', ');
         that.services = _(that.reportEmpty.equipment).filter({ isSpecialService: true }).map('displayName').join(', ');
 
-        if (that.equipment.length === 0) {
+        if (_.isEmpty(that.equipment)) {
           that.checkboxItems.equipmentCheckbox.isChecked = true;
         }
 
-        if (that.services.length === 0) {
+        if (_.isEmpty(that.services)) {
           that.checkboxItems.serviceCheckbox.isChecked = true;
         }
 
-        if (that.reportEmpty.generalInstructions.length === 0) {
+        if (_.isEmpty(that.reportEmpty.generalInstructions)) {
           that.checkboxItems.instructionCheckbox.isChecked = true;
         }
       };

@@ -5,9 +5,9 @@ angular.module('echo.enums.actions', [])
         value: 1,
         description: 'Report Empty'
       },
-      REPORT_ARRIVED_AT_PICKUP: {
+      REPORT_ARRIVAL_AT_PICKUP: {
         value: 2,
-        description: 'Report Arrived At Pickup'
+        description: 'Report Arrival At Pickup'
       },
       REPORT_LOADED: {
         value: 3,
@@ -29,9 +29,9 @@ angular.module('echo.enums.actions', [])
         value: 7,
         description: 'Report Location'
       },
-      REPORT_ARRIVED_AT_DELIVERY: {
+      REPORT_ARRIVAL_AT_DELIVERY: {
         value: 8,
-        description: 'Report Arrived At Delivery'
+        description: 'Report Arrival At Delivery'
       },
       REPORT_DELIVERY: {
         value: 9,

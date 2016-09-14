@@ -62,7 +62,11 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
               component: 'report-arrival-modal',
               bindings: {
                 load: that.load,
-                reportArrival: that.reportArrival,
+                reportArrival: {
+                  lastActionDate: that.load.nextAction.actionPerformed,
+                  address: _.find(that.load.pickup, { isCurrent: true }) || _.last(that.shippingDetails),
+                  driver: that.load.driver
+                },
                 timeZones: that.timeZones,
                 arrivalType: arrivalTypeEnums.DELIVERY.description
               }
@@ -79,7 +83,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.showButtonLoading = true;
         loadsApi.updateReportLocation(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          location:  that.location,
+          location: that.location,
           locationTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
@@ -93,7 +97,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
-          driverLocation:  that.location,
+          driverLocation: that.location,
           reportType: that.determineTrailerReportType()
         }).then(function () {
           that.modalActions.close(true);
