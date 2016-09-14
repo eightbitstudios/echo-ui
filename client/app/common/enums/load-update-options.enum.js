@@ -18,7 +18,7 @@ angular.module('echo.enums.loadUpdateOptions', ['echo.enums.actions'])
       },
       ARRIVAL_AT_DELIVERY: {
         description: 'Arrival at Delivery',
-        value: actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVED_AT_DELIVERY.value,
+        value: actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVAL_AT_DELIVERY.value,
         typeFlag: 'DELIVERY'
       }
     };

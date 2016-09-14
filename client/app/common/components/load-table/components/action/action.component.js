@@ -57,7 +57,7 @@ angular.module('echo.components.loadTable.action', [
                 timeZones: timeZones
               }
             });
-        }));
+          }));
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
@@ -95,19 +95,23 @@ angular.module('echo.components.loadTable.action', [
           }));
       };
 
-      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVED_AT_PICKUP.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportArrivalByLoadGuid(loadGuid),
-          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportArrival, timeZones) {
-            return modalService.open({
-              component: 'report-arrival-modal',
-              bindings: {
-                load: that.load,
-                carrierId: that.carrierId,
-                reportArrival: reportArrival,
-                timeZones: timeZones
-              }
-            });
-          }));
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVAL_AT_PICKUP.value] = function () {
+        return timeZoneApi.fetchTimeZones().then(function (timeZones) {
+          return modalService.open({
+            component: 'report-arrival-modal',
+            bindings: {
+              load: that.load,
+              carrierId: that.carrierId,
+              reportArrival: {
+                lastActionDate: that.load.nextAction.actionPerformed,
+                address: _.find(that.load.pickup, { isCurrent: true }) || _.last(that.shippingDetails),
+                driver: that.load.driver
+              },
+              timeZones: timeZones,
+              arrivalType: arrivalTypeEnums.PICKUP.description
+            }
+          });
+        });
       };
 
       that.openMilestone = function (action) {

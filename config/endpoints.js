@@ -40,7 +40,7 @@ module.exports = {
   reportArrivalByLoadGuid: '/api/v1/loads/${loadGuid}/reportArrival',
   reportTrailerByLoadGuid: '/api/v1/loads/${loadGuid}/reportTrailer',
   itemsByLoadGuid: '/api/v1/loads/${loadGuid}/items',
-  loadUpdateOptionsByLoadGuid: '/api/v1/loads/{loadGuid}/loadUpdateOptions',
+  loadUpdateOptionsByLoadGuid: '/api/v1/loads/${loadGuid}/loadUpdateOptions',
   reportLocation: '/api/v1/loads/${loadGuid}/reportLocation',
   reportDeliveredByLoadGuid: '/api/v1/loads/${loadGuid}/reportDelivered',
   proNumberByLoadId: '/api/v1/loads/${loadId}/proNumber',
