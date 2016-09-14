@@ -29,6 +29,11 @@ angular.module('echo.components.portalUserProfile', [
     that.showConfirmation = false;
     that.showButtonLoading = false;
 
+    // Strip international code for frontend
+    if (that.portalUser.phone && that.portalUser.phone.charAt(0) === '1') {
+      that.portalUser.phone = that.portalUser.phone.slice(1);
+    }
+
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
       that.showButtonLoading = true;
