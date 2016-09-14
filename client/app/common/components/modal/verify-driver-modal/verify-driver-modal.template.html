@@ -1,0 +1,58 @@
+<div class="assign-driver-modal">
+  <div class="modal-header">
+    <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)" data-close="modal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h1 class="modal-title">
+      <span class="assign-action-type">
+        Verify Driver for
+      </span>
+      <span class="assign-action-to">
+        Load {{$ctrl.load.loadNumber}}
+      </span>
+    </h1>
+    <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
+  </div>
+  <div class="modal-body">
+    <section class="modal-sidebar">
+      <article class="sidebar-content">
+        <h4 class="small-header">Pickup</h4>
+        <shipping-details shipping-details="$ctrl.load.pickUp"></shipping-details>
+      </article>
+      <article class="sidebar-content">
+        <h4 class="small-header">Delivery</h4>
+        <shipping-details shipping-details="$ctrl.load.delivery"></shipping-details>
+      </article>
+      <article class="sidebar-content">
+        <equipment></equipment>
+      </article>
+    </section>
+    <section class="modal-main-content">
+      <div class="message message-danger">
+                <p class="text-danger">
+                  An Echo Representative has entered this information about the driver for this load.
+                </p>
+                <p class="driver-searched">
+                  <strong>Gregory M</strong>
+                  &nbsp;
+                  &nbsp;
+                  <span class="text-muted">(343) 890-1203</span>
+                </p>
+                <p class="text-danger message-noicon">
+                  This matches a possible driver listed below. Please confirm  or find a replacement.
+                </p>
+              </div>
+              <unassigned-driver-search driver="$ctrl.verifiedDriver" carrier-id="$ctrl.carrierId"/>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <div ng-if="$ctrl.state && $ctrl.state !== $ctrl.states.assignedDriverProfile">
+      <loading-button show-loading="$ctrl.showButtonLoading" button-class="btn-default" disable-button="$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">
+        <span ng-click="$ctrl.assignDriver()" ng-if="$ctrl.noAssignedDriver()">Assign</span>
+        <span ng-click="$ctrl.reassignDriver()" ng-if="!$ctrl.noAssignedDriver() && !$ctrl.noNewDriver()">Replace {{$ctrl.assignedDriver.firstName}}</span>
+        <span ng-click="$ctrl.unassignDriver()" ng-if="!$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">Unassign {{$ctrl.assignedDriver.firstName}}</span>
+      </loading-button>
+    </div>
+    <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Close</button>
+  </div>
+</div>
