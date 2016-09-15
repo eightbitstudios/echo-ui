@@ -29,7 +29,7 @@ angular.module('echo.components.modal.milestones.reportArrival', [
           date: that.dateTimePicker.getDateTime(),
           stopType: that.reportArrival.address.stopType
         }).then(function() {
-          that.modalActions.close();
+          that.modalActions.close(true);
         }).finally(function () {
           that.showButtonLoading = false;
         });
