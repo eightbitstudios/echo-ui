@@ -19,6 +19,19 @@ angular.module('echo.components.modal.verifyDriver', [
 
       that.verifiedDriver = null;
 
+      that.modes = {
+        findDriver: 1,
+        inviteNewDriver: 2
+      };
+
+      that.showFindDriver = function () {
+        that.currentState = that.modes.findDriver;
+      };
+
+      that.showInviteNewDriver = function () {
+        that.currentState = that.modes.inviteNewDriver;
+      };
+
       that.state = null;
       that.driverChanged = false;
       that.showButtonLoading = false;
@@ -33,12 +46,18 @@ angular.module('echo.components.modal.verifyDriver', [
         });
       };
 
+      that.invitedNewDriver = function(driver) {
+        that.verifiedDriver = driver;
+        that.showFindDriver();
+      };
+
       that.noVerifiedDriver = function () {
         return _.isUndefined(_.get(that.verifiedDriver, 'id'));
       };
 
       that.$onInit = function () {
         that.unverifiedDriver = new DriverModel(that.load.driver);
+        that.currentState = that.modes.findDriver;
       };
     }
   });

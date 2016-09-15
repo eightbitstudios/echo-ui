@@ -1,4 +1,4 @@
-<div class="assign-driver-modal">
+<div class="verify-driver-modal">
   <div class="modal-header">
     <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)" data-close="modal" type="button">
       <span aria-hidden="true">×</span>
@@ -28,21 +28,30 @@
       </article>
     </section>
     <section class="modal-main-content">
-      <div class="message message-danger">
-                <p class="text-danger">
-                  An Echo Representative has entered this information about the driver for this load.
-                </p>
-                <p class="driver-searched">
-                  <strong>Gregory M</strong>
-                  &nbsp;
-                  &nbsp;
-                  <span class="text-muted">(343) 890-1203</span>
-                </p>
-                <p class="text-danger message-noicon">
-                  This matches a possible driver listed below. Please confirm  or find a replacement.
-                </p>
-              </div>
-              <unassigned-driver-search driver="$ctrl.verifiedDriver" carrier-id="$ctrl.carrierId"/>
+
+      <div ng-if="$ctrl.currentState === $ctrl.modes.findDriver">
+        <div class="message message-danger">
+          <p class="text-danger">
+            An Echo Representative has entered this information about the driver for this load.
+          </p>
+          <p class="driver-searched">
+            <strong>Gregory M</strong> &nbsp; &nbsp;
+            <span class="text-muted">(343) 890-1203</span>
+          </p>
+          <p class="text-danger message-noicon">
+            This matches a possible driver listed below. Please confirm or find a replacement.
+          </p>
+        </div>
+        <unassigned-driver-search driver="$ctrl.verifiedDriver" carrier-id="$ctrl.carrierId" />
+        <div class="modal-action-links">
+          <a class="btn btn-link invite-new-driver" ng-click="$ctrl.showInviteNewDriver()">Invite New Driver</a>
+          <a class="btn btn-link">View All Drivers</a>
+        </div>
+
+      </div>
+      <div class="new-driver-section" ng-if="$ctrl.currentState === $ctrl.modes.inviteNewDriver">
+        <new-driver cancel-callback="$ctrl.showFindDriver()" carrier-id="$ctrl.carrierId" continue-callback="$ctrl.invitedNewDriver(driver)" />
+      </div>
     </section>
   </div>
   <div class="modal-footer">

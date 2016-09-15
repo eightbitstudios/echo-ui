@@ -1,2 +1,2 @@
-<typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.setDriver(selection)" template="app/common/components/typeahead-search/templates/driver-results/driver-results.template.html" placeholder-text="Find a Driver"></typeahead-search>
+<typeahead-search ng-if="!$ctrl.driver" search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.setDriver(selection)" template="app/common/components/typeahead-search/templates/driver-results/driver-results.template.html" placeholder-text="Find a Driver"></typeahead-search>
 <selected-driver ng-if="$ctrl.driver" driver="$ctrl.driver" remove-callback="$ctrl.setDriver()" load-id="$ctrl.load.loadNumber" />
