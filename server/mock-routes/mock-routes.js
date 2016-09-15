@@ -9,6 +9,7 @@ var carrierHandler = require('./handlers/carrier-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
+  app.get(endpoints.api.equipmentByLoadId, loadsHandler.getEquipmentByLoadId);
   app.get(endpoints.api.timeZones, timeZonesHandler.getTimeZones);
   app.get(endpoints.api.itemsByLoadGuid, loadsHandler.getItemsByLoadGuid);
   app.get(endpoints.api.activityLogByLoadId, loadsHandler.getActivityLogByLoadId);

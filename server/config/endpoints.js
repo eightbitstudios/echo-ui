@@ -47,6 +47,6 @@ module.exports = {
     reportTrailerByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportTrailer',
     proNumberByLoadId: '/mock/api/v1/loads/:loadId/proNumber',
     trailerNumberByLoadId: '/mock/api/v1/loads/:loadId/trailerNumber',
-    reportTrailerByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportTrailer'
+    equipmentByLoadId: '/mock/api/v1/loads/:loadId/equipments'
   }
 };

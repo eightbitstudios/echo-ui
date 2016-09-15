@@ -224,6 +224,12 @@ angular.module('echo.api.loads', [
       return $http.post(url, reportDelivered).then(function (resp) {
         return $q.when(resp.data.data);
       });
+    }, 
+    fetchEquipmentByLoadId: function (loadId) {
+      var url = apiConfig.equipmentByLoadId({ loadId: loadId });
+      return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
     },
   };
 });

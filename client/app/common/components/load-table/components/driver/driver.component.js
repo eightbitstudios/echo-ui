@@ -15,43 +15,52 @@ angular.module('echo.components.loadTable.driver', [
       carrierId: '<',
       driverChangedCallback: '&'
     },
-    controller: function (loadTypesEnum, modalService) {
+    controller: function ($q, loadTypesEnum, modalService, loadsApi) {
       var that = this;
       that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
       that.loadTypesEnum = loadTypesEnum;
 
       that.showVerifyDriverModal = function () {
-        var modalInstance = modalService.open({
-          component: 'verify-driver-modal',
-          bindings: {
-            load: that.load,
-            carrierId: that.carrierId
-          }
-        }).result;
+        $q.all([loadsApi.fetchEquipmentByLoadId(that.load.loadNumber)]).then(_.spread(function (equipment) {
+          var modalInstance = modalService.open({
+            component: 'verify-driver-modal',
+            bindings: {
+              load: that.load,
+              carrierId: that.carrierId,
+              verifiedDriver: {
+                id: 1,
+                firstName: 'Ted',
+                lastName: 'Test'
+              },
+              equipment: equipment
+            }
+          }).result;
 
-        modalInstance.then(function (driverChanged) {
-          if (driverChanged) {
-            that.driverChangedCallback();
-          }
-        });
-
+          modalInstance.then(function (driverChanged) {
+            if (driverChanged) {
+              that.driverChangedCallback();
+            }
+          });
+        }));
       };
 
       that.showAssignDriverModal = function () {
-        var modalInstance = modalService.open({
-          component: 'assign-driver-modal',
-          bindings: {
-            load: that.load,
-            carrierId: that.carrierId
-          }
-        }).result;
+        loadsApi.fetchEquipmentByLoadId(that.load.loadNumber).then(function (equipment) {
+          var modalInstance = modalService.open({
+            component: 'assign-driver-modal',
+            bindings: {
+              load: that.load,
+              carrierId: that.carrierId,
+              equipment: equipment
+            }
+          }).result;
 
-        modalInstance.then(function (driverChanged) {
-          if (driverChanged) {
-            that.driverChangedCallback();
-          }
+          modalInstance.then(function (driverChanged) {
+            if (driverChanged) {
+              that.driverChangedCallback();
+            }
+          });
         });
-
       };
     }
   });

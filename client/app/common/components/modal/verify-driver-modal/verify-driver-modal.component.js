@@ -1,28 +1,31 @@
 angular.module('echo.components.modal.verifyDriver', [
-  'echo.components.equipment',
   'echo.models.driver',
   'echo.api.loads',
   'echo.components.loadingButton',
-  'echo.components.shippingDetails',
-  'echo.components.modal.assignDriver.loadDriver',
-  'echo.components.unassignedDriverSearch'
+  'echo.components.unassignedDriverSearch',
+  'echo.config.routes',
+  'echo.filters.firstCharacter',
+  'echo.filters.phoneNumber',
+  'echo.components.modal.driverSidebar'
 ])
   .component('verifyDriverModal', {
     templateUrl: 'app/common/components/modal/verify-driver-modal/verify-driver-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',
-      carrierId: '<'
+      carrierId: '<',
+      verifiedDriver: '<',
+      equipment: '<'
     },
-    controller: function (loadsApi, DriverModel) {
+    controller: function (loadsApi, DriverModel, routesConfig) {
       var that = this;
-
-      that.verifiedDriver = null;
 
       that.modes = {
         findDriver: 1,
         inviteNewDriver: 2
       };
+
+      this.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
 
       that.showFindDriver = function () {
         that.currentState = that.modes.findDriver;

@@ -14,40 +14,30 @@
     <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
-    <section class="modal-sidebar">
-      <article class="sidebar-content">
-        <h4 class="small-header">Pickup</h4>
-        <shipping-details shipping-details="$ctrl.load.pickUp"></shipping-details>
-      </article>
-      <article class="sidebar-content">
-        <h4 class="small-header">Delivery</h4>
-        <shipping-details shipping-details="$ctrl.load.delivery"></shipping-details>
-      </article>
-      <article class="sidebar-content">
-        <equipment></equipment>
-      </article>
-    </section>
+    <driver-sidebar load="$ctrl.load" equipment="$ctrl.equipment"/>
     <section class="modal-main-content">
 
       <div ng-if="$ctrl.currentState === $ctrl.modes.findDriver">
         <div class="message message-danger">
+          <span class="echo-icon icon-warning" data-grunticon-embed></span>
+        </div>
+        <div class="message message-danger verify-driver-message">
           <p class="text-danger">
             An Echo Representative has entered this information about the driver for this load.
           </p>
           <p class="driver-searched">
-            <strong>Gregory M</strong> &nbsp; &nbsp;
-            <span class="text-muted">(343) 890-1203</span>
+            <strong>{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</strong> &nbsp; &nbsp;
+            <span class="text-muted">{{$ctrl.load.driver.phone | phoneNumber}}</span>
           </p>
           <p class="text-danger message-noicon">
             This matches a possible driver listed below. Please confirm or find a replacement.
           </p>
         </div>
         <unassigned-driver-search driver="$ctrl.verifiedDriver" carrier-id="$ctrl.carrierId" />
-        <div class="modal-action-links">
+        <div class="modal-action-links find-driver">
           <a class="btn btn-link invite-new-driver" ng-click="$ctrl.showInviteNewDriver()">Invite New Driver</a>
-          <a class="btn btn-link">View All Drivers</a>
+          <a class="btn btn-link" ui-sref="{{$ctrl.viewAllDrivers}}">View All Drivers</a>
         </div>
-
       </div>
       <div class="new-driver-section" ng-if="$ctrl.currentState === $ctrl.modes.inviteNewDriver">
         <new-driver cancel-callback="$ctrl.showFindDriver()" carrier-id="$ctrl.carrierId" continue-callback="$ctrl.invitedNewDriver(driver)" />
@@ -55,11 +45,9 @@
     </section>
   </div>
   <div class="modal-footer">
-    <div ng-if="$ctrl.state && $ctrl.state !== $ctrl.states.assignedDriverProfile">
-      <loading-button show-loading="$ctrl.showButtonLoading" button-class="btn-default" disable-button="$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">
-        <span ng-click="$ctrl.assignDriver()" ng-if="$ctrl.noAssignedDriver()">Assign</span>
-        <span ng-click="$ctrl.reassignDriver()" ng-if="!$ctrl.noAssignedDriver() && !$ctrl.noNewDriver()">Replace {{$ctrl.assignedDriver.firstName}}</span>
-        <span ng-click="$ctrl.unassignDriver()" ng-if="!$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">Unassign {{$ctrl.assignedDriver.firstName}}</span>
+    <div ng-if="$ctrl.currentState === $ctrl.modes.findDriver">
+      <loading-button show-loading="$ctrl.showButtonLoading" button-class="btn-default" click-handler="$ctrl.verifyDriver()" disable-button="$ctrl.noVerifiedDriver()">
+        Verify {{$ctrl.verifiedDriver.firstName}}
       </loading-button>
     </div>
     <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Close</button>

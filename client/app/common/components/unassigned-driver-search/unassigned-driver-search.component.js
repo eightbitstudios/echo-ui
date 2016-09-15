@@ -2,7 +2,8 @@
 
 angular.module('echo.components.unassignedDriverSearch', [
   'echo.api.carrier',
-  'echo.filters.fullName'
+  'echo.filters.fullName',
+  'echo.models.driver'
 ]).component('unassignedDriverSearch', {
   bindings: {
     carrierId: '<',
@@ -10,7 +11,7 @@ angular.module('echo.components.unassignedDriverSearch', [
   },
   transclude: true,
   templateUrl: 'app/common/components/unassigned-driver-search/unassigned-driver-search.template.html',
-  controller: function ($filter, carrierApi) {
+  controller: function ($filter, carrierApi, DriverModel) {
     var that = this;
     /**
      * Call api to search for drivers
@@ -31,7 +32,13 @@ angular.module('echo.components.unassignedDriverSearch', [
     };
 
     that.setDriver = function (selection) {
-      that.driver = selection;
+      var driverModel = null;
+      if (selection) {
+        driverModel = new DriverModel(selection);
+        driverModel.firstName = _.nth(_.split(selection.name, ' '), 0);
+        driverModel.lastName = _.nth(_.split(selection.name, ' '), 1);
+      }
+      that.driver = driverModel;
     };
   }
 });

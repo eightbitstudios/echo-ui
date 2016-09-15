@@ -5,13 +5,15 @@ angular.module('echo.components.modal.assignDriver', [
   'echo.components.loadingButton',
   'echo.components.shippingDetails',
   'echo.components.modal.assignDriver.loadDriver',
-  'echo.components.modal.assignDriver.enums.assignedDriver'
+  'echo.components.modal.assignDriver.enums.assignedDriver',
+  'echo.components.modal.driverSidebar'
 ])
   .component('assignDriverModal', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/assign-driver-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',
+      equipment: '<',
       carrierId: '<'
     },
     controller: function (loadsApi, DriverModel, assignedDriverEnum) {
