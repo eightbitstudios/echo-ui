@@ -39,7 +39,7 @@ module.exports = function (config) {
       'client/bower_components/angular-scenario/angular-scenario.js'
     ],
 
-    reporters: ['dots', 'coverage'],
+    reporters: ['dots', 'coverage', 'junit'],
 
     preprocessors: {
       'client/app/**/*.js': 'coverage'
@@ -49,9 +49,15 @@ module.exports = function (config) {
       reporters: [
         { type: 'html' },
         { type: 'text-summary' },
-        { type: 'text', dir: 'coverage/', file: 'coverage.txt'},
-        { type: 'json', dir: 'coverage/'}
+        { type: 'text', dir: 'coverage/', file: 'coverage.txt' },
+        { type: 'json', dir: 'coverage/' }
       ]
+    },
+
+    junitReporter: {
+      outputDir: 'coverage/',
+      useBrowserName: false,
+      outputFile: 'test-results.xml'
     },
 
     // web server port
