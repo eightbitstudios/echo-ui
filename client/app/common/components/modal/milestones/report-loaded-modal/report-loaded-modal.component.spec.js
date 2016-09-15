@@ -36,6 +36,7 @@ describe('Component: reportLoadedModal', function () {
       nextAction: {},
       items: items
     }, timeZones: {}, sendLoadUpdate: {}, reportLoaded: {}, carrierId: 1 });
+     component.$onInit();
   }));
 
   describe('Function: init', function () {
@@ -72,5 +73,30 @@ describe('Component: reportLoadedModal', function () {
 
      expect(component.isNextStepEnabled()).toBeFalsy();
    });
+  });
+
+  describe('Function: saveReportEmpty', function () {    
+    var updateReportEmptyDefer;
+    beforeEach(function() {
+      updateReportEmptyDefer = $q.defer();
+      loadsApi.createReportLoaded.and.returnValue(updateReportEmptyDefer.promise);
+    });
+
+   it('should  save report loaded', function() {
+     component.saveReportEmpty();
+     expect(loadsApi.createReportLoaded).toHaveBeenCalled();
+   });
+
+    it('should close modal when saved', function (done) {
+      updateReportEmptyDefer.resolve();
+      component.saveReportEmpty();
+      
+      loadsApi.createReportLoaded().then(function() {
+        expect(component.modalActions.close).toHaveBeenCalledWith(true);
+        done();
+      });
+
+      scope.$digest();
+    });
   });
 });
