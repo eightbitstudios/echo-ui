@@ -35,16 +35,6 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         return _.find(loadUpdateOptionEnums, { value: optionIndex }).description;
       };
 
-      that.determineTrailerReportType = function () {
-        if (that.currentStep === that.modes.trailerPickup) {
-          return loadUpdateOptionEnums.TRAILER_PICKUP.typeFlag;
-        } else if (that.currentStep === that.modes.trailerDropOff) {
-          return loadUpdateOptionEnums.TRAILER_DROP.typeFlag;
-        } else {
-          return null;
-        }
-      };
-
       that.showOption = function (option) {
         switch (option) {
           case loadUpdateOptionEnums.LOCATION.value:
@@ -97,7 +87,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
           driverLocation: that.location,
-          reportType: that.determineTrailerReportType()
+          stopType: _.get(_.nth(that.load.delivery, 0), 'stopType')
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
@@ -110,7 +100,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
-          stopType: that.determineTrailerReportType()
+          stopType: _.get(_.nth(that.load.pickUp, 0), 'stopType')
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {

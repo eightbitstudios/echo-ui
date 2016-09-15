@@ -11,7 +11,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.enums.actions',
   'echo.enums.arrivalTypes',
   'echo.api.timeZone',
-  'echo.filters.firstCharacter'
+  'echo.filters.lastModifiedBy'
 ])
   .component('action', {
     templateUrl: 'app/common/components/load-table/components/action/action.template.html',
