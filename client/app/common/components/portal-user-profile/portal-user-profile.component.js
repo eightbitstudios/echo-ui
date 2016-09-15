@@ -11,7 +11,8 @@ angular.module('echo.components.portalUserProfile', [
     portalUser: '<',
     userUpdatedHandler: '&',
     showLoading: '=',
-    isCarrierAdmin: '<'
+    isCarrierAdmin: '<',
+    carrierId: '<'
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
@@ -28,9 +29,22 @@ angular.module('echo.components.portalUserProfile', [
     that.showConfirmation = false;
     that.showButtonLoading = false;
 
+    // Strip international code for frontend
+    if (that.portalUser.phone && that.portalUser.phone.charAt(0) === '1') {
+      that.portalUser.phone = that.portalUser.phone.slice(1);
+    }
+
     that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
       that.showButtonLoading = true;
+      if (!!that.carrierId) {
+        portalUser.carrierId = that.carrierId;
+      }
+      if (!!portalUser && !!portalUser.phone) {
+        // Hard check to add country code, US-only at the moment
+        portalUser.phone = '1' + portalUser.phone;
+      }
+
       portalUserApi.upsertPortalUser(portalUser).then(function () {
         that.modeShow = that.mode.SENT;
         if (!that.isNewProfile) {
