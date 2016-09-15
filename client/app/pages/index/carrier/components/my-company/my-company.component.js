@@ -24,7 +24,5 @@ angular.module('echo.index.carrier.myCompany', [
         link: routesConfig.INDEX.myCompanyDrivers.name,
         icon: 'icon-driver'
       }];
-
-      that.defaultRoute = routesConfig.INDEX.myCompanyUsers.name;
     }
   });
