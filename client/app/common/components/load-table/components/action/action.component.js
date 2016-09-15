@@ -45,14 +45,15 @@ angular.module('echo.components.loadTable.action', [
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_LOADED.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportLoadedByLoadGuid(loadGuid),
-          loadsApi.fetchItemsByLoadGuid(loadGuid),
-          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportLoaded, items, timeZones) {
+        return $q.all([loadsApi.fetchItemsByLoadGuid(loadGuid),
+          timeZoneApi.fetchTimeZones()]).then(_.spread(function (items, timeZones) {
             return modalService.open({
               component: 'report-loaded-modal',
               bindings: {
                 load: that.load,
-                reportLoaded: reportLoaded,
+                reportLoaded: {
+                  lastActionDate: that.load.nextAction.actionPerformed,
+                },
                 items: items,
                 timeZones: timeZones
               }
