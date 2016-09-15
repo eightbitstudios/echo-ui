@@ -18,7 +18,6 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       load: '<',
       timeZones: '<',
       sendLoadUpdate: '<',
-      reportArrival: '<',
       carrierId: '<'
     },
     controller: function (loadsApi, arrivalTypeEnums, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService) {
@@ -64,11 +63,11 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
                 load: that.load,
                 reportArrival: {
                   lastActionDate: that.load.nextAction.actionPerformed,
-                  address: _.find(that.load.pickup, { isCurrent: true }) || _.last(that.shippingDetails),
+                  address: _.find(that.load.delivery, { isCurrent: true }) || _.last(that.shippingDetails),
                   driver: that.load.driver
                 },
                 timeZones: that.timeZones,
-                arrivalType: arrivalTypeEnums.DELIVERY.description
+                arrivalType: arrivalTypeEnums.DELIVERY
               }
             }).result;
 

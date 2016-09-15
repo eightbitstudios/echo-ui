@@ -12,7 +12,7 @@
         <strong>{{item.description}}</strong>
       </p>
       <p>
-        <p><span ng-if="item.quantity">{{item.quantity}} EA,</span> {{$ctrl.handlingUnit}}, {{item.estimatedWeight}} lbs</p>
+        <p><span ng-if="item.quantity">{{item.quantity}} EA,</span><span ng-if="$ctrl.handlingUnit"> {{$ctrl.handlingUnit}},</span> {{item.estimatedWeight}} lbs</p>
       </p>
     </checkbox-card>
   </div>
