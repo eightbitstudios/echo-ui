@@ -32,7 +32,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
           timeZone: that.dateTimePicker.timeZone,
           rating: that.rating,
           comment: that.comment,
-          date: that.dateTimePicker.getDateTime()
+          eventTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
