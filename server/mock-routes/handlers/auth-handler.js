@@ -30,16 +30,16 @@ module.exports = {
 
     responseUtil.timeout(function () {
       if (req.body.password === 'invalid') {
-        res.status(400);
-        resTemplate.status.code = 401001;
+        res.status(401);
+        resTemplate.status.code = 401102;
       }
       else if (req.body.password === 'locked') {
-        res.status(400);
-        resTemplate.status.code = 401002;
+        res.status(401);
+        resTemplate.status.code = 401104;
       }
       else if (req.body.password === 'deactivated') {
-        res.status(400);
-        resTemplate.status.code = 401003;
+        res.status(401);
+        resTemplate.status.code = 401101;
       } else {
         var login = _.find(userProfiles, { email: req.body.username });
 

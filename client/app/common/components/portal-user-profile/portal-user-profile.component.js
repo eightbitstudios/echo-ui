@@ -40,10 +40,6 @@ angular.module('echo.components.portalUserProfile', [
       if (!!that.carrierId) {
         portalUser.carrierId = that.carrierId;
       }
-      if (!!portalUser && !!portalUser.phone) {
-        // Hard check to add country code, US-only at the moment
-        portalUser.phone = '1' + portalUser.phone;
-      }
 
       portalUserApi.upsertPortalUser(portalUser).then(function () {
         that.modeShow = that.mode.SENT;
