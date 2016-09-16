@@ -36,6 +36,10 @@ angular.module('echo.enums.actions', [])
       REPORT_DELIVERY: {
         value: 9,
         description: 'Report Delivery'
+      },
+      ADD_DOCUMENTS: {
+        value: 10,
+        description: 'Add Documents'
       }
     },
     LAST_ACTION: {
