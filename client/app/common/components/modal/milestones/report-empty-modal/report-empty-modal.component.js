@@ -48,9 +48,9 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
         that.showButtonLoading = false;
 
         that.location = new LocationModel({
-          cityName: that.reportEmpty.driverLocation.cityName,
-          stateCode: that.reportEmpty.driverLocation.stateCode,
-          stateId: that.reportEmpty.driverLocation.stateId
+          cityName: _.get(that.reportEmpty.driverLocation, 'cityName'),
+          stateCode: _.get(that.reportEmpty.driverLocation, 'stateCode'),
+          stateId: _.get(that.reportEmpty.driverLocation, 'stateId')
         });
 
         that.dateTimePicker = new DateTimePickerModel({

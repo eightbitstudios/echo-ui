@@ -28,8 +28,6 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         optionalDocuments: 3
       };
 
-      that.totalWeight = _.ceil(_.sumBy(that.items, 'estimatedWeight'));
-
       that.isNextStepEnabled = function () {
         return _.every(that.checkboxItems, function(checkboxItem){
           return checkboxItem.isChecked;
@@ -49,10 +47,6 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         });
       };
 
-      that.pickupNumbers = _.map(that.load.pickUp, function (pickup) {
-        return pickup.pickupNumber;
-      });
-
       that.$onInit = function () {
         that.steps = [that.modes.confirmItems, that.modes.finishLoading, that.modes.optionalDocuments];
         that.currentStep = that.modes.confirmItems;
@@ -63,6 +57,10 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         that.dateTimePicker = new DateTimePickerModel({
           minDate: moment(that.reportLoaded.lastActionDate)
         });
+
+        that.pickupNumbers = _.map(that.load.pickUp, 'pickupNumber');
+
+        that.totalWeight = _.ceil(_.sumBy(that.items, 'estimatedWeight'));
       };
     }
   });
