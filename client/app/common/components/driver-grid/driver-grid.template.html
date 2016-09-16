@@ -2,13 +2,6 @@
   <div class="row">
     <div class="col-sm-9">
       <typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.onSelectCallback(selection)" template="app/common/components/typeahead-search/templates/driver-results/driver-results.template.html" on-select-callback="$ctrl.selectedLocation(selection)" placeholder-text="Find a Driver"></typeahead-search>
-      <date-range-picker start-date="$ctrl.startDate" end-date="$ctrl.endDate">
-        <button class="btn btn-default btn-filter" ng-class="{'filter__assigned': $ctrl.startDate && $ctrl.endDate}">
-          <span class="echo-icon icon-calendar" data-grunticon-embed></span>
-            {{$ctrl.startDate && $ctrl.endDate ? $ctrl.formatDateText() : 'Filter Unassigned Drivers'}}
-            <span class="echo-icon icon-close" ng-click="$ctrl.clearDates($event)" data-grunticon-embed></span>
-        </button>
-      </date-range-picker>
     </div>
     <div class="col-sm-3 text-right">
       <button class="btn btn-default" ng-click="$ctrl.newDriverHandler()">Invite New Driver</button>
