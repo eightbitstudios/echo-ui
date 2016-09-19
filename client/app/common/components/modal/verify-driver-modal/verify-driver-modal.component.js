@@ -35,10 +35,6 @@ angular.module('echo.components.modal.verifyDriver', [
         that.currentState = that.modes.inviteNewDriver;
       };
 
-      that.state = null;
-      that.driverChanged = false;
-      that.showButtonLoading = false;
-
       that.verifyDriver = function () {
         that.showButtonLoading = true;
         loadsApi.reassignDriver(that.load.loadNumber, that.verifiedDriver.id).then(function () {
@@ -59,6 +55,9 @@ angular.module('echo.components.modal.verifyDriver', [
       };
 
       that.$onInit = function () {
+        that.state = null;
+        that.driverChanged = false;
+        that.showButtonLoading = false;
         that.unverifiedDriver = new DriverModel(that.load.driver);
         that.currentState = that.modes.findDriver;
       };
