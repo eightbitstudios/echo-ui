@@ -9,7 +9,9 @@ angular.module('echo.config.appConstants', [])
     },
     LIMIT: {
       driverList: 5,
-      loadsList: 10
+      loadsList: 10,
+      loadsNeedingAction: 5,
+      multistopLoads: 5
     },
     LANGUAGES: {
       default: 'English',

@@ -3,6 +3,7 @@ angular.module('echo.index.carrier.dashboard', [
   'echo.models.paging',
   'echo.config.routes',
   'echo.enums.loadTypes',
+  'echo.config.appConstants',
   'echo.api.loads',
   'echo.components.mapPlaceholder',
   'echo.components.showMore'
@@ -13,15 +14,14 @@ angular.module('echo.index.carrier.dashboard', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function ($q, loadTypesEnum, routesConfig, PagingModel, loadsApi) {
+    controller: function ($q, appConstants, loadTypesEnum, routesConfig, PagingModel, loadsApi) {
       var that = this;
-
       that.showActionLoadsLoading = false;
       that.showMultiStopLoading = false;
       that.showMoreActionLoadsLoading = false;
       that.showMoreMultiStopLoading = false;
-      that.pagingActionLoads = new PagingModel(5);
-      that.pagingMultistopLoads = new PagingModel(5);
+      that.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
+      that.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
       that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
       that.loadType = loadTypesEnum.ACTIVE;
 
@@ -70,6 +70,7 @@ angular.module('echo.index.carrier.dashboard', [
       };
 
       that.$onInit = function () {
+
         $q.all([that.fetchLoadsNeedingAction(),
           that.fetchMultiStopLoads(),
           loadsApi.fetchLoadCount(that.carrierId)])
