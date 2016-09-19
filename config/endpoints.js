@@ -45,5 +45,6 @@ module.exports = {
   reportDeliveredByLoadGuid: '/api/v1/loads/${loadGuid}/reportDelivered',
   proNumberByLoadId: '/api/v1/loads/${loadId}/proNumber',
   trailerNumberByLoadId: '/api/v1/loads/${loadId}/trailerNumber',
-  equipmentByLoadId: '/api/v1/loads/${loadId}/equipments'
+  equipmentByLoadId: '/api/v1/loads/${loadId}/equipments',
+  verifyDriverByPhone: '/api/v1/users/${carrierId}/drivers/verify/${phoneNumber}'
 };

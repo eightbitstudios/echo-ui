@@ -86,19 +86,13 @@ angular.module('echo.api.driver', [
           return new DriverModel(driverConverterService.driverResponse(resp.data.data));
         });
       },
-            
-      /**
-       * @description Fetches a driver by id
-       * @param {number} carrierId
-       * @param {number} driverId
-       * @returns {Promise} - Promise containing a DriverModel
-       */
-      updateVerifyDriver: function (carrierId, driverId) {
 
-        var url = apiConfig.driverById({ carrierId: carrierId, driverId: driverId });
+      verifyDriverByPhone: function (carrierId, phoneNumber) {
+        
+        var url = apiConfig.verifyDriverByPhone({ carrierId: carrierId, phoneNumber: phoneNumber });
         
         return $http.get(url).then(function (resp) {
-          return new DriverModel(driverConverterService.driverResponse(resp.data.data));
+          return new DriverModel(resp.data.data);
         });
       }
   };

@@ -41,7 +41,7 @@ angular.module('echo.components.modal.verifyDriver', [
 
       that.verifyDriver = function () {
         that.showButtonLoading = true;
-        loadsApi.assignDriver(that.load.loadNumber, that.verifiedDriver.id).then(function () {
+        loadsApi.reassignDriver(that.load.loadNumber, that.verifiedDriver.id).then(function () {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
         }).finally(function () {

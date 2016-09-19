@@ -15,23 +15,20 @@ angular.module('echo.components.loadTable.driver', [
       carrierId: '<',
       driverChangedCallback: '&'
     },
-    controller: function ($q, loadTypesEnum, modalService, loadsApi) {
+    controller: function ($q, loadTypesEnum, modalService, loadsApi, driverApi) {
       var that = this;
       that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
       that.loadTypesEnum = loadTypesEnum;
 
       that.showVerifyDriverModal = function () {
-        $q.all([loadsApi.fetchEquipmentByLoadId(that.load.loadNumber)]).then(_.spread(function (equipment) {
+        $q.all([driverApi.verifyDriverByPhone(that.carrierId, that.load.driver.phone), 
+        loadsApi.fetchEquipmentByLoadId(that.load.loadNumber)]).then(_.spread(function (verifiedDriver, equipment) {
           var modalInstance = modalService.open({
             component: 'verify-driver-modal',
             bindings: {
               load: that.load,
               carrierId: that.carrierId,
-              verifiedDriver: {
-                id: 1,
-                firstName: 'Ted',
-                lastName: 'Test'
-              },
+              verifiedDriver: verifiedDriver,
               equipment: equipment
             }
           }).result;

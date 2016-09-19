@@ -47,6 +47,7 @@ module.exports = {
     reportTrailerByLoadGuid: '/mock/api/v1/loads/:loadGuid/reportTrailer',
     proNumberByLoadId: '/mock/api/v1/loads/:loadId/proNumber',
     trailerNumberByLoadId: '/mock/api/v1/loads/:loadId/trailerNumber',
-    equipmentByLoadId: '/mock/api/v1/loads/:loadId/equipments'
+    equipmentByLoadId: '/mock/api/v1/loads/:loadId/equipments',
+    verifyDriverByPhone: '/mock/api/v1/users/:carrierId/drivers/verify/:phoneNumber'
   }
 };

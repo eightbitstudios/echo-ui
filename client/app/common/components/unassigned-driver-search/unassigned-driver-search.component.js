@@ -31,6 +31,10 @@ angular.module('echo.components.unassignedDriverSearch', [
       });
     };
 
+    that.noDriver = function () {
+      return _.isUndefined(_.get(that.driver, 'id'));
+    };
+
     that.setDriver = function (selection) {
       var driverModel = null;
       if (selection) {
