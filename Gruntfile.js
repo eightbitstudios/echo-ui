@@ -153,8 +153,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', function () {
     grunt.task.run([
-      'build',
-      'karma:unit'
+      'build'
     ]);
   });
 

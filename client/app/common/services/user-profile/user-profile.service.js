@@ -26,12 +26,12 @@ angular.module('echo.services.userProfile', [
       mapJwtToUser: function (jwt) {
         var userObj = JSON.parse($base64.decode(_.split(jwt, '.')[1]));
 
-        if (userObj && userObj.user_id) {  // jshint ignore:line
-          userObj.userId = _.parseInt(userObj.user_id, 10); // jshint ignore:line
+        if (userObj && userObj.userId) {
+          userObj.userId = _.parseInt(userObj.userId, 10);
         }
 
-        if (userObj && userObj.carrier_id) {  // jshint ignore:line
-          userObj.carrierId = _.parseInt(userObj.carrier_id, 10); // jshint ignore:line
+        if (userObj && userObj.carrierId) {
+          userObj.carrierId = _.parseInt(userObj.carrierId, 10);
         }
         return new UserModel(userObj);
       }

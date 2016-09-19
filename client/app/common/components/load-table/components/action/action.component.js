@@ -11,7 +11,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.enums.actions',
   'echo.enums.arrivalTypes',
   'echo.api.timeZone',
-  'echo.filters.firstCharacter'
+  'echo.filters.lastModifiedBy'
 ])
   .component('action', {
     templateUrl: 'app/common/components/load-table/components/action/action.template.html',
@@ -45,32 +45,31 @@ angular.module('echo.components.loadTable.action', [
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_LOADED.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportLoadedByLoadGuid(loadGuid),
-          loadsApi.fetchItemsByLoadGuid(loadGuid),
-          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportLoaded, items, timeZones) {
+        return $q.all([loadsApi.fetchItemsByLoadGuid(loadGuid),
+          timeZoneApi.fetchTimeZones()]).then(_.spread(function (items, timeZones) {
             return modalService.open({
               component: 'report-loaded-modal',
               bindings: {
                 load: that.load,
-                reportLoaded: reportLoaded,
+                reportLoaded: {
+                  lastActionDate: that.load.nextAction.actionPerformed,
+                },
                 items: items,
                 timeZones: timeZones
               }
             });
-        }));
+          }));
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid),
-          loadsApi.fetchReportArrivalByLoadGuid(loadGuid),
           timeZoneApi.fetchTimeZones()])
-          .then(_.spread(function (sendLoadUpdate, reportArrival, timeZones) {
+          .then(_.spread(function (sendLoadUpdate, timeZones) {
             return modalService.open({
               component: 'send-load-update-modal',
               bindings: {
                 load: that.load,
                 sendLoadUpdate: sendLoadUpdate,
-                reportArrival: reportArrival,
                 timeZones: timeZones,
                 carrierId: that.carrierId
               }
@@ -79,15 +78,13 @@ angular.module('echo.components.loadTable.action', [
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_DELIVERY.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportDeliveredByLoadGuid(loadGuid),
-          timeZoneApi.fetchTimeZones(),
+        return $q.all([timeZoneApi.fetchTimeZones(),
           loadsApi.fetchItemsByLoadGuid(loadGuid)])
-          .then(_.spread(function (reportDelivery, timeZones, items) {
+          .then(_.spread(function (timeZones, items) {
             return modalService.open({
               component: 'report-delivery-modal',
               bindings: {
                 load: that.load,
-                reportDelivery: reportDelivery,
                 timeZones: timeZones,
                 items: items
               }
@@ -95,19 +92,23 @@ angular.module('echo.components.loadTable.action', [
           }));
       };
 
-      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVED_AT_PICKUP.value] = function (loadGuid) {
-        return $q.all([loadsApi.fetchReportArrivalByLoadGuid(loadGuid),
-          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportArrival, timeZones) {
-            return modalService.open({
-              component: 'report-arrival-modal',
-              bindings: {
-                load: that.load,
-                carrierId: that.carrierId,
-                reportArrival: reportArrival,
-                timeZones: timeZones
-              }
-            });
-          }));
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVAL_AT_PICKUP.value] = function () {
+        return timeZoneApi.fetchTimeZones().then(function (timeZones) {
+          return modalService.open({
+            component: 'report-arrival-modal',
+            bindings: {
+              load: that.load,
+              carrierId: that.carrierId,
+              reportArrival: {
+                lastActionDate: that.load.nextAction.actionPerformed,
+                address: _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.shippingDetails),
+                driver: that.load.driver
+              },
+              timeZones: timeZones,
+              arrivalType: arrivalTypeEnums.PICKUP
+            }
+          });
+        });
       };
 
       that.openMilestone = function (action) {

@@ -150,7 +150,7 @@ module.exports = {
         firstName: 'Tim',
         lastName: 'Potatoe',
         actionPerformed: '13:50 CST Today',
-        nextAction: 6,
+        nextAction: 2,
         onTime: false,
         lateBy: null
       },

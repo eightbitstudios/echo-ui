@@ -16,7 +16,8 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
       portalUser: '<',
       goBackHandler: '&',
       reloadPortalHandler: '&',
-      showLoading: '='
+      showLoading: '=',
+      carrierId: '<'
     },
     controller: function (userProfileService, PasswordChangeModel) {
       var that = this;
