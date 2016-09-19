@@ -18,7 +18,6 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       load: '<',
       timeZones: '<',
       sendLoadUpdate: '<',
-      reportArrival: '<',
       carrierId: '<'
     },
     controller: function (loadsApi, arrivalTypeEnums, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService) {
@@ -34,16 +33,6 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
 
       that.translateCardLabel = function (optionIndex) {
         return _.find(loadUpdateOptionEnums, { value: optionIndex }).description;
-      };
-
-      that.determineTrailerReportType = function () {
-        if (that.currentStep === that.modes.trailerPickup) {
-          return loadUpdateOptionEnums.TRAILER_PICKUP.typeFlag;
-        } else if (that.currentStep === that.modes.trailerDropOff) {
-          return loadUpdateOptionEnums.TRAILER_DROP.typeFlag;
-        } else {
-          return null;
-        }
       };
 
       that.showOption = function (option) {
@@ -64,11 +53,11 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
                 load: that.load,
                 reportArrival: {
                   lastActionDate: that.load.nextAction.actionPerformed,
-                  address: _.find(that.load.pickup, { isCurrent: true }) || _.last(that.shippingDetails),
+                  address: _.find(that.load.delivery, { isCurrent: true }) || _.last(that.shippingDetails),
                   driver: that.load.driver
                 },
                 timeZones: that.timeZones,
-                arrivalType: arrivalTypeEnums.DELIVERY.description
+                arrivalType: arrivalTypeEnums.DELIVERY
               }
             }).result;
 
@@ -98,7 +87,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
           driverLocation: that.location,
-          reportType: that.determineTrailerReportType()
+          stopType: _.get(_.nth(that.load.delivery, 0), 'stopType')
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
@@ -111,7 +100,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
-          stopType: that.determineTrailerReportType()
+          stopType: _.get(_.nth(that.load.pickUp, 0), 'stopType')
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {

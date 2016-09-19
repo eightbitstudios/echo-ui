@@ -16,7 +16,6 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
       modalActions: '<',
       load: '<',
       items: '<',
-      reportDelivery: '<',
       timeZones: '<'
     },
     controller: function (loadsApi, DateTimePickerModel) {
@@ -33,7 +32,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
           timeZone: that.dateTimePicker.timeZone,
           rating: that.rating,
           comment: that.comment,
-          date: that.dateTimePicker.getDateTime()
+          eventTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
         }).finally(function () {
@@ -51,7 +50,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.rating = {};
 
         that.dateTimePicker = new DateTimePickerModel({
-          minDate: moment(that.reportDelivery.lastActionDate)
+          minDate: moment(that.load.nextAction.lastActionDate)
         });
       };
     }
