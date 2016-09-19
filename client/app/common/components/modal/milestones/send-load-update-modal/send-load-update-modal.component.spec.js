@@ -48,22 +48,6 @@ describe('Component: sendLoadUpdateModal', function () {
     });
   });
 
-  describe('Function: determineTrailerReportType', function () {
-    it('should set trailer pickup flag', function () {
-      component.currentStep = component.modes.trailerPickup;
-      expect(component.determineTrailerReportType()).toEqual(loadUpdateOptionEnums.TRAILER_PICKUP.typeFlag);
-    });
-    
-    it('should set trailer drop flag', function () {
-      component.currentStep = component.modes.trailerDropOff;
-      expect(component.determineTrailerReportType()).toEqual(loadUpdateOptionEnums.TRAILER_DROP.typeFlag);
-    });
-        
-    it('should be null if currentStep is invalid', function () {
-      expect(component.determineTrailerReportType()).toBeNull();
-    });
-  });
-
   describe('Function: showOption', function () {
     it('should show location', function () {
       component.showOption(loadUpdateOptionEnums.LOCATION.value);

@@ -29,7 +29,10 @@ describe('Component: reportArrivalModal', function () {
     component = $componentController('reportArrivalModal', null, { modalActions: modalActions, load: {
       nextAction: {}
     }, reportArrival: {
-      lastActionDate: {}
+      lastActionDate: {},
+      address: {
+        stopType: 'Pick'
+      }
     }, arrivalType: {}, timeZones: {}, reportEmpty: {}, carrierId: 1 });
   }));
 
