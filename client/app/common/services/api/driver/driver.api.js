@@ -87,9 +87,9 @@ angular.module('echo.api.driver', [
         });
       },
 
-      verifyDriverByPhone: function (carrierId, phoneNumber) {
+      verifyDriverByPhone: function (loadGuid, carrierId, phoneNumber) {
         
-        var url = apiConfig.verifyDriverByPhone({ carrierId: carrierId, phoneNumber: phoneNumber });
+        var url = apiConfig.verifyDriverByPhone({ carrierId: carrierId, phoneNumber: phoneNumber, loadGuid: loadGuid });
         
         return $http.get(url).then(function (resp) {
           return new DriverModel(resp.data.data);

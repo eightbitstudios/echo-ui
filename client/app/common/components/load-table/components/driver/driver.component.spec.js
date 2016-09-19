@@ -23,6 +23,7 @@ describe('Component: driver', function () {
 
     load = {
       loadNumber: 1234,
+      loadGuid: 41234,
       nextAction: {},
       driver: {
         phone: '2345'
@@ -54,7 +55,7 @@ describe('Component: driver', function () {
 
     it('should call verify driver', function () {
       component.showVerifyDriverModal();
-      expect(driverApi.verifyDriverByPhone).toHaveBeenCalledWith(carrierId, load.driver.phone);
+      expect(driverApi.verifyDriverByPhone).toHaveBeenCalledWith(load.loadGuid, carrierId, load.driver.phone);
     });
 
     it('should call equipment', function () {
