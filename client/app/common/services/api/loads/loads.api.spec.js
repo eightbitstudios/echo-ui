@@ -212,4 +212,361 @@ describe('Api: loadsApi', function () {
       $scope.$digest();
     });
   });
+
+  describe('Function: assignDriver', function () {
+    it('should make a post request to assign drivers', function (done) {
+      postRes.data = { data: '' };
+      var loadId = 1,
+        driverId = 2;
+
+      loadsApi.assignDriver(loadId, driverId).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.assignDriverByLoadId({ loadId: loadId, userId: driverId }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: unassignDriver', function () {
+    it('should make a put request to unassign drivers', function (done) {
+      putRes.data = { data: '' };
+      var loadId = 1;
+
+      loadsApi.unassignDriver(loadId).then(function () {
+        expect($http.put).toHaveBeenCalledWith(apiConfig.unassignDriverByLoadId({ loadId: loadId }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: reassignDriver', function () {
+    it('should make a put request to reassign drivers', function (done) {
+      putRes.data = { data: '' };
+      var loadId = 1,
+        driverId = 2;
+
+      loadsApi.reassignDriver(loadId).then(function () {
+        expect($http.put).toHaveBeenCalledWith(apiConfig.reassignDriverByLoadId({ loadId: loadId, userId: driverId }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchUnassignedDriversByLoadId', function () {
+    it('should make a get unassigned drivers', function (done) {
+      getRes.data = { data: '' };
+      var loadId = 1,
+        carrierId = 2;
+
+      loadsApi.fetchUnassignedDriversByLoadId(loadId).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.unassignedDriversByLoadId({ loadId: loadId, carrierId: carrierId }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchDriverStatusByLoadId', function () {
+    it('should make a get driver status', function (done) {
+      getRes.data = { data: '' };
+      var loadId = 1,
+        driverId = 2;
+
+      loadsApi.fetchDriverStatusByLoadId(loadId, driverId).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.driverStatusByLoadId({ loadId: loadId, userId: driverId }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchActivityLogByLoadId', function () {
+    it('should get activity log', function (done) {
+      getRes.data = {
+        data: [{
+          id: 1
+        }]
+      };
+      var loadId = 1;
+
+      loadsApi.fetchActivityLogByLoadId(loadId).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.activityLogByLoadId({ loadId: loadId }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchLoadCount', function () {
+    it('should get load count', function (done) {
+      getRes.data = { data: '' };
+      var carrierId = 1;
+
+      loadsApi.fetchLoadCount(carrierId).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.loadCountByCarrierId({ carrierId: carrierId }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: createReportEmpty', function () {
+    it('should post report empty', function (done) {
+      postRes.data = { data: '' };
+      var loadGuid = 1,
+        reportEmpty = {
+          lastAction: '09/24/2016'
+        };
+
+      loadsApi.createReportEmpty(loadGuid, reportEmpty).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid }), reportEmpty);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: createReportLocation', function () {
+    it('should post report location', function (done) {
+      postRes.data = { data: '' };
+      var loadGuid = 1,
+        reportLocation = {
+          location: 'Chicago'
+        };
+
+      loadsApi.createReportLocation(loadGuid, reportLocation).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.reportLocation({ loadGuid: loadGuid }), reportLocation);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: createReportTrailer', function () {
+    it('should post report trailer', function (done) {
+      postRes.data = { data: '' };
+      var loadGuid = 1,
+        reportTrailer = {
+          stopType: 'Drop'
+        };
+
+      loadsApi.createReportTrailer(loadGuid, reportTrailer).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.reportTrailerByLoadGuid({ loadGuid: loadGuid }), reportTrailer);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: createReportLoaded', function () {
+    it('should post report loaded', function (done) {
+      postRes.data = { data: '' };
+      var loadGuid = 1,
+        reportLoaded = {
+          stopType: 'Drop'
+        };
+
+      loadsApi.createReportLoaded(loadGuid, reportLoaded).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid }), reportLoaded);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: updateProNumber', function () {
+    it('should update pro number', function (done) {
+      putRes.data = { data: '' };
+      var loadId = 1,
+        payload = {
+          proNumber: 123
+        };
+
+      loadsApi.updateProNumber(loadId, payload).then(function () {
+        expect($http.put).toHaveBeenCalledWith(apiConfig.proNumberByLoadId({ loadId: loadId }), payload);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchReportLoadedByLoadGuid', function () {
+    it('should fetch report loaded', function (done) {
+      getRes.data = { data: '' };
+      var loadGuid = 1;
+
+      loadsApi.fetchReportLoadedByLoadGuid(loadGuid).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: updateReportLocation', function () {
+    it('should update report location', function (done) {
+      putRes.data = { data: '' };
+      var loadGuid = 1,
+        reportLocation = {
+          location: 'Chicago'
+        };
+
+      loadsApi.updateReportLocation(loadGuid, reportLocation).then(function () {
+        expect($http.put).toHaveBeenCalledWith(apiConfig.reportLocation({ loadGuid: loadGuid }), reportLocation);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchItemsByLoadGuid', function () {
+    it('should fetch items by load guid', function (done) {
+      getRes.data = { data: '' };
+      var loadGuid = 1;
+
+      loadsApi.fetchItemsByLoadGuid(loadGuid).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.itemsByLoadGuid({ loadGuid: loadGuid }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchReportEmptyByLoadGuid', function () {
+    it('should fetch items by load guid', function (done) {
+      getRes.data = { data: '' };
+      var loadGuid = 1;
+
+      loadsApi.fetchReportEmptyByLoadGuid(loadGuid).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: updateTrailerNumber', function () {
+    it('should update trailer number', function (done) {
+      putRes.data = { data: '' };
+      var loadGuid = 1,
+        payload = {
+          trailerNumber: '124123'
+        };
+
+      loadsApi.updateTrailerNumber(loadGuid, payload).then(function () {
+        expect($http.put).toHaveBeenCalledWith(apiConfig.trailerNumberByLoadId({ loadGuid: loadGuid }), payload);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: updateReportArrivalByLoadGuid', function () {
+    it('should update report arrival', function (done) {
+      putRes.data = { data: '' };
+      var loadGuid = 1,
+        reportArrival = {
+          date: '10/24/2016'
+        };
+
+      loadsApi.updateReportArrivalByLoadGuid(loadGuid, reportArrival).then(function () {
+        expect($http.put).toHaveBeenCalledWith(apiConfig.reportArrivalByLoadGuid({ loadGuid: loadGuid }), reportArrival);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchReportArrivalByLoadGuid', function () {
+    it('should get report arrival', function (done) {
+      getRes.data = { data: '' };
+      var loadGuid = 1;
+
+      loadsApi.fetchReportArrivalByLoadGuid(loadGuid).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.reportArrivalByLoadGuid({ loadGuid: loadGuid }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchLoadUpdateOptionsByLoadGuid', function () {
+    it('should get load options', function (done) {
+      getRes.data = { data: '' };
+      var loadGuid = 1;
+
+      loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.loadUpdateOptionsByLoadGuid({ loadGuid: loadGuid }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchReportDeliveredByLoadGuid', function () {
+    it('should get report delivery', function (done) {
+      getRes.data = { data: '' };
+      var loadGuid = 1;
+
+      loadsApi.fetchReportDeliveredByLoadGuid(loadGuid).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.reportDeliveredByLoadGuid({ loadGuid: loadGuid }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: createReportDelivered', function () {
+    it('should create report delivery', function (done) {
+      postRes.data = { data: '' };
+      var loadGuid = 1,
+        reportDelivery = {
+          date: '09/20/2016'
+        };
+
+      loadsApi.createReportDelivered(loadGuid, reportDelivery).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.reportDeliveredByLoadGuid({ loadGuid: loadGuid }), reportDelivery);
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
+
+  describe('Function: fetchEquipmentByLoadId', function () {
+    it('should get equipment', function (done) {
+      getRes.data = { data: '' };
+      var loadGuid = 1;
+
+      loadsApi.fetchEquipmentByLoadId(loadGuid).then(function () {
+        expect($http.get).toHaveBeenCalledWith(apiConfig.equipmentByLoadId({ loadGuid: loadGuid }));
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
 });
