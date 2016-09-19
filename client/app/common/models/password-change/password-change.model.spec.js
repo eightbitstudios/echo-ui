@@ -111,4 +111,31 @@ describe('Model: passwordChangeModel', function () {
       expect(password.confirmPasswordMatches()).toBeFalsy();
     });
   });
+
+  describe('Function: isValidPassword', function () {
+    it('should be not be valid with a length less than 8', function () {
+      var password = new PasswordChangeModel();
+      password.newPassword = 'abcd';
+      expect(password.isValidPassword()).toBeFalsy();
+    });
+
+    it('should not be valid without a lower case letter', function () {
+      var password = new PasswordChangeModel();
+      password.newPassword = 'ABCDEFGH1';
+      expect(password.isValidPassword()).toBeFalsy();
+    });
+    
+    it('should not be valid without an upper case letter', function () {
+      var password = new PasswordChangeModel();
+      password.newPassword = 'abcdefgh1';
+      expect(password.isValidPassword()).toBeFalsy();
+    });
+        
+    it('should be valid if both passwords match', function () {
+      var password = new PasswordChangeModel();
+      password.newPassword = 'Abcdefgh1';
+      password.confirmPassword = 'Abcdefgh1';
+      expect(password.isValidPassword()).toBeTruthy();
+    });
+  });
 });
