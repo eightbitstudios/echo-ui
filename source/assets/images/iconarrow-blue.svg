@@ -1,0 +1,24 @@
+
+<svg width="11px" height="10px" viewBox="0 0 11 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="8.85561497" height="9.42226891"></rect>
+    </defs>
+    <g id="My-Company" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="portal-user-profile" transform="translate(-91.000000, -141.000000)">
+            <g id="btn-/-back-to-list" transform="translate(90.000000, 138.000000)">
+                <g id="icon/arrow-dark" transform="translate(6.000000, 8.000000) scale(-1, 1) translate(-6.000000, -8.000000) translate(0.000000, 3.000000)">
+                    <g id="Group">
+                        <g id="Rectangle-12" transform="translate(7.500000, 5.000000) scale(-1, 1) translate(-7.500000, -5.000000) translate(3.000000, 0.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Mask"></g>
+                            <polyline stroke="#26C1FC" stroke-width="1.48760331" mask="url(#mask-2)" points="7.79991349 10.3999273 2.05987021 4.65988407 7.69741272 -0.977658442"></polyline>
+                        </g>
+                        <path d="M8.79144385,4.83193277 L0.79144385,4.83193277" id="Line" stroke="#26C1FC" stroke-width="1.48760331" stroke-linecap="square"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
