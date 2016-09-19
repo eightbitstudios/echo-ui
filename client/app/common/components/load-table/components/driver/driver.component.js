@@ -32,7 +32,7 @@ angular.module('echo.components.loadTable.driver', [
               equipment: equipment
             }
           }).result;
-
+          
           modalInstance.then(function (driverChanged) {
             if (driverChanged) {
               that.driverChangedCallback();

@@ -69,11 +69,11 @@ describe('Component: verifyDriverModal', function () {
       component.verifiedDriver = {
         id: 1
       };
-      expect(component.noVerifiedDriver()).toBeTruthy();
+      expect(component.noVerifiedDriver()).toBeFalsy();
     });
 
     it('should not have verified driver', function () {
-      expect(component.noVerifiedDriver()).toBeFalsy();
+      expect(component.noVerifiedDriver()).toBeTruthy();
     });
   });
 
@@ -87,21 +87,23 @@ describe('Component: verifyDriverModal', function () {
 
     it('should call reassign driver', function () {
       load.loadNumber = 1234;
-      load.verifiedDriver.id = 1;
+      verifiedDriver.id = 1;
       component.verifyDriver();
-      expect(loadsApi.reassignDriver).toHaveBeenCalledWith(load.loadNumber, load.verifiedDriver.id);
+      expect(loadsApi.reassignDriver).toHaveBeenCalledWith(load.loadNumber, verifiedDriver.id);
     });
 
     it('should close modal if successful', function (done) {
       load.loadNumber = 1234;
-      load.verifiedDriver.id = 1;
+      verifiedDriver.id = 1;
       component.verifyDriver();
       reassignDriverDefer.resolve();
-      scope.$digest();
+    
       reassignDriverDefer.promise.then(function () {
         expect(modalActions.close).toHaveBeenCalledWith(true);
         done();
       });
+      
+      scope.$digest();
     });
   });
 });
