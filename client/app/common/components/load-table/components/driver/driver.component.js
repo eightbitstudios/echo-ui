@@ -45,6 +45,7 @@ angular.module('echo.components.loadTable.driver', [
       };
 
       that.showAssignDriverModal = function () {
+        that.showButtonLoading = true;
         loadsApi.fetchEquipmentByLoadId(that.load.loadNumber).then(function (equipment) {
           var modalInstance = modalService.open({
             component: 'assign-driver-modal',
@@ -60,6 +61,8 @@ angular.module('echo.components.loadTable.driver', [
               that.driverChangedCallback();
             }
           });
+        }).finally(function() {
+          that.showButtonLoading = false;
         });
       };
     }

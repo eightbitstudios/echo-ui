@@ -10,8 +10,6 @@
     </div>
   </div>
   <div ng-if="$ctrl.noDriver">
-    <button class="btn btn-default" ng-click="$ctrl.showAssignDriverModal()">
-      Assign Driver
-    </button>
+     <loading-button button-text="Assign Driver" click-handler="$ctrl.showAssignDriverModal()" show-loading="$ctrl.showButtonLoading" />
   </div>
 </div>
