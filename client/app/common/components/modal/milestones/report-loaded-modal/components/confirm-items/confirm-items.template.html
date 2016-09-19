@@ -1,0 +1,19 @@
+<div class="confirm-items">
+  <h4 class="content-header">Confirm the following items are loaded.</h4>
+  <p>If the items received by the driver differ from what you see here, please call Echo.</p>
+  <h4 class="content-header">Items</h4>
+  <h4 class="section-header sh-med sh-no_border">
+  PICKUP #
+  <span class="pickup-numbers">{{$ctrl.formattedPickupNumbers}}</span>
+</h4>
+  <div class="items">
+    <checkbox-card ng-repeat="item in $ctrl.items" is-checked="$ctrl.checkboxItems[$index]">
+      <p>
+        <strong>{{item.description}}</strong>
+      </p>
+      <p>
+        <p><span ng-if="item.quantity">{{item.quantity}} EA,</span><span ng-if="item.handlingUnit"> {{item.handlingUnit}},</span> {{item.estimatedWeight}} lbs</p>
+      </p>
+    </checkbox-card>
+  </div>
+</div>

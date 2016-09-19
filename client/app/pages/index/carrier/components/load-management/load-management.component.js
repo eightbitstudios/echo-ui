@@ -25,8 +25,6 @@ angular.module('echo.index.carrier.loadManagement', [
       that.state = $state;
       that.routesConfig = routesConfig;
 
-      that.defaultRoute = routesConfig.INDEX.activeLoads.name;
-
       loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
         that.tabItems = [{
           title: loadCounts.active + ' Active Loads',

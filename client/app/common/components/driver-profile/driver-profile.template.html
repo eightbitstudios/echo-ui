@@ -5,7 +5,7 @@
     </a>
   </div>
   <h1 class="profile-name profile-name_driver">
-              <div class="echo-icon icon-driver"></div> 
+              <div class="echo-icon icon-driver"></div>
               <span ng-if="!$ctrl.driver.id">New Driver</span>
               <span ng-if="$ctrl.driver.id">{{::$ctrl.driver | fullName}}</span>
             </h1>
@@ -23,11 +23,11 @@
       <div class="form-group">
         <label>Preferred Language</label>
         <div class="select">
-          <select class="select" ng-model="$ctrl.driver.language">
+          <select class="select" ng-model="$ctrl.driver.preferredLanguage">
             <option ng-repeat="item in $ctrl.languages" ng-value="item.language">{{item.language}}</option>
            </select>
         </div>
-        <input ng-if="$ctrl.driver.language === $ctrl.other" class="form-control" ng-model="$ctrl.driver.otherLanguage" placeholder="Language" type="text">
+        <input ng-if="$ctrl.driver.preferredLanguage === $ctrl.other" class="form-control" ng-model="$ctrl.driver.otherLanguage" placeholder="Language" type="text">
       </div>
     </fieldset>
     <fieldset class="fieldset contact-information">

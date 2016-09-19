@@ -1,0 +1,15 @@
+<div class="comment">
+  <h4 class="content-header">Send a comment to Echo</h4>
+  <p>Please share your thoughts with Echo so that we can continue to improve the way loads are managed.</p>
+  <form>
+    <textarea class="form-control" ng-model="$ctrl.deliveryComment" placeholder="Enter your comments here"></textarea>
+  </form>
+  <div class="modal-action-links modal-action-split">
+    <a class="btn btn-link btn-alt" ng-click="$ctrl.cancelCallback()">
+      <span data-grunticon-embed class="echo-icon icon-left-arrow"></span>  Cancel Comment
+    </a>
+    <a class="btn btn-link" ng-click="$ctrl.saveComment()">
+                  Save Comment
+                </a>
+  </div>
+</div>

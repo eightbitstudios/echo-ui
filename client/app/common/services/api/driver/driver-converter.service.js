@@ -7,7 +7,7 @@ angular.module('echo.services.driverConverter', []).factory('driverConverterServ
       _.assign(convertedDriver, driver);
 
       if (convertedDriver.otherLanguage) {
-        convertedDriver.language = convertedDriver.otherLanguage;
+        convertedDriver.preferredLanguage = convertedDriver.otherLanguage;
       }
 
       convertedDriver.carrierId = carrierId;

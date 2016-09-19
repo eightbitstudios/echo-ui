@@ -14,6 +14,7 @@ angular.module('echo.models.user', [
       var that = this;
 
       _.assign(that, userData);
+      that.roleName = _.get(userData, 'oneLoginRoleName');
     }
 
     /**

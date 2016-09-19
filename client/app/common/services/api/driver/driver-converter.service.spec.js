@@ -29,7 +29,7 @@ describe('Api: carrierApi', function () {
         phoneNumber: '1' + driver.phone
       });
     });
-    
+
     it('should move other language property to language', function () {
       var driver = {
         id: 1,
@@ -42,7 +42,7 @@ describe('Api: carrierApi', function () {
         id: driver.id,
         carrierId: carrierId,
         phoneNumber: '1' + driver.phone,
-        language:  driver.otherLanguage
+        preferredLanguage:  driver.otherLanguage
       });
     });
   });

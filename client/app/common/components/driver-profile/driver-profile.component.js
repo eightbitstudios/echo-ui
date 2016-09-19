@@ -22,16 +22,20 @@ angular.module('echo.components.driverProfile', [
     that.other = appConstants.LANGUAGES.other;
 
     // Check to see if user has a language that is not listed
-    if(!_.find(that.languages, {language: _.get(that.driver, 'language')})){
-      that.driver.otherLanguage = that.driver.language;
-      that.driver.language = appConstants.LANGUAGES.other;
+    if(!_.find(that.languages, {language: _.get(that.driver, 'preferredLanguage')})){
+      that.driver.otherLanguage = that.driver.preferredLanguage;
+      that.driver.preferredLanguage = appConstants.LANGUAGES.other;
     }
 
     that.saveDriverHandler = function () {
-      
+
       if (that.driverProfileForm.$valid) {
         that.serverError = null;
         that.showButtonLoading = true;
+        if (that.driver.preferredLanguage !== appConstants.LANGUAGES.other) {
+          delete that.driver.otherLanguage;
+        }
+
         driverApi.upsertDriver(that.carrierId, that.driver).then(function () {
           that.profileUpdatedHandler();
         }).catch(function(errorMessage){

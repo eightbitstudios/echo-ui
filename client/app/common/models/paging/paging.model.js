@@ -23,7 +23,7 @@ angular.module('echo.models.paging', []).factory('PagingModel', function () {
   };
 
   Paging.prototype.setOffset = function (page) {
-    this.offset = (page - 1) * this.limit;
+    this.offset = (page - 1) * this.limit + 1;
   };
 
   Paging.prototype.nextPage = function () {

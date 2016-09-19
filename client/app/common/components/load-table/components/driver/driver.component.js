@@ -1,7 +1,6 @@
 angular.module('echo.components.loadTable.driver', [
   'echo.filters.phoneNumber',
   'echo.filters.firstCharacter',
-  'echo.enums.loadTypes',
   'echo.filters.onOff',
   'echo.filters.driverStatus',
   'echo.services.modal',

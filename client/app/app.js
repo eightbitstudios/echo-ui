@@ -4,12 +4,12 @@ angular.module('echo', [
   'ngCookies',
   'ngSanitize',
   'ui.router',
-  'ngAnimate',
   'base64',
   'ui.mask',
   'echo.services.routing',
   'echo.interceptors.auth',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'echo.decorators.uiRouter'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider.otherwise('/');

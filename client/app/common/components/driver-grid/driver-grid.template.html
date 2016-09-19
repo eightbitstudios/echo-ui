@@ -1,14 +1,7 @@
 <div class="container main-content driver-grid">
   <div class="row">
     <div class="col-sm-9">
-      <typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.onSelectCallback(selection)"></typeahead-search>
-      <date-range-picker start-date="$ctrl.startDate" end-date="$ctrl.endDate">
-        <button class="btn btn-default btn-filter" ng-class="{'filter__assigned': $ctrl.startDate && $ctrl.endDate}">
-          <span class="echo-icon icon-calendar" data-grunticon-embed></span>
-            {{$ctrl.startDate && $ctrl.endDate ? $ctrl.formatDateText() : 'Filter Unassigned Drivers'}}
-            <span class="echo-icon icon-close" ng-click="$ctrl.clearDates($event)" data-grunticon-embed></span>
-        </button>
-      </date-range-picker>
+      <typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.onSelectCallback(selection)" template="app/common/components/typeahead-search/templates/driver-results/driver-results.template.html" on-select-callback="$ctrl.selectedLocation(selection)" placeholder-text="Find a Driver"></typeahead-search>
     </div>
     <div class="col-sm-3 text-right">
       <button class="btn btn-default" ng-click="$ctrl.newDriverHandler()">Invite New Driver</button>
@@ -38,7 +31,7 @@
             </td>
             <td class="driverlist-col-usage">App {{driver.isAppInstalled ? 'Installed' : 'Not Installed'}} <br>Tracking {{driver.isTrackingEnabled ? 'Enabled' : 'Disabled'}}</td>
             <td class="driverlist-col-tractor">{{driver.tractorNumber}}</td>
-            <td class="driverlist-col-lang">{{driver.language}}</td>
+            <td class="driverlist-col-lang">{{driver.preferredLanguage}}</td>
             <td class="driverlist-col-current">
               <h5>No Echo Load Assigned.</h5>
             </td>
