@@ -21,7 +21,7 @@ angular.module('echo.components.loadTable.driver', [
       that.loadTypesEnum = loadTypesEnum;
 
       that.showVerifyDriverModal = function () {
-        $q.all([driverApi.verifyDriverByPhone(that.load.loadGuid, that.carrierId, that.load.driver.phone), 
+        $q.all([driverApi.verifyDriverByPhone(that.carrierId, that.load.driver.phone), 
         loadsApi.fetchEquipmentByLoadId(that.load.loadNumber)]).then(_.spread(function (verifiedDriver, equipment) {
           var modalInstance = modalService.open({
             component: 'verify-driver-modal',
