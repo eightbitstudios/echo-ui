@@ -23,6 +23,15 @@ describe('Component: myCompanyPortalUsers', function () {
     component = $componentController('myCompanyPortalUsers', null, { carrierId: carrierId });
   }));
 
+  describe('Function: $onInit', function() {
+   
+    it('should call getCarrierPortalUsers',  function() {
+      spyOn(component, 'getCarrierPortalUsers');
+      component.$onInit();
+      expect(component.getCarrierPortalUsers).toHaveBeenCalled();
+    });
+  });
+
   describe('Function: getCarrierPortalUsers', function() {
     var portalUsersDefer;
     beforeEach(function() {
@@ -46,6 +55,55 @@ describe('Component: myCompanyPortalUsers', function () {
       });
 
       scope.$digest();
+    });
+  });
+
+  describe('Function: userTileClickHandler', function() {
+
+    it('should set portal user',  function() {
+      var user = {
+        id: 1
+      };
+
+      UserModel.and.returnValue(user);
+      component.userTileClickHandler(user);
+      expect(component.portalUser).toEqual({
+        id: user.id,
+        carrierId: carrierId
+      });
+    });
+
+    it('should create empty portal user',  function() {
+
+      UserModel.and.returnValue({});
+      component.userTileClickHandler();
+      expect(component.portalUser).toEqual({
+        carrierId: carrierId
+      });
+    });
+  });
+
+  describe('Function: showUsersPortal', function() {
+    it('should show portal users page',  function() {
+      component.showUsersPortal()
+      expect(component.showMode).toEqual(component.mode.USERS_PORTAL);
+    });
+  });
+
+  describe('Function: reloadUsersPortal', function() {
+    beforeEach(function() {
+      spyOn(component, 'getCarrierPortalUsers');
+      spyOn(component, 'showUsersPortal');
+    });
+
+    it('should call getCarrierPortalUsers',  function() {
+      component.reloadUsersPortal();
+      expect(component.getCarrierPortalUsers).toHaveBeenCalled();
+    });
+
+    it('should call showUsersPortal',  function() {
+      component.reloadUsersPortal();
+      expect(component.showUsersPortal).toHaveBeenCalled();
     });
   });
 });
