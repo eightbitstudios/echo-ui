@@ -43,7 +43,7 @@ module.exports = {
   fetchVerifyDriver: function (req, res) {
     var resTemplate = new ResTemplate();
     responseUtil.timeout(function () {
-      resTemplate.data = driversRes.drivers[0];
+      resTemplate.data = null;
       res.json(resTemplate);
     }, minDelay, maxDelay);
 

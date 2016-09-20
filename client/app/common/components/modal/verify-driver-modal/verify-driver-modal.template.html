@@ -30,7 +30,8 @@
             <span class="text-muted">{{$ctrl.load.driver.phone | phoneNumber}}</span>
           </p>
           <p class="text-danger message-noicon">
-            This matches a possible driver listed below. Please confirm or find a replacement.
+            <span ng-if="$ctrl.showPossibleMatchText">This matches a possible driver listed below. Please confirm or find a replacement.</span>
+            <span ng-if="!$ctrl.showPossibleMatchText">We found no matching drivers. Please choose a replacement.</span>
           </p>
         </div>
         <unassigned-driver-search driver="$ctrl.verifiedDriver" carrier-id="$ctrl.carrierId" />

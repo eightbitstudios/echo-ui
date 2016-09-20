@@ -25,8 +25,9 @@ angular.module('echo.components.modal.verifyDriver', [
         inviteNewDriver: 2
       };
 
-      this.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
+      that.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
 
+      that.showPossibleMatchText = !_.isUndefined(_.get(that.verifiedDriver, 'id'));
       that.showFindDriver = function () {
         that.currentState = that.modes.findDriver;
       };
