@@ -171,6 +171,11 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,
       component: 'my-company-driver-profile',
+      resolve: {
+        driverId: function($stateParams) {
+          return $stateParams.driverId;
+        }
+      },
       data: {
         hideTabBar: true
       }
