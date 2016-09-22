@@ -1,4 +1,4 @@
-<div class="report-empty-modal">
+<div class="report-delivery-modal">
   <div class="modal-header">
     <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close()" data-close="modal" type="button">
       <span aria-hidden="true">×</span>
@@ -20,7 +20,13 @@
         <delivery-items items="$ctrl.items" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.optionalDocuments">
-        <report-delivery-optional-documents comment="$ctrl.comment" rating="$ctrl.rating" buttons-disabled="$ctrl.buttonsDisabled"/>
+                <div class="rating">
+          <p>
+            <strong>How was your experience with Echo?</strong>
+          </p>
+          <rating rating="$ctrl.rating" />
+        </div>
+        <comment comment="$ctrl.comment" />
       </div>
     </section>
   </div>
