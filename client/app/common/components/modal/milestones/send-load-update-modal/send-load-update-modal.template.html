@@ -49,4 +49,7 @@
     <loading-button button-text="Confirm Location" disable-button="!$ctrl.location.isValid()" ng-if="$ctrl.currentStep === $ctrl.modes.location" show-loading="$ctrl.showButtonLoading" ng-click="$ctrl.confirmLocation()"></loading-button>
     <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
   </div>
+  <error-messages error-messages="$ctrl.errorMessages" step-sensitive="true" valid-step="$ctrl.modes.location" current-step="$ctrl.currentStep"></error-messages>
+  <error-messages error-messages="$ctrl.errorMessages" step-sensitive="true" valid-step="$ctrl.modes.trailerPickup" current-step="$ctrl.currentStep"></error-messages>
+  <error-messages error-messages="$ctrl.errorMessages" step-sensitive="true" valid-step="$ctrl.modes.trailerDropOff" current-step="$ctrl.currentStep"></error-messages>
 </div>

@@ -2,7 +2,8 @@ angular.module('echo.components.modal.milestones.reportArrival', [
   'echo.components.modal.milestones.reportArrivalModal.components.arrivalSidebar',
   'echo.components.dateTimePicker',
   'echo.api.loads',
-  'echo.models.dateTimePicker'
+  'echo.models.dateTimePicker',
+  'echo.components.modal.errorMessages'
 ])
   .component('reportArrivalModal', {
     templateUrl: 'app/common/components/modal/milestones/report-arrival-modal/report-arrival-modal.template.html',
@@ -23,6 +24,7 @@ angular.module('echo.components.modal.milestones.reportArrival', [
 
       that.confirmArrivalHandler = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
 
         loadsApi.updateReportArrivalByLoadGuid(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
@@ -30,6 +32,8 @@ angular.module('echo.components.modal.milestones.reportArrival', [
           stopType: that.reportArrival.address.stopType
         }).then(function() {
           that.modalActions.close(true);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
         }).finally(function () {
           that.showButtonLoading = false;
         });
