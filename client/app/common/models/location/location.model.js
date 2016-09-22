@@ -16,8 +16,8 @@ angular.module('echo.models.location', [])
 
     Location.prototype.setLocation = function (cityState) {
       var cityStateArray = _.split(cityState, ',');
-      this.cityName = _.nth(cityStateArray, 0);
-      this.stateCode = _.nth(cityStateArray, 1);
+      this.cityName = _.trim(_.nth(cityStateArray, 0));
+      this.stateCode = _.trim(_.nth(cityStateArray, 1));
     };
 
     Location.prototype.getLocationString = function () {

@@ -1,5 +1,7 @@
-angular.module('echo.models.dateTimePicker', [])
-  .factory('DateTimePickerModel', function () {
+angular.module('echo.models.dateTimePicker', [
+  'echo.config.globals'
+])
+  .factory('DateTimePickerModel', function (moment) {
 
     /**
      * @constructor

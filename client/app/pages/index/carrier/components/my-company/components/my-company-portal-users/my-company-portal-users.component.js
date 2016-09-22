@@ -9,8 +9,10 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
 ])
   .component('myCompanyPortalUsers', {
     templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html',
-    bindings: {},
-    controller: function ($stateParams, $state, carrierApi, UserModel) {
+    bindings: {
+      carrierId: '<'
+    },
+    controller: function (carrierApi, UserModel) {
       var that = this;
 
       that.mode = {
@@ -21,8 +23,6 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
       that.showMode = that.mode.USERS_PORTAL;
       that.showLoading = true;
 
-      that.carrierId = $stateParams.carrierId;
-
       that.getCarrierPortalUsers = function () {
         carrierApi.fetchCarrierPortalUsers(that.carrierId).then(function (portalUsers) {
           that.portalUsers = portalUsers;
@@ -32,7 +32,7 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
 
       that.userTileClickHandler = function (user) {
         that.showMode = that.mode.USER_PROFILE;
-        that.portalUser = new UserModel(_.clone(user)) || new UserModel();
+        that.portalUser = new UserModel(_.clone(user));
         that.portalUser.carrierId = that.carrierId;
       };
 
@@ -46,6 +46,8 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
         that.showUsersPortal();
       };
 
-      that.getCarrierPortalUsers();
+      that.$onInit = function() {
+        that.getCarrierPortalUsers();
+      };
     }
   });

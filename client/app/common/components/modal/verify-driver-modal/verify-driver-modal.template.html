@@ -1,0 +1,56 @@
+<div class="verify-driver-modal">
+  <div class="modal-header">
+    <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)" data-close="modal" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h1 class="modal-title">
+      <span class="assign-action-type">
+        Verify Driver for
+      </span>
+      <span class="assign-action-to">
+        Load {{$ctrl.load.loadNumber}}
+      </span>
+    </h1>
+    <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
+  </div>
+  <div class="modal-body">
+    <driver-sidebar load="$ctrl.load" equipment="$ctrl.equipment"/>
+    <section class="modal-main-content">
+
+      <div ng-if="$ctrl.currentState === $ctrl.modes.findDriver">
+        <div class="message message-danger">
+          <span class="echo-icon icon-warning" data-grunticon-embed></span>
+        </div>
+        <div class="message message-danger verify-driver-message">
+          <p class="text-danger">
+            An Echo Representative has entered this information about the driver for this load.
+          </p>
+          <p class="driver-searched">
+            <strong>{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</strong> &nbsp; &nbsp;
+            <span class="text-muted">{{$ctrl.load.driver.phone | phoneNumber}}</span>
+          </p>
+          <p class="text-danger message-noicon">
+            <span ng-if="$ctrl.showPossibleMatchText">This matches a possible driver listed below. Please confirm or find a replacement.</span>
+            <span ng-if="!$ctrl.showPossibleMatchText">We found no matching drivers. Please choose a replacement.</span>
+          </p>
+        </div>
+        <unassigned-driver-search driver="$ctrl.verifiedDriver" carrier-id="$ctrl.carrierId" />
+        <div class="modal-action-links find-driver">
+          <a class="btn btn-link invite-new-driver" ng-click="$ctrl.showInviteNewDriver()">Invite New Driver</a>
+          <a class="btn btn-link" ui-sref="{{$ctrl.viewAllDrivers}}">View All Drivers</a>
+        </div>
+      </div>
+      <div class="new-driver-section" ng-if="$ctrl.currentState === $ctrl.modes.inviteNewDriver">
+        <new-driver cancel-callback="$ctrl.showFindDriver()" carrier-id="$ctrl.carrierId" continue-callback="$ctrl.invitedNewDriver(driver)" />
+      </div>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <div ng-if="$ctrl.currentState === $ctrl.modes.findDriver">
+      <loading-button show-loading="$ctrl.showButtonLoading" button-class="btn-default" click-handler="$ctrl.verifyDriver()" disable-button="$ctrl.noVerifiedDriver()">
+        Verify {{$ctrl.verifiedDriver.firstName}}
+      </loading-button>
+    </div>
+    <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Close</button>
+  </div>
+</div>

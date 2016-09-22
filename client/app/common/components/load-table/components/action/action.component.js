@@ -101,7 +101,7 @@ angular.module('echo.components.loadTable.action', [
               carrierId: that.carrierId,
               reportArrival: {
                 lastActionDate: that.load.nextAction.actionPerformed,
-                address: _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.shippingDetails),
+                address: _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.load.pickUp),
                 driver: that.load.driver
               },
               timeZones: timeZones,

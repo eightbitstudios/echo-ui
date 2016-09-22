@@ -85,6 +85,15 @@ angular.module('echo.api.driver', [
         return $http.get(url).then(function (resp) {
           return new DriverModel(driverConverterService.driverResponse(resp.data.data));
         });
+      },
+
+      verifyDriverByPhone: function (carrierId, phoneNumber) {
+        
+        var url = apiConfig.verifyDriverByPhone({ carrierId: carrierId, phoneNumber: phoneNumber});
+        
+        return $http.get(url).then(function (resp) {
+          return new DriverModel(resp.data.data);
+        });
       }
   };
 });

@@ -12,17 +12,20 @@ angular.module('echo.index.carrier.myCompany', [
     },
     controller: function ($stateParams, $state, routesConfig) {
       var that = this;
-      that.routesConfig = routesConfig;
-      that.state = $state;
-      
-      that.tabItems = [{
-        title: 'Portal Users',
-        link: routesConfig.INDEX.myCompanyUsers.name,
-        icon: 'icon-portal-user'
-      },{
-        title: 'Drivers',
-        link: routesConfig.INDEX.myCompanyDrivers.name,
-        icon: 'icon-driver'
-      }];
+
+      that.$onInit = function () {
+        that.routesConfig = routesConfig;
+        that.state = $state;
+
+        that.tabItems = [{
+          title: 'Portal Users',
+          link: routesConfig.INDEX.myCompanyUsers.name,
+          icon: 'icon-portal-user'
+        }, {
+            title: 'Drivers',
+            link: routesConfig.INDEX.myCompanyDrivers.name,
+            icon: 'icon-driver'
+          }];
+      };
     }
   });

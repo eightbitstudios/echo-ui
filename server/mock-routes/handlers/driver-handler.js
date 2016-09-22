@@ -8,7 +8,7 @@ var maxDelay = 2,
 
 module.exports = {
   getDriverById: function (req, res) {
-    var resTemplate = new ResTemplate()
+    var resTemplate = new ResTemplate();
     resTemplate.data = _.find(driversRes.drivers, { id: _.parseInt(req.params.driverId) });
 
     responseUtil.timeout(function () {
@@ -37,6 +37,14 @@ module.exports = {
         resTemplate.data = req.body;
         res.json(resTemplate);
       }
+    }, minDelay, maxDelay);
+
+  },
+  fetchVerifyDriver: function (req, res) {
+    var resTemplate = new ResTemplate();
+    responseUtil.timeout(function () {
+      resTemplate.data = null;
+      res.json(resTemplate);
     }, minDelay, maxDelay);
 
   },
