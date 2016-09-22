@@ -22,6 +22,9 @@ table.table
       color: $black
       border-color: $black
 
+    hr
+      margin: 2px 0
+
   tr > td
     padding-left: 10px
     padding-right: 10px
@@ -53,7 +56,7 @@ table.table
     &:first-child
       padding-left: 0
       border-left: 4px solid transparent
-        
+
       &:after
         left: 0
 
@@ -87,7 +90,48 @@ table.table
     &:after
       display: none
 
+//////////
+.table.table-minimal
+  margin-bottom: 0
 
+  tr > th
+    color: $gray-darkest
+    font-size: 14px
+    text-align: right
+    padding: 0 0 10px 20px
+    border-top: 0
+    border-bottom: none
+
+  tr
+    td:first-child
+      padding-left: 0
+      border-left: none
+
+    &:hover
+      td:first-child
+        padding-left: 0
+        border-left: none
+
+  tr > td
+    text-align: right
+    border: none
+    padding: 0 0 0 20px
+    &:first-child
+      text-align: left
+
+    &:after
+      display: none
+
+  tbody
+    tr:last-child td
+      padding-bottom: 10px
+
+  tfoot
+    tr:first-child td
+      padding-top: 10px
+      border-top: solid 1px $gray-light
+
+//////////
 .table.table-log
   margin: 20px 0
   border-top: 1px solid $gray-lightest

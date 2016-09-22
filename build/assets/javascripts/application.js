@@ -179,7 +179,7 @@ $(window).load(function(){
       $curBtn = $(this)
       e.preventDefault();
       if (!$curBtn.is('.btn-date-picker, .btn-single-dp, .btn-modal-dp, .btn-filter-dropdown')) {
-        resetDropdownButton();
+        // resetDropdownButton();
         resetSdpTrigger();
 
         if ($curBtn.hasClass('filter__assigned')) {

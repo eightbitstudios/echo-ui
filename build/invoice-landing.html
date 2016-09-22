@@ -23,7 +23,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class='load-management load-management-active'>
+  <body class='invoice invoice-active'>
     <header class='navbar'>
       <div class='eyebrow-header'>
         <div class='container'>
@@ -59,8 +59,8 @@
         <nav class='collapse navbar-collapse' id='main-nav'>
           <ul class='nav navbar-nav navbar-right'>
             <li><a href="#" class="">Dashboard</a></li>
-            <li class='active'><a href="#" class="">Load Management</a></li>
-            <li><a href="#" class="">Invoicing</a></li>
+            <li><a href="#" class="">Load Management</a></li>
+            <li class='active'><a href="#" class="">Invoicing</a></li>
             <li><a href="#" class="">My Company</a></li>
           </ul>
         </nav>
@@ -122,22 +122,26 @@
         </ul>
       </div>
     </div>
-    <div class='carrier-map-spacer'></div>
     <div class='container main-content'>
       <section>
         <div class='section-head'>
           <div class='filter-bar-wrap'>
             <div class='filter-bar'>
-              <div class='label'>Filter By</div>
-              <a href="#" class="btn btn-filter">Submitted
-              <br>
-              <small>$398,9876.54</small>
-              </a>
-              <a href="#" class="btn btn-filter">In Review
+              <div class='label'>
+                Filter By
+                <br>
+                <a href='#'>Help?</a>
+              </div>
+              <a href="#" class="btn btn-filter btn-filter-invoice">In Review
               <br>
               <small>$9876.54</small>
               </a>
+              <a href="#" class="btn btn-filter btn-filter-invoice">Submitted
+              <br>
+              <small>$398,9876.54</small>
+              </a>
               <a href="#" class="btn btn-filter">Approved</a>
+              <a href="#" class="btn btn-filter">Void</a>
               <a href="#" class="btn btn-filter">Paid</a>
               <span class='filter-summary'>
                 <h5>119 Invoices</h5>
@@ -148,38 +152,33 @@
         </div>
         <div class='row'>
           <div class='col-md-12'>
-            <table class='table table-carrier-dashboard'>
+            <table class='table table-invoice'>
               <thead>
                 <tr>
-                  <th>Load</th>
+                  <th>Invoice #</th>
                   <th>Received Date</th>
+                  <th>Status</th>
                   <th>
-                    Status
+                    Invoice Amount
                     <hr>
-                    Reason Code
+                    Balance Remaining
                   </th>
+                  <th>Load Number</th>
+                  <th>Pro Number</th>
+                  <th>Lane ID</th>
                   <th>
-                    Load Number
-                  </th>
-                  <th>
-                    Lane ID
-                  </th>
-                  <th>
-                    Scheduled
+                    Picked Up
                     <hr>
                     Delivered
-                  </th>
-                  <th>
-                    Invoice Total
-                    <hr>
-                    Balance Due
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class='carrier-dashboard-load'>
-                    <a href="#">123443211</a>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
                   </td>
                   <td class='invoice-received-date'>
                     Feb 3 2016
@@ -189,37 +188,350 @@
                     <br>
                     Weight Discrepancy
                   </td>
-                  <td class='invoice-load-number'>
-                    <div class='load-number'><a href="#">123443211</a></div>
-                    <p class='label'>Pro:</p>
-                    <p>1234567890</p>
-                  </td>
-                  <td class='invoice-lane'>
-                    <div class='location-pickup'>
-                      <div class='lead'>
-                        Washington-on-the-Brazos
-                      </div>
-                    </div>
-                    <div class='carrier-dashboard-arrow'>
-                      <img src="assets/images/icon-right-arrow-dark@2x.png" alt="Icon right arrow dark@2x" />
-                    </div>
-                    <div class='location-delivery'>
-                      <div class='lead'>
-                        Winchester-on-the-Severn
-                      </div>
-                    </div>
-                  </td>
-                  <td class='invoice-dates'>
-                    Feb 3 2016
-                    <br>
-                    Feb 6 2016
-                  </td>
                   <td class='invoice-total'>
-                    $10,202.00
-                    <br>
-                    <div class='text-alert'>
+                    <span>$10,202.00</span><br><div class='text-warning'>
                       $10,202.00
                     </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    1234567890
+                  </td>
+                  <td class='invoice-lane'>
+                    Jersey City, NJ
+                    <br>
+                    Marietta, GA
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$1,800.82</span><br><div class='text-warning'>
+                      $1,175.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    867473355
+                  </td>
+                  <td class='invoice-lane'>
+                    Little Rock, AR
+                    <br>
+                    Houston, TX
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$10,202.00</span><br><div class='text-warning'>
+                      $10,202.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    1234567890
+                  </td>
+                  <td class='invoice-lane'>
+                    Chicago, IL
+                    <br>
+                    Indianapolis, IN
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$10,202.00</span><br><div class='text-warning'>
+                      $10,202.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    1234567890
+                  </td>
+                  <td class='invoice-lane'>
+                    Jersey City, NJ
+                    <br>
+                    Marietta, GA
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$1,800.82</span><br><div class='text-warning'>
+                      $1,175.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    867473355
+                  </td>
+                  <td class='invoice-lane'>
+                    Little Rock, AR
+                    <br>
+                    Houston, TX
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$10,202.00</span><br><div class='text-warning'>
+                      $10,202.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    1234567890
+                  </td>
+                  <td class='invoice-lane'>
+                    Chicago, IL
+                    <br>
+                    Indianapolis, IN
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$10,202.00</span><br><div class='text-warning'>
+                      $10,202.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    1234567890
+                  </td>
+                  <td class='invoice-lane'>
+                    Jersey City, NJ
+                    <br>
+                    Marietta, GA
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$1,800.82</span><br><div class='text-warning'>
+                      $1,175.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    867473355
+                  </td>
+                  <td class='invoice-lane'>
+                    Little Rock, AR
+                    <br>
+                    Houston, TX
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$10,202.00</span><br><div class='text-warning'>
+                      $10,202.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    1234567890
+                  </td>
+                  <td class='invoice-lane'>
+                    Chicago, IL
+                    <br>
+                    Indianapolis, IN
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class='invoice-number'>
+                    <a href="#">1234567
+                    <img src="assets/images/icon-document.svg" alt="Icon document" />
+                    </a>
+                  </td>
+                  <td class='invoice-received-date'>
+                    Feb 3 2016
+                  </td>
+                  <td class='invoice-status'>
+                    <strong>In Review</strong>
+                    <br>
+                    Weight Discrepancy
+                  </td>
+                  <td class='invoice-total'>
+                    <span>$10,202.00</span><br><div class='text-warning'>
+                      $10,202.00
+                    </div>
+                  </td>
+                  <td class='invoice-load-number'>
+                    <a href="#">123443211</a>
+                  </td>
+                  <td class='invoice-pro-number'>
+                    1234567890
+                  </td>
+                  <td class='invoice-lane'>
+                    Chicago, IL
+                    <br>
+                    Indianapolis, IN
+                  </td>
+                  <td class='invoice-dates'>
+                    <span>Feb 3 2016</span><br><span>
+                      Feb 6 2016
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -246,7 +558,7 @@
               </ul>
             </nav>
             <div class='results-count pull-right'>
-              Showing 1-10 of 40 Loads Needing Action
+              Showing 1-10 of 40 Invoices
             </div>
           </div>
         </div>

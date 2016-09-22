@@ -1,0 +1,33 @@
+-@title= 'Load Management Details Multistop'
+-@page_classes= 'load-management load-management-detail'
+
+= partial 'partials/header_carrier_load', locals: {loads: '9 Loads Located', map: false}
+
+.container-fluid.load-table_detail
+  .container
+    = partial 'partials/load_management_invoice'
+
+.container.main-content
+  .section-head
+    %h1.section-label
+      INVOICE DETAILS
+
+  .row
+    %section.col-md-8
+      = partial 'partials/invoices_accordion-multi'
+
+      %section.panel.load-table_log
+        %h4.section-header.sh-no_border LAST LOAD ACTIVITY
+        %p.text-muted.disclaimer [Disclaimer text provided by Legal to clarify that this log does not replace other records for purposes like calculating detention, etc]
+
+        %table.table.table-condensed.table-log
+          %tr
+            %td.log-note Document Added: Invoice
+            %td.log-driver Carrier Jen H.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5
+
+        %a{href:"#"} See All
+
+    .col-md-4
+      = partial 'partials/loads_sidebar'
