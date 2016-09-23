@@ -8,7 +8,8 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
   'echo.components.modal.milestones.reportLoaded.finishLoading',
   'echo.components.modal.milestones.reportLoaded.optionalDocuments',
   'echo.models.dateTimePicker',
-  'echo.models.checkbox'
+  'echo.models.checkbox',
+  'echo.components.modal.errorMessages'
 ])
   .component('reportLoadedModal', {
     templateUrl: 'app/common/components/modal/milestones/report-loaded-modal/report-loaded-modal.template.html',
@@ -36,12 +37,17 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
 
       that.saveReportEmpty = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.createReportLoaded(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           departureDate: that.dateTimePicker.getDateTime(),
           loadGuid: that.load.loadGuid
         }).then(function () {
           that.modalActions.close(true);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });

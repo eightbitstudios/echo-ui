@@ -7,7 +7,8 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
   'echo.components.modal.milestones.reportEmpty.confirmEmpty',
   'echo.models.location',
   'echo.models.dateTimePicker',
-  'echo.models.checkbox'
+  'echo.models.checkbox',
+  'echo.components.modal.errorMessages'
 ])
   .component('reportEmptyModal', {
     templateUrl: 'app/common/components/modal/milestones/report-empty-modal/report-empty-modal.template.html',
@@ -31,12 +32,17 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
 
       that.saveReportEmpty = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.createReportEmpty(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           driverLocation: that.location,
           eventTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });
