@@ -1,7 +1,6 @@
 angular.module('echo.components.modal.milestones.sendLoadUpdate.droppedLoad', [
   'echo.components.dateTimePicker',
-  'echo.components.modal.milestones.locationSearch',
-  'echo.components.modal.milestones.documentUpload'
+  'echo.components.modal.milestones.locationSearch'
 ])
   .component('droppedLoad', {
     templateUrl: 'app/common/components/modal/milestones/send-load-update-modal/components/dropped-load/dropped-load.template.html',

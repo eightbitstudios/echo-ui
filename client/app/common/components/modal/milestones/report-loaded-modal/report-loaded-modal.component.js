@@ -6,7 +6,6 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
   'echo.components.modal.milestones.reportEmpty.confirmEmpty',
   'echo.components.modal.milestones.reportLoaded.confirmItems',
   'echo.components.modal.milestones.reportLoaded.finishLoading',
-  'echo.components.modal.milestones.reportLoaded.optionalDocuments',
   'echo.models.dateTimePicker',
   'echo.models.checkbox',
   'echo.components.modal.errorMessages'
@@ -25,8 +24,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
 
       that.modes = {
         confirmItems: 1,
-        finishLoading: 2,
-        optionalDocuments: 3
+        finishLoading: 2
       };
 
       that.isNextStepEnabled = function () {
@@ -54,7 +52,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
       };
 
       that.$onInit = function () {
-        that.steps = [that.modes.confirmItems, that.modes.finishLoading, that.modes.optionalDocuments];
+        that.steps = [that.modes.confirmItems, that.modes.finishLoading];
         that.currentStep = that.modes.confirmItems;
         that.showButtonLoading = false;
         that.checkboxItems = _.map(that.items, function () {

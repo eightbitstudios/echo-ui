@@ -7,7 +7,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
   'echo.components.modal.milestones.reportEmpty.confirmEmpty',
   'echo.components.modal.milestones.deliveryItems',
   'echo.components.modal.milestones.reportDelivery.comment',
-  'echo.components.modal.milestones.reportDelivery.optionalDocuments',
+  'echo.components.modal.milestones.rating',
   'echo.models.dateTimePicker',
   'echo.components.modal.errorMessages'
 ])
