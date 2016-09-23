@@ -8,7 +8,8 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
   'echo.components.modal.milestones.deliveryItems',
   'echo.components.modal.milestones.reportDelivery.comment',
   'echo.components.modal.milestones.rating',
-  'echo.models.dateTimePicker'
+  'echo.models.dateTimePicker',
+  'echo.components.modal.errorMessages'
 ])
   .component('reportDeliveryModal', {
     templateUrl: 'app/common/components/modal/milestones/report-delivery-modal/report-delivery-modal.template.html',
@@ -28,6 +29,8 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
 
       that.saveReportEmpty = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.createReportDelivered(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           rating: that.rating,
@@ -35,6 +38,9 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
           eventTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });

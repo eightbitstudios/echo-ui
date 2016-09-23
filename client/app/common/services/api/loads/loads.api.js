@@ -94,18 +94,24 @@ angular.module('echo.api.loads', [
       var url = apiConfig.assignDriverByLoadId({ loadId: loadId, userId: driverId });
       return $http.post(url).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
     },
     unassignDriver: function (loadId) {
       var url = apiConfig.unassignDriverByLoadId({ loadId: loadId });
       return $http.put(url).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
     },
     reassignDriver: function (loadId, driverId) {
       var url = apiConfig.reassignDriverByLoadId({ loadId: loadId, userId: driverId });
       return $http.put(url).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
     },
     fetchUnassignedDriversByLoadId: function (loadId, carrierId) {
@@ -139,6 +145,8 @@ angular.module('echo.api.loads', [
       var url = apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid });
       return $http.post(url, reportEmpty).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
     },
     createReportLocation: function (loadGuid, reportLocation) {
@@ -151,12 +159,16 @@ angular.module('echo.api.loads', [
       var url = apiConfig.reportTrailerByLoadGuid({ loadGuid: loadGuid });
       return $http.post(url, reportTrailer).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
     },
     createReportLoaded: function (loadGuid, reportLoaded) {
       var url = apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid });
       return $http.post(url, reportLoaded).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
     },
     updateProNumber: function (loadId, payload) {
@@ -175,6 +187,8 @@ angular.module('echo.api.loads', [
       var url = apiConfig.reportLocation({ loadGuid: loadGuid });
       return $http.put(url, reportLocation).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
     },
     fetchItemsByLoadGuid: function (loadGuid) {
@@ -199,6 +213,8 @@ angular.module('echo.api.loads', [
       var url = apiConfig.reportArrivalByLoadGuid({ loadGuid: loadGuid });
       return $http.put(url, reportArrival).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
     },
     fetchReportArrivalByLoadGuid: function (loadGuid) {
@@ -223,8 +239,10 @@ angular.module('echo.api.loads', [
       var url = apiConfig.reportDeliveredByLoadGuid({ loadGuid: loadGuid });
       return $http.post(url, reportDelivered).then(function (resp) {
         return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
       });
-    }, 
+    },
     fetchEquipmentByLoadId: function (loadId) {
       var url = apiConfig.equipmentByLoadId({ loadId: loadId });
       return $http.get(url).then(function (resp) {

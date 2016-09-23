@@ -87,9 +87,9 @@ angular.module('echo.enums.actions', [])
         value: 11,
         description: 'Reported Still Waiting To Unload'
       },
-      REPORTED_UNLOADED: {
+      REPORTED_DELIVERED: {
         value: 12,
-        description: 'Reported Unloaded'
+        description: 'Reported Delivered'
       },
       DOCUMENT_ADDED: {
         value: 13,

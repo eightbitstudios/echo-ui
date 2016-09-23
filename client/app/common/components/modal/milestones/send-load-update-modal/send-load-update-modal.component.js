@@ -9,7 +9,8 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
   'echo.models.location',
   'echo.models.dateTimePicker',
   'echo.services.modal',
-  'echo.enums.arrivalTypes'
+  'echo.enums.arrivalTypes',
+  'echo.components.modal.errorMessages'
 ])
   .component('sendLoadUpdateModal', {
     templateUrl: 'app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.template.html',
@@ -70,12 +71,17 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
 
       that.confirmLocation = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.updateReportLocation(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           location: that.location,
           locationTime: that.dateTimePicker.getDateTime()
         }).then(function () {
           that.modalActions.close(true);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -83,6 +89,8 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
 
       that.confirmDropOff = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
@@ -90,6 +98,9 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
           stopType: _.get(_.nth(that.load.delivery, 0), 'stopType')
         }).then(function () {
           that.modalActions.close(true);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.message;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -97,12 +108,17 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
 
       that.confirmPickup = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
           stopType: _.get(_.nth(that.load.pickUp, 0), 'stopType')
         }).then(function () {
           that.modalActions.close(true);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });
