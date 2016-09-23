@@ -81,10 +81,9 @@ angular.module('echo.config.appConstants', [])
       500108: 'Unable to Assign Driver to Load',
       500109: 'Unable to Unassign Driver from Load',
       500110: 'Unable to Unassign Driver from Load',
-      500111: 'Error writing into shipment activity service',
-      500112: 'Unable to Create Activity Log',
-      500113: 'Invalid date for the action'
+      500111: 'Error writing into shipment activity service'
     },
+    CUSTOM_ERROR_CODES: [500112, 500112],
     STATUSES: {
       ReportedEmpty: 'Reported Empty',
       ReportedDropped: 'Reported Dropped',

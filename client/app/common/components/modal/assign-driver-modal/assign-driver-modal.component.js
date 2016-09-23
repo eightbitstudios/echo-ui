@@ -30,11 +30,13 @@ angular.module('echo.components.modal.assignDriver', [
       that.assignDriver = function () {
         that.showButtonLoading = true;
         that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
         }).catch(function (status) {
           that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -43,11 +45,13 @@ angular.module('echo.components.modal.assignDriver', [
       that.reassignDriver = function () {
         that.showButtonLoading = true;
         that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.reassignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
         }).catch(function (status) {
           that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -56,11 +60,13 @@ angular.module('echo.components.modal.assignDriver', [
       that.unassignDriver = function () {
         that.showButtonLoading = true;
         that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.unassignDriver(that.load.loadNumber).then(function () {
           that.driverChanged = true;
           that.assignedDriver = null;
         }).catch(function (status) {
           that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });

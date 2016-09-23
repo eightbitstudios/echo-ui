@@ -25,6 +25,7 @@ angular.module('echo.components.modal.milestones.reportArrival', [
       that.confirmArrivalHandler = function () {
         that.showButtonLoading = true;
         that.errorMessages = null;
+        that.errorCode = null;
 
         loadsApi.updateReportArrivalByLoadGuid(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
@@ -34,6 +35,7 @@ angular.module('echo.components.modal.milestones.reportArrival', [
           that.modalActions.close(true);
         }).catch(function (status) {
           that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });

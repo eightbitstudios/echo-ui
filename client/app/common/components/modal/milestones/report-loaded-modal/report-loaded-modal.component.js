@@ -38,6 +38,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
       that.saveReportEmpty = function () {
         that.showButtonLoading = true;
         that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.createReportLoaded(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           departureDate: that.dateTimePicker.getDateTime(),
@@ -46,6 +47,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
           that.modalActions.close(true);
         }).catch(function (status) {
           that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });

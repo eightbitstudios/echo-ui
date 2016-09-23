@@ -72,6 +72,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       that.confirmLocation = function () {
         that.showButtonLoading = true;
         that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.updateReportLocation(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           location: that.location,
@@ -80,6 +81,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
           that.modalActions.close(true);
         }).catch(function (status) {
           that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -88,6 +90,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       that.confirmDropOff = function () {
         that.showButtonLoading = true;
         that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
@@ -97,6 +100,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
           that.modalActions.close(true);
         }).catch(function (status) {
           that.errorMessages = status.message;
+          that.errorCode = status.message;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -105,6 +109,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       that.confirmPickup = function () {
         that.showButtonLoading = true;
         that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
@@ -113,6 +118,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
           that.modalActions.close(true);
         }).catch(function (status) {
           that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });

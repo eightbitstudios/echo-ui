@@ -26,5 +26,5 @@
     <loading-button button-text="Confirm Arrival" click-handler="$ctrl.confirmArrivalHandler()" show-loading="$ctrl.showButtonLoading"></loading-button>
     <button class="btn btn-link btn-alt" data-dismiss="modal" ng-click="$ctrl.modalActions.close()" data-close="modal" type="button">CANCEL</button>
   </div>
-  <error-messages error-messages="$ctrl.errorMessages" step-sensitive="false"></error-messages>
+  <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" step-sensitive="false"></error-messages>
 </div>
