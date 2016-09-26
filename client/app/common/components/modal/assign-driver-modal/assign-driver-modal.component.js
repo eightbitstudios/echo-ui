@@ -62,8 +62,9 @@ angular.module('echo.components.modal.assignDriver', [
         that.errorMessages = null;
         that.errorCode = null;
         loadsApi.unassignDriver(that.load.loadNumber).then(function () {
+          that.driverChanged = true;          
           that.driverChanged = true;
-          that.assignedDriver = null;
+          that.modalActions.close(that.driverChanged);
         }).catch(function (status) {
           that.errorMessages = status.message;
           that.errorCode = status.code;
