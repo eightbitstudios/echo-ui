@@ -92,5 +92,5 @@ angular.module('echo.config.appConstants', [])
       }
 
     },
-    CUSTOM_ERROR_CODES: [500112, 500112]
+    CUSTOM_ERROR_CODES: [500112, 500113]
   });
