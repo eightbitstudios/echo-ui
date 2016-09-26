@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('echo.components.portalUserProfile', [
+  'echo.config.appConstants',
   'echo.config.routes',
   'echo.models.user',
   'echo.components.loadingButton',
@@ -16,7 +17,7 @@ angular.module('echo.components.portalUserProfile', [
   },
   transclude: true,
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
-  controller: function (routesConfig, portalUserApi) {
+  controller: function (appConstants, routesConfig, portalUserApi) {
     var that = this;
 
     that.mode = {
@@ -28,6 +29,8 @@ angular.module('echo.components.portalUserProfile', [
 
     that.showConfirmation = false;
     that.showButtonLoading = false;
+
+    that.errorMessageOverride = appConstants.ERROR_MESSAGES.PORTAL_USER;
 
     // Strip international code for frontend
     if (that.portalUser.phone && that.portalUser.phone.charAt(0) === '1') {
