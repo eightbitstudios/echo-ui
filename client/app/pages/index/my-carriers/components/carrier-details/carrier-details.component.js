@@ -10,9 +10,7 @@ angular.module('echo.index.myCarriers.carrierDetails', [
 ])
   .component('carrierDetails', {
     templateUrl: 'app/pages/index/my-carriers/components/carrier-details/carrier-details.template.html',
-    bindings: {
-      carrierId: '<'
-    },
+    bindings: {},
     controller: function ($stateParams, $q, carrierApi, routesConfig, UserModel) {
       var that = this;
 
@@ -24,6 +22,7 @@ angular.module('echo.index.myCarriers.carrierDetails', [
       that.showLoading = false;
       that.isCarrierAdmin = false;
 
+      that.carrierId = $stateParams.carrierId;
       that.usersRoute = routesConfig.INDEX.myCompanyUsers;
       that.driverRoute = routesConfig.INDEX.myCompanyDrivers;
       that.dashboardRoute = routesConfig.INDEX.dashboard;
