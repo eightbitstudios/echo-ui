@@ -4,6 +4,7 @@ var responseUtil = require('../util/response-util.js'),
   activityLogRes = require('../data/activity-log-res'),
   reportArrivalRes = require('../data/report-arrival-res'),
   loadUpdateOptionsRes = require('../data/load-update-options-res'),
+  equipmentRes = require('../data/equipment-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
 
@@ -88,6 +89,14 @@ module.exports = {
     var resTemplate = new ResTemplate();
     resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
     resTemplate.data.totalLoadCount = loadsRes.loads.length;
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getEquipmentByLoadId: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = equipmentRes;
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

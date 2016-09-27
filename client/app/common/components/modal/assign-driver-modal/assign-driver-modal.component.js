@@ -5,13 +5,16 @@ angular.module('echo.components.modal.assignDriver', [
   'echo.components.loadingButton',
   'echo.components.shippingDetails',
   'echo.components.modal.assignDriver.loadDriver',
-  'echo.components.modal.assignDriver.enums.assignedDriver'
+  'echo.components.modal.assignDriver.enums.assignedDriver',
+  'echo.components.modal.driverSidebar',
+  'echo.components.modal.errorMessages'
 ])
   .component('assignDriverModal', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/assign-driver-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',
+      equipment: '<',
       carrierId: '<'
     },
     controller: function (loadsApi, DriverModel, assignedDriverEnum) {
@@ -26,9 +29,14 @@ angular.module('echo.components.modal.assignDriver', [
 
       that.assignDriver = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -36,9 +44,14 @@ angular.module('echo.components.modal.assignDriver', [
 
       that.reassignDriver = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.reassignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -46,9 +59,14 @@ angular.module('echo.components.modal.assignDriver', [
 
       that.unassignDriver = function () {
         that.showButtonLoading = true;
+        that.errorMessages = null;
+        that.errorCode = null;
         loadsApi.unassignDriver(that.load.loadNumber).then(function () {
-          that.driverChanged = true;
-          that.assignedDriver = null;
+          that.driverChanged = true;   
+          that.modalActions.close(that.driverChanged);
+        }).catch(function (status) {
+          that.errorMessages = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });

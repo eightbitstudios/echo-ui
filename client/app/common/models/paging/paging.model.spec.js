@@ -64,4 +64,25 @@ describe('Model: Paging', function () {
       expect(paging.selectedPage).toBe(4);
     });
   });
+
+  describe('Function: reset', function() {
+    it('should set selected page and offset to 1', function() {
+      var paging = new PagingModel(limit);
+      paging.reset();
+      expect(paging.selectedPage).toBe(1);
+      expect(paging.offset).toBe(1);
+    });
+  });
+
+  describe('Function: setRecords', function() {
+    it('should set total records and record count', function() {
+      var totalRecords = 10,
+        recordCount = 5;
+
+      var paging = new PagingModel(limit);
+      paging.setRecords(totalRecords, recordCount);
+      expect(paging.totalRecords).toBe(totalRecords);
+      expect(paging.recordCount).toBe(recordCount);
+    });
+  });
 });

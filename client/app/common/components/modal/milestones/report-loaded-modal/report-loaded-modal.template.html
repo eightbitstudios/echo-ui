@@ -22,9 +22,6 @@
       <div ng-if="$ctrl.currentStep === $ctrl.modes.finishLoading">
         <finish-loading total-weight="$ctrl.totalWeight" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
       </div>
-      <div ng-if="$ctrl.currentStep === $ctrl.modes.optionalDocuments">
-        <optional-documents/>
-      </div>
     </section>
   </div>
   <div class="modal-footer">
@@ -32,4 +29,5 @@
       <loading-button button-text="Confirm Loaded" click-handler="$ctrl.saveReportEmpty()" show-loading="$ctrl.showButtonLoading"></loading-button>
     </modal-steps>
   </div>
+  <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" step-sensitive="true" valid-step="$ctrl.modes.optionalDocuments" current-step="$ctrl.currentStep"></error-messages>
 </div>

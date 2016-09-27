@@ -1,0 +1,13 @@
+<section class="modal-sidebar driver-sidebar">
+  <article class="sidebar-content">
+    <h4 class="small-header">Pickup</h4>
+    <shipping-details shipping-details="$ctrl.load.pickUp"></shipping-details>
+  </article>
+  <article class="sidebar-content">
+    <h4 class="small-header">Delivery</h4>
+    <shipping-details shipping-details="$ctrl.load.delivery"></shipping-details>
+  </article>
+  <article class="sidebar-content">
+    <equipment equipment="$ctrl.equipment" trailer-number="$ctrl.load.trailerNumber" tractor-number="$ctrl.load.tractorNumber" load-guid="$ctrl.load.loadGuid" />
+  </article>
+</section>
