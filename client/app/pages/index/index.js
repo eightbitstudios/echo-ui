@@ -7,41 +7,29 @@ angular.module('echo.index', [
   'echo.index.controller',
   'echo.index.myCarriers',
   'echo.index.settings',
-  'echo.enums.roles',
   'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
-  'echo.api.rep',
-  'echo.api.carrier',
   'echo.index.carrier.myCompany.driverProfile',
-  'echo.services.cookie',
-  'echo.services.userProfile',
+  'echo.index.resolvers.base',
+  'echo.index.resolvers.carrier',
+  'echo.index.resolvers.loadManagement',
+  'echo.index.resolvers.loadDetails',
+  'echo.index.resolvers.driverProfile',
+  'echo.index.resolvers.carrierDetails',
+  'echo.index.decorators.routeSettings',
   'templates-app'
-]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
+]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig,
+  baseResolverProvider, carrierResolverProvider, loadManagementResolverProvider, loadDetailsResolverProvider,
+  driverProfileResolverProvider, carrierDetailsResolverProvider, RouteSettingsDecoratorProvider) {
 
+  var RouteSettingsDecorator = RouteSettingsDecoratorProvider.$get();
   // ROUTES
   $stateProvider
     .state(routesConfig.INDEX.base.name, {
       url: routesConfig.INDEX.base.route,
-      data: {
-        auth: true
-      },
-      resolve: {
-        user: function ($q, cookieService, userProfileService) {
-          var jwt = cookieService.getToken();
-
-          if (jwt) {
-            var userObj = userProfileService.mapJwtToUser(jwt);
-            userProfileService.setUser(userObj);
-          }
-
-          var user = userProfileService.getUser();
-          return $q.when(user);
-        },
-        repDetails: function (user, repApi) {
-          return repApi.fetchRepByCarrierId(user.carrierId);
-        }
-      },
+      data: new RouteSettingsDecorator().authenticationRequired(),
+      resolve: baseResolverProvider.$get(),
       views: {
         'header': {
           template: '<app-header rep-details="$ctrl.repDetails"></app-header>',
@@ -70,88 +58,54 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCarriers.name, {  // #/myCarrier
       url: routesConfig.INDEX.myCarriers.route,
       component: 'my-carriers',
-      data: {
-        role: RolesEnum.ECHO_REP,
-        reroute: routesConfig.INDEX.carrier.name
-      }
+      data: new RouteSettingsDecorator().echoRepOnly()
     })
     .state(routesConfig.INDEX.myCarriersDetails.name, { // #/myCarrier/:carrierId
       url: routesConfig.INDEX.myCarriersDetails.route,
-      component: 'carrier-details'
+      component: 'carrier-details',
+      resolve: carrierDetailsResolverProvider.$get()
     })
     .state(routesConfig.INDEX.carrier.name, { // #/carrier/:carrierId
       url: routesConfig.INDEX.carrier.route,
       component: 'carrier',
-      resolve: {
-        carrierId: function($stateParams) {
-          return $stateParams.carrierId;
-        },
-        carrierDetails: function (carrierId, carrierApi) {
-          return carrierApi.fetchCarrierById(carrierId);
-        }
-      }
+      resolve: carrierResolverProvider.$get()
     })
     .state(routesConfig.INDEX.dashboard.name, { // #/carrier/:carrierId/dashboard
       url: routesConfig.INDEX.dashboard.route,
       component: 'dashboard',
-      data: {
-        whiteContainer: true,
-        hideTabBar: true
-      }
+      data: new RouteSettingsDecorator().showWhiteContainer().setTabBarHidden()
     })
     .state(routesConfig.INDEX.loadManagement.name, { // #/carrier/:carrierId/loadManagement
       url: routesConfig.INDEX.loadManagement.route,
       component: 'load-management',
-      data: {
-        whiteContainer: true
-      }
+      resolve: loadManagementResolverProvider.$get(),
+      data: new RouteSettingsDecorator().showWhiteContainer()
     })
     .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
       url: routesConfig.INDEX.activeLoads.route,
       component: 'active-loads',
-      data: {
-        name: 'active loads'
-      }
+      data: new RouteSettingsDecorator().routeName('active loads')
     })
     .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
       url: routesConfig.INDEX.unbilledLoads.route,
       component: 'unbilled-loads',
-      data: {
-        name: 'unbilled loads'
-      }
+      data: new RouteSettingsDecorator().routeName('unbilled loads')
     })
     .state(routesConfig.INDEX.upcomingLoads.name, { // #/carrier/:carrierId/loadManagement/upcomingLoads
       url: routesConfig.INDEX.upcomingLoads.route,
       component: 'upcoming-loads',
-      data: {
-        name: 'upcoming loads'
-      }
+      data: new RouteSettingsDecorator().routeName('upcoming loads')
     })
     .state(routesConfig.INDEX.searchLoads.name, { // #/carrier/:carrierId/loadManagement/searchText/:searchText
       url: routesConfig.INDEX.searchLoads.route,
       component: 'search-loads',
-      data: {
-        hideTabBar: true
-      }
+      data: new RouteSettingsDecorator().setTabBarHidden()
     })
     .state(routesConfig.INDEX.loadDetails.name, { // #/carrier/:carrierId/loadManagement/loadDetails/:loadId
       url: routesConfig.INDEX.loadDetails.route,
       component: 'load-details',
-      data: {
-        hideTabBar: true,
-        whiteContainer: false
-      },
-      resolve: {
-        loadId: function($stateParams) {
-          return $stateParams.loadId;
-        },
-        loadDetails: function (loadsApi, loadId) {
-          return loadsApi.fetchLoadDetails(loadId);
-        },
-        activityLog: function (loadsApi, loadDetails) {
-          return loadsApi.fetchActivityLogByLoadId(loadDetails.loadNumber);
-        }
-      }
+      data: new RouteSettingsDecorator().setTabBarHidden().showDefaultContainer(),
+      resolve: loadDetailsResolverProvider.$get()
     })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,
@@ -164,20 +118,12 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.myCompanyDrivers.name, {  // #/carrier/:carrierId/myCompany/drivers
       url: routesConfig.INDEX.myCompanyDrivers.route,
       component: 'driver-grid',
-      data: {
-        whiteContainer: true
-      }
+      data: new RouteSettingsDecorator().showWhiteContainer(),
     })
     .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,
       component: 'my-company-driver-profile',
-      resolve: {
-        driverId: function($stateParams) {
-          return $stateParams.driverId;
-        }
-      },
-      data: {
-        hideTabBar: true
-      }
+      resolve: driverProfileResolverProvider.$get(),
+      data: new RouteSettingsDecorator().setTabBarHidden()
     });
 });
