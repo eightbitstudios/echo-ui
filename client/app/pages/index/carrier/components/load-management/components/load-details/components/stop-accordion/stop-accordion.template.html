@@ -8,8 +8,10 @@
     </uib-accordion-heading>
     <div class="row">
       <details-location stop="$ctrl.stop"/>
-      <details-contact stop="$ctrl.stop"/>
+      <details-pickup-numbers pickup-numbers="$ctrl.pickupNumbers"/>
       <details-notes notes="$ctrl.stop.notes"/>
+      <details-contact stop="$ctrl.stop"/>
     </div>
-    <load-item-details pickup-number="$ctrl.stop.pickupNumber" items="$ctrl.stop.items"/>
+    <load-item-details items="$ctrl.stop.items"/>
   </div>
+</uib-accordion>

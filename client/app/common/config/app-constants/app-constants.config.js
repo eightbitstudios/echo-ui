@@ -18,7 +18,7 @@ angular.module('echo.config.appConstants', [])
       other: 'Other'
     },
     REGEX: {
-      passwordLength: /^.{8,25}$/,
+      passwordLength: /^.{8,}$/,
       passwordLowerCase: /[a-z]/,
       passwordNumber: /[0-9]/,
       passwordUpperCase: /[^a-z0-9]/

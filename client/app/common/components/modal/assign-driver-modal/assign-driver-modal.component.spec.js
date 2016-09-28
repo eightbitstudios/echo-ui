@@ -78,7 +78,7 @@ describe('Component: Assign Driver Modal', function () {
       scope.$digest();
 
       expect(loadsApi.unassignDriver).toHaveBeenCalledWith(component.load.loadNumber);
-      expect(component.assignedDriver).toBe(null);
+      expect(modalActions.close).toHaveBeenCalledWith(true);
     });
 
   });
