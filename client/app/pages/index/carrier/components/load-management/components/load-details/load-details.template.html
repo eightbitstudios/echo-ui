@@ -24,8 +24,8 @@
     </div>
     <div class="row">
       <section class="col-md-8">
-        <stop-accordion ng-repeat="pickUp in $ctrl.loadDetails.pickUp" stop-type="Pickup" stop="pickUp" />
-        <stop-accordion ng-repeat="delivery in $ctrl.loadDetails.delivery" stop-type="Delivery" stop="delivery" />
+        <stop-accordion ng-repeat="pickUp in $ctrl.loadDetails.pickUp" stop-type="Pickup" stop="pickUp" pickup-numbers="$ctrl.pickupNumbers" />
+        <stop-accordion ng-repeat="delivery in $ctrl.loadDetails.delivery" stop-type="Delivery" stop="delivery" pickup-numbers="$ctrl.deliveryNumbers" />
         <activity-log activity-log="$ctrl.activityLog" />
       </section>
       <div class="col-md-4">
@@ -41,3 +41,4 @@
       </div>
     </div>
   </div>
+</div>

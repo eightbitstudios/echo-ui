@@ -16,7 +16,10 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     },
     controller: function ($state) {
       var that = this;
-      
+
+      that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
+      that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
+
       that.$onInit = function () {
         if ($state.previous.data) {
           that.previousRouteName = $state.previous.data.name;
