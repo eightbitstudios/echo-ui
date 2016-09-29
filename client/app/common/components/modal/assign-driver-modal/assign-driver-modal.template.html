@@ -33,7 +33,7 @@
         <span ng-click="$ctrl.unassignDriver()" ng-if="!$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">Unassign {{$ctrl.assignedDriver.firstName}}</span>
       </loading-button>
     </div>
-    <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Close</button>
+    <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Cancel</button>
   </div>
   <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" step-sensitive="false"></error-messages>
 </div>
