@@ -179,10 +179,10 @@ fieldset[disabled] .btn
   &.btn-filter
     position: relative
     transition: font-size 0s
-    color: $gray-mid-light
+    color: $bright-blue
     font-weight: normal
     border-width: 2px
-    border-color: $gray-mid-light
+    border-color: $bright-blue
     font-smoothing: antialiased
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
@@ -195,15 +195,15 @@ fieldset[disabled] .btn
       font-family: $body-font
       letter-spacing: 0
 
-    &:focus,
-    &:active
-      color: $gray-mid-light
-      border-color: $gray-mid-light
-      background-color: transparent
+      // color: $gray-mid-light
+      // border-color: $gray-mid-light
+      // background-color: transparent
 
-    &:hover,
     &.active,
-    &.btn-active
+    &.btn-active,
+    &:focus,
+    &:active,
+    &:hover
       color: #fff
       border-color: $gray-mid-light
       background-color: $gray-mid-light
@@ -211,12 +211,12 @@ fieldset[disabled] .btn
 
     &.filter__assigned
       color: #fff
-      font-family: $body-font
-      font-size: 14px
-      line-height: 1.4
-      letter-spacing: 0
-      text-transform: none
-      padding: 9px 45px 10px 15px
+      // font-family: $body-font
+      // font-size: 14px
+      // line-height: 1.4
+      // letter-spacing: 0
+      // text-transform: none
+      padding-right: 45px
       border-color: $bright-blue
       background-color: $bright-blue
       transition: none
@@ -256,6 +256,8 @@ fieldset[disabled] .btn
         height: auto
         margin-right: 6px
 
+      &:focus,
+      &:active,
       &:hover
         &:before
           content: image-url('icon-calendar-white.svg')
@@ -264,36 +266,17 @@ fieldset[disabled] .btn
       position: absolute
       z-index: 999999
       top: 50%
-      right: 15px
-      width: 1rem
-      height: 0.95rem
+      right: 10px
+      width: 12px
+      height: 12px
       opacity: 1
       font-size: 0
       line-height: 0
-      margin-top: -5px
-
-
-      &:after,
-      &:before
-        content: ''
-        width: 12px
-        height: 0.22rem
-        background: #fff
-        border-radius: 3px
-        position: absolute
-        top: 50%
-        margin-top: -1px
-        opacity: 1
-        transform: translateX(-50%) rotateZ(45deg)
-        transform-origin: 50% 50%
-        -webkit-backface-visibility: hidden
-        @media screen and (min-width:0\0)
-          // becuase i'm desperate
-          // IE hack
-          transform: translateX(0%) rotateZ(45deg)
-
-      &:after
-        transform: translateX(-50%) rotateZ(-45deg)
+      text-indent: -9999em
+      margin-top: -6px
+      text-shadow: none
+      background: image-url('x-btn.svg') top left no-repeat
+      background-size: 12px
 
   ///////
   &.btn-document

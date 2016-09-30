@@ -26,9 +26,22 @@
   .modal-footer
     position: relative
 
-//////////
+///////////////
+// Document Preview
+//////
 
 .modal-document-image
+
+  background: rgba(82,89,102,0.8)
+
+  .modal-content
+    background: transparent
+    box-shadow: none
+
+  .modal-dialog
+    width: 100%
+    max-width: 1240px
+
   .modal-body
     padding: 0
     display: flex
@@ -36,13 +49,15 @@
 
   .modal-sidebar
     width: calc(100%/3)
-    width: 177px
-    padding: 25px 25px 25px 0
+    width: 295px
+    padding: 30px 10px 15px
     background: #fff
+    display: flex
+    flex-direction: column
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
 
-  .modal-main-content
-    padding: 25px 0 25px 25px
-    flex: 1
+    footer
+      margin-top: auto
 
 /////////
 
@@ -293,4 +308,59 @@
 
 .added-doc-text
   color: $gray-mid-light
+
+
+//////////
+// Document Preview Modal
+
+.modal-document-image
+
+  .modal-sidebar
+    border-radius: 2px
+
+    .section-header
+      padding: 0 20px
+
+    .load-doc,
+    .load-doc.active
+      padding: 10px
+      transition: background 0.1s ease-in
+
+      &:hover
+        background: $neutral-bg
+        cursor: pointer
+
+    .doc-image
+      margin-right: 15px
+
+  .modal-main-content
+    padding: 25px 50px 0 40px
+    flex: 1
+
+    footer
+      padding: 10px 0
+      text-align: center
+
+    .pagination
+      margin-bottom: 0
+
+.document-tool-links
+  margin: 27px 0 13px
+  li
+    margin-left: 5px
+
+.document-title
+  color: #fff
+
+  .content-header
+    color: #fff
+    margin-bottom: 5px
+  p
+    margin-top: 0 !important
+
+.document-preview
+  img
+    width: 100%
+    height: auto
+
 

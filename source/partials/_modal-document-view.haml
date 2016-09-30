@@ -8,7 +8,7 @@
       .modal-body
         %section.modal-sidebar
 
-          %h4.section-header.sh-short Other Load Documents
+          %h4.section-header.sh-no_border Other Load Documents
           .load-documents
             .load-doc
               .doc-image
@@ -21,7 +21,7 @@
                   %br
                   By Echo
 
-            .load-doc
+            .load-doc.active
               .doc-image
                 %a{href: "#"}
                   =image_tag('doc-TEMP-image.png')
@@ -32,17 +32,49 @@
                   %br
                   By Michelle P.
 
-          %button.btn-link{type: 'button'} Confirm Arrival
-          %button.btn-link{type: "button", data: {dismiss: 'modal'}} CANCEL
+          %footer
+            %button.btn-link{type: 'button'} Print All
+            %button.btn-link{type: "button", data: {dismiss: 'modal'}} Add Document
 
         %section.modal-main-content
-          %ul.list-inline.pull-right
-            %li
-              =link_to 'Download Document', '#'
-            %li
-              =link_to 'Print', '#'
-            %li
-              =link_to 'Add Page', '#'
+          %header
+            .document-title.pull-left
+              %h4.content-header Proof of Delivery
+              %p Updated 06:45 CST, Today By Echo
+
+            %ul.list-inline.pull-right.document-tool-links
+              %li
+                =link_to '#' do
+                  =image_tag 'icon-download.svg'
+                  Download Document
+              %li
+                =link_to '#' do
+                  =image_tag 'icon-print.svg'
+                  Print
+              %li
+                =link_to '#' do
+                  =image_tag 'icon-add.svg'
+                  Add Page
+
+          .document-preview
+            =image_tag 'document-preview-TEMP.jpg'
+
+          %footer
+            %ul.pagination
+              %li
+                =link_to '#' do
+                  %span
+                    =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+
+              %li.active-page=link_to '1', '#'
+              %li=link_to '2', '#'
+              %li=link_to '3', '#'
+              %li=link_to '4', '#'
+              %li=link_to '5', '#'
+              %li
+                =link_to '#' do
+                  %span
+                    =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
 
 
 

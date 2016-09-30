@@ -112,11 +112,23 @@
 
   .item-inactive
     > a
-      color: $gray-mid-light
+      color: $gray-darkest
+      font-weight: 300
+      &:before
+        content: image-url('star-outline.svg')
   a
     color: $gray-darkest
+    font-weight: 600
     padding: 3px 0
     display: block
+    &:before
+      display: inline-block
+      content: image-url('star-solid.svg')
+      margin-right: 10px
+      margin-top: 0.25rem
+      width: 15px
+      height: 15px
+
     &:hover
       text-decoration: none
       padding: 3px 10px

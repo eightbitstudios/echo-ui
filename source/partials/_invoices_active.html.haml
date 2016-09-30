@@ -1,24 +1,20 @@
-%table.table.table-invoicing
+%table.table.table-invoice
   %thead
     %tr
       %th Invoice #
       %th Received Date
+      %th Status
       %th
-        Status
+        Invoice Amount
         %hr
-        Reason Code
+        Balance Remaining
+      %th Load Number
+      %th Pro Number
+      %th Lane ID
       %th
-        Load Number
-      %th
-        Lane ID
-      %th.text-right
-        Scheduled
+        Picked Up
         %hr
         Delivered
-      %th.text-right
-        Invoice Total
-        %hr
-        Balance Due
   %tbody
 
     %tr
@@ -33,29 +29,26 @@
         %strong In Review
         %br
         Weight Discrepancy
+      %td.invoice-total
+        %span<
+          $10,202.00
+        %br>
+        .text-warning
+          $10,202.00
       %td.invoice-load-number
         =link_to '123443211', '#'
-        %p.text-muted.small PRO: 1234567890
+      %td.invoice-pro-number
+        1234567890
       %td.invoice-lane
-        .load-info
-          .load-col
-            Washington-on-the-Brazos, TX
-          .load-col.load-direction
-            = image_tag 'icon-right-arrow-dark@2x.png'
-          .load-col
-            Winchester-on-the-Severn, MA
-      %td.invoice-dates.text-right
+        Jersey City, NJ
+        %br
+        Marietta, GA
+      %td.invoice-dates
         %span<
           Feb 3 2016
         %br>
         %span
           Feb 6 2016
-      %td.invoice-total.text-right
-        %span<
-          $10,202.00
-        %br>
-        .text-warning
-          $10,202.00
     %tr
       %td.invoice-number
         =link_to '#' do
@@ -68,64 +61,27 @@
         %strong In Review
         %br
         Weight Discrepancy
-      %td.invoice-load-number
-        =link_to '123443211', '#'
-        %p.text-muted.small PRO: 1234567890
-      %td.invoice-lane
-        .load-info
-          .load-col
-            Jefferson City, MO
-          .load-col.load-direction
-            = image_tag 'icon-right-arrow-dark@2x.png'
-          .load-col
-            Little Rock, AR
-      %td.invoice-dates.text-right
+      %td.invoice-total
         %span<
-          Oct 12 2016
-        %br>
-        %span
-          Oct 31 2016
-      %td.invoice-total.text-right
-        %span<
-          $1,200.00
+          $1,800.82
         %br>
         .text-warning
-          $1,175.01
-    %tr
-      %td.invoice-number
-        =link_to '#' do
-          1234567
-          =image_tag 'icon-document.svg'
-
-      %td.invoice-received-date
-        Feb 3 2016
-      %td.invoice-status
-        %strong In Review
-        %br
-        Weight Discrepancy
+          $1,175.00
       %td.invoice-load-number
         =link_to '123443211', '#'
-        %p.text-muted.small PRO: 1234567890
+      %td.invoice-pro-number
+        867473355
       %td.invoice-lane
-        .load-info
-          .load-col
-            Nashville, TN
-          .load-col.load-direction
-            = image_tag 'icon-right-arrow-dark@2x.png'
-          .load-col
-            Chicago, IL
-      %td.invoice-dates.text-right
+        Little Rock, AR
+        %br
+        Houston, TX 
+      %td.invoice-dates
         %span<
           Feb 3 2016
         %br>
         %span
           Feb 6 2016
-      %td.invoice-total.text-right
-        %span<
-          $10,202.00
-        %br>
-        .text-warning
-          $10,202.00
+
     %tr
       %td.invoice-number
         =link_to '#' do
@@ -138,29 +94,27 @@
         %strong In Review
         %br
         Weight Discrepancy
+      %td.invoice-total
+        %span<
+          $10,202.00
+        %br>
+        .text-warning
+          $10,202.00
       %td.invoice-load-number
         =link_to '123443211', '#'
-        %p.text-muted.small PRO: 1234567890
+      %td.invoice-pro-number
+        1234567890
       %td.invoice-lane
-        .load-info
-          .load-col
-            Washington-on-the-Brazos, TX
-          .load-col.load-direction
-            = image_tag 'icon-right-arrow-dark@2x.png'
-          .load-col
-            Winchester-on-the-Severn, MA
-      %td.invoice-dates.text-right
+        Chicago, IL
+        %br
+        Indianapolis, IN
+      %td.invoice-dates
         %span<
           Feb 3 2016
         %br>
         %span
           Feb 6 2016
-      %td.invoice-total.text-right
-        %span<
-          $10,202.00
-        %br>
-        .text-warning
-          $10,202.00
+
     %tr
       %td.invoice-number
         =link_to '#' do
@@ -173,61 +127,219 @@
         %strong In Review
         %br
         Weight Discrepancy
-      %td.invoice-load-number
-        =link_to '123443211', '#'
-        %p.text-muted.small PRO: 1234567890
-      %td.invoice-lane
-        .load-info
-          .load-col
-            Jefferson City, MO
-          .load-col.load-direction
-            = image_tag 'icon-right-arrow-dark@2x.png'
-          .load-col
-            Little Rock, AR
-      %td.invoice-dates.text-right
+      %td.invoice-total
         %span<
-          Oct 12 2016
-        %br>
-        %span
-          Oct 31 2016
-      %td.invoice-total.text-right
-        %span<
-          $1,200.00
+          $10,202.00
         %br>
         .text-warning
-          $1,175.01
-    %tr
-      %td.invoice-number
-        =link_to '#' do
-          1234567
-          =image_tag 'icon-document.svg'
-
-      %td.invoice-received-date
-        Feb 3 2016
-      %td.invoice-status
-        %strong In Review
-        %br
-        Weight Discrepancy
+          $10,202.00
       %td.invoice-load-number
         =link_to '123443211', '#'
-        %p.text-muted.small PRO: 1234567890
+      %td.invoice-pro-number
+        1234567890
       %td.invoice-lane
-        .load-info
-          .load-col
-            Nashville, TN
-          .load-col.load-direction
-            = image_tag 'icon-right-arrow-dark@2x.png'
-          .load-col
-            Chicago, IL
-      %td.invoice-dates.text-right
+        Jersey City, NJ
+        %br
+        Marietta, GA
+      %td.invoice-dates
         %span<
           Feb 3 2016
         %br>
         %span
           Feb 6 2016
-      %td.invoice-total.text-right
+    %tr
+      %td.invoice-number
+        =link_to '#' do
+          1234567
+          =image_tag 'icon-document.svg'
+
+      %td.invoice-received-date
+        Feb 3 2016
+      %td.invoice-status
+        %strong In Review
+        %br
+        Weight Discrepancy
+      %td.invoice-total
+        %span<
+          $1,800.82
+        %br>
+        .text-warning
+          $1,175.00
+      %td.invoice-load-number
+        =link_to '123443211', '#'
+      %td.invoice-pro-number
+        867473355
+      %td.invoice-lane
+        Little Rock, AR
+        %br
+        Houston, TX 
+      %td.invoice-dates
+        %span<
+          Feb 3 2016
+        %br>
+        %span
+          Feb 6 2016
+
+    %tr
+      %td.invoice-number
+        =link_to '#' do
+          1234567
+          =image_tag 'icon-document.svg'
+
+      %td.invoice-received-date
+        Feb 3 2016
+      %td.invoice-status
+        %strong In Review
+        %br
+        Weight Discrepancy
+      %td.invoice-total
         %span<
           $10,202.00
         %br>
         .text-warning
           $10,202.00
+      %td.invoice-load-number
+        =link_to '123443211', '#'
+      %td.invoice-pro-number
+        1234567890
+      %td.invoice-lane
+        Chicago, IL
+        %br
+        Indianapolis, IN
+      %td.invoice-dates
+        %span<
+          Feb 3 2016
+        %br>
+        %span
+          Feb 6 2016
+
+    %tr
+      %td.invoice-number
+        =link_to '#' do
+          1234567
+          =image_tag 'icon-document.svg'
+
+      %td.invoice-received-date
+        Feb 3 2016
+      %td.invoice-status
+        %strong In Review
+        %br
+        Weight Discrepancy
+      %td.invoice-total
+        %span<
+          $10,202.00
+        %br>
+        .text-warning
+          $10,202.00
+      %td.invoice-load-number
+        =link_to '123443211', '#'
+      %td.invoice-pro-number
+        1234567890
+      %td.invoice-lane
+        Jersey City, NJ
+        %br
+        Marietta, GA
+      %td.invoice-dates
+        %span<
+          Feb 3 2016
+        %br>
+        %span
+          Feb 6 2016
+    %tr
+      %td.invoice-number
+        =link_to '#' do
+          1234567
+          =image_tag 'icon-document.svg'
+
+      %td.invoice-received-date
+        Feb 3 2016
+      %td.invoice-status
+        %strong In Review
+        %br
+        Weight Discrepancy
+      %td.invoice-total
+        %span<
+          $1,800.82
+        %br>
+        .text-warning
+          $1,175.00
+      %td.invoice-load-number
+        =link_to '123443211', '#'
+      %td.invoice-pro-number
+        867473355
+      %td.invoice-lane
+        Little Rock, AR
+        %br
+        Houston, TX 
+      %td.invoice-dates
+        %span<
+          Feb 3 2016
+        %br>
+        %span
+          Feb 6 2016
+
+    %tr
+      %td.invoice-number
+        =link_to '#' do
+          1234567
+          =image_tag 'icon-document.svg'
+
+      %td.invoice-received-date
+        Feb 3 2016
+      %td.invoice-status
+        %strong In Review
+        %br
+        Weight Discrepancy
+      %td.invoice-total
+        %span<
+          $10,202.00
+        %br>
+        .text-warning
+          $10,202.00
+      %td.invoice-load-number
+        =link_to '123443211', '#'
+      %td.invoice-pro-number
+        1234567890
+      %td.invoice-lane
+        Chicago, IL
+        %br
+        Indianapolis, IN
+      %td.invoice-dates
+        %span<
+          Feb 3 2016
+        %br>
+        %span
+          Feb 6 2016
+
+    %tr
+      %td.invoice-number
+        =link_to '#' do
+          1234567
+          =image_tag 'icon-document.svg'
+
+      %td.invoice-received-date
+        Feb 3 2016
+      %td.invoice-status
+        %strong In Review
+        %br
+        Weight Discrepancy
+      %td.invoice-total
+        %span<
+          $10,202.00
+        %br>
+        .text-warning
+          $10,202.00
+      %td.invoice-load-number
+        =link_to '123443211', '#'
+      %td.invoice-pro-number
+        1234567890
+      %td.invoice-lane
+        Chicago, IL
+        %br
+        Indianapolis, IN
+      %td.invoice-dates
+        %span<
+          Feb 3 2016
+        %br>
+        %span
+          Feb 6 2016

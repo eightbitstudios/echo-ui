@@ -28,14 +28,23 @@ body.load-management-detail
 
 .panel-group
   .panel-title
+    a
+      display: flex
     strong
       text-transform: uppercase
       margin-right: 10px
+      white-space: nowrap
+      flex: 0 0 auto
+
+    span:last-child
+      padding-left: 20px
+      margin-left: auto
+      white-space: nowrap
+      flex: 0 0 auto
 
   .stops-date
     font-size: 14px
     line-height: 1.4
-    float: right
     .caret
       margin-left: 10px
 
@@ -101,6 +110,10 @@ body.load-management-detail
   margin-bottom: 10px
   padding: 0px 10px 15px
   border-bottom: 1px solid $gray-light
+
+  &.active
+    background: $neutral-bg
+    padding: 20px
 
 .doc-image
   height: 70px
