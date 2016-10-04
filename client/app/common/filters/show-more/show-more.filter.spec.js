@@ -54,7 +54,7 @@ describe('Filter - Show more filter', function () {
   it('should return less than [limit] records if last page available and less than limit remain', function () {
     var paging = {
       totalRecords: 35,
-      offset: 20,
+      offset: 21,
       limit: 10
     };
 
