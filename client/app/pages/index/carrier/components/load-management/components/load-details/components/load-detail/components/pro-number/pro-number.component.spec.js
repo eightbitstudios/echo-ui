@@ -33,7 +33,7 @@ describe('Component: Pro Number', function () {
       var deferred = $q.defer();
       loadsApi.updateProNumber.and.returnValue(deferred.promise);
       component.updateProNumber(newProNumber);
-      deferred.resolve(newProNumber);
+      deferred.resolve({ proNumber: newProNumber });
 
       scope.$digest();
 
