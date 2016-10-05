@@ -43,6 +43,7 @@ module.exports = {
   loadUpdateOptionsByLoadGuid: '/api/v1/loads/${loadGuid}/loadUpdateOptions',
   reportLocation: '/api/v1/loads/${loadGuid}/reportLocation',
   reportDeliveredByLoadGuid: '/api/v1/loads/${loadGuid}/reportDelivered',
+  feedbackByLoadGuid: '/api/v1/loads/${loadGuid}/feedback',
   proNumberByLoadId: '/api/v1/loads/${loadId}/proNumber',
   trailerNumberByLoadId: '/api/v1/loads/${loadId}/trailerNumber',
   equipmentByLoadId: '/api/v1/loads/${loadId}/equipments',

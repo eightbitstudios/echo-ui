@@ -19,7 +19,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
       items: '<',
       timeZones: '<'
     },
-    controller: function (loadsApi, DateTimePickerModel) {
+    controller: function ($q, loadsApi, DateTimePickerModel) {
       var that = this;
 
       that.modes = {
@@ -31,14 +31,20 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
-        loadsApi.createReportDelivered(that.load.loadGuid, {
-          timeZone: that.dateTimePicker.timeZone,
-          rating: that.rating,
-          comment: that.comment,
-          eventTime: that.dateTimePicker.getDateTime()
-        }).then(function () {
+        $q.all([
+          loadsApi.createReportDelivered(that.load.loadGuid, {
+            timeZone: that.dateTimePicker.timeZone,
+            rating: that.rating,
+            comment: that.comment,
+            eventTime: that.dateTimePicker.getDateTime()
+          }),
+          loadsApi.createFeedback(that.load.loadGuid, {
+            starRatings: that.rating,
+            comment: that.comment
+          })
+        ]).then(_.spread(function () {
           that.modalActions.close(true);
-        }).catch(function (status) {
+        })).catch(function (status) {
           that.errorMessages = status.message;
           that.errorCode = status.code;
         }).finally(function () {
