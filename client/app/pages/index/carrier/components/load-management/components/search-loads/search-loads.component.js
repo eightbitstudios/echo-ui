@@ -20,8 +20,8 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
     that.routesConfig = routesConfig;
     that.loadCount = 0;
 
-    that.previousRouteName = $state.previous.data.name;
-    that.previousRoute = $state.previous.name;
+    that.previousRouteName = _.get($state.previous, 'data.name');
+    that.previousRoute = _.get($state.previous, 'name');
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
     that.loadType = loadTypesEnum.UNBILLED;
 
