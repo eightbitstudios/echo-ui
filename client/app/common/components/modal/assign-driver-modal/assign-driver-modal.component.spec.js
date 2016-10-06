@@ -88,14 +88,14 @@ describe('Component: Assign Driver Modal', function () {
     it('should return true with no new driver', function () {
       var result = component.noNewDriver();
 
-      expect(result).toBe(true);
+      expect(result).toBeTruthy();
     });
 
     it('should return false with a new driver', function () {
       component.newDriver.id = 123456;
       var result = component.noNewDriver();
 
-      expect(result).toBe(false);
+      expect(result).toBeFalsy();
     });
 
   });
@@ -105,16 +105,44 @@ describe('Component: Assign Driver Modal', function () {
     it('should return true with no assigned driver', function () {
       var result = component.noAssignedDriver();
 
-      expect(result).toBe(true);
+      expect(result).toBeTruthy();
     });
 
     it('should return false with an assigned driver', function () {
       component.assignedDriver = { id: 123456 };
       var result = component.noAssignedDriver();
 
-      expect(result).toBe(false);
+      expect(result).toBeFalsy();
     });
 
+  });
+
+  describe('Function: disableAssignButton', function () {
+    beforeEach(function() {
+      spyOn(component, 'noAssignedDriver');
+      spyOn(component, 'noNewDriver');
+    });
+
+    it('should be enabled if a driver is assigned', function () {
+      component.noAssignedDriver.and.returnValue(false);
+      
+      expect(component.disableAssignButton()).toBeFalsy();
+    });
+
+    it('should be enabled if new driver is selected', function () {
+      component.noAssignedDriver.and.returnValue(true);
+      component.noNewDriver.and.returnValue(false);
+      
+      expect(component.disableAssignButton()).toBeFalsy();
+    });
+
+    it('should be disabled if on invite driver page', function () {
+      component.noAssignedDriver.and.returnValue(true);
+      component.noNewDriver.and.returnValue(false);
+      component.state = component.states.newDriver;
+      
+      expect(component.disableAssignButton()).toBeTruthy();
+    });
   });
 
   describe('Function: $onInit', function () {
