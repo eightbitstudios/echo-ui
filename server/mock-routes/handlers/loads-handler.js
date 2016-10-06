@@ -127,7 +127,7 @@ module.exports = {
   },
   updateProNumber: function (req, res) {
     var resTemplate = new ResTemplate();
-    resTemplate.data = loadsRes.loads[0];
+    resTemplate.data = {};
     if (req.body.proNumber != null) {
       resTemplate.data.proNumber = req.body.proNumber;
     }
