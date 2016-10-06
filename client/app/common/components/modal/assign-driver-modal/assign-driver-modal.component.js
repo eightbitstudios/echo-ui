@@ -80,6 +80,10 @@ angular.module('echo.components.modal.assignDriver', [
         return _.isUndefined(_.get(that.assignedDriver, 'id'));
       };
 
+      that.disableAssignButton = function() {
+        return (that.noAssignedDriver() && that.noNewDriver()) || that.state === that.states.newDriver;
+      };
+
       that.$onInit = function () {
         that.assignedDriver = new DriverModel(that.load.driver);
       };
