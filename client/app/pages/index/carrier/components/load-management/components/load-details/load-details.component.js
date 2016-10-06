@@ -2,6 +2,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
   'echo.components.echoRepContact',
   'echo.components.stopAccordion',
   'echo.components.equipment',
+  'echo.components.mapPlaceholder',
   'echo.index.carrier.loadManagement.loadDetails.loadDetail',
   'echo.index.carrier.loadManagement.loadDetails.documents',
   'echo.index.carrier.loadManagement.loadDetails.activityLog'
