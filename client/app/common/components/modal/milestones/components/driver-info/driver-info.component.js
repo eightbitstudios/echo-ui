@@ -7,5 +7,6 @@ angular.module('echo.components.modal.milestones.driverInfo', [
       driver: '<'
     },
     controller: function () {
+      this.noDriver = _.isUndefined(this.driver);
     }
   });
