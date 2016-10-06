@@ -132,6 +132,11 @@ angular.module('echo.index', [
       component: 'search-loads',
       data: {
         hideTabBar: true
+      },
+      resolve: {
+        searchText: function($stateParams) {
+          return $stateParams.searchText;
+        }
       }
     })
     .state(routesConfig.INDEX.loadDetails.name, { // #/carrier/:carrierId/loadManagement/loadDetails/:loadId

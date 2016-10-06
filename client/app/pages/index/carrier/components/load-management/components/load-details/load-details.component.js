@@ -2,6 +2,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
   'echo.components.echoRepContact',
   'echo.components.stopAccordion',
   'echo.components.equipment',
+  'echo.components.mapPlaceholder',
   'echo.index.carrier.loadManagement.loadDetails.loadDetail',
   'echo.index.carrier.loadManagement.loadDetails.documents',
   'echo.index.carrier.loadManagement.loadDetails.activityLog'
@@ -16,7 +17,10 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     },
     controller: function ($state) {
       var that = this;
-      
+
+      that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
+      that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
+
       that.$onInit = function () {
         if ($state.previous.data) {
           that.previousRouteName = $state.previous.data.name;

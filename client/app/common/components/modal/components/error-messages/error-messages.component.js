@@ -15,7 +15,7 @@
 
       that.showErrorMessages = function () {
         if ((_.includes(appConstants.CUSTOM_ERROR_CODES, that.errorCode) && that.errorMessages) ||
-          appConstants.ERROR_MESSAGES[that.errorCode]) {
+          appConstants.ERROR_MESSAGES.DEFAULTS[that.errorCode]) {
           if (that.stepSensitive) {
             return that.validStep === that.currentStep;
           } else {
@@ -27,8 +27,8 @@
       };
 
       that.determineErrorMessages = function () {
-        if (appConstants.ERROR_MESSAGES[that.errorCode]) {
-          return [appConstants.ERROR_MESSAGES[that.errorCode]];
+        if (appConstants.ERROR_MESSAGES.DEFAULTS[that.errorCode]) {
+          return [appConstants.ERROR_MESSAGES.DEFAULTS[that.errorCode]];
         } else if (_.includes(appConstants.CUSTOM_ERROR_CODES, that.errorCode) && that.errorMessages) {
           return that.errorMessages;
         } else { // Should not happen
