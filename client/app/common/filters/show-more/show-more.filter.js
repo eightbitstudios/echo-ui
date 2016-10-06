@@ -9,7 +9,7 @@ angular.module('echo.filters.showMore', [])
 
       if (count > 0) {
         showMore = _.template('Show ${count} more Loads')({
-          count: Math.min(paging.limit, (paging.totalRecords - (paging.offset + paging.limit)))
+          count: Math.min(paging.limit, (paging.totalRecords - (paging.offset + paging.limit) + 1))
         });
       }
 
