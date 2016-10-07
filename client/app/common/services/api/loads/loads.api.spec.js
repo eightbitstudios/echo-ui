@@ -418,23 +418,6 @@ describe('Api: loadsApi', function () {
     });
   });
 
-  describe('Function: updateReportLocation', function () {
-    it('should update report location', function (done) {
-      putRes.data = { data: '' };
-      var loadGuid = 1,
-        reportLocation = {
-          location: 'Chicago'
-        };
-
-      loadsApi.updateReportLocation(loadGuid, reportLocation).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.reportLocation({ loadGuid: loadGuid }), reportLocation);
-        done();
-      });
-
-      $scope.$digest();
-    });
-  });
-
   describe('Function: fetchItemsByLoadGuid', function () {
     it('should fetch items by load guid', function (done) {
       getRes.data = { data: '' };
@@ -480,16 +463,16 @@ describe('Api: loadsApi', function () {
     });
   });
 
-  describe('Function: updateReportArrivalByLoadGuid', function () {
+  describe('Function: createReportArrivalByLoadGuid', function () {
     it('should update report arrival', function (done) {
-      putRes.data = { data: '' };
+      postRes.data = { data: '' };
       var loadGuid = 1,
         reportArrival = {
           date: '10/24/2016'
         };
 
-      loadsApi.updateReportArrivalByLoadGuid(loadGuid, reportArrival).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.reportArrivalByLoadGuid({ loadGuid: loadGuid }), reportArrival);
+      loadsApi.createReportArrivalByLoadGuid(loadGuid, reportArrival).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.reportArrivalByLoadGuid({ loadGuid: loadGuid }), reportArrival);
         done();
       });
 

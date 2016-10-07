@@ -5,7 +5,7 @@ describe('Component: reportArrivalModal', function () {
   beforeEach(function () {
     module('app/common/components/modal/milestones/report-arrival-modal/report-arrival-modal.template.html');
     module('echo.components.modal.milestones.reportArrival', function ($provide) {
-      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['updateReportArrivalByLoadGuid']));
+      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportArrivalByLoadGuid']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));
       $provide.value('CheckboxModel', jasmine.createSpy('CheckboxModel'));
       $provide.value('LocationModel', jasmine.createSpy('LocationModel'));
@@ -40,19 +40,19 @@ describe('Component: reportArrivalModal', function () {
     var updateReportArrivalDefer;
     beforeEach(function() {
       updateReportArrivalDefer = $q.defer();
-      loadsApi.updateReportArrivalByLoadGuid.and.returnValue(updateReportArrivalDefer.promise);
+      loadsApi.createReportArrivalByLoadGuid.and.returnValue(updateReportArrivalDefer.promise);
     });
 
    it('should save report arrival', function() {
      component.confirmArrivalHandler();
-     expect(loadsApi.updateReportArrivalByLoadGuid).toHaveBeenCalled();
+     expect(loadsApi.createReportArrivalByLoadGuid).toHaveBeenCalled();
    });
 
     it('should close modal when saved', function (done) {
       updateReportArrivalDefer.resolve();
       component.confirmArrivalHandler();
       
-      loadsApi.updateReportArrivalByLoadGuid().then(function() {
+      loadsApi.createReportArrivalByLoadGuid().then(function() {
         expect(component.modalActions.close).toHaveBeenCalledWith(true);
         done();
       });
