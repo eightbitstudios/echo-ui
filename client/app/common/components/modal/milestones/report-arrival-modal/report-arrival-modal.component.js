@@ -27,7 +27,7 @@ angular.module('echo.components.modal.milestones.reportArrival', [
         that.errorMessages = null;
         that.errorCode = null;
 
-        loadsApi.updateReportArrivalByLoadGuid(that.load.loadGuid, {
+        loadsApi.createReportArrivalByLoadGuid(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           date: that.dateTimePicker.getDateTime(),
           stopType: that.reportArrival.address.stopType

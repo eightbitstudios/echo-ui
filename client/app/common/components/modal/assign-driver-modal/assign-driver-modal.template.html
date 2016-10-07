@@ -27,7 +27,7 @@
   </div>
   <div class="modal-footer">
     <div ng-if="$ctrl.state && $ctrl.state !== $ctrl.states.assignedDriverProfile">
-      <loading-button show-loading="$ctrl.showButtonLoading" button-class="btn-default" disable-button="$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">
+      <loading-button show-loading="$ctrl.showButtonLoading" button-class="btn-default" disable-button="$ctrl.disableAssignButton()">
         <span ng-click="$ctrl.assignDriver()" ng-if="$ctrl.noAssignedDriver()">Assign</span>
         <span ng-click="$ctrl.reassignDriver()" ng-if="!$ctrl.noAssignedDriver() && !$ctrl.noNewDriver()">Replace {{$ctrl.assignedDriver.firstName}}</span>
         <span ng-click="$ctrl.unassignDriver()" ng-if="!$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">Unassign {{$ctrl.assignedDriver.firstName}}</span>

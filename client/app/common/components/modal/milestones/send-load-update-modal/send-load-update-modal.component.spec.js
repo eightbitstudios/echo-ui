@@ -5,7 +5,7 @@ describe('Component: sendLoadUpdateModal', function () {
   beforeEach(function () {
     module('app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.template.html');
     module('echo.components.modal.milestones.sendLoadUpdate', function ($provide) {
-      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['updateReportLocation', 'createReportTrailer', '']));
+      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportLocation', 'createReportTrailer', '']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));
       $provide.value('LocationModel', LocationModel = function(){
         return jasmine.createSpyObj('location', ['isValid']);
@@ -80,19 +80,19 @@ describe('Component: sendLoadUpdateModal', function () {
     var updateLocationDefer;
     beforeEach(function() {
       updateLocationDefer = $q.defer();
-      loadsApi.updateReportLocation.and.returnValue(updateLocationDefer.promise);
+      loadsApi.createReportLocation.and.returnValue(updateLocationDefer.promise);
     });
 
     it('should call update location', function () {
       component.confirmLocation();
-      expect(loadsApi.updateReportLocation).toHaveBeenCalled();
+      expect(loadsApi.createReportLocation).toHaveBeenCalled();
     });
 
     it('should close modal when saved', function (done) {
       updateLocationDefer.resolve();
       component.confirmLocation();
       
-      loadsApi.updateReportLocation().then(function() {
+      loadsApi.createReportLocation().then(function() {
         expect(component.modalActions.close).toHaveBeenCalledWith(true);
         done();
       });

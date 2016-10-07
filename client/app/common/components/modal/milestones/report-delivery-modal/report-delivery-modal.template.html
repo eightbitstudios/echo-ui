@@ -20,11 +20,11 @@
         <delivery-items items="$ctrl.items" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.optionalDocuments">
-                <div class="rating">
+        <div class="rating">
           <p>
             <strong>How was your experience with Echo?</strong>
           </p>
-          <rating rating="$ctrl.rating" />
+          <rating rating="$ctrl.starRatings" />
         </div>
         <comment comment="$ctrl.comment" />
       </div>

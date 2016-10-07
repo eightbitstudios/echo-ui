@@ -5,7 +5,7 @@ describe('Component: reportDeliveryModal', function () {
   beforeEach(function () {
     module('app/common/components/modal/milestones/report-delivery-modal/report-delivery-modal.template.html');
     module('echo.components.modal.milestones.reportDelivery', function ($provide) {
-      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportDelivered']));
+      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportDelivered', 'createFeedback']));
       $provide.value('DateTimePickerModel', DateTimePickerModel = function(data){
         _.assign(this, data);
         this.getDateTime = _.noop;
@@ -23,7 +23,7 @@ describe('Component: reportDeliveryModal', function () {
     scope.$digest();
 
     modalActions = jasmine.createSpyObj('modalActions', ['close']);
-    
+
     component = $componentController('reportDeliveryModal', null, { modalActions: modalActions, load: {
       nextAction: {},
       items: items
@@ -31,11 +31,14 @@ describe('Component: reportDeliveryModal', function () {
      component.$onInit();
   }));
 
- describe('Function: saveReportEmpty', function () {    
+ describe('Function: saveReportEmpty', function () {
     var updateReportDeliveredDefer;
+    var createFeedbackDefer;
     beforeEach(function() {
       updateReportDeliveredDefer = $q.defer();
+      createFeedbackDefer = $q.defer();
       loadsApi.createReportDelivered.and.returnValue(updateReportDeliveredDefer.promise);
+      loadsApi.createFeedback.and.returnValue(createFeedbackDefer.promise);
     });
 
    it('should save report delivered', function() {
@@ -43,16 +46,14 @@ describe('Component: reportDeliveryModal', function () {
      expect(loadsApi.createReportDelivered).toHaveBeenCalled();
    });
 
-    it('should close modal when saved', function (done) {
+    it('should close modal when saved', function () {
       updateReportDeliveredDefer.resolve();
+      createFeedbackDefer.resolve();
       component.saveReportEmpty();
-      
-      loadsApi.createReportDelivered().then(function() {
-        expect(component.modalActions.close).toHaveBeenCalledWith(true);
-        done();
-      });
 
       scope.$digest();
+
+      expect(component.modalActions.close).toHaveBeenCalledWith(true);
     });
   });
 });
