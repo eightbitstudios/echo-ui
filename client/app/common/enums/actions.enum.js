@@ -3,43 +3,53 @@ angular.module('echo.enums.actions', [])
     AVAILABLE_ACTIONS: {
       REPORT_EMPTY: {
         value: 1,
-        description: 'Report Empty'
+        description: 'Report Empty',
+        phase: 1
       },
       REPORT_ARRIVAL_AT_PICKUP: {
         value: 2,
-        description: 'Report Arrival At Pickup'
+        description: 'Report Arrival At Pickup',
+        phase: 1
       },
       REPORT_LOADED: {
         value: 3,
-        description: 'Report Loaded'
+        description: 'Report Loaded',
+        phase: 1
       },
       SEND_LOAD_UPDATE: {
         value: 4,
-        description: 'Send Load Update'
+        description: 'Send Load Update',
+        phase: 2
       },
       TRAILER_DROP_AT_YARD: {
         value: 5,
-        description: 'Trailer Drop At Yard'
+        description: 'Trailer Drop At Yard',
+        phase: 2
       },
       TRAILER_PICKUP_AT_YARD: {
         value: 6,
-        description: 'Trailer Pickup At Yard'
+        description: 'Trailer Pickup At Yard',
+        phase: 2
       },
       REPORT_LOCATION: {
         value: 7,
-        description: 'Report Location'
+        description: 'Report Location',
+        phase: 2
       },
       REPORT_ARRIVAL_AT_DELIVERY: {
         value: 8,
-        description: 'Report Arrival At Delivery'
+        description: 'Report Arrival At Delivery',
+        phase: 2
       },
       REPORT_DELIVERY: {
         value: 9,
-        description: 'Report Delivery'
+        description: 'Report Delivery',
+        phase: 2
       },
       ADD_DOCUMENTS: {
         value: 10,
-        description: 'Add Documents'
+        description: 'Add Documents',
+        phase: 3
       }
     },
     LAST_ACTION: {
