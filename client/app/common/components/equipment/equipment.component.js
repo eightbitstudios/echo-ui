@@ -18,8 +18,8 @@ angular.module('echo.components.equipment', [
     that.specialEquipment = _.filter(that.equipment, { isSpecialService: true });
 
     that.updateTrailerNumber = function (newTrailerNumber) {
-      return loadsApi.updateTrailerNumber(that.loadGuid, { trailerNumber: newTrailerNumber }).then(function (trailerNumber) {
-        that.trailerNumber = trailerNumber;
+      return loadsApi.updateTrailerNumber(that.loadGuid, { trailerNumber: newTrailerNumber }).then(function (data) {
+        that.trailerNumber = _.get(data, 'trailerNumber');
       });
     };
   }
