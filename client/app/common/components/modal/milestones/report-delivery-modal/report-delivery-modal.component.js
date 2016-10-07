@@ -19,7 +19,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
       items: '<',
       timeZones: '<'
     },
-    controller: function ($q, loadsApi, DateTimePickerModel) {
+    controller: function (loadsApi, DateTimePickerModel) {
       var that = this;
 
       that.modes = {
