@@ -243,9 +243,12 @@ angular.module('echo.api.loads', [
         return $q.reject(resp.data.status);
       });
     },
-    createFeedback: function (loadGuid, feedback) {
+    createFeedback: function (loadGuid, starRatings, comment) {
       var url = apiConfig.feedbackByLoadGuid({ loadGuid: loadGuid });
-      return $http.post(url, feedback).then(function (resp) {
+      return $http.post(url, {
+        starRatings: starRatings,
+        comment: comment
+      }).then(function (resp) {
         return $q.when(resp.data.data);
       }).catch(function (resp) {
         return $q.reject(resp.data.status);

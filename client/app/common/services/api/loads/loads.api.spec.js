@@ -569,4 +569,23 @@ describe('Api: loadsApi', function () {
       $scope.$digest();
     });
   });
+
+  describe('Function: createFeedback', function () {
+    it('should post feedback', function (done) {
+      postRes.data = { data: '' };
+      var loadGuid = 1,
+        starRatings = 4,
+        comment = 'test comment';
+
+      loadsApi.createFeedback(loadGuid, starRatings, comment).then(function () {
+        expect($http.post).toHaveBeenCalledWith(apiConfig.feedbackByLoadGuid({ loadGuid: loadGuid }), {
+          starRatings: starRatings,
+          comment: comment
+        });
+        done();
+      });
+
+      $scope.$digest();
+    });
+  });
 });

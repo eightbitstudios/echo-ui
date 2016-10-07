@@ -31,20 +31,17 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
-        $q.all([
-          loadsApi.createReportDelivered(that.load.loadGuid, {
-            timeZone: that.dateTimePicker.timeZone,
-            rating: that.rating,
-            comment: that.comment,
-            eventTime: that.dateTimePicker.getDateTime()
-          }),
-          loadsApi.createFeedback(that.load.loadGuid, {
-            starRatings: that.rating,
-            comment: that.comment
-          })
-        ]).then(_.spread(function () {
+        loadsApi.createReportDelivered(that.load.loadGuid, {
+          timeZone: that.dateTimePicker.timeZone,
+          eventTime: that.dateTimePicker.getDateTime()
+        }).then(function () {
+          return loadsApi.createFeedback(that.load.loadGuid,
+            that.starRatings,
+            that.comment
+          );
+        }).then(function () {
           that.modalActions.close(true);
-        })).catch(function (status) {
+        }).catch(function (status) {
           that.errorMessages = status.message;
           that.errorCode = status.code;
         }).finally(function () {
@@ -59,7 +56,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.buttonsDisabled = false;
         that.comment = null;
 
-        that.rating = {};
+        that.starRatings = null;
 
         that.dateTimePicker = new DateTimePickerModel({
           minDate: moment(that.load.nextAction.lastActionDate)
