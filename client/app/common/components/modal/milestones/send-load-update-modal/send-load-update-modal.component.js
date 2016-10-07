@@ -73,7 +73,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
-        loadsApi.updateReportLocation(that.load.loadGuid, {
+        loadsApi.createReportLocation(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           location: that.location,
           locationTime: that.dateTimePicker.getDateTime()

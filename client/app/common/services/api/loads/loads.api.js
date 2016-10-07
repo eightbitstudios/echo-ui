@@ -183,14 +183,6 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    updateReportLocation: function (loadGuid, reportLocation) {
-      var url = apiConfig.reportLocation({ loadGuid: loadGuid });
-      return $http.put(url, reportLocation).then(function (resp) {
-        return $q.when(resp.data.data);
-      }).catch(function (resp) {
-        return $q.reject(resp.data.status);
-      });
-    },
     fetchItemsByLoadGuid: function (loadGuid) {
       var url = apiConfig.itemsByLoadGuid({ loadGuid: loadGuid });
       return $http.get(url).then(function (resp) {
@@ -209,9 +201,9 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    updateReportArrivalByLoadGuid: function (loadGuid, reportArrival) {
+    createReportArrivalByLoadGuid: function (loadGuid, reportArrival) {
       var url = apiConfig.reportArrivalByLoadGuid({ loadGuid: loadGuid });
-      return $http.put(url, reportArrival).then(function (resp) {
+      return $http.post(url, reportArrival).then(function (resp) {
         return $q.when(resp.data.data);
       }).catch(function (resp) {
         return $q.reject(resp.data.status);
