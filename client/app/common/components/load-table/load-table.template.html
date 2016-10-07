@@ -24,13 +24,13 @@
               <load load-guid="loadManagement.loadGuid" load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>
             </td>
             <td class="carrier-dashboard-pickup">
-              <shipping-details shipping-details="loadManagement.pickUp"></shipping-details>
+              <shipping-details shipping-details="loadManagement.pickUp" inactive="$ctrl.determineInactive(loadManagement.nextAction.nextAction, true)"></shipping-details>
             </td>
             <td class="carrier-dashboard-arrow">
               <span class="echo-icon icon-right-arrow-dark"></span>
             </td>
             <td class="carrier-dashboard-delivery">
-              <shipping-details shipping-details="loadManagement.delivery"></shipping-details>
+              <shipping-details shipping-details="loadManagement.delivery" inactive="$ctrl.determineInactive(loadManagement.nextAction.nextAction, false)"></shipping-details>
             </td>
             <td>
               <driver load="loadManagement" load-type="$ctrl.loadType" driver-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId"></driver>
