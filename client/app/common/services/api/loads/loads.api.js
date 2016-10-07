@@ -243,6 +243,17 @@ angular.module('echo.api.loads', [
         return $q.reject(resp.data.status);
       });
     },
+    createFeedback: function (loadGuid, starRatings, comment) {
+      var url = apiConfig.feedbackByLoadGuid({ loadGuid: loadGuid });
+      return $http.post(url, {
+        starRatings: starRatings,
+        comment: comment
+      }).then(function (resp) {
+        return $q.when(resp.data.data);
+      }).catch(function (resp) {
+        return $q.reject(resp.data.status);
+      });
+    },
     fetchEquipmentByLoadId: function (loadId) {
       var url = apiConfig.equipmentByLoadId({ loadId: loadId });
       return $http.get(url).then(function (resp) {

@@ -33,9 +33,12 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.errorCode = null;
         loadsApi.createReportDelivered(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
-          rating: that.rating,
-          comment: that.comment,
           eventTime: that.dateTimePicker.getDateTime()
+        }).then(function () {
+          return loadsApi.createFeedback(that.load.loadGuid,
+            that.starRatings,
+            that.comment
+          );
         }).then(function () {
           that.modalActions.close(true);
         }).catch(function (status) {
@@ -53,7 +56,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.buttonsDisabled = false;
         that.comment = null;
 
-        that.rating = {};
+        that.starRatings = null;
 
         that.dateTimePicker = new DateTimePickerModel({
           minDate: moment(that.load.nextAction.lastActionDate)
