@@ -27,7 +27,7 @@ describe('Component: reportDeliveryModal', function () {
     component = $componentController('reportDeliveryModal', null, { modalActions: modalActions, load: {
       nextAction: {},
       items: items
-    }, timeZones: {}, reportDelivery: { lastActionDate: {}}, carrierId: 1 });
+    }, timeZones: {}, reportDelivery: { actionPerformedOn: {}}, carrierId: 1 });
      component.$onInit();
   }));
 

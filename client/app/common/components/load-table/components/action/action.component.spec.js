@@ -25,7 +25,7 @@ describe('Component: action', function () {
       loadNumber: 1234,
       loadGuid: 41234,
       nextAction: {
-        actionPerformed: '09/08/2016'
+        actionPerformedOn: '09/08/2016'
       },
       pickUp: [{
         city: 'Chicago'
@@ -136,7 +136,7 @@ describe('Component: action', function () {
             load: load,
             items: items,
             reportLoaded: {
-              lastActionDate: load.nextAction.actionPerformed,
+              actionPerformedOn: load.nextAction.actionPerformedOn,
             },
             timeZones: timeZones
           }
@@ -279,7 +279,7 @@ describe('Component: action', function () {
             load: load,
             carrierId: carrierId,
             reportArrival: {
-              lastActionDate: load.nextAction.actionPerformed,
+              actionPerformedOn: load.nextAction.actionPerformedOn,
               address: load.pickUp[0],
               driver: load.driver
             },

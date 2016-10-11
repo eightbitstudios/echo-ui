@@ -29,14 +29,14 @@ describe('Component: reportArrivalModal', function () {
     component = $componentController('reportArrivalModal', null, { modalActions: modalActions, load: {
       nextAction: {}
     }, reportArrival: {
-      lastActionDate: {},
+      actionPerformedOn: {},
       address: {
         stopType: 'Pick'
       }
     }, arrivalType: {}, timeZones: {}, reportEmpty: {}, carrierId: 1 });
   }));
 
- describe('Function: confirmArrivalHandler', function () {    
+ describe('Function: confirmArrivalHandler', function () {
     var updateReportArrivalDefer;
     beforeEach(function() {
       updateReportArrivalDefer = $q.defer();
@@ -51,7 +51,7 @@ describe('Component: reportArrivalModal', function () {
     it('should close modal when saved', function (done) {
       updateReportArrivalDefer.resolve();
       component.confirmArrivalHandler();
-      
+
       loadsApi.createReportArrivalByLoadGuid().then(function() {
         expect(component.modalActions.close).toHaveBeenCalledWith(true);
         done();
