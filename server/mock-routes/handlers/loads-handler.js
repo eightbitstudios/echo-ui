@@ -146,7 +146,7 @@ module.exports = {
   },
   updateTrailerNumber: function (req, res) {
     var resTemplate = new ResTemplate();
-    resTemplate.data = loadsRes.loads[0];
+    resTemplate.data = {};
     if (req.body.trailerNumber != null) {
       resTemplate.data.trailerNumber = req.body.trailerNumber;
     }

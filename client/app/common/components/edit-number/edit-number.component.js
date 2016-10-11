@@ -13,6 +13,7 @@ angular.module('echo.components.editNumber', [])
 
       that.showForm = false;
       that.updateNumber = null;
+      that.allowSubmit = true;
 
       that.editNumberHandler = function () {
         that.showForm = true;
@@ -23,9 +24,13 @@ angular.module('echo.components.editNumber', [])
       };
 
       that.saveButtonHandler = function () {
-        that.updateCallback({ updatedNumber: that.updateNumber }).then(function () {
-          that.showForm = false;
-        });
+        if (that.allowSubmit) {
+          that.allowSubmit = false;
+          that.updateCallback({updatedNumber: that.updateNumber}).then(function () {
+            that.showForm = false;
+            that.allowSubmit = true;
+          });
+        }
       };
     }
   });
