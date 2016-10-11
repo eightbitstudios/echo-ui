@@ -31,27 +31,33 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
       };
 
       that.saveReportEmpty = function () {
-        that.showButtonLoading = true;
-        that.errorMessages = null;
-        that.errorCode = null;
-        loadsApi.createReportEmpty(that.load.loadGuid, {
-          timeZone: that.dateTimePicker.timeZone,
-          driverLocation: that.location,
-          eventTime: that.dateTimePicker.getDateTime()
-        }).then(function () {
-          that.modalActions.close(true);
-        }).catch(function (status) {
-          that.errorMessages = status.message;
-          that.errorCode = status.code;
-        }).finally(function () {
-          that.showButtonLoading = false;
-        });
+        if (!that.location.isValid()) {
+          that.showValidationError = true;
+        } else {
+          that.showValidationError = false;
+          that.showButtonLoading = true;
+          that.errorMessages = null;
+          that.errorCode = null;
+          loadsApi.createReportEmpty(that.load.loadGuid, {
+            timeZone: that.dateTimePicker.timeZone,
+            driverLocation: that.location,
+            eventTime: that.dateTimePicker.getDateTime()
+          }).then(function () {
+            that.modalActions.close(true);
+          }).catch(function (status) {
+            that.errorMessages = status.message;
+            that.errorCode = status.code;
+          }).finally(function () {
+            that.showButtonLoading = false;
+          });
+        }
       };
 
       that.$onInit = function () {
         that.steps = [that.modes.confirm, that.modes.location];
         that.currentStep = that.modes.confirm;
         that.showButtonLoading = false;
+        that.showValidationError = false;
 
         that.location = new LocationModel({
           cityName: _.get(that.reportEmpty.driverLocation, 'cityName'),

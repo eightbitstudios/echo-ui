@@ -30,4 +30,5 @@
     </modal-steps>
   </div>
   <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" step-sensitive="true" valid-step="$ctrl.modes.location" current-step="$ctrl.currentStep"></error-messages>
+  <div class="help-block" ng-if="$ctrl.showValidationError">Location is required</div>
 </div>
