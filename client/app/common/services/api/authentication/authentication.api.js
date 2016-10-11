@@ -8,14 +8,14 @@ angular.module('echo.api.authentication', [
   return {
     /**
      * @description Creates a password
-     * @param {string} userId - User Id
+     * @param {string} userName - User name
      * @param {string} oneLoginUserId - One Login User Id
      * @param {string} token - User token for password creation
      * @param {PasswordChangeModel} passwordChange - Password change model
      * @returns {Promise} - Users password was created
      */
-    createPassword: function (userId, oneLoginUserId, token, passwordChange) {
-      var url = apiConfig.createPassword({ userId: userId });
+    createPassword: function (username, oneLoginUserId, token, passwordChange) {
+      var url = apiConfig.createPassword({ userId: username });
 
       var data = {
         password: passwordChange.newPassword,
