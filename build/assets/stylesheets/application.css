@@ -7986,7 +7986,7 @@ button.close {
 body {
   color: #414344;
   font-family: "Open Sans", sans-serif;
-  font-weight: 300; }
+  font-weight: 400; }
 
 /* line 13, base/_typography.sass */
 h1 {
@@ -8015,7 +8015,7 @@ h4 {
 /* line 33, base/_typography.sass */
 h5 {
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6; }
 
 /* line 38, base/_typography.sass */
@@ -8119,7 +8119,7 @@ p.label {
   border-bottom: solid 1px #e1e2e3; }
   /* line 126, base/_typography.sass */
   .section-header em {
-    font-weight: 300;
+    font-weight: 400;
     font-style: normal; }
   /* line 130, base/_typography.sass */
   .section-header.sh-no_border {
@@ -8698,23 +8698,23 @@ input[type="checkbox"] {
   text-transform: none;
   letter-spacing: 0;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 25px; }
   /* line 116, base/_forms.sass */
   .checkbox label, .checkbox p.label,
   .radio label,
   .radio p.label {
     letter-spacing: 0;
-    font-weight: 300 !important; }
+    font-weight: 400 !important; }
   /* line 120, base/_forms.sass */
   .checkbox:hover,
   .radio:hover {
-    font-weight: 300 !important; }
+    font-weight: 400 !important; }
     /* line 122, base/_forms.sass */
     .checkbox:hover label, .checkbox:hover p.label,
     .radio:hover label,
     .radio:hover p.label {
-      font-weight: 300; }
+      font-weight: 400; }
   /* line 125, base/_forms.sass */
   .checkbox .control:hover .control-indicator,
   .radio .control:hover .control-indicator {
@@ -10552,7 +10552,7 @@ body.user-profile {
   /* line 114, pages/_echorep.sass */
   .sidebar-list_names .item-inactive > a {
     color: #2b363b;
-    font-weight: 300; }
+    font-weight: 400; }
     /* line 117, pages/_echorep.sass */
     .sidebar-list_names .item-inactive > a:before {
       content: url("../images/star-outline.svg"); }
@@ -10929,7 +10929,7 @@ body.load-management-detail {
 .section-header_items em {
   margin-left: 5px;
   font-style: normal;
-  font-weight: 300; }
+  font-weight: 400; }
 
 /* line 63, pages/_load_details.sass */
 .items-lists {
