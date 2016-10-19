@@ -34,7 +34,8 @@ module.exports = {
           "quantity": 1,
           "handlingUnit": "Floor Handling Unit",
           "description": "Paper Goods"
-        }]
+        }],
+      "stopTotalWeightInPounds": 2080.5
     }],
     "delivery": [{
       "pickupNumber": 56985478,
@@ -66,7 +67,8 @@ module.exports = {
           "quantity": 1,
           "handlingUnit": "Floor Handling Unit",
           "description": "Paper Goods"
-        }]
+        }],
+      "stopTotalWeightInPounds": 2080.5
     }],
     "driver": {
       "id": 1,
@@ -110,7 +112,8 @@ module.exports = {
         "isSpecialService": true
       }    ],
     "trailerNumber": "8956 7412",
-    "tractorNumber": "7894 9216"
+    "tractorNumber": "7894 9216",
+    "sumOfWeightInPounds": 2080.5
   }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
