@@ -1,6 +1,6 @@
 
 describe('Component: reportEmptyModal', function () {
-  var component, $q, modalActions, items, loadsApi, modalService, DateTimePickerModel, scope, element, state;
+  var component, $q, modalActions, items, loadsApi, modalService, DateTimePickerModel, LocationModel, scope, element, state;
 
   beforeEach(function () {
     module('app/common/components/modal/milestones/report-empty-modal/report-empty-modal.template.html');
@@ -8,7 +8,10 @@ describe('Component: reportEmptyModal', function () {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportEmpty']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));
       $provide.value('CheckboxModel', jasmine.createSpy('CheckboxModel'));
-      $provide.value('LocationModel', jasmine.createSpy('LocationModel'));
+      $provide.value('LocationModel', LocationModel = function(data){
+        _.assign(this, data);
+        this.isValid = _.noop;
+      });
       $provide.value('DateTimePickerModel', DateTimePickerModel = function(data){
         _.assign(this, data);
         this.getDateTime = _.noop;
@@ -54,22 +57,30 @@ describe('Component: reportEmptyModal', function () {
    });
   });
 
- describe('Function: saveReportEmpty', function () {    
+ describe('Function: saveReportEmpty', function () {
     var updateReportEmptyDefer;
     beforeEach(function() {
       updateReportEmptyDefer = $q.defer();
       loadsApi.createReportEmpty.and.returnValue(updateReportEmptyDefer.promise);
     });
 
+   it('should not save report empty without a location', function() {
+     component.location.isValid = function() { return false; };
+     component.saveReportEmpty();
+     expect(loadsApi.createReportEmpty).not.toHaveBeenCalled();
+   });
+
    it('should save report empty', function() {
+     component.location.isValid = function() { return true; };
      component.saveReportEmpty();
      expect(loadsApi.createReportEmpty).toHaveBeenCalled();
    });
 
     it('should close modal when saved', function (done) {
       updateReportEmptyDefer.resolve();
+      component.location.isValid = function() { return true; };
       component.saveReportEmpty();
-      
+
       loadsApi.createReportEmpty().then(function() {
         expect(component.modalActions.close).toHaveBeenCalledWith(true);
         done();
