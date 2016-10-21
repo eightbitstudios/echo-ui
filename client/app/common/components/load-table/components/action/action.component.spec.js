@@ -45,6 +45,21 @@ describe('Component: action', function () {
     });
   }));
 
+  describe('Function: $onInit', function () {
+    it('should set button class to warning', function () {
+      component.load.escalationLevel = 2;
+      component.$onInit();
+      expect(component.actionButtonEscalationClass).toEqual('btn-warning');
+    });
+
+    it('should set button class to danger', function () {
+      component.load.escalationLevel = 3;
+      component.$onInit();
+      expect(component.actionButtonEscalationClass).toEqual('btn-danger');
+
+    });
+  });
+  
   describe('Function: Report Empty', function () {
     var reportEmptyDefer,
       timeZoneDefer;
