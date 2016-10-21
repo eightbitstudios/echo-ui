@@ -53,7 +53,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
               bindings: {
                 load: that.load,
                 reportArrival: {
-                  lastActionDate: that.load.nextAction.actionPerformed,
+                  actionPerformedOn: that.load.nextAction.actionPerformedOn,
                   address: _.find(that.load.delivery, { isCurrent: true }) || _.last(that.shippingDetails),
                   driver: that.load.driver
                 },
@@ -136,7 +136,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.currentStep = that.modes.overview;
         that.location = new LocationModel();
         that.dateTimePicker = new DateTimePickerModel({
-          minDate: moment(that.sendLoadUpdate.lastActionDate)
+          minDate: moment(that.sendLoadUpdate.actionPerformedOn)
         });
       };
     }

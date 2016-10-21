@@ -84,7 +84,7 @@ module.exports = {
       lastAction: 1,
       firstName: 'Tim',
       lastName: 'Potatoe',
-      actionPerformed: '13:50 CST Today',
+      actionPerformedOn: '13:50 CST Today',
       nextAction: 9,
       onTime: false,
       lateBy: null
@@ -149,7 +149,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 2,
         onTime: false,
         lateBy: null
@@ -183,7 +183,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '09:34 CST Tue, Oct 04',
         nextAction: 3,
         onTime: false,
         lateBy: null
@@ -220,7 +220,7 @@ module.exports = {
         lastName: 'Potatoe',
         time: '1473417000',
         nextAction: 1,
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         onTime: true,
         lateBy: null
       },
@@ -254,7 +254,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 4,
         onTime: false,
         lateBy: null
@@ -288,7 +288,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 3,
         onTime: false,
         lateBy: null
@@ -323,7 +323,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Mike',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 4,
         onTime: true,
         lateBy: null
@@ -358,7 +358,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -392,7 +392,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -426,7 +426,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 10,
         onTime: false,
         lateBy: null
@@ -460,7 +460,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -494,7 +494,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null

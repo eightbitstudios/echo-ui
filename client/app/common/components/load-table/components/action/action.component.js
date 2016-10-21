@@ -52,7 +52,7 @@ angular.module('echo.components.loadTable.action', [
               bindings: {
                 load: that.load,
                 reportLoaded: {
-                  lastActionDate: that.load.nextAction.actionPerformed,
+                  actionPerformedOn: that.load.nextAction.actionPerformedOn,
                 },
                 items: items,
                 timeZones: timeZones
@@ -100,7 +100,7 @@ angular.module('echo.components.loadTable.action', [
               load: that.load,
               carrierId: that.carrierId,
               reportArrival: {
-                lastActionDate: that.load.nextAction.actionPerformed,
+                actionPerformedOn: that.load.nextAction.actionPerformedOn,
                 address: _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.load.pickUp),
                 driver: that.load.driver
               },

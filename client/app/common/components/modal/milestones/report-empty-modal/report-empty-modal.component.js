@@ -66,7 +66,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
         });
 
         that.dateTimePicker = new DateTimePickerModel({
-          minDate: moment(that.reportEmpty.lastActionDate)
+          minDate: moment(that.reportEmpty.actionPerformedOn)
         });
 
         that.checkboxItems = {
