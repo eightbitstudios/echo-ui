@@ -4,7 +4,8 @@ angular.module('echo.components.modal.milestones.reportLoaded.finishLoading', []
     bindings: {
       dateTimePicker: '=',
       timeZones: '<',
-      totalWeight: '<'
+      totalWeight: '<',
+      weightConfirmed: '='
     },
     controller: function () {
     }

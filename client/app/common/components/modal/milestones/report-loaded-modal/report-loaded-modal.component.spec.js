@@ -63,7 +63,7 @@ describe('Component: reportLoadedModal', function () {
 
      expect(component.isNextStepEnabled()).toBeTruthy();
    });
-  
+
   it('should disable next button if all items are not checked', function() {
      component.checkboxItems = [{
        isChecked: true
@@ -75,22 +75,29 @@ describe('Component: reportLoadedModal', function () {
    });
   });
 
-  describe('Function: saveReportEmpty', function () {    
+  describe('Function: saveReportEmpty', function () {
     var updateReportEmptyDefer;
     beforeEach(function() {
       updateReportEmptyDefer = $q.defer();
       loadsApi.createReportLoaded.and.returnValue(updateReportEmptyDefer.promise);
     });
 
+    it('should not save report loaded without confirming weight', function () {
+      component.saveReportEmpty();
+      expect(loadsApi.createReportLoaded).not.toHaveBeenCalled();
+    });
+
    it('should  save report loaded', function() {
+     component.weightConfirmed = true;
      component.saveReportEmpty();
      expect(loadsApi.createReportLoaded).toHaveBeenCalled();
    });
 
     it('should close modal when saved', function (done) {
       updateReportEmptyDefer.resolve();
+      component.weightConfirmed = true;
       component.saveReportEmpty();
-      
+
       loadsApi.createReportLoaded().then(function() {
         expect(component.modalActions.close).toHaveBeenCalledWith(true);
         done();

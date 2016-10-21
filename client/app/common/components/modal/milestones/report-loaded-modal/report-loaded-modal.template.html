@@ -1,4 +1,4 @@
-<div class="report-empty-modal">
+<div class="report-loaded-modal">
   <div class="modal-header">
     <button aria-label="close" class="close btn-close" ng-click="$ctrl.modalActions.close()" data-close="modal" type="button">
       <span aria-hidden="true">×</span>
@@ -20,7 +20,7 @@
         <confirm-items checkbox-items="$ctrl.checkboxItems" items="$ctrl.items" pickup-numbers="$ctrl.pickupNumbers"/>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.finishLoading">
-        <finish-loading total-weight="$ctrl.totalWeight" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+        <finish-loading total-weight="$ctrl.totalWeight" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones" weight-confirmed="$ctrl.weightConfirmed"/>
       </div>
     </section>
   </div>
@@ -30,4 +30,5 @@
     </modal-steps>
   </div>
   <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" step-sensitive="true" valid-step="$ctrl.modes.optionalDocuments" current-step="$ctrl.currentStep"></error-messages>
+  <div class="help-block" ng-if="$ctrl.showValidationError">Must confirm estimated weight</div>
 </div>

@@ -34,21 +34,26 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
       };
 
       that.saveReportEmpty = function () {
-        that.showButtonLoading = true;
-        that.errorMessages = null;
-        that.errorCode = null;
-        loadsApi.createReportLoaded(that.load.loadGuid, {
-          timeZone: that.dateTimePicker.timeZone,
-          departureDate: that.dateTimePicker.getDateTime(),
-          loadGuid: that.load.loadGuid
-        }).then(function () {
-          that.modalActions.close(true);
-        }).catch(function (status) {
-          that.errorMessages = status.message;
-          that.errorCode = status.code;
-        }).finally(function () {
-          that.showButtonLoading = false;
-        });
+        if (!that.weightConfirmed) {
+          that.showValidationError = true;
+        } else {
+          that.showValidationError = false;
+          that.showButtonLoading = true;
+          that.errorMessages = null;
+          that.errorCode = null;
+          loadsApi.createReportLoaded(that.load.loadGuid, {
+            timeZone: that.dateTimePicker.timeZone,
+            departureDate: that.dateTimePicker.getDateTime(),
+            loadGuid: that.load.loadGuid
+          }).then(function () {
+            that.modalActions.close(true);
+          }).catch(function (status) {
+            that.errorMessages = status.message;
+            that.errorCode = status.code;
+          }).finally(function () {
+            that.showButtonLoading = false;
+          });
+        }
       };
 
       that.$onInit = function () {
@@ -65,6 +70,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
         that.pickupNumbers = _.map(that.load.pickUp, 'pickupNumber');
 
         that.totalWeight = _.ceil(_.sumBy(that.items, 'estimatedWeight'));
+        that.weightConfirmed = false;
       };
     }
   });
