@@ -20,7 +20,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 
       that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
       that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
-      that.totalStops = that.loadDetails.pickUp.length + that.loadDetails.delivery.length;
+      that.totalStops = _.size(that.loadDetails.pickUp) + _.size(that.loadDetails.delivery);
 
       that.$onInit = function () {
         if ($state.previous.data) {
