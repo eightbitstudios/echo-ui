@@ -16,4 +16,4 @@
     <span ng-if="$ctrl.isOpen">See Last Activity Only</span>
   </a>
 </section>
-<p class="text-muted">Activity Logs are not available for multi-stop loads yet.</p>
+<p class="text-muted" ng-if="$ctrl.showDisclaimer()">Activity Logs are not available for multi-stop loads yet.</p>

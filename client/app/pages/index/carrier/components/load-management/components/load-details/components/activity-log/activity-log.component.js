@@ -4,10 +4,15 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.activityLog', [
   .component('activityLog', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/activity-log/activity-log.template.html',
     bindings: {
-      activityLog: '<'
+      activityLog: '<',
+      totalStops: '<'
     },
     controller: function () {
       var that = this;
       that.isOpen = false;
+
+      that.showDisclaimer = function () {
+        return that.totalStops > 2 && that.activityLog.length === 0;
+      };
     }
   });
