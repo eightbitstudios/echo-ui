@@ -9,8 +9,7 @@ angular.module('echo', [
   'echo.services.routing',
   'echo.interceptors.auth',
   'ui.bootstrap',
-  'echo.decorators.uiRouter',
-  'echo.services.googleMapsApi'
+  'echo.decorators.uiRouter'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider.otherwise('/');

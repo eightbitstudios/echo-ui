@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('echo.directives.googleMapsMarker', [
-  'echo.config.globals'
+  'echo.services.googleMapsApi'
 ]).component('googleMapsMarker', {
   require: {
     mapsCtrl: '^googleMaps'
@@ -11,13 +11,15 @@ angular.module('echo.directives.googleMapsMarker', [
     lat: '<',
     lng: '<'
   },
-  controller: function (google) {
+  controller: function (googleMapsApi) {
     var that = this;
 
     that.$onInit = function () {
-      this.marker = new google.maps.Marker({
-        position: { lat: this.lat, lng: this.lng },
-        map: this.mapsCtrl.map
+      googleMapsApi.then(function (google) {
+        that.marker = new google.maps.Marker({
+          position: { lat: that.lat, lng: that.lng },
+          map: that.mapsCtrl.map
+        });
       });
     };
   }

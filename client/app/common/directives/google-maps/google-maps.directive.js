@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('echo.directives.googleMaps', [
-  'echo.config.globals'
+  'echo.services.googleMapsApi'
 ]).component('googleMaps', {
   bindings: {
     lat: '<',
@@ -9,14 +9,21 @@ angular.module('echo.directives.googleMaps', [
     zoom: '<'
   },
   transclude: true,
-  template: '<div class="map"></div><ng-transclude></ng-transclude>',
-  controller: function ($element, google) {
-    this.map = new google.maps.Map($element.find('.map')[0], {
-      center: { lat: this.lat, lng: this.lng },
-      zoom: this.zoom,
-      mapTypeControl: false,
-      streetViewControl: false,
-      rotateControl: false
-    });
+  template: '<div class="map"><ng-transclude></ng-transclude></div>',
+  controller: function ($element, googleMapsApi) {
+
+    var that = this;
+
+    that.$onInit = function () {
+      googleMapsApi.then(function (google) {
+        that.map = new google.maps.Map($element.find('.map')[0], {
+          center: { lat: that.lat, lng: that.lng },
+          zoom: that.zoom,
+          mapTypeControl: false,
+          streetViewControl: false,
+          rotateControl: false
+        });
+      });
+    };
   }
 });
