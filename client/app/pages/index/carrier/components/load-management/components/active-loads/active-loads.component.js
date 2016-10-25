@@ -8,9 +8,9 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
   'echo.components.filterButton',
-  'echo.directives.googleMaps',
-  'echo.directives.googleMapsMarker',
-  'echo.directives.googleMapsInfoWindow'
+  'echo.components.googleMaps',
+  'echo.components.googleMapsMarker',
+  'echo.components.googleMapsInfoWindow'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {

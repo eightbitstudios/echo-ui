@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('echo.directives.googleMapsInfoWindow', [
+angular.module('echo.components.googleMapsInfoWindow', [
   'echo.services.googleMapsApi'
 ])
   .component('googleMapsInfoWindow', {

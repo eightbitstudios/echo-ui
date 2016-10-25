@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('echo.directives.googleMaps', [
+angular.module('echo.components.googleMaps', [
   'echo.services.googleMapsApi'
 ]).component('googleMaps', {
   bindings: {

@@ -1,7 +1,7 @@
 
 'use strict';
 
-angular.module('echo.directives.googleMapsMarker', [
+angular.module('echo.components.googleMapsMarker', [
   'echo.services.googleMapsApi'
 ]).component('googleMapsMarker', {
   require: {
