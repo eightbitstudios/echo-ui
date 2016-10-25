@@ -2,24 +2,21 @@
 
 angular.module('echo.directives.googleMaps', [
   'echo.config.globals'
-])
-  .directive('googleMaps', function (google) {
-    return {
-      restrict: 'E',
-      scope: {
-        lat: '<',
-        lng: '<',
-        zoom: '<'
-      },
-      template: '<div class="map"><ng-transclude></ng-transclude></div>',
-      transclude: true,
-      controller: function ($scope, $element) {
-        this.map = new google.maps.Map($element.find('.map')[0], {
-          center: {lat: $scope.lat, lng: $scope.lng},
-          zoom: $scope.zoom
-        });
-
-        $scope.map = this.map;
-      }
-    };
-  });
+]).component('googleMaps', {
+  bindings: {
+    lat: '<',
+    lng: '<',
+    zoom: '<'
+  },
+  transclude: true,
+  template: '<div class="map"></div><ng-transclude></ng-transclude>',
+  controller: function ($element, google) {
+    this.map = new google.maps.Map($element.find('.map')[0], {
+      center: { lat: this.lat, lng: this.lng },
+      zoom: this.zoom,
+      mapTypeControl: false,
+      streetViewControl: false,
+      rotateControl: false
+    });
+  }
+});

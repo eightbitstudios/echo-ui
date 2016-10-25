@@ -3,20 +3,26 @@
 angular.module('echo.directives.googleMapsInfoWindow', [
   'echo.config.globals'
 ])
-  .directive('googleMapsInfoWindow', function (google) {
-    return {
-      restrict: 'E',
-      require:'^googleMapsMarker',
-      link: function(scope, element, attrs, markerController) {
-        var content = 'TEST POST PLEASE IGNORE';
+  .component('googleMapsInfoWindow', {
+    require: {
+      mapsCtrl: '^googleMaps',
+      markerCtrl: '^googleMapsMarker'
+    },
+    transclude: true,
+    template: '<div ng-transclude></div>',
+    controller: function ($element, google) {
+
+      var that = this;
+
+      that.$onInit = function () {
 
         var infoWindow = new google.maps.InfoWindow({
-          content: content
+          content: $element[0]
         });
 
-        markerController.marker.addListener('click', function() {
-          infoWindow.open(markerController.map, markerController.marker);
+        that.markerCtrl.marker.addListener('click', function () {
+          infoWindow.open(that.mapsCtrl.map, that.markerCtrl.marker);
         });
-      }
-    };
+      };
+    }
   });

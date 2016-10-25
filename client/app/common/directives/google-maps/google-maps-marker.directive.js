@@ -1,23 +1,24 @@
+
 'use strict';
 
 angular.module('echo.directives.googleMapsMarker', [
   'echo.config.globals'
-])
-  .directive('googleMapsMarker', function (google) {
-    return {
-      restrict: 'E',
-      scope: {
-        lat: '<',
-        lng: '<'
-      },
-      require:'^googleMaps',
-      controller: function ($scope) {
-        this.marker = new google.maps.Marker({
-          position: {lat: $scope.lat, lng: $scope.lng},
-          map: $scope.map
-        });
+]).component('googleMapsMarker', {
+  require: {
+    mapsCtrl: '^googleMaps'
+  },
+  bindings: {
+    lat: '<',
+    lng: '<'
+  },
+  controller: function (google) {
+    var that = this;
 
-        this.map = $scope.$parent.map;
-      }
+    that.$onInit = function () {
+      this.marker = new google.maps.Marker({
+        position: { lat: this.lat, lng: this.lng },
+        map: this.mapsCtrl.map
+      });
     };
-  });
+  }
+});
