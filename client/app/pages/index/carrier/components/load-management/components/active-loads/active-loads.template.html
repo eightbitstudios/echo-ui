@@ -12,7 +12,17 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <map-placeholder></map-placeholder>
+  <google-maps lat="41.8781" lng="-87.6298" zoom="8">
+    <google-maps-marker lat="41.8781" lng="-87.6298">
+      <google-maps-info-window></google-maps-info-window>
+    </google-maps-marker>
+    <google-maps-marker lat="41.8781" lng="-86.2298">
+      <google-maps-info-window></google-maps-info-window>
+    </google-maps-marker>
+    <google-maps-marker lat="41.8781" lng="-89.9298">
+      <google-maps-info-window></google-maps-info-window>
+    </google-maps-marker>
+  </google-maps>
   <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
     <filter-button filter-enabled="$ctrl.isPickUpToday" click-handler="$ctrl.pickupsTodayHandler(value)" button-text="Pickups Today"></filter-button>
     <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
