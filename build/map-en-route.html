@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      Echo UI Build. Shell Layout.
+      Load Management - Active
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class='home'>
+  <body class='load-management load-management-active'>
     <header class='navbar'>
       <div class='eyebrow-header'>
         <div class='container'>
@@ -68,29 +68,106 @@
         </nav>
       </div>
     </header>
-    <div class='container'>
-      <div class='row'>
-        <div class='col-sm-12'>
-          <h1>Echo UI Build Kit</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem, porro nesciunt tenetur officiis aut voluptate, rem nisi! Consectetur autem eius tenetur commodi magnam magni itaque dolore reiciendis non animi.</p>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, distinctio ut incidunt ducimus perspiciatis molestias consectetur minima temporibus fugiat laboriosam, sint cum autem iste sequi amet aperiam nam, explicabo rerum.</p>
-          <h4>Heading 4</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis sed veniam eligendi praesentium blanditiis culpa iste, exercitationem molestiae modi architecto temporibus recusandae voluptates debitis delectus sit reprehenderit dolor hic in.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!</p>
-          <ul>
-            <li>List 1</li>
-            <li>List 2</li>
-            <li>List 3</li>
-            <li>List 4</li>
-            <li>List 5</li>
-          </ul>
-          <blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi doloremque architecto impedit, qui dicta! In nemo laborum quod voluptate repellendus labore fugiat veniam incidunt error animi, accusamus enim eius commodi.</p>
-          </blockquote>
-          <h5>Heading h5</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloremque necessitatibus, sint eum fuga fugit maxime adipisci, mollitia at sequi dicta quas officiis a nihil perspiciatis quos eos aliquid eius!</p>
+    <div class='tab-bar'>
+      <div class='container'>
+        <ul class='nav nav-tabs'>
+          <li class='active'>
+            <a href="/echorep-carrier-loads-active.html">11 Active Loads</a>
+          </li>
+          <li class=''>
+            <a href="/echorep-carrier-loads-unbilled.html">12 Unbilled Loads</a>
+          </li>
+          <li class=''>
+            <a href="/echorep-carrier-loads-upcoming.html">11 Upcoming Loads</a>
+          </li>
+        </ul>
+        <form class='search-form pull-right' role='search'>
+          <div class='form-group'>
+            <input class='form-control search-form-input search-form-input_dark' placeholder='Load or PRO Number' type='text'>
+            <span class='search-help-text'>Press Enter To Search</span>
+            <button class='btn btn-default btn-icon' type='submit'>
+              <svg height='18px' version='1.1' viewbox='0 0 18 18' width='18px' xmlns='http://www.w3.org/2000/svg'>
+                <g class='search-svg' fill-rule='evenodd' fill='none' id='States,-Interactions,-Misc' stroke-width='1' stroke='none'>
+                  <g id='patterns' stroke-width='2' stroke='#FFFFFF' transform='translate(-521.000000, -5581.000000)'>
+                    <g id='icon-/-search' transform='translate(522.000000, 5582.000000)'>
+                      <circle cx='6.33333333' cy='6.33333333' id='Oval' r='6'></circle>
+                      <path d='M10.5753333,10.576 L15.5,15.5' id='Shape'></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class='container-fluid carrier-dashboard-header'>
+      <div class='container'>
+        <ul class='list-inline carrier-dashboard-header_left'>
+          <li>
+            <strong>9 Loads Located</strong>
+          </li>
+          <li>
+            <a href="#">View Full Map</a>
+          </li>
+        </ul>
+        <ul class='list-inline carrier-dashboard-header_right'>
+          <li>
+            <span class='carrier-dashboard-header_label'>ECHO REP</span>
+            Danielle John
+          </li>
+          <li>
+            <img src="assets/images/mail-icon-gray@2x.png" width="15px" height="15px" alt="Mail icon gray@2x" />
+            <a href="mailto:danielle.john@echoLogistics.com">danielle.john@echoLogistics.com</a>
+          </li>
+          <li>
+            (610) 555-1212
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class='carrier-map-spacer map-lg'>
+      <div class='gm-info-window'>
+        <div class='gm-overlay-header'>
+          <h2 class='load-number'>
+            <a href="#">123443211</a>
+          </h2>
+          <div class='btn btn-primary'>
+            Report Arrival at Pickup
+          </div>
+        </div>
+        <div class='gm-overlay-body'>
+          <div class='load-info'>
+            <div class='load-col load-location'>
+              <div class='load-citystate'>
+                <div class='load-st'>Memphis</div>
+                <div class='load-st'>TN, 60655</div>
+              </div>
+              <div class='load-datetime'>14:00-15:00 EST <br/>Today, Apr 20</div>
+            </div>
+            <div class='load-col load-direction'>
+              <img src="assets/images/icon-right-arrow-dark.svg" class="" alt="Icon right arrow dark" />
+            </div>
+            <div class='load-col load-location'>
+              <div class='load-citystate'>
+                <div class='load-st'>Austin</div>
+                <div class='load-st'>TX, 50968</div>
+              </div>
+              <div class='load-datetime'>16:00-18:00 EST <br/>Fri, May 23</div>
+            </div>
+          </div>
+        </div>
+        <div class='gm-overlay-footer'>
+          <div class='driver-contact'>
+            <a href="#">Fred F</a>
+            <br>
+            <span class='small'>(899) 584-0803</span>
+          </div>
+          <div class='driver-location'>
+            <span class='small'>Omaha, Nebraska</span>
+            <br>
+            <span class='small'>1.5 hrs ago via tracking</span>
+          </div>
         </div>
       </div>
     </div>

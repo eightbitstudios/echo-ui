@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta content='telephone=no' name='format-detection'>
     <title>
-      Load Management - Upcoming
+      Load Management - Active
     </title>
     <!-- / stylesheets -->
     <link href="assets/stylesheets/application.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class='load-management load-management-upcoming'>
+  <body class='load-management load-management-active'>
     <header class='navbar'>
       <div class='eyebrow-header'>
         <div class='container'>
@@ -71,13 +71,13 @@
     <div class='tab-bar'>
       <div class='container'>
         <ul class='nav nav-tabs'>
-          <li class=''>
+          <li class='active'>
             <a href="/echorep-carrier-loads-active.html">11 Active Loads</a>
           </li>
           <li class=''>
             <a href="/echorep-carrier-loads-unbilled.html">12 Unbilled Loads</a>
           </li>
-          <li class='active'>
+          <li class=''>
             <a href="/echorep-carrier-loads-upcoming.html">11 Upcoming Loads</a>
           </li>
         </ul>
@@ -105,9 +105,10 @@
       <div class='container'>
         <ul class='list-inline carrier-dashboard-header_left'>
           <li>
-            <strong>14 Upcoming Loads</strong>
+            <strong>9 Loads Located</strong>
           </li>
           <li>
+            <a href="#">View Full Map</a>
           </li>
         </ul>
         <ul class='list-inline carrier-dashboard-header_right'>
@@ -125,20 +126,27 @@
         </ul>
       </div>
     </div>
-    <div class='no-map-border'></div>
+    <div class='carrier-map-spacer'>
+      <div class='gm-info-window gm-overlay-basic'>
+        <div class='overlay-notice'>Last Reported Location</div>
+        <div class='small'>Omaha, Nebraska</div>
+        <div class='small'>1.5 hrs ago via tracking</div>
+      </div>
+    </div>
     <div class='container main-content'>
       <section>
         <div class='section-head'>
           <div class='filter-bar-wrap'>
             <div class='filter-bar'>
               <div class='label'>Filter By</div>
-              <a href="#" class="btn btn-filter">Driver Needed</a>
+              <a href="#" class="btn btn-filter">Pickups Today</a>
+              <a href="#" class="btn btn-filter">Deliveries Today</a>
               <a href="#" class="btn btn-filter btn-filter-dropdown" data-dropdown="stop-location">Stop Location
               </a>
               <a href="#" class="btn btn-filter btn-single-dp">APPT. Date</a>
               <span class='filter-summary'>
                 <h5>20 Loads</h5>
-                By Last First Pickup
+                By Next Appointment
               </span>
             </div>
             <div class='dropdown-filter' data-dropdown='stop-location'>
@@ -192,6 +200,7 @@
                     <h2 class='load-number'><a href="#">123443211</a></h2>
                     <p class='label'>Pro:</p>
                     <p>1234567890</p>
+                    <a href="#" class="btn btn-link btn-status-alert">Details Updated</a>
                   </td>
                   <td class='carrier-dashboard-pickup'>
                     <div class='location-pickup match-height'>
@@ -231,17 +240,19 @@
                       <h3 class='driver-name'><a href="#">Fred F</a></h3>
                       <span><tel>(899) 584-0803</tel></span>
                       <div class='driver-status'>
-                        Do Not Disturb
+                        Active Driver
+                        <br>
+                        Tracking On
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-danger">REPORT ARRIVAL AT PICKUP</a>
+                        <p class='muted'>Running 15 Min. Late</p>
                       </div>
                     </div>
                   </td>
@@ -290,17 +301,18 @@
                       <h3 class='driver-name'><a href="#">Alfonzo A</a></h3>
                       <span><tel>(054) 534-6618</tel></span>
                       <div class='driver-status'>
-                        Entered By Echo
+                        Do Not Disturb
+                        <br>
+                        Tracking Off
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-primary">REPORT ARRIVAL AT PICKUP</a>
                       </div>
                     </div>
                   </td>
@@ -310,7 +322,7 @@
                     <h2 class='load-number'><a href="#">123443213</a></h2>
                   </td>
                   <td class='carrier-dashboard-pickup'>
-                    <div class='location-pickup match-height'>
+                    <div class='location-pickup match-height muted'>
                       <div class='lead'>
                         New York
                       </div>
@@ -328,7 +340,7 @@
                     <img src="assets/images/icon-right-arrow-dark.svg" alt="Icon right arrow dark" />
                   </td>
                   <td class='carrier-dashboard-delivery'>
-                    <div class='location-delivery match-height muted'>
+                    <div class='location-delivery match-height'>
                       <div class='lead'>
                         Chicago
                       </div>
@@ -344,16 +356,17 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <a href="#" class="btn btn-default">Assign Driver</a>
+                      <button class='btn btn-default' data-target='.modal-assign-driver' data-toggle='modal'>
+                        Assign Driver
+                      </button>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-primary">REPORT ARRIVAL AT DELIVERY</a>
                       </div>
                     </div>
                   </td>
@@ -397,16 +410,21 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <a href="#" class="btn btn-default">Assign Driver</a>
+                      <h3 class='driver-name'><a href="#">Gregory M</a></h3>
+                      <span><tel>(343) 890-1203</tel></span>
+                      <div class='driver-status'>
+                        <a href="#">Verify Driver</a>
+                        <br>
+                        Tracking Off
+                      </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-primary">REPORT DELIVERY</a>
                       </div>
                     </div>
                   </td>
@@ -450,16 +468,21 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <a href="#" class="btn btn-default">Assign Driver</a>
+                      <h3 class='driver-name'><a href="#">Alta N</a></h3>
+                      <span><tel>(952) 796-9653</tel></span>
+                      <div class='driver-status'>
+                        Active Driver
+                        <br>
+                        Tracking Off
+                      </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'><a href="#">Reported Location</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-default">Send Load Update</a>
                       </div>
                     </div>
                   </td>
@@ -505,16 +528,21 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <a href="#" class="btn btn-default">Assign Driver</a>
+                      <h3 class='driver-name'><a href="#">Fred F</a></h3>
+                      <span><tel>(899) 584-0803</tel></span>
+                      <div class='driver-status'>
+                        Active Driver
+                        <br>
+                        Tracking On
+                      </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'><a href="#">Reported Empty</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-default">Report Loaded</a>
                       </div>
                     </div>
                   </td>
@@ -560,17 +588,21 @@
                   </td>
                   <td class='carrier-dashboard-load'>
                     <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'><a href="#">Jay C</a></h3>
+                      <h3 class='driver-name'><a href="#">Alfonzo A</a></h3>
                       <span><tel>(054) 534-6618</tel></span>
+                      <div class='driver-status'>
+                        Do Not Disturb
+                        <br>
+                        Tracking Off
+                      </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'><a href="#">Driver Assigned</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-default">Report Empty</a>
                       </div>
                     </div>
                   </td>
@@ -580,7 +612,7 @@
                     <h2 class='load-number'><a href="#">123443213</a></h2>
                   </td>
                   <td class='carrier-dashboard-pickup'>
-                    <div class='location-pickup match-height'>
+                    <div class='location-pickup match-height muted'>
                       <div class='lead'>
                         New York
                       </div>
@@ -598,7 +630,7 @@
                     <img src="assets/images/icon-right-arrow-dark.svg" alt="Icon right arrow dark" />
                   </td>
                   <td class='carrier-dashboard-delivery'>
-                    <div class='location-delivery match-height muted'>
+                    <div class='location-delivery match-height'>
                       <div class='lead'>
                         Chicago
                       </div>
@@ -614,17 +646,15 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'><a href="#">Eva R</a></h3>
-                      <span><tel>(954) 134-5633</tel></span>
+                      <a href="#" class="btn btn-default">Assign Driver</a>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'>Load Now Active</h3>
+                      As of 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-default">REPORT Empty</a>
                       </div>
                     </div>
                   </td>
@@ -668,20 +698,21 @@
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'><a href="#">Nelle H</a></h3>
+                      <h3 class='driver-name'>Gregory M</h3>
                       <span><tel>(343) 890-1203</tel></span>
                       <div class='driver-status'>
-                        Entered By Echo
+                        <a href="#">Verify Driver</a>
+                        <br>
+                        Tracking Off
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'><a href="#">Reported Loaded</a></h3>
+                      By Mike P at 13:15 CST today
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-default">REPORT LOCATION</a>
                       </div>
                     </div>
                   </td>
@@ -691,7 +722,7 @@
                     <h2 class='load-number'><a href="#">123443215</a></h2>
                   </td>
                   <td class='carrier-dashboard-pickup'>
-                    <div class='location-pickup match-height'>
+                    <div class='location-pickup match-height muted'>
                       <div class='lead'>
                         Memphis
                       </div>
@@ -722,20 +753,40 @@
                         Delivered Tue, Oct 31
                       </div>
                     </div>
+                    <ul class='pagination'>
+                      <li>
+                        <a href="#"><span>
+                          <img src="assets/images/navigation-chevrons-lt@2x.png" width="9" height="12" alt="Navigation chevrons lt@2x" />
+                        </span>
+                        </a>
+                      </li>
+                      <li>1</li>
+                      <li>/</li>
+                      <li>2</li>
+                      <li>
+                        <a href="#"><span>
+                          <img src="assets/images/navigation-chevrons-rt@2x.png" width="9" height="12" alt="Navigation chevrons rt@2x" />
+                        </span>
+                        </a>
+                      </li>
+                    </ul>
                   </td>
                   <td>
                     <div class='carrier-dashboard-driver match-height'>
-                      <h3 class='driver-name'><a href="#">Rebecca J</a></h3>
+                      <h3 class='driver-name'>Alta T</h3>
                       <span><tel>(952) 796-9653</tel></span>
+                      <div class='driver-status'>
+                        Active Driver
+                        <br>
+                        Tracking Off
+                      </div>
                     </div>
                   </td>
                   <td>
                     <div class='carrier-dashboard-action match-height'>
-                      <div class='action-text'>
-                        <p>Added at 13:15 CST Today by Patty A.</p>
-                        <a href="#"><img src="assets/images/icon-document.svg" alt="Icon document" />
-                        <span>View Rate Confirmation</span>
-                        </a>
+                      <h3 class='driver-name'>Call To Report</h3>
+                      <div class='action-align-bottom'>
+                        <a href="#" class="btn btn-default">ADD DOCUMENTS</a>
                       </div>
                     </div>
                   </td>
