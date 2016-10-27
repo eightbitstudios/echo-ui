@@ -1,9 +1,9 @@
 <div class="active-loads">
   <div class="container-fluid carrier-dashboard-header">
-    <div class="container">
+    <div class="container" ng-if="$ctrl.showMap">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <strong>9 Loads Mapped</strong>
+          <strong>{{$ctrl.mapPoints.length}} Loads Mapped</strong>
         </li>
         <li>
           <a href="javascript:void(0)">View Full Map</a>
@@ -12,15 +12,10 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <google-maps lat="41.8781" lng="-87.6298" zoom="8">
-    <google-maps-marker lat="41.8781" lng="-87.6298">
+  <google-maps center="$ctrl.mapCenter" total-points="$ctrl.mapPoints.length" ng-if="$ctrl.showMap">
+    <google-maps-marker ng-repeat="mapPoint in $ctrl.mapPoints" position="mapPoint.position">
       <google-maps-info-window>
-        Load Id: 12345
-      </google-maps-info-window>
-    </google-maps-marker>
-    <google-maps-marker lat="41.9281" lng="-87.6298">
-      <google-maps-info-window>
-        Load Id: 43534
+        Load Id: {{mapPoint.loadId}}
       </google-maps-info-window>
     </google-maps-marker>
   </google-maps>

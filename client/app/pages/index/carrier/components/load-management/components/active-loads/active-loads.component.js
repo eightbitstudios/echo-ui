@@ -10,14 +10,16 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.filterButton',
   'echo.components.googleMaps',
   'echo.components.googleMapsMarker',
-  'echo.components.googleMapsInfoWindow'
+  'echo.components.googleMapsInfoWindow',
+  'echo.services.googleMapsApi',
+  'echo.services.googleMaps'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
     repDetails: '<',
     carrierId: '<'
   },
-  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum) {
+  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum, googleMapsApi, googleMaps, $q) {
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
@@ -64,6 +66,30 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.getAvailableLoads();
     };
 
-    that.$onInit = that.getAvailableLoads;
+    that.getMapPointsForAvailableLoads = function () {
+      that.showMap = false;
+      that.mapPoints = [];
+      loadsApi.fetchMapPointsForActiveLoads(that.carrierId).then(function (mapPointData) {
+        that.mapPoints = mapPointData.loads;
+        var geocoder = new that.google.maps.Geocoder();
+        var promises = [];
+        _.forEach(that.mapPoints, function (mapPoint) {
+          promises.push(googleMaps.appendPosition(geocoder, mapPoint));
+        });
+        $q.all(promises).then(function () {
+          that.mapPoints = _.filter(that.mapPoints, function(mapPoint) { return !!mapPoint.position; });
+          that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
+          that.showMap = true;
+        });
+      });
+    };
+
+    that.$onInit = function () {
+      that.getAvailableLoads();
+      that.getMapPointsForAvailableLoads();
+      googleMapsApi.then(function (google) {
+        that.google = google;
+      });
+    };
   }
 });
