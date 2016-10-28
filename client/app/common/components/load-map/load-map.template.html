@@ -1,7 +1,7 @@
 <google-maps center="$ctrl.mapCenter" total-points="$ctrl.mapPoints.length" ng-if="$ctrl.showMap">
   <google-maps-marker ng-repeat="mapPoint in $ctrl.mapPoints" position="mapPoint.position">
     <google-maps-info-window>
-      Load Id: {{mapPoint.loadId}}
+      <detailed-info-window map-point="mapPoint"></detailed-info-window>
     </google-maps-info-window>
   </google-maps-marker>
 </google-maps>
