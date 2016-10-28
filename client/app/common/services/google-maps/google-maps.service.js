@@ -1,11 +1,13 @@
 'use strict';
 
-angular.module('echo.services.googleMaps', [])
-  .factory('googleMaps', function ($q) {
+angular.module('echo.services.googleMaps', [
+  'echo.config.appConstants'
+])
+  .factory('googleMaps', function ($q, appConstants) {
     return {
       appendPosition: function (geocoder, mapPoint) {
         var deferred = $q.defer();
-        geocoder.geocode({'address': _.get(mapPoint.currentLocation, 'city') + ', ' + _.get(mapPoint.currentLocation, 'state')}, function (results, status) {
+        geocoder.geocode({'address': _.template('${city}, ${state}')({ city: _.get(mapPoint.currentLocation, 'city'), state: _.get(mapPoint.currentLocation, 'state')})}, function (results, status) {
           if (status === 'OK') {
             mapPoint.position = results[0].geometry.location;
           }
@@ -25,7 +27,7 @@ angular.module('echo.services.googleMaps', [])
         });
 
         if (useDefault) {
-          return new google.maps.LatLng(39.50, -98.35);
+          return new google.maps.LatLng(appConstants.DEFAULT_MAP_CENTER.lat, appConstants.DEFAULT_MAP_CENTER.lng);
         } else {
           return bounds.getCenter();
         }
@@ -40,9 +42,9 @@ angular.module('echo.services.googleMaps', [])
         });
 
         if (validPoints === 1) {
-          return 15;
+          return appConstants.DEFAULT_MAP_ZOOM.ONE_POINT;
         } else {
-          return 4;
+          return appConstants.DEFAULT_MAP_ZOOM.OTHER;
         }
       }
     };

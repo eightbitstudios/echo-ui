@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('echo.components.googleMapsMarker', [
-  'echo.services.googleMapsApi'
+  'echo.services.googleMapsApi',
+  'echo.config.assetConfig'
 ]).component('googleMapsMarker', {
   require: {
     mapsCtrl: '^googleMaps'
@@ -10,7 +11,7 @@ angular.module('echo.components.googleMapsMarker', [
   bindings: {
     position: '<'
   },
-  controller: function (googleMapsApi) {
+  controller: function (googleMapsApi, assetConfig) {
     var that = this;
 
     that.$onInit = function () {
@@ -18,7 +19,7 @@ angular.module('echo.components.googleMapsMarker', [
         that.marker = new google.maps.Marker({
           position: that.position,
           icon: {
-            url: '/assets/images/icon-gm-marker.png',
+            url: assetConfig.ICON_GOOGLE_MAPS_MARKER_URL,
             anchor: new google.maps.Point(22,22)
           },
           map: that.mapsCtrl.map
