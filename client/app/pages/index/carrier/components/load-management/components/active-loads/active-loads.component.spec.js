@@ -6,6 +6,10 @@ describe('Component: Active Loads', function () {
     module('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html');
     module('echo.index.carrier.loadManagement.activeLoads', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchAvailableLoads']));
+      $provide.value('googleMapsDirective', {});
+      $provide.value('googleMapsMarkerDirective', {});
+      $provide.value('googleMapsInfoWindowDirective', {});
+      $provide.value('googleMapsApi', _.noop);
     });
   });
 
