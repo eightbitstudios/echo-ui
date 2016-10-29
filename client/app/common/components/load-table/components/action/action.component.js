@@ -43,19 +43,19 @@ angular.module('echo.components.loadTable.action', [
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_LOADED.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchItemsByLoadGuid(loadGuid),
-        timeZoneApi.fetchTimeZones()]).then(_.spread(function (items, timeZones) {
-          return modalService.open({
-            component: 'report-loaded-modal',
-            bindings: {
-              load: that.load,
-              reportLoaded: {
-                lastActionDate: that.load.nextAction.actionPerformed,
-              },
-              items: items,
-              timeZones: timeZones
-            }
-          });
-        }));
+          timeZoneApi.fetchTimeZones()]).then(_.spread(function (items, timeZones) {
+            return modalService.open({
+              component: 'report-loaded-modal',
+              bindings: {
+                load: that.load,
+                reportLoaded: {
+                  actionPerformedOn: that.load.nextAction.actionPerformedOn,
+                },
+                items: items,
+                timeZones: timeZones
+              }
+            });
+          }));
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
@@ -97,7 +97,7 @@ angular.module('echo.components.loadTable.action', [
               load: that.load,
               carrierId: that.carrierId,
               reportArrival: {
-                lastActionDate: that.load.nextAction.actionPerformed,
+                actionPerformedOn: that.load.nextAction.actionPerformedOn,
                 address: _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.load.pickUp),
                 driver: that.load.driver
               },

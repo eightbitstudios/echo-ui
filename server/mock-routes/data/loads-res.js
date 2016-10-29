@@ -34,7 +34,8 @@ module.exports = {
           "quantity": 1,
           "handlingUnit": "Floor Handling Unit",
           "description": "Paper Goods"
-        }]
+        }],
+      "stopTotalWeightInPounds": 2080.5
     }],
     escalationLevel: 2,
     "delivery": [{
@@ -67,7 +68,8 @@ module.exports = {
           "quantity": 1,
           "handlingUnit": "Floor Handling Unit",
           "description": "Paper Goods"
-        }]
+        }],
+      "stopTotalWeightInPounds": 2080.5
     }],
     "driver": {
       "id": 1,
@@ -85,7 +87,7 @@ module.exports = {
       lastAction: 1,
       firstName: 'Tim',
       lastName: 'Potatoe',
-      actionPerformed: '13:50 CST Today',
+      actionPerformedOn: '13:50 CST Today',
       nextAction: 9,
       onTime: false,
       lateBy: null
@@ -111,7 +113,8 @@ module.exports = {
         "isSpecialService": true
       }    ],
     "trailerNumber": "8956 7412",
-    "tractorNumber": "7894 9216"
+    "tractorNumber": "7894 9216",
+    "sumOfWeightInPounds": 2080.5
   }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -151,7 +154,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 2,
         onTime: false,
         lateBy: null
@@ -185,7 +188,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '09:34 CST Tue, Oct 04',
         nextAction: 3,
         onTime: false,
         lateBy: null
@@ -222,7 +225,7 @@ module.exports = {
         lastName: 'Potatoe',
         time: '1473417000',
         nextAction: 1,
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         onTime: true,
         lateBy: null
       },
@@ -256,7 +259,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 4,
         onTime: false,
         lateBy: null
@@ -290,7 +293,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 3,
         onTime: false,
         lateBy: null
@@ -325,7 +328,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Mike',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 4,
         onTime: true,
         lateBy: null
@@ -360,7 +363,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -394,7 +397,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -428,7 +431,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 10,
         onTime: false,
         lateBy: null
@@ -462,7 +465,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null
@@ -496,7 +499,7 @@ module.exports = {
         lastAction: 1,
         firstName: 'Tim',
         lastName: 'Potatoe',
-        actionPerformed: '13:50 CST Today',
+        actionPerformedOn: '13:50 CST Today',
         nextAction: 1,
         onTime: false,
         lateBy: null

@@ -11,6 +11,7 @@ angular.module('echo.login.forgotPassword', [
     that.email = '';
     that.forgotPasswordForm = null;
     that.showButtonLoading = false;
+    that.showValidationError = false;
     that.serverError = null;
     that.appConstants = appConstants;
 
@@ -18,6 +19,7 @@ angular.module('echo.login.forgotPassword', [
       that.serverError = null;
       if (that.forgotPasswordForm.$valid) {
         that.showButtonLoading = true;
+        that.showValidationError = false;
         authenticationApi.forgotPassword(that.email).then(function () {
           $state.go(routesConfig.LOGIN.signIn.name);
         }).catch(function (errorCode) {
@@ -25,6 +27,8 @@ angular.module('echo.login.forgotPassword', [
         }).finally(function () {
           that.showButtonLoading = false;
         });
+      } else {
+        that.showValidationError = true;
       }
     };
   }

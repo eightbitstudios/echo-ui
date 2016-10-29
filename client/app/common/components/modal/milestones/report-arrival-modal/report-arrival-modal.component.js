@@ -19,7 +19,7 @@ angular.module('echo.components.modal.milestones.reportArrival', [
       that.showButtonLoading = false;
 
       that.dateTimePicker = new DateTimePickerModel({
-        minDate: moment(that.reportArrival.lastActionDate)
+        minDate: moment(that.reportArrival.actionPerformedOn)
       });
 
       that.confirmArrivalHandler = function () {
