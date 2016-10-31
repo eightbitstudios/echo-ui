@@ -13,7 +13,7 @@ angular.module('echo.components.loadMap', [
       y: 255
     },
     defaultOffset: {
-      x: 185,
+      x: 175,
       y: 125
     }
   })
