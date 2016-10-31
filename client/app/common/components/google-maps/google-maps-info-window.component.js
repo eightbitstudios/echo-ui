@@ -18,14 +18,9 @@ angular.module('echo.components.googleMapsInfoWindow', [
         googleMapsApi.then(function (google) {
           var infoWindow = new google.maps.InfoWindow({
             content: $element[0],
-            pixelOffset: new google.maps.Size(210, 255)
+            pixelOffset: new google.maps.Size(that.mapsCtrl.popupOffset.x, that.mapsCtrl.popupOffset.y)
           });
-
           that.markerCtrl.marker.addListener('click', function () {
-            if(that.mapsCtrl.openedInfoWindow){
-              that.mapsCtrl.openedInfoWindow.close();
-            }
-            that.mapsCtrl.openedInfoWindow = infoWindow;
             infoWindow.open(that.mapsCtrl.map, that.markerCtrl.marker);
           });
         });

@@ -1,4 +1,4 @@
-<google-maps center="$ctrl.mapCenter" total-points="$ctrl.mapPoints.length" ng-if="$ctrl.showMap">
+<google-maps popup-offset="$ctrl.popupOffset" center="$ctrl.mapCenter" total-points="$ctrl.mapPoints.length" ng-if="$ctrl.showMap">
   <google-maps-marker ng-repeat="mapPoint in $ctrl.mapPoints" position="mapPoint.position">
     <google-maps-info-window>
       <detailed-info-window ng-if="$ctrl.detailedInfo" map-point="mapPoint"></detailed-info-window>

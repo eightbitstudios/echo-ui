@@ -5,7 +5,8 @@ angular.module('echo.components.googleMaps', [
 ]).component('googleMaps', {
   bindings: {
     center: '<',
-    totalPoints: '<'
+    totalPoints: '<',
+    popupOffset: '<'
   },
   transclude: true,
   template: '<div class="map"><ng-transclude></ng-transclude></div>',
@@ -19,7 +20,6 @@ angular.module('echo.components.googleMaps', [
         defaultZoom = 15;
       }
 
-      that.openedInfoWindow = null;
 
       var styles = [
         {'elementType': 'geometry', 'stylers': [{'color': '#f5f5f5'}]},
