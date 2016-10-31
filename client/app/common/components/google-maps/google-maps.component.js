@@ -19,6 +19,8 @@ angular.module('echo.components.googleMaps', [
         defaultZoom = 15;
       }
 
+      that.openedInfoWindow = null;
+
       var styles = [
         {'elementType': 'geometry', 'stylers': [{'color': '#f5f5f5'}]},
         {'elementType': 'labels.text.fill', 'stylers': [{'color': '#616161'}]},
@@ -55,7 +57,9 @@ angular.module('echo.components.googleMaps', [
           scaleControl: false,
           streetViewControl: false,
           rotateControl: false,
-          fullscreenControl: false
+          fullscreenControl: false,
+          scrollwheel: false,
+          disableDoubleClickZoom: true
         });
         that.bounds = new google.maps.LatLngBounds();
       });

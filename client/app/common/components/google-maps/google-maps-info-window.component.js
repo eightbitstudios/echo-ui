@@ -17,10 +17,15 @@ angular.module('echo.components.googleMapsInfoWindow', [
       that.$onInit = function () {
         googleMapsApi.then(function (google) {
           var infoWindow = new google.maps.InfoWindow({
-            content: $element[0]
+            content: $element[0],
+            pixelOffset: new google.maps.Size(210, 255)
           });
 
           that.markerCtrl.marker.addListener('click', function () {
+            if(that.mapsCtrl.openedInfoWindow){
+              that.mapsCtrl.openedInfoWindow.close();
+            }
+            that.mapsCtrl.openedInfoWindow = infoWindow;
             infoWindow.open(that.mapsCtrl.map, that.markerCtrl.marker);
           });
         });
