@@ -51,5 +51,6 @@ angular.module('echo.config.api', [])
     equipmentByLoadId: _.template('@equipmentByLoadId@'),
     verifyDriverByPhone: _.template('@verifyDriverByPhone@'),
     mapPointsForActiveLoads: _.template('@mapPointsForActiveLoads@'),
-    mapPointByLoadGuid: _.template('@mapPointByLoadGuid@')
+    mapPointByLoadGuid: _.template('@mapPointByLoadGuid@'),
+    mapPointsForLoadsNeedingAction: _.template('@mapPointsForLoadsNeedingAction@')
   });

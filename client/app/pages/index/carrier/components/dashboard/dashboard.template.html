@@ -12,7 +12,7 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <map-placeholder></map-placeholder>
+  <load-map ng-if="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" />
   <div class="container main-content">
     <section>
       <div class="section-head">
