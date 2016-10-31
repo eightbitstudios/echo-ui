@@ -50,6 +50,7 @@ module.exports = {
     trailerNumberByLoadId: '/mock/api/v1/loads/:loadId/trailerNumber',
     equipmentByLoadId: '/mock/api/v1/loads/:loadId/equipments',
     verifyDriverByPhone: '/mock/api/v1/carriers/:carrierId/drivers/verify/:phoneNumber',
-    mapPointsForActiveLoads: '/mock/api/v1/carriers/:carrierId/loads/active/map'
+    mapPointsForActiveLoads: '/mock/api/v1/carriers/:carrierId/loads/active/map',
+    mapPointByLoadGuid: '/mock/api/v1/loads/:loadGuid/details/map'
   }
 };

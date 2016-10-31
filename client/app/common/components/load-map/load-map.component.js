@@ -4,7 +4,8 @@ angular.module('echo.components.loadMap', [
   'echo.components.googleMaps',
   'echo.components.googleMapsMarker',
   'echo.components.googleMapsInfoWindow',
-  'echo.components.loadMap.detailedInfoWindow'
+  'echo.components.loadMap.detailedInfoWindow',
+  'echo.components.loadMap.basicInfoWindow'
 ])
   .component('loadMap', {
     templateUrl: 'app/common/components/load-map/load-map.template.html',

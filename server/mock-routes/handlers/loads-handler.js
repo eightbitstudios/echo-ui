@@ -162,6 +162,13 @@ module.exports = {
     responseUtil.timeout(function () {
       res.json(resTemplate);
     }, minDelay, maxDelay);
+  },
+  fetchMapPointByLoadGuid: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = loadsMapRes.loads[2];
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };
 
