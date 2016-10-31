@@ -1,9 +1,9 @@
 <div class="dashboard">
   <div class="container-fluid carrier-dashboard-header">
-    <div class="container">
+    <div class="container" ng-if="$ctrl.showMap">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <strong>9 Loads Located</strong>
+          <strong>{{$ctrl.mapPoints.length}} Loads Located</strong>
         </li>
         <li>
           <a href="javascript:void(0)">View Full Map</a>
