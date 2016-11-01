@@ -10,8 +10,7 @@ angular.module('echo.login.createPassword', [
   controller: function ($stateParams, $state, $window, routesConfig, authenticationApi, PasswordChangeModel, appConstants) {
     var that = this;
     that.token = $stateParams.validationToken;
-    that.oneLoginUserId = $stateParams.oneLoginUserId;
-    that.username = $stateParams.username;
+    that.userId = $stateParams.userId;
     that.passwordChange = new PasswordChangeModel();
     that.showButtonLoading = false;
     that.appConstants = appConstants;
@@ -19,7 +18,7 @@ angular.module('echo.login.createPassword', [
     that.createPassword = function () {
       that.showButtonLoading = true;
 
-      authenticationApi.createPassword(that.username, that.oneLoginUserId, that.token, that.passwordChange).then(function () {
+      authenticationApi.createPassword(that.userId, that.token, that.passwordChange).then(function () {
         $window.location = routesConfig.INDEX.base.url;
       }).catch(function () {
         $state.go(routesConfig.LOGIN.signIn.name, { invalidToken: true });
