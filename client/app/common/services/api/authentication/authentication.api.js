@@ -8,23 +8,24 @@ angular.module('echo.api.authentication', [
   return {
     /**
      * @description Creates a password
-     * @param {string} userName - User name
+     * @param {string} userId - User Id
      * @param {string} oneLoginUserId - One Login User Id
      * @param {string} token - User token for password creation
      * @param {PasswordChangeModel} passwordChange - Password change model
      * @returns {Promise} - Users password was created
      */
-    createPassword: function (username, oneLoginUserId, token, passwordChange) {
-      var url = apiConfig.createPassword({ userId: username });
+    createPassword: function (userId, token, passwordChange) {
+      var url = apiConfig.createPassword({ userId: userId });
 
       var data = {
         password: passwordChange.newPassword,
         confirmPassword: passwordChange.confirmPassword,
-        invitationToken: token,
-        oneLoginId: oneLoginUserId
+        invitationToken: token
       };
 
       return $http.post(url, data).then(function (resp) {
+        cookieService.setRefreshToken(_.get(resp, 'data.data.refresh_token')); // jshint ignore:line
+        cookieService.setToken(_.get(resp, 'data.data.access_token')); // jshint ignore:line
         return resp;
       }).catch(function () {
         return $q.reject();

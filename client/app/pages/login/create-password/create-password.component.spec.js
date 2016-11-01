@@ -31,12 +31,11 @@ describe('Component: createPassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
-      component.username = 'test';
-      component.oneLoginUserId = '1';
+      component.userId = '142134123';
       authenticationApi.createPassword.and.returnValue($q.when());
       component.createPassword();
 
-      expect(authenticationApi.createPassword).toHaveBeenCalledWith(component.username, component.oneLoginUserId, component.token, component.passwordChange);
+      expect(authenticationApi.createPassword).toHaveBeenCalledWith(component.userId, component.token, component.passwordChange);
     });
 
     it('should redirect to login page if the token is invalid', function () {
