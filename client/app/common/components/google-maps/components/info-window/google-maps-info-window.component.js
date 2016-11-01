@@ -21,6 +21,12 @@ angular.module('echo.components.googleMapsInfoWindow', [
             pixelOffset: new google.maps.Size(that.mapsCtrl.popupOffset.x, that.mapsCtrl.popupOffset.y)
           });
           that.markerCtrl.marker.addListener('click', function () {
+
+            if(that.mapsCtrl.currentOpenPopover){
+              that.mapsCtrl.currentOpenPopover.close();
+            }
+
+            that.mapsCtrl.currentOpenPopover = infoWindow;
             infoWindow.open(that.mapsCtrl.map, that.markerCtrl.marker);
           });
         });
