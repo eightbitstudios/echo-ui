@@ -263,6 +263,12 @@ angular.module('echo.api.loads', [
       return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);
       });
+    },
+    fetchMapPointsForLoadsNeedingAction: function (carrierId) {
+      var url = apiConfig.mapPointsForLoadsNeedingAction({ carrierId: carrierId });
+      return $http.get(url).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
     }
   };
 });
