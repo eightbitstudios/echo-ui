@@ -12,7 +12,7 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
     controller: function (routesConfig) {
       var that = this;
 
-      that.noDriver = _.isUndefined(that.mapPoint.driver.id);
+      that.noDriver = _.isUndefined(_.get(that.mapPoint.driver, 'id'));
       that.loadDetails = routesConfig.INDEX.loadDetails.name;
     }
   });
