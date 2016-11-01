@@ -3,7 +3,8 @@ angular.module('echo.components.loadMap', [
   'echo.services.googleMaps',
   'echo.components.googleMaps',
   'echo.components.googleMapsMarker',
-  'echo.components.googleMapsInfoWindow'
+  'echo.components.googleMapsInfoWindow',
+  'echo.components.loadMap.detailedInfoWindow'
 ])
   .component('loadMap', {
     templateUrl: 'app/common/components/load-map/load-map.template.html',
