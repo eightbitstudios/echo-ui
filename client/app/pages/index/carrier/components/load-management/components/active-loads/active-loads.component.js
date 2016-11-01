@@ -71,9 +71,13 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       });
     };
 
-    that.$onInit = function () {
+    that.refreshPageData = function () {
       that.getAvailableLoads();
       that.getMapPointsForAvailableLoads();
+    };
+
+    that.$onInit = function () {
+      that.refreshPageData();
     };
   }
 });
