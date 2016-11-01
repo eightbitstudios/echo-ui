@@ -21,6 +21,7 @@ module.exports = [
       day: 'Fri, May 23'
     },
     driver: {
+      id: 1,
       firstName: 'Fred',
       lastName: 'Freeman',
       phone: '3125551234'
@@ -53,6 +54,7 @@ module.exports = [
       day: 'Fri, May 23'
     },
     driver: {
+      id: 1,
       firstName: 'Shane',
       lastName: 'Dunne',
       phone: '3125551454'
@@ -85,6 +87,7 @@ module.exports = [
       day: 'Fri, May 23'
     },
     driver: {
+      id: 1,
       firstName: 'Calvin',
       lastName: 'Davies',
       phone: '3125551984'
@@ -117,6 +120,7 @@ module.exports = [
       day: 'Fri, May 23'
     },
     driver: {
+      id: 1,
       firstName: 'Will',
       lastName: 'Hartman',
       phone: '3125551024'

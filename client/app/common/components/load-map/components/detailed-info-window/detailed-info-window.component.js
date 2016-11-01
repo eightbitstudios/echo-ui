@@ -10,6 +10,9 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
       mapPoint: '<'
     },
     controller: function (routesConfig) {
-      this.loadDetails = routesConfig.INDEX.loadDetails.name;
+      var that = this;
+
+      that.noDriver = _.isUndefined(that.mapPoint.driver.id);
+      that.loadDetails = routesConfig.INDEX.loadDetails.name;
     }
   });
