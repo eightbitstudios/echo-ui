@@ -74,19 +74,34 @@
       background-color: #8f9496;
     }
   }
-  &.btn-warning {
+  &.btn-danger {
     border: none;
     background-color: @c-error;
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     &:hover {
-      background-color: #cc4435;
+      background-color: @c-error-hover;
     }
     &:active, &:focus {
       outline: none;
       box-shadow: none;
-      background-color: #b33c2e;
+      background-color: @c-error-hover;
+    }
+  }
+  &.btn-warning {
+    border: none;
+    background-color: @c-alert;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &:hover {
+      background-color: @c-alert-hover;
+    }
+    &:active, &:focus {
+      outline: none;
+      box-shadow: none;
+      background-color: @c-alert-hover;
     }
   }
   &.btn-link {

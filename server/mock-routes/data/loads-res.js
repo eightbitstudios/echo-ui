@@ -37,6 +37,7 @@ module.exports = {
         }],
       "stopTotalWeightInPounds": 2080.5
     }],
+    escalationLevel: 2,
     "delivery": [{
       "pickupNumber": 56985478,
       "name": "Walmart Supercenter",
@@ -147,7 +148,8 @@ module.exports = {
         lastName: 'Smith',
         phone: '8895351903',
         isTrackingEnabled: false
-      },
+      },  
+      escalationLevel: 3,
       nextAction: {
         lastAction: 1,
         firstName: 'Tim',

@@ -7,7 +7,7 @@ angular.module('echo.services.googleMaps', [
     return {
       appendPosition: function (geocoder, mapPoint) {
         var deferred = $q.defer();
-        geocoder.geocode({'address': _.template('${city}, ${state}')({ city: _.get(mapPoint.currentLocation, 'city'), state: _.get(mapPoint.currentLocation, 'state')})}, function (results, status) {
+        geocoder.geocode({'address': _.template('${city}, ${state}')({ city: _.get(mapPoint.currentLocation, 'cityName'), state: _.get(mapPoint.currentLocation, 'stateCode')})}, function (results, status) {
           if (status === 'OK') {
             mapPoint.position = results[0].geometry.location;
           }
