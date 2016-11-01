@@ -44,8 +44,8 @@ angular.module('echo.components.googleMaps', [
         {'featureType': 'transit.line', 'elementType': 'geometry', 'stylers': [{'color': '#e5e5e5'}]},
         {'featureType': 'transit.station', 'elementType': 'geometry', 'stylers': [{'color': '#eeeeee'}]},
         {'featureType': 'water', 'elementType': 'geometry', 'stylers': [{'color': '#b9f0ff'}]},
-        {'featureType': 'water', 'elementType': 'labels.text.fill', 'stylers': [{'color': '#9e9e9e'}]}
-      ];
+        {'featureType': 'water', 'elementType': 'labels.text.fill', 'stylers': [{'color': '#9e9e9e'}]},
+        {'featureType': 'administrative', 'elementType': 'geometry.stroke', 'stylers': [{'color': '#dddddd'}, {'weight': 1}]}];
 
       googleMapsApi.then(function (google) {
         that.map = new google.maps.Map($element.find('.map')[0], {

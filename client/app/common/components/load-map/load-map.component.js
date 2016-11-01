@@ -20,7 +20,7 @@ angular.module('echo.components.loadMap', [
   .component('loadMap', {
     templateUrl: 'app/common/components/load-map/load-map.template.html',
     bindings: {
-      mapPoints: '<',
+      mapPoints: '=',
       detailedInfo: '<'
     },
     controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
