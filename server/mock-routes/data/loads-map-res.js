@@ -27,7 +27,10 @@ module.exports = {
         phone: '3125551234'
       },
       timeStamp: '1.5 hrs ago',
-      capturedBy: 'tracking'
+      capturedBy: {
+        firstName: 'Michael',
+        lastName: 'West'
+      }
     },
     {
       loadId: 98765443,
@@ -56,10 +59,13 @@ module.exports = {
         phone: '3125551454'
       },
       timeStamp: '1.5 hrs ago',
-      capturedBy: 'tracking'
+      capturedBy: {
+        firstName: 'Alan',
+        lastName: 'Shanahan'
+      }
     },
     {
-      loadId: 24524312,
+      loadId: 2345675,
       loadGuid: '8d34ba4f8baa4cd09c776826df55bae1',
       currentLocation: {
         city: 'Toledo',
@@ -85,7 +91,10 @@ module.exports = {
         phone: '3125551984'
       },
       timeStamp: '1.5 hrs ago',
-      capturedBy: 'tracking'
+      capturedBy: {
+        firstName: 'Jack',
+        lastName: 'Ainsley'
+      }
     },
     {
       loadId: 65434567,
@@ -114,7 +123,10 @@ module.exports = {
         phone: '3125551024'
       },
       timeStamp: '1.5 hrs ago',
-      capturedBy: 'tracking'
+      capturedBy: {
+        firstName: 'Richard',
+        lastName: 'Lewis'
+      }
     }
   ]
 };

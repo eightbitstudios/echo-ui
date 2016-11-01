@@ -17,9 +17,9 @@ angular.module('echo.components.googleMapsInfoWindow', [
       that.$onInit = function () {
         googleMapsApi.then(function (google) {
           var infoWindow = new google.maps.InfoWindow({
-            content: $element[0]
+            content: $element[0],
+            pixelOffset: new google.maps.Size(that.mapsCtrl.popupOffset.x, that.mapsCtrl.popupOffset.y)
           });
-
           that.markerCtrl.marker.addListener('click', function () {
             infoWindow.open(that.mapsCtrl.map, that.markerCtrl.marker);
           });

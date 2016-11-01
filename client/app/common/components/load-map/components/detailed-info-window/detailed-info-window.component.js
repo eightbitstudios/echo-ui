@@ -1,6 +1,6 @@
 angular.module('echo.components.loadMap.detailedInfoWindow', [
   'echo.components.loadMap.detailedInfoWindow.location',
-  'echo.components.loadMap.detailedInfoWindow.driverCapturedLocation',
+  'echo.components.loadMap.driverCapturedLocation',
   'echo.filters.firstCharacter',
   'echo.filters.phoneNumber'
 ])

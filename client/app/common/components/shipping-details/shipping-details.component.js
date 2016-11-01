@@ -16,6 +16,8 @@ angular.module('echo.components.shippingDetails', [
         that.location = _.find(that.shippingDetails, { isCurrent: true }) ||  _.last(that.shippingDetails);
         that.paging.selectedPage = _.findIndex(that.shippingDetails, that.location) + 1;
         that.paging.totalRecords = _.size(that.shippingDetails);
+      } else {
+        that.location = that.shippingDetails;
       }
 
       that.pageClickHandler = function() {
