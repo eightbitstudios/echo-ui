@@ -92,5 +92,13 @@ angular.module('echo.config.appConstants', [])
       }
 
     },
-    CUSTOM_ERROR_CODES: [500112, 500113]
+    CUSTOM_ERROR_CODES: [500112, 500113],
+    DEFAULT_MAP_ZOOM: {
+      ONE_POINT: 15,
+      OTHER: 4
+    },
+    DEFAULT_MAP_CENTER: {
+      lat: 39.50,
+      lng: -98.35
+    }
   });
