@@ -73,7 +73,7 @@ angular.module('echo.index.carrier.dashboard', [
         that.showMap = false;
         that.mapPoints = [];
         loadsApi.fetchMapPointsForLoadsNeedingAction(that.carrierId).then(function (mapPointData) {
-          that.mapPoints = mapPointData.loads;
+          that.mapPoints = mapPointData;
           that.showMap = true;
         });
       };
