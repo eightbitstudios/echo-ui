@@ -4,5 +4,7 @@ var endpoints = require('./endpoints'),
 
 module.exports = function (grunt) {
   var host = 'https://api.local';
-  return  _.zipObject(_.keys(endpoints), _.map(endpoints, function (value) { return host + value }));
+  var apiEndpoints = _.zipObject(_.keys(endpoints), _.map(endpoints, function (value) { return host + value }));
+  apiEndpoints.googleMapsApiKey = 'AIzaSyC8RsoHfRqThfEIun95B9Q57aN2BT8L_OI';
+  return apiEndpoints;
 };

@@ -47,5 +47,7 @@ module.exports = {
   proNumberByLoadId: '/api/v1/loads/${loadId}/proNumber',
   trailerNumberByLoadId: '/api/v1/loads/${loadId}/trailerNumber',
   equipmentByLoadId: '/api/v1/loads/${loadId}/equipments',
-  verifyDriverByPhone: '/api/v1/carriers/${carrierId}/drivers/verify/${phoneNumber}'
+  verifyDriverByPhone: '/api/v1/carriers/${carrierId}/drivers/verify/${phoneNumber}',
+  mapPointsForActiveLoads: '/api/v1/carriers/${carrierId}/loads/active/map',
+  mapPointByLoadGuid: '/api/v1/loads/${loadGuid}/details/map'
 };

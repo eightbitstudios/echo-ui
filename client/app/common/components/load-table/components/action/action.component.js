@@ -24,24 +24,21 @@ angular.module('echo.components.loadTable.action', [
       var that = this;
 
       that.appConstants = appConstants;
-      that.showButtonLoading = false;
-      that.currentStatus = _.find(actionEnums.LAST_ACTION, { value: _.get(that.load.nextAction, 'lastAction') });
-      that.nextAction = _.find(actionEnums.AVAILABLE_ACTIONS, { value: _.get(that.load.nextAction, 'nextAction') });
 
       var actionHandler = {};
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_EMPTY.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
-          timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
-            return modalService.open({
-              component: 'report-empty-modal',
-              bindings: {
-                load: that.load,
-                reportEmpty: reportEmpty,
-                timeZones: timeZones
-              }
-            });
-          }));
+        timeZoneApi.fetchTimeZones()]).then(_.spread(function (reportEmpty, timeZones) {
+          return modalService.open({
+            component: 'report-empty-modal',
+            bindings: {
+              load: that.load,
+              reportEmpty: reportEmpty,
+              timeZones: timeZones
+            }
+          });
+        }));
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_LOADED.value] = function (loadGuid) {
@@ -52,7 +49,7 @@ angular.module('echo.components.loadTable.action', [
               bindings: {
                 load: that.load,
                 reportLoaded: {
-                  lastActionDate: that.load.nextAction.actionPerformed,
+                  actionPerformedOn: that.load.nextAction.actionPerformedOn,
                 },
                 items: items,
                 timeZones: timeZones
@@ -63,7 +60,7 @@ angular.module('echo.components.loadTable.action', [
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
         return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid),
-          timeZoneApi.fetchTimeZones()])
+        timeZoneApi.fetchTimeZones()])
           .then(_.spread(function (sendLoadUpdate, timeZones) {
             return modalService.open({
               component: 'send-load-update-modal',
@@ -79,7 +76,7 @@ angular.module('echo.components.loadTable.action', [
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_DELIVERY.value] = function (loadGuid) {
         return $q.all([timeZoneApi.fetchTimeZones(),
-          loadsApi.fetchItemsByLoadGuid(loadGuid)])
+        loadsApi.fetchItemsByLoadGuid(loadGuid)])
           .then(_.spread(function (timeZones, items) {
             return modalService.open({
               component: 'report-delivery-modal',
@@ -100,7 +97,7 @@ angular.module('echo.components.loadTable.action', [
               load: that.load,
               carrierId: that.carrierId,
               reportArrival: {
-                lastActionDate: that.load.nextAction.actionPerformed,
+                actionPerformedOn: that.load.nextAction.actionPerformedOn,
                 address: _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.load.pickUp),
                 driver: that.load.driver
               },
@@ -131,6 +128,18 @@ angular.module('echo.components.loadTable.action', [
           }).finally(function () {
             that.showButtonLoading = false;
           });
+      };
+
+      that.$onInit = function () {
+        that.showButtonLoading = false;
+        that.currentStatus = _.find(actionEnums.LAST_ACTION, { value: _.get(that.load.nextAction, 'lastAction') });
+        that.nextAction = _.find(actionEnums.AVAILABLE_ACTIONS, { value: _.get(that.load.nextAction, 'nextAction') });
+
+        if (that.load.escalationLevel === 2) {
+          that.actionButtonEscalationClass = 'btn-warning';
+        } else if (that.load.escalationLevel === 3) {
+          that.actionButtonEscalationClass = 'btn-danger';
+        }
       };
     }
   });

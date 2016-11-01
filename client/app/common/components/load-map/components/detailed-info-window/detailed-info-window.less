@@ -1,0 +1,86 @@
+.gm-overlay-header, .gm-overlay-body {
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+  border-bottom: solid 1px @c-gray-light;
+  font-family: @body-font;
+  font-size: 14px;
+  font-weight: @fw-normal;
+  .lead {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: @fw-normal;
+  }
+  .location .place {
+    height: 50px;
+  }
+
+  .location-time {
+    font-size: 12px;
+  }
+}
+
+.gm-overlay-header, .gm-overlay-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.gm-overlay-body, .gm-overlay-footer {
+  padding-right: 15px;
+}
+
+.gm-overlay-header .load-number {
+  margin-bottom: 0;
+}
+
+.gm-overlay-body .load-location {
+  width: 130px;
+}
+
+.gm-info-window.gm-overlay-basic {
+  padding: 20px 30px;
+  line-height: 1.6;
+  width: 230px;
+}
+
+.gm-info-window.gm-overlay-basic .overlay-notice {
+  margin-bottom: 10px;
+}
+.load-info {
+  .load-direction {
+    padding-right: 20px;
+    padding-top: 15px;
+  }
+}
+.load-location {
+  color: @c-gray-darkest;
+
+  .load-city {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .load-st {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .load-citystate {
+    margin-bottom: 15px;
+  }
+}
+
+.gm-overlay-footer {
+  font-weight: 400;
+  font-family: @body-font;
+  font-size: 14px;
+  .small {
+    font-size: 85%;
+  }
+}

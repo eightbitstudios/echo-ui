@@ -25,7 +25,7 @@ describe('Component: action', function () {
       loadNumber: 1234,
       loadGuid: 41234,
       nextAction: {
-        actionPerformed: '09/08/2016'
+        actionPerformedOn: '09/08/2016'
       },
       pickUp: [{
         city: 'Chicago'
@@ -45,6 +45,21 @@ describe('Component: action', function () {
     });
   }));
 
+  describe('Function: $onInit', function () {
+    it('should set button class to warning', function () {
+      component.load.escalationLevel = 2;
+      component.$onInit();
+      expect(component.actionButtonEscalationClass).toEqual('btn-warning');
+    });
+
+    it('should set button class to danger', function () {
+      component.load.escalationLevel = 3;
+      component.$onInit();
+      expect(component.actionButtonEscalationClass).toEqual('btn-danger');
+
+    });
+  });
+  
   describe('Function: Report Empty', function () {
     var reportEmptyDefer,
       timeZoneDefer;
@@ -136,7 +151,7 @@ describe('Component: action', function () {
             load: load,
             items: items,
             reportLoaded: {
-              lastActionDate: load.nextAction.actionPerformed,
+              actionPerformedOn: load.nextAction.actionPerformedOn,
             },
             timeZones: timeZones
           }
@@ -279,7 +294,7 @@ describe('Component: action', function () {
             load: load,
             carrierId: carrierId,
             reportArrival: {
-              lastActionDate: load.nextAction.actionPerformed,
+              actionPerformedOn: load.nextAction.actionPerformedOn,
               address: load.pickUp[0],
               driver: load.driver
             },

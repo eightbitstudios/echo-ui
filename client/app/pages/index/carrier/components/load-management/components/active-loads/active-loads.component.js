@@ -7,8 +7,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.config.appConstants',
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
-  'echo.components.mapPlaceholder',
-  'echo.components.filterButton'
+  'echo.components.filterButton',
+  'echo.components.loadMap'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
@@ -62,6 +62,18 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.getAvailableLoads();
     };
 
-    that.$onInit = that.getAvailableLoads;
+    that.getMapPointsForAvailableLoads = function () {
+      that.showMap = false;
+      that.mapPoints = [];
+      loadsApi.fetchMapPointsForActiveLoads(that.carrierId).then(function (mapPointData) {
+        that.mapPoints = mapPointData.loads;
+        that.showMap = true;
+      });
+    };
+
+    that.$onInit = function () {
+      that.getAvailableLoads();
+      that.getMapPointsForAvailableLoads();
+    };
   }
 });

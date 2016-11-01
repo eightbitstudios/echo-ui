@@ -41,6 +41,8 @@ module.exports = function (app) {
   app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
   app.get(endpoints.api.reportArrivalByLoadGuid, loadsHandler.fetchReportArrivalByLoadGuid);
   app.post(endpoints.api.reportArrivalByLoadGuid, loadsHandler.updateReportArrivalByLoadGuid);
+  app.get(endpoints.api.mapPointsForActiveLoads, loadsHandler.fetchMapPointsForActiveLoads);
+  app.get(endpoints.api.mapPointByLoadGuid, loadsHandler.fetchMapPointByLoadGuid);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);

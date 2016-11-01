@@ -1,5 +1,6 @@
 angular.module('echo.config.api', [])
   .constant('apiConfig', {
+    googleMapsApiKey: '@googleMapsApiKey@',
     availableLoadsByCarrierId: _.template('@availableLoadsByCarrierId@'),
     unbilledLoadsByCarrierId: _.template('@unbilledLoadsByCarrierId@'),
     upcomingLoadsByCarrierId: _.template('@upcomingLoadsByCarrierId@'),
@@ -48,5 +49,7 @@ angular.module('echo.config.api', [])
     reportDeliveredByLoadGuid: _.template('@reportDeliveredByLoadGuid@'),
     feedbackByLoadGuid: _.template('@feedbackByLoadGuid@'),
     equipmentByLoadId: _.template('@equipmentByLoadId@'),
-    verifyDriverByPhone: _.template('@verifyDriverByPhone@')
+    verifyDriverByPhone: _.template('@verifyDriverByPhone@'),
+    mapPointsForActiveLoads: _.template('@mapPointsForActiveLoads@'),
+    mapPointByLoadGuid: _.template('@mapPointByLoadGuid@')
   });

@@ -1,0 +1,5 @@
+<div class="driver-location">
+  <span class="small">{{$ctrl.location | formatCityState}}</span>
+  <br>
+  <span class="small">{{$ctrl.timeStamp}}<span ng-if="$ctrl.capturedBy"> via {{$ctrl.capturedBy.firstName}} {{$ctrl.capturedBy.lastName | firstCharacter}}</span></span>
+</div>

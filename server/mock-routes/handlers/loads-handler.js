@@ -1,5 +1,6 @@
 var responseUtil = require('../util/response-util.js'),
   loadsRes = require('../data/loads-res'),
+  loadsMapRes = require('../data/loads-map-res'),
   reportEmptyRes = require('../data/report-empty-res'),
   activityLogRes = require('../data/activity-log-res'),
   reportArrivalRes = require('../data/report-arrival-res'),
@@ -151,6 +152,20 @@ module.exports = {
       resTemplate.data.trailerNumber = req.body.trailerNumber;
     }
 
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  fetchMapPointsForActiveLoads: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = loadsMapRes;
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  fetchMapPointByLoadGuid: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = loadsMapRes.loads[2];
     responseUtil.timeout(function () {
       res.json(resTemplate);
     }, minDelay, maxDelay);

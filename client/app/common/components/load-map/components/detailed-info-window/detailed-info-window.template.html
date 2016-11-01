@@ -1,0 +1,32 @@
+<div class="gm-info-window">
+  <div class="gm-overlay-header">
+    <h2 class="load-number">
+      <a ui-sref="{{$ctrl.loadDetails}}({loadId: $ctrl.mapPoint.loadGuid})">{{$ctrl.mapPoint.loadId}}</a>
+    </h2>
+  </div>
+  <div class="gm-overlay-body">
+    <div class="load-info row">
+        <div class="col-xs-5">
+          <shipping-details shipping-details="$ctrl.mapPoint.pickUp"/>
+        </div>
+        <div class="col-xs-2">      
+          <div class="load-col load-direction">
+            <span class="echo-icon icon-right-arrow-dark"></span>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <shipping-details shipping-details="$ctrl.mapPoint.delivery"/>
+        </div>  
+    </div>
+  </div>
+  <div class="gm-overlay-footer row">
+    <div class="driver-contact col-xs-5">
+      <span>{{$ctrl.mapPoint.driver.firstName}} {{$ctrl.mapPoint.driver.lastName | firstCharacter}}</span>
+      <br>
+      <span class="small">{{$ctrl.mapPoint.driver.phone | phoneNumber}}</span>
+    </div>
+    <div class="col-xs-5 col-xs-offset-2">
+      <driver-captured-location location="$ctrl.mapPoint.currentLocation" time-stamp="$ctrl.mapPoint.timeStamp" captured-by="$ctrl.mapPoint.capturedBy" />
+    </div>
+  </div>
+</div>

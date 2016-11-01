@@ -15,6 +15,7 @@ angular.module('echo.index', [
   'echo.api.carrier',
   'echo.index.carrier.myCompany.driverProfile',
   'echo.services.cookie',
+  'echo.services.googleMapsApi',
   'echo.services.userProfile',
   'templates-app'
 ]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
