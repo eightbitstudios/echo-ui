@@ -55,43 +55,43 @@ angular.module('echo.enums.actions', [])
     LAST_ACTION: {
       BOOKED: {
         value: 1,
-        description: 'Booked'
+        description: 'Reported Empty'
       },
       DRIVER_ASSIGNED: {
         value: 2,
-        description: 'Driver Assigned'
+        description: 'Reported Arrival At Pickup'
       },
       REPORTED_EMPTY: {
         value: 3,
-        description: 'Reported Empty'
+        description: 'Document Added'
       },
       REPORTED_ARRIVAL_AT_PICKUP: {
         value: 4,
-        description: 'Reported Arrival At Pickup'
+        description: 'Reported Loaded'
       },
       REPORTED_STILL_WAITING_TO_LOAD: {
         value: 5,
-        description: 'Reported Still Waiting To Load'
+        description: 'Reported Arrival At Delivery'
       },
       REPORTED_LOADED: {
         value: 6,
-        description: 'Reported Loaded'
+        description: 'Reported Unloaded'
       },
       DO_NOT_DISTURB_ON: {
         value: 7,
-        description: 'Do Not Disturb On'
+        description: 'Driver Assigned'
       },
       REPORTED_DROPPED: {
         value: 8,
-        description: 'Reported Dropped'
+        description: 'Reported Still Waiting To Load'
       },
       TRAILER_PICKED_UP: {
         value: 9,
-        description: 'Trailer Picked Up'
+        description: 'Do Not Disturb On'
       },
       REPORTED_ARRIVAL_AT_DELIVERY: {
         value: 10,
-        description: 'Reported Arrival At Delivery'
+        description: 'Trailer Picked Up'
       },
       REPORTED_STILL_WAITING_TO_UNLOAD: {
         value: 11,
@@ -99,19 +99,19 @@ angular.module('echo.enums.actions', [])
       },
       REPORTED_DELIVERED: {
         value: 12,
-        description: 'Reported Delivered'
+        description: 'Reported Location - Carrier Portal'
       },
       DOCUMENT_ADDED: {
         value: 13,
-        description: 'Document Added'
+        description: 'Trailer Dropped'
       },
       REPORTED_LOCATION: {
         value: 14,
-        description: 'Reported Location'
+        description: 'Reported Location - Mobile Tracking'
       },
       TRAILER_DROPPED: {
         value: 15,
-        description: 'Trailer Dropped'
+        description: 'Booked'
       }
     }
   });
