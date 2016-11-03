@@ -53,65 +53,65 @@ angular.module('echo.enums.actions', [])
       }
     },
     LAST_ACTION: {
-      BOOKED: {
-        value: 1,
-        description: 'Booked'
-      },
-      DRIVER_ASSIGNED: {
-        value: 2,
-        description: 'Driver Assigned'
-      },
       REPORTED_EMPTY: {
-        value: 3,
+        value: 1,
         description: 'Reported Empty'
       },
       REPORTED_ARRIVAL_AT_PICKUP: {
-        value: 4,
+        value: 2,
         description: 'Reported Arrival At Pickup'
       },
-      REPORTED_STILL_WAITING_TO_LOAD: {
-        value: 5,
-        description: 'Reported Still Waiting To Load'
+      DOCUMENT_ADDED: {
+        value: 3,
+        description: 'Document Added'
       },
       REPORTED_LOADED: {
-        value: 6,
+        value: 4,
         description: 'Reported Loaded'
       },
-      DO_NOT_DISTURB_ON: {
+      REPORTED_ARRIVAL_AT_DELIVERY: {
+        value: 5,
+        description: 'Reported Arrival At Delivery'
+      },
+      REPORTED_UNLOADED: {
+        value: 6,
+        description: 'Reported Unloaded'
+      },
+      DRIVER_ASSIGNED: {
         value: 7,
+        description: 'Driver Assigned'
+      },
+      REPORTED_STILL_WAITING_TO_LOAD: {
+        value: 8,
+        description: 'Reported Still Waiting To Load'
+      },
+      DO_NOT_DISTURB_ON: {
+        value: 9,
         description: 'Do Not Disturb On'
       },
-      REPORTED_DROPPED: {
-        value: 8,
-        description: 'Reported Dropped'
-      },
       TRAILER_PICKED_UP: {
-        value: 9,
-        description: 'Trailer Picked Up'
-      },
-      REPORTED_ARRIVAL_AT_DELIVERY: {
         value: 10,
-        description: 'Reported Arrival At Delivery'
+        description: 'Trailer Picked Up'
       },
       REPORTED_STILL_WAITING_TO_UNLOAD: {
         value: 11,
         description: 'Reported Still Waiting To Unload'
       },
-      REPORTED_DELIVERED: {
+      REPORTED_LOCATION_CARRIER_PORTAL: {
         value: 12,
-        description: 'Reported Delivered'
-      },
-      DOCUMENT_ADDED: {
-        value: 13,
-        description: 'Document Added'
-      },
-      REPORTED_LOCATION: {
-        value: 14,
-        description: 'Reported Location'
+        description: 'Reported Location - Carrier Portal'
       },
       TRAILER_DROPPED: {
-        value: 15,
+        value: 13,
         description: 'Trailer Dropped'
+      },
+      REPORTED_LOCATION_MOBILE_TRACKING: {
+        value: 14,
+        description: 'Reported Location - Mobile Tracking'
+      },
+      BOOKED: {
+        value: 15,
+        description: 'Booked'
       }
     }
   });
