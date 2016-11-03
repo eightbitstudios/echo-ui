@@ -7,15 +7,15 @@ module.exports = [
       stateCode: 'IL'
     },
     pickUp: {
-      cityName: 'Dallas',
-      stateCode: 'TX',
+      city: 'Dallas',
+      state: 'TX',
       zip: 75201,
       time: '14:00-15:00 EST',
       day: 'Today, Apr 20'
     },
     delivery: {
-      cityName: 'Milwaukee',
-      stateCode: 'WI',
+      city: 'Milwaukee',
+      state: 'WI',
       zip: 53202,
       time: '16:00-18:00 EST',
       day: 'Fri, May 23'
@@ -40,15 +40,15 @@ module.exports = [
       stateCode: 'IN'
     },
     pickUp: {
-      cityName: 'Dallas',
-      stateCode: 'TX',
+      city: 'Dallas',
+      state: 'TX',
       zip: 75201,
       time: '14:00-15:00 EST',
       day: 'Today, Apr 20'
     },
     delivery: {
-      cityName: 'Milwaukee',
-      stateCode: 'WI',
+      city: 'Milwaukee',
+      state: 'WI',
       zip: 53202,
       time: '16:00-18:00 EST',
       day: 'Fri, May 23'
@@ -73,15 +73,15 @@ module.exports = [
       stateCode: 'OH'
     },
     pickUp: {
-      cityName: 'Dallas',
-      stateCode: 'TX',
+      city: 'Dallas',
+      state: 'TX',
       zip: 75201,
       time: '14:00-15:00 EST',
       day: 'Today, Apr 20'
     },
     delivery: {
-      cityName: 'Milwaukee',
-      stateCode: 'WI',
+      city: 'Milwaukee',
+      state: 'WI',
       zip: 53202,
       time: '16:00-18:00 EST',
       day: 'Fri, May 23'
@@ -106,15 +106,15 @@ module.exports = [
       stateCode: 'IA'
     },
     pickUp: {
-      cityName: 'Dallas',
-      stateCode: 'TX',
+      city: 'Dallas',
+      state: 'TX',
       zip: 75201,
       time: '14:00-15:00 EST',
       day: 'Today, Apr 20'
     },
     delivery: {
-      cityName: 'Milwaukee',
-      stateCode: 'WI',
+      city: 'Milwaukee',
+      state: 'WI',
       zip: 53202,
       time: '16:00-18:00 EST',
       day: 'Fri, May 23'
