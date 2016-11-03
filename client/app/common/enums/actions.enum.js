@@ -53,43 +53,43 @@ angular.module('echo.enums.actions', [])
       }
     },
     LAST_ACTION: {
-      BOOKED: {
+      REPORTED_EMPTY: {
         value: 1,
         description: 'Reported Empty'
       },
-      DRIVER_ASSIGNED: {
+      REPORTED_ARRIVAL_AT_PICKUP: {
         value: 2,
         description: 'Reported Arrival At Pickup'
       },
-      REPORTED_EMPTY: {
+      DOCUMENT_ADDED: {
         value: 3,
         description: 'Document Added'
       },
-      REPORTED_ARRIVAL_AT_PICKUP: {
+      REPORTED_LOADED: {
         value: 4,
         description: 'Reported Loaded'
       },
-      REPORTED_STILL_WAITING_TO_LOAD: {
+      REPORTED_ARRIVAL_AT_DELIVERY: {
         value: 5,
         description: 'Reported Arrival At Delivery'
       },
-      REPORTED_LOADED: {
+      REPORTED_UNLOADED: {
         value: 6,
         description: 'Reported Unloaded'
       },
-      DO_NOT_DISTURB_ON: {
+      DRIVER_ASSIGNED: {
         value: 7,
         description: 'Driver Assigned'
       },
-      REPORTED_DROPPED: {
+      REPORTED_STILL_WAITING_TO_LOAD: {
         value: 8,
         description: 'Reported Still Waiting To Load'
       },
-      TRAILER_PICKED_UP: {
+      DO_NOT_DISTURB_ON: {
         value: 9,
         description: 'Do Not Disturb On'
       },
-      REPORTED_ARRIVAL_AT_DELIVERY: {
+      TRAILER_PICKED_UP: {
         value: 10,
         description: 'Trailer Picked Up'
       },
@@ -97,19 +97,19 @@ angular.module('echo.enums.actions', [])
         value: 11,
         description: 'Reported Still Waiting To Unload'
       },
-      REPORTED_DELIVERED: {
+      REPORTED_LOCATION_CARRIER_PORTAL: {
         value: 12,
         description: 'Reported Location - Carrier Portal'
       },
-      DOCUMENT_ADDED: {
+      TRAILER_DROPPED: {
         value: 13,
         description: 'Trailer Dropped'
       },
-      REPORTED_LOCATION: {
+      REPORTED_LOCATION_MOBILE_TRACKING: {
         value: 14,
         description: 'Reported Location - Mobile Tracking'
       },
-      TRAILER_DROPPED: {
+      BOOKED: {
         value: 15,
         description: 'Booked'
       }
