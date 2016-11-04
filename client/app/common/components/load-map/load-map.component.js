@@ -9,8 +9,8 @@ angular.module('echo.components.loadMap', [
 ])
   .constant('googleMapsConst', {
     detailedInfoOffset: {
-      x: 210,
-      y: 250
+      x: 230,
+      y: 262
     },
     defaultOffset: {
       x: 175,

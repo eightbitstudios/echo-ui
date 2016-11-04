@@ -7,20 +7,21 @@ module.exports = [
       stateCode: 'IL'
     },
     pickUp: {
-      cityName: 'Dallas',
-      stateCode: 'TX',
+      city: 'Dallas',
+      state: 'TX',
       zip: 75201,
       time: '14:00-15:00 EST',
       day: 'Today, Apr 20'
     },
     delivery: {
-      cityName: 'Milwaukee',
-      stateCode: 'WI',
+      city: 'Milwaukee',
+      state: 'WI',
       zip: 53202,
       time: '16:00-18:00 EST',
       day: 'Fri, May 23'
     },
     driver: {
+      id: 1,
       firstName: 'Fred',
       lastName: 'Freeman',
       phone: '3125551234'
@@ -39,20 +40,21 @@ module.exports = [
       stateCode: 'IN'
     },
     pickUp: {
-      cityName: 'Dallas',
-      stateCode: 'TX',
+      city: 'Dallas',
+      state: 'TX',
       zip: 75201,
       time: '14:00-15:00 EST',
       day: 'Today, Apr 20'
     },
     delivery: {
-      cityName: 'Milwaukee',
-      stateCode: 'WI',
+      city: 'Milwaukee',
+      state: 'WI',
       zip: 53202,
       time: '16:00-18:00 EST',
       day: 'Fri, May 23'
     },
     driver: {
+      id: 1,
       firstName: 'Shane',
       lastName: 'Dunne',
       phone: '3125551454'
@@ -71,20 +73,21 @@ module.exports = [
       stateCode: 'OH'
     },
     pickUp: {
-      cityName: 'Dallas',
-      stateCode: 'TX',
+      city: 'Dallas',
+      state: 'TX',
       zip: 75201,
       time: '14:00-15:00 EST',
       day: 'Today, Apr 20'
     },
     delivery: {
-      cityName: 'Milwaukee',
-      stateCode: 'WI',
+      city: 'Milwaukee',
+      state: 'WI',
       zip: 53202,
       time: '16:00-18:00 EST',
       day: 'Fri, May 23'
     },
     driver: {
+      id: 1,
       firstName: 'Calvin',
       lastName: 'Davies',
       phone: '3125551984'
@@ -103,20 +106,21 @@ module.exports = [
       stateCode: 'IA'
     },
     pickUp: {
-      cityName: 'Dallas',
-      stateCode: 'TX',
+      city: 'Dallas',
+      state: 'TX',
       zip: 75201,
       time: '14:00-15:00 EST',
       day: 'Today, Apr 20'
     },
     delivery: {
-      cityName: 'Milwaukee',
-      stateCode: 'WI',
+      city: 'Milwaukee',
+      state: 'WI',
       zip: 53202,
       time: '16:00-18:00 EST',
       day: 'Fri, May 23'
     },
     driver: {
+      id: 1,
       firstName: 'Will',
       lastName: 'Hartman',
       phone: '3125551024'

@@ -78,6 +78,11 @@ angular.module('echo.index.carrier.dashboard', [
         });
       };
 
+      that.refreshPageData = function () {
+        that.fetchMultiStopLoads();
+        that.fetchMapPoints();
+      };
+
       that.$onInit = function () {
 
         $q.all([that.fetchLoadsNeedingAction(),
