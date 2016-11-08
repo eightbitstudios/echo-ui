@@ -124,10 +124,6 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         });
       };
 
-      that.confirmPickupDisabled = function () {
-        return !_.get(that.assignedDriver, 'id');
-      };
-
       that.confirmDropOffDisabled = function () {
         return !that.location.isValid();
       };

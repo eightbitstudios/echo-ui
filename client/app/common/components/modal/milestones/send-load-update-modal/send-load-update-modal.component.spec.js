@@ -91,7 +91,7 @@ describe('Component: sendLoadUpdateModal', function () {
     it('should close modal when saved', function (done) {
       updateLocationDefer.resolve();
       component.confirmLocation();
-      
+
       loadsApi.createReportLocation().then(function() {
         expect(component.modalActions.close).toHaveBeenCalledWith(true);
         done();
@@ -116,7 +116,7 @@ describe('Component: sendLoadUpdateModal', function () {
     it('should close modal when saved', function (done) {
       updateDropOffDefer.resolve();
       component.confirmDropOff();
-      
+
       loadsApi.createReportTrailer().then(function() {
         expect(component.modalActions.close).toHaveBeenCalledWith(true);
         done();
@@ -141,7 +141,7 @@ describe('Component: sendLoadUpdateModal', function () {
     it('should close modal when saved', function (done) {
       updatePickupDefer.resolve();
       component.confirmPickup();
-      
+
       loadsApi.createReportTrailer().then(function() {
         expect(component.modalActions.close).toHaveBeenCalledWith(true);
         done();
@@ -151,29 +151,13 @@ describe('Component: sendLoadUpdateModal', function () {
     });
   });
 
-  describe('Function: confirmPickupDisabled', function () {
-   
-    it('should enable confirm pickup button', function () {
-      component.assignedDriver= {
-        id: 1
-      };
-      expect(component.confirmPickupDisabled()).toBeFalsy();
-    });
-    
-    it('should disable confirm pickup button', function () {
-      component.assignedDriver= {};
-      expect(component.confirmPickupDisabled()).toBeTruthy();
-    });
-
-  });
-
   describe('Function: confirmDropOffDisabled', function () {
-   
+
     it('should enable confirm drop off button', function () {
       component.location.isValid.and.returnValue(true);
       expect(component.confirmDropOffDisabled()).toBeFalsy();
     });
-    
+
     it('should disable confirm drop off button', function () {
       component.location.isValid.and.returnValue(false);
       expect(component.confirmDropOffDisabled()).toBeTruthy();
