@@ -20,10 +20,13 @@
     </div>
   </div>
   <div class="gm-overlay-footer row">
-    <div class="driver-contact col-xs-5">
+    <div class="driver-contact col-xs-5" ng-if="!$ctrl.noDriver">
       <span>{{$ctrl.mapPoint.driver.firstName}} {{$ctrl.mapPoint.driver.lastName | firstCharacter}}</span>
       <br>
       <span class="small">{{$ctrl.mapPoint.driver.phone | phoneNumber}}</span>
+    </div>
+    <div class="driver-contact col-xs-5" ng-if="$ctrl.noDriver">
+      No Driver assigned
     </div>
     <div class="col-xs-5 col-xs-offset-2">
       <driver-captured-location location="$ctrl.mapPoint.currentLocation" time-stamp="$ctrl.mapPoint.timeStamp" captured-by="$ctrl.mapPoint.capturedBy" />

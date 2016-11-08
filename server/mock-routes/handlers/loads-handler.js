@@ -156,7 +156,7 @@ module.exports = {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  fetchMapPointsForActiveLoads: function (req, res) {
+  fetchMapPoints: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadsMapRes;
     responseUtil.timeout(function () {
@@ -165,7 +165,7 @@ module.exports = {
   },
   fetchMapPointByLoadGuid: function (req, res) {
     var resTemplate = new ResTemplate();
-    resTemplate.data = loadsMapRes.loads[2];
+    resTemplate.data = loadsMapRes[2];
     responseUtil.timeout(function () {
       res.json(resTemplate);
     }, minDelay, maxDelay);

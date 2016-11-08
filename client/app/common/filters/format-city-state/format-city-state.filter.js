@@ -10,6 +10,11 @@ angular.module('echo.filters.formatCityState', [
         address = {};
       }
 
+      if(address.cityName || address.stateCode) {
+        address.city = address.cityName;
+        address.state = address.stateCode;
+      }
+
       if (address.city && address.state) {
         return address.city + ', ' + address.state;
       } else if (address.city) {

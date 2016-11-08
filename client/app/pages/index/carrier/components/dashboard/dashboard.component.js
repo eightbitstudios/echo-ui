@@ -5,7 +5,7 @@ angular.module('echo.index.carrier.dashboard', [
   'echo.enums.loadTypes',
   'echo.config.appConstants',
   'echo.api.loads',
-  'echo.components.mapPlaceholder',
+  'echo.components.loadMap',
   'echo.components.showMore'
 ])
   .component('dashboard', {
@@ -69,6 +69,20 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
+      that.fetchMapPoints = function () {
+        that.showMap = false;
+        that.mapPoints = [];
+        loadsApi.fetchMapPointsForLoadsNeedingAction(that.carrierId).then(function (mapPointData) {
+          that.mapPoints = mapPointData;
+          that.showMap = true;
+        });
+      };
+
+      that.refreshPageData = function () {
+        that.fetchMultiStopLoads();
+        that.fetchMapPoints();
+      };
+
       that.$onInit = function () {
 
         $q.all([that.fetchLoadsNeedingAction(),
@@ -77,6 +91,8 @@ angular.module('echo.index.carrier.dashboard', [
           .then(_.spread(function (loadsNeedingAction, multiStopLoads, loadCounts) {
             that.activeLoadCount = loadCounts.active;
           }));
+
+        that.fetchMapPoints();
       };
     }
   });

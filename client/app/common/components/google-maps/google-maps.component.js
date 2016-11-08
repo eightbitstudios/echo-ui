@@ -21,6 +21,8 @@ angular.module('echo.components.googleMaps', [
       var defaultZoom = that.totalPoints === 1 ?
         appConstants.DEFAULT_MAP_ZOOM.ONE_POINT : appConstants.DEFAULT_MAP_ZOOM.OTHER;
 
+      that.currentOpenPopover = null;
+
       googleMapsApi.then(function (google) {
         that.map = new google.maps.Map($element[0], {
           center: that.center,

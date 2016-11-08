@@ -5,7 +5,7 @@ describe('Component: dashboard', function () {
   beforeEach(function () {
     module('app/pages/index/carrier/components/dashboard/dashboard.template.html');
     module('echo.index.carrier.dashboard', function ($provide) {
-      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('carrierApi', ['fetchLoadsNeedingAction', 'fetchMultiStopLoads', 'fetchLoadCount']));
+      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('carrierApi', ['fetchLoadsNeedingAction', 'fetchMultiStopLoads', 'fetchLoadCount', 'fetchMapPointsForLoadsNeedingAction']));
       $provide.value('PagingModel', PagingModel = jasmine.createSpy('PagingModel'));
       $provide.value('routesConfig', routesConfig = {
         INDEX: {
@@ -43,18 +43,21 @@ describe('Component: dashboard', function () {
   describe('Function: $onInit', function () {
     var actionLoadsDefer,
       multistopDefer,
-      loadCountDefer;
+      loadCountDefer,
+      mapPointsDefer;
 
     beforeEach(function () {
       actionLoadsDefer = $q.defer();
       multistopDefer = $q.defer();
       loadCountDefer = $q.defer();
+      mapPointsDefer = $q.defer();
 
       spyOn(component, 'fetchLoadsNeedingAction');
       spyOn(component, 'fetchMultiStopLoads');
       loadsApi.fetchLoadCount.and.returnValue(loadCountDefer.promise);
       component.fetchLoadsNeedingAction.and.returnValue(actionLoadsDefer.promise);
       component.fetchMultiStopLoads.and.returnValue(multistopDefer.promise);
+      loadsApi.fetchMapPointsForLoadsNeedingAction.and.returnValue(mapPointsDefer.promise);
       component.$onInit();
     });
 
@@ -70,6 +73,10 @@ describe('Component: dashboard', function () {
       expect(loadsApi.fetchLoadCount).toHaveBeenCalledWith(carrierId);
     });
 
+    it('should call map points', function () {
+      expect(loadsApi.fetchMapPointsForLoadsNeedingAction).toHaveBeenCalledWith(carrierId);
+    });
+
     it('should set active load counts', function (done) {
       var loadCounts = {
         active: 3
@@ -77,6 +84,7 @@ describe('Component: dashboard', function () {
       actionLoadsDefer.resolve({});
       multistopDefer.resolve({});
       loadCountDefer.resolve(loadCounts);
+      mapPointsDefer.resolve([]);
 
       scope.$digest();
 

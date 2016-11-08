@@ -66,14 +66,18 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.showMap = false;
       that.mapPoints = [];
       loadsApi.fetchMapPointsForActiveLoads(that.carrierId).then(function (mapPointData) {
-        that.mapPoints = mapPointData.loads;
+        that.mapPoints = mapPointData;
         that.showMap = true;
       });
     };
 
-    that.$onInit = function () {
+    that.refreshPageData = function () {
       that.getAvailableLoads();
       that.getMapPointsForAvailableLoads();
+    };
+
+    that.$onInit = function () {
+      that.refreshPageData();
     };
   }
 });
