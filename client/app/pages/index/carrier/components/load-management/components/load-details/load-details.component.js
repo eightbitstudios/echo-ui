@@ -30,15 +30,17 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       };
 
       that.$onInit = function () {
-        $q.all([loadsApi.fetchLoadDetails(that.loadId), loadsApi.fetchActivityLogByLoadId(that.loadId)])
-          .then(_.spread(function (loadDetails, activityLog) {
+        loadsApi.fetchLoadDetails(that.loadId)
+          .then(function (loadDetails) {
             that.loadDetails = loadDetails;
-            that.activityLog = activityLog;
             that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
             that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
             that.totalStops = _.size(that.loadDetails.pickUp) + _.size(that.loadDetails.delivery);
             that.getMapPoint();
-          })).finally(function() {
+            return loadsApi.fetchActivityLogByLoadId(that.loadDetails.loadId);
+          }).then(function(activityLog){
+            that.activityLog = activityLog;
+          }).finally(function() {
             that.showLoading = false;
           });
 
