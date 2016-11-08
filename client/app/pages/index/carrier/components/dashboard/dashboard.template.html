@@ -1,6 +1,6 @@
 <div class="dashboard">
   <div class="container-fluid carrier-dashboard-header">
-    <div class="container" ng-if="$ctrl.showMap">
+    <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
           <strong>{{$ctrl.mapPoints.length}} Loads Located</strong>
@@ -9,7 +9,7 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <load-map ng-if="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" />
+  <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" />
   <div class="container main-content">
     <section>
       <div class="section-head">
