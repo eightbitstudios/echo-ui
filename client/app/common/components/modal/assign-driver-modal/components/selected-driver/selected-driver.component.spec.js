@@ -32,8 +32,12 @@ describe('Component: Selected Driver', function () {
       loadsApi.fetchDriverStatusByLoadId.and.returnValue(deferred.promise);
       component.showStatus = true;
       component.$onInit();
-      var isAvailable = true;
-      deferred.resolve(isAvailable);
+
+      var driverAvailability = {
+        isDriverAvailable: true
+      };
+
+      deferred.resolve(driverAvailability);
 
       scope.$digest();
 
