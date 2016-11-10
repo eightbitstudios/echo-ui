@@ -1,7 +1,7 @@
 <div class="carrier-dashboard-action">
   <h3 class="driver-name"><a href="javascript:void(0)">{{$ctrl.currentStatus.description}}</a></h3> 
   {{$ctrl.load.nextAction | lastModifiedBy}}
-  <div class="action-align-bottom">
+  <div class="action-align-bottom" ng-if="$ctrl.nextAction">
     <loading-button button-class="{{$ctrl.actionButtonEscalationClass}}" 
       button-text="{{$ctrl.nextAction.description}}" click-handler="$ctrl.openMilestone($ctrl.nextAction.value)" 
       show-loading="$ctrl.showButtonLoading"></loading-button>

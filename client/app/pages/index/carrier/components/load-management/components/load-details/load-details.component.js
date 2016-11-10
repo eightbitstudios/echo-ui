@@ -24,7 +24,9 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         that.showMap = false;
         that.mapPoints = [];
         loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid')).then(function (mapPointData) {
-          that.mapPoints.push(mapPointData);
+          if (mapPointData) {
+            that.mapPoints.push(mapPointData);
+          }
           that.showMap = true;
         });
       };
@@ -36,12 +38,12 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
             that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
             that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
             that.totalStops = _.size(that.loadDetails.pickUp) + _.size(that.loadDetails.delivery);
-            that.getMapPoint();
-            return loadsApi.fetchActivityLogByLoadId(that.loadDetails.loadId);
+            return loadsApi.fetchActivityLogByLoadId(that.loadDetails.loadNumber);
           }).then(function(activityLog){
             that.activityLog = activityLog;
           }).finally(function() {
             that.showLoading = false;
+            that.getMapPoint();
           });
 
         if ($state.previous.data) {

@@ -21,7 +21,8 @@ angular.module('echo.components.loadMap', [
     templateUrl: 'app/common/components/load-map/load-map.template.html',
     bindings: {
       mapPoints: '=',
-      detailedInfo: '<'
+      detailedInfo: '<',
+      showMap: '<'
     },
     controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
       var that = this;
@@ -32,21 +33,31 @@ angular.module('echo.components.loadMap', [
         _.forEach(that.mapPoints, function (mapPoint) {
           promises.push(googleMaps.appendPosition(geocoder, mapPoint));
         });
-        $q.all(promises).then(function () {
-          that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
+
+        if (_.size(promises) === 0) {
           that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
-          that.showMap = true;
-        });
+          return that.mapCenter;
+        } else {
+          return $q.all(promises).then(function () {
+            that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
+            that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
+          });
+        }
       };
 
       that.popupOffset = that.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
 
-      that.$onInit = function () {
-        that.showMap = false;
-        googleMapsApi.then(function (google) {
-          that.google = google;
-          that.formatMapPoints(google);
-        });
+      that.$onChanges = function (changeObj) {
+        if(changeObj.showMap.currentValue) {
+          googleMapsApi.then(function (google) {
+            that.google = google;
+            return that.formatMapPoints(google);
+          }).finally(function() {
+            that.showLoading = false;
+          });
+        } else {
+          that.showLoading = true;
+        }
       };
     }
   });

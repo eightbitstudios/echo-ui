@@ -1,6 +1,6 @@
 <div class="active-loads">
   <div class="container-fluid carrier-dashboard-header">
-    <div class="container" ng-if="$ctrl.showMap">
+    <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
           <strong>{{$ctrl.mapPoints.length}} Loads Mapped</strong>
@@ -9,7 +9,7 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <load-map ng-if="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true"></load-map>
+  <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true"></load-map>
   <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
     <filter-button filter-enabled="$ctrl.isPickUpToday" click-handler="$ctrl.pickupsTodayHandler(value)" button-text="Pickups Today"></filter-button>
     <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
