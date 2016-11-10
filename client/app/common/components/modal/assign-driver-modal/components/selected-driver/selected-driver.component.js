@@ -18,8 +18,9 @@ angular.module('echo.components.modal.assignDriver.selectedDriver', [
         that.isDriverAlreadyAssigned = false;
         if (that.showStatus) {
           that.showLoading = true;
-          loadsApi.fetchDriverStatusByLoadId(that.loadId, that.driver.id).then(function (isAvailable) {
-            that.isDriverAlreadyAssigned = !isAvailable;
+          loadsApi.fetchDriverStatusByLoadId(that.loadId, that.driver.id).then(function (driverAvailability) {
+            that.isDriverAlreadyAssigned = !driverAvailability.isDriverAvailable;
+            that.conflictLoadId = driverAvailability.conflictingLoadId;
           }).finally(function () {
             that.showLoading = false;
           });

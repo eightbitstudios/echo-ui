@@ -44,7 +44,7 @@
     </section>
   </div>
   <div class="modal-footer">
-    <loading-button button-text="Confirm Pickup" disable-button="$ctrl.confirmPickupDisabled()" ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.confirmPickup()"></loading-button>
+    <loading-button button-text="Confirm Pickup" disable-button="false" ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.confirmPickup()"></loading-button>
     <loading-button button-text="Confirm Drop" disable-button="$ctrl.confirmDropOffDisabled()" ng-if="$ctrl.currentStep === $ctrl.modes.trailerDropOff" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.confirmDropOff()"></loading-button>
     <loading-button button-text="Confirm Location" disable-button="!$ctrl.location.isValid()" ng-if="$ctrl.currentStep === $ctrl.modes.location" show-loading="$ctrl.showButtonLoading" ng-click="$ctrl.confirmLocation()"></loading-button>
     <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
