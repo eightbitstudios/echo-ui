@@ -8,6 +8,9 @@ describe('Component: action', function () {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchReportEmptyByLoadGuid', 'fetchItemsByLoadGuid', 'fetchLoadUpdateOptionsByLoadGuid', 'fetchItemsByLoadGuid']));
       $provide.value('timeZoneApi', timeZoneApi = jasmine.createSpyObj('timeZoneApi', ['fetchTimeZones']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));
+      $provide.constant('moment', function(value){ 
+        return value; 
+      });
     });
   });
 
@@ -25,7 +28,8 @@ describe('Component: action', function () {
       loadNumber: 1234,
       loadGuid: 41234,
       nextAction: {
-        actionPerformedOn: '09/08/2016'
+        actionPerformedOn: '09/08/2016',
+        actionPerformedOnDate: '09/08/2016'
       },
       pickUp: [{
         city: 'Chicago'
@@ -93,7 +97,6 @@ describe('Component: action', function () {
       component.openMilestone(actionEnums.AVAILABLE_ACTIONS.REPORT_EMPTY.value);
 
       scope.$digest();
-
       reportEmptyDefer.promise.then(function () {
         expect(modalService.open).toHaveBeenCalledWith({
           component: 'report-empty-modal',
