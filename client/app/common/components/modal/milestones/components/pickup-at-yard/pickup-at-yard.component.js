@@ -3,7 +3,6 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
   'echo.components.typeaheadSearch',
   'echo.components.modal.assignDriver.newDriver',
   'echo.components.modal.assignDriver.selectedDriver',
-  'echo.models.dateTimePicker',
   'echo.api.loads'
 ])
   .component('pickupAtYard', {
@@ -12,9 +11,10 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
       load: '<',
       carrierId: '<',
       timeZones: '<',
-      assignedDriver: '='
+      assignedDriver: '=',
+      dateTimePicker: '='
     },
-    controller: function ($filter, carrierApi, DateTimePickerModel) {
+    controller: function ($filter, carrierApi) {
       var that = this;
       that.modes = {
         findDriver: 1,
@@ -60,7 +60,6 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
 
       that.$onInit = function () {
         that.showFindDriver();
-        that.dateTimePicker = new DateTimePickerModel();
       };
     }
   });
