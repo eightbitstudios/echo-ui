@@ -8,6 +8,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
   'echo.enums.loadUpdateOptions',
   'echo.models.location',
   'echo.models.dateTimePicker',
+  'echo.models.driver',
   'echo.services.modal',
   'echo.enums.arrivalTypes',
   'echo.components.modal.errorMessages'
@@ -21,7 +22,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       sendLoadUpdate: '<',
       carrierId: '<'
     },
-    controller: function (loadsApi, arrivalTypeEnums, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService) {
+    controller: function ($q, loadsApi, arrivalTypeEnums, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService, DriverModel) {
       var that = this;
 
       that.modes = {
@@ -110,10 +111,12 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
-        loadsApi.createReportTrailer(that.load.loadGuid, {
-          timeZone: that.dateTimePicker.timeZone,
-          eventTime: that.dateTimePicker.getDateTime(),
-          stopType: _.get(_.nth(that.load.pickUp, 0), 'stopType')
+        that.assignDriver(that.load.loadNumber, _.get(that.assignedDriver, 'id')).then( function () {
+          return loadsApi.createReportTrailer(that.load.loadGuid, {
+            timeZone: that.dateTimePicker.timeZone,
+            eventTime: that.dateTimePicker.getDateTime(),
+            stopType: _.get(_.nth(that.load.pickUp, 0), 'stopType')
+          });
         }).then(function () {
           that.modalActions.close(true);
         }).catch(function (status) {
@@ -128,9 +131,20 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         return !that.location.isValid();
       };
 
+      that.assignDriver = function (loadNumber, driverId) {
+        var deferred = $q.defer();
+        if (driverId) {
+          return loadsApi.assignDriver(loadNumber, driverId);
+        } else {
+          deferred.resolve();
+        }
+        return deferred.promise;
+      };
+
       that.$onInit = function () {
         that.currentStep = that.modes.overview;
         that.location = new LocationModel();
+        that.assignedDriver = new DriverModel(_.get(that.load, 'driver'));
         that.dateTimePicker = new DateTimePickerModel({
           minDate: moment(that.sendLoadUpdate.actionPerformedOn)
         });

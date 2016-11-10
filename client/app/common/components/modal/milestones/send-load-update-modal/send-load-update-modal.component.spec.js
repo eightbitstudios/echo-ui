@@ -1,11 +1,11 @@
 
 describe('Component: sendLoadUpdateModal', function () {
-  var component, $q, modalServiceOpenDefer, modalActions, loadsApi, modalService, LocationModel, DateTimePickerModel, arrivalTypeEnums, loadUpdateOptionEnums, scope, element, state;
+  var component, $q, modalServiceOpenDefer, modalActions, loadsApi, modalService, LocationModel, DateTimePickerModel, DriverModel, arrivalTypeEnums, loadUpdateOptionEnums, scope, element, state;
 
   beforeEach(function () {
     module('app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.template.html');
     module('echo.components.modal.milestones.sendLoadUpdate', function ($provide) {
-      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportLocation', 'createReportTrailer', '']));
+      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportLocation', 'createReportTrailer', 'assignDriver']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));
       $provide.value('LocationModel', LocationModel = function(){
         return jasmine.createSpyObj('location', ['isValid']);
@@ -13,6 +13,9 @@ describe('Component: sendLoadUpdateModal', function () {
       $provide.value('DateTimePickerModel', DateTimePickerModel = function(data){
         _.assign(this, data);
         this.getDateTime = _.noop;
+      });
+      $provide.value('DriverModel', DriverModel = function(data){
+        _.assign(this, data);
       });
     });
   });
@@ -37,8 +40,9 @@ describe('Component: sendLoadUpdateModal', function () {
     scope.$digest();
 
     component = $componentController('sendLoadUpdateModal', null, { modalActions: modalActions, load: {
-      nextAction: {}
-    }, timeZones: {}, sendLoadUpdate: {}, reportArival: {}, carrierId: 1 });
+      nextAction: {},
+      loadNumber: 12344321
+    }, timeZones: {}, sendLoadUpdate: {}, reportArrival: {}, carrierId: 1 });
     component.$onInit();
   }));
 
@@ -128,26 +132,31 @@ describe('Component: sendLoadUpdateModal', function () {
 
   describe('Function: confirmPickup', function () {
     var updatePickupDefer;
+    var assignDriverDefer;
     beforeEach(function() {
       updatePickupDefer = $q.defer();
+      assignDriverDefer = $q.defer();
       loadsApi.createReportTrailer.and.returnValue(updatePickupDefer.promise);
+      loadsApi.assignDriver.and.returnValue(assignDriverDefer.promise);
     });
 
     it('should call update pickup', function () {
+      assignDriverDefer.resolve();
       component.confirmPickup();
+
+      scope.$digest();
+
       expect(loadsApi.createReportTrailer).toHaveBeenCalled();
     });
 
-    it('should close modal when saved', function (done) {
+    it('should close modal when saved', function () {
       updatePickupDefer.resolve();
+      assignDriverDefer.resolve();
       component.confirmPickup();
 
-      loadsApi.createReportTrailer().then(function() {
-        expect(component.modalActions.close).toHaveBeenCalledWith(true);
-        done();
-      });
-
       scope.$digest();
+
+      expect(component.modalActions.close).toHaveBeenCalledWith(true);
     });
   });
 
