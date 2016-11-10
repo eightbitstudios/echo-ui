@@ -21,8 +21,6 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
         inviteNewDriver: 2
       };
 
-      that.assignedDriver = null;
-
       that.showFindDriver = function () {
         that.currentState = that.modes.findDriver;
       };
