@@ -42,9 +42,6 @@ describe('Component: modalSteps', function () {
     it('should call showFindDriver', function () {
       expect(component.showFindDriver).toHaveBeenCalled();
     });
-    it('should call showFindDriver', function () {
-      expect(DateTimePickerModel).toHaveBeenCalled();
-    });
   });
 
   describe('Function: showFindDriver', function () {
