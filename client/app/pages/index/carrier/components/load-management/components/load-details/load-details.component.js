@@ -13,31 +13,43 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     bindings: {
       repDetails: '<',
       carrierId: '<',
-      loadDetails: '<',
-      activityLog: '<'
+      loadId: '<'
     },
-    controller: function ($state, loadsApi) {
+    controller: function ($state, $q, loadsApi) {
       var that = this;
 
-      that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
-      that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
-      that.totalStops = _.size(that.loadDetails.pickUp) + _.size(that.loadDetails.delivery);
+      that.showLoading = true;
 
       that.getMapPoint = function () {
         that.showMap = false;
         that.mapPoints = [];
         loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid')).then(function (mapPointData) {
-          that.mapPoints.push(mapPointData);
+          if (mapPointData) {
+            that.mapPoints.push(mapPointData);
+          }
           that.showMap = true;
         });
       };
 
       that.$onInit = function () {
+        loadsApi.fetchLoadDetails(that.loadId)
+          .then(function (loadDetails) {
+            that.loadDetails = loadDetails;
+            that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
+            that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
+            that.totalStops = _.size(that.loadDetails.pickUp) + _.size(that.loadDetails.delivery);
+            return loadsApi.fetchActivityLogByLoadId(that.loadDetails.loadNumber);
+          }).then(function(activityLog){
+            that.activityLog = activityLog;
+          }).finally(function() {
+            that.showLoading = false;
+            that.getMapPoint();
+          });
+
         if ($state.previous.data) {
           that.previousRouteName = $state.previous.data.name;
           that.previousRoute = $state.previous.name;
         }
-        that.getMapPoint();
       };
     }
   });

@@ -150,12 +150,6 @@ angular.module('echo.index', [
       resolve: {
         loadId: function($stateParams) {
           return $stateParams.loadId;
-        },
-        loadDetails: function (loadsApi, loadId) {
-          return loadsApi.fetchLoadDetails(loadId);
-        },
-        activityLog: function (loadsApi, loadDetails) {
-          return loadsApi.fetchActivityLogByLoadId(loadDetails.loadNumber);
         }
       }
     })

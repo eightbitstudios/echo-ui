@@ -33,11 +33,16 @@ angular.module('echo.components.loadMap', [
         _.forEach(that.mapPoints, function (mapPoint) {
           promises.push(googleMaps.appendPosition(geocoder, mapPoint));
         });
-        
-        return $q.all(promises).then(function () {
-          that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
+
+        if (_.size(promises) === 0) {
           that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
-        });
+          return that.mapCenter;
+        } else {
+          return $q.all(promises).then(function () {
+            that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
+            that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
+          });
+        }
       };
 
       that.popupOffset = that.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
