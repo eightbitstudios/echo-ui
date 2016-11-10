@@ -59,7 +59,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
         that.starRatings = null;
 
         that.dateTimePicker = new DateTimePickerModel({
-          minDate: moment(that.load.nextAction.actionPerformedOn)
+          minDate: moment(that.load.nextAction.actionPerformedOnDate)
         });
       };
     }
