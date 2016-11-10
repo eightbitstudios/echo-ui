@@ -8,6 +8,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.components.modal.milestones.reportDelivery',
   'echo.services.modal',
   'echo.api.loads',
+  'echo.config.globals',
   'echo.enums.actions',
   'echo.enums.arrivalTypes',
   'echo.api.timeZone',
@@ -20,7 +21,7 @@ angular.module('echo.components.loadTable.action', [
       actionChangedCallback: '&',
       carrierId: '<'
     },
-    controller: function ($q, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
+    controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
       var that = this;
 
       that.appConstants = appConstants;
