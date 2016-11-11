@@ -21,7 +21,7 @@ angular.module('echo.config.appConstants', [])
       passwordLength: /^.{8,}$/,
       passwordLowerCase: /[a-z]/,
       passwordNumber: /[0-9]/,
-      passwordUpperCase: /[^a-z0-9]/
+      passwordUpperCase: /[A-Z]/
     },
     ERROR_MESSAGES: {
       DEFAULTS: {
