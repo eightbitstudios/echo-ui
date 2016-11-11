@@ -9,6 +9,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
   'echo.models.location',
   'echo.models.dateTimePicker',
   'echo.models.driver',
+  'echo.config.globals',
   'echo.services.modal',
   'echo.enums.arrivalTypes',
   'echo.components.modal.errorMessages'
@@ -22,7 +23,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       sendLoadUpdate: '<',
       carrierId: '<'
     },
-    controller: function ($q, loadsApi, arrivalTypeEnums, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService, DriverModel) {
+    controller: function ($q, moment, loadsApi, arrivalTypeEnums, loadUpdateOptionEnums, LocationModel, DateTimePickerModel, modalService, DriverModel) {
       var that = this;
 
       that.modes = {
@@ -54,7 +55,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
               bindings: {
                 load: that.load,
                 reportArrival: {
-                  actionPerformedOn: that.load.nextAction.actionPerformedOn,
+                  actionPerformedOn: that.load.nextAction.actionPerformedOnDate,
                   address: _.find(that.load.delivery, { isCurrent: true }) || _.last(that.shippingDetails),
                   driver: that.load.driver
                 },
@@ -146,7 +147,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.location = new LocationModel();
         that.assignedDriver = new DriverModel(_.get(that.load, 'driver'));
         that.dateTimePicker = new DateTimePickerModel({
-          minDate: moment(that.sendLoadUpdate.actionPerformedOn)
+          minDate: moment(that.sendLoadUpdate.actionPerformedOn, 'MM/DD/YYYY HH:mm:ss')
         });
       };
     }
