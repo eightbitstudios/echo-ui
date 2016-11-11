@@ -144,10 +144,12 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
       that.$onInit = function () {
         that.currentStep = that.modes.overview;
         that.location = new LocationModel();
-        that.assignedDriver = new DriverModel(_.get(that.load, 'driver'));
         that.dateTimePicker = new DateTimePickerModel({
           minDate: moment(that.sendLoadUpdate.actionPerformedOn)
         });
+        if (that.load.driver) {
+          that.assignedDriver = new DriverModel(_.get(that.load, 'driver'));
+        }
       };
     }
   });
