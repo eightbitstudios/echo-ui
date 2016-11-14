@@ -55,6 +55,7 @@ angular.module('echo.config.appConstants', [])
         400126: 'Location Missing or Invalid',
         400127: 'StopType Missing or Invalid',
         400128: 'Phone Number already in use',
+        400129: 'Submitted time is invalid',
         401: 'Unauthorized',
         401100: 'Invalid Authorization Header',
         401101: 'User account is deactivated',
