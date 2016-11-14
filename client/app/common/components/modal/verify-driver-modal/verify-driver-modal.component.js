@@ -6,7 +6,8 @@ angular.module('echo.components.modal.verifyDriver', [
   'echo.config.routes',
   'echo.filters.firstCharacter',
   'echo.filters.phoneNumber',
-  'echo.components.modal.driverSidebar'
+  'echo.components.modal.driverSidebar',
+  'echo.components.modal.errorMessages'
 ])
   .component('verifyDriverModal', {
     templateUrl: 'app/common/components/modal/verify-driver-modal/verify-driver-modal.template.html',
@@ -38,9 +39,14 @@ angular.module('echo.components.modal.verifyDriver', [
 
       that.verifyDriver = function () {
         that.showButtonLoading = true;
+        that.errorCode = null;
+        that.errorMessages = null;
         loadsApi.reassignDriver(that.load.loadNumber, that.verifiedDriver.id).then(function () {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
+        }).catch(function (errorStatus) {
+          that.errorCode = errorStatus.code;
+          that.errorMessages = errorStatus.message;
         }).finally(function () {
           that.showButtonLoading = false;
         });
@@ -59,6 +65,8 @@ angular.module('echo.components.modal.verifyDriver', [
         that.state = null;
         that.driverChanged = false;
         that.showButtonLoading = false;
+        that.errorCode = null;
+        that.errorMessages = null;
         that.unverifiedDriver = new DriverModel(that.load.driver);
         that.currentState = that.modes.findDriver;
       };
