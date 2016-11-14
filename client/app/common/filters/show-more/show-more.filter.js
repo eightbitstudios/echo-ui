@@ -5,11 +5,11 @@ angular.module('echo.filters.showMore', [])
     return function (paging) {
       var showMore = '';
 
-      var count = (paging.totalRecords - (paging.offset + paging.limit));
+      var count =  (paging.totalRecords - (paging.offset + paging.limit) + 1);
 
       if (count > 0) {
         showMore = _.template('Show ${count} more Loads')({
-          count: Math.min(paging.limit, (paging.totalRecords - (paging.offset + paging.limit) + 1))
+          count: Math.min(paging.limit, count)
         });
       }
 
