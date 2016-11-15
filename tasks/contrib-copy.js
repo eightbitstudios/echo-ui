@@ -89,6 +89,11 @@ module.exports = function (grunt, options) {
           dest: '<%= build_dir %>/public/',
           expand: true
         }, {
+          cwd: 'client',
+          src: '.well-known/**/*',
+          dest: '<%= build_dir %>/public/',
+          expand: true
+        }, {
            cwd: 'client/bower_components/bootstrap/fonts',
            src: ['glyphicons-halflings-regular.woff2', 'glyphicons-halflings-regular.woff', 'glyphicons-halflings-regular.ttf'],
            dest: '<%= build_dir %>/public/assets/fonts',
@@ -134,6 +139,11 @@ module.exports = function (grunt, options) {
         }, {
           cwd: 'build/public',
           src: ['robots.txt', 'favicon.ico'],
+          dest: '<%= dist_dir %>/public/',
+          expand: true
+        }, {
+          cwd: 'build/public',
+          src: '.well-known/**',
           dest: '<%= dist_dir %>/public/',
           expand: true
         }]
