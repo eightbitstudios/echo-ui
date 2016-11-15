@@ -9,7 +9,8 @@ angular.module('echo.components.modal.assignDriver.selectedDriver', [
       loadId: '<',
       showStatus: '<',
       showTitle: '<',
-      removeCallback: '&'
+      removeCallback: '&',
+      submitControl: '='
     },
     controller: function (loadsApi) {
       var that = this;
@@ -21,6 +22,7 @@ angular.module('echo.components.modal.assignDriver.selectedDriver', [
           loadsApi.fetchDriverStatusByLoadId(that.loadId, that.driver.id).then(function (driverAvailability) {
             that.isDriverAlreadyAssigned = !driverAvailability.isDriverAvailable;
             that.conflictLoadId = driverAvailability.conflictingLoadId;
+            that.submitControl = driverAvailability.isDriverAvailable;
           }).finally(function () {
             that.showLoading = false;
           });
