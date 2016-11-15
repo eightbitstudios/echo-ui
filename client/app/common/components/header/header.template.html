@@ -8,9 +8,6 @@
         <li ui-sref-active="active" ng-if="$ctrl.user.isRepAdmin()">
           <a ui-sref="{{::$ctrl.routesConfig.INDEX.myCarriers.name}}" class="link-mycarriers">My Carriers</a>
         </li>
-        <li ui-sref-active="active" ng-if="$ctrl.user.isCarrierAdmin()">
-          <a ui-sref="{{::$ctrl.routesConfig.INDEX.settings.name}}" class="link-settings">Settings</a>
-        </li>
         <li>
           <a href="javascript:void(0)" ng-click="$ctrl.signOutHandler()" class="link-signout">Log Out
             <img src="../assets/images/icon-signout@2x.png" class="" alt="Icon signout@2x" />
