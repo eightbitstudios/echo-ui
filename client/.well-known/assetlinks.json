@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "batmobile_android_app",
+            "package_name": "com.echologistics.batmobile",
+            "sha256_cert_fingerprints": [
+                " 22:F6:52:E0:ED:EC:D9:0F:36:89:0E:5C:B5:77:11:A5:AA:61:64:11:E4:88:63:F3:C0:1B:4B:90:27:70:F5:02"
+            ]
+        }
+    }
+]
