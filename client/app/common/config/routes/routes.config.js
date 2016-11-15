@@ -68,10 +68,6 @@ angular.module('echo.config.routes', [])
         name: 'index.carrier.myCompany.driverProfile',
         route: '/drivers/{driverId}'
       },
-      privacyPolicy: {
-        name: 'index.privacyPolicy',
-        route: 'privacyPolicy'
-      },
       termsAndConditions: {
         name: 'index.termsAndConditions',
         route: 'termsAndConditions'

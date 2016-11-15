@@ -18,7 +18,6 @@ angular.module('echo.index', [
   'echo.services.googleMapsApi',
   'echo.services.userProfile',
   'templates-app',
-  'echo.index.privacyPolicy',
   'echo.index.termsAndConditions'
 ]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
 
@@ -182,18 +181,8 @@ angular.module('echo.index', [
         hideTabBar: true
       }
     })
-    .state(routesConfig.INDEX.privacyPolicy.name, { // #/privacyPolicy
-      url: routesConfig.INDEX.privacyPolicy.route,
-      component: 'privacy-policy',
-      data: {
-        whiteContainer: true
-      }
-    })
     .state(routesConfig.INDEX.termsAndConditions.name, { // #/termsAndConditions
       url: routesConfig.INDEX.termsAndConditions.route,
-      component: 'terms-and-conditions',
-      data: {
-        whiteContainer: true
-      }
+      component: 'terms-and-conditions'
     });
 });
