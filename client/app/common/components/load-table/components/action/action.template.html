@@ -1,9 +1,10 @@
 <div class="carrier-dashboard-action">
-  <h3 class="driver-name"><a href="javascript:void(0)">{{$ctrl.currentStatus.description}}</a></h3> 
-  {{$ctrl.load.nextAction | lastModifiedBy}}
+  <h3 class="driver-name" ng-if="!$ctrl.hideDetails"><a href="javascript:void(0)">{{$ctrl.currentStatus.description}}</a></h3>
+  <h3 class="driver-name" ng-if="$ctrl.hideDetails">Call to report (312) 555-1212</h3>
+  <span ng-if="!$ctrl.hideDetails">{{$ctrl.load.nextAction | lastModifiedBy}}</span>
   <div class="action-align-bottom" ng-if="$ctrl.nextAction">
-    <loading-button button-class="{{$ctrl.actionButtonEscalationClass}}" 
-      button-text="{{$ctrl.nextAction.description}}" click-handler="$ctrl.openMilestone($ctrl.nextAction.value)" 
+    <loading-button button-class="{{$ctrl.actionButtonEscalationClass}}"
+      button-text="{{$ctrl.nextAction.description}}" click-handler="$ctrl.openMilestone($ctrl.nextAction.value)"
       show-loading="$ctrl.showButtonLoading"></loading-button>
   </div>
 </div>

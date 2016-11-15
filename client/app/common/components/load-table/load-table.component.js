@@ -11,7 +11,8 @@ angular.module('echo.components.loadTable', [
       loadType: '<',
       showLoading: '<',
       carrierId: '<',
-      refreshTableCallback: '&'
+      refreshTableCallback: '&',
+      hideDetails: '<'
     },
     controller: function (actionEnums) {
       var that = this;

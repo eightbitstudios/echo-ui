@@ -19,7 +19,8 @@ angular.module('echo.components.loadTable.action', [
     bindings: {
       load: '<',
       actionChangedCallback: '&',
-      carrierId: '<'
+      carrierId: '<',
+      hideDetails: '<'
     },
     controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
       var that = this;
