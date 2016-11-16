@@ -12,7 +12,8 @@ angular.module('echo.components.modal.assignDriver.loadDriver', [
       state: '=',
       newDriver: '=',
       carrierId: '<',
-      loadId: '<'
+      loadId: '<',
+      submitControl: '='
     },
     controller: function (DriverModel, assignedDriverEnum) {
       var that = this;

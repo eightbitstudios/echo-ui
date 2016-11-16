@@ -148,7 +148,7 @@ module.exports = {
         lastName: 'Smith',
         phone: '8895351903',
         isTrackingEnabled: false
-      },  
+      },
       escalationLevel: 3,
       nextAction: {
         lastAction: 1,
@@ -159,7 +159,8 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+      isDriverVerified: true
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,

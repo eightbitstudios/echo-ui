@@ -62,7 +62,7 @@ angular.module('echo.components.modal.assignDriver', [
         that.errorMessages = null;
         that.errorCode = null;
         loadsApi.unassignDriver(that.load.loadNumber).then(function () {
-          that.driverChanged = true;   
+          that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
         }).catch(function (status) {
           that.errorMessages = status.message;
@@ -81,11 +81,14 @@ angular.module('echo.components.modal.assignDriver', [
       };
 
       that.disableAssignButton = function() {
-        return (that.noAssignedDriver() && that.noNewDriver()) || that.state === that.states.newDriver;
+        return (that.noAssignedDriver() && that.noNewDriver()) ||
+          (!that.submitControl && !that.noAssignedDriver() && !that.noNewDriver()) ||
+          that.state === that.states.newDriver;
       };
 
       that.$onInit = function () {
         that.assignedDriver = new DriverModel(that.load.driver);
+        that.submitControl = true;
       };
     }
   });
