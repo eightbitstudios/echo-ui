@@ -102,7 +102,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
           that.modalActions.close(true);
         }).catch(function (status) {
           that.errorMessages = status.message;
-          that.errorCode = status.message;
+          that.errorCode = status.code;
         }).finally(function () {
           that.showButtonLoading = false;
         });

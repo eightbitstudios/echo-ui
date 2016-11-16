@@ -29,6 +29,6 @@
       <loading-button button-text="Confirm Loaded" click-handler="$ctrl.saveReportEmpty()" show-loading="$ctrl.showButtonLoading"></loading-button>
     </modal-steps>
   </div>
-  <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" step-sensitive="true" valid-step="$ctrl.modes.optionalDocuments" current-step="$ctrl.currentStep"></error-messages>
+  <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" step-sensitive="true" valid-step="$ctrl.modes.finishLoading" current-step="$ctrl.currentStep"></error-messages>
   <div class="help-block" ng-if="$ctrl.showValidationError">Must confirm estimated weight</div>
 </div>

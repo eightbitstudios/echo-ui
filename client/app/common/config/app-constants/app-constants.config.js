@@ -82,7 +82,8 @@ angular.module('echo.config.appConstants', [])
         500108: 'Unable to Assign Driver to Load',
         500109: 'Unable to Unassign Driver from Load',
         500110: 'Unable to Unassign Driver from Load',
-        500111: 'Error writing into shipment activity service'
+        500111: 'Error writing into shipment activity service',
+        500117: 'Invalid date for the action.'
       },
       DRIVER: {
         500101: 'Phone number already in use',
