@@ -20,7 +20,7 @@ angular.module('echo.components.loadTable.action', [
       load: '<',
       actionChangedCallback: '&',
       carrierId: '<',
-      hideDetails: '<'
+      isMultiStop: '<'
     },
     controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
       var that = this;
