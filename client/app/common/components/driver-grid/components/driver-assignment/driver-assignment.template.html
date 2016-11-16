@@ -1,0 +1,10 @@
+<div class="driver-assignment">
+  <span ng-if="$ctrl.assignment">
+    <h2 class="load-number">
+      <a ui-sref="{{$ctrl.loadDetails}}({loadId: $ctrl.assignment.loadGuid})">{{$ctrl.assignment.loadNumber}}</a>
+    </h2> {{$ctrl.driver.isDoNotDisturb | driverStatus}}<br> Starts {{$ctrl.assignment.startingDate}} <br>
+  </span>
+  <span ng-if="!$ctrl.assignment">
+    <h5>No Echo Load Assigned.</h5>
+  </span>
+</div>
