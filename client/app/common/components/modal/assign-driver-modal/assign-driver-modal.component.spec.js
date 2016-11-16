@@ -133,6 +133,7 @@ describe('Component: Assign Driver Modal', function () {
     it('should be enabled if new driver is selected', function () {
       component.noAssignedDriver.and.returnValue(true);
       component.noNewDriver.and.returnValue(false);
+      component.submitControl = true;
 
       expect(component.disableAssignButton()).toBeFalsy();
     });
