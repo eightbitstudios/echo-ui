@@ -28,5 +28,9 @@ angular.module('echo.components.loadTable', [
           return action.phase === 1 || action.phase === 3;
         }
       };
+
+      that.isMultiStopLoad = function(load) {
+        return _.size(load.pickUp) > 1 || _.size(load.delivery) > 1;
+      };
     }
   });
