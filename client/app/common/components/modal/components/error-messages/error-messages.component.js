@@ -4,7 +4,7 @@
   .component('errorMessages', {
     templateUrl: 'app/common/components/modal/components/error-messages/error-messages.template.html',
     bindings: {
-      errorCode: '<',
+      errorCode: '=',
       errorMessages: '<',
       stepSensitive: '<',
       validStep: '<',
@@ -17,7 +17,11 @@
         if ((_.includes(appConstants.CUSTOM_ERROR_CODES, that.errorCode) && that.errorMessages) ||
           appConstants.ERROR_MESSAGES.DEFAULTS[that.errorCode]) {
           if (that.stepSensitive) {
-            return that.validStep === that.currentStep;
+            var showMessage = that.validStep === that.currentStep;
+            if(!showMessage){
+              that.errorCode = null;
+            }
+            return showMessage;
           } else {
             return true;
           }
