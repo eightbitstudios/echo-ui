@@ -8,6 +8,7 @@ angular.module('echo.components.driverGrid', [
   'echo.directives.dateRangePicker',
   'echo.models.paging',
   'echo.config.appConstants',
+  'echo.components.driverGrid.driverAssignment',
   'echo.api.carrier',
   'echo.filters.fullName'
 ]).component('driverGrid', {
@@ -81,7 +82,9 @@ angular.module('echo.components.driverGrid', [
     };
 
     that.onSelectCallback = function (driver) {
-      $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name, { driverId: driver.id });
+      if(driver){
+        $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name, { driverId: driver.id });
+      }
     };
 
     that.$onInit = that.getDrivers;

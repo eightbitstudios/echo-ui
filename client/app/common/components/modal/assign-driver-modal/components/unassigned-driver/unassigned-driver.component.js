@@ -13,7 +13,8 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
       loadId: '<',
       inviteNewDriverCallback: '&',
       selectedDriverCallback: '&',
-      newDriver: '='
+      newDriver: '=',
+      submitControl: '='
     },
     controller: function ($filter, carrierApi, routesConfig) {
       var that = this;
@@ -46,12 +47,15 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
         that.selectedDriver = null;
         that.selectedDriverCallback({ driver: that.selectedDriver });
         that.state = that.states.driverList;
+        that.submitControl = true;
       };
 
       that.onSelectCallback = function (driver) {
-        that.selectedDriver = driver;
-        that.selectedDriverCallback({ driver: that.selectedDriver });
-        that.state = that.states.selectedDriver;
+        if(driver) {
+          that.selectedDriver = driver;
+          that.selectedDriverCallback({ driver: that.selectedDriver });
+          that.state = that.states.selectedDriver;
+        }
       };
 
       that.$onInit = function () {

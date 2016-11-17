@@ -17,7 +17,8 @@ angular.module('echo.index', [
   'echo.services.cookie',
   'echo.services.googleMapsApi',
   'echo.services.userProfile',
-  'templates-app'
+  'templates-app',
+  'echo.index.termsAndConditions'
 ]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
 
   // ROUTES
@@ -179,5 +180,9 @@ angular.module('echo.index', [
       data: {
         hideTabBar: true
       }
+    })
+    .state(routesConfig.INDEX.termsAndConditions.name, { // #/termsAndConditions
+      url: routesConfig.INDEX.termsAndConditions.route,
+      component: 'terms-and-conditions'
     });
 });
