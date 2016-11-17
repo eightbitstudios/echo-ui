@@ -1,5 +1,6 @@
 angular.module('echo.components.loadTable.action', [
   'echo.filters.firstCharacter',
+  'echo.filters.phoneNumber',
   'echo.config.appConstants',
   'echo.components.modal.milestones.reportEmpty',
   'echo.components.modal.milestones.reportLoaded',
@@ -19,7 +20,9 @@ angular.module('echo.components.loadTable.action', [
     bindings: {
       load: '<',
       actionChangedCallback: '&',
-      carrierId: '<'
+      carrierId: '<',
+      repDetails: '<',
+      isMultiStop: '<'
     },
     controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
       var that = this;

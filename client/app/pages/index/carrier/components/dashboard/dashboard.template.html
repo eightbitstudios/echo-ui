@@ -21,7 +21,7 @@
           </h1>
         <a ui-sref="{{$ctrl.activeLoadsRoute}}">View All {{$ctrl.activeLoadCount}} Active Loads</a>
       </div>
-      <load-table ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0" loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" show-loading="$ctrl.showActionLoadsLoading" refresh-table-callback="$ctrl.fetchLoadsNeedingAction()"></load-table>
+      <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0" loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" show-loading="$ctrl.showActionLoadsLoading" refresh-table-callback="$ctrl.fetchLoadsNeedingAction()"/>
       <div class="no-loads-message" ng-if="!$ctrl.showActionLoadsLoading && $ctrl.activeLoads.length === 0">
         <h3>You have no loads that need online actions right now.</h3>
         <div>You have <a ui-sref="{{$ctrl.activeLoadsRoute}}">{{$ctrl.activeLoadCount}} active loads</a> at this time.</div>
@@ -37,7 +37,7 @@
             </span>
           </h1>
       </div>
-      <load-table loads="$ctrl.multiStopLoads" load-type="$ctrl.loadType" show-loading="$ctrl.showMultiStopLoading" carrier-id="$ctrl.carrierId" refresh-table-callback="$ctrl.refreshPageData()"></load-table>
+      <load-table rep-details="$ctrl.repDetails" loads="$ctrl.multiStopLoads" load-type="$ctrl.loadType" show-loading="$ctrl.showMultiStopLoading" carrier-id="$ctrl.carrierId" refresh-table-callback="$ctrl.refreshPageData()"></load-table>
       <show-more show-loading="$ctrl.showMoreMultiStopLoading" paging-model="$ctrl.pagingMultistopLoads" record-type="Multi Stop Loads" click-handler="$ctrl.showMoreMultiStopLoadsHandler()"></show-more>
     </section>
   </div>

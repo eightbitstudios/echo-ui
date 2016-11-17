@@ -1,9 +1,13 @@
 <div class="carrier-dashboard-action">
-  <h3 class="driver-name"><a href="javascript:void(0)">{{$ctrl.currentStatus.description}}</a></h3> 
-  {{$ctrl.load.nextAction | lastModifiedBy}}
+  <h3 class="driver-name" ng-if="!$ctrl.isMultiStop"><a href="javascript:void(0)">{{$ctrl.currentStatus.description}}</a></h3>
+  <h3 class="driver-name" ng-if="$ctrl.isMultiStop">Call to report {{$ctrl.repDetails.phone | phoneNumber}}</h3>
+  <span ng-if="!$ctrl.isMultiStop">{{$ctrl.load.nextAction | lastModifiedBy}}</span>
   <div class="action-align-bottom" ng-if="$ctrl.nextAction">
-    <loading-button button-class="{{$ctrl.actionButtonEscalationClass}}" 
-      button-text="{{$ctrl.nextAction.description}}" click-handler="$ctrl.openMilestone($ctrl.nextAction.value)" 
+    <loading-button button-class="{{$ctrl.actionButtonEscalationClass}}"
+      button-text="{{$ctrl.nextAction.description}}" click-handler="$ctrl.openMilestone($ctrl.nextAction.value)"
       show-loading="$ctrl.showButtonLoading"></loading-button>
+  </div>
+  <div class="action-align-bottom" ng-if="!$ctrl.nextAction">
+    <h3>No Action Available</h3>
   </div>
 </div>
