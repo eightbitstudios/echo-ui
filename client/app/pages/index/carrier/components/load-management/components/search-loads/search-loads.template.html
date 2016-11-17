@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="container main-content">
-    <load-table loads="$ctrl.loads" show-loading="$ctrl.showLoading" refresh-table-callback="$ctrl.getLoads()" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId"></load-table>
+    <load-table rep-details="$ctrl.repDetails" loads="$ctrl.loads" show-loading="$ctrl.showLoading" refresh-table-callback="$ctrl.getLoads()" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId"></load-table>
     <pagination page-click-handler="$ctrl.getLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Loads"></pagination>
   </div>
 </div>

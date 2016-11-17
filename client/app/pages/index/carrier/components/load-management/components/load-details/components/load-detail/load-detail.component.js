@@ -6,7 +6,8 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail', [
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/load-detail/load-detail.template.html',
     bindings: {
       loadDetail: '=',
-      carrierId: '<'
+      carrierId: '<',
+      repDetails: '<'
     },
     controller: function ($state, loadTypesEnum) {
       var that = this;
@@ -14,5 +15,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail', [
       that.reloadState = function () {
         $state.reload();
       };
+      
+      that.isMultiStop = _.size(that.loadDetail.pickUp) > 1 || _.size(that.loadDetail.delivery) > 1;
     }
   });
