@@ -4,4 +4,4 @@
 <p>
   <strong>{{$ctrl.dateTimePickerText}}</strong>
 </p>
-<date-time-picker time-zones="$ctrl.timeZones" date-time="$ctrl.dateTimePicker" />
+<date-time-picker ng-if="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones" date-time="$ctrl.dateTimePicker" />

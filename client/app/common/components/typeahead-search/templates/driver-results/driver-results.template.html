@@ -1,4 +1,9 @@
-
-    <div class="result-title">{{match.model.name}}</div>
-    <div class="result-phone">{{(match.model.phone | phoneNumber)}}</div>
-    <div class="result-numb" ng-if="match.model.tractorNumber">Tractor Number: {{match.model.tractorNumber}}</div>
+<div class="driver-results">
+    <div class="row">
+        <div class="result-title col-xs-6">{{match.model.name}}</div>
+        <div class="result-phone col-xs-6">{{(match.model.phone | phoneNumber)}}</div>
+    </div>
+    <div class="row">
+        <div class="result-numb col-xs-12" ng-if="match.model.tractorNumber">Tractor Number: {{match.model.tractorNumber}}</div>
+    </div>
+</div>

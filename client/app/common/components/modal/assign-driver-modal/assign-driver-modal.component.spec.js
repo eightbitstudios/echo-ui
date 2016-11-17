@@ -125,14 +125,15 @@ describe('Component: Assign Driver Modal', function () {
 
     it('should be enabled if a driver is assigned', function () {
       component.noAssignedDriver.and.returnValue(false);
-      
+      component.noNewDriver.and.returnValue(true);
+
       expect(component.disableAssignButton()).toBeFalsy();
     });
 
     it('should be enabled if new driver is selected', function () {
       component.noAssignedDriver.and.returnValue(true);
       component.noNewDriver.and.returnValue(false);
-      
+
       expect(component.disableAssignButton()).toBeFalsy();
     });
 
@@ -140,7 +141,7 @@ describe('Component: Assign Driver Modal', function () {
       component.noAssignedDriver.and.returnValue(true);
       component.noNewDriver.and.returnValue(false);
       component.state = component.states.newDriver;
-      
+
       expect(component.disableAssignButton()).toBeTruthy();
     });
   });

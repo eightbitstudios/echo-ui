@@ -46,7 +46,10 @@ module.exports = {
   getDriverStatus: function (req, res) {
     var resTemplate = new ResTemplate();
     var searchText = req.params.searchText;
-    resTemplate.data = false;
+    resTemplate.data = {
+      isDriverAvailable: false,
+      conflictingLoadId: 98766789
+    };
 
     responseUtil.timeout(function () {
       res.json(resTemplate);

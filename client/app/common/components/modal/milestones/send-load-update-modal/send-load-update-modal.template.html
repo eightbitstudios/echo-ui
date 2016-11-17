@@ -33,7 +33,7 @@
         <p>For other situations that could cause a missed <br>appointment, such as a breakdown or shortage of <br>hours, please call Echo at (333) 343-3333</p>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
-        <driver-location location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+        <driver-location location="$ctrl.location" />
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.trailerDropOff">
         <dropped-load location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
