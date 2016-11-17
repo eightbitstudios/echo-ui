@@ -3,13 +3,18 @@
 angular.module('echo.components.footer', [
   'echo.components.billingQuestions',
   'echo.components.carrierAdminFooter',
-  'echo.services.userProfile'
+  'echo.services.userProfile',
+  'echo.config.routes',
+  'echo.config.appConstants'
 ]).component('appFooter', {
   bindings: {
     repDetails: '<'
   },
   templateUrl: 'app/common/components/footer/footer.template.html',
-    controller: function(userProfileService) {
-    this.user = userProfileService.getUser();
+    controller: function(userProfileService, routesConfig, appConstants) {
+      var that = this;
+      that.user = userProfileService.getUser();
+      that.termsAndConditionsRoute = routesConfig.INDEX.termsAndConditions.name;
+      that.privacyPolicyRoute = appConstants.PRIVACY_POLICY_URL;
   }
 });

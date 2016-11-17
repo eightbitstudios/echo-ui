@@ -101,5 +101,6 @@ angular.module('echo.config.appConstants', [])
     DEFAULT_MAP_CENTER: {
       lat: 39.50,
       lng: -98.35
-    }
+    },
+    PRIVACY_POLICY_URL: 'https://www.echo.com/privacypolicy.html'
   });
