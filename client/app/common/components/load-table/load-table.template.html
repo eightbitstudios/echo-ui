@@ -33,7 +33,7 @@
               <shipping-details shipping-details="loadManagement.delivery" inactive="$ctrl.determineInactive(loadManagement.nextAction.nextAction, false)"></shipping-details>
             </td>
             <td>
-              <driver load="loadManagement" load-type="$ctrl.loadType" driver-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId"></driver>
+              <driver load="loadManagement" load-type="$ctrl.loadType" driver-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId" is-multi-stop="$ctrl.isMultiStopLoad(loadManagement)"></driver>
             </td>
             <td>
               <action load="loadManagement" load-type="$ctrl.loadType" action-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId"></action>

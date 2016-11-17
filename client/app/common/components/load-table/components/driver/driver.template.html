@@ -1,8 +1,8 @@
 <div class="carrier-dashboard-driver">
   <div ng-if="!$ctrl.noDriver">
     <h3 class="driver-name">
-      <a ng-if="$ctrl.load.isDriverVerified" href="javascript:void(0)" ng-click="$ctrl.showAssignDriverModal()">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</a>
-      <span ng-if="!$ctrl.load.isDriverVerified">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</span>
+      <a ng-if="$ctrl.load.isDriverVerified || !$ctrl.isMultiStop" href="javascript:void(0)" ng-click="$ctrl.showAssignDriverModal()">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</a>
+      <span ng-if="!$ctrl.load.isDriverVerified && $ctrl.isMultiStop">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</span>
     </h3>
     <span><tel>{{$ctrl.load.driver.phone | phoneNumber}}</tel></span>
     <div class="driver-status">
@@ -13,6 +13,7 @@
     </div>
   </div>
   <div ng-if="$ctrl.noDriver">
-     <loading-button button-text="Assign Driver" click-handler="$ctrl.showAssignDriverModal()" show-loading="$ctrl.showButtonLoading" />
+     <loading-button ng-if="!$ctrl.isMultiStop" button-text="Assign Driver" click-handler="$ctrl.showAssignDriverModal()" show-loading="$ctrl.showButtonLoading" />
+     <h4 ng-if="$ctrl.isMultiStop">No Driver Assigned</h4>
   </div>
 </div>
