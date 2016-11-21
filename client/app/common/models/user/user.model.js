@@ -22,7 +22,7 @@ angular.module('echo.models.user', [
      * @return {boolean}
      */
     User.prototype.isRepAdmin = function () {
-      return this.role === RolesEnum.ECHO_REP;
+      return this.roleName === RolesEnum.ECHO_REP;
     };
 
     /**
@@ -30,7 +30,7 @@ angular.module('echo.models.user', [
      * @return {boolean}
      */
     User.prototype.isCarrierAdmin = function () {
-      return this.role === RolesEnum.CARRIER_ADMIN;
+      return this.roleName === RolesEnum.CARRIER_ADMIN;
     };
 
     /**
@@ -38,7 +38,7 @@ angular.module('echo.models.user', [
      * @return {string}
      */
     User.prototype.getRoleName = function () {
-      return _.startCase(this.role);
+      return _.startCase(this.roleName);
     };
 
     /**
