@@ -24,7 +24,7 @@ angular.module('echo.components.portalUserProfile', [
       PROFILE: 0,
       SENT: 1
     };
-
+    
     that.modeShow = that.mode.PROFILE;
 
     that.showConfirmation = false;
