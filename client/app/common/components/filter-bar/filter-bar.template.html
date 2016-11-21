@@ -1,7 +1,7 @@
 <div class="filter-bar">
   <form class="search-form">
     <div class="form-group">
-      <input type="text" ng-model="$ctrl.searchParam" class="form-control search-form-input" placeholder="Find a Carrier" />
+      <input type="text" ng-model="$ctrl.searchParam" class="form-control search-form-input" placeholder="Find a Carrier" maxlength="100" />
       <span class="search-icon" ng-if="$ctrl.searchParam.length < $ctrl.minSearchCharacters">
         <img src="../assets/images/icon-search@2x.png"  style="width: 16px; height: 16px;"/>
       </span>

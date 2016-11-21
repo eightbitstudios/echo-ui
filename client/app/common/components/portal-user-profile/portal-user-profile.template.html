@@ -5,19 +5,19 @@
       <fieldset class="fieldset">
         <div class="form-group" ng-class="{'has-error': userProfile.firstName.$error.required && userProfile.firstName.$touched}">
           <label>First Name</label>
-          <input class="form-control" name="firstName" placeholder="First Name" type="text" ng-model="$ctrl.portalUser.firstName" required>
+          <input class="form-control" name="firstName" placeholder="First Name" type="text" ng-model="$ctrl.portalUser.firstName" maxlength="50" required>
           <span class="help-block" ng-if="userProfile.firstName.$error.required  && userProfile.firstName.$touched">A first name is required</span>
         </div>
         <div class="form-group">
           <label>Last Name</label>
-          <input class="form-control" name="lastName" placeholder="Last Name" type="text" ng-model="$ctrl.portalUser.lastName">
+          <input class="form-control" name="lastName" placeholder="Last Name" type="text" ng-model="$ctrl.portalUser.lastName" maxlength="50">
         </div>
       </fieldset>
       <fieldset class="fieldset">
         <legend>Contact Information</legend>
         <div class="form-group" ng-class="{'has-error': userProfile.userEmail.$invalid && userProfile.userEmail.$touched}">
           <label>Email Address</label>
-          <input class="form-control" name="userEmail" placeholder="email@email.com" type="email" ng-model="$ctrl.portalUser.email" required ng-disabled="$ctrl.isCarrierAdmin && $ctrl.portalUser.id">
+          <input class="form-control" name="userEmail" placeholder="email@email.com" type="email" ng-model="$ctrl.portalUser.email" maxlength="250" required ng-disabled="$ctrl.isCarrierAdmin && $ctrl.portalUser.id">
           <span class="help-block" ng-if="userProfile.userEmail.$error.email">Invalid email address</span>
           <span class="help-block" ng-if="userProfile.userEmail.$error.required && userProfile.userEmail.$touched">An email address is required</span>
         </div>
