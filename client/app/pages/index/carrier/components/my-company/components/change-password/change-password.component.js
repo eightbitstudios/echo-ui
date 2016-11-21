@@ -29,7 +29,7 @@ angular.module('echo.index.carrier.myCompany.userProfile.changePassword', [
           that.serverError = null;
           that.showButtonLoading = true;
           that.passwordChanged = false;
-          authenticationApi.changePassword(that.userId, that.currentPassword, that.passwordChange).then(function () {
+          authenticationApi.changePassword(that.userId, that.passwordChange).then(function () {
 
             that.passwordChanged = true;
           }).catch(function (errorCode) {

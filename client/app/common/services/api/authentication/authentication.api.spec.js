@@ -121,15 +121,13 @@ describe('Api: authenticationApi', function () {
 
     it('should make a PUT request with new and current password', function (done) {
       var userId = 1,
-      currentPassword = 'Test1234',
       passwordChange = {
         newPassword: 'Password1234',
         confirmPassword: 'Password1234'
       };
       
-      authenticationApi.changePassword(userId, currentPassword, passwordChange).then(function () {
+      authenticationApi.changePassword(userId, passwordChange).then(function () {
         expect($http.put).toHaveBeenCalledWith(apiConfig.changePassword({userId: userId}), {
-          currentPassword: currentPassword,
           password: passwordChange.newPassword,
           confirmPassword: passwordChange.confirmPassword
         });
