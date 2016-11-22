@@ -1,13 +1,16 @@
 angular.module('echo.interceptors.auth', [
-  'echo.config.api',
-  'echo.config.errors',
-  'echo.services.cookie',
-  'echo.api.authentication'
-])
-  .factory('authInterceptor', function ($rootScope, $injector, $window, $q, errorsConfig, routesConfig, cookieService, apiConfig) {
+    'echo.config.api',
+    'echo.config.errors',
+    'echo.services.cookie',
+    'echo.api.authentication',
+    'echo.services.httpBuffer'
+  ])
+  .factory('authInterceptor', function($rootScope, $injector, $window, $q,
+    errorsConfig, routesConfig, cookieService, apiConfig, httpBufferService) {
+
     return {
       // Add authorization token to headers
-      request: function (config) {
+      request: function(config) {
         config.headers = config.headers || {};
         var tokenCookie = cookieService.getToken();
         var refreshCookie = cookieService.getRefreshToken();
@@ -20,21 +23,29 @@ angular.module('echo.interceptors.auth', [
 
         return config;
       },
-      responseError: function (rejection) {
+      responseError: function(rejection) {
         var refreshCookie = cookieService.getRefreshToken();
-        if ((_.get(rejection, 'data.code') === errorsConfig.EXPIRED_TOKEN || _.get(rejection, 'data.code') === errorsConfig.UNAUTHORIZED)&& refreshCookie) {
+        if ((_.get(rejection, 'data.code') === errorsConfig.EXPIRED_TOKEN ||
+            _.get(rejection, 'data.code') === errorsConfig.UNAUTHORIZED) && refreshCookie) {
 
-          $rootScope.showLoading = true;
           var authenticationApi = $injector.get('authenticationApi'); // Avoid circular dependency
-          authenticationApi.refresh().then(function () {
-            $window.location.reload();
-          }).catch(function () {
-            cookieService.clearToken();
-            cookieService.clearRefreshToken();
-            $window.location = routesConfig.LOGIN.base.url({ redirect: encodeURIComponent($window.location.hash) });
-          }).finally(function () {
-            $rootScope.showLoading = false;
-          });
+
+          if (httpBufferService.isBufferEmpty()) {
+            authenticationApi.refresh().then(function() {
+              httpBufferService.retryAllRequest();
+            }).catch(function() {
+              cookieService.clearToken();
+              cookieService.clearRefreshToken();
+              $window.location = routesConfig.LOGIN.base.url({
+                redirect: encodeURIComponent($window.location.hash)
+              });
+            });
+          }
+
+          var deferred = $q.defer();
+          httpBufferService.add(rejection.config, deferred);
+
+          return deferred.promise;
         }
         return $q.reject(rejection);
       }

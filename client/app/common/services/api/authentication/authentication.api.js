@@ -24,8 +24,8 @@ angular.module('echo.api.authentication', [
       };
 
       return $http.post(url, data).then(function (resp) {
-        cookieService.setRefreshToken(_.get(resp, 'data.data.refresh_token')); // jshint ignore:line
-        cookieService.setToken(_.get(resp, 'data.data.access_token')); // jshint ignore:line
+        cookieService.setRefreshToken(_.get(resp, 'data.refresh_token'));
+        cookieService.setToken(_.get(resp, 'data.access_token'));
         return resp;
       }).catch(function () {
         return $q.reject();
