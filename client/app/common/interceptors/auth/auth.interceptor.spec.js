@@ -26,7 +26,7 @@ describe('Interceptor: authInterceptor', function() {
         other: 'other'
       });
       $provide.constant('errorsConfig', errorsConfig = {
-        UNAUTHORIZED: 401
+        EXPIRED_TOKEN: 401
       });
       $provide.constant('routesConfig', routesConfig = {
         INDEX: {
@@ -98,7 +98,7 @@ describe('Interceptor: authInterceptor', function() {
       beforeEach(function() {
         refreshDefer = $q.defer();
         authenticationApi.refresh.and.returnValue(refreshDefer.promise);
-        rejection.data.code = errorsConfig.UNAUTHORIZED;
+        rejection.data.code = errorsConfig.EXPIRED_TOKEN;
         $window.location = jasmine.createSpyObj('location', ['reload']);
       });
 
