@@ -124,11 +124,10 @@ angular.module('echo.api.authentication', [
      * @param {string} username - Username
      * @returns {Promise} - Users change password request has been sent
      */
-    changePassword: function (userId, currentPassword, changePassword) {
+    changePassword: function (userId, changePassword) {
       var url = apiConfig.changePassword({ userId: userId });
 
       var data = {
-        currentPassword: currentPassword,
         password: changePassword.newPassword,
         confirmPassword: changePassword.confirmPassword
       };

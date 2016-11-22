@@ -13,7 +13,8 @@ angular.module('echo.components.loadTable.driver', [
       load: '<',
       loadType: '<',
       carrierId: '<',
-      driverChangedCallback: '&'
+      driverChangedCallback: '&',
+      isMultiStop: '<'
     },
     controller: function ($q, loadTypesEnum, modalService, loadsApi, driverApi) {
       var that = this;

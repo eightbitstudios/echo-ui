@@ -15,10 +15,10 @@
           <shipping-details shipping-details="$ctrl.loadDetail.delivery"></shipping-details>
         </td>
         <td>
-          <driver load="$ctrl.loadDetail" load-type="$ctrl.loadType"  carrier-id="$ctrl.carrierId" driver-changed-callback="$ctrl.reloadState()"></driver>
+          <driver load="$ctrl.loadDetail" is-multi-stop="$ctrl.isMultiStop" load-type="$ctrl.loadType"  carrier-id="$ctrl.carrierId" driver-changed-callback="$ctrl.reloadState()"></driver>
         </td>
         <td>
-          <action load="$ctrl.loadDetail" action-changed-callback="$ctrl.reloadState()" load-type="0" carrier-id="$ctrl.carrierId"></action>
+          <action rep-details="$ctrl.repDetails" load="$ctrl.loadDetail" action-changed-callback="$ctrl.reloadState()" is-multi-stop="$ctrl.isMultiStop" load-type="0" carrier-id="$ctrl.carrierId"></action>
         </td>
       </tr>
     </tbody>

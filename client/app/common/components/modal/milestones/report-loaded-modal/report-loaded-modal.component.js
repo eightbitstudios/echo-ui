@@ -64,7 +64,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
           return new CheckboxModel();
         });
         that.dateTimePicker = new DateTimePickerModel({
-          minDate: moment(that.reportLoaded.actionPerformedOn)
+          minDate: moment(that.reportLoaded.actionPerformedOn, 'MM/DD/YYYY HH:mm:ss')
         });
 
         that.pickupNumbers = _.map(that.load.pickUp, 'pickupNumber');

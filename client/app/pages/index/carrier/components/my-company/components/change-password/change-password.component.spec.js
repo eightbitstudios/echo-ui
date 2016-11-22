@@ -37,12 +37,11 @@ describe('Component: changePassword', function () {
     it('should call change password service', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
-      component.currentPassword = 'Oldpassword123';
       component.userId = '1';
       authenticationApi.changePassword.and.returnValue($q.when());
       component.changePasswordHandler();
 
-      expect(authenticationApi.changePassword).toHaveBeenCalledWith(component.userId, component.currentPassword, component.passwordChange);
+      expect(authenticationApi.changePassword).toHaveBeenCalledWith(component.userId, component.passwordChange);
     });
 
     it('should not call change password service if change password form is invalid', function () {
@@ -55,7 +54,6 @@ describe('Component: changePassword', function () {
     it('should set server errors', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
-      component.currentPassword = 'Oldpassword123';
       component.userId = '1';
       var error = 400;
       authenticationApi.changePassword.and.returnValue($q.reject(error));
@@ -69,7 +67,6 @@ describe('Component: changePassword', function () {
     it('should toggle loading button', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
-      component.currentPassword = 'Oldpassword123';
       component.userId = '1';
       authenticationApi.changePassword.and.returnValue($q.when());
       component.changePasswordHandler();

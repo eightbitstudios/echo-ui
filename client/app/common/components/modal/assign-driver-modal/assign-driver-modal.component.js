@@ -82,7 +82,7 @@ angular.module('echo.components.modal.assignDriver', [
 
       that.disableAssignButton = function() {
         return (that.noAssignedDriver() && that.noNewDriver()) ||
-          (!that.submitControl && !that.noAssignedDriver() && !that.noNewDriver()) ||
+          (!that.submitControl && (that.noAssignedDriver() || !that.noNewDriver())) ||
           that.state === that.states.newDriver;
       };
 

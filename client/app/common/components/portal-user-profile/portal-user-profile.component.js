@@ -15,7 +15,10 @@ angular.module('echo.components.portalUserProfile', [
     isCarrierAdmin: '<',
     carrierId: '<'
   },
-  transclude: true,
+  transclude: {
+    'go-back-button': 'goBackButton',
+    'success-button': 'successButton'
+  },
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
   controller: function (appConstants, routesConfig, portalUserApi) {
     var that = this;

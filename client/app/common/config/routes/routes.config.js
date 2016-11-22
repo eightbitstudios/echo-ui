@@ -67,6 +67,10 @@ angular.module('echo.config.routes', [])
       myCompanyDriverProfile: {
         name: 'index.carrier.myCompany.driverProfile',
         route: '/drivers/{driverId}'
+      },
+      termsAndConditions: {
+        name: 'index.termsAndConditions',
+        route: 'termsAndConditions'
       }
     },
     LOGIN: {

@@ -51,9 +51,11 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
       };
 
       that.onSelectCallback = function (driver) {
-        that.selectedDriver = driver;
-        that.selectedDriverCallback({ driver: that.selectedDriver });
-        that.state = that.states.selectedDriver;
+        if(driver) {
+          that.selectedDriver = driver;
+          that.selectedDriverCallback({ driver: that.selectedDriver });
+          that.state = that.states.selectedDriver;
+        }
       };
 
       that.$onInit = function () {
