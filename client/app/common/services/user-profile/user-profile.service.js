@@ -31,7 +31,7 @@ angular.module('echo.services.userProfile', [
         }
 
         if (userObj && userObj.carrierIds) {
-          userObj.carrierId = _.parseInt(userObj.carrierIds, 10);
+          userObj.carrierId = _.parseInt(_.head(userObj.carrierIds), 10);
         }
         return new UserModel(userObj);
       }
