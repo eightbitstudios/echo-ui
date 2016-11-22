@@ -22,7 +22,7 @@ angular.module('echo.interceptors.auth', [
       },
       responseError: function (rejection) {
         var refreshCookie = cookieService.getRefreshToken();
-        if (_.get(rejection, 'data.code') === errorsConfig.UNAUTHORIZED && refreshCookie) {
+        if ((_.get(rejection, 'data.code') === errorsConfig.EXPIRED_TOKEN || _.get(rejection, 'data.code') === errorsConfig.UNAUTHORIZED)&& refreshCookie) {
 
           $rootScope.showLoading = true;
           var authenticationApi = $injector.get('authenticationApi'); // Avoid circular dependency

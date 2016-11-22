@@ -8,5 +8,6 @@ angular.module('echo.config.errors', [])
     UNAUTHORIZED: 401,
     INVALID_USERNAME_OR_PASSWORD: 401001,
     LOCKED: 401002,
-    DEACTIVATED: 401003
+    DEACTIVATED: 401003,
+    EXPIRED_TOKEN: 401109
   });

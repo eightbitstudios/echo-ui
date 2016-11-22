@@ -30,8 +30,8 @@ angular.module('echo.services.userProfile', [
           userObj.userId = _.parseInt(userObj.userId, 10);
         }
 
-        if (userObj && userObj.carrierId) {
-          userObj.carrierId = _.parseInt(userObj.carrierId, 10);
+        if (userObj && userObj.carrierIds) {
+          userObj.carrierId = _.parseInt(userObj.carrierIds, 10);
         }
         return new UserModel(userObj);
       }
