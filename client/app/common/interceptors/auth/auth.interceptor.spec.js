@@ -3,22 +3,25 @@ describe('Interceptor: authInterceptor', function() {
 
   var $scope,
     $q,
-    $window,
+    window,
     cookieService,
     routesConfig,
     errorsConfig,
     apiConfig,
     authenticationApi,
-    authInterceptor;
+    authInterceptor,
+    httpBufferService;
 
   beforeEach(function() {
     module('echo.interceptors.auth', function($provide) {
-      $provide.value('$window', $window = {
+      
+      $provide.value('$window', window = {
         location: ''
       });
 
       $provide.value('cookieService', cookieService = jasmine.createSpyObj('cookieService', ['getToken', 'getRefreshToken', 'clearToken', 'clearRefreshToken']));
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['refresh']));
+      $provide.value('httpBufferService', httpBufferService = jasmine.createSpyObj('httpBufferService', ['isBufferEmpty', 'retryAllRequest', 'add']));
 
       $provide.constant('apiConfig', apiConfig = {
         refresh: 'refresh',
@@ -99,7 +102,7 @@ describe('Interceptor: authInterceptor', function() {
         refreshDefer = $q.defer();
         authenticationApi.refresh.and.returnValue(refreshDefer.promise);
         rejection.data.code = errorsConfig.EXPIRED_TOKEN;
-        $window.location = jasmine.createSpyObj('location', ['reload']);
+        httpBufferService.isBufferEmpty.and.returnValue(true);
       });
 
       it('should call refresh token endpoint', function() {
@@ -107,11 +110,11 @@ describe('Interceptor: authInterceptor', function() {
         expect(authenticationApi.refresh).toHaveBeenCalled();
       });
 
-      it('should reload page if successful', function(done) {
+      it('should retry api calls if successful', function(done) {
         refreshDefer.resolve();
         authInterceptor.responseError(rejection);
         refreshDefer.promise.then(function() {
-          expect($window.location.reload).toHaveBeenCalled();
+          expect(httpBufferService.retryAllRequest).toHaveBeenCalled();
           done();
         });
         $scope.$digest();
