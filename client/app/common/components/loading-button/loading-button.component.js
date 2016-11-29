@@ -12,5 +12,13 @@ angular.module('echo.components.loadingButton', [
   },
   transclude: true,
   templateUrl: 'app/common/components/loading-button/loading-button.template.html',
-  controller: function() {}
+  controller: function() {
+    var that = this;
+
+    that.wrappedClickHandler = function() {
+      if (!that.showLoading && !that.disableButton) {
+        that.clickHandler();
+      }
+    };
+  }
 });
