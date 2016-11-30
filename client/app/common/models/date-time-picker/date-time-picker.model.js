@@ -11,7 +11,7 @@ angular.module('echo.models.dateTimePicker', [
       
       var defaults = {
         date: undefined,
-        timeZone: 'CST',
+        timeZone: 'CT',
         time: moment().format('HHmm')
       };
 
