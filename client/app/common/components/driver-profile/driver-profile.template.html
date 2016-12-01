@@ -39,7 +39,7 @@
       </div>
       <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.phoneNumber.$invalid && $ctrl.driverProfileForm.phoneNumber.$touched}">
         <label>Phone Number (Required)</label>
-        <input class="form-control" name="phoneNumber" ui-mask="+1 (999) 999-9999" type="tel" ng-model="$ctrl.driver.phone" required>
+        <input class="form-control" name="phoneNumber" ui-mask="+1 (999) 999-9999" ui-options="{clearOnBlur: false}" type="tel" ng-model="$ctrl.driver.phone" required>
         <span class="help-block" ng-if="$ctrl.driverProfileForm.phoneNumber.$error.required && $ctrl.driverProfileForm.phoneNumber.$touched">A phone number is required</span>
         <span class="help-block" ng-if="$ctrl.driverProfileForm.phoneNumber.$error.invalidFormat && $ctrl.driverProfileForm.phoneNumber.$touched">Invalid phone number</span>
       </div>
