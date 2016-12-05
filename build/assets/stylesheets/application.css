@@ -9941,7 +9941,7 @@ header.navbar + .tab-bar {
 /* line 6, components/_map-infowindow.sass */
 .carrier-map-spacer {
   position: relative;
-  z-index: 11111; }
+  z-index: 1000; }
   /* line 10, components/_map-infowindow.sass */
   .carrier-map-spacer.map-lg {
     height: 790px; }
