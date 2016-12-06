@@ -4,16 +4,17 @@ angular.module('echo.components.footer', [
   'echo.components.billingQuestions',
   'echo.components.carrierAdminFooter',
   'echo.services.userProfile',
+  'echo.services.repDetails',
   'echo.config.routes',
   'echo.config.appConstants'
 ]).component('appFooter', {
-  bindings: {
-    repDetails: '<'
-  },
   templateUrl: 'app/common/components/footer/footer.template.html',
-    controller: function(userProfileService, routesConfig, appConstants) {
+    controller: function(repDetailsService, userProfileService, routesConfig, appConstants) {
       var that = this;
+      
       that.user = userProfileService.getUser();
+      that.repDetails = repDetailsService.getRep();
+
       that.termsAndConditionsRoute = routesConfig.INDEX.termsAndConditions.name;
       that.privacyPolicyRoute = appConstants.PRIVACY_POLICY_URL;
   }

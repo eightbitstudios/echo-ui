@@ -12,6 +12,7 @@ angular.module('echo.index', [
   'echo.components.header',
   'echo.components.footer',
   'echo.api.rep',
+  'echo.services.repDetails',
   'echo.api.carrier',
   'echo.index.carrier.myCompany.driverProfile',
   'echo.services.cookie',
@@ -39,28 +40,17 @@ angular.module('echo.index', [
 
           var user = userProfileService.getUser();
           return $q.when(user);
-        },
-        repDetails: function (user, repApi) {
-          return repApi.fetchRepByCarrierId(user.carrierId);
         }
       },
       views: {
         'header': {
-          template: '<app-header rep-details="$ctrl.repDetails"></app-header>',
-          controller: function (repDetails) {
-            this.repDetails = repDetails;
-          },
-          controllerAs: '$ctrl'
+          template: '<app-header/>'
         },
         'body': {
           template: '<div ui-view></div>'
         },
         'footer': {
-          template: '<app-footer rep-details="$ctrl.repDetails"></app-footer>',
-          controller: function (repDetails) {
-            this.repDetails = repDetails;
-          },
-          controllerAs: '$ctrl'
+          template: '<app-footer/>'
         }
       }
 
@@ -90,6 +80,12 @@ angular.module('echo.index', [
         },
         carrierDetails: function (carrierId, carrierApi) {
           return carrierApi.fetchCarrierById(carrierId);
+        },
+        repDetails: function (repDetailsService, user, repApi) {
+          return repApi.fetchRepByCarrierId(user.carrierId).then(function(rep){
+            repDetailsService.setRep(rep);
+            return rep;
+          });
         }
       }
     })
