@@ -7,6 +7,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.components.modal.milestones.reportArrival',
   'echo.components.modal.milestones.sendLoadUpdate',
   'echo.components.modal.milestones.reportDelivery',
+  'echo.components.modal.documentUpload',
   'echo.services.modal',
   'echo.api.loads',
   'echo.config.globals',
@@ -110,6 +111,15 @@ angular.module('echo.components.loadTable.action', [
             }
           });
         });
+      };
+      
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value] = function() {
+         return $q.when(modalService.open({
+            component: 'document-upload-modal',
+            bindings: {
+              load: that.load
+            }
+          }));
       };
 
       that.openMilestone = function (action) {
