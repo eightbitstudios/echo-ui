@@ -6,6 +6,7 @@ var carrierHandler = require('./handlers/carrier-handler'),
   loadsHandler = require('./handlers/loads-handler'),
   locationHandler = require('./handlers/location-handler'),
   timeZonesHandler = require('./handlers/time-zones-handler'),
+  documentHandler = require('./handlers/document-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
@@ -67,4 +68,6 @@ module.exports = function (app) {
   app.get(endpoints.api.carrierById, carrierHandler.getCarrierById);
   app.get(endpoints.api.repByCarrierId, carrierHandler.getRepByCarrierId);
   app.get(endpoints.api.language, languageHandler.getLanguage);
+
+  app.post(endpoints.api.documentUpload, documentHandler.createDocuments);
 };

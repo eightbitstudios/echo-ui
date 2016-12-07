@@ -1,72 +1,23 @@
 <div class="document-upload-modal">
-  <div class="modal-header">
-    <button aria-label="Close" class="close btn-close" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">
-              <span aria-hidden="true">×</span>
-            </button>
-    <h1 class="modal-title">
-      <span class="assign-action-type">
-                Add Document for
-              </span>
-      <span class="assign-action-to">
-                Load {{$ctrl.load.loadNumber}}
-              </span>
-    </h1>
-    <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
-  </div>
+  <modal-header header-text="ADD DOCUMENT FOR" load-number="$ctrl.load.loadNumber" pro-number="$ctrl.proNumber" modal-actions="$ctrl.modalActions"/>
   <div class="modal-body">
-    <section class="modal-sidebar">
-      <p>
-        <strong>Document Guidelines</strong>
-      </p>
-      <ul>
-        <li>Accepted File Types: JPEG, PDF, PNG</li>
-        <li>Max File Size: 20mb</li>
-      </ul>
-      <p>
-        <strong>Documents Sent</strong>
-      </p>
-      <div class="load-doc">
-        <div class="doc-descrip">
-          <div class="doc-data">
-            <h5>PROOF OF DELIVERY #1</h5>
-            Added 06:45 CST, Today
-            <br> By Echo
-          </div>
-        </div>
-      </div>
-      <div class="load-doc">
-        <div class="doc-descrip">
-          <div class="doc-data">
-            <h5>LUMPER RECEIPT</h5>
-            Added 05:45 CST, Today
-            <br> By Echo
-          </div>
-        </div>
-      </div>
-    </section>
+    <document-upload-sidebar></document-upload-sidebar>
     <section class="modal-main-content">
-      <document-upload files="$ctrl.files"/>
-      <form class="form-inline">
-        <legend>TYPE</legend>
-        <radio-button label="Load Document" name="optionsRadiosType" />
-      </form>
-      <hr class="hr">
-      <form>
+      <uploaded-documents files="$ctrl.files" added-file-callback="$ctrl.fileAdded()"></uploaded-documents>
+      <document-type selected-document-type="$ctrl.selectedDocumentType" is-disabled="$ctrl.files.length > 0"></document-type>
+      <div class="modal-action-links">
         <div class="row">
-          <div class="col-sm-7">
-            <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.POD" label="Proof of Delivery #2 (2 Needed)" is-disabled="$ctrl.files.length > 0" name="optionsRadios"></radio-button>
-            <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.LUMPER_RECEIPT" label="Lumper Receipt" is-disabled="$ctrl.files.length > 0" name="optionsRadios" ></radio-button>
-            <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.BILL_OF_LADING" label="Bill of Lading" is-disabled="$ctrl.files.length > 0" name="optionsRadios" ></radio-button>
-          </div>
           <div class="col-sm-5">
-            <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.FUEL_RECEIPT" label="Fuel Receipts" is-disabled="$ctrl.files.length > 0" name="optionsRadios" ></radio-button>
-            <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.SCALE_TICKETS" label="Scale Tickets" is-disabled="$ctrl.files.length > 0" name="optionsRadios" ></radio-button>
-            <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.OTHER" label="Other" is-disabled="$ctrl.files.length > 0" name="optionsRadios" ></radio-button>
+            <loading-button disable-button="$ctrl.files.length === 0" click-handler="$ctrl.uploadDocuments()" button-text="Send Document" show-loading="$ctrl.showLoading" />
+          </div>
+          <div class="col-sm-7 upload-messages">
+            <successful-text ng-if="$ctrl.showSavedMessage" text="Document successfully added"></successful-text>
+            <div class="text-danger" ng-if="$ctrl.showErrorMessage">
+              <strong>Upload Error</strong>
+              <br> Meaningful error messaging
+            </div>
           </div>
         </div>
-      </form>
-      <div class="modal-action-links">
-        <button class="btn btn-default disabled" ng-disabled="$ctrl.files.length === 0" type="button">Send Document</button>
       </div>
     </section>
   </div>

@@ -1,19 +1,40 @@
 angular.module('echo.components.modal.documentUpload', [
-  'echo.components.radioButton',
-  'echo.components.documentUpload',
-  'echo.components.documentTypes'
-])
+    'echo.components.radioButton',
+    'echo.components.documentTypes',
+    'echo.components.loadingButton',
+    'echo.api.document',
+    'echo.components.modal.documentUpload.documentUploadSidebar',
+    'echo.components.modal.documentUpload.documentType',
+    'echo.components.modal.modalHeader',
+    'echo.components.modal.documentUpload.uploadedDocuments',
+    'echo.components.successfulText'
+  ])
   .component('documentUploadModal', {
     templateUrl: 'app/common/components/modal/document-upload-modal/document-upload-modal.template.html',
     bindings: {
       load: '=',
       modalActions: '<',
     },
-    controller: function (documentTypes) {
+    controller: function(documentTypes, documentApi) {
       var that = this;
 
       that.files = [];
-      that.documentTypes = documentTypes;
       that.selectedDocumentType = documentTypes.POD;
+
+      that.uploadDocuments = function() {
+        that.showLoading = true;
+        that.showSavedMessage = false;
+        that.showErrorMessage = false;
+
+        documentApi.uploadDocuments(that.load.loadNumber, that.selectedDocumentType, that.files)
+          .then(function() {
+            that.showSavedMessage = true;
+          }).catch(function() {
+            that.showErrorMessage = true;
+          }).finally(function() {
+            that.showLoading = false;
+            that.files = [];
+          });
+      };
     }
   });

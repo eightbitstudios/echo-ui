@@ -23,6 +23,12 @@ angular.module('echo.config.appConstants', [])
       passwordNumber: /[0-9]/,
       passwordUpperCase: /[A-Z]/
     },
+    FILE_UPLOAD: {
+      DOCUMENTS: {
+        fileSizeLimit: 20971520, // 20MB in bytes
+        documentTypes: ['application/pdf', 'image/jpg', 'image/jpeg', 'image/png']
+      }
+    },
     ERROR_MESSAGES: {
       DEFAULTS: {
         400: 'An error occurred',

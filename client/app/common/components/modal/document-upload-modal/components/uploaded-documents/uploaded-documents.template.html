@@ -1,11 +1,10 @@
 <div class="document-uploading">
   <div class="document-upload" ng-class="{empty: $ctrl.files.length === 0}">
     <div class="btn btn-document btn-dropzone-lg">
-      <file-upload file-list="$ctrl.files"></file-upload>
+      <input type="file" file-upload="$ctrl.files" upload-constraints="$ctrl.uploadConstraints"/>
       <div class="add-type">
-        <span ng-if="$ctrl.files.length === 0">ADD A DOCUMENT</span>
-        <span ng-if="$ctrl.files.length > 0">ADD PAGE</span>
-        <small>You can also drag and drop</small>
+        <span ng-if="$ctrl.files.length === 0">ADD A DOCUMENT <small>You can also drag and drop</small></span>
+        <span ng-if="$ctrl.files.length > 0">ADD PAGE</span>   
       </div>
     </div>
   </div>
@@ -14,7 +13,7 @@
     <div class="added-doc-thumb">
     </div>
     <div class="added-doc-text">
-      {{file.name}}
+      {{file | pages: $ctrl.files}}
     </div>
   </div>
 </div>

@@ -1,26 +1,33 @@
-angular.module('echo.directives.fileUpload', [])
-  .directive('fileUpload', function() {
+angular.module('echo.directives.fileUpload', [
+    'echo.models.file'
+  ])
+  .directive('fileUpload', function(FileModel) {
     return {
-      restrict: 'E',
+      restrict: 'A',
       scope: {
-        fileList: '='
+        fileUpload: '=',
+        uploadConstraints: '='
       },
-      templateUrl: 'app/common/directives/file-upload/file-upload.template.html',
       link: function(scope, element) {
-        scope.fileList = [];
-        var fileInput = element.find('input[type="file"]');
+        scope.fileUpload = [];
 
-        function fileAdded() {
-          if (fileInput[0].files.length > 0) {
-            scope.fileList.push(_.get(fileInput[0].files, '0'));
-            scope.$apply();
+        element.attr('accept', _.replace(scope.uploadConstraints.documentTypes, /[\w]+\//g, ' .'));
+
+        var newFileAdded = function() {
+          var file = new FileModel(_.get(element[0].files, '0'));
+
+          if (file.isValidFileType(scope.uploadConstraints.documentTypes) &&
+            file.isValidFileSize(scope.uploadConstraints.fileSizeLimit)) {
+
+            file.getPageCount().then(function() {
+              scope.fileUpload.push(file);
+              element.val(''); // Clear out saved file incase user tries to re-add a file
+            });
           }
-        }
+        };
 
-        fileInput.bind('change', fileAdded);
-        fileInput[0].addEventListener('dragenter', fileAdded, false);
-        fileInput[0].addEventListener('dragover', fileAdded, false);
-        fileInput[0].addEventListener('drop', fileAdded, false);
+        element.bind('change', newFileAdded);
+        element[0].addEventListener('ondrop', newFileAdded, false);
       }
     };
   });

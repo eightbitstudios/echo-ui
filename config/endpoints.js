@@ -1,4 +1,5 @@
 module.exports = {
+  documentUpload: '/api/v1/upload',
   availableLoadsByCarrierId: '/api/v1/carriers/${carrierId}/loads/active',
   unbilledLoadsByCarrierId: '/api/v1/carriers/${carrierId}/loads/unbilled',
   upcomingLoadsByCarrierId: '/api/v1/carriers/${carrierId}/loads/upcoming',
