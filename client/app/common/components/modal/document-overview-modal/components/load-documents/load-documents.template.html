@@ -1,0 +1,16 @@
+<div class="load-documents">
+  <div ng-class="{active: document === $ctrl.selectedDocument}" class="load-doc" ng-repeat="document in $ctrl.documents" ng-click="$ctrl.selectDocument(document)">
+    <div class="doc-image">
+      <a href="javascript:void(0)">
+        <img src="assets/images/document_image.png" alt="Document image">
+      </a>
+    </div>
+    <div class="doc-descrip">
+      <h5>{{document.name}}</h5>
+      <div class="doc-data">
+        {{document.timestamp}}
+        <br> By {{document.user | fullName}}
+      </div>
+    </div>
+  </div>
+</div>

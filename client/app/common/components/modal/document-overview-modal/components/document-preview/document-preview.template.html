@@ -1,0 +1,19 @@
+<header>
+  <div class="document-title pull-left">
+    <h4 class="content-header">{{$ctrl.document.name}}</h4>
+    <p>{{$ctrl.document.timestamp}} By {{$ctrl.document.user | fullName}}</p>
+  </div>
+  <ul class="list-inline pull-right document-tool-links">
+    <li>
+      <a href="{{$ctrl.document.url}}" download="test.pdf">Download Document</a>
+    </li>
+    <li>
+      <a href="{{$ctrl.document.url}}" target="_blank">Print</a>
+    </li>
+  </ul>
+</header>
+<div class="document-preview">
+  <img ng-src="{{$ctrl.document.url}}" alt="Document preview temp">
+</div>
+<footer>
+</footer>
