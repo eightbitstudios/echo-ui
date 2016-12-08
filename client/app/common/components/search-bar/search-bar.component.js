@@ -13,6 +13,8 @@ angular.module('echo.components.searchBar', [
     controller: function (appConstants, keyCodes) {
       var that = this;
 
+      that.maxLength = that.maxLength || 250;
+
       that.$onInit = function () {
         that.searchText = '';
       };
