@@ -53,6 +53,7 @@ module.exports = {
     mapPointsForActiveLoads: '/mock/api/v1/carriers/:carrierId/loads/active/map',
     mapPointByLoadGuid: '/mock/api/v1/loads/:loadGuid/details/map',
     mapPointsForLoadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction/map',
-    documentUpload: '/mock/api/v1/upload'
+    documentUpload: '/mock/api/v1/upload',
+    documents: '/mock/api/v1/load/:loadId/documents'
   }
 };

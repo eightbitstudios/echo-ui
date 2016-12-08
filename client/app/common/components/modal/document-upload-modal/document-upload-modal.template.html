@@ -1,7 +1,7 @@
 <div class="document-upload-modal">
   <modal-header header-text="ADD DOCUMENT FOR" load-number="$ctrl.load.loadNumber" pro-number="$ctrl.proNumber" modal-actions="$ctrl.modalActions"/>
   <div class="modal-body">
-    <document-upload-sidebar></document-upload-sidebar>
+    <document-upload-sidebar documents="$ctrl.documents"></document-upload-sidebar>
     <section class="modal-main-content">
       <uploaded-documents files="$ctrl.files" added-file-callback="$ctrl.fileAdded()"></uploaded-documents>
       <document-type selected-document-type="$ctrl.selectedDocumentType" is-disabled="$ctrl.files.length > 0"></document-type>

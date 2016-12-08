@@ -4,27 +4,18 @@
   </p>
   <ul>
     <li>Accepted File Types: JPEG, PDF, PNG</li>
-    <li>Max File Size: 20mb</li>
+    <li>Max File Size: 20MB</li>
   </ul>
   <p>
     <strong>Documents Sent</strong>
   </p>
   <div class="load-docs">
-    <div class="load-doc">
+    <div class="load-doc" ng-repeat="document in $ctrl.documents">
       <div class="doc-descrip">
         <div class="doc-data">
-          <h5>PROOF OF DELIVERY #1</h5>
-          Added 06:45 CST, Today
-          <br> By Echo
-        </div>
-      </div>
-    </div>
-    <div class="load-doc">
-      <div class="doc-descrip">
-        <div class="doc-data">
-          <h5>LUMPER RECEIPT</h5>
-          Added 05:45 CST, Today
-          <br> By Echo
+          <h5>{{document.name}}</h5>
+          {{document.createDate}}
+          <br> By {{document.user | fullName}}
         </div>
       </div>
     </div>

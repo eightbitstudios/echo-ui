@@ -14,6 +14,7 @@ angular.module('echo.components.modal.documentUpload', [
     bindings: {
       load: '=',
       modalActions: '<',
+      documents: '<'
     },
     controller: function(documentTypes, documentApi) {
       var that = this;
@@ -26,7 +27,7 @@ angular.module('echo.components.modal.documentUpload', [
         that.showSavedMessage = false;
         that.showErrorMessage = false;
 
-        documentApi.uploadDocuments(that.load.loadNumber, that.selectedDocumentType, that.files)
+        documentApi.createDocuments(that.load.loadNumber, that.selectedDocumentType, that.files)
           .then(function() {
             that.showSavedMessage = true;
           }).catch(function() {

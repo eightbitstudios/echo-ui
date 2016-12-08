@@ -14,6 +14,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.enums.actions',
   'echo.enums.arrivalTypes',
   'echo.api.timeZone',
+  'echo.api.document',
   'echo.filters.lastModifiedBy'
 ])
   .component('action', {
@@ -25,7 +26,7 @@ angular.module('echo.components.loadTable.action', [
       repDetails: '<',
       isMultiStop: '<'
     },
-    controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
+    controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, documentApi, timeZoneApi) {
       var that = this;
 
       that.appConstants = appConstants;
@@ -114,12 +115,15 @@ angular.module('echo.components.loadTable.action', [
       };
       
       actionHandler[actionEnums.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value] = function() {
-         return $q.when(modalService.open({
+         return documentApi.fetchDocuments(that.load.loadNumber).then(function(documents){
+           return modalService.open({
             component: 'document-upload-modal',
             bindings: {
-              load: that.load
+              load: that.load,
+              documents: documents
             }
-          }));
+          });
+        });
       };
 
       that.openMilestone = function (action) {

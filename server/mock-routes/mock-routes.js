@@ -70,4 +70,5 @@ module.exports = function (app) {
   app.get(endpoints.api.language, languageHandler.getLanguage);
 
   app.post(endpoints.api.documentUpload, documentHandler.createDocuments);
+  app.get(endpoints.api.documents, documentHandler.fetchDocuments);
 };

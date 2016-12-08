@@ -16,7 +16,7 @@ angular.module('echo.config.api', [])
     signIn: '@signIn@',
     signOut: '@signOut@',
     refresh: _.template('@refresh@'),
-    repByCarrierId:  _.template('@repByCarrierId@'),
+    repByCarrierId: _.template('@repByCarrierId@'),
     forgotPassword: '@forgotPassword@',
     changePassword: _.template('@changePassword@'),
     portalUsers: _.template('@portalUsers@'),
@@ -53,5 +53,6 @@ angular.module('echo.config.api', [])
     verifyDriverByPhone: _.template('@verifyDriverByPhone@'),
     mapPointsForActiveLoads: _.template('@mapPointsForActiveLoads@'),
     mapPointByLoadGuid: _.template('@mapPointByLoadGuid@'),
-    mapPointsForLoadsNeedingAction: _.template('@mapPointsForLoadsNeedingAction@')
+    mapPointsForLoadsNeedingAction: _.template('@mapPointsForLoadsNeedingAction@'),
+    documents: _.template('@documents@')
   });
