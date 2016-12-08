@@ -1,20 +1,15 @@
 angular.module('echo.models.file', [])
-  .factory('FileModel', function($q) {
+  .factory('FileModel', function() {
 
     /**
      * @constructor
      */
-    function File(fileData, pageCount) {
+    function File(fileData) {
       var that = this;
 
-      var defaults = {
-        pageCount: 1
-      };
-
       _.assign(that, {
-        fileData: fileData,
-        pageCount: pageCount
-      }, defaults);
+        fileData: fileData
+      });
     }
 
     File.prototype.isPDF = function() {
@@ -29,28 +24,6 @@ angular.module('echo.models.file', [])
     File.prototype.isValidFileSize = function(sizeLimit) {
       return _.get(this.fileData, 'size') &&
         this.fileData.size <= sizeLimit;
-    };
-
-    File.prototype.getPDFPageCount = function() {
-      var that = this;
-
-      var deferred = $q.defer();
-      var reader = new FileReader();
-      reader.readAsBinaryString(that.fileData);
-      reader.onloadend = function() {
-        that.pageCount = _.size(reader.result.match(/\/Type[\s]*\/Page[^s]/g));
-        deferred.resolve(that.pageCount);
-      };
-
-      return deferred.promise;
-    };
-
-    File.prototype.getPageCount = function() {
-      if (this.isPDF()) {
-        return this.getPDFPageCount();
-      } else {
-        return $q.when(this.pageCount);
-      }
     };
 
     /**

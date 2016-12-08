@@ -10,10 +10,10 @@
   </div>
   <div class="added-document" ng-repeat="file in $ctrl.files">
     <div ng-click="$ctrl.removeFile(file)" class="btn-close close">X</div>
-    <div class="added-doc-thumb">
+    <div class="added-doc-thumb" preview-document="file">
     </div>
     <div class="added-doc-text">
-      {{file | pages: $ctrl.files}}
+      {{$index | pages}}
     </div>
   </div>
 </div>

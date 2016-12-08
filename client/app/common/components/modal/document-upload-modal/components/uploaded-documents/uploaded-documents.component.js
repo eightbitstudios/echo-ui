@@ -1,6 +1,7 @@
 angular.module('echo.components.modal.documentUpload.uploadedDocuments', [
   'echo.directives.fileUpload',
   'echo.filters.pages',
+  'echo.directives.previewDocument',
   'echo.config.appConstants'
 ])
   .component('uploadedDocuments', {

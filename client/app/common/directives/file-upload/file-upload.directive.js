@@ -18,11 +18,9 @@ angular.module('echo.directives.fileUpload', [
 
           if (file.isValidFileType(scope.uploadConstraints.documentTypes) &&
             file.isValidFileSize(scope.uploadConstraints.fileSizeLimit)) {
-
-            file.getPageCount().then(function() {
-              scope.fileUpload.push(file);
-              element.val(''); // Clear out saved file incase user tries to re-add a file
-            });
+            scope.fileUpload.push(file);
+            element.val(''); // Clear out saved file incase user tries to re-add the file
+            scope.$apply();
           }
         };
 
