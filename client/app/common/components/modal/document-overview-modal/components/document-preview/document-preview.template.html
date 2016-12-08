@@ -1,6 +1,6 @@
 <header>
   <div class="document-title pull-left">
-    <h4 class="content-header">{{$ctrl.document.name}}</h4>
+    <h4 class="content-header">{{$ctrl.document.documentSubType}}</h4>
     <p>{{$ctrl.document.timestamp}} By {{$ctrl.document.user | fullName}}</p>
   </div>
   <ul class="list-inline pull-right document-tool-links">
@@ -13,7 +13,8 @@
   </ul>
 </header>
 <div class="document-preview">
-  <img ng-src="{{$ctrl.document.url}}" alt="Document preview temp">
+  <img ng-src="{{$ctrl.document.loadDocumentPages[$ctrl.paging.selectedPage - 1].url}}" alt="Document preview temp">
 </div>
 <footer>
+  <pagination paging-model="$ctrl.paging"></pagination>
 </footer>
