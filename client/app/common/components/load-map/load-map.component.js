@@ -22,7 +22,8 @@ angular.module('echo.components.loadMap', [
     bindings: {
       mapPoints: '=',
       detailedInfo: '<',
-      showMap: '<'
+      showMap: '<',
+      expanded: '<'
     },
     controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
       var that = this;
@@ -48,11 +49,13 @@ angular.module('echo.components.loadMap', [
       that.popupOffset = that.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
 
       that.$onChanges = function (changeObj) {
-        if(changeObj.showMap.currentValue) {
+        console.log(changeObj);
+        if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.expanded, 'currentValue')) {
           googleMapsApi.then(function (google) {
             that.google = google;
             return that.formatMapPoints(google);
           }).finally(function() {
+            googleMaps.resizeAndCenter(that.google, that.map, that.mapPoints);
             that.showLoading = false;
           });
         } else {

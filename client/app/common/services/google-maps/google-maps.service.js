@@ -33,6 +33,22 @@ angular.module('echo.services.googleMaps', [
         }
       },
 
+      resizeAndCenter: function (google, map, mapPoints) {
+        if (map) {
+          google.maps.event.trigger(map, 'resize');
+
+          var bounds = new google.maps.LatLngBounds();
+          _.forEach(mapPoints, function (mapPoint) {
+            if (mapPoint.position) {
+              bounds.extend(mapPoint.position);
+            }
+          });
+
+          map.fitBounds(bounds);
+          map.setCenter(this.findCenter(google, mapPoints));
+        }
+      },
+
       getDefaultZoom: function (mapPoints) {
         var validPoints = 0;
         _.forEach(mapPoints, function(mapPoint) {

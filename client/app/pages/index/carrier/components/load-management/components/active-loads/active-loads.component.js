@@ -24,6 +24,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.isDeliveriesToday = false;
     var defaultFilterText = 'By Next Appointment';
     that.filterText = defaultFilterText;
+    that.showFullMap = false;
 
     that.getAvailableLoads = function () {
       that.showLoading = true;
@@ -73,6 +74,10 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.refreshPageData = function () {
       that.getAvailableLoads();
       that.getMapPointsForAvailableLoads();
+    };
+
+    that.toggleFullMap = function () {
+      that.showFullMap = !that.showFullMap;
     };
 
     that.$onInit = function () {
