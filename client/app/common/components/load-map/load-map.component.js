@@ -49,7 +49,6 @@ angular.module('echo.components.loadMap', [
       that.popupOffset = that.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
 
       that.$onChanges = function (changeObj) {
-        console.log(changeObj);
         if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.showExpanded, 'currentValue')) {
           googleMapsApi.then(function (google) {
             that.google = google;
