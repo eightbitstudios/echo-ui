@@ -1,6 +1,6 @@
 angular.module('echo.components.modal.documentUpload', [
     'echo.components.radioButton',
-    'echo.components.documentTypes',
+    'echo.constants.documentTypes',
     'echo.components.loadingButton',
     'echo.api.document',
     'echo.components.modal.documentUpload.documentUploadSidebar',

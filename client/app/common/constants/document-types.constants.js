@@ -1,4 +1,4 @@
-angular.module('echo.components.documentTypes', [])
+angular.module('echo.constants.documentTypes', [])
   .constant('documentTypes', {
     POD: 'POD',
     LUMPER_RECEIPT: 'Lumper Receipt',
