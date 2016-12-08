@@ -5,18 +5,18 @@
         <li>
           <strong>{{$ctrl.mapPoints.length}} Loads Located</strong>
         </li>
-        <li ng-if="!$ctrl.showFullMap">
-          <a href="javascript:void(0)" ng-click="$ctrl.toggleFullMap()">View Full Map</a>
+        <li ng-if="!$ctrl.showExpandedMap">
+          <a href="javascript:void(0)" ng-click="$ctrl.toggleExpandedMap()">View Full Map</a>
         </li>
-        <li ng-if="$ctrl.showFullMap">
-          <a href="javascript:void(0)" ng-click="$ctrl.toggleFullMap()">Back to Dashboard</a>
+        <li ng-if="$ctrl.showExpandedMap">
+          <a href="javascript:void(0)" ng-click="$ctrl.toggleExpandedMap()">Back to Dashboard</a>
         </li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <load-map ng-if="$ctrl.showFullMap" show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" expanded="true"></load-map>
-  <div ng-if="!$ctrl.showFullMap">
+  <load-map ng-if="$ctrl.showExpandedMap" show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" expanded="true"></load-map>
+  <div ng-if="!$ctrl.showExpandedMap">
     <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" expanded="false"></load-map>
     <div class="container main-content">
       <section>
