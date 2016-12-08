@@ -23,7 +23,7 @@ angular.module('echo.components.loadMap', [
       mapPoints: '=',
       detailedInfo: '<',
       showMap: '<',
-      expanded: '<'
+      showExpanded: '<'
     },
     controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
       var that = this;
@@ -50,7 +50,7 @@ angular.module('echo.components.loadMap', [
 
       that.$onChanges = function (changeObj) {
         console.log(changeObj);
-        if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.expanded, 'currentValue')) {
+        if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.showExpanded, 'currentValue')) {
           googleMapsApi.then(function (google) {
             that.google = google;
             return that.formatMapPoints(google);
