@@ -4,7 +4,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.echoRepContact',
   'echo.components.pagination',
   'echo.models.paging',
-  'echo.services.modal',
   'echo.config.appConstants',
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
@@ -17,7 +16,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     repDetails: '<',
     carrierId: '<'
   },
-  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum, modalService) {
+  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum) {
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
@@ -37,35 +36,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
         that.showLoading = false;
       });
     };
-
-    that.documents = [{
-      name: 'Test Document',
-      user: {
-        firstName: 'Echo'
-      },
-      url: 'assets/images/document-preview-TEMP.jpg',
-      timestamp: 'Updated 06:45 CST, Today'
-    }, {
-      name: 'Test Document #2',
-      user: {
-        firstName: 'Test',
-        lastName: 'Tester'
-      },
-      url: 'assets/images/document-preview-TEMP.jpg',
-      timestamp: 'Updated 10:24 CST, Yesterday'
-    }];
-
-    that.selectedDocument = that.documents[0];
-
-    modalService.open({
-      component: 'document-overview-modal',
-      windowTopClass: 'transparent',
-      openedClass: 'dark modal-open',
-      bindings: {
-        documents: that.documents,
-        selectedDocument: that.selectedDocument
-      }
-    });
 
     that.deliveriesTodayHandler = function(value) {
       if (!value) {
