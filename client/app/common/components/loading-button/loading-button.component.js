@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('echo.components.loadingButton', [
-  'echo.components.loading',
+  'echo.components.loading'
 ]).component('loadingButton', {
   bindings: {
     buttonText: '@',

@@ -1,5 +1,5 @@
 <h4 class="content-header">Confirm Empty</h4>
-<p>If the driver can meet these customer needs. <br>If not, please call your Echo rep.</p>
+<p>Please confirm empty if the driver can meet the following customer needs. (If not, please call your Echo Rep.)</p>
 <checkbox-card ng-if="$ctrl.equipment.length > 0" is-checked="$ctrl.checkboxItems.equipmentCheckbox">
   <p>
     <strong>With The Right Equipment</strong>
@@ -18,7 +18,7 @@
 </checkbox-card>
 <checkbox-card ng-if="$ctrl.reportEmpty.generalInstructions.length > 0" is-checked="$ctrl.checkboxItems.instructionCheckbox">
   <p>
-    <strong>With The Right Instruction</strong>
+    <strong>Following the Instructions</strong>
   </p>
   <p>
     {{$ctrl.reportEmpty.generalInstructions}}
