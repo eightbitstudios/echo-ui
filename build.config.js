@@ -111,8 +111,9 @@ module.exports = function (grunt) {
         'bower_components/angular-base64/angular-base64.js',
         'bower_components/bootstrap-daterangepicker/daterangepicker.js',
         'bower_components/angular-ui-mask/src/mask.js',
+        'bower_components/pdfjs-dist/build/pdf.worker.js',
         'bower_components/pdfjs-dist/build/pdf.js',
-        'bower_components/pdfjs-dist/build/pdf.worker.js'
+        'bower_components/pdfjs-dist/web/compatibility.js'
       ],
       css: [
         'bower_components/bootstrap-daterangepicker/daterangepicker.css',
