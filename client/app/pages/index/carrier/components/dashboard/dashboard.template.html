@@ -3,7 +3,7 @@
     <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <strong>{{$ctrl.mapPoints.length}} Loads Located</strong>
+          <strong ng-if="$ctrl.showMap">{{$ctrl.mapPoints.length}} Loads Located</strong>
         </li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
@@ -21,12 +21,14 @@
           </h1>
         <a ui-sref="{{$ctrl.activeLoadsRoute}}">View All {{$ctrl.activeLoadCount}} Active Loads</a>
       </div>
-      <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0" loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" show-loading="$ctrl.showActionLoadsLoading" refresh-table-callback="$ctrl.fetchLoadsNeedingAction()"/>
+      <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0" 
+        loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" 
+        show-loading="$ctrl.showActionLoadsLoading" refresh-table-callback="$ctrl.fetchLoadsNeedingAction()"></load-table>
+      <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads Needing Action" click-handler="$ctrl.showMoreActionLoadsHandler()"/>
       <div class="no-loads-message" ng-if="!$ctrl.showActionLoadsLoading && $ctrl.activeLoads.length === 0">
         <h3>You have no loads that need online actions right now.</h3>
         <div>You have <a ui-sref="{{$ctrl.activeLoadsRoute}}">{{$ctrl.activeLoadCount}} active loads</a> at this time.</div>
       </div>
-      <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads Needing Action" click-handler="$ctrl.showMoreActionLoadsHandler()"></show-more>
     </section>
     <section class="multi-stop-loads">
       <div class="section-head">

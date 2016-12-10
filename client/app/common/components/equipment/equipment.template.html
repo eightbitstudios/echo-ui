@@ -3,11 +3,10 @@
   <div class="equip-list">
     <div ng-repeat="equipment in $ctrl.normalEquipment">{{equipment.displayName}}</div>
     <div ng-if="$ctrl.tractorNumber">Tractor {{$ctrl.tractorNumber}}</div>
-    <edit-number number="$ctrl.trailerNumber" default-text="Add Trailer Number" update-callback="$ctrl.updateTrailerNumber(updatedNumber)"></edit-number>
+    <edit-number number="$ctrl.trailerNumber" default-text="Add Trailer Number" shadow-text="Trailer Number" update-callback="$ctrl.updateTrailerNumber(updatedNumber)"></edit-number>
     <div class="equip-specials">
       <br>
       <div ng-repeat="equipment in $ctrl.specialEquipment">{{equipment.displayName}}</div>
     </div>
-
   </div>
 </div>
