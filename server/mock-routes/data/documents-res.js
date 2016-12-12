@@ -1,6 +1,6 @@
 module.exports = [{
-  name: 'PROOF OF DELIVER',
-  createDate: 'Added 06:45 CST, Today',
+  documentSubType: 'PROOF OF DELIVER',
+  timestamp: 'Added 06:45 CST, Today',
   user: {
     firstName: 'Echo'
   }

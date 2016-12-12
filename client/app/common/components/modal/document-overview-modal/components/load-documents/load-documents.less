@@ -1,5 +1,56 @@
 .load-documents {
+  padding: 0;
+  margin: 20px 0;
   .load-doc.active {
     background: #f7f7f7;
+  }
+  .load-doc {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0px 10px 15px;
+    &:hover {
+      background: #f7f7f7;
+      cursor: pointer;
+    }
+  }
+  .doc-image {
+    margin-right: 15px;
+    height: 70px;
+    width: 65px;
+    margin: 0 25px 0 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    img {
+      width: auto;
+      height: auto;
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+    }
+  }
+  .doc-descrip {
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.3;
   }
 }
