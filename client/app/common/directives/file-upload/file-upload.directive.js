@@ -1,12 +1,14 @@
 angular.module('echo.directives.fileUpload', [
+  'echo.config.appConstants',
     'echo.models.file'
   ])
-  .directive('fileUpload', function(FileModel) {
+  .directive('fileUpload', function(FileModel, appConstants) {
     return {
       restrict: 'A',
       scope: {
         fileUpload: '=',
-        uploadConstraints: '='
+        uploadConstraints: '=',
+        error: '='
       },
       link: function(scope, element) {
         scope.fileUpload = [];
@@ -21,6 +23,8 @@ angular.module('echo.directives.fileUpload', [
             scope.fileUpload.push(file);
             element.val(''); // Clear out saved file incase user tries to re-add the file
             scope.$apply();
+          } else {
+            scope.error = appConstants.ERROR_MESSAGES.DEFAULTS['500117'];
           }
         };
 
