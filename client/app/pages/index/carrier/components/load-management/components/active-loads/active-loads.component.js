@@ -27,10 +27,10 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
 
     that.getAvailableLoads = function () {
       that.showLoading = true;
-      loadsApi.fetchAvailableLoads(that.carrierId, that.paging, that.isPickUpToday, that.isDeliveriesToday).then(function (availableLoadData) {
-        that.paging.totalRecords = availableLoadData.totalLoadCount;
-        that.paging.recordCount = _.size(availableLoadData.loads);
-        that.activeLoads = availableLoadData.loads;
+      loadsApi.fetchActiveLoadsPage(that.carrierId, that.paging, that.isPickUpToday, that.isDeliveriesToday).then(function (availableLoadData) {
+        that.paging.totalRecords = availableLoadData.loads.totalLoadCount;
+        that.paging.recordCount = _.size(availableLoadData.loads.loads);
+        that.activeLoads = availableLoadData.loads.loads;
       }).finally(function () {
         that.showLoading = false;
       });

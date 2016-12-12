@@ -50,5 +50,6 @@ module.exports = {
   verifyDriverByPhone: '/api/v1/carriers/${carrierId}/drivers/verify/${phoneNumber}',
   mapPointsForActiveLoads: '/api/v1/carriers/${carrierId}/loads/active/map',
   mapPointByLoadGuid: '/api/v1/loads/${loadGuid}/details/map',
-  mapPointsForLoadsNeedingAction: '/api/v1/carriers/${carrierId}/loads/needsAction/map'
+  mapPointsForLoadsNeedingAction: '/api/v1/carriers/${carrierId}/loads/needsAction/map',
+  activeLoadsPage: '/api/v1/carriers/${carrierId}/loads/activeLoadsPage'
 };
