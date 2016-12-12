@@ -7,7 +7,8 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
   .component('detailedInfoWindow', {
     templateUrl: 'app/common/components/load-map/components/detailed-info-window/detailed-info-window.template.html',
     bindings: {
-      mapPoint: '<'
+      mapPoint: '<',
+      viewMapHandler: '&'
     },
     controller: function (routesConfig) {
       var that = this;

@@ -5,19 +5,23 @@
         <li>
           <strong>{{$ctrl.mapPoints.length}} Loads Located</strong>
         </li>
-        <li ng-if="!$ctrl.showExpandedMap">
+        <li ng-if="!$ctrl.showExpandedMap && !$ctrl.showLoadDetailsMap">
           <a href="javascript:void(0)" ng-click="$ctrl.toggleExpandedMap()">View Full Map</a>
         </li>
         <li ng-if="$ctrl.showExpandedMap">
-          <a href="javascript:void(0)" ng-click="$ctrl.toggleExpandedMap()">Back to Dashboard</a>
+          <a href="javascript:void(0)" ng-click="$ctrl.shrinkMap()">Back to Dashboard</a>
+        </li>
+        <li ng-if="$ctrl.showLoadDetailsMap">
+          <a href="javascript:void(0)" ng-click="$ctrl.shrinkMap()">Back to Dashboard</a>
         </li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <load-map ng-if="$ctrl.showExpandedMap" show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="true"></load-map>
-  <div ng-if="!$ctrl.showExpandedMap">
-    <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="false"></load-map>
+  <load-map ng-if="$ctrl.showExpandedMap" show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="true" view-map-handler="$ctrl.viewMapHandler(mapPoint)"></load-map>
+  <origin-destination-map ng-if="$ctrl.showLoadDetailsMap" map-point="$ctrl.loadDetailsMapPoint"></origin-destination-map>
+  <div ng-if="!$ctrl.showExpandedMap && !$ctrl.showLoadDetailsMap">
+    <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="false" view-map-handler="$ctrl.viewMapHandler(mapPoint)"></load-map>
     <div class="container main-content">
       <section>
         <div class="section-head">
