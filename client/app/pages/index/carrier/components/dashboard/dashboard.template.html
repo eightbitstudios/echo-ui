@@ -3,7 +3,7 @@
     <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <strong>{{$ctrl.mapPoints.length}} Loads Located</strong>
+          <strong ng-if="$ctrl.showMap">{{$ctrl.mapPoints.length}} Loads Located</strong>
         </li>
         <li ng-if="!$ctrl.showExpandedMap && !$ctrl.showLoadDetailsMap">
           <a href="javascript:void(0)" ng-click="$ctrl.toggleExpandedMap()">View Full Map</a>

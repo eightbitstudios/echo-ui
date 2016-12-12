@@ -5,7 +5,8 @@ angular.module('echo.components.loadMap', [
   'echo.components.googleMapsMarker',
   'echo.components.googleMapsInfoWindow',
   'echo.components.loadMap.detailedInfoWindow',
-  'echo.components.loadMap.basicInfoWindow'
+  'echo.components.loadMap.basicInfoWindow',
+  'echo.components.loading'
 ])
   .constant('googleMapsConst', {
     detailedInfoOffset: {
