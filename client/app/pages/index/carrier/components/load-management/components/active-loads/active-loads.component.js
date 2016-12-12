@@ -4,11 +4,9 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.echoRepContact',
   'echo.components.pagination',
   'echo.models.paging',
-  'echo.services.modal',
   'echo.config.appConstants',
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
-  'echo.components.modal.documentOverview',
   'echo.components.filterButton',
   'echo.components.loadMap'
 ]).component('activeLoads', {
@@ -17,7 +15,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     repDetails: '<',
     carrierId: '<'
   },
-  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum, modalService) {
+  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum) {
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
@@ -37,44 +35,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
         that.showLoading = false;
       });
     };
-
-    that.documents = [{
-      documentSubType: 'Test Document',
-      url: 'assets/images/document-preview-TEMP.jpg',
-      user: {
-        firstName: 'Echo'
-      },
-      loadDocumentPages: [{
-        url: 'assets/images/document-preview-TEMP.jpg',
-      }, {
-        url: 'assets/images/document-preview-TEMP.jpg',
-      }, {
-        url: 'assets/images/document-preview-TEMP.jpg',
-      }],
-      timestamp: 'Updated 06:45 CST, Today'
-    }, {
-      documentSubType: 'Test Document #2',
-      url: 'assets/images/document-preview-TEMP.jpg',
-      user: {
-        firstName: 'Echo'
-      },
-      loadDocumentPages: [{
-        url: 'assets/images/document-preview-TEMP.jpg',
-      }],
-      timestamp: 'Updated 16:45 CST, Today'
-    }];
-
-    that.selectedDocument = that.documents[0];
-
-    modalService.open({
-      component: 'document-overview-modal',
-      windowTopClass: 'transparent',
-      openedClass: 'dark modal-open',
-      bindings: {
-        documents: that.documents,
-        selectedDocument: that.selectedDocument
-      }
-    });
 
     that.deliveriesTodayHandler = function(value) {
       if (!value) {
