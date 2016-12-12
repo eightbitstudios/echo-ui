@@ -8,8 +8,10 @@ angular.module('echo.api.document', [
       var url = apiConfig.documents({
         loadId: loadId
       });
-      return $http.get(url).then(function (resp) {
+      return $http.get(url).then(function(resp) {
         return resp.data.data;
+      }).catch(function(resp) {
+        return $q.reject(resp.data.status);
       });
     },
     createDocuments: function(loadNumber, documentType, loadDocumentPages) {
@@ -29,6 +31,8 @@ angular.module('echo.api.document', [
           'Content-Type': undefined
         },
         transformRequest: angular.identity
+      }).catch(function(resp) {
+        return $q.reject(resp.data.status);
       });
     }
   };
