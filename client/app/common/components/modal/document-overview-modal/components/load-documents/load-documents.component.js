@@ -6,7 +6,8 @@ angular.module('echo.components.modal.documentOverview.loadDocuments', [
     bindings: {
       documents: '<',
       selectedDocument: '<',
-      selectedDocumentCallback: '&'
+      selectedDocumentCallback: '&',
+      hidePreview: '<'
     },
     controller: function() {
       var that = this;
