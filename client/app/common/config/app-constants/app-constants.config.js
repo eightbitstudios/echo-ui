@@ -104,5 +104,6 @@ angular.module('echo.config.appConstants', [])
       lat: 39.50,
       lng: -98.35
     },
-    PRIVACY_POLICY_URL: 'https://www.echo.com/privacypolicy.html'
+    PRIVACY_POLICY_URL: 'https://www.echo.com/privacypolicy.html',
+    GOOGLE_MAPS_HOST_URL: 'http://maps.google.com/'
   });

@@ -46,6 +46,11 @@ angular.module('echo.services.googleMaps', [
         } else {
           return appConstants.DEFAULT_MAP_ZOOM.OTHER;
         }
+      },
+
+      getMapsUrlByCityState: function (address, city, state) {
+        var urlTemplate =  _.template(appConstants.GOOGLE_MAPS_HOST_URL + '?q=${address},+${city},+${state}');
+        return urlTemplate({ 'address': address, 'city': city, 'state': state });
       }
     };
   });
