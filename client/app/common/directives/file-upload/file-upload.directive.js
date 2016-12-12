@@ -1,8 +1,7 @@
 angular.module('echo.directives.fileUpload', [
-  'echo.config.appConstants',
     'echo.models.file'
   ])
-  .directive('fileUpload', function(FileModel, appConstants) {
+  .directive('fileUpload', function(FileModel) {
     return {
       restrict: 'A',
       scope: {
@@ -20,11 +19,16 @@ angular.module('echo.directives.fileUpload', [
 
           if (file.isValidFileType(scope.uploadConstraints.documentTypes) &&
             file.isValidFileSize(scope.uploadConstraints.fileSizeLimit)) {
+            scope.error = null;
             scope.fileUpload.push(file);
             element.val(''); // Clear out saved file incase user tries to re-add the file
             scope.$apply();
-          } else {
-            scope.error = appConstants.ERROR_MESSAGES.DEFAULTS['500117'];
+          } else if (!file.isValidFileType(scope.uploadConstraints.documentTypes)) {
+            scope.error = scope.uploadConstraints.validationMessages.fileType;
+            scope.$apply();
+          } else if (!file.isValidFileSize(scope.uploadConstraints.fileSizeLimit)) {
+            scope.error = scope.uploadConstraints.validationMessages.fileSize;
+            scope.$apply();
           }
         };
 
