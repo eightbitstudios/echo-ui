@@ -269,6 +269,20 @@ angular.module('echo.api.loads', [
       return $http.get(url).then(function (resp) {
         return $q.when(resp.data.data);
       });
+    },
+    fetchActiveLoadsPage: function (carrierId) {
+      var url = apiConfig.activeLoadsPage({ carrierId: carrierId });
+
+      var params = {
+        limit: paging.limit,
+        offset: paging.offset,
+        pickupsToday: pickupsToday,
+        deliveriesToday: deliveriesToday
+      };
+
+      return $http.get(url, { params: params }).then(function (resp) {
+        return $q.when(resp.data.data);
+      });
     }
   };
 });

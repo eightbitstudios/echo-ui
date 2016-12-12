@@ -52,5 +52,6 @@ angular.module('echo.config.api', [])
     verifyDriverByPhone: _.template('@verifyDriverByPhone@'),
     mapPointsForActiveLoads: _.template('@mapPointsForActiveLoads@'),
     mapPointByLoadGuid: _.template('@mapPointByLoadGuid@'),
-    mapPointsForLoadsNeedingAction: _.template('@mapPointsForLoadsNeedingAction@')
+    mapPointsForLoadsNeedingAction: _.template('@mapPointsForLoadsNeedingAction@'),
+    activeLoadsPage: _.template('@activeLoadsPage@')
   });
