@@ -1,6 +1,7 @@
 angular.module('echo.components.modal.documentOverview.loadDocuments', [
   'echo.filters.fullName',
-  'echo.config.api'
+  'echo.config.api',
+  'echo.filters.documentType'
 ])
   .component('loadDocuments', {
     templateUrl: 'app/common/components/modal/document-overview-modal/components/load-documents/load-documents.template.html',

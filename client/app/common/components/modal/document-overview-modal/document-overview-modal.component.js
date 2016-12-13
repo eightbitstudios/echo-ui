@@ -8,5 +8,12 @@ angular.module('echo.components.modal.documentOverview', [
       modalActions: '<',
       documents: '<',
       selectedDocument: '<'
+    },
+    controller: function() {
+      var that = this;
+
+      that.selectDocument = function(selectedDocument) {
+        that.selectedDocument = selectedDocument;
+      };
     }
   });

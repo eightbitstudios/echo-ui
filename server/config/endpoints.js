@@ -57,5 +57,6 @@ module.exports = {
     documents: '/mock/api/v1/load/:loadId/documents',
     documentById: '/mock/api/v1/documents/:documentId',
     documentsByIdThumbnail: '/mock/api/v1/documents/:documentId/thumbnail',
+    documentsByIdPDF: '/mock/api/v1/documents/:documentId/pdf/:documentName'
   }
 };

@@ -5,7 +5,7 @@
   <div class="modal-body">
     <section class="modal-sidebar">
       <h4 class="section-header sh-no_border">Other Load Documents</h4>
-      <load-documents documents="$ctrl.documents" selected-document="$ctrl.selectedDocument"></load-documents>
+      <load-documents documents="$ctrl.documents" selected-document-callback="$ctrl.selectDocument(selectedDocument)" selected-document="$ctrl.selectedDocument"></load-documents>
     </section>
     <section class="modal-main-content">
       <document-preview document="$ctrl.selectedDocument"></document-preview>

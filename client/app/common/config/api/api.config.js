@@ -57,4 +57,5 @@ angular.module('echo.config.api', [])
     documents: _.template('@documents@'),
     documentById: _.template('@documentById@'),
     documentsByIdThumbnail: _.template('@documentsByIdThumbnail@'),
+    documentsByIdPDF: _.template('@documentsByIdPDF@'),
   });

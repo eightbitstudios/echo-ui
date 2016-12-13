@@ -15,15 +15,28 @@
   -webkit-overflow-scrolling: touch;
   -webkit-transform: translate3d(0, 0, 0);
   .document-upload {
-    cursor: pointer;
-    input[type="file"] {
-      cursor: pointer;
-      .opacity(0);
-      position: absolute;
+    .on-drag {
+      background: @c-white;
+    }
+    form {
       height: 100%;
       width: 100%;
+      position: absolute;
       top: 0;
       left: 0;
+      label {
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        input[type="file"] {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+          z-index: -1;
+        }
+      }
     }
     width: 130px;
     margin-right: 20px;

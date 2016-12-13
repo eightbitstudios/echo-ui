@@ -73,5 +73,6 @@ module.exports = function (app) {
   app.get(endpoints.api.documents, documentHandler.fetchDocuments);
   app.get(endpoints.api.documentById, documentHandler.fetchDocumentById);
   app.get(endpoints.api.documentsByIdThumbnail, documentHandler.fetchDocumentByIdThumbnail);
+  app.get(endpoints.api.documentsByIdPDF, documentHandler.fetchDocumentByIdPDF);
 
 };

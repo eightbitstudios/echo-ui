@@ -31,5 +31,12 @@ module.exports = {
     responseUtil.timeout(function() {
       res.sendFile(path.resolve('server/mock-routes/data/document_image.png'));
     }, minDelay, maxDelay);
+  },
+  fetchDocumentByIdPDF: function(req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = documentsRes;
+    responseUtil.timeout(function() {
+      res.sendFile(path.resolve('server/mock-routes/data/document.pdf'));
+    }, minDelay, maxDelay);
   }
 };

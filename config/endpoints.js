@@ -2,6 +2,7 @@ module.exports = {
   documentUpload: '/api/v1/upload',
   documents: '/api/v1/load/${loadGuid}/documents',
   documentById: '/api/v1/documents/${documentId}',
+  documentsByIdPDF: '/api/v1/documents/${documentId}/pdf/${documentName}',
   documentsByIdThumbnail: '/api/v1/documents/${documentId}/thumbnail',
   availableLoadsByCarrierId: '/api/v1/carriers/${carrierId}/loads/active',
   unbilledLoadsByCarrierId: '/api/v1/carriers/${carrierId}/loads/unbilled',
