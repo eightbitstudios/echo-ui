@@ -4,9 +4,9 @@ angular.module('echo.api.document', [
   'echo.config.api'
 ]).factory('documentApi', function($q, $http, apiConfig) {
   return {
-    fetchDocuments: function(loadId) {
+    fetchDocuments: function(loadGuid) {
       var url = apiConfig.documents({
-        loadId: loadId
+        loadGuid: loadGuid
       });
       return $http.get(url).then(function (resp) {
         return resp.data.data;

@@ -13,7 +13,7 @@
   </ul>
 </header>
 <div class="document-preview">
-  <img ng-src="{{$ctrl.document.loadDocumentPages[$ctrl.paging.selectedPage - 1].url}}" alt="Document preview temp">
+  <img ng-src="{{$ctrl.apiConfig.documentById({documentId: $ctrl.document.loadDocumentPages[$ctrl.paging.selectedPage - 1]})}}" alt="Document preview temp">
 </div>
 <footer>
   <pagination paging-model="$ctrl.paging"></pagination>

@@ -71,4 +71,7 @@ module.exports = function (app) {
 
   app.post(endpoints.api.documentUpload, documentHandler.createDocuments);
   app.get(endpoints.api.documents, documentHandler.fetchDocuments);
+  app.get(endpoints.api.documentById, documentHandler.fetchDocumentById);
+  app.get(endpoints.api.documentsByIdThumbnail, documentHandler.fetchDocumentByIdThumbnail);
+
 };

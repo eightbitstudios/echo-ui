@@ -54,5 +54,7 @@ angular.module('echo.config.api', [])
     mapPointsForActiveLoads: _.template('@mapPointsForActiveLoads@'),
     mapPointByLoadGuid: _.template('@mapPointByLoadGuid@'),
     mapPointsForLoadsNeedingAction: _.template('@mapPointsForLoadsNeedingAction@'),
-    documents: _.template('@documents@')
+    documents: _.template('@documents@'),
+    documentById: _.template('@documentById@'),
+    documentsByIdThumbnail: _.template('@documentsByIdThumbnail@'),
   });

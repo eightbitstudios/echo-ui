@@ -1,10 +1,14 @@
 module.exports = [{
   documentSubType: 'PROOF OF DELIVER',
   timestamp: 'Added 06:45 CST, Today',
-  thumbnail: 'assets/images/document_image.png',
-  loadDocumentPages: [{
-    url: 'assets/images/document-preview-TEMP.jpg'
-  }],
+  loadDocumentPages: [1, 2, 3, 4],
+  user: {
+    firstName: 'Echo'
+  },
+},{
+  documentSubType: 'LUMBER',
+  timestamp: 'Added 10:45 CST, Today',
+  loadDocumentPages: [1, 2, 3, 4],
   user: {
     firstName: 'Echo'
   }
