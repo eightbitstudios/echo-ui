@@ -6,7 +6,7 @@
       </a>
     </div>
     <div class="doc-descrip">
-      <h5>{{document.documentSubType | documentType}}</h5>
+      <h5>{{::document | documentType: $ctrl.documents}}</h5>
       <div class="doc-data">
         {{document.documentLastModifiedAt}}
         <br> By {{document.documentLastModifiedBy}}

@@ -5,13 +5,14 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
     'echo.config.api',
     'echo.filters.documentType',
     'echo.directives.imageFallback',
-    'echo.components.previewDocument'
+    'echo.components.previewDocument',
+    'echo.filters.documentType'
   ])
   .component('documentPreview', {
     templateUrl: 'app/common/components/modal/document-overview-modal/components/document-preview/document-preview.template.html',
     bindings: {
       document: '<',
-
+      documents: '<'
     },
     controller: function($window, PagingModel, apiConfig) {
       var that = this;

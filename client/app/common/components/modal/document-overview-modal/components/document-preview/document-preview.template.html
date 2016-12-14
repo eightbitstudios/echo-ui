@@ -1,6 +1,6 @@
 <header>
   <div class="document-title pull-left">
-    <h4 class="content-header">{{$ctrl.document.documentSubType | documentType}}</h4>
+    <h4 class="content-header">{{$ctrl.document | documentType: $ctrl.documents}}</h4>
     <p>{{$ctrl.document.documentLastModifiedAt}} By {{$ctrl.document.documentLastModifiedBy}}</p>
   </div>
   <ul class="list-inline pull-right document-tool-links">
