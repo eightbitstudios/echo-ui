@@ -1,4 +1,4 @@
-<form drag-enter="$ctrl.dragEnter()" ng-class="{'on-drag': $ctrl.isDrag}" drag-exit="$ctrl.dragExit()" drop="$ctrl.addFileHandler(file)">
+<form class="file-upload" drag-enter="$ctrl.dragEnter()" ng-class="{'on-drag': $ctrl.isDrag}" drag-exit="$ctrl.dragExit()" drop="$ctrl.addFileHandler(file)">
   <label>
     <input type="file" accept="{{$ctrl.acceptedFiles}}" on-file-change="$ctrl.addFileHandler(file)"/>
   </label>

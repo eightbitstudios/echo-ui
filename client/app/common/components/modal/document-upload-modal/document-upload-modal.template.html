@@ -7,11 +7,11 @@
       <document-type selected-document-type="$ctrl.selectedDocumentType" is-disabled="$ctrl.files.length > 0"></document-type>
       <div class="modal-action-links">
         <div class="row">
-          <div class="col-sm-5">
-            <loading-button disable-button="$ctrl.files.length === 0" click-handler="$ctrl.uploadDocuments()" button-text="Send Document" show-loading="$ctrl.showLoading" />
+          <div class="col-sm-6">
+            <loading-button disable-button="$ctrl.files.length === 0" click-handler="$ctrl.uploadDocuments()" button-text="Send Documents" show-loading="$ctrl.showLoading" />
           </div>
-          <div class="col-sm-7 upload-messages">
-            <successful-text ng-if="$ctrl.showSavedMessage" text="Document successfully added"></successful-text>
+          <div class="col-sm-6 upload-messages">
+            <fading-text class="text-success" ng-if="$ctrl.showSavedMessage" text="Document successfully added"></fading-text>
             <div class="text-danger" ng-if="$ctrl.showErrorMessage">
               <strong>Upload Error</strong>
               <br> Meaningful error messaging

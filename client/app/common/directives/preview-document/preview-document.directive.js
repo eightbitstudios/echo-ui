@@ -20,7 +20,7 @@ angular.module('echo.directives.previewDocument', [
                 var context = canvas.getContext('2d');
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
-                
+
                 var task = page.render({
                   canvasContext: context,
                   viewport: viewport
@@ -30,13 +30,19 @@ angular.module('echo.directives.previewDocument', [
                   element.append(canvas);
                 });
               });
+            }).catch(function() {
+              var img = document.createElement('img');
+              img.src = '/assets/images/thumbnail_PDF.jpg';
+              element.append(img);
             });
           };
           fileReader.readAsArrayBuffer(scope.previewDocument.fileData);
         } else {
           fileReader.readAsDataURL(scope.previewDocument.fileData);
+
           fileReader.onload = function() {
             var img = document.createElement('img');
+            img.setAttribute('image-fallback', '/assets/images/thumbnail_JPG.jpg');
             img.src = fileReader.result;
             element.append(img);
           };

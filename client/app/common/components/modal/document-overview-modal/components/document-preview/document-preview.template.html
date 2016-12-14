@@ -1,11 +1,11 @@
 <header>
   <div class="document-title pull-left">
     <h4 class="content-header">{{$ctrl.document.documentSubType | documentType}}</h4>
-    <p>{{$ctrl.document.lastModifiedAt}} By {{$ctrl.document.user | fullName}}</p>
+    <p>{{$ctrl.document.lastModifiedAt}} By {{$ctrl.document.documentLastModifiedBy}}</p>
   </div>
   <ul class="list-inline pull-right document-tool-links">
     <li>
-      <a ng-href="{{$ctrl.apiConfig.documentsByIdPDF({documentId: $ctrl.document.pageGuids[$ctrl.paging.selectedPage - 1], documentName: $ctrl.document.imageName + '.pdf'})}}" download="{{$ctrl.document.imageName}}.pdf">Download Document</a>
+      <a ng-href="{{$ctrl.apiConfig.documentsByIdPDF({documentId: $ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1], documentName: $ctrl.document.imageName + '.pdf'})}}" download="{{$ctrl.document.imageName}}.pdf">Download Document</a>
     </li>
     <li>
       <a href="javascript:void(0)" ng-click="$ctrl.printDocument()" target="_blank">Print</a>
@@ -13,7 +13,7 @@
   </ul>
 </header>
 <div class="document-preview">
-  <img ng-src="{{$ctrl.apiConfig.documentById({documentId: $ctrl.document.pageGuids[$ctrl.paging.selectedPage - 1]})}}" alt="Document preview temp">
+  <img ng-src="{{$ctrl.apiConfig.documentById({documentId: $ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1]})}}" alt="Document preview temp">
 </div>
 <footer>
   <pagination paging-model="$ctrl.paging"></pagination>

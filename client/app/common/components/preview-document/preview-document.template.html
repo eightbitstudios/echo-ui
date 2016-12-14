@@ -1,0 +1,4 @@
+<div class="preview-document added-doc-thumb">
+  <img ng-if="!$ctrl.document.isPDF()" ng-src="{{$ctrl.data}}"/>
+  <canvas ng-if="$ctrl.document.isPDF()" render-canvas="$ctrl.data"></canvas>
+</div>

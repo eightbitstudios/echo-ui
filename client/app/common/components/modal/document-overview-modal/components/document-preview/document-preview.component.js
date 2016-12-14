@@ -3,7 +3,9 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
     'echo.models.paging',
     'echo.components.pagination',
     'echo.config.api',
-    'echo.filters.documentType'
+    'echo.filters.documentType',
+    'echo.directives.imageFallback',
+    'echo.components.previewDocument'
   ])
   .component('documentPreview', {
     templateUrl: 'app/common/components/modal/document-overview-modal/components/document-preview/document-preview.template.html',
@@ -19,14 +21,14 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
       that.$onChanges = function(changeObj) {
         if (changeObj.document.currentValue) {
           that.paging.reset();
-          that.paging.setRecords(_.size(changeObj.document.currentValue.pageGuids), 1);
+          that.paging.setRecords(_.size(changeObj.document.currentValue.orderedPageGuids), 1);
         }
       };
       that.printDocument = function() {
 
         var printWindow =
           $window.open(that.apiConfig.documentsByIdPDF({
-            documentId: that.document.pageGuids[that.paging.selectedPage - 1],
+            documentId: that.document.orderedPageGuids[that.paging.selectedPage - 1],
             documentName: that.document.imageName + '.pdf'
           }), '_blank');
 

@@ -7,7 +7,7 @@ angular.module('echo.components.modal.documentUpload', [
     'echo.components.modal.documentUpload.documentType',
     'echo.components.modal.modalHeader',
     'echo.components.modal.documentUpload.uploadedDocuments',
-    'echo.components.successfulText'
+    'echo.components.fadingText'
   ])
   .component('documentUploadModal', {
     templateUrl: 'app/common/components/modal/document-upload-modal/document-upload-modal.template.html',

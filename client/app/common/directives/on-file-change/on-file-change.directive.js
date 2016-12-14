@@ -9,11 +9,11 @@ angular.module('echo.directives.onFileChange', [
 
       element.on('change', function() {
         if (onFileChange) {
-          element.val('');
           onFileChange(scope, {
             file: new FileModel(_.get(element[0].files, '0'))
           });
           scope.$apply();
+          element.val('');
         }
       });
     }
