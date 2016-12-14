@@ -3,21 +3,33 @@ angular.module('echo.directives.renderPdf', [])
     return {
       restrict: 'A',
       scope: {
-        renderPdf: '='
+        renderPdf: '=',
+        error: '&'
       },
       link: function(scope, element) {
-        scope.renderPdf.then(function(pdf) {
-          var scale = 1.5;
-          var viewport = pdf.getViewport(scale);
-          var context = element[0].getContext('2d');
-          element.height = viewport.height;
-          element.width = viewport.width;
+        if (scope.renderPdf.isPDF()) {
+          scope.renderPdf.getPDF().then(function(pdf) {
+            var scale = 1.5;
+            var viewport = pdf.getViewport(scale);
+            var canvas = element[0];
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
 
-          pdf.render({
-            canvasContext: context,
-            viewport: viewport
+            var task = pdf.render({
+              canvasContext: context,
+              viewport: viewport
+            });
+
+            task.then(function() {
+              element.append(canvas);
+            }).catch(function() {
+              scope.error();
+            });
+          }).catch(function() {
+            scope.error();
           });
-        });
+        }
       }
     };
   });

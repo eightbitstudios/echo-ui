@@ -1,6 +1,19 @@
 angular.module('echo.models.file', [
   'echo.config.globals'
-]).factory('FileModel', function($q, PDFJS) {
+]).constant('fileTypes', {
+  JPG: {
+    type: 'image/jpg',
+    extension: '.jpg'
+  },
+  PNG: {
+    type: 'image/png',
+    extension: '.png'
+  },
+  PDF: {
+    type: 'application/pdf',
+    extension: '.pdf'
+  }
+}).factory('FileModel', function($q, PDFJS, fileTypes) {
 
   /**
    * @constructor
@@ -13,8 +26,16 @@ angular.module('echo.models.file', [
     });
   }
 
+  File.prototype.isJPG = function() {
+    return this.fileData.type === fileTypes.JPG.type || this.fileData.name.match(fileTypes.JPG.extension);
+  };
+
+  File.prototype.isPNG = function() {
+    return this.fileData.type === fileTypes.PNG.type || this.fileData.name.match(fileTypes.PNG.extension);
+  };
+
   File.prototype.isPDF = function() {
-    return _.get(this.fileData, 'type') && this.fileData.type === 'application/pdf' || this.fileData.name.match('.pdf');
+    return this.fileData.type === fileTypes.PDF.type || this.fileData.name.match(fileTypes.PDF.extension);
   };
 
   File.prototype.getPDF = function() {

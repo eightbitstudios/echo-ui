@@ -1,6 +1,6 @@
 module.exports = {
   documentUpload: '/api/v1/upload',
-  documents: '/api/v1/load/${loadGuid}/documents',
+  documents: '/api/v1/documents/${loadGuid}/manifestbyload',
   documentById: '/api/v1/documents/${documentId}',
   documentsByIdPDF: '/api/v1/documents/${documentId}/pdf/${documentName}',
   documentsByIdThumbnail: '/api/v1/documents/${documentId}/thumbnail',
