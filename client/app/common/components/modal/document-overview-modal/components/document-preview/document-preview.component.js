@@ -7,7 +7,7 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
     'echo.directives.imageFallback',
     'echo.components.previewDocument',
     'echo.filters.documentType',
-    'echo.directives.secureSrc',
+    'echo.components.secureImage',
     'echo.config.globals'
   ])
   .component('documentPreview', {

@@ -2,7 +2,7 @@ angular.module('echo.components.modal.documentOverview.loadDocuments', [
   'echo.filters.fullName',
   'echo.config.api',
   'echo.filters.documentType',
-  'echo.directives.secureSrc'
+  'echo.components.secureImage'
 ])
   .component('loadDocuments', {
     templateUrl: 'app/common/components/modal/document-overview-modal/components/load-documents/load-documents.template.html',

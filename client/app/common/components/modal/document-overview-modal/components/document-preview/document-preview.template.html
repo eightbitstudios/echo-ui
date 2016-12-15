@@ -14,7 +14,7 @@
     </ul>
   </header>
   <div class="document-preview">
-    <img secure-Src="{{$ctrl.apiConfig.documentById({documentId: $ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1]})}}" alt="Document preview temp">
+    <secure-image image-guid="$ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1]">
   </div>
   <footer>
     <pagination paging-model="$ctrl.paging"></pagination>

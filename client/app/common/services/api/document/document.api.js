@@ -14,21 +14,47 @@ angular.module('echo.api.document', [
         return $q.reject(resp.data.status);
       });
     },
-    fetchDocument: function(documentName){
+    fetchDocument: function(documentName) {
 
-        var url = apiConfig.documentsByIdPDF({
-          documentName: documentName
+      var url = apiConfig.documentsByIdPDF({
+        documentName: documentName
+      });
+
+      var config = {
+        responseType: 'arraybuffer',
+        cache: 'true'
+      };
+
+      return $http.get(url, config).then(function(document) {
+        return new Blob([document.data], {
+          type: 'application/pdf'
         });
+      });
+    },
+    fetchImage: function(imageGuid) {
+      var url = apiConfig.documentById({
+        documentId: imageGuid
+      });
 
-        var config = {
-          responseType: 'arraybuffer',
-          cache: 'true'
-        };
+      var config = {
+        responseType: 'arraybuffer',
+        cache: 'true'
+      };
 
-        return $http.get(url, config).then(function(document) {
-          return new Blob([document.data], {
-            type: 'application/pdf'
-          });
+      return $http.get(url, config)
+        .then(function(document) {
+          var arr = new Uint8Array(document.data);
+
+          var raw = '';
+          var i, j, subArray, chunk = 5000;
+          for (i = 0, j = arr.length; i < j; i += chunk) {
+            subArray = arr.subarray(i, i + chunk);
+            raw += String.fromCharCode.apply(null, subArray);
+          }
+
+          var b64 = btoa(raw);
+
+          return 'data:image/jpeg;base64,' + b64;
         });
     },
     createDocuments: function(loadNumber, documentType, loadDocumentPages) {
