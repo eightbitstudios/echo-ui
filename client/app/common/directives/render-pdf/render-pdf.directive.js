@@ -7,6 +7,7 @@ angular.module('echo.directives.renderPdf', [])
         error: '&'
       },
       link: function(scope, element) {
+
         if (scope.renderPdf.isPDF()) {
           scope.renderPdf.getPDF().then(function(pdf) {
             var scale = 1.5;

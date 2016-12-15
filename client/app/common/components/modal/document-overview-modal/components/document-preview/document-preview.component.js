@@ -26,16 +26,10 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
         }
       };
       that.printDocument = function() {
-
-        var printWindow =
-          $window.open(that.apiConfig.documentsByIdPDF({
-            documentId: that.document.orderedPageGuids[that.paging.selectedPage - 1],
-            documentName: that.document.imageName + '.pdf'
-          }), '_blank');
-
-        printWindow.onload = function() {
-          printWindow.print();
-        };
+        $window.open(that.apiConfig.documentsByIdPDF({
+          documentId: that.document.orderedPageGuids[that.paging.selectedPage - 1],
+          documentName: that.document.documentName
+        }), '_blank');
       };
     }
   });

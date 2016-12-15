@@ -5,7 +5,7 @@
   </div>
   <ul class="list-inline pull-right document-tool-links">
     <li>
-      <a ng-href="{{$ctrl.apiConfig.documentsByIdPDF({documentId: $ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1], documentName: $ctrl.document.imageName + '.pdf'})}}" download="{{$ctrl.document.imageName}}.pdf">Download Document</a>
+      <a ng-href="{{$ctrl.apiConfig.documentsByIdPDF({documentId: $ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1], documentName: $ctrl.document.documentName})}}" download="{{$ctrl.document.documentName}}.pdf">Download Document</a>
     </li>
     <li>
       <a href="javascript:void(0)" ng-click="$ctrl.printDocument()" target="_blank">Print</a>
