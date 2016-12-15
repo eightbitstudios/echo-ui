@@ -2,7 +2,7 @@
   <div ng-class="{active: document === $ctrl.selectedDocument}" class="load-doc" ng-repeat="document in $ctrl.documents" ng-click="$ctrl.selectDocument(document)">
     <div class="doc-image" ng-if="!$ctrl.hidePreview">
       <a href="javascript:void(0)">
-        <img ng-src="{{$ctrl.apiConfig.documentsByIdThumbnail({documentId: document.orderedPageGuids[0]})}}" alt="Document image">
+        <img secure-src="{{$ctrl.apiConfig.documentsByIdThumbnail({documentId: document.orderedPageGuids[0]})}}" alt="Document image">
       </a>
     </div>
     <div class="doc-descrip">

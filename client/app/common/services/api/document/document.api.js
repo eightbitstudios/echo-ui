@@ -12,6 +12,23 @@ angular.module('echo.api.document', [
         return resp.data.data;
       });
     },
+    fetchDocument: function(documentName){
+
+        var url = apiConfig.documentsByIdPDF({
+          documentName: documentName
+        });
+
+        var config = {
+          responseType: 'arraybuffer',
+          cache: 'true'
+        };
+
+        return $http.get(url, config).then(function(document) {
+          return new Blob([document.data], {
+            type: 'application/pdf'
+          });
+        });
+    },
     createDocuments: function(loadNumber, documentType, loadDocumentPages) {
       var url = apiConfig.documentUpload;
 

@@ -1,20 +1,22 @@
-<header>
-  <div class="document-title pull-left">
-    <h4 class="content-header">{{$ctrl.document | documentType: $ctrl.documents}}</h4>
-    <p>{{$ctrl.document.documentLastModifiedAt}} By {{$ctrl.document.documentLastModifiedBy}}</p>
-  </div>
-  <ul class="list-inline pull-right document-tool-links">
-    <li>
-      <a ng-href="{{$ctrl.apiConfig.documentsByIdPDF({documentId: $ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1], documentName: $ctrl.document.documentName})}}" download="{{$ctrl.document.documentName}}.pdf">Download Document</a>
-    </li>
-    <li>
-      <a href="javascript:void(0)" ng-click="$ctrl.printDocument()" target="_blank">Print</a>
-    </li>
-  </ul>
-</header>
 <div class="document-preview">
-  <img ng-src="{{$ctrl.apiConfig.documentById({documentId: $ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1]})}}" alt="Document preview temp">
+  <header>
+    <div class="document-title pull-left">
+      <h4 class="content-header">{{$ctrl.document | documentType: $ctrl.documents}}</h4>
+      <p>{{$ctrl.document.documentLastModifiedAt}} By {{$ctrl.document.documentLastModifiedBy}}</p>
+    </div>
+    <ul class="list-inline pull-right document-tool-links">
+      <li>
+        <a href="javascript:void(0)" ng-click="$ctrl.downloadDocument()"><span class="echo-icon icon-download"></span> Download Document</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" ng-click="$ctrl.printDocument()" target="_blank"><span class="echo-icon icon-print"></span>Print</a>
+      </li>
+    </ul>
+  </header>
+  <div class="document-preview">
+    <img secure-Src="{{$ctrl.apiConfig.documentById({documentId: $ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1]})}}" alt="Document preview temp">
+  </div>
+  <footer>
+    <pagination paging-model="$ctrl.paging"></pagination>
+  </footer>
 </div>
-<footer>
-  <pagination paging-model="$ctrl.paging"></pagination>
-</footer>

@@ -6,7 +6,9 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
     'echo.filters.documentType',
     'echo.directives.imageFallback',
     'echo.components.previewDocument',
-    'echo.filters.documentType'
+    'echo.filters.documentType',
+    'echo.directives.secureSrc',
+    'echo.config.globals'
   ])
   .component('documentPreview', {
     templateUrl: 'app/common/components/modal/document-overview-modal/components/document-preview/document-preview.template.html',
@@ -14,7 +16,7 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
       document: '<',
       documents: '<'
     },
-    controller: function($window, PagingModel, apiConfig) {
+    controller: function($http, $window, PagingModel, apiConfig, documentApi, saveAs) {
       var that = this;
       that.paging = new PagingModel(1);
       that.apiConfig = apiConfig;
@@ -25,11 +27,19 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
           that.paging.setRecords(_.size(changeObj.document.currentValue.orderedPageGuids), 1);
         }
       };
+
       that.printDocument = function() {
-        $window.open(that.apiConfig.documentsByIdPDF({
-          documentId: that.document.orderedPageGuids[that.paging.selectedPage - 1],
-          documentName: that.document.documentName
-        }), '_blank');
+        documentApi.fetchDocument(that.document.documentName).then(function(document){
+          $window.open(URL.createObjectURL(document), '_blank');
+        });
+      };
+
+      that.downloadDocument = function() {
+        documentApi.fetchDocument(that.document.documentName).then(function(document){
+          saveAs(document, _.template('${documentName}.pdf')({
+            documentName: that.document.documentName
+          }));
+        });
       };
     }
   });
