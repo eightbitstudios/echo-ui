@@ -30,7 +30,8 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
 
       that.printDocument = function() {
         documentApi.fetchDocument(that.document.documentName).then(function(document){
-          $window.open(URL.createObjectURL(document), '_blank');
+          var printWindow = $window.open(URL.createObjectURL(document), '_blank');
+          printWindow.print();
         });
       };
 
