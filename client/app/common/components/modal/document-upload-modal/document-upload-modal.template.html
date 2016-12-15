@@ -14,7 +14,7 @@
             <fading-text class="text-success" ng-if="$ctrl.showSavedMessage" text="Document successfully added"></fading-text>
             <div class="text-danger" ng-if="$ctrl.showErrorMessage">
               <strong>Upload Error</strong>
-              <br> Meaningful error messaging
+              <error-messages error-code="$ctrl.serverError"></error-messages>
             </div>
           </div>
         </div>

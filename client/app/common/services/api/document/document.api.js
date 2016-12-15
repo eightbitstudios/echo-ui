@@ -8,8 +8,10 @@ angular.module('echo.api.document', [
       var url = apiConfig.documents({
         loadGuid: loadGuid
       });
-      return $http.get(url).then(function (resp) {
+      return $http.get(url).then(function(resp) {
         return resp.data.data;
+      }).catch(function(resp) {
+        return $q.reject(resp.data.status);
       });
     },
     fetchDocument: function(documentName){
@@ -46,6 +48,8 @@ angular.module('echo.api.document', [
           'Content-Type': undefined
         },
         transformRequest: angular.identity
+      }).catch(function(resp) {
+        return $q.reject(resp.data.status);
       });
     }
   };

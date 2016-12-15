@@ -30,8 +30,9 @@ angular.module('echo.components.modal.documentUpload', [
         documentApi.createDocuments(that.load.loadNumber, that.selectedDocumentType, that.files)
           .then(function() {
             that.showSavedMessage = true;
-          }).catch(function() {
+          }).catch(function(message) {
             that.showErrorMessage = true;
+            that.serverError = message;
           }).finally(function() {
             that.showLoading = false;
             that.files = [];
