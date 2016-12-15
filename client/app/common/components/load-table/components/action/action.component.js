@@ -7,12 +7,14 @@ angular.module('echo.components.loadTable.action', [
   'echo.components.modal.milestones.reportArrival',
   'echo.components.modal.milestones.sendLoadUpdate',
   'echo.components.modal.milestones.reportDelivery',
+  'echo.components.modal.documentUpload',
   'echo.services.modal',
   'echo.api.loads',
   'echo.config.globals',
   'echo.enums.actions',
   'echo.enums.arrivalTypes',
   'echo.api.timeZone',
+  'echo.api.document',
   'echo.filters.lastModifiedBy'
 ])
   .component('action', {
@@ -24,7 +26,7 @@ angular.module('echo.components.loadTable.action', [
       repDetails: '<',
       isMultiStop: '<'
     },
-    controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
+    controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, documentApi, timeZoneApi) {
       var that = this;
 
       that.appConstants = appConstants;
@@ -107,6 +109,18 @@ angular.module('echo.components.loadTable.action', [
               },
               timeZones: timeZones,
               arrivalType: arrivalTypeEnums.PICKUP
+            }
+          });
+        });
+      };
+      
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value] = function() {
+         return documentApi.fetchDocuments(that.load.loadNumber).then(function(documents){
+           return modalService.open({
+            component: 'document-upload-modal',
+            bindings: {
+              load: that.load,
+              documents: documents
             }
           });
         });

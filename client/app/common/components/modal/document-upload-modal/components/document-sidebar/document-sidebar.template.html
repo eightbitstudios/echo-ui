@@ -1,0 +1,23 @@
+<section class="modal-sidebar">
+  <p>
+    <strong>Document Guidelines</strong>
+  </p>
+  <ul>
+    <li>Accepted File Types: JPEG, PDF, PNG</li>
+    <li>Max File Size: 20MB</li>
+  </ul>
+  <p>
+    <strong>Documents Sent</strong>
+  </p>
+  <div class="load-docs">
+    <div class="load-doc" ng-repeat="document in $ctrl.documents">
+      <div class="doc-descrip">
+        <div class="doc-data">
+          <h5>{{document.name}}</h5>
+          {{document.createDate}}
+          <br> By {{document.user | fullName}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

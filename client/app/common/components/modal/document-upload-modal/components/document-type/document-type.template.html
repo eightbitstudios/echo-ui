@@ -1,0 +1,19 @@
+<form class="form-inline">
+  <legend>TYPE</legend>
+  <radio-button label="Load Document" name="optionsRadiosType" />
+</form>
+<hr class="hr">
+<form>
+  <div class="row">
+    <div class="col-sm-7">
+      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.POD" label="Proof of Delivery #2 (2 Needed)" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.LUMPER_RECEIPT" label="Lumper Receipt" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.BILL_OF_LADING" label="Bill of Lading" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+    </div>
+    <div class="col-sm-5">
+      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.FUEL_RECEIPT" label="Fuel Receipts" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.SCALE_TICKETS" label="Scale Tickets" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.OTHER" label="Other" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,27 @@
+<div class="document-upload-modal">
+  <modal-header header-text="ADD DOCUMENT FOR" load-number="$ctrl.load.loadNumber" pro-number="$ctrl.proNumber" modal-actions="$ctrl.modalActions"/>
+  <div class="modal-body">
+    <document-upload-sidebar documents="$ctrl.documents"></document-upload-sidebar>
+    <section class="modal-main-content">
+      <uploaded-documents files="$ctrl.files" added-file-callback="$ctrl.fileAdded()"></uploaded-documents>
+      <document-type selected-document-type="$ctrl.selectedDocumentType" is-disabled="$ctrl.files.length > 0"></document-type>
+      <div class="modal-action-links">
+        <div class="row">
+          <div class="col-sm-5">
+            <loading-button disable-button="$ctrl.files.length === 0" click-handler="$ctrl.uploadDocuments()" button-text="Send Document" show-loading="$ctrl.showLoading" />
+          </div>
+          <div class="col-sm-7 upload-messages">
+            <successful-text ng-if="$ctrl.showSavedMessage" text="Document successfully added"></successful-text>
+            <div class="text-danger" ng-if="$ctrl.showErrorMessage">
+              <strong>Upload Error</strong>
+              <error-messages error-code="$ctrl.serverError"></error-messages>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
+  </div>
+</div>
