@@ -4,7 +4,7 @@
     <document-upload-sidebar documents="$ctrl.documents"></document-upload-sidebar>
     <section class="modal-main-content">
       <uploaded-documents files="$ctrl.files" added-file-callback="$ctrl.fileAdded()"></uploaded-documents>
-      <document-type documents="$ctrl.documents" selected-document-type="$ctrl.selectedDocumentType" is-disabled="$ctrl.files.length > 0"></document-type>
+      <document-type documents="$ctrl.documents" selected-document-type="$ctrl.selectedDocumentType" is-disabled="$ctrl.files.length > 0" number-of-stops="$ctrl.numberOfStops"></document-type>
       <div class="modal-action-links">
         <div class="row">
           <div class="col-sm-6">

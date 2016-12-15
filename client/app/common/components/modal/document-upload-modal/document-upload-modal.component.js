@@ -19,8 +19,11 @@ angular.module('echo.components.modal.documentUpload', [
     controller: function(documentTypes, documentApi) {
       var that = this;
 
-      that.files = [];
-      that.selectedDocumentType = documentTypes.POD;
+      that.$onInit = function() {
+        that.files = [];
+        that.selectedDocumentType = documentTypes.POD;
+        that.numberOfStops = _.max([_.size(that.load.pickUp), _.size(that.load.delivery)]);
+      };
 
       that.uploadDocuments = function() {
         that.showLoading = true;
