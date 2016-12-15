@@ -1,0 +1,17 @@
+angular.module('echo.components.modal.documentOverview.loadDocuments', [
+  'echo.filters.fullName'
+])
+  .component('loadDocuments', {
+    templateUrl: 'app/common/components/modal/document-overview-modal/components/load-documents/load-documents.template.html',
+    bindings: {
+      documents: '<',
+      selectedDocument: '='
+    },
+    controller: function() {
+      var that = this;
+      
+      that.selectDocument = function(document) {
+        that.selectedDocument = document;
+      };
+    }
+  });

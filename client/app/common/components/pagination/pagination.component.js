@@ -13,14 +13,7 @@ angular.module('echo.components.pagination', [
   controller: function () {
     var that = this;
 
-    that.pages = [];
     that.selectedPage = 1;
-
-    that.numberOfPages = Math.ceil(that.pagingModel.totalRecords / that.pagingModel.limit);
-
-    for (var i = 1; i <= that.numberOfPages; i++) {
-      that.pages.push(i);
-    }
 
     that.previousPage = function () {
       if (that.pagingModel.selectedPage > 1) {
@@ -30,7 +23,7 @@ angular.module('echo.components.pagination', [
     };
 
     that.nextPage = function () {
-      if (that.pagingModel.selectedPage < that.numberOfPages) {
+      if (that.pagingModel.selectedPage < that.pagingModel.getNumberOfPages()) {
         that.pagingModel.nextPage();
         that.pageClickHandler();
       }
