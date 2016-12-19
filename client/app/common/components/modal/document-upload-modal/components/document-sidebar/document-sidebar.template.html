@@ -1,4 +1,4 @@
-<section class="modal-sidebar">
+<section class="modal-sidebar document-sidebar">
   <p>
     <strong>Document Guidelines</strong>
   </p>
@@ -7,17 +7,7 @@
     <li>Max File Size: 20MB</li>
   </ul>
   <p>
-    <strong>Documents Sent</strong>
+    <strong>Sent Documents</strong>
   </p>
-  <div class="load-docs">
-    <div class="load-doc" ng-repeat="document in $ctrl.documents">
-      <div class="doc-descrip">
-        <div class="doc-data">
-          <h5>{{document.name}}</h5>
-          {{document.createDate}}
-          <br> By {{document.user | fullName}}
-        </div>
-      </div>
-    </div>
-  </div>
+  <load-documents documents="$ctrl.documents" hide-preview="true"></load-documents>
 </section>

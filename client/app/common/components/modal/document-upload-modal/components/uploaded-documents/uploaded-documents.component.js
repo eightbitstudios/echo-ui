@@ -1,8 +1,9 @@
 angular.module('echo.components.modal.documentUpload.uploadedDocuments', [
-  'echo.directives.fileUpload',
+  'echo.components.fileUpload',
   'echo.filters.pages',
-  'echo.directives.previewDocument',
-  'echo.config.appConstants'
+  'echo.config.appConstants',
+  'echo.components.fadingText',
+  'echo.components.previewDocument'
 ])
   .component('uploadedDocuments', {
     templateUrl: 'app/common/components/modal/document-upload-modal/components/uploaded-documents/uploaded-documents.template.html',

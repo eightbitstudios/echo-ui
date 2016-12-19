@@ -7,7 +7,7 @@ angular.module('echo.components.modal.documentUpload', [
     'echo.components.modal.documentUpload.documentType',
     'echo.components.modal.modalHeader',
     'echo.components.modal.documentUpload.uploadedDocuments',
-    'echo.components.successfulText'
+    'echo.components.fadingText'
   ])
   .component('documentUploadModal', {
     templateUrl: 'app/common/components/modal/document-upload-modal/document-upload-modal.template.html',
@@ -19,8 +19,11 @@ angular.module('echo.components.modal.documentUpload', [
     controller: function(documentTypes, documentApi) {
       var that = this;
 
-      that.files = [];
-      that.selectedDocumentType = documentTypes.POD;
+      that.$onInit = function() {
+        that.files = [];
+        that.selectedDocumentType = documentTypes.POD;
+        that.numberOfStops = _.max([_.size(that.load.pickUp), _.size(that.load.delivery)]);
+      };
 
       that.uploadDocuments = function() {
         that.showLoading = true;

@@ -114,6 +114,7 @@ module.exports = function (grunt) {
         'bower_components/pdfjs-dist/web/compatibility.js',
         'bower_components/pdfjs-dist/build/pdf.js',
         'bower_components/pdfjs-dist/build/pdf.worker.js',
+        'bower_components/file-saver/FileSaver.js'
       ],
       css: [
         'bower_components/bootstrap-daterangepicker/daterangepicker.css',

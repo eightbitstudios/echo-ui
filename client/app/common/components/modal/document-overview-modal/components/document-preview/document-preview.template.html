@@ -1,20 +1,22 @@
-<header>
-  <div class="document-title pull-left">
-    <h4 class="content-header">{{$ctrl.document.documentSubType}}</h4>
-    <p>{{$ctrl.document.timestamp}} By {{$ctrl.document.user | fullName}}</p>
-  </div>
-  <ul class="list-inline pull-right document-tool-links">
-    <li>
-      <a href="{{$ctrl.document.url}}" download="test.pdf">Download Document</a>
-    </li>
-    <li>
-      <a href="{{$ctrl.document.url}}" target="_blank">Print</a>
-    </li>
-  </ul>
-</header>
 <div class="document-preview">
-  <img ng-src="{{$ctrl.document.loadDocumentPages[$ctrl.paging.selectedPage - 1].url}}" alt="Document preview temp">
+  <header>
+    <div class="document-title pull-left">
+      <h4 class="content-header">{{$ctrl.document | documentType: $ctrl.documents}}</h4>
+      <p>{{$ctrl.document.documentLastModifiedAt}} By {{$ctrl.document.documentLastModifiedBy}}</p>
+    </div>
+    <ul class="list-inline pull-right document-tool-links">
+      <li>
+        <a href="javascript:void(0)" ng-click="$ctrl.downloadDocument()"><span class="echo-icon icon-download"></span> Download Document</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" ng-click="$ctrl.printDocument()" target="_blank"><span class="echo-icon icon-print"></span>Print</a>
+      </li>
+    </ul>
+  </header>
+  <div class="document-preview">
+    <secure-image image-guid="$ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1]">
+  </div>
+  <footer>
+    <pagination paging-model="$ctrl.paging"></pagination>
+  </footer>
 </div>
-<footer>
-  <pagination paging-model="$ctrl.paging"></pagination>
-</footer>

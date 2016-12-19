@@ -1,15 +1,15 @@
 <div class="load-documents">
   <div ng-class="{active: document === $ctrl.selectedDocument}" class="load-doc" ng-repeat="document in $ctrl.documents" ng-click="$ctrl.selectDocument(document)">
-    <div class="doc-image">
+    <div class="doc-image" ng-if="!$ctrl.hidePreview">
       <a href="javascript:void(0)">
-        <img src="assets/images/document_image.png" alt="Document image">
+        <secure-image image-guid="document.orderedPageGuids[0]">
       </a>
     </div>
     <div class="doc-descrip">
-      <h5>{{document.documentSubType}}</h5>
+      <h5>{{::document | documentType: $ctrl.documents}}</h5>
       <div class="doc-data">
-        {{document.timestamp}}
-        <br> By {{document.user | fullName}}
+        {{document.documentLastModifiedAt}}
+        <br> By {{document.documentLastModifiedBy}}
       </div>
     </div>
   </div>

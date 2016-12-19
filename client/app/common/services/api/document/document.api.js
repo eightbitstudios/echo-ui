@@ -4,15 +4,58 @@ angular.module('echo.api.document', [
   'echo.config.api'
 ]).factory('documentApi', function($q, $http, apiConfig) {
   return {
-    fetchDocuments: function(loadId) {
+    fetchDocuments: function(loadGuid) {
       var url = apiConfig.documents({
-        loadId: loadId
+        loadGuid: loadGuid
       });
       return $http.get(url).then(function(resp) {
         return resp.data.data;
       }).catch(function(resp) {
         return $q.reject(resp.data.status);
       });
+    },
+    fetchDocument: function(documentName) {
+
+      var url = apiConfig.documentsByIdPDF({
+        documentName: documentName
+      });
+
+      var config = {
+        responseType: 'arraybuffer',
+        cache: 'true'
+      };
+
+      return $http.get(url, config).then(function(document) {
+        return new Blob([document.data], {
+          type: 'application/pdf'
+        });
+      });
+    },
+    fetchImage: function(imageGuid) {
+      var url = apiConfig.documentById({
+        documentId: imageGuid
+      });
+
+      var config = {
+        responseType: 'arraybuffer',
+        cache: 'true'
+      };
+
+      return $http.get(url, config)
+        .then(function(document) {
+          var arr = new Uint8Array(document.data);
+
+          var raw = '';
+          var i, j, subArray, chunk = 5000;
+          for (i = 0, j = arr.length; i < j; i += chunk) {
+            subArray = arr.subarray(i, i + chunk);
+            raw += String.fromCharCode.apply(null, subArray);
+          }
+
+          var b64 = btoa(raw);
+
+          return 'data:image/jpeg;base64,' + b64;
+        });
     },
     createDocuments: function(loadNumber, documentType, loadDocumentPages) {
       var url = apiConfig.documentUpload;

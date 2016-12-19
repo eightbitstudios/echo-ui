@@ -39,7 +39,7 @@
           <p>{{$ctrl.loadDetails.generalInstructions || 'No Additional Instructions'}}</p>
         </section>
         <section class="sidebar-container">
-          <documents />
+          <documents load="$ctrl.loadDetails" documents="$ctrl.documents" />
       </div>
     </div>
   </div>
