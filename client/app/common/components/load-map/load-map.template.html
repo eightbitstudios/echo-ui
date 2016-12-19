@@ -1,13 +1,14 @@
 <div class="load-map">
-  <div ng-if="$ctrl.showLoading" class="loading-map" ng-class="{'expanded': $ctrl.showExpanded}">
+  <div class="map-container" ng-class="{'detailed': $ctrl.detailedInfo, 'expanded': $ctrl.showExpanded}">
     <loading show-loading="$ctrl.showLoading" overlay="false" />
+    <google-maps ng-if="!$ctrl.showLoading && $ctrl.showMap" popup-offset="$ctrl.popupOffset" center="$ctrl.mapCenter" total-points="$ctrl.mapPoints.length" map="$ctrl.map">
+      <google-maps-marker ng-repeat="mapPoint in $ctrl.mapPoints" position="mapPoint.position">
+        <google-maps-info-window>
+          <detailed-info-window ng-if="$ctrl.detailedInfo" map-point="mapPoint" view-map-handler="$ctrl.viewMapHandler({mapPoint: mapPoint})"
+                                expanded="$ctrl.showExpanded" action-changed-callback="$ctrl.mapRefreshHandler()" carrier-id="$ctrl.carrierId"></detailed-info-window>
+          <basic-info-window ng-if="!$ctrl.detailedInfo" map-point="mapPoint"></basic-info-window>
+        </google-maps-info-window>
+      </google-maps-marker>
+    </google-maps>
   </div>
-  <google-maps ng-if="!$ctrl.showLoading && $ctrl.showMap" ng-class="{'detailed': $ctrl.detailedInfo, 'expanded': $ctrl.showExpanded}" popup-offset="$ctrl.popupOffset" center="$ctrl.mapCenter" total-points="$ctrl.mapPoints.length" map="$ctrl.map">
-    <google-maps-marker ng-repeat="mapPoint in $ctrl.mapPoints" position="mapPoint.position">
-      <google-maps-info-window>
-        <detailed-info-window ng-if="$ctrl.detailedInfo" map-point="mapPoint" view-map-handler="$ctrl.viewMapHandler({mapPoint: mapPoint})"></detailed-info-window>
-        <basic-info-window ng-if="!$ctrl.detailedInfo" map-point="mapPoint"></basic-info-window>
-      </google-maps-info-window>
-    </google-maps-marker>
-  </google-maps>
 </div>

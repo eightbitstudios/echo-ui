@@ -1,15 +1,15 @@
 
-describe('Component: action', function () {
+describe('Component: actionButton', function () {
   var component, $q, loadsApi, timeZoneApi, actionEnums, arrivalTypeEnums, load, actionChangedCallback, carrierId, modalOpenDefer, modalService, scope;
 
   beforeEach(function () {
-    module('app/common/components/load-table/components/action/action.template.html');
-    module('echo.components.loadTable.action', function ($provide) {
+    module('app/common/components/load-table/components/action/action-button/action-button.template.html');
+    module('echo.components.loadTable.action.actionButton', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchReportEmptyByLoadGuid', 'fetchItemsByLoadGuid', 'fetchLoadUpdateOptionsByLoadGuid', 'fetchItemsByLoadGuid']));
       $provide.value('timeZoneApi', timeZoneApi = jasmine.createSpyObj('timeZoneApi', ['fetchTimeZones']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));
-      $provide.constant('moment', function(value){ 
-        return value; 
+      $provide.constant('moment', function(value){
+        return value;
       });
     });
   });
@@ -42,7 +42,7 @@ describe('Component: action', function () {
       result: modalOpenDefer.promise
     });
     carrierId = 1;
-    component = $componentController('action', null, {
+    component = $componentController('actionButton', null, {
       load: load,
       actionChangedCallback: actionChangedCallback,
       carrierId: carrierId
@@ -63,7 +63,7 @@ describe('Component: action', function () {
 
     });
   });
-  
+
   describe('Function: Report Empty', function () {
     var reportEmptyDefer,
       timeZoneDefer;

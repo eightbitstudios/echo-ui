@@ -29,7 +29,6 @@ angular.module('echo.components.googleMaps', [
           center: that.center,
           zoom: defaultZoom,
           styles: googleMapsStyles,
-          zoomControl: false,
           mapTypeControl: false,
           scaleControl: false,
           streetViewControl: false,

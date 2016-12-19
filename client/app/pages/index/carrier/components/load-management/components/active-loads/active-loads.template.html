@@ -18,10 +18,11 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <load-map ng-if="$ctrl.showExpandedMap" show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="true" view-map-handler="$ctrl.viewMapHandler(mapPoint)"></load-map>
+  <load-map ng-if="$ctrl.showExpandedMap" show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="true"
+            view-map-handler="$ctrl.viewMapHandler(mapPoint)" carrier-id="$ctrl.carrierId" map-refresh-handler="$ctrl.refreshPageData()"></load-map>
   <origin-destination-map ng-if="$ctrl.showLoadDetailsMap" map-point="$ctrl.loadDetailsMapPoint"></origin-destination-map>
   <div ng-if="!$ctrl.showExpandedMap && !$ctrl.showLoadDetailsMap">
-    <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="false" view-map-handler="$ctrl.viewMapHandler(mapPoint)"></load-map>
+    <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="false" view-map-handler="$ctrl.viewMapHandler(mapPoint)" map-refresh-handler="$ctrl.refreshPageData()"></load-map>
     <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
       <filter-button filter-enabled="$ctrl.isPickUpToday" click-handler="$ctrl.pickupsTodayHandler(value)" button-text="Pickups Today"></filter-button>
       <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
