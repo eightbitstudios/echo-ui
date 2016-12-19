@@ -3,8 +3,8 @@ module.exports = [
     loadId: 12345678,
     loadGuid: '8d34ba4f8baa4cd09c776826df55bae1',
     currentLocation: {
-      cityName: 'Chicago',
-      stateCode: 'IL'
+      cityName: 'Jackson',
+      stateCode: 'MS'
     },
     pickUp: {
       city: 'Dallas',

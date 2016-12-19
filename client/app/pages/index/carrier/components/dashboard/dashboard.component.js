@@ -20,6 +20,7 @@ angular.module('echo.index.carrier.dashboard', [
       that.showMultiStopLoading = false;
       that.showMoreActionLoadsLoading = false;
       that.showMoreMultiStopLoading = false;
+      that.showExpandedMap = false;
       that.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
       that.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
       that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
@@ -81,6 +82,10 @@ angular.module('echo.index.carrier.dashboard', [
       that.refreshPageData = function () {
         that.fetchMultiStopLoads();
         that.fetchMapPoints();
+      };
+
+      that.toggleExpandedMap = function () {
+        that.showExpandedMap = !that.showExpandedMap;
       };
 
       that.$onInit = function () {
