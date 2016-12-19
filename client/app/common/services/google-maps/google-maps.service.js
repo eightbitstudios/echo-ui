@@ -62,6 +62,24 @@ angular.module('echo.services.googleMaps', [
         } else {
           return appConstants.DEFAULT_MAP_ZOOM.OTHER;
         }
-      }
+      },
+
+      formatMapPoints: function (google, geocoder, mapPoints, mapCenter) {
+        var that = this;
+        var promises = [];
+        _.forEach(mapPoints, function (mapPoint) {
+          promises.push(that.appendPosition(geocoder, mapPoint));
+        });
+
+        if (_.size(promises) === 0) {
+          mapCenter = that.findCenter(google, mapPoints);
+          return mapCenter;
+        } else {
+          return $q.all(promises).then(function () {
+            mapPoints = _.filter(mapPoints, function (mapPoint) { return !!mapPoint.position; });
+            mapCenter = that.findCenter(google, mapPoints);
+          });
+        }
+      },
     };
   });

@@ -6,6 +6,7 @@ angular.module('echo.index.carrier.dashboard', [
   'echo.config.appConstants',
   'echo.api.loads',
   'echo.components.loadMap',
+  'echo.components.originDestinationMap',
   'echo.components.showMore'
 ])
   .component('dashboard', {
@@ -21,6 +22,7 @@ angular.module('echo.index.carrier.dashboard', [
       that.showMoreActionLoadsLoading = false;
       that.showMoreMultiStopLoading = false;
       that.showExpandedMap = false;
+      that.showLoadDetailsMap = false;
       that.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
       that.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
       that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
@@ -85,7 +87,19 @@ angular.module('echo.index.carrier.dashboard', [
       };
 
       that.toggleExpandedMap = function () {
-        that.showExpandedMap = !that.showExpandedMap;
+        that.showExpandedMap = true;
+        that.showLoadDetailsMap = false;
+      };
+
+      that.shrinkMap = function () {
+        that.showExpandedMap = false;
+        that.showLoadDetailsMap = false;
+      };
+
+      that.viewMapHandler = function(mapPoint) {
+        that.loadDetailsMapPoint = mapPoint;
+        that.showExpandedMap = false;
+        that.showLoadDetailsMap = true;
       };
 
       that.$onInit = function () {
