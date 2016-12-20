@@ -39,7 +39,6 @@ angular.module('echo.components.loadMap', [
       });
 
       that.$onChanges = function (changeObj) {
-        console.log(that.showExpanded);
         if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.showExpanded, 'currentValue')) {
           googleMapsApi.then(function (google) {
             that.google = google;
