@@ -176,9 +176,5 @@ angular.module('echo.index', [
       data: {
         hideTabBar: true
       }
-    })
-    .state(routesConfig.INDEX.termsAndConditions.name, { // #/termsAndConditions
-      url: routesConfig.INDEX.termsAndConditions.route,
-      component: 'terms-and-conditions'
     });
 });
