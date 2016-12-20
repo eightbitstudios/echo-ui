@@ -25,9 +25,7 @@ angular.module('echo.components.googleMapsMarker', [
           map: that.mapsCtrl.map
         });
         that.mapsCtrl.bounds.extend(that.position);
-        if (that.mapsCtrl.totalPoints !== 1) {
-          that.mapsCtrl.map.fitBounds(that.mapsCtrl.bounds);
-        }
+        that.mapsCtrl.map.fitBounds(that.mapsCtrl.bounds);
       });
     };
   }
