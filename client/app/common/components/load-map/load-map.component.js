@@ -23,37 +23,29 @@ angular.module('echo.components.loadMap', [
     bindings: {
       mapPoints: '=',
       detailedInfo: '<',
-      showMap: '<'
+      showMap: '<',
+      showExpanded: '<',
+      viewMapHandler: '&',
+      carrierId: '<',
+      mapRefreshHandler: '&'
     },
     controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
       var that = this;
-
-      that.formatMapPoints = function (google) {
-        var geocoder = new google.maps.Geocoder();
-        var promises = [];
-        _.forEach(that.mapPoints, function (mapPoint) {
-          promises.push(googleMaps.appendPosition(geocoder, mapPoint));
-        });
-
-        if (_.size(promises) === 0) {
-          that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
-          return that.mapCenter;
-        } else {
-          return $q.all(promises).then(function () {
-            that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
-            that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
-          });
-        }
-      };
+      that.mapCenter = null;
 
       that.popupOffset = that.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
+      _.forEach(that.mapPoints, function (mapPoint) {
+        mapPoint.loadNumber = mapPoint.loadId;
+      });
 
       that.$onChanges = function (changeObj) {
-        if(changeObj.showMap.currentValue) {
+        console.log(that.showExpanded);
+        if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.showExpanded, 'currentValue')) {
           googleMapsApi.then(function (google) {
             that.google = google;
-            return that.formatMapPoints(google);
+            return googleMaps.formatMapPoints(google, new google.maps.Geocoder(), that.mapPoints, that.mapCenter);
           }).finally(function() {
+            googleMaps.resizeAndCenter(that.google, that.map, that.mapPoints);
             that.showLoading = false;
           });
         } else {

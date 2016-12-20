@@ -33,6 +33,22 @@ angular.module('echo.services.googleMaps', [
         }
       },
 
+      resizeAndCenter: function (google, map, mapPoints) {
+        if (map) {
+          google.maps.event.trigger(map, 'resize');
+
+          var bounds = new google.maps.LatLngBounds();
+          _.forEach(mapPoints, function (mapPoint) {
+            if (mapPoint.position) {
+              bounds.extend(mapPoint.position);
+            }
+          });
+
+          map.fitBounds(bounds);
+          map.setCenter(this.findCenter(google, mapPoints));
+        }
+      },
+
       getDefaultZoom: function (mapPoints) {
         var validPoints = 0;
         _.forEach(mapPoints, function(mapPoint) {
@@ -45,6 +61,24 @@ angular.module('echo.services.googleMaps', [
           return appConstants.DEFAULT_MAP_ZOOM.ONE_POINT;
         } else {
           return appConstants.DEFAULT_MAP_ZOOM.OTHER;
+        }
+      },
+
+      formatMapPoints: function (google, geocoder, mapPoints, mapCenter) {
+        var that = this;
+        var promises = [];
+        _.forEach(mapPoints, function (mapPoint) {
+          promises.push(that.appendPosition(geocoder, mapPoint));
+        });
+
+        if (_.size(promises) === 0) {
+          mapCenter = that.findCenter(google, mapPoints);
+          return mapCenter;
+        } else {
+          return $q.all(promises).then(function () {
+            mapPoints = _.filter(mapPoints, function (mapPoint) { return !!mapPoint.position; });
+            mapCenter = that.findCenter(google, mapPoints);
+          });
         }
       },
 

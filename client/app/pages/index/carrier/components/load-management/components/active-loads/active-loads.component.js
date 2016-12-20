@@ -8,7 +8,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
   'echo.components.filterButton',
-  'echo.components.loadMap'
+  'echo.components.loadMap',
+  'echo.components.originDestinationMap'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
@@ -24,6 +25,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.isDeliveriesToday = false;
     var defaultFilterText = 'By Next Appointment';
     that.filterText = defaultFilterText;
+    that.showExpandedMap = false;
+    that.showLoadDetailsMap = false;
 
     that.getAvailableLoads = function () {
       that.showLoading = true;
@@ -73,6 +76,22 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.refreshPageData = function () {
       that.getAvailableLoads();
       that.getMapPointsForAvailableLoads();
+    };
+
+    that.toggleExpandedMap = function () {
+      that.showExpandedMap = true;
+      that.showLoadDetailsMap = false;
+    };
+
+    that.shrinkMap = function () {
+      that.showExpandedMap = false;
+      that.showLoadDetailsMap = false;
+    };
+
+    that.viewMapHandler = function(mapPoint) {
+      that.loadDetailsMapPoint = mapPoint;
+      that.showExpandedMap = false;
+      that.showLoadDetailsMap = true;
     };
 
     that.$onInit = function () {

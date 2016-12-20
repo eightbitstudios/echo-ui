@@ -8,7 +8,8 @@ angular.module('echo.components.googleMaps', [
   bindings: {
     center: '<',
     totalPoints: '<',
-    popupOffset: '<'
+    popupOffset: '<',
+    map: '='
   },
   transclude: true,
   template: '<div ng-transclude></div>',
@@ -28,7 +29,6 @@ angular.module('echo.components.googleMaps', [
           center: that.center,
           zoom: defaultZoom,
           styles: googleMapsStyles,
-          zoomControl: false,
           mapTypeControl: false,
           scaleControl: false,
           streetViewControl: false,
