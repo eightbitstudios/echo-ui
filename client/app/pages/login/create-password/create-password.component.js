@@ -6,7 +6,7 @@ angular.module('echo.login.createPassword', [
   'echo.models.passwordChange',
   'echo.api.authentication',
   'echo.services.modal',
-  'echo.components.termsAndConditions'
+  'echo.components.modal.termsAndConditions'
 ]).component('createPassword', {
   templateUrl: 'app/pages/login/create-password/create-password.template.html',
   controller: function ($stateParams, $state, $window, routesConfig, authenticationApi, PasswordChangeModel, appConstants, modalService) {

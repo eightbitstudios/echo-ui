@@ -8,7 +8,7 @@ angular.module('echo.components.footer', [
   'echo.config.routes',
   'echo.config.appConstants',
   'echo.services.modal',
-  'echo.components.termsAndConditions'
+  'echo.components.modal.termsAndConditions'
 ]).component('appFooter', {
   templateUrl: 'app/common/components/footer/footer.template.html',
     controller: function(repDetailsService, userProfileService, routesConfig, appConstants, modalService) {
