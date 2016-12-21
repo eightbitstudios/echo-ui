@@ -32,7 +32,10 @@ angular.module('echo.login.createPassword', [
 
     that.showTermsAndConditionsModal = function () {
       var modalInstance = modalService.open({
-        component: 'terms-and-conditions'
+        component: 'terms-and-conditions',
+        bindings: {
+          acceptFooter: true
+        }
       }).result;
 
       modalInstance.then(function (agree) {

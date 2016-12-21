@@ -21,7 +21,10 @@ angular.module('echo.components.footer', [
 
       that.showTermsAndConditionsModal = function () {
         var modalInstance = modalService.open({
-          component: 'terms-and-conditions'
+          component: 'terms-and-conditions',
+          bindings: {
+            acceptFooter: false
+          }
         }).result;
 
         modalInstance.then(function () {});
