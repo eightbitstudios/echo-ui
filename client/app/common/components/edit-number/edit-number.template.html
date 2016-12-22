@@ -4,7 +4,14 @@
 <form class="form-inline form-inline-editing" ng-if="$ctrl.showForm">
   <div class="form-group">
     <label class="hidden">Update Number</label>
-    <input class="form-control" placeholder="{{$ctrl.shadowText}}" type="text" ng-model="$ctrl.updateNumber" focus>
+    <input
+      class="form-control"
+      placeholder="{{$ctrl.shadowText}}"
+      type="text"
+      ng-model="$ctrl.updateNumber"
+      maxlength="{{$ctrl.maxLength}}"
+      focus
+    >
   </div>
   <br>
   <div class="form-group">

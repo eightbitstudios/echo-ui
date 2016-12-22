@@ -2,14 +2,14 @@
   <form class="search-form text-right" role="search">
     <div class="form-group">
       <input
-              ng-focus="$ctrl.toggleFocus()"
-              ng-blur="$ctrl.toggleFocus()"
-              ng-keydown="$ctrl.searchKeyDown($event)"
-              class="form-control search-form-input search-form-input_dark"
-              ng-model="$ctrl.searchText"
-              placeholder="Load or PRO Number"
-              maxlength="{{$ctrl.maxLength}}"
-              type="text"
+        ng-focus="$ctrl.toggleFocus()"
+        ng-blur="$ctrl.toggleFocus()"
+        ng-keydown="$ctrl.searchKeyDown($event)"
+        class="form-control search-form-input search-form-input_dark"
+        ng-model="$ctrl.searchText"
+        placeholder="Load or PRO Number"
+        maxlength="{{$ctrl.maxLength}}"
+        type="text"
       >
       <span class="search-icon">
         <span class="search-help-text" style="opacity: 1;" ng-if="$ctrl.searchText.length === 0 && $ctrl.focused">Press Enter To Search</span>

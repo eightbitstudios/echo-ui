@@ -14,6 +14,8 @@ angular.module('echo.components.typeaheadSearch', [
     controller: function ($q) {
       var that = this;
 
+      that.maxLength = that.maxLength || 250;
+
       that.debounce = 250;
       that.typeaheadMinLength = 3;
       that.selection = null;
