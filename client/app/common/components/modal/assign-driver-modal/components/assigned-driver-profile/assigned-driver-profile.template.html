@@ -1,7 +1,7 @@
 <div class="assigned-driver-profile">
   <div class="well">
     <h2 class="driver-name">
-      <a href="#/carrier/{{$ctrl.carrierId}}/myCompany/drivers/{{$ctrl.assignedDriver.id}}">{{$ctrl.assignedDriver | fullName}}</a>
+      <a ui-sref="{{$ctrl.myCompanyDriverProfile}}({driverId: $ctrl.assignedDriver.id})">{{$ctrl.assignedDriver | fullName}}</a>
     </h2>
     <h3 class="medium-header">{{$ctrl.assignedDriver.phone | phoneNumber}}</h3>
     <strong class="small-header">
