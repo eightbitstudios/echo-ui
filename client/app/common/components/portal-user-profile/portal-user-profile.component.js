@@ -6,7 +6,8 @@ angular.module('echo.components.portalUserProfile', [
   'echo.models.user',
   'echo.components.loadingButton',
   'echo.api.portalUser',
-  'echo.components.serverErrors'
+  'echo.components.serverErrors',
+  'echo.directives.focus'
 ]).component('portalUserProfile', {
   bindings: {
     portalUser: '<',
