@@ -1,6 +1,6 @@
 <div class="carrier-dashboard-action">
   <h3 class="driver-name" ng-if="!$ctrl.isMultiStop">{{$ctrl.currentStatus.description}}</h3>
-  <h3 class="driver-name" ng-if="$ctrl.isMultiStop">Call to report {{$ctrl.repDetails.phone | phoneNumber}}</h3>
+  <h3 class="driver-name" ng-if="$ctrl.isMultiStop">Call to report (855) RUN-ECHO</h3>
   <span ng-if="!$ctrl.isMultiStop">{{$ctrl.load.nextAction | lastModifiedBy}}</span>
   <div class="action-align-bottom" ng-if="$ctrl.nextAction">
     <loading-button button-class="{{$ctrl.actionButtonEscalationClass}}"
