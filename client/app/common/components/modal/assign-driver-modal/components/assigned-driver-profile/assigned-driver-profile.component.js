@@ -7,6 +7,7 @@ angular.module('echo.components.modal.assignDriver.assignedDriverProfile', [
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/assigned-driver-profile/assigned-driver-profile.template.html',
     bindings: {
       assignedDriver: '<',
+      carrierId: '<',
       changeDriverCallback: '&'
     },
     controller: function (routesConfig) {
