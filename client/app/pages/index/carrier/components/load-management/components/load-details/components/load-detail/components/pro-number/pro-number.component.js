@@ -15,6 +15,9 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail.proNumb
       that.updateProNumber = function (newProNumber) {
         return loadsApi.updateProNumber(that.loadGuid, { proNumber: newProNumber }).then(function (data) {
           that.proNumber = _.get(data, 'proNumber');
+        }).catch(function (error) {
+          that.errorMessages = error.data.status.message;
+          that.errorCode = error.data.status.code;
         });
       };
     }
