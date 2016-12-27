@@ -25,17 +25,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     var defaultFilterText = 'By Next Appointment';
     that.filterText = defaultFilterText;
 
-    that.getAvailableLoads = function () {
-      that.showLoading = true;
-      loadsApi.fetchActiveLoadsPage(that.carrierId, that.paging, that.isPickUpToday, that.isDeliveriesToday).then(function (availableLoadData) {
-        that.paging.totalRecords = availableLoadData.loads.totalLoadCount;
-        that.paging.recordCount = _.size(availableLoadData.loads.loads);
-        that.activeLoads = availableLoadData.loads.loads;
-      }).finally(function () {
-        that.showLoading = false;
-      });
-    };
-
     that.deliveriesTodayHandler = function (value) {
       if (!value) {
         that.filterText = defaultFilterText;
@@ -46,7 +35,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.isPickUpToday = false;
       that.isDeliveriesToday = value;
       that.paging.reset();
-      that.getAvailableLoads();
+      that.getPageData(true, false, false);
     };
 
     that.pickupsTodayHandler = function (value) {
@@ -58,21 +47,34 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.isDeliveriesToday = false;
       that.isPickUpToday = value;
       that.paging.reset();
-      that.getAvailableLoads();
+      that.getPageData(true, false, false);
     };
 
-    that.getMapPointsForAvailableLoads = function () {
-      that.showMap = false;
-      that.mapPoints = [];
-      loadsApi.fetchMapPointsForActiveLoads(that.carrierId).then(function (mapPointData) {
-        that.mapPoints = mapPointData;
-        that.showMap = true;
+    that.getPageData = function (activeLoads, mapLoads, loadsCount) {
+      if (activeLoads) {
+        that.showLoading = true;
+      }
+      if (mapLoads) {
+        that.showMap = false;
+        that.mapPoints = [];
+      }
+
+      loadsApi.fetchActiveLoadsPage(that.carrierId, that.paging, that.isPickUpToday, that.isDeliveriesToday, activeLoads, mapLoads, loadsCount).then(function (activeLoadsPageData) {
+        if (activeLoads) {
+          that.paging.totalRecords = activeLoadsPageData.loads.totalLoadCount;
+          that.paging.recordCount = _.size(activeLoadsPageData.loads.loads);
+          that.activeLoads = activeLoadsPageData.loads.loads;
+          that.showLoading = false;
+        }
+        if (mapLoads) {
+          that.mapPoints = activeLoadsPageData.mapLoads;
+          that.showMap = true;
+        }
       });
     };
 
     that.refreshPageData = function () {
-      that.getAvailableLoads();
-      that.getMapPointsForAvailableLoads();
+      that.getPageData(true, true, false);
     };
 
     that.$onInit = function () {

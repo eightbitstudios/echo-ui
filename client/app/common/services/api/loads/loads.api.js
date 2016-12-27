@@ -270,14 +270,17 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    fetchActiveLoadsPage: function (carrierId) {
+    fetchActiveLoadsPage: function (carrierId, paging, pickupsToday, deliveriesToday, getActiveLoads, getMapLoads, getLoadsCount) {
       var url = apiConfig.activeLoadsPage({ carrierId: carrierId });
 
       var params = {
         limit: paging.limit,
         offset: paging.offset,
         pickupsToday: pickupsToday,
-        deliveriesToday: deliveriesToday
+        deliveriesToday: deliveriesToday,
+        getActiveLoads: getActiveLoads,
+        getMapLoads: getMapLoads,
+        getLoadsCount: getLoadsCount
       };
 
       return $http.get(url, { params: params }).then(function (resp) {

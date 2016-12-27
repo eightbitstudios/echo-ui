@@ -172,6 +172,29 @@ module.exports = {
     responseUtil.timeout(function () {
       res.json(resTemplate);
     }, minDelay, maxDelay);
+  },
+  fetchActiveLoadsPage: function (req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = {};
+    if (req.query.getActiveLoads) {
+      resTemplate.data.loads = {};
+      resTemplate.data.loads.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
+      resTemplate.data.loads.totalLoadCount = loadsRes.loads.length;
+    }
+    if (req.query.getMapLoads) {
+      resTemplate.data.mapLoads = loadsMapRes;
+    }
+    if (req.query.loadsCount) {
+      resTemplate.data.loadsCount = {
+        active: 12,
+        unbilled: 13,
+        upcoming: 4
+      };
+    }
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };
 
