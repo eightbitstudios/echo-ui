@@ -138,6 +138,7 @@ angular.module('echo.components.loadTable.action', [
         that.showButtonLoading = false;
         that.currentStatus = _.find(actionEnums.LAST_ACTION, { value: _.get(that.load.nextAction, 'lastAction') });
         that.nextAction = _.find(actionEnums.AVAILABLE_ACTIONS, { value: _.get(that.load.nextAction, 'nextAction') });
+        that.isAddDocuments = (that.nextAction === actionEnums.AVAILABLE_ACTIONS.ADD_DOCUMENTS);
 
         if (that.load.escalationLevel === 2) {
           that.actionButtonEscalationClass = 'btn-warning';
