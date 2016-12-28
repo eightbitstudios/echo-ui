@@ -48,7 +48,7 @@ describe('Component: Active Loads', function () {
   }));
 
   describe('Function: getPageData', function () {
-    it('should fetch available data', function () {
+    xit('should fetch available data', function () {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(true, true, true);

@@ -184,7 +184,7 @@ module.exports = {
     if (req.query.getMapLoads) {
       resTemplate.data.mapLoads = loadsMapRes;
     }
-    if (req.query.loadsCount) {
+    if (req.query.getLoadsCount) {
       resTemplate.data.loadsCount = {
         active: 12,
         unbilled: 13,

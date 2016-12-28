@@ -8,14 +8,15 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
   'echo.components.filterButton',
-  'echo.components.loadMap'
+  'echo.components.loadMap',
+  'echo.services.loadCount'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
     repDetails: '<',
     carrierId: '<'
   },
-  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum) {
+  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum, loadCountService) {
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
@@ -70,6 +71,9 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
           that.mapPoints = activeLoadsPageData.mapLoads;
           that.showMap = true;
         }
+        if(loadsCount) {
+          loadCountService.setLoadCount(activeLoadsPageData.loadsCount);
+        }
       });
     };
 
@@ -78,7 +82,9 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     };
 
     that.$onInit = function () {
-      that.refreshPageData();
+      var fetchLoadCount = _.isEmpty(loadCountService.getLoadCount());
+       
+      that.getPageData(true, true, fetchLoadCount);
     };
   }
 });
