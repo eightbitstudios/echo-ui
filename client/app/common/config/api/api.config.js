@@ -1,6 +1,7 @@
 angular.module('echo.config.api', [])
   .constant('apiConfig', {
     googleMapsApiKey: '@googleMapsApiKey@',
+    key: '@key@',
     availableLoadsByCarrierId: _.template('@availableLoadsByCarrierId@'),
     unbilledLoadsByCarrierId: _.template('@unbilledLoadsByCarrierId@'),
     upcomingLoadsByCarrierId: _.template('@upcomingLoadsByCarrierId@'),
