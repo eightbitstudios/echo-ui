@@ -13,6 +13,9 @@ module.exports = function(grunt) {
     dev: {
       NODE_ENV: 'dev'
     },
+    test: {
+      NODE_ENV: 'test'
+    },
     heroku: {
       NODE_ENV: 'heroku'
     },
