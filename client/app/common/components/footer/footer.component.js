@@ -7,7 +7,8 @@ angular.module('echo.components.footer', [
   'echo.services.repDetails',
   'echo.config.routes',
   'echo.config.appConstants',
-  'echo.services.modal'
+  'echo.services.modal',
+  'echo.components.termsAndConditions'
 ]).component('appFooter', {
   templateUrl: 'app/common/components/footer/footer.template.html',
     controller: function(repDetailsService, userProfileService, routesConfig, appConstants, modalService) {
@@ -16,7 +17,6 @@ angular.module('echo.components.footer', [
       that.user = userProfileService.getUser();
       that.repDetails = repDetailsService.getRep();
 
-      that.termsAndConditionsRoute = routesConfig.INDEX.termsAndConditions.name;
       that.privacyPolicyRoute = appConstants.PRIVACY_POLICY_URL;
 
       that.showTermsAndConditionsModal = function () {
