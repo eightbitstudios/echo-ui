@@ -6,7 +6,7 @@ angular.module('echo.login.createPassword', [
   'echo.models.passwordChange',
   'echo.api.authentication',
   'echo.services.modal',
-  'echo.components.termsAndConditions'
+  'echo.components.modal.termsAndConditions'
 ]).component('createPassword', {
   templateUrl: 'app/pages/login/create-password/create-password.template.html',
   controller: function ($stateParams, $state, $window, routesConfig, authenticationApi, PasswordChangeModel, appConstants, modalService) {
@@ -32,7 +32,10 @@ angular.module('echo.login.createPassword', [
 
     that.showTermsAndConditionsModal = function () {
       var modalInstance = modalService.open({
-        component: 'terms-and-conditions'
+        component: 'terms-and-conditions',
+        bindings: {
+          acceptFooter: true
+        }
       }).result;
 
       modalInstance.then(function (agree) {
