@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // API endpoints by env
   var apiConfigLocal = require('./config/api-config-local.js')(grunt);
@@ -6,12 +6,13 @@ module.exports = function (grunt) {
   var apiConfigDemo = require('./config/api-config-demo.js')(grunt);
   var apiConfigStage = require('./config/api-config-stage.js')(grunt);
   var apiConfigMocks = require('./config/api-config-mocks.js')(grunt);
+  var apiConfigTest = require('./config/api-config-test.js')(grunt);
 
   var userConfig = require('./build.config.js')(grunt);
   grunt.initConfig(userConfig);
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
       grunt.log.write("LOADING CONFIGS FOR DIST");
       grunt.task.run([
@@ -62,6 +63,16 @@ module.exports = function (grunt) {
         'express:dev',
         'watch'
       ]);
+    } else if (target === 'test') {
+      grunt.log.write("LOADING CONFIGS FOR TEST");
+      grunt.config.merge(apiConfigTest);
+
+      grunt.task.run([
+        'build',
+        'env:local',
+        'express:dev',
+        'watch'
+      ]);
     } else {
       grunt.log.write("LOADING CONFIGS FOR MOCKS");
       grunt.config.merge(apiConfigMocks);
@@ -75,7 +86,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('demo', function (target) {
+  grunt.registerTask('demo', function(target) {
     grunt.config.merge(apiConfigDemo);
     grunt.task.run([
       'dist',
@@ -87,7 +98,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('dev', function (target) {
+  grunt.registerTask('dev', function(target) {
     grunt.config.merge(apiConfigDev);
     grunt.task.run([
       'dist',
@@ -99,7 +110,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('stage', function (target) {
+  grunt.registerTask('stage', function(target) {
     grunt.config.merge(apiConfigStage);
     grunt.task.run([
       'dist',
@@ -111,12 +122,24 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('default', function (target) {
+  grunt.registerTask('test', function(target) {
+    grunt.config.merge(apiConfigTest);
+    grunt.task.run([
+      'dist',
+      'copy:deploy',
+      'install',
+      'grunticon',
+      'env:test',
+      'express:dist'
+    ]);
+  });
+
+  grunt.registerTask('default', function(target) {
     grunt.task.run(['dist']);
   });
 
   // Creates a runnable non minified application in the root build directory
-  grunt.registerTask('build', function () {
+  grunt.registerTask('build', function() {
     grunt.task.run([
       'clean:build',
       'jshint',
@@ -136,7 +159,7 @@ module.exports = function (grunt) {
   // Does a build then minifies and copies all front end code over to the root dist directory
   // To get a fully running app in this directory, you'll need to copy the server and package.json
   // over then do an npm install. (This can all be done by calling 'grunt dist copy:deploy')
-  grunt.registerTask('dist', function () {
+  grunt.registerTask('dist', function() {
     grunt.task.run([
       'clean',
       'build',
@@ -151,13 +174,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('test', function () {
-    grunt.task.run([
-      'build'
-    ]);
-  });
-
-  grunt.registerTask('prepareDeploy', function () {
+  grunt.registerTask('prepareDeploy', function() {
     grunt.task.run([
       'dist',
       'copy:deploy',
@@ -165,7 +182,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('deploy', function (target) {
+  grunt.registerTask('deploy', function(target) {
     if (!target) {
       console.error(); // TODO: Populate this
       grunt.fail.fatal('Target must be specified for deployment.  Valid targets are heroku-dev and heroku-qa');
@@ -178,10 +195,12 @@ module.exports = function (grunt) {
   });
 
 
-  grunt.registerTask('install', 'install server dependencies', function () {
+  grunt.registerTask('install', 'install server dependencies', function() {
     var exec = require('child_process').exec;
     var async = this.async();
-    exec('npm install --production', { cwd: './dist' }, function (err, stdout, stderr) {
+    exec('npm install --production', {
+      cwd: './dist'
+    }, function(err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       async();
