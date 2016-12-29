@@ -1,12 +1,12 @@
 <div class="assigned-driver-profile">
   <div class="well">
     <h2 class="driver-name">
-                  <a href="#">{{$ctrl.assignedDriver | fullName}}</a>
-                </h2>
+      <a ui-sref="{{$ctrl.myCompanyDriverProfile}}({driverId: $ctrl.assignedDriver.id})">{{$ctrl.assignedDriver | fullName}}</a>
+    </h2>
     <h3 class="medium-header">{{$ctrl.assignedDriver.phone | phoneNumber}}</h3>
     <strong class="small-header">
-                  Email
-                </strong>
+      Email
+    </strong>
     <p>{{$ctrl.assignedDriver.email}}</p>
     <strong class="small-header">Tractor Number</strong>
     <p>Tractor {{$ctrl.assignedDriver.tractorNumber}}</p>

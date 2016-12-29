@@ -5,7 +5,7 @@
     </button>
     <h1 class="modal-title">
       <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.overview">
-        Send Load Update for
+        Send Update for
       </span>
       <span class="assign-action-type" ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup">
         Report Pickup of Trailer at Yard for
@@ -30,7 +30,7 @@
         <card ng-repeat="option in $ctrl.sendLoadUpdate.options" ng-click="$ctrl.showOption(option)">
           <strong>{{$ctrl.translateCardLabel(option)}}</strong>
         </card>
-        <p>For other situations that could cause a missed <br>appointment, such as a breakdown or shortage of <br>hours, please call Echo at (333) 343-3333</p>
+        <p>For other situations that may cause a missed <br>appointment, such as a breakdown or a shortage of <br>hours, please call Echo.</p>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
         <driver-location location="$ctrl.location" />

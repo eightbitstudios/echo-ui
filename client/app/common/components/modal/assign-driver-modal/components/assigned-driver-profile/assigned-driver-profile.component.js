@@ -11,5 +11,6 @@ angular.module('echo.components.modal.assignDriver.assignedDriverProfile', [
     },
     controller: function (routesConfig) {
       this.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
+      this.myCompanyDriverProfile = routesConfig.INDEX.myCompanyDriverProfile.name;
     }
   });

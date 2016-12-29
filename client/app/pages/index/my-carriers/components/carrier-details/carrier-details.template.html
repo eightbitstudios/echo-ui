@@ -11,14 +11,14 @@
           <article class="selection-users">
             <header class="selection-header">
               Portal Users
-              <a class="btn btn-link btn-sm" ui-sref="{{$ctrl.usersRoute.name}}({carrierId: $ctrl.carrierId})">View Portal Users List</a>
+              <a class="btn btn-link btn-sm" ui-sref="{{$ctrl.usersRoute.name}}({carrierId: $ctrl.carrierId})">View Portal Users</a>
             </header>
             <portal-users portal-users="$ctrl.portalUsers" click-handler="$ctrl.showPortalUserHandler(user)"></portal-users>
           </article>
           <article class="selection-users">
             <header class="selection-header">
               Drivers
-              <a ui-sref="{{$ctrl.driverRoute.name}}({carrierId: $ctrl.carrierId})" class="btn btn-link btn-sm">View Driver List</a>
+              <a ui-sref="{{$ctrl.driverRoute.name}}({carrierId: $ctrl.carrierId})" class="btn btn-link btn-sm">View Drivers</a>
             </header>
             <driver-list driver-count="$ctrl.driverCount" driver-route="$ctrl.driverRoute.name" carrier-id="$ctrl.carrierId" add-driver-handler="$ctrl.showNewDriverProfile()"></driver-list>
           </article>
@@ -36,7 +36,6 @@
               </button>
             </success-button>
           </portal-user-profile>
-          <resend-invite ng-if="$ctrl.portalUser.id"></resend-invite>
         </div>
         <div ng-if="$ctrl.showMode === $ctrl.mode.DRIVER">
           <a ng-click="$ctrl.showDetailsHandler()" class="btn btn-link">
