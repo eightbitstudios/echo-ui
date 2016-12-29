@@ -1,6 +1,6 @@
 <div class="loading-button">
   <button ng-disabled="$ctrl.showLoading || $ctrl.disableButton" type="submit" ng-click="$ctrl.clickHandler()" class="btn {{$ctrl.buttonClass || 'btn-default'}}">
     <div ng-class="{'hide-button-text': $ctrl.showLoading}">{{$ctrl.buttonText}}<ng-transclude></ng-transclude></div>
-    <loading show-loading="$ctrl.showLoading"></loading>
+    <loading show-loading="$ctrl.showLoading" spinner-size="sm"></loading>
   </button>
 </div>

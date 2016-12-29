@@ -13,7 +13,7 @@
     <fieldset class="fieldset personal-information">
       <div class="form-group" ng-class="{'has-error': $ctrl.driverProfileForm.firstName.$invalid && $ctrl.driverProfileForm.firstName.$touched}">
         <label>First Name (Required)</label>
-        <input class="form-control" required ng-model="$ctrl.driver.firstName" name="firstName" placeholder="Driver Name" type="text" maxlength="50">
+        <input class="form-control" required ng-model="$ctrl.driver.firstName" name="firstName" placeholder="Driver Name" type="text" maxlength="50" focus>
         <span class="help-block" ng-if="$ctrl.driverProfileForm.firstName.$error.required && $ctrl.driverProfileForm.firstName.$touched">First name is required</span>
       </div>
       <div class="form-group">

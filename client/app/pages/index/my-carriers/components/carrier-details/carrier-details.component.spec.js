@@ -1,11 +1,12 @@
 
 describe('Component: Carrier Details', function () {
-  var component, scope, $q, carrierApi, $stateParams, carriers;
+  var component, scope, $q, carrierApi, $stateParams, languageApi;
 
   beforeEach(function () {
     module('app/pages/index/my-carriers/components/carrier-details/carrier-details.template.html');
     module('echo.index.myCarriers.carrierDetails', function ($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchCarrierById', 'fetchCarrierPortalUsers', 'fetchCarrierDriverCount']));
+      $provide.value('languageApi', languageApi = jasmine.createSpyObj('languageApi', ['fetchLanguages']));
       $provide.value('$stateParams', $stateParams = jasmine.createSpy('$stateParams'));
     });
   });
@@ -30,6 +31,7 @@ describe('Component: Carrier Details', function () {
 
     var deferred = $q.defer();
     carrierApi.fetchCarrierById.and.returnValue(deferred.promise);
+    languageApi.fetchLanguages.and.returnValue($q.when());
     deferred.resolve(carrier);
 
     scope.$digest();
