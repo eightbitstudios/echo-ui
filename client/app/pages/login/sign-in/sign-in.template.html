@@ -17,12 +17,12 @@
       <div ng-if="$ctrl.invalidToken">
         <h2>Sorry, this invitation is no longer valid!</h2>
         <div class="lead">
-          <p>If you already set up an account please login. If not, please contact the person who invited you and have them invite you again</p>
+          <p>If you've already set up your account, please log in. If not, please contact the person who invited you and request a new invitation.</p>
         </div>
       </div>
     </div>
     <div class="col-sm-7 col-lg-5 col-register col-register_form">
-      <h1 class="section-label">Already Have An Account? <br>Please Log In.</h1>
+      <h1 class="section-label">Already have an account? <br>Please log in.</h1>
       <form name="$ctrl.signInForm" novalidate>
         <fieldset class="fieldset">
           <div class="form-group" ng-class="{'has-error': $ctrl.signInForm.email.$invalid && $ctrl.signInForm.$submitted}">
@@ -37,7 +37,7 @@
           </div>
           <div class="form-group">
             <a ui-sref="{{$ctrl.routesConfig.LOGIN.forgotPassword.name}}" class="btn btn-link btn-alt">Forgot password?</a>
-            <loading-button button-text="Login" class="pull-right" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.signInHandler()"></loading-button>
+            <loading-button button-text="Log in" class="pull-right" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.signInHandler()"></loading-button>
             <server-errors class="text-center" error="$ctrl.serverError"></server-errors>
           </div>
         </fieldset>

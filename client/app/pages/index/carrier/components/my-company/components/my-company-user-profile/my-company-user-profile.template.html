@@ -14,7 +14,6 @@
       </portal-user-profile>
     </div>
     <div class="col-sm-6" ng-if="$ctrl.portalUser.id">
-      <resend-invite></resend-invite>
       <change-password ng-if="$ctrl.user.userId === $ctrl.portalUser.id" user-id="$ctrl.user.userId"></change-password>
     </div>
   </div>

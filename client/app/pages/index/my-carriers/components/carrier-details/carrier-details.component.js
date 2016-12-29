@@ -1,22 +1,26 @@
 angular.module('echo.index.myCarriers.carrierDetails', [
-  'echo.index.myCarriers.driverList',
-  'echo.config.routes',
-  'echo.api.carrier',
-  'echo.components.portalUsers',
-  'echo.components.loading',
-  'echo.components.portalUserProfile',
-  'echo.components.resendInvite',
-  'echo.models.user'
-])
+    'echo.index.myCarriers.driverList',
+    'echo.config.routes',
+    'echo.api.carrier',
+    'echo.components.portalUsers',
+    'echo.components.loading',
+    'echo.components.portalUserProfile',
+    'echo.components.resendInvite',
+    'echo.models.user',
+    'echo.models.driver',
+    'echo.components.driverProfile',
+    'echo.api.language'
+  ])
   .component('carrierDetails', {
     templateUrl: 'app/pages/index/my-carriers/components/carrier-details/carrier-details.template.html',
     bindings: {},
-    controller: function ($stateParams, $q, carrierApi, routesConfig, UserModel) {
+    controller: function($stateParams, $q, carrierApi, routesConfig, languageApi, UserModel, DriverModel) {
       var that = this;
 
       that.mode = {
         DETAILS: 0,
-        PORTAL_USER: 1
+        PORTAL_USER: 1,
+        DRIVER: 2
       };
 
       that.showLoading = false;
@@ -26,19 +30,21 @@ angular.module('echo.index.myCarriers.carrierDetails', [
       that.usersRoute = routesConfig.INDEX.myCompanyUsers;
       that.driverRoute = routesConfig.INDEX.myCompanyDrivers;
       that.dashboardRoute = routesConfig.INDEX.dashboard;
+      
 
-      that.getCarrier = function (carrierId) {
+      that.getCarrier = function(carrierId) {
         that.showLoading = true;
-        return carrierApi.fetchCarrierById(carrierId).then(function (carrier) {
+        return carrierApi.fetchCarrierById(carrierId).then(function(carrier) {
           that.carrier = carrier;
-
           if (!that.carrier.isInactive()) {
             $q.all([
               carrierApi.fetchCarrierPortalUsers(carrier.carrierId),
-              carrierApi.fetchCarrierDriverCount(carrier.carrierId)
-            ]).then(_.spread(function (portalUsers, drivers) {
+              carrierApi.fetchCarrierDriverCount(carrier.carrierId),
+              languageApi.fetchLanguages()
+            ]).then(_.spread(function(portalUsers, drivers, languages) {
               that.portalUsers = portalUsers;
               that.driverCount = _.get(drivers, 'userCount');
+              that.languages = languages;
               that.showLoading = false;
             }));
           } else {
@@ -47,23 +53,28 @@ angular.module('echo.index.myCarriers.carrierDetails', [
         });
       };
 
-      that.showPortalUserHandler = function (user) {
+      that.showPortalUserHandler = function(user) {
         that.portalUser = user || new UserModel();
         that.portalUser.carrierId = that.carrierId;
         that.showPortalUser();
       };
 
-      that.loadCarrierDetails = function () {
-        that.getCarrier(that.carrierId).then(function () {
+      that.showNewDriverProfile = function() {
+        that.driver = new DriverModel();
+        that.showMode = that.mode.DRIVER;
+      };
+
+      that.loadCarrierDetails = function() {
+        that.getCarrier(that.carrierId).then(function() {
           that.showDetailsHandler();
         });
       };
 
-      that.showDetailsHandler = function () {
+      that.showDetailsHandler = function() {
         that.showMode = that.mode.DETAILS;
       };
 
-      that.showPortalUser = function () {
+      that.showPortalUser = function() {
         that.showMode = that.mode.PORTAL_USER;
       };
 

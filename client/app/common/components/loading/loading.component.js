@@ -1,10 +1,13 @@
 'use strict';
 
-angular.module('echo.components.loading', []).component('loading', {
+angular.module('echo.components.loading', [
+  'echo.directives.fixedInContainer'
+]).component('loading', {
   bindings: {
     showLoading: '<',
     overlay: '<',
-    spinnerSize: '@'
+    spinnerSize: '@',
+    fixed: '<'
   },
   transclude: true,
   templateUrl: 'app/common/components/loading/loading.template.html',

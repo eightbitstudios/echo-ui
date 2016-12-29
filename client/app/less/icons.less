@@ -1,7 +1,7 @@
 // A list of all icons. Note that grunticon is not in this boilerplate. For automation of icon creation, add that and
 // use this file just to set the width/height/margin/padding/color/etc of icons.
 .fill-echo-icon(@color) {
-  g {
+  svg, g {
     fill: @color;
   }
 }
@@ -33,6 +33,11 @@
 .icon-close {
   height: 11px;
   width: 11px;
+}
+
+.icon-star-outline, .icon-star-solid {
+  height: 14px;
+  width: 14px;
 }
 
 .icon-check-grey, .icon-check-approved {

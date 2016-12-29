@@ -19,7 +19,7 @@
       <span class="search-bar-controls">
         <img ng-if="!$ctrl.darkTheme && $ctrl.selection.length === 0" src="assets/images/icon-search@2x.png" ng-if="" width="16px" height="16px" alt="Icon search@2x">
         <img ng-if="$ctrl.darkTheme && $ctrl.selection.length === 0" src="../assets/images/icon-search-white.png" ng-click="$ctrl.searchHandler()" style="width: 16px; height: 16px;" />
-        <loading show-loading="$ctrl.showLoadingButton"></loading>
+        <loading spinner-size="sm" show-loading="$ctrl.showLoadingButton"></loading>
         <span class="search-results-count" ng-if="$ctrl.isTypeaheadOpen && !$ctrl.showLoadingButton && $ctrl.selection.length === 0">{{$ctrl.numberOfSearchResults}} Search Results</span>
         <div ng-if="$ctrl.selection" class="search-results-close echo-icon icon-close" ng-class="{'icon-white': $ctrl.darkTheme}" ng-click="$ctrl.clearSearchHandler()" data-grunticon-embed></div>
       </span>
