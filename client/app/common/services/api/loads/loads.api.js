@@ -384,8 +384,8 @@ angular.module('echo.api.loads', [
       var params = {
         getActiveLoadsCount: getActiveLoadsCount,
         getMapLoads: getMapLoads,
-        getSingleStop: !_.isEmpty(singleStopPaging),
-        getMultiStop:  !_.isEmpty(multiStopPaging),
+        getSingleStopLoads: !_.isEmpty(singleStopPaging),
+        getMultiStopLoads:  !_.isEmpty(multiStopPaging),
         singleStopLoadsLimit: singleStopPaging.limit,
         singleStopLoadsOffset: singleStopPaging.offset,
         multiStopLoadsLimit: multiStopPaging.limit,

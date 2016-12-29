@@ -88,10 +88,17 @@ angular.module('echo.index.carrier.dashboard', [
 
           that.activeLoadsCount = dashboard.activeLoadsCount;
           that.mapPoints = dashboard.mapLoads;
-          that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
-          that.multiStopLoads = multiStopLoads.loads;
-          that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
-          that.activeLoads = loadsNeedingAction.loads;
+
+          if(_.get(multiStopLoads, 'totalLoadCount')){
+            that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
+          }
+           
+          if(_.get(loadsNeedingAction, 'totalLoadCount')){
+            that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
+          }
+
+          that.multiStopLoads = _.get(multiStopLoads, 'loads') || [];
+          that.activeLoads = _.get(loadsNeedingAction, 'loads') || [];
         }).finally(function() {
           that.showMultiStopLoading = false;
           that.showActionLoadsLoading = false;
