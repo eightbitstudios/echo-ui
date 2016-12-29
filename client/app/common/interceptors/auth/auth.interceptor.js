@@ -21,7 +21,9 @@ angular.module('echo.interceptors.auth', [
           config.headers.Authorization = 'Bearer ' + tokenCookie;
         }
 
-        config.headers['ocp-apim-subscription-key'] = $base64.decode(apiConfig.key);
+        if (!_.isEmpty(apiConfig.key)) {
+          config.headers['ocp-apim-subscription-key'] = $base64.decode(apiConfig.key);
+        }
 
         return config;
       },
