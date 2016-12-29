@@ -7,7 +7,8 @@ angular.module('echo.index.carrier.loadManagement', [
   'echo.index.carrier.loadManagement.unbilledLoads',
   'echo.index.carrier.loadManagement.upcomingLoads',
   'echo.index.carrier.loadManagement.searchLoads',
-  'echo.index.carrier.loadManagement.loadDetails'
+  'echo.index.carrier.loadManagement.loadDetails',
+  'echo.services.loadCount'
 ])
   .component('loadManagement', {
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
@@ -15,7 +16,7 @@ angular.module('echo.index.carrier.loadManagement', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function ($stateParams, $state, routesConfig, loadsApi) {
+    controller: function ($stateParams, $state, routesConfig, loadCountService) {
       var that = this;
 
       that.activeLoadCount = 0;
@@ -24,8 +25,9 @@ angular.module('echo.index.carrier.loadManagement', [
       that.showLoading = true;
       that.state = $state;
       that.routesConfig = routesConfig;
-
-      loadsApi.fetchLoadCount(that.carrierId).then(function (loadCounts) {
+      that.isActiveLoads = ($state.$current.name === routesConfig.INDEX.activeLoads.name);
+      
+      loadCountService.fetchLoadCount(that.carrierId, that.isActiveLoads).then(function (loadCounts) {
         that.tabItems = [{
           title: loadCounts.active + ' Active Loads',
           link: routesConfig.INDEX.activeLoads.name

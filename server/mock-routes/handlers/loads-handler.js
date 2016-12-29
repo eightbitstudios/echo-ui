@@ -5,6 +5,7 @@ var responseUtil = require('../util/response-util.js'),
   activityLogRes = require('../data/activity-log-res'),
   reportArrivalRes = require('../data/report-arrival-res'),
   loadUpdateOptionsRes = require('../data/load-update-options-res'),
+  dashboardRes = require('../data/dashboard-res'),
   equipmentRes = require('../data/equipment-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
@@ -13,16 +14,16 @@ var maxDelay = 2,
   minDelay = 1;
 
 module.exports = {
-  getItemsByLoadGuid: function (req, res) {
+  getItemsByLoadGuid: function(req, res) {
     var resTemplate = new ResTemplate();
 
     resTemplate.data = loadsRes.loads[0].pickUp[0].items;
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getLoadCount: function (req, res) {
+  getLoadCount: function(req, res) {
     var resTemplate = new ResTemplate();
 
     resTemplate.data = {
@@ -31,19 +32,19 @@ module.exports = {
       upcoming: 4
     };
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getActivityLogByLoadId: function (req, res) {
+  getActivityLogByLoadId: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = activityLogRes;
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getDriverStatus: function (req, res) {
+  getDriverStatus: function(req, res) {
     var resTemplate = new ResTemplate();
     var searchText = req.params.searchText;
     resTemplate.data = {
@@ -51,128 +52,156 @@ module.exports = {
       conflictingLoadId: 98766789
     };
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getLoadsBySearchText: function (req, res) {
+  getLoadsBySearchText: function(req, res) {
     var resTemplate = new ResTemplate();
     var searchText = req.params.searchText;
-    resTemplate.data.loads = _.filter(loadsRes.loads, function (item) {
+    resTemplate.data.loads = _.filter(loadsRes.loads, function(item) {
       return item.loadNumber.toString().indexOf(searchText) > -1;
     });
 
     resTemplate.data.totalLoadCount = loadsRes.totalLoadCount;
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getReportEmptyModalAction: function (req, res) {
+  getReportEmptyModalAction: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = reportEmptyRes;
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getReportLoadedModalAction: function (req, res) {
+  getReportLoadedModalAction: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = reportEmptyRes;
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  createModalAction: function (req, res) {
+  createModalAction: function(req, res) {
     var resTemplate = new ResTemplate();
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getLoadsByCarrierId: function (req, res) {
+  getLoadsByCarrierId: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
     resTemplate.data.totalLoadCount = loadsRes.loads.length;
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getEquipmentByLoadId: function (req, res) {
+  getEquipmentByLoadId: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = equipmentRes;
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getLoadDetails: function (req, res) {
+  getLoadDetails: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadsRes.loads[0];
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  getLoadUpdateOptions: function (req, res) {
+  getLoadUpdateOptions: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadUpdateOptionsRes;
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  fetchReportArrivalByLoadGuid: function (req, res) {
+  fetchReportArrivalByLoadGuid: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = reportArrivalRes;
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  updateProNumber: function (req, res) {
+  updateProNumber: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = {};
     if (req.body.proNumber != null) {
       resTemplate.data.proNumber = req.body.proNumber;
     }
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
 
-  updateReportArrivalByLoadGuid: function (req, res) {
+  updateReportArrivalByLoadGuid: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = reportArrivalRes;
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  updateTrailerNumber: function (req, res) {
+  updateTrailerNumber: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = {};
-    if (req.body.trailerNumber != null) {
+    if (req.body.trailerNumber !== null) {
       resTemplate.data.trailerNumber = req.body.trailerNumber;
     }
 
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  fetchMapPoints: function (req, res) {
+  fetchDashboard: function(req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = dashboardRes;
+    responseUtil.timeout(function() {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  fetchMapPoints: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadsMapRes;
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   },
-  fetchMapPointByLoadGuid: function (req, res) {
+  fetchMapPointByLoadGuid: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = loadsMapRes[2];
-    responseUtil.timeout(function () {
+    responseUtil.timeout(function() {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  fetchActiveLoadsPage: function(req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = {};
+    if (req.query.getActiveLoads) {
+      resTemplate.data.loads = {};
+      resTemplate.data.loads.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
+      resTemplate.data.loads.totalLoadCount = loadsRes.loads.length;
+    }
+    if (req.query.getMapLoads) {
+      resTemplate.data.mapLoads = loadsMapRes;
+    }
+    if (req.query.getLoadsCount) {
+      resTemplate.data.loadsCount = {
+        active: 12,
+        unbilled: 13,
+        upcoming: 4
+      };
+    }
+
+    responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
   }
 };
-
-
