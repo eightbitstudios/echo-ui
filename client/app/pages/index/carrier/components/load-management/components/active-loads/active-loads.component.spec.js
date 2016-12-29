@@ -47,23 +47,7 @@ describe('Component: Active Loads', function () {
       carrierId: carrierId
     });
   }));
-
-  describe('Function: getPageData', function () {
-    xit('should fetch available data', function () {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(true, true, true);
-      deferred.resolve(availableData);
-
-      scope.$digest();
-
-      expect(loadsApi.fetchActiveLoadsPage).toHaveBeenCalledWith(carrierId, component.paging, component.isPickUpToday, component.isDeliveriesToday, true, true, true);
-      expect(component.paging.totalRecords).toBe(24);
-      expect(component.paging.recordCount).toBe(4);
-      expect(component.activeLoads).toBe(availableData.loads.loads);
-    });
-  });
-
+  
   describe('Function: deliveriesTodayHandler', function () {
     it('should set filter text to default', function () {
       var deferred = $q.defer();
