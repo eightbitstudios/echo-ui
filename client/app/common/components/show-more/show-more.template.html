@@ -1,6 +1,6 @@
 <nav class="show-more">
   <div class="pull-left">
-    <loading show-loading="$ctrl.showLoading"></loading>
+    <loading show-loading="$ctrl.showLoading" spinner-size="md"></loading>
     <a href="javascript:void(0)" ng-if="!$ctrl.showLoading" ng-click="$ctrl.showMoreHandler()">{{$ctrl.pagingModel | showMore}}</a>
   </div>
   <div class="pull-right" ng-if="$ctrl.pagingModel.recordCount > 0 && !$ctrl.showLoading">
