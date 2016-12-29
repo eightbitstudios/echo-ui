@@ -37,6 +37,32 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
+      that.fetchLoadsNeedingAction = function() {
+        that.showActionLoadsLoading = true;
+        that.pagingActionLoads.reset();
+        loadsApi.fetchDashboard(that.carrierId, false, false, that.pagingActionLoads, {})
+          .then(function(dashboard) {
+            var loadsNeedingAction = dashboard.singleStopLoads;
+            that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
+            that.activeLoads = loadsNeedingAction.loads;
+          }).finally(function() {
+            that.showActionLoadsLoading = false;
+          });
+      };
+
+      that.fetchMultistopLoads = function() {
+        that.showMultiStopLoading = true;
+        that.pagingMultistopLoads.reset();
+        loadsApi.fetchDashboard(that.carrierId, false, false, {}, that.pagingMultistopLoads)
+          .then(function(dashboard) {
+            var multiStopLoads = dashboard.multiStopLoads;
+            that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
+            that.multiStopLoads = multiStopLoads.loads;
+          }).finally(function() {
+            that.showMultiStopLoading = false;
+          });
+      };
+
       that.showMoreMultiStopLoadsHandler = function() {
         that.showMoreMultiStopLoading = true;
         loadsApi.fetchDashboard(that.carrierId, false, false, {}, that.pagingMultistopLoads).then(function(dashboard) {
@@ -63,7 +89,7 @@ angular.module('echo.index.carrier.dashboard', [
           that.activeLoadsCount = dashboard.activeLoadsCount;
           that.mapPoints = dashboard.mapLoads;
           that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
-          that.multiStopLoads =  multiStopLoads.loads;
+          that.multiStopLoads = multiStopLoads.loads;
           that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
           that.activeLoads = loadsNeedingAction.loads;
         }).finally(function() {
