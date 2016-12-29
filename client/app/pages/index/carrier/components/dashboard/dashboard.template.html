@@ -14,17 +14,14 @@
     <section>
       <div class="section-head">
         <h1 class="section-label">
-            Loads Needing Action
-            <span class="section-sub-label">
-              Via Online Reporting
-            </span>
+            Loads Requiring Online Reporting
           </h1>
         <a ui-sref="{{$ctrl.activeLoadsRoute}}">View All {{$ctrl.activeLoadsCount}} Active Loads</a>
       </div>
-      <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0" 
-        loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" 
+      <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0"
+        loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId"
         show-loading="$ctrl.showActionLoadsLoading" refresh-table-callback="$ctrl.fetchLoadsNeedingAction()"></load-table>
-      <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads Needing Action" click-handler="$ctrl.showMoreActionLoadsHandler()"/>
+      <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads" click-handler="$ctrl.showMoreActionLoadsHandler()"/>
       <div class="no-loads-message" ng-if="!$ctrl.showActionLoadsLoading && $ctrl.activeLoads.length === 0">
         <h3>You have no loads that need online actions right now.</h3>
         <div>You have <a ui-sref="{{$ctrl.activeLoadsRoute}}">{{$ctrl.activeLoadsCount}} active loads</a> at this time.</div>
@@ -33,14 +30,14 @@
     <section class="multi-stop-loads">
       <div class="section-head">
         <h1 class="section-label">
-            Multi Stop Loads
+            Multi-Stop Loads
             <span class="section-sub-label">
-              With Upcoming Appointments
+              with Upcoming Appointments
             </span>
           </h1>
       </div>
       <load-table rep-details="$ctrl.repDetails" loads="$ctrl.multiStopLoads" load-type="$ctrl.loadType" show-loading="$ctrl.showMultiStopLoading" carrier-id="$ctrl.carrierId" refresh-table-callback="$ctrl.fetchMultistopLoads()"></load-table>
-      <show-more show-loading="$ctrl.showMoreMultiStopLoading" paging-model="$ctrl.pagingMultistopLoads" record-type="Multi Stop Loads" click-handler="$ctrl.showMoreMultiStopLoadsHandler()"></show-more>
+      <show-more show-loading="$ctrl.showMoreMultiStopLoading" paging-model="$ctrl.pagingMultistopLoads" record-type="Multi-Stop Loads" click-handler="$ctrl.showMoreMultiStopLoadsHandler()"></show-more>
     </section>
   </div>
 </div>
