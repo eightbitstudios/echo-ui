@@ -84,7 +84,7 @@ module.exports = {
       "isDoNotDisturb": true
     },
     nextAction: {
-      lastAction: 1,
+      lastAction: 15,
       firstName: 'Tim',
       lastName: 'Potatoe',
       actionPerformedOn: '13:50 CST Today',

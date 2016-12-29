@@ -9,14 +9,12 @@
       background: @c-gray-light;
     }
     .loading-text {
-        border-radius: 50%;
-        width: 65px;
-        height: 65px;
-        border: .25rem solid @c-gray-heavy-light;
-        border-top-color: @c-bright-blue;
-        animation: spin 1s infinite linear;
+        animation: spin 1.5s infinite linear;
         position: absolute;
         .center-image(@top: 32px; @left: 32px);
+    }
+    .loading-fixed{
+      top: 20px;
     }
 }
 

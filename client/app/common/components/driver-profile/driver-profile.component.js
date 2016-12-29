@@ -4,7 +4,8 @@ angular.module('echo.components.driverProfile', [
   'echo.config.appConstants',
   'echo.api.driver',
   'echo.components.serverErrors',
-  'echo.filters.fullName'
+  'echo.filters.fullName',
+  'echo.directives.focus'
 ]).component('driverProfile', {
   bindings: {
     carrierId: '<',

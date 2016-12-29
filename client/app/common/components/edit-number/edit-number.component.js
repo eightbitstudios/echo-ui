@@ -14,6 +14,8 @@ angular.module('echo.components.editNumber', [
     controller: function () {
       var that = this;
 
+      that.maxLength = that.maxLength || 250;
+
       that.showForm = false;
       that.updateNumber = null;
       that.allowSubmit = true;
