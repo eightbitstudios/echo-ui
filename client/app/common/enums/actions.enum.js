@@ -111,7 +111,7 @@ angular.module('echo.enums.actions', [])
       },
       BOOKED: {
         value: 15,
-        description: 'Booked'
+        description: 'Added'
       }
     }
   });
