@@ -12,8 +12,9 @@ angular.module('echo.services.loadCount', [
         var that = this;
 
         if (that._count) {
-          $q.when(that._count);
+          return $q.when(that._count);
         }
+        
         if (!isActiveLoads) {
           return loadsApi.fetchLoadCount(carrierId).then(function(count) {
             that._count = count;

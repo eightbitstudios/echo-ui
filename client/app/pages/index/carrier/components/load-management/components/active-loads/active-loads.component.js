@@ -71,6 +71,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
           that.mapPoints = activeLoadsPageData.mapLoads;
           that.showMap = true;
         }
+        
         if(loadsCount) {
           loadCountService.setLoadCount(activeLoadsPageData.loadsCount);
         }

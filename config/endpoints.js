@@ -51,5 +51,6 @@ module.exports = {
   mapPointsForActiveLoads: '/api/v1/carriers/${carrierId}/loads/active/map',
   mapPointByLoadGuid: '/api/v1/loads/${loadGuid}/details/map',
   mapPointsForLoadsNeedingAction: '/api/v1/carriers/${carrierId}/loads/needsAction/map',
-  activeLoadsPage: '/api/v1/carriers/${carrierId}/loads/activeLoadsPage'
+  activeLoadsPage: '/api/v1/carriers/${carrierId}/loads/activeLoadsPage',
+  loadDashboard: '/api/v1/carriers/${carrierId}/loads/dashboardPage'
 };

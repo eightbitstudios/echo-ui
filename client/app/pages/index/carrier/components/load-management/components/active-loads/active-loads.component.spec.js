@@ -1,11 +1,12 @@
 
 describe('Component: Active Loads', function () {
-  var component, scope, $q, carrierId, loadsApi, availableData;
+  var component, scope, $q, carrierId, loadsApi, availableData, loadCountService;
 
   beforeEach(function () {
     module('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html');
     module('echo.index.carrier.loadManagement.activeLoads', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchActiveLoadsPage']));
+      $provide.value('loadCountService', loadCountService = jasmine.createSpyObj('loadCountService', ['getLoadCount', 'setLoadCount']));
       $provide.value('googleMapsDirective', {});
       $provide.value('googleMapsMarkerDirective', {});
       $provide.value('googleMapsInfoWindowDirective', {});

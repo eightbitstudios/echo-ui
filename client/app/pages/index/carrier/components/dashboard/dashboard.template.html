@@ -19,7 +19,7 @@
               Via Online Reporting
             </span>
           </h1>
-        <a ui-sref="{{$ctrl.activeLoadsRoute}}">View All {{$ctrl.activeLoadCount}} Active Loads</a>
+        <a ui-sref="{{$ctrl.activeLoadsRoute}}">View All {{$ctrl.activeLoadsCount}} Active Loads</a>
       </div>
       <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0" 
         loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" 
@@ -27,7 +27,7 @@
       <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads Needing Action" click-handler="$ctrl.showMoreActionLoadsHandler()"/>
       <div class="no-loads-message" ng-if="!$ctrl.showActionLoadsLoading && $ctrl.activeLoads.length === 0">
         <h3>You have no loads that need online actions right now.</h3>
-        <div>You have <a ui-sref="{{$ctrl.activeLoadsRoute}}">{{$ctrl.activeLoadCount}} active loads</a> at this time.</div>
+        <div>You have <a ui-sref="{{$ctrl.activeLoadsRoute}}">{{$ctrl.activeLoadsCount}} active loads</a> at this time.</div>
       </div>
     </section>
     <section class="multi-stop-loads">
