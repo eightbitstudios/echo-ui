@@ -64,7 +64,7 @@ angular.module('echo.services.googleMaps', [
         }
       },
 
-      formatMapPoints: function (google, geocoder, mapPoints, mapCenter) {
+      formatMapPoints: function (google, geocoder, mapPoints) {
         var that = this;
         var promises = [];
         _.forEach(mapPoints, function (mapPoint) {
@@ -72,12 +72,11 @@ angular.module('echo.services.googleMaps', [
         });
 
         if (_.size(promises) === 0) {
-          mapCenter = that.findCenter(google, mapPoints);
-          return mapCenter;
+          return $q.when(that.findCenter(google, mapPoints));
         } else {
           return $q.all(promises).then(function () {
             mapPoints = _.filter(mapPoints, function (mapPoint) { return !!mapPoint.position; });
-            mapCenter = that.findCenter(google, mapPoints);
+            return that.findCenter(google, mapPoints);
           });
         }
       },

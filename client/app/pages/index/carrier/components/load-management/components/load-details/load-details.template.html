@@ -11,7 +11,7 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="false" />
+  <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="false" show-expanded="false"></load-map>
   <loading show-loading="$ctrl.showLoading"></loading>
   <div ng-if="!$ctrl.showLoading" class="container-fluid load-table_detail">
     <div class="container">
@@ -40,6 +40,7 @@
         </section>
         <section class="sidebar-container" ng-if="false">
           <documents />
+        </section>
       </div>
     </div>
   </div>
