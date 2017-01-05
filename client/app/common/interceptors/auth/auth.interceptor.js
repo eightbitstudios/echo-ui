@@ -22,7 +22,7 @@ angular.module('echo.interceptors.auth', [
         }
 
         if (!_.isEmpty(apiConfig.key)) {
-          config.headers['ocp-apim-subscription-key'] = $base64.decode(apiConfig.key);
+          config.headers[$base64.decode(apiConfig.keyHeader)] = $base64.decode(apiConfig.key);
         }
 
         return config;
