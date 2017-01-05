@@ -24,6 +24,7 @@ angular.module('echo.components.resendInvite', [
       portalUserApi.resendInviteToPortalUserById(that.user.id).then(function (inviteData) {
         that.user.invitationStatus = inviteData.invitationStatus;
         that.disableSubmit = true;
+        that.showSuccess = true;
       }).catch(function (errorCode) {
         that.errorCode = errorCode;
         that.showError = true;
@@ -42,6 +43,7 @@ angular.module('echo.components.resendInvite', [
       that.disableSubmit = false;
       that.showError = false;
       that.showDefaultError = false;
+      that.showSuccess = false;
     };
   }
 });
