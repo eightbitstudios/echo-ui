@@ -19,6 +19,7 @@ module.exports = {
     signOut: '/mock/api/v1/auth/signOut',
     refresh: '/mock/api/v1/auth/refresh/:userId',
     userById: '/mock/api/v1/users/:userId',
+    resendInviteToUserById: '/mock/api/v1/users/:userId/resendInvite',
     driverById: '/mock/api/v1/users/drivers/:driverId',
     searchDrivers: '/mock/api/v1/carriers/:carrierId/drivers/:searchTerm',
     deactivateDriverById: '/mock/api/v1/carriers/:carrierId/drivers/:driverId/deactivate',

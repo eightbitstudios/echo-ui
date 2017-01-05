@@ -36,6 +36,7 @@
               </button>
             </success-button>
           </portal-user-profile>
+          <resend-invite user="$ctrl.portalUser"></resend-invite>
         </div>
         <div ng-if="$ctrl.showMode === $ctrl.mode.DRIVER">
           <a ng-click="$ctrl.showDetailsHandler()" class="btn btn-link">
