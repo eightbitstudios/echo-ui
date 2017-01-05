@@ -7,7 +7,7 @@ module.exports = [{
   state: 'IL',
   zip: '60616',
   city: 'Chicago',
-  isActive: true
+  userCount: 3
 }, {
     carrierId: 2,
     repId: 1,
@@ -17,7 +17,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: false
+    userCount: 4
   }, {
     carrierId: 3,
     repId: 1,
@@ -27,7 +27,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    userCount: 0
   }, {
     carrierId: 4,
     repId: 1,
@@ -37,7 +37,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: false
+    userCount: 9
   }, {
     carrierId: 5,
     repId: 1,
@@ -47,7 +47,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: false
+    userCount: 0
   }, {
     carrierId: 6,
     repId: 1,
@@ -57,7 +57,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    userCount: 6
   }, {
     carrierId: 7,
     repId: 1,
@@ -67,7 +67,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: false
+    userCount: 78
   }, {
     carrierId: 8,
     repId: 1,
@@ -77,7 +77,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    userCount: 96
   }, {
     carrierId: 9,
     repId: 1,
@@ -87,7 +87,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: false
+    userCount: 9
   }, {
     carrierId: 10,
     repId: 1,
@@ -97,7 +97,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    userCount: 0
   }, {
     carrierId: 11,
     repId: 1,
@@ -107,7 +107,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    userCount: 0
   }, {
     carrierId: 12,
     repId: 1,
@@ -117,7 +117,7 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    userCount: 0
   }, {
     carrierId: 13,
     repId: 1,
@@ -127,5 +127,5 @@ module.exports = [{
     state: 'IL',
     zip: '60616',
     city: 'Chicago',
-    isActive: true
+    userCount: 7
   }];

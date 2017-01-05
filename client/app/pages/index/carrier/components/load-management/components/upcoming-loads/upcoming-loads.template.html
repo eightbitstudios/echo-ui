@@ -14,6 +14,6 @@
   </loads-filter>
   <div class="container main-content">
     <load-table rep-details="$ctrl.repDetails" loads="$ctrl.upcomingLoads" show-loading="$ctrl.showLoading" load-type="$ctrl.loadType"  refresh-table-callback="$ctrl.getUpcomingLoads()" carrier-id="$ctrl.carrierId"/>
-    <pagination page-click-handler="$ctrl.getUpcomingLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Upcoming Loads"></pagination>
+    <pagination page-click-handler="$ctrl.getUpcomingLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Loads"></pagination>
   </div>
 </div>

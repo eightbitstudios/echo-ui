@@ -6,13 +6,13 @@
           <pro-number pro-number="$ctrl.loadDetail.proNumber" bol-number="$ctrl.loadDetail.bolNumber" load-guid="$ctrl.loadDetail.loadGuid"></pro-number>
         </td>
         <td class="carrier-dashboard-pickup">
-          <shipping-details shipping-details="$ctrl.loadDetail.pickUp"></shipping-details>
+          <shipping-details shipping-details="$ctrl.loadDetail.pickUp" inactive="$ctrl.determineInactive($ctrl.loadDetail.nextAction.nextAction, true)"></shipping-details>
         </td>
         <td class="carrier-dashboard-arrow">
           <span class="echo-icon icon-right-arrow-dark"></span>
         </td>
         <td class="carrier-dashboard-delivery">
-          <shipping-details shipping-details="$ctrl.loadDetail.delivery"></shipping-details>
+          <shipping-details shipping-details="$ctrl.loadDetail.delivery" inactive="$ctrl.determineInactive($ctrl.loadDetail.nextAction.nextAction, false)"></shipping-details>
         </td>
         <td>
           <driver load="$ctrl.loadDetail" is-multi-stop="$ctrl.isMultiStop" load-type="$ctrl.loadType"  carrier-id="$ctrl.carrierId" driver-changed-callback="$ctrl.reloadState()"></driver>

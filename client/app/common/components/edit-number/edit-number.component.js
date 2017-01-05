@@ -8,7 +8,8 @@ angular.module('echo.components.editNumber', [
       number: '<',
       defaultText: '@',
       shadowText: '@',
-      updateCallback: '&'
+      updateCallback: '&',
+      maxLength: '@'
     },
     templateUrl: 'app/common/components/edit-number/edit-number.template.html',
     controller: function () {
@@ -32,9 +33,11 @@ angular.module('echo.components.editNumber', [
       that.saveButtonHandler = function () {
         if (that.allowSubmit) {
           that.allowSubmit = false;
-          that.updateCallback({updatedNumber: that.updateNumber}).then(function () {
-            that.showForm = false;
-            that.updateNumber = null;
+          that.updateCallback({updatedNumber: that.updateNumber}).then(function (error) {
+            if (!error) {
+              that.showForm = false;
+              that.updateNumber = null;
+            }
             that.allowSubmit = true;
           });
         }
