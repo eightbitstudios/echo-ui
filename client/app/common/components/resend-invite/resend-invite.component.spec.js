@@ -27,24 +27,6 @@ describe('Component: Resend Invite', function () {
     });
   }));
 
-  describe('Function: hasUserLoggedIn', function () {
-
-    it('should return false if user never logged in', function () {
-      component.user.lastLogin = 'Never';
-      var result = component.hasUserLoggedIn();
-
-      expect(result).toBe(false);
-    });
-
-    it('should return true if user has logged in ever', function () {
-      component.user.lastLogin = 'Dec 27, 2016';
-      var result = component.hasUserLoggedIn();
-
-      expect(result).toBe(true);
-    });
-
-  });
-
   describe('Function: resendInvite', function () {
 
     it('should show success message and update date on success', function () {

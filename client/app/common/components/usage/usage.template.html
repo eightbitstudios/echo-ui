@@ -1,10 +1,22 @@
-<section class="content-container">
-  <h2 class="section-header">Echo Drive Usage</h2>
-  <ul class="checklist">
-    <li class="checklist-approved"><span class="echo-icon icon-check-approved"></span>Invitation Sent</li>
-    <li class="checklist-approved"><span class="echo-icon" ng-class="{'icon-check-approved': $ctrl.driver.isAppInstalled, 'icon-check-grey': !$ctrl.driver.isAppInstalled}"></span>App {{$ctrl.driver.isAppInstalled ? 'Installed' : 'Not Installed'}}</li>
-    <li class="checklist-approved">
-      <span class="echo-icon" ng-class="{'icon-check-approved': $ctrl.driver.isTrackingEnabled, 'icon-check-grey': !$ctrl.driver.isTrackingEnabled}"></span>Tracking Enabled
-    </li>
-  </ul>
-</section>
+<div class="usage" ng-class="{'portal-margin': $ctrl.isPortalUser}">
+  <section class="content-container">
+    <h2 class="section-header">Echo Drive Usage</h2>
+    <ul class="checklist" ng-if="$ctrl.isPortalUser">
+      <li class="checklist-inprogress" ng-if="!$ctrl.hasUserLoggedIn()">
+        <span class="echo-icon icon-question"></span>{{$ctrl.user.invitationStatus}}
+        <resend-invite user="$ctrl.user"></resend-invite>
+      </li>
+      <li class="checklist-approved" ng-if="$ctrl.hasUserLoggedIn()">
+        <span class="echo-icon icon-check-approved"></span>Last login {{$ctrl.user.lastLogin}}
+      </li>
+    </ul>
+    <ul class="checklist" ng-if="$ctrl.isDriver">
+      <resend-invite ng-if="!$ctrl.user.isAppInstalled && !$ctrl.user.isTrackingEnabled" user="$ctrl.user"></resend-invite>
+      <li class="checklist-approved"><span class="echo-icon icon-check-approved"></span>Invitation Sent</li>
+      <li class="checklist-approved"><span class="echo-icon" ng-class="{'icon-check-approved': $ctrl.user.isAppInstalled, 'icon-check-grey': !$ctrl.user.isAppInstalled}"></span>App {{$ctrl.user.isAppInstalled ? 'Installed' : 'Not Installed'}}</li>
+      <li class="checklist-approved">
+        <span class="echo-icon" ng-class="{'icon-check-approved': $ctrl.user.isTrackingEnabled, 'icon-check-grey': !$ctrl.user.isTrackingEnabled}"></span>Tracking Enabled
+      </li>
+    </ul>
+  </section>
+</div>
