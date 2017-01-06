@@ -21,10 +21,6 @@ angular.module('echo.interceptors.auth', [
           config.headers.Authorization = 'Bearer ' + tokenCookie;
         }
 
-        if (!_.isEmpty(apiConfig.key)) {
-          config.headers[$base64.decode(apiConfig.keyHeader)] = $base64.decode(apiConfig.key);
-        }
-
         return config;
       },
       responseError: function(rejection) {
