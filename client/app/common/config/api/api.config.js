@@ -10,6 +10,7 @@ angular.module('echo.config.api', [])
     carrierById: _.template('@carrierById@'),
     userById: _.template('@userById@'),
     deactivateUserById: _.template('@deactivateUserById@'),
+    resendInviteToUserById: _.template('@resendInviteToUserById@'),
     user: '@user@',
     createPassword: _.template('@createPassword@'),
     signIn: '@signIn@',

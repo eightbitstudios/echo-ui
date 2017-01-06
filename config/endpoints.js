@@ -8,6 +8,7 @@ module.exports = {
   carrierById: '/api/v1/carriers/${carrierId}',
   userById: '/api/v1/users/${userId}',
   deactivateUserById: '/api/v1/users/${userId}/deactivate',
+  resendInviteToUserById: '/api/v1/users/${userId}/resendInvite',
   user: '/api/v1/users',
   signIn: '/api/v1/auth/signIn',
   signOut: '/api/v1/auth/signOut',
