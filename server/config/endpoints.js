@@ -52,6 +52,8 @@ module.exports = {
     verifyDriverByPhone: '/mock/api/v1/carriers/:carrierId/drivers/verify/:phoneNumber',
     mapPointsForActiveLoads: '/mock/api/v1/carriers/:carrierId/loads/active/map',
     mapPointByLoadGuid: '/mock/api/v1/loads/:loadGuid/details/map',
-    mapPointsForLoadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction/map'
+    mapPointsForLoadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction/map',
+    activeLoadsPage: '/mock/api/v1/carriers/:carrierId/loads/activeLoadsPage',
+    loadDashboard: '/mock/api/v1/carriers/:carrierId/loads/dashboardPage'
   }
 };

@@ -15,7 +15,7 @@ angular.module('echo.index.carrier.dashboard', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function ($q, appConstants, loadTypesEnum, routesConfig, PagingModel, loadsApi) {
+    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, loadsApi) {
       var that = this;
       that.showActionLoadsLoading = false;
       that.showMultiStopLoading = false;
@@ -28,62 +28,86 @@ angular.module('echo.index.carrier.dashboard', [
       that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
       that.loadType = loadTypesEnum.ACTIVE;
 
-      that.showMoreActionLoadsHandler = function () {
+      that.showMoreActionLoadsHandler = function() {
         that.showMoreActionLoadsLoading = true;
-        loadsApi.fetchLoadsNeedingAction(that.carrierId, that.pagingActionLoads).then(function (loadsNeedingAction) {
-          that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
-          that.activeLoads = _.concat(that.activeLoads, loadsNeedingAction.loads);
-        }).finally(function () {
-          that.showMoreActionLoadsLoading = false;
-        });
+        loadsApi.fetchDashboard(that.carrierId, false, false, that.pagingActionLoads, {})
+          .then(function(dashboard) {
+            var loadsNeedingAction = dashboard.singleStopLoads;
+            that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
+            that.activeLoads = _.concat(that.activeLoads, loadsNeedingAction.loads);
+          }).finally(function() {
+            that.showMoreActionLoadsLoading = false;
+          });
       };
 
-      that.showMoreMultiStopLoadsHandler = function () {
-        that.showMoreMultiStopLoading = true;
-        loadsApi.fetchMultiStopLoads(that.carrierId, that.pagingMultistopLoads).then(function (multiStopLoads) {
-          that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
-          that.multiStopLoads = _.concat(that.multiStopLoads, multiStopLoads.loads);
-        }).finally(function () {
-          that.showMoreMultiStopLoading = false;
-        });
-      };
-
-      that.fetchLoadsNeedingAction = function () {
+      that.fetchLoadsNeedingAction = function() {
         that.showActionLoadsLoading = true;
         that.pagingActionLoads.reset();
-        return loadsApi.fetchLoadsNeedingAction(that.carrierId, that.pagingActionLoads)
-          .then(function (loadsNeedingAction) {
+        loadsApi.fetchDashboard(that.carrierId, false, false, that.pagingActionLoads, {})
+          .then(function(dashboard) {
+            var loadsNeedingAction = dashboard.singleStopLoads;
             that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
             that.activeLoads = loadsNeedingAction.loads;
-          }).finally(function () {
+          }).finally(function() {
             that.showActionLoadsLoading = false;
           });
       };
 
-      that.fetchMultiStopLoads = function () {
+      that.fetchMultistopLoads = function() {
         that.showMultiStopLoading = true;
         that.pagingMultistopLoads.reset();
-        return loadsApi.fetchMultiStopLoads(that.carrierId, that.pagingMultistopLoads)
-          .then(function (multiStopLoads) {
+        loadsApi.fetchDashboard(that.carrierId, false, false, {}, that.pagingMultistopLoads)
+          .then(function(dashboard) {
+            var multiStopLoads = dashboard.multiStopLoads;
             that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
             that.multiStopLoads = multiStopLoads.loads;
-          }).finally(function () {
+          }).finally(function() {
             that.showMultiStopLoading = false;
           });
       };
 
-      that.fetchMapPoints = function () {
-        that.showMap = false;
-        that.mapPoints = [];
-        loadsApi.fetchMapPointsForLoadsNeedingAction(that.carrierId).then(function (mapPointData) {
-          that.mapPoints = mapPointData;
-          that.showMap = true;
+      that.showMoreMultiStopLoadsHandler = function() {
+        that.showMoreMultiStopLoading = true;
+        loadsApi.fetchDashboard(that.carrierId, false, false, {}, that.pagingMultistopLoads).then(function(dashboard) {
+          var multiStopLoads = dashboard.multiStopLoads;
+          that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
+          that.multiStopLoads = _.concat(that.multiStopLoads, multiStopLoads.loads);
+        }).finally(function() {
+          that.showMoreMultiStopLoading = false;
         });
       };
 
-      that.refreshPageData = function () {
-        that.fetchMultiStopLoads();
-        that.fetchMapPoints();
+      that.refreshPageData = function() {
+        that.fetchLoadDashboard();
+      };
+
+      that.fetchLoadDashboard = function() {
+        that.showMultiStopLoading = true;
+        that.showActionLoadsLoading = true;
+        that.showMap = false;
+        that.mapPoints = [];
+        loadsApi.fetchDashboard(that.carrierId, true, true, that.pagingActionLoads, that.pagingMultistopLoads).then(function(dashboard) {
+          var multiStopLoads = dashboard.multiStopLoads;
+          var loadsNeedingAction = dashboard.singleStopLoads;
+
+          that.activeLoadsCount = dashboard.activeLoadsCount;
+          that.mapPoints = dashboard.mapLoads;
+
+          if(_.get(multiStopLoads, 'totalLoadCount')){
+            that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
+          }
+
+          if(_.get(loadsNeedingAction, 'totalLoadCount')){
+            that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
+          }
+
+          that.multiStopLoads = _.get(multiStopLoads, 'loads') || [];
+          that.activeLoads = _.get(loadsNeedingAction, 'loads') || [];
+        }).finally(function() {
+          that.showMultiStopLoading = false;
+          that.showActionLoadsLoading = false;
+          that.showMap = true;
+        });
       };
 
       that.toggleExpandedMap = function () {
@@ -102,16 +126,8 @@ angular.module('echo.index.carrier.dashboard', [
         that.showLoadDetailsMap = true;
       };
 
-      that.$onInit = function () {
-
-        $q.all([that.fetchLoadsNeedingAction(),
-          that.fetchMultiStopLoads(),
-          loadsApi.fetchLoadCount(that.carrierId)])
-          .then(_.spread(function (loadsNeedingAction, multiStopLoads, loadCounts) {
-            that.activeLoadCount = loadCounts.active;
-          }));
-
-        that.fetchMapPoints();
+      that.$onInit = function() {
+        that.fetchLoadDashboard();
       };
     }
   });

@@ -39,11 +39,12 @@ angular.module('echo.components.loadMap', [
       });
 
       that.$onChanges = function (changeObj) {
-        console.log(that.showExpanded);
         if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.showExpanded, 'currentValue')) {
           googleMapsApi.then(function (google) {
             that.google = google;
-            return googleMaps.formatMapPoints(google, new google.maps.Geocoder(), that.mapPoints, that.mapCenter);
+            return googleMaps.formatMapPoints(google, new google.maps.Geocoder(), that.mapPoints);
+          }).then(function (mapCenter) {
+            that.mapCenter = mapCenter;
           }).finally(function() {
             googleMaps.resizeAndCenter(that.google, that.map, that.mapPoints);
             that.showLoading = false;
