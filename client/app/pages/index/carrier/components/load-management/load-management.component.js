@@ -26,7 +26,8 @@ angular.module('echo.index.carrier.loadManagement', [
       that.state = $state;
       that.routesConfig = routesConfig;
       that.isActiveLoads = ($state.$current.name === routesConfig.INDEX.activeLoads.name);
-      
+      that.isLoadDetails = ($state.$current.name === routesConfig.INDEX.loadDetails.name);
+
       loadCountService.fetchLoadCount(that.carrierId, that.isActiveLoads).then(function (loadCounts) {
         that.tabItems = [{
           title: loadCounts.active + ' Active Loads',
