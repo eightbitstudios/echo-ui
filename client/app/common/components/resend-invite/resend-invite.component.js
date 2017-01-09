@@ -12,10 +12,6 @@ angular.module('echo.components.resendInvite', [
   controller: function (portalUserApi) {
     var that = this;
 
-    that.hasUserLoggedIn = function () {
-      return that.user.lastLogin !== 'Never';
-    };
-
     that.resendInvite = function () {
       that.showError = false;
       that.showDefaultError = false;

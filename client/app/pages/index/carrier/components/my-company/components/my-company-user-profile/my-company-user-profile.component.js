@@ -3,7 +3,7 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
   'echo.components.portalUsers',
   'echo.components.tabBar',
   'echo.components.passwordValidation',
-  'echo.components.resendInvite',
+  'echo.components.usage',
   'echo.components.loading',
   'echo.config.routes',
   'echo.models.passwordChange',
