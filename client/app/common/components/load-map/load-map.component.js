@@ -42,7 +42,6 @@ angular.module('echo.components.loadMap', [
           return $q.all(promises).then(function () {
             that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
             that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
-            console.log('centered');
           });
         }
       };
@@ -56,7 +55,6 @@ angular.module('echo.components.loadMap', [
             return that.formatMapPoints(google);
           }).finally(function() {
             that.showLoading = false;
-            console.log('loaded');
           });
         } else {
           that.showLoading = true;
