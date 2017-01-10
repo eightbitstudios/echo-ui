@@ -29,12 +29,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.filterText = defaultFilterText;
 
     that.deliveriesTodayHandler = function(value) {
-      if (!value) {
-        that.filterText = defaultFilterText;
-      } else {
-        that.filterText = 'By Next Delivery';
-      }
-
+     
+      that.filterText = value ? 'By Next Delivery' : defaultFilterText;
       that.isPickUpToday = false;
       that.isDeliveriesToday = value;
       that.paging.reset();
@@ -49,11 +45,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     };
 
     that.pickupsTodayHandler = function(value) {
-      if (!value) {
-        that.filterText = defaultFilterText;
-      } else {
-        that.filterText = 'By Next Pickup';
-      }
+      
+      that.filterText = value ? 'By Next Pickup' : defaultFilterText;
       that.isDeliveriesToday = false;
       that.isPickUpToday = value;
       that.paging.reset();
