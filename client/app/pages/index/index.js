@@ -101,6 +101,11 @@ angular.module('echo.index', [
       component: 'load-management',
       data: {
         whiteContainer: true
+      },
+      resolve: {
+        count: function(){
+          return {};
+        }
       }
     })
     .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads

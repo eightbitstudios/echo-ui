@@ -9,14 +9,16 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.enums.loadTypes',
   'echo.components.filterButton',
   'echo.components.loadMap',
-  'echo.services.loadCount'
+  'echo.services.loadCount',
+  'echo.api.activeLoadsPage'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
     repDetails: '<',
-    carrierId: '<'
+    carrierId: '<',
+    testBinding: '<'
   },
-  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum, loadCountService) {
+  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum, loadCountService, activeLoadsPageApi) {
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
@@ -26,7 +28,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     var defaultFilterText = 'By Next Appointment';
     that.filterText = defaultFilterText;
 
-    that.deliveriesTodayHandler = function (value) {
+    that.deliveriesTodayHandler = function(value) {
       if (!value) {
         that.filterText = defaultFilterText;
       } else {
@@ -36,10 +38,17 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.isPickUpToday = false;
       that.isDeliveriesToday = value;
       that.paging.reset();
-      that.getPageData(true, false, false);
+
+      var activeLoadsPageApiRequest = new this.RequestBuilder(this.carrierId);
+
+      if (that.isDeliveriesToday) {
+        activeLoadsPageApiRequest.filterByDeliveriesToday();
+      }
+
+      that.getPageData(activeLoadsPageApiRequest);
     };
 
-    that.pickupsTodayHandler = function (value) {
+    that.pickupsTodayHandler = function(value) {
       if (!value) {
         that.filterText = defaultFilterText;
       } else {
@@ -48,44 +57,63 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.isDeliveriesToday = false;
       that.isPickUpToday = value;
       that.paging.reset();
-      that.getPageData(true, false, false);
+
+      var activeLoadsPageApiRequest = new this.RequestBuilder(this.carrierId);
+
+      if (that.isPickUpToday) {
+        activeLoadsPageApiRequest.filterByPickupsToday();
+      }
+
+      that.getPageData(activeLoadsPageApiRequest);
     };
 
-    that.getPageData = function (activeLoads, mapLoads, loadsCount) {
-      if (activeLoads) {
-        that.showLoading = true;
-      }
-      if (mapLoads) {
-        that.showMap = false;
-        that.mapPoints = [];
-      }
+    that.getPageData = function(requestBuilder) {
+      //if (activeLoads) {
+      //that.showLoading = true;
+      // }
+      //if (mapLoads) {
+      //that.showMap = false;
+      //that.mapPoints = [];
+      //}
 
-      loadsApi.fetchActiveLoadsPage(that.carrierId, that.paging, that.isPickUpToday, that.isDeliveriesToday, activeLoads, mapLoads, loadsCount).then(function (activeLoadsPageData) {
-        if (activeLoads) {
+      requestBuilder.fetchActiveLoads(that.paging).execute().then(function(activeLoadsPageData) {
+        if (activeLoadsPageData.loads) {
           that.paging.totalRecords = activeLoadsPageData.loads.totalLoadCount;
           that.paging.recordCount = _.size(activeLoadsPageData.loads.loads);
           that.activeLoads = activeLoadsPageData.loads.loads;
           that.showLoading = false;
         }
-        if (mapLoads) {
+        if (activeLoadsPageData.mapLoads) {
           that.mapPoints = activeLoadsPageData.mapLoads;
           that.showMap = true;
         }
-        
-        if(loadsCount) {
+
+        if (activeLoadsPageData.loadsCount) {
           loadCountService.setLoadCount(activeLoadsPageData.loadsCount);
         }
       });
     };
 
-    that.refreshPageData = function () {
-      that.getPageData(true, true, false);
+    that.refreshPageData = function() {
+      var activeLoadsPageApiRequest = new this.RequestBuilder(this.carrierId);
+      activeLoadsPageApiRequest.fetchMapData();
+      that.getPageData(activeLoadsPageApiRequest);
     };
 
-    that.$onInit = function () {
+
+    that.$onInit = function() {
+      this.RequestBuilder = activeLoadsPageApi.getRequestBuilder();
+
+      var activeLoadsPageApiRequest = new this.RequestBuilder(this.carrierId);
+      activeLoadsPageApiRequest.fetchMapData();
+
       var fetchLoadCount = _.isEmpty(loadCountService.getLoadCount());
-       
-      that.getPageData(true, true, fetchLoadCount);
+
+      if (fetchLoadCount) {
+        activeLoadsPageApiRequest.fetchLoadsCount();
+      }
+
+      that.getPageData(activeLoadsPageApiRequest);
     };
   }
 });

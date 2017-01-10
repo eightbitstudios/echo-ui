@@ -14,7 +14,8 @@ angular.module('echo.index.carrier.loadManagement', [
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
     bindings: {
       repDetails: '<',
-      carrierId: '<'
+      carrierId: '<',
+      count: '<'
     },
     controller: function ($stateParams, $state, routesConfig, loadCountService) {
       var that = this;
@@ -45,5 +46,5 @@ angular.module('echo.index.carrier.loadManagement', [
       }).finally(function () {
         that.showLoading = false;
       });
-    }
+    } 
   });
