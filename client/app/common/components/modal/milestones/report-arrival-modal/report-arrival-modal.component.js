@@ -16,10 +16,6 @@ angular.module('echo.components.modal.milestones.reportArrival', [
     },
     controller: function(loadsApi, DateTimePickerModel) {
 
-      this.dateTimePicker = new DateTimePickerModel({
-        minDate: moment(this.reportArrival.actionPerformedOn, 'MM/DD/YYYY HH:mm:ss')
-      });
-
       this.confirmArrivalHandler = function() {
         var that = this;
 
@@ -43,6 +39,9 @@ angular.module('echo.components.modal.milestones.reportArrival', [
 
       this.$onInit = function() {
         this.showButtonLoading = false;
+        this.dateTimePicker = new DateTimePickerModel({
+          minDate: moment(this.reportArrival.actionPerformedOn, 'MM/DD/YYYY HH:mm:ss')
+        });
       };
     }
   });
