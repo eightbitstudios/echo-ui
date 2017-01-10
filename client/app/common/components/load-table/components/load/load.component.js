@@ -7,7 +7,9 @@ angular.module('echo.components.loadTable.load', [])
       loadGuid: '<',
       isDetailsUpdated: '<'
     },
-    controller: function (routesConfig) {
-      this.loadDetails = routesConfig.INDEX.loadDetails.name;
+    controller: function(routesConfig) {
+      this.$onInit = function() {
+        this.loadDetails = routesConfig.INDEX.loadDetails.name;
+      };
     }
   });

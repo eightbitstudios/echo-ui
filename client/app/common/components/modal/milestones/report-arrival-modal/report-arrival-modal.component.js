@@ -1,10 +1,10 @@
 angular.module('echo.components.modal.milestones.reportArrival', [
-  'echo.components.modal.milestones.reportArrivalModal.components.arrivalSidebar',
-  'echo.components.dateTimePicker',
-  'echo.api.loads',
-  'echo.models.dateTimePicker',
-  'echo.components.modal.errorMessages'
-])
+    'echo.components.modal.milestones.reportArrivalModal.components.arrivalSidebar',
+    'echo.components.dateTimePicker',
+    'echo.api.loads',
+    'echo.models.dateTimePicker',
+    'echo.components.modal.errorMessages'
+  ])
   .component('reportArrivalModal', {
     templateUrl: 'app/common/components/modal/milestones/report-arrival-modal/report-arrival-modal.template.html',
     bindings: {
@@ -14,15 +14,15 @@ angular.module('echo.components.modal.milestones.reportArrival', [
       arrivalType: '<',
       timeZones: '<'
     },
-    controller: function (loadsApi, DateTimePickerModel) {
-      var that = this;
-      that.showButtonLoading = false;
+    controller: function(loadsApi, DateTimePickerModel) {
 
-      that.dateTimePicker = new DateTimePickerModel({
-        minDate: moment(that.reportArrival.actionPerformedOn, 'MM/DD/YYYY HH:mm:ss')
+      this.dateTimePicker = new DateTimePickerModel({
+        minDate: moment(this.reportArrival.actionPerformedOn, 'MM/DD/YYYY HH:mm:ss')
       });
 
-      that.confirmArrivalHandler = function () {
+      this.confirmArrivalHandler = function() {
+        var that = this;
+
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
@@ -33,12 +33,16 @@ angular.module('echo.components.modal.milestones.reportArrival', [
           stopType: that.reportArrival.address.stopType
         }).then(function() {
           that.modalActions.close(true);
-        }).catch(function (status) {
+        }).catch(function(status) {
           that.errorMessages = status.message;
           that.errorCode = status.code;
-        }).finally(function () {
+        }).finally(function() {
           that.showButtonLoading = false;
         });
+      };
+
+      this.$onInit = function() {
+        this.showButtonLoading = false;
       };
     }
   });

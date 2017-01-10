@@ -5,7 +5,5 @@ angular.module('echo.components.modal.milestones.checkboxCard', [
     transclude: true,
     bindings: {
       isChecked: '='
-    },
-    controller: function () {
     }
   });

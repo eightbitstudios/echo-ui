@@ -19,6 +19,7 @@ describe('Component: confirmItems', function () {
     component = $componentController('confirmItems', null, {
       pickupNumbers: pickupNumbers
     });
+    component.$onInit();
   }));
 
   describe('Function: init', function () {    

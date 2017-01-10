@@ -12,14 +12,13 @@ angular.module('echo.components.unassignedDriverSearch', [
   transclude: true,
   templateUrl: 'app/common/components/unassigned-driver-search/unassigned-driver-search.template.html',
   controller: function ($filter, carrierApi, DriverModel) {
-    var that = this;
     /**
      * Call api to search for drivers
      * @param {string} val - Search text
      * @retuns {Promise} - List of drivers formatted for typeahead search
      */
-    that.searchDrivers = function (val) {
-      return carrierApi.searchDrivers(that.carrierId, val).then(function (drivers) {
+    this.searchDrivers = function (val) {
+      return carrierApi.searchDrivers(this.carrierId, val).then(function (drivers) {
         return _.map(drivers, function (driver) {
           return {
             id: driver.id,
@@ -31,18 +30,18 @@ angular.module('echo.components.unassignedDriverSearch', [
       });
     };
 
-    that.noDriver = function () {
-      return _.isUndefined(_.get(that.driver, 'id'));
+    this.noDriver = function () {
+      return _.isUndefined(_.get(this.driver, 'id'));
     };
 
-    that.setDriver = function (selection) {
+    this.setDriver = function (selection) {
       var driverModel = null;
       if (selection) {
         driverModel = new DriverModel(selection);
         driverModel.firstName = _.nth(_.split(selection.name, ' '), 0);
         driverModel.lastName = _.nth(_.split(selection.name, ' '), 1);
       }
-      that.driver = driverModel;
+      this.driver = driverModel;
     };
   }
 });

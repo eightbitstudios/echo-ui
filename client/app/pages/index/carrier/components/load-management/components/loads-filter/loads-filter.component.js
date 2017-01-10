@@ -6,7 +6,5 @@ angular.module('echo.index.carrier.loadManagement.loadsFilter', [
     filterText: '<',
     loadCount: '<'
   },
-  transclude: true,
-  controller: function () {
-  }
+  transclude: true
 });

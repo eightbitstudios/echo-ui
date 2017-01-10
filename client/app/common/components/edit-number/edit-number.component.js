@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('echo.components.editNumber', [
-  'echo.directives.focus'
-])
+    'echo.directives.focus'
+  ])
   .component('editNumber', {
     bindings: {
       number: '<',
@@ -12,28 +12,23 @@ angular.module('echo.components.editNumber', [
       maxLength: '@'
     },
     templateUrl: 'app/common/components/edit-number/edit-number.template.html',
-    controller: function () {
-      var that = this;
-
-      that.maxLength = that.maxLength || 250;
-
-      that.showForm = false;
-      that.updateNumber = null;
-      that.allowSubmit = true;
-
-      that.editNumberHandler = function () {
-        that.showForm = true;
+    controller: function() {
+      this.editNumberHandler = function() {
+        this.showForm = true;
       };
 
-      that.cancelButtonHandler = function () {
-        that.updateNumber = null;
-        that.showForm = false;
+      this.cancelButtonHandler = function() {
+        this.updateNumber = null;
+        this.showForm = false;
       };
 
-      that.saveButtonHandler = function () {
+      this.saveButtonHandler = function() {
+        var that = this;
         if (that.allowSubmit) {
           that.allowSubmit = false;
-          that.updateCallback({updatedNumber: that.updateNumber}).then(function (error) {
+          that.updateCallback({
+            updatedNumber: that.updateNumber
+          }).then(function(error) {
             if (!error) {
               that.showForm = false;
               that.updateNumber = null;
@@ -41,6 +36,13 @@ angular.module('echo.components.editNumber', [
             that.allowSubmit = true;
           });
         }
+      };
+
+      this.$onInit = function() {
+        this.maxLength = this.maxLength || 250;
+        this.showForm = false;
+        this.updateNumber = null;
+        this.allowSubmit = true;
       };
     }
   });

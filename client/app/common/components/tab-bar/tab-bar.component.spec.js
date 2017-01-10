@@ -22,6 +22,7 @@ describe('Component: tabBar', function () {
         tabItems: tabItems,
         tabReplacementText: tabReplacementText
       });
+      component.$onInit();
     });
   });
 

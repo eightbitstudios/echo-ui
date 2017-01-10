@@ -22,6 +22,8 @@ describe('Component: Load Driver', function () {
       loadId: loadId,
       carrierId: carrierId
     });
+
+    component.$onInit();
   }));
 
   describe('Function: cancelNewDriver', function () {

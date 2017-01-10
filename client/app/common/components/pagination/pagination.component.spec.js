@@ -28,6 +28,7 @@ describe('Component: pagination', function () {
       pagingModel: pagingModel,
       onlyShowCurrentPage: onlyShowCurrentPage
     });
+    component.$onInit();
   }));
 
   describe('Function: previousPage', function () {

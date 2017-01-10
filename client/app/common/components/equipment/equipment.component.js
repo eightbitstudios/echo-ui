@@ -1,4 +1,3 @@
-
 'use strict';
 
 angular.module('echo.components.equipment', [
@@ -11,15 +10,23 @@ angular.module('echo.components.equipment', [
     loadGuid: '<'
   },
   templateUrl: 'app/common/components/equipment/equipment.template.html',
-  controller: function (loadsApi) {
-    var that = this;
+  controller: function(loadsApi) {
 
-    that.normalEquipment = _.filter(that.equipment, { isSpecialService: false });
-    that.specialEquipment = _.filter(that.equipment, { isSpecialService: true });
-
-    that.updateTrailerNumber = function (newTrailerNumber) {
-      return loadsApi.updateTrailerNumber(that.loadGuid, { trailerNumber: newTrailerNumber }).then(function (data) {
+    this.updateTrailerNumber = function(newTrailerNumber) {
+      var that = this;
+      return loadsApi.updateTrailerNumber(that.loadGuid, {
+        trailerNumber: newTrailerNumber
+      }).then(function(data) {
         that.trailerNumber = _.get(data, 'trailerNumber');
+      });
+    };
+
+    this.$onInit = function() {
+      this.normalEquipment = _.filter(this.equipment, {
+        isSpecialService: false
+      });
+      this.specialEquipment = _.filter(this.equipment, {
+        isSpecialService: true
       });
     };
   }

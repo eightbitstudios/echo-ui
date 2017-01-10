@@ -14,51 +14,54 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
     repDetails: '<',
     carrierId: '<'
   },
-  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum) {
-    var that = this;
-    that.showLoading = false;
-    that.paging = new PagingModel(appConstants.LIMIT.loadsList);
-    that.isInvoiceNeeded = false;
-    that.loadType = loadTypesEnum.UNBILLED;
-    that.isPODNeeded = false;
-    var defaultFilterText = 'By Last Delivery Stop';
-    that.filterText = defaultFilterText;
+  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum) {
 
-    that.getUnbilledLoads = function () {
+    this.getUnbilledLoads = function() {
+      var that = this;
       that.showLoading = true;
-      loadsApi.fetchUnbilledLoads(that.carrierId, that.paging, that.isPODNeeded, that.isInvoiceNeeded).then(function (unbilledLoadData) {
+      loadsApi.fetchUnbilledLoads(that.carrierId, that.paging, that.isPODNeeded, that.isInvoiceNeeded).then(function(unbilledLoadData) {
         that.paging.totalRecords = unbilledLoadData.totalLoadCount;
         that.paging.recordCount = _.size(unbilledLoadData.loads);
         that.unbilledLoads = unbilledLoadData.loads;
-      }).finally(function () {
+      }).finally(function() {
         that.showLoading = false;
       });
     };
 
-    that.invoiceNeededHandler = function (value) {
+    this.invoiceNeededHandler = function(value) {
       if (!value) {
-        that.filterText = defaultFilterText;
+        this.filterText = this.defaultFilterText;
       } else {
-        that.filterText = 'By Invoice Needed';
+        this.filterText = 'By Invoice Needed';
       }
-      that.isPODNeeded = false;
-      that.isInvoiceNeeded = value;
-      that.paging.reset();
-      that.getUnbilledLoads();
+      this.isPODNeeded = false;
+      this.isInvoiceNeeded = value;
+      this.paging.reset();
+      this.getUnbilledLoads();
     };
 
-    that.podNeededHandler = function (value) {
+    this.podNeededHandler = function(value) {
       if (!value) {
-        that.filterText = defaultFilterText;
+        this.filterText = this.defaultFilterText;
       } else {
-        that.filterText = 'By POD Needed';
+        this.filterText = 'By POD Needed';
       }
-      that.isInvoiceNeeded = false;
-      that.isPODNeeded = value;
-      that.paging.reset();
-      that.getUnbilledLoads();
+      this.isInvoiceNeeded = false;
+      this.isPODNeeded = value;
+      this.paging.reset();
+      this.getUnbilledLoads();
     };
 
-    that.$onInit = that.getUnbilledLoads;
+    this.$onInit = function() {
+      this.showLoading = false;
+      this.paging = new PagingModel(appConstants.LIMIT.loadsList);
+      this.isInvoiceNeeded = false;
+      this.loadType = loadTypesEnum.UNBILLED;
+      this.isPODNeeded = false;
+      this.defaultFilterText = 'By Last Delivery Stop';
+      this.filterText = this.defaultFilterText;
+
+      this.getUnbilledLoads();
+    };
   }
 });

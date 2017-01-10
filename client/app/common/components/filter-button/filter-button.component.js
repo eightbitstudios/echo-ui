@@ -8,11 +8,9 @@ angular.module('echo.components.filterButton', []).component('filterButton', {
   },
   templateUrl: 'app/common/components/filter-button/filter-button.template.html',
     controller: function() {
-      var that = this;
-
-      that.toggleFilter = function() {
-        that.filterEnabled= !that.filterEnabled;
-        that.clickHandler({value: that.filterEnabled});
+      this.toggleFilter = function() {
+        this.filterEnabled= !this.filterEnabled;
+        this.clickHandler({value: this.filterEnabled});
       };
   }
 });

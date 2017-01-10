@@ -12,8 +12,8 @@ angular.module('echo.components.tabBar', [])
     },
     templateUrl: 'app/common/components/tab-bar/tab-bar.template.html',
     controller: function ($state) {
-      var that = this;
-
-      that.state = $state;
+      this.$onInit = function() {
+        this.state = $state;
+      };
     }
   });

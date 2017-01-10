@@ -1,8 +1,8 @@
 angular.module('echo.components.modal.assignDriver.unassignedDriverList', [
-  'echo.api.loads',
-  'echo.filters.phoneNumber',
-  'echo.filters.fullName'
-])
+    'echo.api.loads',
+    'echo.filters.phoneNumber',
+    'echo.filters.fullName'
+  ])
   .component('unassignedDriverList', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/unassigned-driver-list/unassigned-driver-list.template.html',
     bindings: {
@@ -10,22 +10,23 @@ angular.module('echo.components.modal.assignDriver.unassignedDriverList', [
       carrierId: '<',
       selectedDriver: '='
     },
-    controller: function (loadsApi) {
-      var that = this;
+    controller: function(loadsApi) {
 
-      that.selectDriver = function (driver) {
-        that.selectedDriver = driver;
+      this.selectDriver = function(driver) {
+        this.selectedDriver = driver;
       };
 
-      that.deselectDriver = function () {
-        that.selectedDriver = null;
+      this.deselectDriver = function() {
+        this.selectedDriver = null;
       };
 
-      that.$onInit = function () {
+      this.$onInit = function() {
+        var that = this;
+
         that.showLoading = true;
-        loadsApi.fetchUnassignedDriversByLoadId(that.loadId, that.carrierId).then(function (data) {
+        loadsApi.fetchUnassignedDriversByLoadId(that.loadId, that.carrierId).then(function(data) {
           that.drivers = data.drivers;
-        }).finally(function () {
+        }).finally(function() {
           that.showLoading = false;
         });
       };

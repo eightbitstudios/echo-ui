@@ -1,15 +1,14 @@
-
-describe('Component: Unbilled Loads', function () {
+describe('Component: Unbilled Loads', function() {
   var component, scope, $q, carrierId, loadsApi, unbilledLoadData;
 
-  beforeEach(function () {
+  beforeEach(function() {
     module('app/pages/index/carrier/components/load-management/components/unbilled-loads/unbilled-loads.template.html');
-    module('echo.index.carrier.loadManagement.unbilledLoads', function ($provide) {
+    module('echo.index.carrier.loadManagement.unbilledLoads', function($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchUnbilledLoads']));
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_) {
+  beforeEach(inject(function($rootScope, $compile, $componentController, _$q_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -20,29 +19,32 @@ describe('Component: Unbilled Loads', function () {
     carrierId = 1;
     unbilledLoadData = {
       totalLoadCount: 24,
-      loads: [
-        {
-          id: 1
-        },
-        {
-          id: 2
-        },
-        {
-          id: 3
-        },
-        {
-          id: 4
-        }
-      ]
+      loads: [{
+        id: 1
+      }, {
+        id: 2
+      }, {
+        id: 3
+      }, {
+        id: 4
+      }]
     };
 
     component = $componentController('unbilledLoads', null, {
       carrierId: carrierId
     });
+
+    spyOn(component, 'getUnbilledLoads');
+    component.getUnbilledLoads.and.callFake(function() { });
+    component.$onInit();
   }));
 
-  describe('Function: getUnbilledLoads', function () {
-    it('should fetch unbilled loads', function () {
+  describe('Function: getUnbilledLoads', function() {
+    beforeEach(function() {
+      component.getUnbilledLoads.and.callThrough();
+    });
+
+    it('should fetch unbilled loads', function() {
       var deferred = $q.defer();
       loadsApi.fetchUnbilledLoads.and.returnValue(deferred.promise);
       component.getUnbilledLoads();
@@ -57,8 +59,8 @@ describe('Component: Unbilled Loads', function () {
     });
   });
 
-  describe('Function: invoiceNeededHandler', function () {
-    it('should set filter text to default', function () {
+  describe('Function: invoiceNeededHandler', function() {
+    it('should set filter text to default', function() {
       var deferred = $q.defer();
       loadsApi.fetchUnbilledLoads.and.returnValue(deferred.promise);
       component.invoiceNeededHandler(false);
@@ -71,7 +73,7 @@ describe('Component: Unbilled Loads', function () {
       expect(component.isInvoiceNeeded).toBe(false);
     });
 
-    it('should set filter text to invoice needed', function () {
+    it('should set filter text to invoice needed', function() {
       var deferred = $q.defer();
       loadsApi.fetchUnbilledLoads.and.returnValue(deferred.promise);
       component.invoiceNeededHandler(true);
@@ -85,8 +87,8 @@ describe('Component: Unbilled Loads', function () {
     });
   });
 
-  describe('Function: podNeededHandler', function () {
-    it('should set filter text to default', function () {
+  describe('Function: podNeededHandler', function() {
+    it('should set filter text to default', function() {
       var deferred = $q.defer();
       loadsApi.fetchUnbilledLoads.and.returnValue(deferred.promise);
       component.podNeededHandler(false);
@@ -99,7 +101,7 @@ describe('Component: Unbilled Loads', function () {
       expect(component.isInvoiceNeeded).toBe(false);
     });
 
-    it('should set filter text to POD needed', function () {
+    it('should set filter text to POD needed', function() {
       var deferred = $q.defer();
       loadsApi.fetchUnbilledLoads.and.returnValue(deferred.promise);
       component.podNeededHandler(true);

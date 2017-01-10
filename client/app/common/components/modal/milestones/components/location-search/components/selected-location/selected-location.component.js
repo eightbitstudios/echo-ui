@@ -7,6 +7,5 @@ angular.module('echo.components.modal.milestones.locationSearch.selectedLocation
     bindings: {
       selectedLocation: '=',
       removeCallback: '&'
-    },
-    controller: function () {}
+    }
   });

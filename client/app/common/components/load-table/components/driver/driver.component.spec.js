@@ -40,6 +40,7 @@ describe('Component: driver', function () {
       driverChangedCallback: driverChangedCallback,
       carrierId: carrierId
     });
+    component.$onInit();
   }));
 
   describe('Function: showVerifyDriverModal', function () {

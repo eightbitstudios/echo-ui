@@ -4,17 +4,26 @@ angular.module('echo.components.modal.milestones.rating', [])
     bindings: {
       rating: '='
     },
-    controller: function () {
-      var that = this;
+    controller: function() {
+      this.$onInit = function() {
+        this.max = 5;
 
-      that.max = 5;
-
-      that.ratingStates = [
-        { stateOn: 'icon-star-filled', stateOff: 'icon-star' },
-        { stateOn: 'icon-star-filled', stateOff: 'icon-star' },
-        { stateOn: 'icon-star-filled', stateOff: 'icon-star' },
-        { stateOn: 'icon-star-filled', stateOff: 'icon-star' },
-        { stateOn: 'icon-star-filled', stateOff: 'icon-star' }
-      ];
+        this.ratingStates = [{
+          stateOn: 'icon-star-filled',
+          stateOff: 'icon-star'
+        }, {
+          stateOn: 'icon-star-filled',
+          stateOff: 'icon-star'
+        }, {
+          stateOn: 'icon-star-filled',
+          stateOff: 'icon-star'
+        }, {
+          stateOn: 'icon-star-filled',
+          stateOff: 'icon-star'
+        }, {
+          stateOn: 'icon-star-filled',
+          stateOff: 'icon-star'
+        }];
+      };
     }
   });

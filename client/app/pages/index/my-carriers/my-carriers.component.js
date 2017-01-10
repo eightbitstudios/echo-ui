@@ -5,7 +5,9 @@ angular.module('echo.index.myCarriers', [
   'echo.services.userProfile'
 ]).component('myCarriers', {
   templateUrl: 'app/pages/index/my-carriers/my-carriers.template.html',
-  controller: function (userProfileService) {
-    this.user = userProfileService.getUser();
+  controller: function(userProfileService) {
+    this.$onInit = function() {
+      this.user = userProfileService.getUser();
+    };
   }
 });

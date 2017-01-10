@@ -6,6 +6,5 @@ angular.module('echo.components.carrierAdminFooter', [
   bindings: {
     repDetails: '='
   },
-  templateUrl: 'app/common/components/carrier-admin-footer/carrier-admin-footer.template.html',
-  controller: function(){}
+  templateUrl: 'app/common/components/carrier-admin-footer/carrier-admin-footer.template.html'
 });
