@@ -10,7 +10,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.filterButton',
   'echo.components.loadMap',
   'echo.services.loadCount',
-  'echo.api.activeLoadsPage'
+  'echo.api.activeLoadsRequestBuilder'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
@@ -18,7 +18,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     carrierId: '<',
     testBinding: '<'
   },
-  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum, loadCountService, activeLoadsPageApi) {
+  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum, loadCountService, ActiveLoadsRequestBuilder) {
     var that = this;
     that.showLoading = false;
     that.paging = new PagingModel(appConstants.LIMIT.loadsList);
@@ -29,13 +29,13 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.filterText = defaultFilterText;
 
     that.deliveriesTodayHandler = function(value) {
-     
+
       that.filterText = value ? 'By Next Delivery' : defaultFilterText;
       that.isPickUpToday = false;
       that.isDeliveriesToday = value;
       that.paging.reset();
 
-      var activeLoadsPageApiRequest = new this.RequestBuilder(this.carrierId);
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
 
       if (that.isDeliveriesToday) {
         activeLoadsPageApiRequest.filterByDeliveriesToday();
@@ -45,13 +45,13 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     };
 
     that.pickupsTodayHandler = function(value) {
-      
+
       that.filterText = value ? 'By Next Pickup' : defaultFilterText;
       that.isDeliveriesToday = false;
       that.isPickUpToday = value;
       that.paging.reset();
 
-      var activeLoadsPageApiRequest = new this.RequestBuilder(this.carrierId);
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
 
       if (that.isPickUpToday) {
         activeLoadsPageApiRequest.filterByPickupsToday();
@@ -61,13 +61,13 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     };
 
     that.getPageData = function(requestBuilder) {
-      //if (activeLoads) {
-      //that.showLoading = true;
-      // }
-      //if (mapLoads) {
-      //that.showMap = false;
-      //that.mapPoints = [];
-      //}
+
+      if (requestBuilder.hasMapData()) {
+        that.showMap = false;
+        that.mapPoints = [];
+      }
+
+      that.showLoading = true;
 
       requestBuilder.fetchActiveLoads(that.paging).execute().then(function(activeLoadsPageData) {
         if (activeLoadsPageData.loads) {
@@ -87,17 +87,21 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       });
     };
 
+    that.fetchActiveLoads = function() {
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+      that.getPageData(activeLoadsPageApiRequest);
+    };
+
     that.refreshPageData = function() {
-      var activeLoadsPageApiRequest = new this.RequestBuilder(this.carrierId);
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
       activeLoadsPageApiRequest.fetchMapData();
       that.getPageData(activeLoadsPageApiRequest);
     };
 
 
     that.$onInit = function() {
-      this.RequestBuilder = activeLoadsPageApi.getRequestBuilder();
 
-      var activeLoadsPageApiRequest = new this.RequestBuilder(this.carrierId);
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
       activeLoadsPageApiRequest.fetchMapData();
 
       var fetchLoadCount = _.isEmpty(loadCountService.getLoadCount());

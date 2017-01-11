@@ -6,7 +6,8 @@ angular.module('echo.index.carrier.dashboard', [
     'echo.config.appConstants',
     'echo.api.loads',
     'echo.components.loadMap',
-    'echo.components.showMore'
+    'echo.components.showMore',
+    'echo.api.dashboardRequestBuilder'
   ])
   .component('dashboard', {
     templateUrl: 'app/pages/index/carrier/components/dashboard/dashboard.template.html',
@@ -14,7 +15,7 @@ angular.module('echo.index.carrier.dashboard', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, loadsApi) {
+    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, loadsApi, DashboardRequestBuilder) {
       var that = this;
       that.showActionLoadsLoading = false;
       that.showMultiStopLoading = false;
@@ -79,9 +80,9 @@ angular.module('echo.index.carrier.dashboard', [
       };
 
       that.fetchLoadDashboard = function() {
-        that.showMultiStopLoading = true;
-        that.showActionLoadsLoading = true;
+        that.showLoading = true;
         that.showMap = false;
+
         loadsApi.fetchDashboard(that.carrierId, true, true, that.pagingActionLoads, that.pagingMultistopLoads).then(function(dashboard) {
           var multiStopLoads = dashboard.multiStopLoads;
           var loadsNeedingAction = dashboard.singleStopLoads;
@@ -89,19 +90,18 @@ angular.module('echo.index.carrier.dashboard', [
           that.activeLoadsCount = dashboard.activeLoadsCount;
           that.mapPoints = dashboard.mapLoads;
 
-          if(_.get(multiStopLoads, 'totalLoadCount')){
+          if (_.get(multiStopLoads, 'totalLoadCount')) {
             that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
           }
-           
-          if(_.get(loadsNeedingAction, 'totalLoadCount')){
+
+          if (_.get(loadsNeedingAction, 'totalLoadCount')) {
             that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
           }
 
           that.multiStopLoads = _.get(multiStopLoads, 'loads') || [];
           that.activeLoads = _.get(loadsNeedingAction, 'loads') || [];
         }).finally(function() {
-          that.showMultiStopLoading = false;
-          that.showActionLoadsLoading = false;
+          that.showLoading = false;
           that.showMap = true;
         });
       };

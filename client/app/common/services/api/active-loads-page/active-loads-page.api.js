@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('echo.api.activeLoadsPage', [
+angular.module('echo.api.activeLoadsRequestBuilder', [
   'echo.config.api',
   'echo.models.user'
-]).factory('activeLoadsPageApi', function($q, $http, apiConfig) {
+]).factory('ActiveLoadsRequestBuilder', function($q, $http, apiConfig) {
 
-  function RequestBuilder(carrierId) {
+  function ActiveLoadsRequestBuilder(carrierId) {
     this._url = apiConfig.activeLoadsPage({
       carrierId: carrierId
     });
@@ -13,7 +13,7 @@ angular.module('echo.api.activeLoadsPage', [
     this._params = {};
   }
 
-  RequestBuilder.prototype.fetchActiveLoads = function(paging) {
+  ActiveLoadsRequestBuilder.prototype.fetchActiveLoads = function(paging) {
     _.assign(this._params, {
       limit: paging.limit,
       offset: paging.offset,
@@ -22,35 +22,39 @@ angular.module('echo.api.activeLoadsPage', [
     return this;
   };
 
-  RequestBuilder.prototype.filterByPickupsToday = function() {
+  ActiveLoadsRequestBuilder.prototype.filterByPickupsToday = function() {
     _.assign(this._params, {
       pickupsToday: true
     });
     return this;
   };
 
-  RequestBuilder.prototype.filterByDeliveriesToday = function() {
+  ActiveLoadsRequestBuilder.prototype.filterByDeliveriesToday = function() {
     _.assign(this._params, {
       deliveriesToday: true
     });
     return this;
   };
 
-  RequestBuilder.prototype.fetchMapData = function() {
+  ActiveLoadsRequestBuilder.prototype.fetchMapData = function() {
     _.assign(this._params, {
       getMapLoads: true
     });
     return this;
   };
 
-  RequestBuilder.prototype.fetchLoadsCount = function() {
+  ActiveLoadsRequestBuilder.prototype.hasMapData = function() {
+    return _.has(this._params, 'getMapLoads');
+  };
+
+  ActiveLoadsRequestBuilder.prototype.fetchLoadsCount = function() {
     _.assign(this._params, {
       getLoadsCount: true
     });
     return this;
   };
 
-  RequestBuilder.prototype.execute = function() {
+  ActiveLoadsRequestBuilder.prototype.execute = function() {
     return $http.get(this._url, {
       params: this._params
     }).then(function(resp) {
@@ -58,9 +62,5 @@ angular.module('echo.api.activeLoadsPage', [
     });
   };
 
-  return {
-    getRequestBuilder: function() {
-      return RequestBuilder;
-    }
-  };
+  return ActiveLoadsRequestBuilder;
 });
