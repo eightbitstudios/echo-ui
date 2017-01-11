@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('echo.services.googleMapsApi', [
-  'echo.config.api',
+  'echo.config.api'
 ])
   .factory('googleMapsApi', function ($window, $q, apiConfig) {
     var deferred = $q.defer();
