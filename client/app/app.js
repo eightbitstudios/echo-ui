@@ -2,7 +2,6 @@
 
 angular.module('echo', [
     'ngCookies',
-    'ngSanitize',
     'ui.router',
     'base64',
     'echo.config.api',
