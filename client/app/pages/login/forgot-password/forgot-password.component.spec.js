@@ -23,6 +23,7 @@ describe('Component: forgotPassword', function () {
     scope.$digest();
 
     component = $componentController('forgotPassword', null, {});
+    component.$onInit();
   }));
 
   describe('Function: sendHandler', function () {

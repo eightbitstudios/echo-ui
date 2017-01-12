@@ -47,6 +47,7 @@ describe('Component: All Carriers', function () {
     scope.$digest();
 
     component = $componentController('allCarriers', null, {});
+    component.$onInit();
   }));
 
   describe('Function: selectCarrier', function () {

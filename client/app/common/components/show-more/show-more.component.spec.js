@@ -24,6 +24,7 @@ describe('Component: showMore', function () {
       pagingModel: pagingModel,
       showLoading: showLoading
     });
+    component.$onInit();
   }));
 
   describe('Function: showMoreHandler', function() {

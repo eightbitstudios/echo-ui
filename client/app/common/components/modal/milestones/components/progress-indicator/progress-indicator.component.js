@@ -4,7 +4,5 @@ angular.module('echo.components.modal.milestones.progressIndicator', [])
   bindings: {
     steps: '<',
     currentStep: '<'
-  },
-  controller: function () {
   }
 });

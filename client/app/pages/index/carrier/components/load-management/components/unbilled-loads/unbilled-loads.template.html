@@ -9,7 +9,7 @@
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
-  <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
+  <loads-filter ng-if="false" filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
     <filter-button filter-enabled="$ctrl.isPODNeeded" click-handler="$ctrl.podNeededHandler(value)" button-text="POD Needed"></filter-button>
     <filter-button filter-enabled="$ctrl.isInvoiceNeeded" click-handler="$ctrl.invoiceNeededHandler(value)" button-text="Invoice Needed"></filter-button>
   </loads-filter>

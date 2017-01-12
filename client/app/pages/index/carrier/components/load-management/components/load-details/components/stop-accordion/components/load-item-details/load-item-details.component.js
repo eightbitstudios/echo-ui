@@ -6,7 +6,5 @@ angular.module('echo.components.loadItemDetails', [
     items: '<',
     totalWeight: '<'
   },
-  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/components/load-item-details/load-item-details.template.html',
-  controller: function() {
-  }
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/components/load-item-details/load-item-details.template.html'
 });

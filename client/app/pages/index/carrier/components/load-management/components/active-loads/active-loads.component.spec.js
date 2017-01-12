@@ -1,18 +1,17 @@
-
-describe('Component: Active Loads', function () {
+describe('Component: Active Loads', function() {
   var component, scope, $q, carrierId, availableData,
-   loadCountService, ActiveLoadsRequestBuilder, requestBuilderObj, requestDefer;
+    loadCountService, ActiveLoadsRequestBuilder, requestBuilderObj, requestDefer;
 
-  beforeEach(function () {
-    module('echo.index.carrier.loadManagement.activeLoads', function ($provide) {  
+  beforeEach(function() {
+    module('echo.index.carrier.loadManagement.activeLoads', function($provide) {
       $provide.value('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html', '');
       $provide.value('loadCountService', loadCountService = jasmine.createSpyObj('loadCountService', ['getLoadCount', 'setLoadCount']));
-      $provide.value('ActiveLoadsRequestBuilder', 
+      $provide.value('ActiveLoadsRequestBuilder',
         ActiveLoadsRequestBuilder = jasmine.createSpy('ActiveLoadsRequestBuilder'));
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_) {
+  beforeEach(inject(function($rootScope, $compile, $componentController, _$q_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -24,29 +23,21 @@ describe('Component: Active Loads', function () {
     availableData = {
       loads: {
         totalLoadCount: 24,
-        loads: [
-          {
-            id: 1
-          },
-          {
-            id: 2
-          },
-          {
-            id: 3
-          },
-          {
-            id: 4
-          }
-        ]
-      },
-      mapLoads: [
-        {
+        loads: [{
           id: 1
-        },
-        {
+        }, {
           id: 2
-        }
-      ],
+        }, {
+          id: 3
+        }, {
+          id: 4
+        }]
+      },
+      mapLoads: [{
+        id: 1
+      }, {
+        id: 2
+      }],
       loadsCount: {
         active: 12,
         unbilled: 13,
@@ -56,19 +47,28 @@ describe('Component: Active Loads', function () {
 
     requestBuilderObj = jasmine.createSpyObj('requestBuilderObj', ['fetchMapData', 'fetchLoadsCount', 'fetchActiveLoads', 'hasMapData', 'filterByPickupsToday', 'filterByDeliveriesToday', 'execute']);
     ActiveLoadsRequestBuilder.and.returnValue(requestBuilderObj);
-    requestBuilderObj.fetchActiveLoads.and.returnValue({execute: requestBuilderObj.execute});
+    requestBuilderObj.fetchActiveLoads.and.returnValue({
+      execute: requestBuilderObj.execute
+    });
     requestDefer = $q.defer();
     requestBuilderObj.execute.and.returnValue(requestDefer.promise);
-    
+
     component = $componentController('activeLoads', null, {
       carrierId: carrierId
     });
+    spyOn(component, 'getPageData');
+    component.getPageData.and.callFake(function() {});
+
+    component.$onInit();
   }));
 
-  describe('Function: deliveriesTodayHandler', function () {
-    it('should set filter text to default', function () {
+  describe('Function: deliveriesTodayHandler', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+    it('should set filter text to default', function() {
       component.deliveriesTodayHandler(false);
-   
+
       expect(component.filterText).toBe('By Next Appointment');
       expect(component.isPickUpToday).toBe(false);
       expect(component.isDeliveriesToday).toBe(false);
@@ -76,7 +76,7 @@ describe('Component: Active Loads', function () {
       expect(requestBuilderObj.filterByDeliveriesToday).not.toHaveBeenCalled();
     });
 
-    it('should set filter text to next delivery', function () {
+    it('should set filter text to next delivery', function() {
       component.deliveriesTodayHandler(true);
       expect(component.filterText).toBe('By Next Delivery');
       expect(component.isPickUpToday).toBe(false);
@@ -85,8 +85,11 @@ describe('Component: Active Loads', function () {
     });
   });
 
-  describe('Function: pickupsTodayHandler', function () {
-    it('should set filter text to default', function () {
+  describe('Function: pickupsTodayHandler', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+    it('should set filter text to default', function() {
       component.pickupsTodayHandler(false);
 
       expect(component.filterText).toBe('By Next Appointment');
@@ -95,7 +98,7 @@ describe('Component: Active Loads', function () {
       expect(requestBuilderObj.filterByPickupsToday).not.toHaveBeenCalled();
     });
 
-    it('should set filter text to next pickup', function () {
+    it('should set filter text to next pickup', function() {
       component.pickupsTodayHandler(true);
 
       expect(component.filterText).toBe('By Next Pickup');
@@ -105,15 +108,18 @@ describe('Component: Active Loads', function () {
     });
   });
 
-  describe('Function: getPageData', function () {
-    it('should fetch map data', function () {
+  describe('Function: getPageData', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+    it('should fetch map data', function() {
       requestBuilderObj.hasMapData.and.returnValue(true);
       component.getPageData(requestBuilderObj);
 
       expect(requestBuilderObj.hasMapData).toHaveBeenCalled();
     });
 
-    it('should fetch only activeLoads', function () {
+    it('should fetch only activeLoads', function() {
       component.getPageData(requestBuilderObj);
       requestDefer.resolve(availableData);
 
@@ -129,7 +135,7 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
     });
 
-    it('should fetch loadsCount', function () {
+    it('should fetch loadsCount', function() {
       component.getPageData(requestBuilderObj);
       requestDefer.resolve(availableData);
 
@@ -144,12 +150,12 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).toHaveBeenCalled();
     });
 
-    it('should fetch mapLoads', function () {
+    it('should fetch mapLoads', function() {
       component.getPageData(requestBuilderObj);
       requestDefer.resolve(availableData);
-      
+
       availableData.loadsCount = undefined;
-      
+
       scope.$digest();
 
       expect(component.activeLoads).toBe(availableData.loads.loads);
@@ -159,47 +165,46 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
     });
 
-    it('should not load active loads', function () {
+    it('should not load active loads', function() {
       component.getPageData(requestBuilderObj);
       requestDefer.resolve(availableData);
 
       availableData.loads = undefined;
-      
+
       scope.$digest();
 
       expect(component.activeLoads).toBeUndefined();
     });
   });
 
-  describe('Function: refreshPageData', function () {
-    it('should fetch only not loadsCount', function () {
-      spyOn(component, 'getPageData');
+  describe('Function: refreshPageData', function() {
+    it('should not fetch loadsCount', function() {
+      requestBuilderObj.fetchLoadsCount.calls.reset();
       component.refreshPageData();
       expect(requestBuilderObj.fetchMapData).toHaveBeenCalled();
       expect(requestBuilderObj.fetchLoadsCount).not.toHaveBeenCalled();
     });
   });
 
-  describe('Function: fetchActiveLoads', function () {
-    it('should call getPageData', function () {
-      spyOn(component, 'getPageData');
+  describe('Function: fetchActiveLoads', function() {
+    it('should call getPageData', function() {
       component.fetchActiveLoads();
       expect(component.getPageData).toHaveBeenCalled();
     });
   });
 
-  describe('Function: $onInit', function () {
-    beforeEach(function() {
-      spyOn(component, 'getPageData');
-    });
+  describe('Function: $onInit', function() {
 
-    it('should fetch loadCount', function () {
+    it('should fetch loadCount', function() {
       component.$onInit();
       expect(requestBuilderObj.fetchLoadsCount).toHaveBeenCalled();
     });
 
-    it('should not fetch loadCount', function () {
-      loadCountService.getLoadCount.and.returnValue({test: 1});
+    it('should not fetch loadCount', function() {
+      requestBuilderObj.fetchLoadsCount.calls.reset();
+      loadCountService.getLoadCount.and.returnValue({
+        test: 1
+      });
       component.$onInit();
       expect(requestBuilderObj.fetchLoadsCount).not.toHaveBeenCalled();
     });

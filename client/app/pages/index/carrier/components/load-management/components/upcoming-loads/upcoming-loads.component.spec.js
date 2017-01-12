@@ -1,15 +1,14 @@
-
-describe('Component: Upcoming Loads', function () {
+describe('Component: Upcoming Loads', function() {
   var component, scope, $q, carrierId, loadsApi, upcomingLoadData;
 
-  beforeEach(function () {
+  beforeEach(function() {
     module('app/pages/index/carrier/components/load-management/components/upcoming-loads/upcoming-loads.template.html');
-    module('echo.index.carrier.loadManagement.upcomingLoads', function ($provide) {
+    module('echo.index.carrier.loadManagement.upcomingLoads', function($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchUpcomingLoads']));
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_) {
+  beforeEach(inject(function($rootScope, $compile, $componentController, _$q_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -20,29 +19,32 @@ describe('Component: Upcoming Loads', function () {
     carrierId = 1;
     upcomingLoadData = {
       totalLoadCount: 24,
-      loads: [
-        {
-          id: 1
-        },
-        {
-          id: 2
-        },
-        {
-          id: 3
-        },
-        {
-          id: 4
-        }
-      ]
+      loads: [{
+        id: 1
+      }, {
+        id: 2
+      }, {
+        id: 3
+      }, {
+        id: 4
+      }]
     };
 
     component = $componentController('upcomingLoads', null, {
       carrierId: carrierId
     });
+
+    spyOn(component, 'getUpcomingLoads');
+    component.getUpcomingLoads.and.callFake(function() {});
+    component.$onInit();
   }));
 
-  describe('Function: getUpcomingLoads', function () {
-    it('should fetch upcoming loads', function () {
+  describe('Function: getUpcomingLoads', function() {
+    beforeEach(function() {
+      component.getUpcomingLoads.and.callThrough();
+    });
+
+    it('should fetch upcoming loads', function() {
       var deferred = $q.defer();
       loadsApi.fetchUpcomingLoads.and.returnValue(deferred.promise);
       component.getUpcomingLoads();
@@ -57,8 +59,8 @@ describe('Component: Upcoming Loads', function () {
     });
   });
 
-  describe('Function: driverNeededHandler', function () {
-    it('should set filter text to default', function () {
+  describe('Function: driverNeededHandler', function() {
+    it('should set filter text to default', function() {
       var deferred = $q.defer();
       loadsApi.fetchUpcomingLoads.and.returnValue(deferred.promise);
       component.driverNeededHandler(false);
@@ -70,7 +72,7 @@ describe('Component: Upcoming Loads', function () {
       expect(component.isDriverNeeded).toBe(false);
     });
 
-    it('should set filter text to invoice needed', function () {
+    it('should set filter text to invoice needed', function() {
       var deferred = $q.defer();
       loadsApi.fetchUpcomingLoads.and.returnValue(deferred.promise);
       component.driverNeededHandler(true);

@@ -1,15 +1,14 @@
-
-describe('Component: Driver Profile', function () {
+describe('Component: Driver Profile', function() {
   var component, scope, $q, component, $componentController, carrierId, driver, languages, profileUpdatedHandler, driverApi;
 
-  beforeEach(function () {
+  beforeEach(function() {
     module('app/common/components/driver-profile/driver-profile.template.html');
-    module('echo.components.driverProfile', function($provide){
+    module('echo.components.driverProfile', function($provide) {
       $provide.value('driverApi', driverApi = jasmine.createSpyObj('driverApi', ['upsertDriver', 'deactivateDriverById']));
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, _$componentController_, _$q_) {
+  beforeEach(inject(function($rootScope, $compile, _$componentController_, _$q_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -24,14 +23,14 @@ describe('Component: Driver Profile', function () {
     languages = [{
       language: 'English'
     }, {
-        language: 'Spanish'
-      }];
+      language: 'Spanish'
+    }];
     profileUpdatedHandler = jasmine.createSpy('profileUpdatedHandler');
 
     $componentController = _$componentController_
   }));
 
-  it('should set other language', function () {
+  it('should set other language', function() {
     driver.preferredLanguage = 'German';
 
     component = $componentController('driverProfile', null, {
@@ -40,28 +39,29 @@ describe('Component: Driver Profile', function () {
       languages: languages,
       profileUpdatedHandler: profileUpdatedHandler
     });
-
+    component.$onInit();
     expect(component.driver.otherLanguage).toEqual('German');
   });
-  describe('Function: saveDriverHandler', function () {
+  describe('Function: saveDriverHandler', function() {
 
-    beforeEach(function () {
+    beforeEach(function() {
       component = $componentController('driverProfile', null, {
         carrierId: carrierId,
         driver: driver,
         languages: languages,
         profileUpdatedHandler: profileUpdatedHandler
       });
+      component.$onInit();
       component.driverProfileForm = {};
     });
 
-    it('should not save profile if form is not valid', function () {
+    it('should not save profile if form is not valid', function() {
       component.driverProfileForm.$valid = false;
       component.saveDriverHandler();
       expect(driverApi.upsertDriver).not.toHaveBeenCalled();
     });
 
-    it('should save profile if form is valid', function () {
+    it('should save profile if form is valid', function() {
       component.driverProfileForm.$valid = true;
       driverApi.upsertDriver.and.returnValue($q.defer().promise);
       component.saveDriverHandler();
@@ -69,7 +69,7 @@ describe('Component: Driver Profile', function () {
       expect(driverApi.upsertDriver).toHaveBeenCalledWith(carrierId, component.driver);
     });
 
-    it('should call profile update handler on success', function () {
+    it('should call profile update handler on success', function() {
       component.driverProfileForm.$valid = true;
       driverApi.upsertDriver.and.returnValue($q.when());
       component.saveDriverHandler();
@@ -79,7 +79,7 @@ describe('Component: Driver Profile', function () {
       expect(component.profileUpdatedHandler).toHaveBeenCalled();
     });
 
-    it('should set server error message on failure', function () {
+    it('should set server error message on failure', function() {
       component.driverProfileForm.$valid = true;
       var error = 'error message';
       driverApi.upsertDriver.and.returnValue($q.reject(error));
@@ -91,15 +91,16 @@ describe('Component: Driver Profile', function () {
     });
   });
 
-  describe('Function: toggleConfirmation', function () {
+  describe('Function: toggleConfirmation', function() {
 
-    beforeEach(function () {
+    beforeEach(function() {
       component = $componentController('driverProfile', null, {
         carrierId: carrierId,
         driver: driver,
         languages: languages,
         profileUpdatedHandler: profileUpdatedHandler
       });
+      component.$onInit();
     });
 
     it('should toggle showConfirmation', function() {
@@ -109,15 +110,16 @@ describe('Component: Driver Profile', function () {
     });
   });
 
-  describe('Function: removeUserHandler', function () {
+  describe('Function: removeUserHandler', function() {
 
-    beforeEach(function () {
+    beforeEach(function() {
       component = $componentController('driverProfile', null, {
         carrierId: carrierId,
         driver: driver,
         languages: languages,
         profileUpdatedHandler: profileUpdatedHandler
       });
+      component.$onInit();
     });
 
     it('should call service to deactivate user', function() {

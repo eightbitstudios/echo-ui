@@ -5,7 +5,7 @@ var endpoints = require('./endpoints'),
 module.exports = function (grunt) {
   var host = 'http://carrierportal.dev.echogl.net:81/api/v1';
   var apiEndpoints = _.zipObject(_.keys(endpoints), _.map(endpoints, function (value) { return host + value }));
-  apiEndpoints.googleMapsApiKey = 'AIzaSyCjwqWgQObfLWjm4odw7l3gE-oEesRhljw';
+  apiEndpoints.googleMapsApiKey = 'AIzaSyCVP3yvKSvxHj2dWHfKCVClFR0wz0vgutw';
   apiEndpoints.key = '';
   apiEndpoints.keyHeader = '';
   return apiEndpoints;

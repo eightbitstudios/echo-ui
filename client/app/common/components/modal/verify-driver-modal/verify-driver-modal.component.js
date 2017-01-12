@@ -1,14 +1,14 @@
 angular.module('echo.components.modal.verifyDriver', [
-  'echo.models.driver',
-  'echo.api.loads',
-  'echo.components.loadingButton',
-  'echo.components.unassignedDriverSearch',
-  'echo.config.routes',
-  'echo.filters.firstCharacter',
-  'echo.filters.phoneNumber',
-  'echo.components.modal.driverSidebar',
-  'echo.components.modal.errorMessages'
-])
+    'echo.models.driver',
+    'echo.api.loads',
+    'echo.components.loadingButton',
+    'echo.components.unassignedDriverSearch',
+    'echo.config.routes',
+    'echo.filters.firstCharacter',
+    'echo.filters.phoneNumber',
+    'echo.components.modal.driverSidebar',
+    'echo.components.modal.errorMessages'
+  ])
   .component('verifyDriverModal', {
     templateUrl: 'app/common/components/modal/verify-driver-modal/verify-driver-modal.template.html',
     bindings: {
@@ -18,57 +18,57 @@ angular.module('echo.components.modal.verifyDriver', [
       verifiedDriver: '<',
       equipment: '<'
     },
-    controller: function (loadsApi, DriverModel, routesConfig) {
-      var that = this;
+    controller: function(loadsApi, DriverModel, routesConfig) {
 
-      that.modes = {
-        findDriver: 1,
-        inviteNewDriver: 2
+      this.showFindDriver = function() {
+        this.currentState = this.modes.findDriver;
       };
 
-      that.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
-
-      that.showPossibleMatchText = !_.isUndefined(_.get(that.verifiedDriver, 'id'));
-      that.showFindDriver = function () {
-        that.currentState = that.modes.findDriver;
+      this.showInviteNewDriver = function() {
+        this.currentState = this.modes.inviteNewDriver;
       };
 
-      that.showInviteNewDriver = function () {
-        that.currentState = that.modes.inviteNewDriver;
-      };
+      this.verifyDriver = function() {
+        var that = this;
 
-      that.verifyDriver = function () {
         that.showButtonLoading = true;
         that.errorCode = null;
         that.errorMessages = null;
-        loadsApi.reassignDriver(that.load.loadNumber, that.verifiedDriver.id).then(function () {
+        loadsApi.reassignDriver(that.load.loadNumber, that.verifiedDriver.id).then(function() {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
-        }).catch(function (errorStatus) {
+        }).catch(function(errorStatus) {
           that.errorCode = errorStatus.code;
           that.errorMessages = errorStatus.message;
-        }).finally(function () {
+        }).finally(function() {
           that.showButtonLoading = false;
         });
       };
 
-      that.invitedNewDriver = function(driver) {
-        that.verifiedDriver = driver;
-        that.showFindDriver();
+      this.invitedNewDriver = function(driver) {
+        this.verifiedDriver = driver;
+        this.showFindDriver();
       };
 
-      that.noVerifiedDriver = function () {
-        return _.isUndefined(_.get(that.verifiedDriver, 'id'));
+      this.noVerifiedDriver = function() {
+        return _.isUndefined(_.get(this.verifiedDriver, 'id'));
       };
 
-      that.$onInit = function () {
-        that.state = null;
-        that.driverChanged = false;
-        that.showButtonLoading = false;
-        that.errorCode = null;
-        that.errorMessages = null;
-        that.unverifiedDriver = new DriverModel(that.load.driver);
-        that.currentState = that.modes.findDriver;
+      this.$onInit = function() {
+        this.modes = {
+          findDriver: 1,
+          inviteNewDriver: 2
+        };
+
+        this.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
+        this.showPossibleMatchText = !_.isUndefined(_.get(this.verifiedDriver, 'id'));
+        this.state = null;
+        this.driverChanged = false;
+        this.showButtonLoading = false;
+        this.errorCode = null;
+        this.errorMessages = null;
+        this.unverifiedDriver = new DriverModel(this.load.driver);
+        this.currentState = this.modes.findDriver;
       };
     }
   });

@@ -26,9 +26,10 @@ angular.module('echo.components.loadMap', [
       showMap: '<'
     },
     controller: function($q, googleMapsApi, googleMaps, googleMapsConst) {
-      var that = this;
 
-      that.formatMapPoints = function(google) {
+      this.formatMapPoints = function(google) {
+        var that = this;
+
         var geocoder = new google.maps.Geocoder();
         var promises = [];
         _.forEach(that.mapPoints, function(mapPoint) {
@@ -48,9 +49,9 @@ angular.module('echo.components.loadMap', [
         }
       };
 
-      that.popupOffset = that.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
+      this.$onChanges = function(changeObj) {
+        var that = this;
 
-      that.$onChanges = function(changeObj) {
         if (changeObj.showMap.currentValue) {
           googleMapsApi.then(function(google) {
             that.google = google;
@@ -63,8 +64,9 @@ angular.module('echo.components.loadMap', [
         }
       };
 
-      that.$onInit = function() {
-        that.showLoading = true;
+      this.$onInit = function() {
+        this.popupOffset = this.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
+        this.showLoading = true;
       };
     }
   });

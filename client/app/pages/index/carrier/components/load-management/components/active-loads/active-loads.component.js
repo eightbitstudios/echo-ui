@@ -19,48 +19,41 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     testBinding: '<'
   },
   controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum, loadCountService, ActiveLoadsRequestBuilder) {
-    var that = this;
-    that.showLoading = false;
-    that.paging = new PagingModel(appConstants.LIMIT.loadsList);
-    that.isPickUpToday = false;
-    that.loadType = loadTypesEnum.ACTIVE;
-    that.isDeliveriesToday = false;
-    var defaultFilterText = 'By Next Appointment';
-    that.filterText = defaultFilterText;
 
-    that.deliveriesTodayHandler = function(value) {
+    this.deliveriesTodayHandler = function(value) {
+      this.filterText = value ? 'By Next Delivery' : this.defaultFilterText;
 
-      that.filterText = value ? 'By Next Delivery' : defaultFilterText;
-      that.isPickUpToday = false;
-      that.isDeliveriesToday = value;
-      that.paging.reset();
+      this.isPickUpToday = false;
+      this.isDeliveriesToday = value;
+      this.paging.reset();
 
       var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
 
-      if (that.isDeliveriesToday) {
+      if (this.isDeliveriesToday) {
         activeLoadsPageApiRequest.filterByDeliveriesToday();
       }
 
-      that.getPageData(activeLoadsPageApiRequest);
+      this.getPageData(activeLoadsPageApiRequest);
     };
 
-    that.pickupsTodayHandler = function(value) {
+    this.pickupsTodayHandler = function(value) {
 
-      that.filterText = value ? 'By Next Pickup' : defaultFilterText;
-      that.isDeliveriesToday = false;
-      that.isPickUpToday = value;
-      that.paging.reset();
+      this.filterText = value ? 'By Next Pickup' : this.defaultFilterText;
+      this.isDeliveriesToday = false;
+      this.isPickUpToday = value;
+      this.paging.reset();
 
       var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
 
-      if (that.isPickUpToday) {
+      if (this.isPickUpToday) {
         activeLoadsPageApiRequest.filterByPickupsToday();
       }
 
-      that.getPageData(activeLoadsPageApiRequest);
+      this.getPageData(activeLoadsPageApiRequest);
     };
 
-    that.getPageData = function(requestBuilder) {
+    this.getPageData = function(requestBuilder) {
+      var that = this;
 
       if (requestBuilder.hasMapData()) {
         that.showMap = false;
@@ -68,7 +61,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       }
 
       that.showLoading = true;
-      
+
       requestBuilder.fetchActiveLoads(that.paging).execute().then(function(activeLoadsPageData) {
         if (activeLoadsPageData.loads) {
           that.paging.totalRecords = activeLoadsPageData.loads.totalLoadCount;
@@ -87,30 +80,37 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       });
     };
 
-    that.fetchActiveLoads = function() {
+    this.fetchActiveLoads = function() {
       var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
-      that.getPageData(activeLoadsPageApiRequest);
+      this.getPageData(activeLoadsPageApiRequest);
     };
 
-    that.refreshPageData = function() {
+    this.refreshPageData = function() {
       var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
       activeLoadsPageApiRequest.fetchMapData();
-      that.getPageData(activeLoadsPageApiRequest);
+      this.getPageData(activeLoadsPageApiRequest);
     };
 
 
-    that.$onInit = function() {
+    this.$onInit = function() {
+      this.showLoading = false;
+      this.paging = new PagingModel(appConstants.LIMIT.loadsList);
+      this.isPickUpToday = false;
+      this.loadType = loadTypesEnum.ACTIVE;
+      this.isDeliveriesToday = false;
 
       var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
       activeLoadsPageApiRequest.fetchMapData();
 
+      this.defaultFilterText = 'By Next Appointment';
+      this.filterText = this.defaultFilterText;
       var fetchLoadCount = _.isEmpty(loadCountService.getLoadCount());
 
       if (fetchLoadCount) {
         activeLoadsPageApiRequest.fetchLoadsCount();
       }
 
-      that.getPageData(activeLoadsPageApiRequest);
+      this.getPageData(activeLoadsPageApiRequest);
     };
   }
 });

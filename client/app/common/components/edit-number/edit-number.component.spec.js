@@ -24,6 +24,7 @@ describe('Component: editNumber', function () {
       defaultText: defaultText,
       updateCallback: updateCallback
     });
+    component.$onInit();
   }));
 
   describe('Function: editNumberHandler', function () {

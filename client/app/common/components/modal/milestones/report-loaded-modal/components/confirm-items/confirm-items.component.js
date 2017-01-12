@@ -6,9 +6,9 @@ angular.module('echo.components.modal.milestones.reportLoaded.confirmItems', [])
       pickupNumbers: '<',
       checkboxItems: '<'
     },
-    controller: function () {
-      var that = this;
-
-      that.formattedPickupNumbers = _.join(that.pickupNumbers, ', ');
+    controller: function() {
+      this.$onInit = function() {
+        this.formattedPickupNumbers = _.join(this.pickupNumbers, ', ');
+      };
     }
   });

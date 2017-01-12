@@ -1,12 +1,12 @@
 angular.module('echo.components.loadTable.driver', [
-  'echo.filters.phoneNumber',
-  'echo.filters.firstCharacter',
-  'echo.filters.onOff',
-  'echo.filters.driverStatus',
-  'echo.services.modal',
-  'echo.components.modal.assignDriver',
-  'echo.components.modal.verifyDriver'
-])
+    'echo.filters.phoneNumber',
+    'echo.filters.firstCharacter',
+    'echo.filters.onOff',
+    'echo.filters.driverStatus',
+    'echo.services.modal',
+    'echo.components.modal.assignDriver',
+    'echo.components.modal.verifyDriver'
+  ])
   .component('driver', {
     templateUrl: 'app/common/components/load-table/components/driver/driver.template.html',
     bindings: {
@@ -16,14 +16,14 @@ angular.module('echo.components.loadTable.driver', [
       driverChangedCallback: '&',
       isMultiStop: '<'
     },
-    controller: function ($q, loadTypesEnum, modalService, loadsApi, driverApi) {
-      var that = this;
-      that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
-      that.loadTypesEnum = loadTypesEnum;
+    controller: function($q, loadTypesEnum, modalService, loadsApi, driverApi) {
 
-      that.showVerifyDriverModal = function () {
-        $q.all([driverApi.verifyDriverByPhone(that.carrierId, that.load.driver.phone), 
-        loadsApi.fetchEquipmentByLoadId(that.load.loadNumber)]).then(_.spread(function (verifiedDriver, equipment) {
+      this.showVerifyDriverModal = function() {
+        var that = this;
+
+        $q.all([driverApi.verifyDriverByPhone(that.carrierId, that.load.driver.phone),
+          loadsApi.fetchEquipmentByLoadId(that.load.loadNumber)
+        ]).then(_.spread(function(verifiedDriver, equipment) {
           var modalInstance = modalService.open({
             component: 'verify-driver-modal',
             bindings: {
@@ -33,8 +33,8 @@ angular.module('echo.components.loadTable.driver', [
               equipment: equipment
             }
           }).result;
-          
-          modalInstance.then(function (driverChanged) {
+
+          modalInstance.then(function(driverChanged) {
             if (driverChanged) {
               that.driverChangedCallback();
             }
@@ -42,9 +42,11 @@ angular.module('echo.components.loadTable.driver', [
         }));
       };
 
-      that.showAssignDriverModal = function () {
+      this.showAssignDriverModal = function() {
+        var that = this;
+
         that.showButtonLoading = true;
-        loadsApi.fetchEquipmentByLoadId(that.load.loadNumber).then(function (equipment) {
+        loadsApi.fetchEquipmentByLoadId(that.load.loadNumber).then(function(equipment) {
           var modalInstance = modalService.open({
             component: 'assign-driver-modal',
             bindings: {
@@ -54,7 +56,7 @@ angular.module('echo.components.loadTable.driver', [
             }
           }).result;
 
-          modalInstance.then(function (driverChanged) {
+          modalInstance.then(function(driverChanged) {
             if (driverChanged) {
               that.driverChangedCallback();
             }
@@ -62,6 +64,11 @@ angular.module('echo.components.loadTable.driver', [
         }).finally(function() {
           that.showButtonLoading = false;
         });
+      };
+
+      this.$onInit = function() {
+        this.noDriver = _.isUndefined(_.get(this.load.driver, 'id'));
+        this.loadTypesEnum = loadTypesEnum;
       };
     }
   });
