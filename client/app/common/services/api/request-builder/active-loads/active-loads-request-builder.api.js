@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('echo.api.requestBuilder.activeLoads', [
-  'echo.config.api',
-  'echo.models.user'
+  'echo.config.api'
 ]).factory('ActiveLoadsRequestBuilder', function($q, $http, apiConfig) {
 
   function ActiveLoadsRequestBuilder(carrierId) {
