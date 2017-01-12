@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('echo.api.dashboardRequestBuilder', [
+angular.module('echo.api.requestBuilder.dashboard', [
   'echo.config.api',
   'echo.models.user'
 ]).factory('DashboardRequestBuilder', function($q, $http, apiConfig) {

@@ -7,7 +7,7 @@ angular.module('echo.index.carrier.dashboard', [
     'echo.api.loads',
     'echo.components.loadMap',
     'echo.components.showMore',
-    'echo.api.dashboardRequestBuilder'
+    'echo.api.requestBuilder.dashboard'
   ])
   .component('dashboard', {
     templateUrl: 'app/pages/index/carrier/components/dashboard/dashboard.template.html',
@@ -28,6 +28,7 @@ angular.module('echo.index.carrier.dashboard', [
 
       that.showMoreActionLoadsHandler = function() {
         that.showMoreActionLoadsLoading = true;
+
         var dashboardRequestBuilder = new DashboardRequestBuilder(that.carrierId);
 
         dashboardRequestBuilder.fetchSingleStopLoads(that.pagingActionLoads).execute()

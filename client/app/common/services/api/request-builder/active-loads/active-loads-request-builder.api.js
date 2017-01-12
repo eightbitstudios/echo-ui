@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('echo.api.activeLoadsRequestBuilder', [
+angular.module('echo.api.requestBuilder.activeLoads', [
   'echo.config.api',
   'echo.models.user'
 ]).factory('ActiveLoadsRequestBuilder', function($q, $http, apiConfig) {

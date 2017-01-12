@@ -10,7 +10,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.filterButton',
   'echo.components.loadMap',
   'echo.services.loadCount',
-  'echo.api.activeLoadsRequestBuilder'
+  'echo.api.requestBuilder.activeLoads'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
@@ -68,7 +68,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       }
 
       that.showLoading = true;
-
+      
       requestBuilder.fetchActiveLoads(that.paging).execute().then(function(activeLoadsPageData) {
         if (activeLoadsPageData.loads) {
           that.paging.totalRecords = activeLoadsPageData.loads.totalLoadCount;
