@@ -31,6 +31,8 @@ describe('Component: shippingDetails', function () {
       shippingDetails: shippingDetails
     });
 
+    component.$onInit();
+
     expect(component.location).toEqual(shippingDetails[1]);
   });
 
@@ -49,6 +51,8 @@ describe('Component: shippingDetails', function () {
     component = $componentController('shippingDetails', null, {
       shippingDetails: shippingDetails
     });
+    
+    component.$onInit();
 
     expect(component.location).toEqual(shippingDetails[2]);
   });

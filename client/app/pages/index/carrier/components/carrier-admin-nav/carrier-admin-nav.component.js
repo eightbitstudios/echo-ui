@@ -7,13 +7,13 @@ angular.module('echo.index.carrier.carrierAdminNav', [
     carrierDetails: '='
   },
   templateUrl: 'app/pages/index/carrier/components/carrier-admin-nav/carrier-admin-nav.template.html',
-  controller: function ($state, routesConfig) {
-    var that = this;
-
-    that.routesConfig = routesConfig;
-    that.state = $state;
-    if($state.current.name === routesConfig.INDEX.myCarriers.name){
-      $state.go(routesConfig.INDEX.dashboard.name);
-    }
+  controller: function($state, routesConfig) {
+    this.$onInit = function() {
+      this.routesConfig = routesConfig;
+      this.state = $state;
+      if ($state.current.name === routesConfig.INDEX.myCarriers.name) {
+        $state.go(routesConfig.INDEX.dashboard.name);
+      }
+    };
   }
 });

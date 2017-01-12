@@ -31,6 +31,7 @@ describe('Component: Assign Driver Modal', function () {
       load: load,
       carrierId: carrierId
     });
+    component.$onInit();
   }));
 
   describe('Function: assignDriver', function () {
@@ -103,8 +104,8 @@ describe('Component: Assign Driver Modal', function () {
   describe('Function: noAssignedDriver', function () {
 
     it('should return true with no assigned driver', function () {
+      component.assignedDriver = { };
       var result = component.noAssignedDriver();
-
       expect(result).toBeTruthy();
     });
 

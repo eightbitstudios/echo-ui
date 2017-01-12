@@ -8,6 +8,5 @@ angular.module('echo.components.echoRepContact', [
   bindings: {
     repDetails: '='
   },
-  templateUrl: 'app/common/components/echo-rep-contact/echo-rep-contact.template.html',
-  controller: function(){}
+  templateUrl: 'app/common/components/echo-rep-contact/echo-rep-contact.template.html'
 });

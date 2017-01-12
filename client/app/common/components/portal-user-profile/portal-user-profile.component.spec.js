@@ -29,6 +29,7 @@ describe('Component: Portal User Profile', function () {
       showLoading: showLoading,
       isCarrierAdmin: isCarrierAdmin
     });
+    component.$onInit();
   }));
 
   describe('Function: saveChangesHandler', function () {

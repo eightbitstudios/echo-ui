@@ -14,7 +14,5 @@ angular.module('echo.components.modal.milestones.deliveryItems', [
       items: '<',
       dateTimePicker: '=',
       timeZones: '<'
-    },
-    controller: function () {
     }
   });

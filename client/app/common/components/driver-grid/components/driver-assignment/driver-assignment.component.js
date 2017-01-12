@@ -9,6 +9,8 @@ angular.module('echo.components.driverGrid.driverAssignment', [
   },
   templateUrl: 'app/common/components/driver-grid/components/driver-assignment/driver-assignment.template.html',
   controller: function(routesConfig) {
-    this.loadDetails = routesConfig.INDEX.loadDetails.name;
+    this.$onInit = function() {
+      this.loadDetails = routesConfig.INDEX.loadDetails.name;
+    };
   }
 });

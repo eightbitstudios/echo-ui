@@ -26,6 +26,7 @@ describe('Component: signIn', function () {
 
     component = $componentController('signIn', null, {});
     userProfileService.mapJwtToUser.and.returnValue(user = jasmine.createSpyObj('user', ['isRepAdmin']));
+    component.$onInit();
   }));
 
   describe('Function: signIn', function () {

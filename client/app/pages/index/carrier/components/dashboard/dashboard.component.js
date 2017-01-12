@@ -15,17 +15,10 @@ angular.module('echo.index.carrier.dashboard', [
       carrierId: '<'
     },
     controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, loadsApi) {
-      var that = this;
-      that.showActionLoadsLoading = false;
-      that.showMultiStopLoading = false;
-      that.showMoreActionLoadsLoading = false;
-      that.showMoreMultiStopLoading = false;
-      that.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
-      that.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
-      that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
-      that.loadType = loadTypesEnum.ACTIVE;
 
-      that.showMoreActionLoadsHandler = function() {
+      this.showMoreActionLoadsHandler = function() {
+        var that = this;
+
         that.showMoreActionLoadsLoading = true;
         loadsApi.fetchDashboard(that.carrierId, false, false, that.pagingActionLoads, {})
           .then(function(dashboard) {
@@ -37,7 +30,9 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
-      that.fetchLoadsNeedingAction = function() {
+      this.fetchLoadsNeedingAction = function() {
+        var that = this;
+
         that.showActionLoadsLoading = true;
         that.pagingActionLoads.reset();
         loadsApi.fetchDashboard(that.carrierId, false, false, that.pagingActionLoads, {})
@@ -50,7 +45,9 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
-      that.fetchMultistopLoads = function() {
+      this.fetchMultistopLoads = function() {
+        var that = this;
+
         that.showMultiStopLoading = true;
         that.pagingMultistopLoads.reset();
         loadsApi.fetchDashboard(that.carrierId, false, false, {}, that.pagingMultistopLoads)
@@ -63,7 +60,9 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
-      that.showMoreMultiStopLoadsHandler = function() {
+      this.showMoreMultiStopLoadsHandler = function() {
+        var that = this;
+
         that.showMoreMultiStopLoading = true;
         loadsApi.fetchDashboard(that.carrierId, false, false, {}, that.pagingMultistopLoads).then(function(dashboard) {
           var multiStopLoads = dashboard.multiStopLoads;
@@ -74,11 +73,13 @@ angular.module('echo.index.carrier.dashboard', [
         });
       };
 
-      that.refreshPageData = function() {
-        that.fetchLoadDashboard();
+      this.refreshPageData = function() {
+        this.fetchLoadDashboard();
       };
 
-      that.fetchLoadDashboard = function() {
+      this.fetchLoadDashboard = function() {
+        var that = this;
+
         that.showMultiStopLoading = true;
         that.showActionLoadsLoading = true;
         that.showMap = false;
@@ -89,11 +90,11 @@ angular.module('echo.index.carrier.dashboard', [
           that.activeLoadsCount = dashboard.activeLoadsCount;
           that.mapPoints = dashboard.mapLoads;
 
-          if(_.get(multiStopLoads, 'totalLoadCount')){
+          if (_.get(multiStopLoads, 'totalLoadCount')) {
             that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
           }
-           
-          if(_.get(loadsNeedingAction, 'totalLoadCount')){
+
+          if (_.get(loadsNeedingAction, 'totalLoadCount')) {
             that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
           }
 
@@ -106,8 +107,17 @@ angular.module('echo.index.carrier.dashboard', [
         });
       };
 
-      that.$onInit = function() {
-        that.fetchLoadDashboard();
+      this.$onInit = function() {
+        this.showActionLoadsLoading = false;
+        this.showMultiStopLoading = false;
+        this.showMoreActionLoadsLoading = false;
+        this.showMoreMultiStopLoading = false;
+        this.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
+        this.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
+        this.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
+        this.loadType = loadTypesEnum.ACTIVE;
+
+        this.fetchLoadDashboard();
       };
     }
   });

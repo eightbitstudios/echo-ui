@@ -47,6 +47,7 @@ describe('Component: action', function () {
       actionChangedCallback: actionChangedCallback,
       carrierId: carrierId
     });
+    component.$onInit();
   }));
 
   describe('Function: $onInit', function () {

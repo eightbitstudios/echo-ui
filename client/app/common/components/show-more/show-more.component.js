@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('echo.components.showMore', [
-  'echo.filters.showMore'
-])
+    'echo.filters.showMore'
+  ])
   .component('showMore', {
     bindings: {
       clickHandler: '&',
@@ -11,14 +11,15 @@ angular.module('echo.components.showMore', [
       showLoading: '<'
     },
     templateUrl: 'app/common/components/show-more/show-more.template.html',
-    controller: function () {
-      var that = this;
+    controller: function() {
 
-      that.firstRecord = 1;
+      this.showMoreHandler = function() {
+        this.pagingModel.nextOffset();
+        this.clickHandler();
+      };
 
-      that.showMoreHandler = function (){
-        that.pagingModel.nextOffset();
-        that.clickHandler();
+      this.$onInit = function() {
+        this.firstRecord = 1;
       };
     }
   });

@@ -10,21 +10,20 @@ angular.module('echo.components.modal.milestones.modalSteps', [])
     },
     transclude: true,
     controller: function () {
-      var that = this;
-      that.nextStep = function () {
-        if (that.currentStep < that.maxStep) {
-          that.currentStep++;
+      this.nextStep = function () {
+        if (this.currentStep < this.maxStep) {
+          this.currentStep++;
         }
       };
 
-      that.previousStep = function () {
-        if (that.currentStep > 1) {
-          that.currentStep--;
+      this.previousStep = function () {
+        if (this.currentStep > 1) {
+          this.currentStep--;
         }
       };
 
-      that.$onInit = function () {
-        that.maxStep = _.max(that.steps);
+      this.$onInit = function () {
+        this.maxStep = _.max(this.steps);
       };
     }
   });

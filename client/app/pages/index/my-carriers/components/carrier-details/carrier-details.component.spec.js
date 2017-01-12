@@ -37,6 +37,7 @@ describe('Component: Carrier Details', function () {
     scope.$digest();
 
     component = $componentController('carrierDetails', null, {});
+    component.$onInit();
   }));
 
   describe('Function: getCarrier', function () {

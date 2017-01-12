@@ -7,6 +7,5 @@ angular.module('echo.components.modal.driverSidebar', [
     bindings: {
       load: '<',
       equipment: '<'
-    },
-    controller: function () {}
+    }
   });

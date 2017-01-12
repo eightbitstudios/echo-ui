@@ -5,7 +5,5 @@ angular.module('echo.components.modal.milestones.milestoneSidebar', [
   templateUrl: 'app/common/components/modal/milestones/components/milestone-sidebar/milestone-sidebar.template.html',
   bindings: {
     load: '<'
-  },
-  controller: function () {
   }
 });

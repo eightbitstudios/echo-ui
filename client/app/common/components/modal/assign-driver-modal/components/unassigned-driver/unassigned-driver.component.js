@@ -1,11 +1,11 @@
 angular.module('echo.components.modal.assignDriver.unassignedDriver', [
-  'echo.components.typeaheadSearch',
-  'echo.api.carrier',
-  'echo.components.modal.assignDriver.selectedDriver',
-  'echo.components.modal.assignDriver.unassignedDriverList',
-  'echo.config.routes',
-  'echo.filters.fullName'
-])
+    'echo.components.typeaheadSearch',
+    'echo.api.carrier',
+    'echo.components.modal.assignDriver.selectedDriver',
+    'echo.components.modal.assignDriver.unassignedDriverList',
+    'echo.config.routes',
+    'echo.filters.fullName'
+  ])
   .component('unassignedDriver', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/unassigned-driver/unassigned-driver.template.html',
     bindings: {
@@ -16,24 +16,17 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
       newDriver: '=',
       submitControl: '='
     },
-    controller: function ($filter, carrierApi, routesConfig) {
-      var that = this;
-      that.states = {
-        driverList: 1,
-        selectedDriver: 2,
-      };
-
-      that.state = that.states.driverList;
-      that.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
+    controller: function($filter, carrierApi, routesConfig) {
 
       /**
        * Call api to search for drivers
        * @param {string} val - Search text
        * @retuns {Promise} - List of drivers formatted for typeahead search
        */
-      that.searchDrivers = function (val) {
-        return carrierApi.searchDrivers(that.carrierId, val).then(function (drivers) {
-          return _.map(drivers, function (driver) {
+      this.searchDrivers = function(val) {
+        var that = this;
+        return carrierApi.searchDrivers(that.carrierId, val).then(function(drivers) {
+          return _.map(drivers, function(driver) {
             return {
               id: driver.id,
               name: $filter('fullName')(driver),
@@ -43,25 +36,37 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
         });
       };
 
-      that.removeDriverCallback = function () {
-        that.selectedDriver = null;
-        that.selectedDriverCallback({ driver: that.selectedDriver });
-        that.state = that.states.driverList;
-        that.submitControl = true;
+      this.removeDriverCallback = function() {
+        this.selectedDriver = null;
+        this.selectedDriverCallback({
+          driver: this.selectedDriver
+        });
+        this.state = this.states.driverList;
+        this.submitControl = true;
       };
 
-      that.onSelectCallback = function (driver) {
-        if(driver) {
-          that.selectedDriver = driver;
-          that.selectedDriverCallback({ driver: that.selectedDriver });
-          that.state = that.states.selectedDriver;
+      this.onSelectCallback = function(driver) {
+        if (driver) {
+          this.selectedDriver = driver;
+          this.selectedDriverCallback({
+            driver: this.selectedDriver
+          });
+          this.state = this.states.selectedDriver;
         }
       };
 
-      that.$onInit = function () {
-        if (!_.isUndefined(_.get(that.newDriver, 'id'))) {
-          that.selectedDriver = that.newDriver;
-          that.state = that.states.selectedDriver;
+      this.$onInit = function() {
+        this.states = {
+          driverList: 1,
+          selectedDriver: 2,
+        };
+
+        this.state = this.states.driverList;
+        this.viewAllDrivers = routesConfig.INDEX.myCompanyDrivers.name;
+
+        if (!_.isUndefined(_.get(this.newDriver, 'id'))) {
+          this.selectedDriver = this.newDriver;
+          this.state = this.states.selectedDriver;
         }
       };
     }

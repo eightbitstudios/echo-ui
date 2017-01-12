@@ -12,36 +12,39 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
     repDetails: '<',
     carrierId: '<'
   },
-  controller: function (loadsApi, PagingModel, appConstants, loadTypesEnum) {
-    var that = this;
-    that.showLoading = false;
-    that.paging = new PagingModel(appConstants.LIMIT.loadsList);
-    that.loadType = loadTypesEnum.UPCOMING;
-    var defaultFilterText = 'By First Pickup Stop';
-    that.filterText = defaultFilterText;
+  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum) {
 
-    that.getUpcomingLoads = function () {
+    this.getUpcomingLoads = function() {
+      var that = this;
+
       that.showLoading = true;
-      loadsApi.fetchUpcomingLoads(that.carrierId, that.paging, that.isDriverNeeded).then(function (upcomingLoadData) {
+      loadsApi.fetchUpcomingLoads(that.carrierId, that.paging, that.isDriverNeeded).then(function(upcomingLoadData) {
         that.paging.totalRecords = upcomingLoadData.totalLoadCount;
         that.paging.recordCount = _.size(upcomingLoadData.loads);
         that.upcomingLoads = upcomingLoadData.loads;
-      }).finally(function () {
+      }).finally(function() {
         that.showLoading = false;
       });
     };
 
-    that.driverNeededHandler = function(value) {
+    this.driverNeededHandler = function(value) {
       if (!value) {
-        that.filterText = defaultFilterText;
+        this.filterText = this.defaultFilterText;
       } else {
-        that.filterText = 'By Driver Needed';
+        this.filterText = 'By Driver Needed';
       }
-      that.isDriverNeeded = value;
-      that.paging.reset();
-      that.getUpcomingLoads();
+      this.isDriverNeeded = value;
+      this.paging.reset();
+      this.getUpcomingLoads();
     };
 
-    that.$onInit = that.getUpcomingLoads;
+    this.$onInit = function() {
+      this.showLoading = false;
+      this.paging = new PagingModel(appConstants.LIMIT.loadsList);
+      this.loadType = loadTypesEnum.UPCOMING;
+      this.defaultFilterText = 'By First Pickup Stop';
+      this.filterText = this.defaultFilterText;
+      this.getUpcomingLoads();
+    };
   }
 });

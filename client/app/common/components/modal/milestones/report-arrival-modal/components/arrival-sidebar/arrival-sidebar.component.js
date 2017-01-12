@@ -6,7 +6,5 @@ angular.module('echo.components.modal.milestones.reportArrivalModal.components.a
   bindings: {
     load: '<',
     reportArrival: '<'
-  },
-  controller: function () {
   }
 });

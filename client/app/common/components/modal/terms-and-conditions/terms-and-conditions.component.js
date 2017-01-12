@@ -5,6 +5,5 @@ angular.module('echo.components.modal.termsAndConditions', [
   bindings: {
     modalActions: '<',
     acceptFooter: '<'
-  },
-  controller: function () {}
+  }
 });

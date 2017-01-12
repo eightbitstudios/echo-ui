@@ -59,6 +59,8 @@ describe('Component: Active Loads', function () {
     component = $componentController('activeLoads', null, {
       carrierId: carrierId
     });
+    spyOn(component, 'getPageData');
+    component.$onInit();
   }));
 
   describe('Function: deliveriesTodayHandler', function () {

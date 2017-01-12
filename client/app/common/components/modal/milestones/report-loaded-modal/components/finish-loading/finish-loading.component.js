@@ -6,7 +6,5 @@ angular.module('echo.components.modal.milestones.reportLoaded.finishLoading', []
       timeZones: '<',
       totalWeight: '<',
       weightConfirmed: '='
-    },
-    controller: function () {
     }
   });

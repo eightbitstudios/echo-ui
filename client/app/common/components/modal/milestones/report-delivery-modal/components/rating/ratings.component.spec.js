@@ -17,6 +17,7 @@ describe('Component: rating', function () {
     scope.$digest();
 
     component = $componentController('rating', null, {});
+    component.$onInit();
   }));
 
   describe('Function: init', function () {    

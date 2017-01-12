@@ -9,7 +9,5 @@ angular.module('echo.components.modal.milestones.driverLocation', [
       dateTimePicker: '=',
       timeZones: '<',
       dateTimePickerText: '@'
-    },
-    controller: function () {
     }
   });

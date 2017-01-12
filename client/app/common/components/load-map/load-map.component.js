@@ -1,13 +1,13 @@
 angular.module('echo.components.loadMap', [
-  'echo.services.googleMapsApi',
-  'echo.services.googleMaps',
-  'echo.components.googleMaps',
-  'echo.components.googleMapsMarker',
-  'echo.components.googleMapsInfoWindow',
-  'echo.components.loadMap.detailedInfoWindow',
-  'echo.components.loadMap.basicInfoWindow',
-  'echo.components.loading'
-])
+    'echo.services.googleMapsApi',
+    'echo.services.googleMaps',
+    'echo.components.googleMaps',
+    'echo.components.googleMapsMarker',
+    'echo.components.googleMapsInfoWindow',
+    'echo.components.loadMap.detailedInfoWindow',
+    'echo.components.loadMap.basicInfoWindow',
+    'echo.components.loading'
+  ])
   .constant('googleMapsConst', {
     detailedInfoOffset: {
       x: 230,
@@ -25,13 +25,14 @@ angular.module('echo.components.loadMap', [
       detailedInfo: '<',
       showMap: '<'
     },
-    controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
-      var that = this;
+    controller: function($q, googleMapsApi, googleMaps, googleMapsConst) {
 
-      that.formatMapPoints = function (google) {
+      this.formatMapPoints = function(google) {
+        var that = this;
+
         var geocoder = new google.maps.Geocoder();
         var promises = [];
-        _.forEach(that.mapPoints, function (mapPoint) {
+        _.forEach(that.mapPoints, function(mapPoint) {
           promises.push(googleMaps.appendPosition(geocoder, mapPoint));
         });
 
@@ -39,18 +40,20 @@ angular.module('echo.components.loadMap', [
           that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
           return that.mapCenter;
         } else {
-          return $q.all(promises).then(function () {
-            that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
+          return $q.all(promises).then(function() {
+            that.mapPoints = _.filter(that.mapPoints, function(mapPoint) {
+              return !!mapPoint.position;
+            });
             that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
           });
         }
       };
 
-      that.popupOffset = that.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
+      this.$onChanges = function(changeObj) {
+        var that = this;
 
-      that.$onChanges = function (changeObj) {
-        if(changeObj.showMap.currentValue) {
-          googleMapsApi.then(function (google) {
+        if (changeObj.showMap.currentValue) {
+          googleMapsApi.then(function(google) {
             that.google = google;
             return that.formatMapPoints(google);
           }).finally(function() {
@@ -59,6 +62,10 @@ angular.module('echo.components.loadMap', [
         } else {
           that.showLoading = true;
         }
+      };
+
+      this.$onInit = function() {
+        this.popupOffset = this.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
       };
     }
   });
