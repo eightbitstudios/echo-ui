@@ -48,7 +48,11 @@ angular.module('echo.api.dashboardRequestBuilder', [
     });
     return this;
   };
-
+  
+  DashboardRequestBuilder.prototype.fetchDashboardPage = function(singleStopPaging, multiStopPaging) {
+    return this.fetchSingleStopLoads(singleStopPaging).fetchMultiStopLoads(multiStopPaging).fetchMapData().fetchActiveLoadsCount();
+  };
+  
   DashboardRequestBuilder.prototype.execute = function() {
     return $http.get(this._url, {
       params: this._params
