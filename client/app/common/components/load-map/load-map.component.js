@@ -58,6 +58,8 @@ angular.module('echo.components.loadMap', [
           }).finally(function() {
             that.showLoading = false;
           });
+        } else {
+          that.showLoading = true;
         }
       };
 
