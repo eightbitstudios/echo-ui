@@ -1,10 +1,9 @@
-
-describe('Component: Active Loads', function () {
+describe('Component: Active Loads', function() {
   var component, scope, $q, carrierId, loadsApi, availableData, loadCountService;
 
-  beforeEach(function () {
+  beforeEach(function() {
     module('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html');
-    module('echo.index.carrier.loadManagement.activeLoads', function ($provide) {
+    module('echo.index.carrier.loadManagement.activeLoads', function($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchActiveLoadsPage']));
       $provide.value('loadCountService', loadCountService = jasmine.createSpyObj('loadCountService', ['getLoadCount', 'setLoadCount']));
       $provide.value('googleMapsDirective', {});
@@ -14,7 +13,7 @@ describe('Component: Active Loads', function () {
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_) {
+  beforeEach(inject(function($rootScope, $compile, $componentController, _$q_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -26,29 +25,21 @@ describe('Component: Active Loads', function () {
     availableData = {
       loads: {
         totalLoadCount: 24,
-        loads: [
-          {
-            id: 1
-          },
-          {
-            id: 2
-          },
-          {
-            id: 3
-          },
-          {
-            id: 4
-          }
-        ]
-      },
-      mapLoads: [
-        {
+        loads: [{
           id: 1
-        },
-        {
+        }, {
           id: 2
-        }
-      ],
+        }, {
+          id: 3
+        }, {
+          id: 4
+        }]
+      },
+      mapLoads: [{
+        id: 1
+      }, {
+        id: 2
+      }],
       loadsCount: {
         active: 12,
         unbilled: 13,
@@ -60,11 +51,17 @@ describe('Component: Active Loads', function () {
       carrierId: carrierId
     });
     spyOn(component, 'getPageData');
+    component.getPageData.and.callFake(function() {});
+
     component.$onInit();
   }));
 
-  describe('Function: deliveriesTodayHandler', function () {
-    it('should set filter text to default', function () {
+  describe('Function: deliveriesTodayHandler', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+
+    it('should set filter text to default', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.deliveriesTodayHandler(false);
@@ -77,7 +74,7 @@ describe('Component: Active Loads', function () {
       expect(component.isDeliveriesToday).toBe(false);
     });
 
-    it('should set filter text to next delivery', function () {
+    it('should set filter text to next delivery', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.deliveriesTodayHandler(true);
@@ -91,8 +88,11 @@ describe('Component: Active Loads', function () {
     });
   });
 
-  describe('Function: pickupsTodayHandler', function () {
-    it('should set filter text to default', function () {
+  describe('Function: pickupsTodayHandler', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+    it('should set filter text to default', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.pickupsTodayHandler(false);
@@ -105,7 +105,7 @@ describe('Component: Active Loads', function () {
       expect(component.isDeliveriesToday).toBe(false);
     });
 
-    it('should set filter text to next pickup', function () {
+    it('should set filter text to next pickup', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.pickupsTodayHandler(true);
@@ -119,8 +119,11 @@ describe('Component: Active Loads', function () {
     });
   });
 
-  describe('Function: getPageData', function () {
-    it('should fetch no data', function () {
+  describe('Function: getPageData', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+    it('should fetch no data', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(false, false, false);
@@ -135,7 +138,7 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
     });
 
-    it('should fetch only activeLoads', function () {
+    it('should fetch only activeLoads', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(true, false, false);
@@ -150,7 +153,7 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
     });
 
-    it('should fetch only mapLoads', function () {
+    it('should fetch only mapLoads', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(false, true, false);
@@ -165,7 +168,7 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
     });
 
-    it('should fetch only loadsCount', function () {
+    it('should fetch only loadsCount', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(false, false, true);
@@ -180,7 +183,7 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).toHaveBeenCalled();
     });
 
-    it('should fetch only not loadsCount', function () {
+    it('should fetch only not loadsCount', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(true, true, false);
@@ -195,7 +198,7 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
     });
 
-    it('should fetch only not mapLoads', function () {
+    it('should fetch only not mapLoads', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(true, false, true);
@@ -210,7 +213,7 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).toHaveBeenCalled();
     });
 
-    it('should fetch only not activeLoads', function () {
+    it('should fetch only not activeLoads', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(false, true, true);
@@ -225,7 +228,7 @@ describe('Component: Active Loads', function () {
       expect(loadCountService.setLoadCount).toHaveBeenCalled();
     });
 
-    it('should fetch all data', function () {
+    it('should fetch all data', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.getPageData(true, true, true);
@@ -241,8 +244,11 @@ describe('Component: Active Loads', function () {
     });
   });
 
-  describe('Function: refreshPageData', function () {
-    it('should fetch only not loadsCount', function () {
+  describe('Function: refreshPageData', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+    it('should fetch only not loadsCount', function() {
       var deferred = $q.defer();
       loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.refreshPageData();
