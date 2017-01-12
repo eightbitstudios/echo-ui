@@ -4,7 +4,6 @@ angular.module('echo.index.carrier.dashboard', [
     'echo.config.routes',
     'echo.enums.loadTypes',
     'echo.config.appConstants',
-    'echo.api.loads',
     'echo.components.loadMap',
     'echo.components.showMore',
     'echo.api.requestBuilder.dashboard'
@@ -15,7 +14,7 @@ angular.module('echo.index.carrier.dashboard', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, loadsApi, DashboardRequestBuilder) {
+    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, DashboardRequestBuilder) {
 
       this.showMoreActionLoadsHandler = function() {
         var that = this;
