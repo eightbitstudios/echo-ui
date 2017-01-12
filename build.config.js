@@ -62,8 +62,7 @@ module.exports = function (grunt) {
      */
     test_files: {
       js: [
-        'client/bower_components/angular-mocks/angular-mocks.js',
-        'client/bower_components/angular-resource/angular-resource.js'
+        'client/bower_components/angular-mocks/angular-mocks.js'
       ]
     },
 
@@ -100,15 +99,11 @@ module.exports = function (grunt) {
         'bower_components/angular/angular.js',
         'bower_components/angular-cookies/angular-cookies.js',
         'bower_components/angular-animate/angular-animate.js',
-        'bower_components/angular-sanitize/angular-sanitize.js',
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-        'bower_components/angular-base64/angular-base64.min.js',
-        'bower_components/angular-touch/angular-touch.js',
+        'bower_components/angular-base64/angular-base64.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
-        'bower_components/angular-resource/angular-resource.js',
         'bower_components/lodash/dist/lodash.js',
         'bower_components/moment/moment.js',
-        'bower_components/angular-base64/angular-base64.js',
         'bower_components/bootstrap-daterangepicker/daterangepicker.js',
         'bower_components/angular-ui-mask/src/mask.js'
       ],
