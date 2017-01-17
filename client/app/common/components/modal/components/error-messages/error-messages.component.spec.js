@@ -1,19 +1,19 @@
 
 describe('Component: Error Messages', function () {
-  var component, $q, scope;
+  var component, $q, scope, appConstants;
 
   beforeEach(function () {
     module('app/common/components/modal/components/error-messages/error-messages.template.html');
     module('echo.components.modal.errorMessages', function () {});
   });
 
-  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController) {
+  beforeEach(inject(function ($rootScope, _$q_, $compile, _appConstants_, $componentController) {
     scope = $rootScope.$new();
     $q = _$q_;
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
     };
-
+    appConstants = _appConstants_;
     component = $componentController('errorMessages', null, {});
   }));
 
@@ -86,7 +86,7 @@ describe('Component: Error Messages', function () {
       var result = component.determineErrorMessages();
 
       expect(result.length).toBe(1);
-      expect(result[0]).toBe('Unable to change current password');
+      expect(result[0]).toBe(appConstants.ERROR_MESSAGES.DEFAULTS[component.errorCode]);
     });
 
     it('should return the custom error code', function () {
