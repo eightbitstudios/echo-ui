@@ -1,15 +1,13 @@
 describe('Component: Active Loads', function() {
-  var component, scope, $q, carrierId, loadsApi, availableData, loadCountService;
+  var component, scope, $q, carrierId, availableData,
+    loadCountService, ActiveLoadsRequestBuilder, requestBuilderObj, requestDefer;
 
   beforeEach(function() {
-    module('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html');
     module('echo.index.carrier.loadManagement.activeLoads', function($provide) {
-      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchActiveLoadsPage']));
+      $provide.value('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html', '');
       $provide.value('loadCountService', loadCountService = jasmine.createSpyObj('loadCountService', ['getLoadCount', 'setLoadCount']));
-      $provide.value('googleMapsDirective', {});
-      $provide.value('googleMapsMarkerDirective', {});
-      $provide.value('googleMapsInfoWindowDirective', {});
-      $provide.value('googleMapsApi', _.noop);
+      $provide.value('ActiveLoadsRequestBuilder',
+        ActiveLoadsRequestBuilder = jasmine.createSpy('ActiveLoadsRequestBuilder'));
     });
   });
 
@@ -47,6 +45,14 @@ describe('Component: Active Loads', function() {
       }
     };
 
+    requestBuilderObj = jasmine.createSpyObj('requestBuilderObj', ['fetchMapData', 'fetchLoadsCount', 'fetchActiveLoads', 'hasMapData', 'filterByPickupsToday', 'filterByDeliveriesToday', 'execute']);
+    ActiveLoadsRequestBuilder.and.returnValue(requestBuilderObj);
+    requestBuilderObj.fetchActiveLoads.and.returnValue({
+      execute: requestBuilderObj.execute
+    });
+    requestDefer = $q.defer();
+    requestBuilderObj.execute.and.returnValue(requestDefer.promise);
+
     component = $componentController('activeLoads', null, {
       carrierId: carrierId
     });
@@ -60,31 +66,22 @@ describe('Component: Active Loads', function() {
     beforeEach(function() {
       component.getPageData.and.callThrough();
     });
-
     it('should set filter text to default', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.deliveriesTodayHandler(false);
-      deferred.resolve(availableData);
-
-      scope.$digest();
 
       expect(component.filterText).toBe('By Next Appointment');
       expect(component.isPickUpToday).toBe(false);
       expect(component.isDeliveriesToday).toBe(false);
+
+      expect(requestBuilderObj.filterByDeliveriesToday).not.toHaveBeenCalled();
     });
 
     it('should set filter text to next delivery', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.deliveriesTodayHandler(true);
-      deferred.resolve(availableData);
-
-      scope.$digest();
-
       expect(component.filterText).toBe('By Next Delivery');
       expect(component.isPickUpToday).toBe(false);
       expect(component.isDeliveriesToday).toBe(true);
+      expect(requestBuilderObj.filterByDeliveriesToday).toHaveBeenCalled();
     });
   });
 
@@ -93,29 +90,21 @@ describe('Component: Active Loads', function() {
       component.getPageData.and.callThrough();
     });
     it('should set filter text to default', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.pickupsTodayHandler(false);
-      deferred.resolve(availableData);
-
-      scope.$digest();
 
       expect(component.filterText).toBe('By Next Appointment');
       expect(component.isPickUpToday).toBe(false);
       expect(component.isDeliveriesToday).toBe(false);
+      expect(requestBuilderObj.filterByPickupsToday).not.toHaveBeenCalled();
     });
 
     it('should set filter text to next pickup', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
       component.pickupsTodayHandler(true);
-      deferred.resolve(availableData);
-
-      scope.$digest();
 
       expect(component.filterText).toBe('By Next Pickup');
       expect(component.isPickUpToday).toBe(true);
       expect(component.isDeliveriesToday).toBe(false);
+      expect(requestBuilderObj.filterByPickupsToday).toHaveBeenCalled();
     });
   });
 
@@ -123,26 +112,19 @@ describe('Component: Active Loads', function() {
     beforeEach(function() {
       component.getPageData.and.callThrough();
     });
-    it('should fetch no data', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(false, false, false);
-      deferred.resolve(availableData);
+    it('should fetch map data', function() {
+      requestBuilderObj.hasMapData.and.returnValue(true);
+      component.getPageData(requestBuilderObj);
 
-      scope.$digest();
-
-      expect(component.activeLoads).toBeUndefined();
-      expect(component.mapPoints).toBeUndefined();
-      expect(component.paging.totalRecords).toBe(0);
-      expect(component.paging.recordCount).toBe(0);
-      expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
+      expect(requestBuilderObj.hasMapData).toHaveBeenCalled();
     });
 
     it('should fetch only activeLoads', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(true, false, false);
-      deferred.resolve(availableData);
+      component.getPageData(requestBuilderObj);
+      requestDefer.resolve(availableData);
+
+      availableData.loadsCount = undefined;
+      availableData.mapLoads = undefined;
 
       scope.$digest();
 
@@ -153,41 +135,26 @@ describe('Component: Active Loads', function() {
       expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
     });
 
-    it('should fetch only mapLoads', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(false, true, false);
-      deferred.resolve(availableData);
+    it('should fetch loadsCount', function() {
+      component.getPageData(requestBuilderObj);
+      requestDefer.resolve(availableData);
+
+      availableData.mapLoads = undefined;
 
       scope.$digest();
 
-      expect(component.activeLoads).toBeUndefined();
-      expect(component.paging.totalRecords).toBe(0);
-      expect(component.paging.recordCount).toBe(0);
+      expect(component.activeLoads).toBe(availableData.loads.loads);
+      expect(component.paging.totalRecords).toBe(24);
+      expect(component.paging.recordCount).toBe(4);
       expect(component.mapPoints).toBe(availableData.mapLoads);
-      expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
-    });
-
-    it('should fetch only loadsCount', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(false, false, true);
-      deferred.resolve(availableData);
-
-      scope.$digest();
-
-      expect(component.activeLoads).toBeUndefined();
-      expect(component.paging.totalRecords).toBe(0);
-      expect(component.paging.recordCount).toBe(0);
-      expect(component.mapPoints).toBeUndefined();
       expect(loadCountService.setLoadCount).toHaveBeenCalled();
     });
 
-    it('should fetch only not loadsCount', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(true, true, false);
-      deferred.resolve(availableData);
+    it('should fetch mapLoads', function() {
+      component.getPageData(requestBuilderObj);
+      requestDefer.resolve(availableData);
+
+      availableData.loadsCount = undefined;
 
       scope.$digest();
 
@@ -198,70 +165,48 @@ describe('Component: Active Loads', function() {
       expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
     });
 
-    it('should fetch only not mapLoads', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(true, false, true);
-      deferred.resolve(availableData);
+    it('should not load active loads', function() {
+      component.getPageData(requestBuilderObj);
+      requestDefer.resolve(availableData);
 
-      scope.$digest();
-
-      expect(component.activeLoads).toBe(availableData.loads.loads);
-      expect(component.paging.totalRecords).toBe(24);
-      expect(component.paging.recordCount).toBe(4);
-      expect(component.mapPoints).toBeUndefined();
-      expect(loadCountService.setLoadCount).toHaveBeenCalled();
-    });
-
-    it('should fetch only not activeLoads', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(false, true, true);
-      deferred.resolve(availableData);
+      availableData.loads = undefined;
 
       scope.$digest();
 
       expect(component.activeLoads).toBeUndefined();
-      expect(component.paging.totalRecords).toBe(0);
-      expect(component.paging.recordCount).toBe(0);
-      expect(component.mapPoints).toBe(availableData.mapLoads);
-      expect(loadCountService.setLoadCount).toHaveBeenCalled();
-    });
-
-    it('should fetch all data', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
-      component.getPageData(true, true, true);
-      deferred.resolve(availableData);
-
-      scope.$digest();
-
-      expect(component.activeLoads).toBe(availableData.loads.loads);
-      expect(component.paging.totalRecords).toBe(24);
-      expect(component.paging.recordCount).toBe(4);
-      expect(component.mapPoints).toBe(availableData.mapLoads);
-      expect(loadCountService.setLoadCount).toHaveBeenCalled();
     });
   });
 
   describe('Function: refreshPageData', function() {
-    beforeEach(function() {
-      component.getPageData.and.callThrough();
-    });
-    it('should fetch only not loadsCount', function() {
-      var deferred = $q.defer();
-      loadsApi.fetchActiveLoadsPage.and.returnValue(deferred.promise);
+    it('should not fetch loadsCount', function() {
+      requestBuilderObj.fetchLoadsCount.calls.reset();
       component.refreshPageData();
-      deferred.resolve(availableData);
-
-      scope.$digest();
-
-      expect(component.activeLoads).toBe(availableData.loads.loads);
-      expect(component.paging.totalRecords).toBe(24);
-      expect(component.paging.recordCount).toBe(4);
-      expect(component.mapPoints).toBe(availableData.mapLoads);
-      expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
+      expect(requestBuilderObj.fetchMapData).toHaveBeenCalled();
+      expect(requestBuilderObj.fetchLoadsCount).not.toHaveBeenCalled();
     });
   });
 
+  describe('Function: fetchActiveLoads', function() {
+    it('should call getPageData', function() {
+      component.fetchActiveLoads();
+      expect(component.getPageData).toHaveBeenCalled();
+    });
+  });
+
+  describe('Function: $onInit', function() {
+
+    it('should fetch loadCount', function() {
+      component.$onInit();
+      expect(requestBuilderObj.fetchLoadsCount).toHaveBeenCalled();
+    });
+
+    it('should not fetch loadCount', function() {
+      requestBuilderObj.fetchLoadsCount.calls.reset();
+      loadCountService.getLoadCount.and.returnValue({
+        test: 1
+      });
+      component.$onInit();
+      expect(requestBuilderObj.fetchLoadsCount).not.toHaveBeenCalled();
+    });
+  });
 });

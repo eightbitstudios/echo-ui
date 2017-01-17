@@ -5,24 +5,6 @@ angular.module('echo.api.loads', [
   'echo.models.user'
 ]).factory('loadsApi', function($q, $http, apiConfig, UserModel) {
   return {
-    fetchAvailableLoads: function(carrierId, paging, pickupsToday, deliveriesToday) {
-      var url = apiConfig.availableLoadsByCarrierId({
-        carrierId: carrierId
-      });
-
-      var params = {
-        limit: paging.limit,
-        offset: paging.offset,
-        pickupsToday: pickupsToday,
-        deliveriesToday: deliveriesToday
-      };
-
-      return $http.get(url, {
-        params: params
-      }).then(function(resp) {
-        return $q.when(resp.data.data);
-      });
-    },
     fetchUnbilledLoads: function(carrierId, paging, podNeeded, invoiceNeeded) {
       var url = apiConfig.unbilledLoadsByCarrierId({
         carrierId: carrierId
@@ -43,40 +25,6 @@ angular.module('echo.api.loads', [
     },
     fetchUpcomingLoads: function(carrierId, paging, driverNeeded) {
       var url = apiConfig.upcomingLoadsByCarrierId({
-        carrierId: carrierId
-      });
-
-      var params = {
-        limit: paging.limit,
-        offset: paging.offset,
-        driverNeeded: driverNeeded
-      };
-
-      return $http.get(url, {
-        params: params
-      }).then(function(resp) {
-        return $q.when(resp.data.data);
-      });
-    },
-    fetchLoadsNeedingAction: function(carrierId, paging, driverNeeded) {
-      var url = apiConfig.loadsNeedingAction({
-        carrierId: carrierId
-      });
-
-      var params = {
-        limit: paging.limit,
-        offset: paging.offset,
-        driverNeeded: driverNeeded
-      };
-
-      return $http.get(url, {
-        params: params
-      }).then(function(resp) {
-        return $q.when(resp.data.data);
-      });
-    },
-    fetchMultiStopLoads: function(carrierId, paging, driverNeeded) {
-      var url = apiConfig.multiStopLoads({
         carrierId: carrierId
       });
 
@@ -329,72 +277,11 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    fetchMapPointsForActiveLoads: function(carrierId) {
-      var url = apiConfig.mapPointsForActiveLoads({
-        carrierId: carrierId
-      });
-      return $http.get(url).then(function(resp) {
-        return $q.when(resp.data.data);
-      });
-    },
     fetchMapPointByLoadGuid: function(loadGuid) {
       var url = apiConfig.mapPointByLoadGuid({
         loadGuid: loadGuid
       });
       return $http.get(url).then(function(resp) {
-        return $q.when(resp.data.data);
-      });
-    },
-    fetchMapPointsForLoadsNeedingAction: function(carrierId) {
-      var url = apiConfig.mapPointsForLoadsNeedingAction({
-        carrierId: carrierId
-      });
-      return $http.get(url).then(function(resp) {
-        return $q.when(resp.data.data);
-      });
-    },
-    fetchActiveLoadsPage: function(carrierId, paging, pickupsToday, deliveriesToday,
-      getActiveLoads, getMapLoads, getLoadsCount) {
-      var url = apiConfig.activeLoadsPage({
-        carrierId: carrierId
-      });
-
-      var params = {
-        limit: paging.limit,
-        offset: paging.offset,
-        pickupsToday: pickupsToday,
-        deliveriesToday: deliveriesToday,
-        getActiveLoads: getActiveLoads,
-        getMapLoads: getMapLoads,
-        getLoadsCount: getLoadsCount
-      };
-
-      return $http.get(url, {
-        params: params
-      }).then(function(resp) {
-        return $q.when(resp.data.data);
-      });
-    },
-    fetchDashboard: function(carrierId, getActiveLoadsCount, getMapLoads, singleStopPaging, multiStopPaging) {
-
-      var url = apiConfig.loadDashboard({
-        carrierId: carrierId
-      });
-
-      var params = {
-        getActiveLoadsCount: getActiveLoadsCount,
-        getMapLoads: getMapLoads,
-        getSingleStopLoads: !_.isEmpty(singleStopPaging),
-        getMultiStopLoads:  !_.isEmpty(multiStopPaging),
-        singleStopLoadsLimit: singleStopPaging.limit,
-        singleStopLoadsOffset: singleStopPaging.offset,
-        multiStopLoadsLimit: multiStopPaging.limit,
-        multiStopLoadsOffset: multiStopPaging.offset,
-      };
-
-      return $http.get(url, {
-        params: params
-      }).then(function(resp) {
         return $q.when(resp.data.data);
       });
     }

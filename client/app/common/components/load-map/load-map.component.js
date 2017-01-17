@@ -66,6 +66,7 @@ angular.module('echo.components.loadMap', [
 
       this.$onInit = function() {
         this.popupOffset = this.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
+        this.showLoading = true;
       };
     }
   });

@@ -4,9 +4,9 @@ angular.module('echo.index.carrier.dashboard', [
     'echo.config.routes',
     'echo.enums.loadTypes',
     'echo.config.appConstants',
-    'echo.api.loads',
     'echo.components.loadMap',
-    'echo.components.showMore'
+    'echo.components.showMore',
+    'echo.api.requestBuilder.dashboard'
   ])
   .component('dashboard', {
     templateUrl: 'app/pages/index/carrier/components/dashboard/dashboard.template.html',
@@ -14,13 +14,16 @@ angular.module('echo.index.carrier.dashboard', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, loadsApi) {
+    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, DashboardRequestBuilder) {
 
       this.showMoreActionLoadsHandler = function() {
         var that = this;
 
         that.showMoreActionLoadsLoading = true;
-        loadsApi.fetchDashboard(that.carrierId, false, false, that.pagingActionLoads, {})
+
+        var dashboardRequestBuilder = new DashboardRequestBuilder(that.carrierId);
+
+        dashboardRequestBuilder.fetchSingleStopLoads(that.pagingActionLoads).execute()
           .then(function(dashboard) {
             var loadsNeedingAction = dashboard.singleStopLoads;
             that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
@@ -35,7 +38,10 @@ angular.module('echo.index.carrier.dashboard', [
 
         that.showActionLoadsLoading = true;
         that.pagingActionLoads.reset();
-        loadsApi.fetchDashboard(that.carrierId, false, false, that.pagingActionLoads, {})
+
+        var dashboardRequestBuilder = new DashboardRequestBuilder(that.carrierId);
+
+        dashboardRequestBuilder.fetchSingleStopLoads(that.pagingActionLoads).execute()
           .then(function(dashboard) {
             var loadsNeedingAction = dashboard.singleStopLoads;
             that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
@@ -50,7 +56,10 @@ angular.module('echo.index.carrier.dashboard', [
 
         that.showMultiStopLoading = true;
         that.pagingMultistopLoads.reset();
-        loadsApi.fetchDashboard(that.carrierId, false, false, {}, that.pagingMultistopLoads)
+
+        var dashboardRequestBuilder = new DashboardRequestBuilder(that.carrierId);
+
+        dashboardRequestBuilder.fetchMultiStopLoads(that.pagingMultistopLoads).execute()
           .then(function(dashboard) {
             var multiStopLoads = dashboard.multiStopLoads;
             that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
@@ -64,7 +73,10 @@ angular.module('echo.index.carrier.dashboard', [
         var that = this;
 
         that.showMoreMultiStopLoading = true;
-        loadsApi.fetchDashboard(that.carrierId, false, false, {}, that.pagingMultistopLoads).then(function(dashboard) {
+
+        var dashboardRequestBuilder = new DashboardRequestBuilder(that.carrierId);
+
+        dashboardRequestBuilder.fetchMultiStopLoads(that.pagingMultistopLoads).execute().then(function(dashboard) {
           var multiStopLoads = dashboard.multiStopLoads;
           that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
           that.multiStopLoads = _.concat(that.multiStopLoads, multiStopLoads.loads);
@@ -79,32 +91,32 @@ angular.module('echo.index.carrier.dashboard', [
 
       this.fetchLoadDashboard = function() {
         var that = this;
+        that.showLoading = true;
 
-        that.showMultiStopLoading = true;
-        that.showActionLoadsLoading = true;
-        that.showMap = false;
-        loadsApi.fetchDashboard(that.carrierId, true, true, that.pagingActionLoads, that.pagingMultistopLoads).then(function(dashboard) {
-          var multiStopLoads = dashboard.multiStopLoads;
-          var loadsNeedingAction = dashboard.singleStopLoads;
+        var dashboardRequestBuilder = new DashboardRequestBuilder(that.carrierId);
 
-          that.activeLoadsCount = dashboard.activeLoadsCount;
-          that.mapPoints = dashboard.mapLoads;
+        dashboardRequestBuilder.fetchDashboardPage(that.pagingActionLoads, that.pagingMultistopLoads)
+          .execute().then(function(dashboard) {
+            var multiStopLoads = dashboard.multiStopLoads;
+            var loadsNeedingAction = dashboard.singleStopLoads;
 
-          if (_.get(multiStopLoads, 'totalLoadCount')) {
-            that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
-          }
+            that.activeLoadsCount = dashboard.activeLoadsCount;
 
-          if (_.get(loadsNeedingAction, 'totalLoadCount')) {
-            that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
-          }
+            that.mapPoints = dashboard.mapLoads;
 
-          that.multiStopLoads = _.get(multiStopLoads, 'loads') || [];
-          that.activeLoads = _.get(loadsNeedingAction, 'loads') || [];
-        }).finally(function() {
-          that.showMultiStopLoading = false;
-          that.showActionLoadsLoading = false;
-          that.showMap = true;
-        });
+            if (_.get(multiStopLoads, 'totalLoadCount')) {
+              that.pagingMultistopLoads.setRecords(multiStopLoads.totalLoadCount, _.size(multiStopLoads.loads));
+            }
+
+            if (_.get(loadsNeedingAction, 'totalLoadCount')) {
+              that.pagingActionLoads.setRecords(loadsNeedingAction.totalLoadCount, _.size(loadsNeedingAction.loads));
+            }
+
+            that.multiStopLoads = _.get(multiStopLoads, 'loads') || [];
+            that.activeLoads = _.get(loadsNeedingAction, 'loads') || [];
+          }).finally(function() {
+            that.showLoading = false;
+          });
       };
 
       this.$onInit = function() {

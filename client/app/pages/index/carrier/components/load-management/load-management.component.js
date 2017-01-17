@@ -1,20 +1,21 @@
 angular.module('echo.index.carrier.loadManagement', [
-    'echo.components.tabBar',
-    'echo.components.searchBar',
-    'echo.config.routes',
-    'echo.api.loads',
-    'echo.index.carrier.loadManagement.activeLoads',
-    'echo.index.carrier.loadManagement.unbilledLoads',
-    'echo.index.carrier.loadManagement.upcomingLoads',
-    'echo.index.carrier.loadManagement.searchLoads',
-    'echo.index.carrier.loadManagement.loadDetails',
-    'echo.services.loadCount'
-  ])
+  'echo.components.tabBar',
+  'echo.components.searchBar',
+  'echo.config.routes',
+  'echo.api.loads',
+  'echo.index.carrier.loadManagement.activeLoads',
+  'echo.index.carrier.loadManagement.unbilledLoads',
+  'echo.index.carrier.loadManagement.upcomingLoads',
+  'echo.index.carrier.loadManagement.searchLoads',
+  'echo.index.carrier.loadManagement.loadDetails',
+  'echo.services.loadCount'
+])
   .component('loadManagement', {
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
     bindings: {
       repDetails: '<',
-      carrierId: '<'
+      carrierId: '<',
+      count: '<'
     },
     controller: function($stateParams, $state, routesConfig, loadCountService) {
       this.$onInit = function() {
@@ -48,5 +49,5 @@ angular.module('echo.index.carrier.loadManagement', [
           that.showLoading = false;
         });
       };
-    }
+    } 
   });
