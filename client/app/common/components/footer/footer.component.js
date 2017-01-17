@@ -11,23 +11,22 @@ angular.module('echo.components.footer', [
   'echo.components.modal.termsAndConditions'
 ]).component('appFooter', {
   templateUrl: 'app/common/components/footer/footer.template.html',
-    controller: function(repDetailsService, userProfileService, routesConfig, appConstants, modalService) {
-      var that = this;
+  controller: function(repDetailsService, userProfileService, routesConfig, appConstants, modalService) {
+    this.showTermsAndConditionsModal = function() {
+      var modalInstance = modalService.open({
+        component: 'terms-and-conditions',
+        bindings: {
+          acceptFooter: false
+        }
+      }).result;
 
-      that.user = userProfileService.getUser();
-      that.repDetails = repDetailsService.getRep();
+      modalInstance.then(function() {});
+    };
 
-      that.privacyPolicyRoute = appConstants.PRIVACY_POLICY_URL;
-
-      that.showTermsAndConditionsModal = function () {
-        var modalInstance = modalService.open({
-          component: 'terms-and-conditions',
-          bindings: {
-            acceptFooter: false
-          }
-        }).result;
-
-        modalInstance.then(function () {});
-      };
+    this.$onInit = function() {
+      this.user = userProfileService.getUser();
+      this.repDetails = repDetailsService.getRep();
+      this.privacyPolicyRoute = appConstants.PRIVACY_POLICY_URL;
+    };
   }
 });

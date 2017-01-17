@@ -15,24 +15,10 @@ angular.module('echo.index.myCarriers.carrierDetails', [
     templateUrl: 'app/pages/index/my-carriers/components/carrier-details/carrier-details.template.html',
     bindings: {},
     controller: function($stateParams, $q, carrierApi, routesConfig, languageApi, UserModel, DriverModel) {
-      var that = this;
 
-      that.mode = {
-        DETAILS: 0,
-        PORTAL_USER: 1,
-        DRIVER: 2
-      };
+      this.getCarrier = function(carrierId) {
+        var that = this;
 
-      that.showLoading = false;
-      that.isCarrierAdmin = false;
-
-      that.carrierId = $stateParams.carrierId;
-      that.usersRoute = routesConfig.INDEX.myCompanyUsers;
-      that.driverRoute = routesConfig.INDEX.myCompanyDrivers;
-      that.dashboardRoute = routesConfig.INDEX.dashboard;
-
-
-      that.getCarrier = function(carrierId) {
         that.showLoading = true;
         return carrierApi.fetchCarrierById(carrierId).then(function(carrier) {
           that.carrier = carrier;
@@ -53,31 +39,47 @@ angular.module('echo.index.myCarriers.carrierDetails', [
         });
       };
 
-      that.showPortalUserHandler = function(user) {
-        that.portalUser = user || new UserModel();
-        that.portalUser.carrierId = that.carrierId;
-        that.showPortalUser();
+      this.showPortalUserHandler = function(user) {
+        this.portalUser = user || new UserModel();
+        this.portalUser.carrierId = this.carrierId;
+        this.showPortalUser();
       };
 
-      that.showNewDriverProfile = function() {
-        that.driver = new DriverModel();
-        that.showMode = that.mode.DRIVER;
+      this.showNewDriverProfile = function() {
+        this.driver = new DriverModel();
+        this.showMode = this.mode.DRIVER;
       };
 
-      that.loadCarrierDetails = function() {
+      this.loadCarrierDetails = function() {
+        var that = this;
+
         that.getCarrier(that.carrierId).then(function() {
           that.showDetailsHandler();
         });
       };
 
-      that.showDetailsHandler = function() {
-        that.showMode = that.mode.DETAILS;
+      this.showDetailsHandler = function() {
+        this.showMode = this.mode.DETAILS;
       };
 
-      that.showPortalUser = function() {
-        that.showMode = that.mode.PORTAL_USER;
+      this.showPortalUser = function() {
+        this.showMode = this.mode.PORTAL_USER;
       };
 
-      that.loadCarrierDetails();
+      this.$onInit = function() {
+        this.mode = {
+          DETAILS: 0,
+          PORTAL_USER: 1,
+          DRIVER: 2
+        };
+        this.showLoading = false;
+        this.isCarrierAdmin = false;
+        this.carrierId = $stateParams.carrierId;
+        this.usersRoute = routesConfig.INDEX.myCompanyUsers;
+        this.driverRoute = routesConfig.INDEX.myCompanyDrivers;
+        this.dashboardRoute = routesConfig.INDEX.dashboard;
+
+        this.loadCarrierDetails();
+      };
     }
   });

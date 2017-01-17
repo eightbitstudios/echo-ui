@@ -20,7 +20,7 @@ angular.module('echo.decorators.uiRouter', [])
          * Builds out a template for a component
          * @example <portal-users user="$ctrl.users"/>
          */
-        state.self.template = _.template('<${component} ${bindings}><${component}/>')({
+        state.self.template = _.template('<${component} ${bindings}></${component}>')({
           component: state.self.component,
           bindings: _(resolve).map(function (value) {
             return _.template('${bindingName}="${ctrlName}.${binding}"')({

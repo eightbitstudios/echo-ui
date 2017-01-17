@@ -9,14 +9,13 @@ angular.module('echo.components.portalUsers', [
   },
   templateUrl: 'app/common/components/portal-users/portal-users.template.html',
   controller: function() { 
-    var that = this;
 
-    that.userTileClickHandler = function(portalUser) {
-      that.clickHandler({user: portalUser});
+    this.userTileClickHandler = function(portalUser) {
+      this.clickHandler({user: portalUser});
     };
 
-    that.addTileHandler = function() {
-      that.clickHandler({user: null});
+    this.addTileHandler = function() {
+      this.clickHandler({user: null});
     };
   }
 });

@@ -21,7 +21,7 @@ angular.module('echo.filters.phoneNumber', [])
         number = value.slice(4);
       }
 
-      return '+' + country + ' (' + city + ') ' + number.slice(0, 3) + '-' + number.slice(3, 7);
+      return city + '-' + number.slice(0, 3) + '-' + number.slice(3, 7);
 
     };
   });

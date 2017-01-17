@@ -24,6 +24,7 @@ describe('Component: createPassword', function () {
     scope.$digest();
 
     component = $componentController('createPassword', null, {});
+    component.$onInit();
   }));
 
   describe('Function: createPassword', function () {

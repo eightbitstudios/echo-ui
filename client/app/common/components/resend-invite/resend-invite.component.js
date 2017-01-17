@@ -10,9 +10,8 @@ angular.module('echo.components.resendInvite', [
   },
   templateUrl: 'app/common/components/resend-invite/resend-invite.template.html',
   controller: function (portalUserApi) {
-    var that = this;
-
-    that.resendInvite = function () {
+    this.resendInvite = function () {
+      var that = this;
       that.showError = false;
       that.showDefaultError = false;
       that.errorCode = null;
@@ -34,12 +33,12 @@ angular.module('echo.components.resendInvite', [
       });
     };
 
-    that.$onInit = function () {
-      that.showLoading = false;
-      that.disableSubmit = false;
-      that.showError = false;
-      that.showDefaultError = false;
-      that.showSuccess = false;
+    this.$onInit = function () {
+      this.showLoading = false;
+      this.disableSubmit = false;
+      this.showError = false;
+      this.showDefaultError = false;
+      this.showSuccess = false;
     };
   }
 });

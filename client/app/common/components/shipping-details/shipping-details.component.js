@@ -1,27 +1,30 @@
 angular.module('echo.components.shippingDetails', [
-  'echo.components.pagination',
-  'echo.models.paging'
-])
+    'echo.components.pagination',
+    'echo.models.paging'
+  ])
   .component('shippingDetails', {
     templateUrl: 'app/common/components/shipping-details/shipping-details.template.html',
     bindings: {
       shippingDetails: '<',
       inactive: '<'
     },
-    controller: function (PagingModel) {
-      var that = this;
-      that.paging = new PagingModel(1);
+    controller: function(PagingModel) {
 
-      if (_.isArray(that.shippingDetails)) {
-        that.location = _.find(that.shippingDetails, { isCurrent: true }) ||  _.last(that.shippingDetails);
-        that.paging.selectedPage = _.findIndex(that.shippingDetails, that.location) + 1;
-        that.paging.totalRecords = _.size(that.shippingDetails);
-      } else {
-        that.location = that.shippingDetails;
-      }
+      this.pageClickHandler = function() {
+        this.location = this.shippingDetails[this.paging.selectedPage - 1];
+      };
 
-      that.pageClickHandler = function() {
-        that.location = that.shippingDetails[that.paging.selectedPage - 1];
+      this.$onInit = function() {
+        this.paging = new PagingModel(1);
+        if (_.isArray(this.shippingDetails)) {
+          this.location = _.find(this.shippingDetails, {
+            isCurrent: true
+          }) || _.last(this.shippingDetails);
+          this.paging.selectedPage = _.findIndex(this.shippingDetails, this.location) + 1;
+          this.paging.totalRecords = _.size(this.shippingDetails);
+        } else {
+          this.location = this.shippingDetails;
+        }
       };
     }
   });

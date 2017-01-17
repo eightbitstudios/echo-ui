@@ -19,19 +19,20 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
       showLoading: '=',
       carrierId: '<'
     },
-    controller: function (userProfileService, PasswordChangeModel) {
-      var that = this;
+    controller: function(userProfileService, PasswordChangeModel) {
 
-      that.passwordChange = new PasswordChangeModel();
-      that.currentPassword = null;
-      that.user = userProfileService.getUser();
-
-      that.goBackToPortal = function () {
-        that.goBackHandler();
+      this.goBackToPortal = function() {
+        this.goBackHandler();
       };
 
-      that.userProfileUpdated = function () {
-        that.reloadPortalHandler();
+      this.userProfileUpdated = function() {
+        this.reloadPortalHandler();
+      };
+
+      this.$onInit = function() {
+        this.passwordChange = new PasswordChangeModel();
+        this.currentPassword = null;
+        this.user = userProfileService.getUser();
       };
     }
   });

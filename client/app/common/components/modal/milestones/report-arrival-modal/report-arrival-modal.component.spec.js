@@ -34,6 +34,7 @@ describe('Component: reportArrivalModal', function () {
         stopType: 'Pick'
       }
     }, arrivalType: {}, timeZones: {}, reportEmpty: {}, carrierId: 1 });
+    component.$onInit();
   }));
 
  describe('Function: confirmArrivalHandler', function () {

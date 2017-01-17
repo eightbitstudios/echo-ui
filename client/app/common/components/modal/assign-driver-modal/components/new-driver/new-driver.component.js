@@ -1,9 +1,9 @@
 angular.module('echo.components.modal.assignDriver.newDriver', [
-  'echo.models.driver',
-  'echo.components.driverProfile',
-  'echo.api.driver',
-  'echo.api.language'
-])
+    'echo.models.driver',
+    'echo.components.driverProfile',
+    'echo.api.driver',
+    'echo.api.language'
+  ])
   .component('newDriver', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/new-driver/new-driver.template.html',
     bindings: {
@@ -11,27 +11,29 @@ angular.module('echo.components.modal.assignDriver.newDriver', [
       continueCallback: '&',
       carrierId: '<'
     },
-    controller: function (languageApi, driverApi, DriverModel) {
-      var that = this;
+    controller: function(languageApi, driverApi, DriverModel) {
 
-      that.newDriver = new DriverModel();
-
-      that.saveNewDriver = function () {
+      this.saveNewDriver = function() {
+        var that = this;
         if (!_.isEmpty(that.newDriver.firstName) && !_.isEmpty(that.newDriver.phone)) {
           that.showLoading = true;
-          driverApi.insertDriver(that.carrierId, that.newDriver).then(function (newDriver) {
-            that.continueCallback({ driver: newDriver });
-          }).finally(function () {
+          driverApi.insertDriver(that.carrierId, that.newDriver).then(function(newDriver) {
+            that.continueCallback({
+              driver: newDriver
+            });
+          }).finally(function() {
             that.showLoading = false;
           });
         }
       };
 
-      that.$onInit = function () {
+      this.$onInit = function() {
+        var that = this;
+        that.newDriver = new DriverModel();
         that.showLoading = true;
-        languageApi.fetchLanguages().then(function (languages) {
+        languageApi.fetchLanguages().then(function(languages) {
           that.languages = languages;
-        }).finally(function () {
+        }).finally(function() {
           that.showLoading = false;
         });
       };

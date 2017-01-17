@@ -31,34 +31,6 @@ describe('Api: loadsApi', function () {
     $http.delete.and.returnValue($q.when(deleteRes = {}));
   });
 
-  describe('Function: fetchAvailableLoads', function () {
-    it('should make a get request to fetch available loads', function (done) {
-      getRes.data = { data: '' };
-      var carrierId = 1,
-        paging = {
-          limit: 10,
-          offset: 1
-        },
-        pickupsToday = false,
-        deliveriesToday = false;
-
-      loadsApi.fetchAvailableLoads(carrierId, paging, pickupsToday, deliveriesToday).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.availableLoadsByCarrierId({ carrierId: carrierId }),
-          {
-            params: {
-              limit: paging.limit,
-              offset: paging.offset,
-              pickupsToday: pickupsToday,
-              deliveriesToday: deliveriesToday
-            }
-          });
-        done();
-      });
-
-      $scope.$digest();
-    });
-  });
-
   describe('Function: fetchUnbilledLoads', function () {
     it('should make a get request to fetch unbilled loads', function (done) {
       getRes.data = { data: '' };
@@ -98,56 +70,6 @@ describe('Api: loadsApi', function () {
 
       loadsApi.fetchUpcomingLoads(carrierId, paging, driverNeeded).then(function () {
         expect($http.get).toHaveBeenCalledWith(apiConfig.upcomingLoadsByCarrierId({ carrierId: carrierId }), {
-          params: {
-            limit: paging.limit,
-            offset: paging.offset,
-            driverNeeded: driverNeeded
-          }
-        });
-        done();
-      });
-
-      $scope.$digest();
-    });
-  });
-
-  describe('Function: fetchLoadsNeedingAction', function () {
-    it('should make a get request to fetch loads needing action', function (done) {
-      getRes.data = { data: '' };
-      var carrierId = 1,
-        paging = {
-          limit: 10,
-          offset: 1
-        },
-        driverNeeded = false;
-
-      loadsApi.fetchLoadsNeedingAction(carrierId, paging, driverNeeded).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.loadsNeedingAction({ carrierId: carrierId }), {
-          params: {
-            limit: paging.limit,
-            offset: paging.offset,
-            driverNeeded: driverNeeded
-          }
-        });
-        done();
-      });
-
-      $scope.$digest();
-    });
-  });
-
-  describe('Function: fetchMultiStopLoads', function () {
-    it('should make a get request to fetch multi stop loads', function (done) {
-      getRes.data = { data: '' };
-      var carrierId = 1,
-        paging = {
-          limit: 10,
-          offset: 1
-        },
-        driverNeeded = false;
-
-      loadsApi.fetchMultiStopLoads(carrierId, paging, driverNeeded).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.multiStopLoads({ carrierId: carrierId }), {
           params: {
             limit: paging.limit,
             offset: paging.offset,
@@ -298,20 +220,6 @@ describe('Api: loadsApi', function () {
 
       loadsApi.fetchActivityLogByLoadId(loadId).then(function () {
         expect($http.get).toHaveBeenCalledWith(apiConfig.activityLogByLoadId({ loadId: loadId }));
-        done();
-      });
-
-      $scope.$digest();
-    });
-  });
-
-  describe('Function: fetchLoadCount', function () {
-    it('should get load count', function (done) {
-      getRes.data = { data: '' };
-      var carrierId = 1;
-
-      loadsApi.fetchLoadCount(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.loadCountByCarrierId({ carrierId: carrierId }));
         done();
       });
 

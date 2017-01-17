@@ -8,23 +8,21 @@ angular.module('echo.components.modal.milestones.reportEmpty.confirmEmpty', [
       checkboxItems: '='
     },
     controller: function () {
-      var that = this;
 
+      this.$onInit = function () {
+        this.equipment = _(this.reportEmpty.equipment).filter({ isSpecialService: false }).map('displayName').join(', ');
+        this.services = _(this.reportEmpty.equipment).filter({ isSpecialService: true }).map('displayName').join(', ');
 
-      that.$onInit = function () {
-        that.equipment = _(that.reportEmpty.equipment).filter({ isSpecialService: false }).map('displayName').join(', ');
-        that.services = _(that.reportEmpty.equipment).filter({ isSpecialService: true }).map('displayName').join(', ');
-
-        if (_.isEmpty(that.equipment)) {
-          that.checkboxItems.equipmentCheckbox.isChecked = true;
+        if (_.isEmpty(this.equipment)) {
+          this.checkboxItems.equipmentCheckbox.isChecked = true;
         }
 
-        if (_.isEmpty(that.services)) {
-          that.checkboxItems.serviceCheckbox.isChecked = true;
+        if (_.isEmpty(this.services)) {
+          this.checkboxItems.serviceCheckbox.isChecked = true;
         }
 
-        if (_.isEmpty(that.reportEmpty.generalInstructions)) {
-          that.checkboxItems.instructionCheckbox.isChecked = true;
+        if (_.isEmpty(this.reportEmpty.generalInstructions)) {
+          this.checkboxItems.instructionCheckbox.isChecked = true;
         }
       };
     }

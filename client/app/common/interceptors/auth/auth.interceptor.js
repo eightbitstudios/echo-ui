@@ -5,7 +5,7 @@ angular.module('echo.interceptors.auth', [
     'echo.api.authentication',
     'echo.services.httpBuffer'
   ])
-  .factory('authInterceptor', function($rootScope, $injector, $window, $q,
+  .factory('authInterceptor', function($rootScope, $injector, $window, $q, $base64,
     errorsConfig, routesConfig, cookieService, apiConfig, httpBufferService) {
 
     return {

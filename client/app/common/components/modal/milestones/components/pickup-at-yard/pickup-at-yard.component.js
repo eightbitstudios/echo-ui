@@ -1,10 +1,10 @@
 angular.module('echo.components.modal.milestones.pickupAtYard', [
-  'echo.components.dateTimePicker',
-  'echo.components.typeaheadSearch',
-  'echo.components.modal.assignDriver.newDriver',
-  'echo.components.modal.assignDriver.selectedDriver',
-  'echo.api.loads'
-])
+    'echo.components.dateTimePicker',
+    'echo.components.typeaheadSearch',
+    'echo.components.modal.assignDriver.newDriver',
+    'echo.components.modal.assignDriver.selectedDriver',
+    'echo.api.loads'
+  ])
   .component('pickupAtYard', {
     templateUrl: 'app/common/components/modal/milestones/components/pickup-at-yard/pickup-at-yard.template.html',
     bindings: {
@@ -14,19 +14,14 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
       assignedDriver: '=',
       dateTimePicker: '='
     },
-    controller: function ($filter, carrierApi) {
-      var that = this;
-      that.modes = {
-        findDriver: 1,
-        inviteNewDriver: 2
+    controller: function($filter, carrierApi) {
+
+      this.showFindDriver = function() {
+        this.currentState = this.modes.findDriver;
       };
 
-      that.showFindDriver = function () {
-        that.currentState = that.modes.findDriver;
-      };
-
-      that.showInviteNewDriver = function () {
-        that.currentState = that.modes.inviteNewDriver;
+      this.showInviteNewDriver = function() {
+        this.currentState = this.modes.inviteNewDriver;
       };
 
       /**
@@ -34,9 +29,10 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
        * @param {string} val - Search text
        * @retuns {Promise} - List of drivers formatted for typeahead search
        */
-      that.searchDrivers = function (val) {
-        return carrierApi.searchDrivers(that.carrierId, val).then(function (drivers) {
-          return _.map(drivers, function (driver) {
+      this.searchDrivers = function(val) {
+        var that = this;
+        return carrierApi.searchDrivers(that.carrierId, val).then(function(drivers) {
+          return _.map(drivers, function(driver) {
             return {
               id: driver.id,
               name: $filter('fullName')(driver),
@@ -47,17 +43,22 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
         });
       };
 
-      that.invitedNewDriver = function(driver) {
-        that.setDriver(driver);
-        that.showFindDriver();
+      this.invitedNewDriver = function(driver) {
+        this.setDriver(driver);
+        this.showFindDriver();
       };
 
-      that.setDriver = function (selection) {
-        that.assignedDriver = selection;
+      this.setDriver = function(selection) {
+        this.assignedDriver = selection;
       };
 
-      that.$onInit = function () {
-        that.showFindDriver();
+      this.$onInit = function() {
+        this.modes = {
+          findDriver: 1,
+          inviteNewDriver: 2
+        };
+
+        this.showFindDriver();
       };
     }
   });

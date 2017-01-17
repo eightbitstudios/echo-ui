@@ -6,6 +6,5 @@ angular.module('echo.components.navbar', []).component('navbar', {
     user: '='
   },
   transclude: true,
-  templateUrl: 'app/common/components/navbar/navbar.template.html',
-  controller: function() { }
+  templateUrl: 'app/common/components/navbar/navbar.template.html'
 });

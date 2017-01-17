@@ -1,6 +1,6 @@
 
 describe('Component: typeaheadSearch', function () {
-  var component, $q, driverList, element;
+  var component, $q, scope;
 
   beforeEach(function () {
     module('app/common/components/typeahead-search/typeahead-search.template.html');
@@ -20,6 +20,7 @@ describe('Component: typeaheadSearch', function () {
       onSelectCallback: _.noop,
       searchService: jasmine.createSpy('searchService')
     });
+    component.$onInit();
   }));
 
   describe('Function: onSelect', function () {

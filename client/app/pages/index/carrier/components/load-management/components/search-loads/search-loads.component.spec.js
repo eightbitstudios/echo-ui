@@ -10,7 +10,7 @@ describe('Component: Search Loads', function () {
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_) {
+  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_, PagingModel) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -44,6 +44,8 @@ describe('Component: Search Loads', function () {
       carrierId: carrierId,
       searchText: searchText
     });
+
+    component.paging = new PagingModel(10);
   }));
 
   describe('Function: getLoads', function () {
@@ -64,6 +66,7 @@ describe('Component: Search Loads', function () {
 
   describe('Function: getLoadsBySearchText', function () {
     it('should reset paging and call fetch loads', function () {
+
       var deferred = $q.defer();
       loadsApi.fetchLoadsBySearchText.and.returnValue(deferred.promise);
       component.getLoadsBySearchText();

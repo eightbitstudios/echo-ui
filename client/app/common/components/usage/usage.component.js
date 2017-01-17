@@ -10,18 +10,16 @@ angular.module('echo.components.usage', [
   },
   templateUrl: 'app/common/components/usage/usage.template.html',
   controller: function (UserModel, DriverModel) {
-    var that = this;
-
-    that.hasUserLoggedIn = function () {
-      return that.user.lastLogin !== 'Never';
+    this.hasUserLoggedIn = function () {
+      return this.user.lastLogin !== 'Never';
     };
 
-    that.isPortalUser = function () {
-      return that.user instanceof UserModel;
+    this.isPortalUser = function () {
+      return this.user instanceof UserModel;
     };
 
-    that.isDriver = function () {
-      return that.user instanceof DriverModel;
+    this.isDriver = function () {
+      return this.user instanceof DriverModel;
     };
   }
 });

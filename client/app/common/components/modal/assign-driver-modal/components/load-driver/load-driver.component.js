@@ -1,10 +1,10 @@
 angular.module('echo.components.modal.assignDriver.loadDriver', [
-  'echo.components.modal.assignDriver.unassignedDriver',
-  'echo.components.modal.assignDriver.newDriver',
-  'echo.models.driver',
-  'echo.components.modal.assignDriver.assignedDriverProfile',
-  'echo.components.modal.assignDriver.enums.assignedDriver'
-])
+    'echo.components.modal.assignDriver.unassignedDriver',
+    'echo.components.modal.assignDriver.newDriver',
+    'echo.models.driver',
+    'echo.components.modal.assignDriver.assignedDriverProfile',
+    'echo.components.modal.assignDriver.enums.assignedDriver'
+  ])
   .component('loadDriver', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/load-driver/load-driver.template.html',
     bindings: {
@@ -15,37 +15,35 @@ angular.module('echo.components.modal.assignDriver.loadDriver', [
       loadId: '<',
       submitControl: '='
     },
-    controller: function (DriverModel, assignedDriverEnum) {
-      var that = this;
+    controller: function(DriverModel, assignedDriverEnum) {
 
-      that.states = assignedDriverEnum.state;
-
-      that.cancelNewDriver = function () {
-        that.state = that.states.unassignedDriver;
+      this.cancelNewDriver = function() {
+        this.state = this.states.unassignedDriver;
       };
 
-      that.inviteNewDriver = function () {
-        that.state = that.states.newDriver;
+      this.inviteNewDriver = function() {
+        this.state = this.states.newDriver;
       };
 
-      that.changeDriver = function () {
-        that.state = that.states.unassignedDriver;
+      this.changeDriver = function() {
+        this.state = this.states.unassignedDriver;
       };
 
-      that.newDriverCreated = function (driver) {
-        that.state = that.states.unassignedDriver;
-        that.setNewDriver(driver);
+      this.newDriverCreated = function(driver) {
+        this.state = this.states.unassignedDriver;
+        this.setNewDriver(driver);
       };
 
-      that.setNewDriver = function (driver) {
-        that.newDriver = new DriverModel(driver);
+      this.setNewDriver = function(driver) {
+        this.newDriver = new DriverModel(driver);
       };
 
-      that.$onInit = function () {
-        if (_.get(that.assignedDriver, 'id')) {
-          that.state = that.states.assignedDriverProfile;
+      this.$onInit = function() {
+        this.states = assignedDriverEnum.state;
+        if (_.get(this.assignedDriver, 'id')) {
+          this.state = this.states.assignedDriverProfile;
         } else {
-          that.state = that.states.unassignedDriver;
+          this.state = this.states.unassignedDriver;
         }
       };
     }

@@ -9,9 +9,7 @@ angular.module('echo.components.serverErrors', [
   },
   templateUrl: 'app/common/components/server-errors/server-errors.template.html',
   controller: function (appConstants) {
-    var that = this;
-
-    that.errorMessages = {};
-     _.assign(this.errorMessages, appConstants.ERROR_MESSAGES.DEFAULTS, that.messageOverride);
+    this.errorMessages = {};
+     _.assign(this.errorMessages, appConstants.ERROR_MESSAGES.DEFAULTS, this.messageOverride);
   }
 });
