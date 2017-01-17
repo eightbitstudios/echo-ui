@@ -32,6 +32,8 @@ angular.module('echo.login.signIn', [
         }).finally(function() {
           that.showButtonLoading = false;
         });
+      } else {
+        that.serverError = errorsConfig.UNAUTHORIZED;
       }
     };
 
