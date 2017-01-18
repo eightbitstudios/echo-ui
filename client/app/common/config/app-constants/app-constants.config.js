@@ -73,7 +73,7 @@ angular.module('echo.config.appConstants', [])
         404104: 'Load Shipment Details Not Found',
         404105: 'City/State combination not found',
         500: 'An unexpected error has occurred',
-        500100: 'Unable to change current password',
+        500100: 'Password must contain mix of the following: uppercase, lowercase, and numbers',
         500101: 'Username already in use',
         500102: 'Unable to Update OneLogin User',
         500103: 'Unable to create user',
