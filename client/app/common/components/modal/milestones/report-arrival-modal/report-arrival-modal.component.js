@@ -3,7 +3,8 @@ angular.module('echo.components.modal.milestones.reportArrival', [
     'echo.components.dateTimePicker',
     'echo.api.loads',
     'echo.models.dateTimePicker',
-    'echo.components.modal.errorMessages'
+    'echo.components.modal.errorMessages',
+    'echo.components.modal.disclaimer'
   ])
   .component('reportArrivalModal', {
     templateUrl: 'app/common/components/modal/milestones/report-arrival-modal/report-arrival-modal.template.html',
