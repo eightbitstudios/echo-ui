@@ -8,6 +8,9 @@ angular.module('echo.login.createPassword', [
   'echo.services.modal',
   'echo.components.modal.termsAndConditions'
 ]).component('createPassword', {
+  bindings: {
+    showTerms: '<'
+  },
   templateUrl: 'app/pages/login/create-password/create-password.template.html',
   controller: function($stateParams, $state, $window, routesConfig, authenticationApi, PasswordChangeModel, appConstants, modalService) {
 
@@ -50,7 +53,7 @@ angular.module('echo.login.createPassword', [
       this.passwordChange = new PasswordChangeModel();
       this.showButtonLoading = false;
       this.appConstants = appConstants;
-      this.agree = false;
+      this.agree = !this.showTerms;
     };
   }
 });
