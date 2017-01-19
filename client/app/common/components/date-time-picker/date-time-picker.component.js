@@ -11,10 +11,8 @@ angular.module('echo.components.dateTimePicker', [
     },
     templateUrl: 'app/common/components/date-time-picker/date-time-picker.template.html',
     controller: function () {
-      var that = this;
-
-      that.clearDate = function ($event) {
-        that.dateTime.date = undefined;
+      this.clearDate = function ($event) {
+        this.dateTime.date = undefined;
         $event.stopPropagation();
       };
     }

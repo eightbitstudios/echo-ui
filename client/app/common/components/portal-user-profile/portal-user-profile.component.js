@@ -21,67 +21,71 @@ angular.module('echo.components.portalUserProfile', [
     'success-button': 'successButton'
   },
   templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
-  controller: function (appConstants, routesConfig, portalUserApi) {
-    var that = this;
+  controller: function(appConstants, routesConfig, portalUserApi) {
 
-    that.mode = {
-      PROFILE: 0,
-      SENT: 1
-    };
+    this.saveChangesHandler = function(portalUser) {
+      var that = this;
 
-    that.modeShow = that.mode.PROFILE;
-
-    that.showConfirmation = false;
-    that.showButtonLoading = false;
-
-    that.errorMessageOverride = appConstants.ERROR_MESSAGES.PORTAL_USER;
-
-    // Strip international code for frontend
-    if (that.portalUser.phone && that.portalUser.phone.charAt(0) === '1') {
-      that.portalUser.phone = that.portalUser.phone.slice(1);
-    }
-
-    that.saveChangesHandler = function (portalUser) {
       that.serverError = null;
       that.showButtonLoading = true;
       if (!!that.carrierId) {
         portalUser.carrierId = that.carrierId;
       }
 
-      portalUserApi.upsertPortalUser(portalUser).then(function () {
+      portalUserApi.upsertPortalUser(portalUser).then(function() {
         that.modeShow = that.mode.SENT;
         if (!that.isNewProfile) {
           that.userUpdatedHandler();
         }
-      }).catch(function (message) {
+      }).catch(function(message) {
         that.serverError = message;
-      }).finally(function(){
+      }).finally(function() {
         that.showButtonLoading = false;
       });
     };
 
-    that.removeUserHandler = function (portalUser) {
+    this.removeUserHandler = function(portalUser) {
+      var that = this;
+
       that.showButtonLoading = true;
-      portalUserApi.deactivatePortalUserById(portalUser).then(function () {
+      portalUserApi.deactivatePortalUserById(portalUser).then(function() {
         that.userUpdatedHandler();
-      }).catch(function (message) {
+      }).catch(function(message) {
         that.serverError = message;
-      }).finally(function(){
+      }).finally(function() {
         that.showButtonLoading = false;
       });
     };
 
-    that.toggleConfirmation = function () {
-      that.serverError = null;
-      that.showConfirmation = !that.showConfirmation;
+    this.toggleConfirmation = function() {
+      this.serverError = null;
+      this.showConfirmation = !this.showConfirmation;
     };
 
-    that.checkIfNewProfile = function (changeObject) {
+    this.checkIfNewProfile = function(changeObject) {
       if (changeObject.portalUser && changeObject.portalUser.currentValue) {
-        that.isNewProfile = _.isUndefined(that.portalUser.id);
+        this.isNewProfile = _.isUndefined(this.portalUser.id);
       }
     };
 
-    that.$onChanges = that.checkIfNewProfile;
+    this.$onChanges = this.checkIfNewProfile;
+
+    this.$onInit = function() {
+      this.mode = {
+        PROFILE: 0,
+        SENT: 1
+      };
+
+      this.modeShow = this.mode.PROFILE;
+      this.showConfirmation = false;
+      this.showButtonLoading = false;
+      this.errorMessageOverride = appConstants.ERROR_MESSAGES.PORTAL_USER;
+      this.emailValidation = appConstants.REGEX.emailValidation;
+
+      // Strip international code for frontend
+      if (this.portalUser.phone && this.portalUser.phone.charAt(0) === '1') {
+        this.portalUser.phone = this.portalUser.phone.slice(1);
+      }
+    };
   }
 });

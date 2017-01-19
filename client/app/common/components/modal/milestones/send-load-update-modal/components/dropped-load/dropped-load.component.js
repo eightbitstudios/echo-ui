@@ -8,7 +8,5 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate.droppedLoad', [
       location: '=',
       dateTimePicker: '<',
       timeZones: '<'
-    },
-    controller: function () {
     }
   });

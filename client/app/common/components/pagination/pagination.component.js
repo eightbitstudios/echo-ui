@@ -10,35 +10,36 @@ angular.module('echo.components.pagination', [
     onlyShowCurrentPage: '<'
   },
   templateUrl: 'app/common/components/pagination/pagination.template.html',
-  controller: function () {
-    var that = this;
+  controller: function() {
 
-    that.pages = [];
-    that.selectedPage = 1;
-
-    that.numberOfPages = Math.ceil(that.pagingModel.totalRecords / that.pagingModel.limit);
-
-    for (var i = 1; i <= that.numberOfPages; i++) {
-      that.pages.push(i);
-    }
-
-    that.previousPage = function () {
-      if (that.pagingModel.selectedPage > 1) {
-        that.pagingModel.previousPage();
-        that.pageClickHandler();
+    this.previousPage = function() {
+      if (this.pagingModel.selectedPage > 1) {
+        this.pagingModel.previousPage();
+        this.pageClickHandler();
       }
     };
 
-    that.nextPage = function () {
-      if (that.pagingModel.selectedPage < that.numberOfPages) {
-        that.pagingModel.nextPage();
-        that.pageClickHandler();
+    this.nextPage = function() {
+      if (this.pagingModel.selectedPage < this.numberOfPages) {
+        this.pagingModel.nextPage();
+        this.pageClickHandler();
       }
     };
 
-    that.pageClick = function (page) {
-      that.pagingModel.setPage(page);
-      that.pageClickHandler();
+    this.pageClick = function(page) {
+      this.pagingModel.setPage(page);
+      this.pageClickHandler();
+    };
+
+    this.$onInit = function() {
+      this.pages = [];
+      this.selectedPage = 1;
+
+      this.numberOfPages = Math.ceil(this.pagingModel.totalRecords / this.pagingModel.limit);
+
+      for (var i = 1; i <= this.numberOfPages; i++) {
+        this.pages.push(i);
+      }
     };
   }
 });

@@ -11,13 +11,11 @@ angular.module('echo.index.carrier.myCompany', [
       carrierId: '<'
     },
     controller: function ($stateParams, $state, routesConfig) {
-      var that = this;
+      this.$onInit = function () {
+        this.routesConfig = routesConfig;
+        this.state = $state;
 
-      that.$onInit = function () {
-        that.routesConfig = routesConfig;
-        that.state = $state;
-
-        that.tabItems = [{
+        this.tabItems = [{
           title: 'Portal Users',
           link: routesConfig.INDEX.myCompanyUsers.name,
           icon: 'icon-portal-user'

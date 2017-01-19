@@ -15,9 +15,7 @@ angular.module('echo.components.loadTable', [
       repDetails: '<'
     },
     controller: function (actionEnums) {
-      var that = this;
-
-      that.determineInactive = function(nextAction, isPickup) {
+      this.determineInactive = function(nextAction, isPickup) {
         if (!nextAction) {
           return false;
         }
@@ -29,7 +27,7 @@ angular.module('echo.components.loadTable', [
         }
       };
 
-      that.isMultiStopLoad = function(load) {
+      this.isMultiStopLoad = function(load) {
         return _.size(load.pickUp) > 1 || _.size(load.delivery) > 1;
       };
     }

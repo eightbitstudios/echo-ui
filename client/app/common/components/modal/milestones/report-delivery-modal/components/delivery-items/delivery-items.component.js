@@ -6,7 +6,8 @@ angular.module('echo.components.modal.milestones.deliveryItems', [
   'echo.components.modal.milestones.driverLocation',
   'echo.components.modal.milestones.reportEmpty.confirmEmpty',
   'echo.models.location',
-  'echo.models.dateTimePicker'
+  'echo.models.dateTimePicker',
+  'echo.components.modal.disclaimer'
 ])
   .component('deliveryItems', {
     templateUrl: 'app/common/components/modal/milestones/report-delivery-modal/components/delivery-items/delivery-items.template.html',
@@ -14,7 +15,5 @@ angular.module('echo.components.modal.milestones.deliveryItems', [
       items: '<',
       dateTimePicker: '=',
       timeZones: '<'
-    },
-    controller: function () {
     }
   });

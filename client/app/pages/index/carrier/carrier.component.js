@@ -11,10 +11,10 @@ angular.module('echo.index.carrier', [
     carrierDetails: '<'
   },
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
-  controller: function (loadCountService) {
-    var that = this;
-    
-    that.carrierId = that.carrierDetails.carrierId;
-    loadCountService.clear();
+  controller: function(loadCountService) {
+    this.$onInit = function() {
+      this.carrierId = this.carrierDetails.carrierId;
+      loadCountService.clear();
+    };
   }
 });

@@ -7,7 +7,5 @@ angular.module('echo.components.loadMap.driverCapturedLocation', [
       location: '<',
       timeStamp: '<',
       capturedBy: '<'
-    },
-    controller: function () {
     }
   });

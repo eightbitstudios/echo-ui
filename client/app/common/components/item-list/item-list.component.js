@@ -5,12 +5,11 @@ angular.module('echo.components.itemList', []).component('itemList', {
     items: '<'
   },
   templateUrl: 'app/common/components/item-list/item-list.template.html',
-  controller: function() { 
-    var that = this;
-
-    that.firstTwoItems = _.slice(that.items, 0, 2);
-    that.otherItems = _.slice(that.items, 2, that.items.length);
-
-    that.isOpen = false;
+  controller: function() {
+    this.$onInit = function() {
+      this.firstTwoItems = _.slice(this.items, 0, 2);
+      this.otherItems = _.slice(this.items, 2, this.items.length);
+      this.isOpen = false;
+    };
   }
 });

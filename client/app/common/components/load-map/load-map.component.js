@@ -1,13 +1,13 @@
 angular.module('echo.components.loadMap', [
-  'echo.services.googleMapsApi',
-  'echo.services.googleMaps',
-  'echo.components.googleMaps',
-  'echo.components.googleMapsMarker',
-  'echo.components.googleMapsInfoWindow',
-  'echo.components.loadMap.detailedInfoWindow',
-  'echo.components.loadMap.basicInfoWindow',
-  'echo.components.loading'
-])
+    'echo.services.googleMapsApi',
+    'echo.services.googleMaps',
+    'echo.components.googleMaps',
+    'echo.components.googleMapsMarker',
+    'echo.components.googleMapsInfoWindow',
+    'echo.components.loadMap.detailedInfoWindow',
+    'echo.components.loadMap.basicInfoWindow',
+    'echo.components.loading'
+  ])
   .constant('googleMapsConst', {
     detailedInfoOffset: {
       x: 230,
@@ -30,15 +30,9 @@ angular.module('echo.components.loadMap', [
       mapRefreshHandler: '&'
     },
     controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
-      var that = this;
-      that.mapCenter = null;
+      this.$onChanges = function(changeObj) {
+        var that = this;
 
-      that.popupOffset = that.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
-      _.forEach(that.mapPoints, function (mapPoint) {
-        mapPoint.loadNumber = mapPoint.loadId;
-      });
-
-      that.$onChanges = function (changeObj) {
         if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.showExpanded, 'currentValue')) {
           googleMapsApi.then(function (google) {
             that.google = google;
@@ -52,6 +46,15 @@ angular.module('echo.components.loadMap', [
         } else {
           that.showLoading = true;
         }
+      };
+
+      this.$onInit = function() {
+        this.popupOffset = this.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
+        this.showLoading = true;
+        this.mapCenter = null;
+        _.forEach(this.mapPoints, function (mapPoint) {
+          mapPoint.loadNumber = mapPoint.loadId;
+        });
       };
     }
   });

@@ -1,13 +1,13 @@
 angular.module('echo.index.carrier.loadManagement.loadDetails', [
-  'echo.components.echoRepContact',
-  'echo.components.stopAccordion',
-  'echo.components.equipment',
-  'echo.components.loadMap',
-  'echo.index.carrier.loadManagement.loadDetails.loadDetail',
-  'echo.index.carrier.loadManagement.loadDetails.documents',
-  'echo.index.carrier.loadManagement.loadDetails.activityLog',
-  'echo.api.loads'
-])
+    'echo.components.echoRepContact',
+    'echo.components.stopAccordion',
+    'echo.components.equipment',
+    'echo.components.loadMap',
+    'echo.index.carrier.loadManagement.loadDetails.loadDetail',
+    'echo.index.carrier.loadManagement.loadDetails.documents',
+    'echo.index.carrier.loadManagement.loadDetails.activityLog',
+    'echo.api.loads'
+  ])
   .component('loadDetails', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/load-details.template.html',
     bindings: {
@@ -15,13 +15,13 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       carrierId: '<',
       loadId: '<'
     },
-    controller: function ($state, $q, loadsApi) {
-      var that = this;
+    controller: function($state, $q, loadsApi) {
 
-      that.getMapPoint = function () {
+      this.getMapPoint = function() {
+        var that = this;
         that.showMap = false;
         that.mapPoints = [];
-        loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid')).then(function (mapPointData) {
+        loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid')).then(function(mapPointData) {
           if (mapPointData) {
             that.mapPoints.push(mapPointData);
           }
@@ -29,18 +29,20 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         });
       };
 
-      that.$onInit = function () {
+      this.$onInit = function() {
+        var that = this;
+
         that.showLoading = true;
         that.showMap = false;
 
         loadsApi.fetchLoadDetails(that.loadId)
-          .then(function (loadDetails) {
+          .then(function(loadDetails) {
             that.loadDetails = loadDetails;
             that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
             that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
             that.totalStops = _.size(that.loadDetails.pickUp) + _.size(that.loadDetails.delivery);
             return loadsApi.fetchActivityLogByLoadId(that.loadDetails.loadNumber);
-          }).then(function(activityLog){
+          }).then(function(activityLog) {
             that.activityLog = activityLog;
           }).finally(function() {
             that.showLoading = false;

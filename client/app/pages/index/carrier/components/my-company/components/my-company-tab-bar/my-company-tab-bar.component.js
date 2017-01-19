@@ -4,6 +4,5 @@ angular.module('echo.index.carrier.myCompany.tabBar', [
 ])
   .component('myCompanyTabBar', {
     templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-tab-bar/my-company-tab-bar.template.html',
-    bindings: {},
-    controller: function () {}
+    bindings: {}
   });

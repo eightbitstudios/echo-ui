@@ -21,7 +21,8 @@ angular.module('echo.config.appConstants', [])
       passwordLength: /^.{8,}$/,
       passwordLowerCase: /[a-z]/,
       passwordNumber: /[0-9]/,
-      passwordUpperCase: /[A-Z]/
+      passwordUpperCase: /[A-Z]/,
+      emailValidation: /^[\w.!#$%&’*+/=?^_`{|}~-]+@[\w-]+(?:\.[\w-]+)+$/
     },
     ERROR_MESSAGES: {
       DEFAULTS: {
@@ -57,7 +58,7 @@ angular.module('echo.config.appConstants', [])
         400128: 'Phone Number already in use',
         400129: 'Submitted time is invalid',
         400140: 'Milestone already performed by other user',
-        401: 'Unauthorized',
+        401: 'Incorrect Email Address or Password. Please Try Again.',
         401100: 'Invalid Authorization Header',
         401101: 'User account is deactivated',
         401102: 'Incorrect Email Address or Password. Please Try Again.',
@@ -73,7 +74,7 @@ angular.module('echo.config.appConstants', [])
         404104: 'Load Shipment Details Not Found',
         404105: 'City/State combination not found',
         500: 'An unexpected error has occurred',
-        500100: 'Unable to change current password',
+        500100: 'Password must contain mix of the following: uppercase, lowercase, and numbers',
         500101: 'Username already in use',
         500102: 'Unable to Update OneLogin User',
         500103: 'Unable to create user',

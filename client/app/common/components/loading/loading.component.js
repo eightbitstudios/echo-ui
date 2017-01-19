@@ -10,6 +10,5 @@ angular.module('echo.components.loading', [
     fixed: '<'
   },
   transclude: true,
-  templateUrl: 'app/common/components/loading/loading.template.html',
-  controller: function() { }
+  templateUrl: 'app/common/components/loading/loading.template.html'
 });

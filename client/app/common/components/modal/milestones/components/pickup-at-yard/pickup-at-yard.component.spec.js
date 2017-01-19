@@ -1,5 +1,5 @@
 
-describe('Component: modalSteps', function () {
+describe('Component: pickupAtYard', function () {
   var component, $q, scope, $filter, carrierApi, DateTimePickerModel, load, carrierId, timeZones, assignedDriver;
 
   beforeEach(function () {
@@ -31,6 +31,7 @@ describe('Component: modalSteps', function () {
       timeZones: timeZones,
       assignedDriver: assignedDriver
     });
+    component.$onInit();
   }));
 
   describe('Function: $onInit', function () {
