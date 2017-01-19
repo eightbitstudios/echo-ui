@@ -26,33 +26,33 @@ angular.module('echo.components.loadTable.action', [
       repDetails: '<',
       isMultiStop: '<'
     },
-    controller: function($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
+    controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi, documentApi) {
 
-      this.openMilestone = function(action) {
+      this.openMilestone = function (action) {
         var that = this;
 
         that.showButtonLoading = true;
         that.actionHandler[action](that.load.loadGuid)
-          .then(function(modalInstance) {
+          .then(function (modalInstance) {
 
-            modalInstance.result.then(function(actionChanged) {
+            modalInstance.result.then(function (actionChanged) {
               if (_.isObject(actionChanged)) {
                 return actionChanged;
               } else if (actionChanged) {
                 return $q.when(actionChanged);
               }
-            }).then(function(actionChanged) {
+            }).then(function (actionChanged) {
               if (actionChanged) {
                 that.actionChangedCallback();
               }
             });
 
-          }).finally(function() {
-            that.showButtonLoading = false;
-          });
+          }).finally(function () {
+          that.showButtonLoading = false;
+        });
       };
 
-      this.$onInit = function() {
+      this.$onInit = function () {
         var that = this;
 
         that.appConstants = appConstants;
@@ -74,10 +74,10 @@ angular.module('echo.components.loadTable.action', [
 
         that.actionHandler = {};
 
-        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_EMPTY.value] = function(loadGuid) {
+        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_EMPTY.value] = function (loadGuid) {
           return $q.all([loadsApi.fetchReportEmptyByLoadGuid(loadGuid),
             timeZoneApi.fetchTimeZones()
-          ]).then(_.spread(function(reportEmpty, timeZones) {
+          ]).then(_.spread(function (reportEmpty, timeZones) {
             return modalService.open({
               component: 'report-empty-modal',
               bindings: {
@@ -89,10 +89,10 @@ angular.module('echo.components.loadTable.action', [
           }));
         };
 
-        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_LOADED.value] = function(loadGuid) {
+        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_LOADED.value] = function (loadGuid) {
           return $q.all([loadsApi.fetchItemsByLoadGuid(loadGuid),
             timeZoneApi.fetchTimeZones()
-          ]).then(_.spread(function(items, timeZones) {
+          ]).then(_.spread(function (items, timeZones) {
             return modalService.open({
               component: 'report-loaded-modal',
               bindings: {
@@ -107,11 +107,11 @@ angular.module('echo.components.loadTable.action', [
           }));
         };
 
-        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function(loadGuid) {
+        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value] = function (loadGuid) {
           return $q.all([loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid),
-              timeZoneApi.fetchTimeZones()
-            ])
-            .then(_.spread(function(sendLoadUpdate, timeZones) {
+            timeZoneApi.fetchTimeZones()
+          ])
+            .then(_.spread(function (sendLoadUpdate, timeZones) {
               return modalService.open({
                 component: 'send-load-update-modal',
                 bindings: {
@@ -124,11 +124,11 @@ angular.module('echo.components.loadTable.action', [
             }));
         };
 
-        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_DELIVERY.value] = function(loadGuid) {
+        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_DELIVERY.value] = function (loadGuid) {
           return $q.all([timeZoneApi.fetchTimeZones(),
-              loadsApi.fetchItemsByLoadGuid(loadGuid)
-            ])
-            .then(_.spread(function(timeZones, items) {
+            loadsApi.fetchItemsByLoadGuid(loadGuid)
+          ])
+            .then(_.spread(function (timeZones, items) {
               return modalService.open({
                 component: 'report-delivery-modal',
                 bindings: {
@@ -140,57 +140,59 @@ angular.module('echo.components.loadTable.action', [
             }));
         };
 
-      actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVAL_AT_PICKUP.value] = function () {
-        return timeZoneApi.fetchTimeZones().then(function (timeZones) {
-          return modalService.open({
-            component: 'report-arrival-modal',
-            bindings: {
-              load: that.load,
-              carrierId: that.carrierId,
-              reportArrival: {
-                actionPerformedOn: moment(that.load.nextAction.actionPerformedOnDate, 'MM/DD/YYYY HH:mm:ss'),
-                address: _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.load.pickUp),
-                driver: that.load.driver
-              },
-              timeZones: timeZones,
-              arrivalType: arrivalTypeEnums.PICKUP
-            }
-          });
-        });
-      };
 
-      actionHandler[actionEnums.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value] = function() {
-         return documentApi.fetchDocuments(that.load.loadGuid).then(function(documents){
-           return modalService.open({
-            component: 'document-upload-modal',
-            bindings: {
-              load: that.load,
-              documents: documents
-            }
-          });
-        });
-      };
-
-      that.openMilestone = function (action) {
-        that.showButtonLoading = true;
-        actionHandler[action](that.load.loadGuid)
-          .then(function (modalInstance) {
-
-            modalInstance.result.then(function (actionChanged) {
-              if (_.isObject(actionChanged)) {
-                return actionChanged;
-              } else if (actionChanged) {
-                return $q.when(actionChanged);
-              }
-            }).then(function (actionChanged) {
-              if (actionChanged) {
-                that.actionChangedCallback();
+        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVAL_AT_PICKUP.value] = function () {
+          return timeZoneApi.fetchTimeZones().then(function (timeZones) {
+            return modalService.open({
+              component: 'report-arrival-modal',
+              bindings: {
+                load: that.load,
+                carrierId: that.carrierId,
+                reportArrival: {
+                  actionPerformedOn: moment(that.load.nextAction.actionPerformedOnDate, 'MM/DD/YYYY HH:mm:ss'),
+                  address: _.find(that.load.pickUp, {isCurrent: true}) || _.last(that.load.pickUp),
+                  driver: that.load.driver
+                },
+                timeZones: timeZones,
+                arrivalType: arrivalTypeEnums.PICKUP
               }
             });
+          });
+        };
 
-          }).finally(function () {
+        that.actionHandler[actionEnums.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value] = function () {
+          return documentApi.fetchDocuments(that.load.loadGuid).then(function (documents) {
+            return modalService.open({
+              component: 'document-upload-modal',
+              bindings: {
+                load: that.load,
+                documents: documents
+              }
+            });
+          });
+        };
+
+        that.openMilestone = function (action) {
+          that.showButtonLoading = true;
+          that.actionHandler[action](that.load.loadGuid)
+            .then(function (modalInstance) {
+
+              modalInstance.result.then(function (actionChanged) {
+                if (_.isObject(actionChanged)) {
+                  return actionChanged;
+                } else if (actionChanged) {
+                  return $q.when(actionChanged);
+                }
+              }).then(function (actionChanged) {
+                if (actionChanged) {
+                  that.actionChangedCallback();
+                }
+              });
+
+            }).finally(function () {
             that.showButtonLoading = false;
           });
+        };
       };
     }
   });

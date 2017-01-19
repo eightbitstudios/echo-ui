@@ -16,7 +16,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       carrierId: '<',
       loadId: '<'
     },
-    controller: function($state, $q, loadsApi) {
+    controller: function($state, $q, loadsApi, documentApi) {
 
       this.getMapPoint = function() {
         var that = this;
