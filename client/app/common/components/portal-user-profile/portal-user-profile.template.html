@@ -18,8 +18,8 @@
         <legend>Contact Information</legend>
         <div class="form-group" ng-class="{'has-error': userProfile.userEmail.$invalid && userProfile.userEmail.$touched}">
           <label>Email Address</label>
-          <input class="form-control" name="userEmail" placeholder="email@email.com" type="email" ng-model="$ctrl.portalUser.email" maxlength="250" required ng-disabled="$ctrl.isCarrierAdmin && $ctrl.portalUser.id">
-          <span class="help-block" ng-if="userProfile.userEmail.$error.email">Invalid email address</span>
+          <input class="form-control" name="userEmail" placeholder="email@email.com" type="input" ng-pattern="$ctrl.emailValidation" ng-model="$ctrl.portalUser.email" maxlength="250" required ng-disabled="$ctrl.isCarrierAdmin && $ctrl.portalUser.id">
+          <span class="help-block" ng-if="userProfile.userEmail.$error.pattern">Invalid email address</span>
           <span class="help-block" ng-if="userProfile.userEmail.$error.required && userProfile.userEmail.$touched">An email address is required</span>
         </div>
         <div class="form-group" ng-class="{'has-error': userProfile.phoneNumber.$invalid && userProfile.phoneNumber.$touched}">

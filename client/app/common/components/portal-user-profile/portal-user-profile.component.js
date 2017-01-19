@@ -80,6 +80,7 @@ angular.module('echo.components.portalUserProfile', [
       this.showConfirmation = false;
       this.showButtonLoading = false;
       this.errorMessageOverride = appConstants.ERROR_MESSAGES.PORTAL_USER;
+      this.emailValidation = appConstants.REGEX.emailValidation;
 
       // Strip international code for frontend
       if (this.portalUser.phone && this.portalUser.phone.charAt(0) === '1') {
