@@ -6,7 +6,7 @@
       <fieldset class="fieldset">
         <div class="form-group" ng-class="{'has-error': userProfile.firstName.$error.required && userProfile.firstName.$touched}">
           <label>First Name</label>
-          <input class="form-control" name="firstName" placeholder="First Name" type="text" ng-model="$ctrl.portalUser.firstName" maxlength="50" required>
+          <input class="form-control" name="firstName" placeholder="First Name" type="text" ng-model="$ctrl.portalUser.firstName" maxlength="50" required focus>
           <span class="help-block" ng-if="userProfile.firstName.$error.required  && userProfile.firstName.$touched">A first name is required</span>
         </div>
         <div class="form-group">
@@ -24,7 +24,7 @@
         </div>
         <div class="form-group" ng-class="{'has-error': userProfile.phoneNumber.$invalid && userProfile.phoneNumber.$touched}">
           <label>Phone Number</label>
-          <input class="form-control" name="phoneNumber" ui-mask="+1 (999) 999-9999" type="tel" ng-model="$ctrl.portalUser.phone">
+          <input class="form-control" name="phoneNumber" ui-mask="+1 (999) 999-9999" ui-options="{clearOnBlur: false}" type="tel" ng-model="$ctrl.portalUser.phone">
           <span class="help-block" ng-if="userProfile.phoneNumber.$error.invalidFormat && userProfile.phoneNumber.$touched">Invalid phone number</span>
         </div>
         <div class="form-group">
@@ -34,7 +34,7 @@
             <loading-button button-class="btn-danger" button-text="Delete" click-handler="$ctrl.removeUserHandler($ctrl.portalUser)" show-loading="$ctrl.showButtonLoading"></loading-button>
           </div>
           <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.portalUser.id && !$ctrl.showConfirmation && $ctrl.portalUser.isCarrierAdmin()" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
-          <loading-button ng-if="!$ctrl.showConfirmation" button-text="Save Changes" disable-button="userProfile.$invalid" click-handler="$ctrl.saveChangesHandler($ctrl.portalUser)" show-loading="$ctrl.showButtonLoading" class="pull-right"></loading-button>
+          <loading-button ng-if="!$ctrl.showConfirmation" button-text="Save{{$ctrl.portalUser.id ? ' Changes': ''}}" disable-button="userProfile.$invalid" click-handler="$ctrl.saveChangesHandler($ctrl.portalUser)" show-loading="$ctrl.showButtonLoading" class="pull-right"></loading-button>
           <server-errors error="$ctrl.serverError"  message-override="$ctrl.errorMessageOverride"/>
         </div>
       </fieldset>

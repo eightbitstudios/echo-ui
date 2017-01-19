@@ -1,14 +1,23 @@
-<a class="btn-inline-edit" style="opacity: 1;" ng-click="$ctrl.editNumberHandler()" ng-if="!$ctrl.showForm">{{ $ctrl.number || $ctrl.defaultText }}
-  <span class="echo-icon icon-add-pencil"></span>
-</a>
-<form class="form-inline form-inline-editing" ng-if="$ctrl.showForm">
-  <div class="form-group">
-    <label class="hidden">Update Number</label>
-    <input class="form-control" placeholder="Update Number" type="text" ng-model="$ctrl.updateNumber">
-  </div>
-  <br>
-  <div class="form-group">
-    <button class="btn btn-link btn-sm" type="submit" ng-click="$ctrl.saveButtonHandler()">Save</button>
-    <button class="btn btn-link btn-sm btn-alt" type="reset" ng-click="$ctrl.cancelButtonHandler()">Cancel</button>
-  </div>
-</form>
+<div class="edit-number">
+  <a class="btn-inline-edit" style="opacity: 1;" ng-click="$ctrl.editNumberHandler()" ng-if="!$ctrl.showForm">{{ $ctrl.number || $ctrl.defaultText }}
+    <span class="echo-icon icon-add-pencil"></span>
+  </a>
+  <form class="form-inline form-inline-editing" ng-if="$ctrl.showForm">
+    <div class="form-group">
+      <label class="hidden">Update Number</label>
+      <input
+        class="form-control"
+        placeholder="{{$ctrl.shadowText}}"
+        type="text"
+        ng-model="$ctrl.updateNumber"
+        maxlength="{{$ctrl.maxLength}}"
+        focus
+      >
+    </div>
+    <br>
+    <div class="form-group">
+      <button class="btn btn-link btn-sm" type="submit" ng-click="$ctrl.saveButtonHandler()">Save</button>
+      <button class="btn btn-link btn-sm btn-alt" type="reset" ng-click="$ctrl.cancelButtonHandler()">Cancel</button>
+    </div>
+  </form>
+</div>

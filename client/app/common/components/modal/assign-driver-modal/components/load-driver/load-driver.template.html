@@ -1,3 +1,22 @@
-<unassigned-driver ng-if="$ctrl.state === $ctrl.states.unassignedDriver" new-driver="$ctrl.newDriver" invite-new-driver-callback="$ctrl.inviteNewDriver()" selected-driver-callback="$ctrl.setNewDriver(driver)" carrier-id="$ctrl.carrierId" load-id="$ctrl.loadId" submit-control="$ctrl.submitControl"></unassigned-driver>
-<new-driver ng-if="$ctrl.state === $ctrl.states.newDriver" continue-callback="$ctrl.newDriverCreated(driver)" cancel-callback="$ctrl.cancelNewDriver()" carrier-id="$ctrl.carrierId"></new-driver>
-<assigned-driver-profile ng-if="$ctrl.state === $ctrl.states.assignedDriverProfile" assigned-driver="$ctrl.assignedDriver" change-driver-callback="$ctrl.changeDriver()"></assigned-driver-profile>
+<unassigned-driver
+  ng-if="$ctrl.state === $ctrl.states.unassignedDriver"
+  new-driver="$ctrl.newDriver"
+  invite-new-driver-callback="$ctrl.inviteNewDriver()"
+  selected-driver-callback="$ctrl.setNewDriver(driver)"
+  carrier-id="$ctrl.carrierId"
+  load-id="$ctrl.loadId"
+  submit-control="$ctrl.submitControl"
+></unassigned-driver>
+
+<new-driver
+  ng-if="$ctrl.state === $ctrl.states.newDriver"
+  continue-callback="$ctrl.newDriverCreated(driver)"
+  cancel-callback="$ctrl.cancelNewDriver()"
+  carrier-id="$ctrl.carrierId"
+></new-driver>
+
+<assigned-driver-profile
+  ng-if="$ctrl.state === $ctrl.states.assignedDriverProfile"
+  assigned-driver="$ctrl.assignedDriver"
+  change-driver-callback="$ctrl.changeDriver()"
+></assigned-driver-profile>

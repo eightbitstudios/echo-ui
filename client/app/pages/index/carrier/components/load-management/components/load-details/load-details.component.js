@@ -16,12 +16,11 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       carrierId: '<',
       loadId: '<'
     },
-    controller: function($state, $q, loadsApi, documentApi) {
-      var that = this;
+    controller: function($state, $q, loadsApi) {
 
-      that.showLoading = true;
+      this.getMapPoint = function() {
+        var that = this;
 
-      that.getMapPoint = function() {
         that.showMap = false;
         that.mapPoints = [];
         loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid')).then(function(mapPointData) {
@@ -32,7 +31,10 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         });
       };
 
-      that.$onInit = function() {
+      this.$onInit = function() {
+        var that = this;
+
+        that.showLoading = true;
         loadsApi.fetchLoadDetails(that.loadId)
           .then(function(loadDetails) {
             that.loadDetails = loadDetails;

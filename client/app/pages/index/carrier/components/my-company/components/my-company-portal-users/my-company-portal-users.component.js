@@ -1,53 +1,55 @@
 angular.module('echo.index.carrier.myCompany.portalUsers', [
-  'echo.api.carrier',
-  'echo.config.routes',
-  'echo.components.portalUsers',
-  'echo.components.portalUserProfile',
-  'echo.components.loading',
-  'echo.models.user',
-  'echo.index.carrier.myCompany.userProfile'
-])
+    'echo.api.carrier',
+    'echo.config.routes',
+    'echo.components.portalUsers',
+    'echo.components.portalUserProfile',
+    'echo.components.loading',
+    'echo.models.user',
+    'echo.index.carrier.myCompany.userProfile'
+  ])
   .component('myCompanyPortalUsers', {
     templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html',
     bindings: {
       carrierId: '<'
     },
-    controller: function (carrierApi, UserModel) {
-      var that = this;
+    controller: function(carrierApi, UserModel) {
 
-      that.mode = {
-        USERS_PORTAL: 0,
-        USER_PROFILE: 1
-      };
+      this.getCarrierPortalUsers = function() {
+        var that = this;
 
-      that.showMode = that.mode.USERS_PORTAL;
-      that.showLoading = true;
-
-      that.getCarrierPortalUsers = function () {
-        carrierApi.fetchCarrierPortalUsers(that.carrierId).then(function (portalUsers) {
+        carrierApi.fetchCarrierPortalUsers(that.carrierId).then(function(portalUsers) {
           that.portalUsers = portalUsers;
           that.showLoading = false;
         });
       };
 
-      that.userTileClickHandler = function (user) {
-        that.showMode = that.mode.USER_PROFILE;
-        that.portalUser = new UserModel(_.clone(user));
-        that.portalUser.carrierId = that.carrierId;
+      this.userTileClickHandler = function(user) {
+        this.showMode = this.mode.USER_PROFILE;
+        this.portalUser = new UserModel(_.clone(user));
+        this.portalUser.carrierId = this.carrierId;
       };
 
-      that.showUsersPortal = function () {
-        that.showMode = that.mode.USERS_PORTAL;
+      this.showUsersPortal = function() {
+        this.showMode = this.mode.USERS_PORTAL;
       };
 
-      that.reloadUsersPortal = function () {
-        that.showLoading = true;
-        that.getCarrierPortalUsers();
-        that.showUsersPortal();
+      this.reloadUsersPortal = function() {
+        this.showLoading = true;
+        this.getCarrierPortalUsers();
+        this.showUsersPortal();
       };
 
-      that.$onInit = function() {
-        that.getCarrierPortalUsers();
+      this.$onInit = function() {
+
+        this.mode = {
+          USERS_PORTAL: 0,
+          USER_PROFILE: 1
+        };
+
+        this.showMode = this.mode.USERS_PORTAL;
+        this.showLoading = true;
+
+        this.getCarrierPortalUsers();
       };
     }
   });

@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('echo.components.filterBar', [
-]).component('filterBar', {
+angular.module('echo.components.filterBar', []).component('filterBar', {
   bindings: {
     searchList: '=',
     link: '<',
@@ -9,20 +8,15 @@ angular.module('echo.components.filterBar', [
     minSearchCharacters: '<'
   },
   templateUrl: 'app/common/components/filter-bar/filter-bar.template.html',
-  controller: function () {
-    var that = this;
-
-    that.searchResults = [];
-    that.isSearching = false;
-
+  controller: function() {
     /**
      * @description Sets a search item state to selected
      * @param {Object} item - Search item that was selected
      */
-    that.searchItemSelected = function(item) {
+    this.searchItemSelected = function(item) {
 
       // Set all search items to not be selected
-      _.forEach(that.searchList, function(searchItem){
+      _.forEach(this.searchList, function(searchItem) {
         searchItem.selected = false;
       });
 
@@ -33,8 +27,13 @@ angular.module('echo.components.filterBar', [
     /**
      * Clears search text
      */
-    that.clearSearchHandler = function() {
-      that.searchParam = '';
+    this.clearSearchHandler = function() {
+      this.searchParam = '';
+    };
+
+    this.$onInit = function() {
+      this.searchResults = [];
+      this.isSearching = false;
     };
   }
 });

@@ -20,25 +20,29 @@ describe('Component: New Driver', function () {
 
     carrierId = 1;
 
+    languageApi.fetchLanguages.and.returnValue($q.when({}));
+
     component = $componentController('newDriver', null, {
       carrierId: carrierId,
       cancelCallback: jasmine.createSpy(),
       continueCallback: jasmine.createSpy()
     });
+    component.$onInit();
+    scope.$digest();
   }));
 
   describe('Function: saveNewDriver', function () {
     it('should do nothing without a driver first name', function () {
       component.saveNewDriver();
 
-      expect(component.showLoading).toBeUndefined();
+      expect(component.showLoading).toBeFalsy();
     });
 
     it('should do nothing without a driver phone', function () {
       component.newDriver.firstName = 'Test';
       component.saveNewDriver();
 
-      expect(component.showLoading).toBeUndefined();
+      expect(component.showLoading).toBeFalsy();
     });
 
     it('should save new driver', function () {

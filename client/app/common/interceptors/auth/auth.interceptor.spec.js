@@ -19,6 +19,7 @@ describe('Interceptor: authInterceptor', function() {
         location: ''
       });
 
+      $provide.value('$base64', jasmine.createSpyObj('$base64', ['encode', 'decode']));
       $provide.value('cookieService', cookieService = jasmine.createSpyObj('cookieService', ['getToken', 'getRefreshToken', 'clearToken', 'clearRefreshToken']));
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['refresh']));
       $provide.value('httpBufferService', httpBufferService = jasmine.createSpyObj('httpBufferService', ['isBufferEmpty', 'retryAllRequest', 'add']));

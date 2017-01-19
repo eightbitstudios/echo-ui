@@ -1,14 +1,14 @@
 angular.module('echo.components.modal.assignDriver', [
-  'echo.components.equipment',
-  'echo.models.driver',
-  'echo.api.loads',
-  'echo.components.loadingButton',
-  'echo.components.shippingDetails',
-  'echo.components.modal.assignDriver.loadDriver',
-  'echo.components.modal.assignDriver.enums.assignedDriver',
-  'echo.components.modal.driverSidebar',
-  'echo.components.modal.errorMessages'
-])
+    'echo.components.equipment',
+    'echo.models.driver',
+    'echo.api.loads',
+    'echo.components.loadingButton',
+    'echo.components.shippingDetails',
+    'echo.components.modal.assignDriver.loadDriver',
+    'echo.components.modal.assignDriver.enums.assignedDriver',
+    'echo.components.modal.driverSidebar',
+    'echo.components.modal.errorMessages'
+  ])
   .component('assignDriverModal', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/assign-driver-modal.template.html',
     bindings: {
@@ -17,78 +17,79 @@ angular.module('echo.components.modal.assignDriver', [
       equipment: '<',
       carrierId: '<'
     },
-    controller: function (loadsApi, DriverModel, assignedDriverEnum) {
-      var that = this;
+    controller: function(loadsApi, DriverModel, assignedDriverEnum) {
 
-      that.states = assignedDriverEnum.state;
 
-      that.newDriver = {};
-      that.state = null;
-      that.driverChanged = false;
-      that.showButtonLoading = false;
-
-      that.assignDriver = function () {
+      this.assignDriver = function() {
+        var that = this;
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
-        loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
+        loadsApi.assignDriver(that.load.loadNumber, that.newDriver.id).then(function() {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
-        }).catch(function (status) {
+        }).catch(function(status) {
           that.errorMessages = status.message;
           that.errorCode = status.code;
-        }).finally(function () {
+        }).finally(function() {
           that.showButtonLoading = false;
         });
       };
 
-      that.reassignDriver = function () {
+      this.reassignDriver = function() {
+        var that = this;
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
-        loadsApi.reassignDriver(that.load.loadNumber, that.newDriver.id).then(function () {
+        loadsApi.reassignDriver(that.load.loadNumber, that.newDriver.id).then(function() {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
-        }).catch(function (status) {
+        }).catch(function(status) {
           that.errorMessages = status.message;
           that.errorCode = status.code;
-        }).finally(function () {
+        }).finally(function() {
           that.showButtonLoading = false;
         });
       };
 
-      that.unassignDriver = function () {
+      this.unassignDriver = function() {
+        var that = this;
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
-        loadsApi.unassignDriver(that.load.loadNumber).then(function () {
+        loadsApi.unassignDriver(that.load.loadNumber).then(function() {
           that.driverChanged = true;
           that.modalActions.close(that.driverChanged);
-        }).catch(function (status) {
+        }).catch(function(status) {
           that.errorMessages = status.message;
           that.errorCode = status.code;
-        }).finally(function () {
+        }).finally(function() {
           that.showButtonLoading = false;
         });
       };
 
-      that.noNewDriver = function () {
-        return _.isUndefined(_.get(that.newDriver, 'id'));
+      this.noNewDriver = function() {
+        return _.isUndefined(_.get(this.newDriver, 'id'));
       };
 
-      that.noAssignedDriver = function () {
-        return _.isUndefined(_.get(that.assignedDriver, 'id'));
+      this.noAssignedDriver = function() {
+        return _.isUndefined(_.get(this.assignedDriver, 'id'));
       };
 
-      that.disableAssignButton = function() {
-        return (that.noAssignedDriver() && that.noNewDriver()) ||
-          (!that.submitControl && (that.noAssignedDriver() || !that.noNewDriver())) ||
-          that.state === that.states.newDriver;
+      this.disableAssignButton = function() {
+        return (this.noAssignedDriver() && this.noNewDriver()) ||
+          (!this.submitControl && (this.noAssignedDriver() || !this.noNewDriver())) ||
+          this.state === this.states.newDriver;
       };
 
-      that.$onInit = function () {
-        that.assignedDriver = new DriverModel(that.load.driver);
-        that.submitControl = true;
+      this.$onInit = function() {
+        this.states = assignedDriverEnum.state;
+        this.newDriver = {};
+        this.state = null;
+        this.driverChanged = false;
+        this.showButtonLoading = false;
+        this.assignedDriver = new DriverModel(this.load.driver);
+        this.submitControl = true;
       };
     }
   });

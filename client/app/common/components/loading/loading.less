@@ -1,31 +1,56 @@
-.loading{
+.loading {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  &.overlay {
+    background: @c-gray-light;
+  }
+  .loading-text {
+    height: 65px;
+    width: 65px;
+    animation-name: spin;
+    -webkit-animation-name: spin;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
     position: absolute;
-    left: 0;
-    z-index: 1;
-    height: 100%;
-    top: 0;
-    width: 100%;
-    &.overlay{
-      background: @c-gray-light;
-    }
-    .loading-text {
-        border-radius: 50%;
-        width: 65px;
-        height: 65px;
-        border: .25rem solid @c-gray-heavy-light;
-        border-top-color: @c-bright-blue;
-        animation: spin 1s infinite linear;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-    }
+    .center-image(@top: 32px;
+    @left: 32px);
+  }
+  .loading-fixed {
+    top: 20px;
+  }
 }
 
 @keyframes spin {
   0% {
+    -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+  50% {
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
   100% {
+    -ms-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
   }
 }

@@ -11,27 +11,27 @@ angular.module('echo.components.searchBar', [
     transclude: true,
     templateUrl: 'app/common/components/search-bar/search-bar.template.html',
     controller: function (appConstants, keyCodes) {
-      var that = this;
 
-      that.$onInit = function () {
-        that.searchText = '';
+      this.toggleFocus = function () {
+        this.focused = !this.focused;
       };
 
-      that.toggleFocus = function () {
-        that.focused = !that.focused;
-      };
-
-      that.searchHandler = function () {
-        if (that.searchText.length >= appConstants.MIN_SEARCH_CHARACTERS.loads) {
-          that.searchCallback({ searchText: that.searchText });
-          that.searchText = '';
+      this.searchHandler = function () {
+        if (this.searchText.length >= appConstants.MIN_SEARCH_CHARACTERS.loads) {
+          this.searchCallback({ searchText: this.searchText });
+          this.searchText = '';
         }
       };
 
-      that.searchKeyDown = function ($event) {
+      this.searchKeyDown = function ($event) {
         if ($event.keyCode === keyCodes.ENTER) {
-          that.searchHandler();
+          this.searchHandler();
         }
+      };
+
+      this.$onInit = function () {
+        this.searchText = '';
+        this.maxLength = this.maxLength || 250;
       };
     }
   });

@@ -26,6 +26,8 @@ describe('Component: Unassigned Driver', function () {
       inviteNewDriverCallback: jasmine.createSpy(),
       selectedDriverCallback: jasmine.createSpy()
     });
+
+    component.$onInit();
   }));
 
   describe('Function: searchDrivers', function () {

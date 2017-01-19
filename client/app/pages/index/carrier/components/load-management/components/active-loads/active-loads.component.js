@@ -8,75 +8,109 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
   'echo.components.filterButton',
-  'echo.components.loadMap'
+  'echo.components.loadMap',
+  'echo.services.loadCount',
+  'echo.api.requestBuilder.activeLoads'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {
     repDetails: '<',
-    carrierId: '<'
+    carrierId: '<',
+    testBinding: '<'
   },
-  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum) {
-    var that = this;
-    that.showLoading = false;
-    that.paging = new PagingModel(appConstants.LIMIT.loadsList);
-    that.isPickUpToday = false;
-    that.loadType = loadTypesEnum.ACTIVE;
-    that.isDeliveriesToday = false;
-    var defaultFilterText = 'By Next Appointment';
-    that.filterText = defaultFilterText;
+  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum, loadCountService, ActiveLoadsRequestBuilder) {
 
-    that.getAvailableLoads = function() {
+    this.deliveriesTodayHandler = function(value) {
+      this.filterText = value ? 'By Next Delivery' : this.defaultFilterText;
+
+      this.isPickUpToday = false;
+      this.isDeliveriesToday = value;
+      this.paging.reset();
+
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+
+      if (this.isDeliveriesToday) {
+        activeLoadsPageApiRequest.filterByDeliveriesToday();
+      }
+
+      this.getPageData(activeLoadsPageApiRequest);
+    };
+
+    this.pickupsTodayHandler = function(value) {
+
+      this.filterText = value ? 'By Next Pickup' : this.defaultFilterText;
+      this.isDeliveriesToday = false;
+      this.isPickUpToday = value;
+      this.paging.reset();
+
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+
+      if (this.isPickUpToday) {
+        activeLoadsPageApiRequest.filterByPickupsToday();
+      }
+
+      this.getPageData(activeLoadsPageApiRequest);
+    };
+
+    this.getPageData = function(requestBuilder) {
+      var that = this;
+
+      if (requestBuilder.hasMapData()) {
+        that.showMap = false;
+        that.mapPoints = [];
+      }
+
       that.showLoading = true;
-      loadsApi.fetchAvailableLoads(that.carrierId, that.paging, that.isPickUpToday, that.isDeliveriesToday).then(function(availableLoadData) {
-        that.paging.totalRecords = availableLoadData.totalLoadCount;
-        that.paging.recordCount = _.size(availableLoadData.loads);
-        that.activeLoads = availableLoadData.loads;
-      }).finally(function() {
-        that.showLoading = false;
+
+      requestBuilder.fetchActiveLoads(that.paging).execute().then(function(activeLoadsPageData) {
+        if (activeLoadsPageData.loads) {
+          that.paging.totalRecords = activeLoadsPageData.loads.totalLoadCount;
+          that.paging.recordCount = _.size(activeLoadsPageData.loads.loads);
+          that.activeLoads = activeLoadsPageData.loads.loads;
+          that.showLoading = false;
+        }
+        if (activeLoadsPageData.mapLoads) {
+          that.mapPoints = activeLoadsPageData.mapLoads;
+          that.showMap = true;
+        }
+
+        if (activeLoadsPageData.loadsCount) {
+          loadCountService.setLoadCount(activeLoadsPageData.loadsCount);
+        }
       });
     };
 
-    that.deliveriesTodayHandler = function(value) {
-      if (!value) {
-        that.filterText = defaultFilterText;
-      } else {
-        that.filterText = 'By Next Delivery';
+    this.fetchActiveLoads = function() {
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+      this.getPageData(activeLoadsPageApiRequest);
+    };
+
+    this.refreshPageData = function() {
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+      activeLoadsPageApiRequest.fetchMapData();
+      this.getPageData(activeLoadsPageApiRequest);
+    };
+
+
+    this.$onInit = function() {
+      this.showLoading = false;
+      this.paging = new PagingModel(appConstants.LIMIT.loadsList);
+      this.isPickUpToday = false;
+      this.loadType = loadTypesEnum.ACTIVE;
+      this.isDeliveriesToday = false;
+
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+      activeLoadsPageApiRequest.fetchMapData();
+
+      this.defaultFilterText = 'By Next Appointment';
+      this.filterText = this.defaultFilterText;
+      var fetchLoadCount = _.isEmpty(loadCountService.getLoadCount());
+
+      if (fetchLoadCount) {
+        activeLoadsPageApiRequest.fetchLoadsCount();
       }
 
-      that.isPickUpToday = false;
-      that.isDeliveriesToday = value;
-      that.paging.reset();
-      that.getAvailableLoads();
-    };
-
-    that.pickupsTodayHandler = function(value) {
-      if (!value) {
-        that.filterText = defaultFilterText;
-      } else {
-        that.filterText = 'By Next Pickup';
-      }
-      that.isDeliveriesToday = false;
-      that.isPickUpToday = value;
-      that.paging.reset();
-      that.getAvailableLoads();
-    };
-
-    that.getMapPointsForAvailableLoads = function() {
-      that.showMap = false;
-      that.mapPoints = [];
-      loadsApi.fetchMapPointsForActiveLoads(that.carrierId).then(function(mapPointData) {
-        that.mapPoints = mapPointData;
-        that.showMap = true;
-      });
-    };
-
-    that.refreshPageData = function() {
-      that.getAvailableLoads();
-      that.getMapPointsForAvailableLoads();
-    };
-
-    that.$onInit = function() {
-      that.refreshPageData();
+      this.getPageData(activeLoadsPageApiRequest);
     };
   }
 });

@@ -1,231 +1,163 @@
+describe('Component: Dashboard Loads', function() {
+  var component, scope, $q, carrierId, availableData,
+    PagingModel, DashboardRequestBuilder, requestBuilderObj,
+    requestDefer, pagingModelObj;
 
-describe('Component: dashboard', function () {
-  var component, $q, scope, reset, carrierId, routesConfig, PagingModel, loadsApi, loadTypesEnum;
-
-  beforeEach(function () {
-    module('app/pages/index/carrier/components/dashboard/dashboard.template.html');
-    module('echo.index.carrier.dashboard', function ($provide) {
-      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('carrierApi', ['fetchLoadsNeedingAction', 'fetchMultiStopLoads', 'fetchLoadCount', 'fetchMapPointsForLoadsNeedingAction']));
+  beforeEach(function() {
+    module('echo.index.carrier.dashboard', function($provide) {
       $provide.value('PagingModel', PagingModel = jasmine.createSpy('PagingModel'));
-      $provide.value('routesConfig', routesConfig = {
-        INDEX: {
-          activeLoads: {
-            name: 'active'
-          }
+      $provide.value('app/pages/index/carrier/components/dashboard/dashboard.template.html');
+      $provide.value('DashboardRequestBuilder',
+        DashboardRequestBuilder = jasmine.createSpy('DashboardRequestBuilder'));
+    });
+
+    inject(function($rootScope, $compile, $componentController, _$q_) {
+      scope = $rootScope.$new();
+      scope.ctrl = {
+        getComponent: jasmine.createSpy('getComponent')
+      };
+
+      $q = _$q_;
+
+      carrierId = 1;
+      availableData = {
+        singleStopLoads: {
+          totalLoadCount: 24,
+          loads: [{
+            id: 1
+          }, {
+            id: 2
+          }, {
+            id: 3
+          }, {
+            id: 4
+          }]
+        },
+        multiStopLoads: {
+          totalLoadCount: 14,
+          loads: [{
+            id: 4
+          }, {
+            id: 2
+          }, {
+            id: 3
+          }, {
+            id: 4
+          }]
+        },
+        mapLoads: [{
+          id: 1
+        }, {
+          id: 2
+        }],
+        loadsCount: {
+          active: 12,
+          unbilled: 13,
+          upcoming: 4
         }
+      };
+
+      requestBuilderObj = jasmine.createSpyObj('requestBuilderObj', ['fetchSingleStopLoads', 'fetchSingleStopLoads', 'fetchMultiStopLoads', 'fetchDashboardPage', 'execute']);
+      DashboardRequestBuilder.and.returnValue(requestBuilderObj);
+      requestBuilderObj.fetchSingleStopLoads.and.returnValue({
+        execute: requestBuilderObj.execute
       });
-      $provide.value('loadTypesEnum', loadTypesEnum = {
-        ACTIVE: 'active'
+      requestBuilderObj.fetchMultiStopLoads.and.returnValue({
+        execute: requestBuilderObj.execute
       });
-    });
-  });
+      requestBuilderObj.fetchDashboardPage.and.returnValue({
+        execute: requestBuilderObj.execute
+      });
 
-  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController) {
-    scope = $rootScope.$new();
-    $q = _$q_;
-    scope.ctrl = {
-      getComponent: jasmine.createSpy('getComponent')
-    };
+      requestDefer = $q.defer();
+      requestBuilderObj.execute.and.returnValue(requestDefer.promise);
 
-    scope.$digest();
-    carrierId = 1;
+      pagingModelObj = jasmine.createSpyObj('pagingModelObj', ['setRecords', 'reset']);
+      PagingModel.and.returnValue(pagingModelObj);
 
-    reset = jasmine.createSpy('reset');
+      component = $componentController('dashboard', null, {
+        carrierId: carrierId
+      });
 
-    PagingModel.and.returnValue({
-      reset: reset,
-      setRecords: jasmine.createSpy('setRecords')
-    });
+      spyOn(component, 'fetchLoadDashboard');
+      component.fetchLoadDashboard.and.callFake(_.noop);
 
-    component = $componentController('dashboard', null, { repDetails: {}, carrierId: carrierId });
-  }));
-
-  describe('Function: $onInit', function () {
-    var actionLoadsDefer,
-      multistopDefer,
-      loadCountDefer,
-      mapPointsDefer;
-
-    beforeEach(function () {
-      actionLoadsDefer = $q.defer();
-      multistopDefer = $q.defer();
-      loadCountDefer = $q.defer();
-      mapPointsDefer = $q.defer();
-
-      spyOn(component, 'fetchLoadsNeedingAction');
-      spyOn(component, 'fetchMultiStopLoads');
-      loadsApi.fetchLoadCount.and.returnValue(loadCountDefer.promise);
-      component.fetchLoadsNeedingAction.and.returnValue(actionLoadsDefer.promise);
-      component.fetchMultiStopLoads.and.returnValue(multistopDefer.promise);
-      loadsApi.fetchMapPointsForLoadsNeedingAction.and.returnValue(mapPointsDefer.promise);
       component.$onInit();
     });
-
-    it('should call multistop loads', function () {
-      expect(component.fetchMultiStopLoads).toHaveBeenCalled();
-    });
-
-    it('should call loads needing action', function () {
-      expect(component.fetchLoadsNeedingAction).toHaveBeenCalled();
-    });
-
-    it('should call load counts', function () {
-      expect(loadsApi.fetchLoadCount).toHaveBeenCalledWith(carrierId);
-    });
-
-    it('should call map points', function () {
-      expect(loadsApi.fetchMapPointsForLoadsNeedingAction).toHaveBeenCalledWith(carrierId);
-    });
-
-    it('should set active load counts', function (done) {
-      var loadCounts = {
-        active: 3
-      };
-      actionLoadsDefer.resolve({});
-      multistopDefer.resolve({});
-      loadCountDefer.resolve(loadCounts);
-      mapPointsDefer.resolve([]);
-
-      scope.$digest();
-
-      loadCountDefer.promise.then(function () {
-        expect(component.activeLoadCount).toBe(loadCounts.active);
-        done();
-      });
-
-      scope.$digest();
-    });
   });
 
-  describe('Function: fetchMultiStopLoads', function () {
-    var multistopDefer;
-
-    beforeEach(function () {
-      multistopDefer = $q.defer();
-      loadsApi.fetchMultiStopLoads.and.returnValue(multistopDefer.promise);
-    });
-
-    it('should call paging reset', function () {
-      component.fetchMultiStopLoads();
-      expect(reset).toHaveBeenCalled();
-    });
-
-    it('should call multistop loads api', function () {
-      component.fetchMultiStopLoads();
-      expect(loadsApi.fetchMultiStopLoads).toHaveBeenCalledWith(carrierId, PagingModel());
-    });
-
-    it('should set multistop loads', function (done) {
-      var multiStopLoads = {
-        loads: [{
-          id: 1
-        }]
-      };
-      multistopDefer.resolve(multiStopLoads);
-      component.fetchMultiStopLoads();
-      multistopDefer.promise.then(function () {
-        expect(component.multiStopLoads).toEqual(multiStopLoads.loads);
-        done();
-      });
-
-      scope.$digest();
-    });
-  });
-
-  describe('Function: fetchLoadsNeedingAction', function () {
-    var actionLoadsDefer;
-
-    beforeEach(function () {
-      actionLoadsDefer = $q.defer();
-      loadsApi.fetchLoadsNeedingAction.and.returnValue(actionLoadsDefer.promise);
-    });
-
-    it('should call paging reset', function () {
-      component.fetchLoadsNeedingAction();
-      expect(reset).toHaveBeenCalled();
-    });
-
-    it('should call multistop loads api', function () {
-      component.fetchLoadsNeedingAction();
-      expect(loadsApi.fetchLoadsNeedingAction).toHaveBeenCalledWith(carrierId, PagingModel());
-    });
-
-    it('should set multistop loads', function (done) {
-      var activeLoads = {
-        loads: [{
-          id: 1
-        }]
-      };
-      actionLoadsDefer.resolve(activeLoads);
-      component.fetchLoadsNeedingAction();
-      actionLoadsDefer.promise.then(function () {
-        expect(component.activeLoads).toEqual(activeLoads.loads);
-        done();
-      });
-
-      scope.$digest();
-    });
-  });
-
-  describe('Function: showMoreMultiStopLoadsHandler', function () {
-    var multiStopLoadsDefer;
-
-    beforeEach(function () {
-      multiStopLoadsDefer = $q.defer();
-      loadsApi.fetchMultiStopLoads.and.returnValue(multiStopLoadsDefer.promise);
-    });
-
-    it('should call multistop loads api', function () {
-      component.showMoreMultiStopLoadsHandler();
-      expect(loadsApi.fetchMultiStopLoads).toHaveBeenCalledWith(carrierId, PagingModel());
-    });
-
-    it('should set multistop loads', function (done) {
-      component.multiStopLoads = [];
-      var multiStopLoads = {
-        loads: [{
-          id: 1
-        }]
-      };
-      multiStopLoadsDefer.resolve(multiStopLoads);
-      component.showMoreMultiStopLoadsHandler();
-      multiStopLoadsDefer.promise.then(function () {
-        expect(component.multiStopLoads).toEqual(multiStopLoads.loads);
-        done();
-      });
-
-      scope.$digest();
-    });
-  });
-
-  describe('Function: showMoreActionLoadsHandler', function () {
-    var actionLoadsDefer;
-
-    beforeEach(function () {
-      actionLoadsDefer = $q.defer();
-      loadsApi.fetchLoadsNeedingAction.and.returnValue(actionLoadsDefer.promise);
-    });
-
-    it('should call multistop loads api', function () {
+  describe('Function: showMoreActionLoadsHandler', function() {
+    it('should fetch single stop loads', function() {
       component.showMoreActionLoadsHandler();
-      expect(loadsApi.fetchLoadsNeedingAction).toHaveBeenCalledWith(carrierId, PagingModel());
-    });
-
-    it('should set multistop loads', function (done) {
+      requestDefer.resolve(availableData);
       component.activeLoads = [];
-      var activeLoads = {
-        loads: [{
-          id: 1
-        }]
-      };
-      actionLoadsDefer.resolve(activeLoads);
-      component.showMoreActionLoadsHandler();
-      actionLoadsDefer.promise.then(function () {
-        expect(component.activeLoads).toEqual(activeLoads.loads);
-        done();
-      });
-
       scope.$digest();
+
+      expect(component.activeLoads).toEqual(availableData.singleStopLoads.loads);
+    });
+  });
+
+  describe('Function: fetchLoadsNeedingAction', function() {
+    it('should fetch single stop loads', function() {
+      component.fetchLoadsNeedingAction();
+      requestDefer.resolve(availableData);
+      component.activeLoads = [];
+      scope.$digest();
+
+      expect(component.activeLoads).toEqual(availableData.singleStopLoads.loads);
+    });
+  });
+
+  describe('Function: fetchMultistopLoads', function() {
+    it('should fetch multi stop loads', function() {
+      component.fetchMultistopLoads();
+      requestDefer.resolve(availableData);
+      component.multiStopLoads = [];
+      scope.$digest();
+
+      expect(component.multiStopLoads).toEqual(availableData.multiStopLoads.loads);
+    });
+  });
+
+  describe('Function: showMoreMultiStopLoadsHandler', function() {
+    it('should fetch multi stop loads', function() {
+      component.showMoreMultiStopLoadsHandler();
+      requestDefer.resolve(availableData);
+      component.multiStopLoads = [];
+      scope.$digest();
+
+      expect(component.multiStopLoads).toEqual(availableData.multiStopLoads.loads);
+    });
+  });
+
+  describe('Function: refreshPageData', function() {
+    it('should fetch dashboard page data', function() {
+      component.refreshPageData();
+      expect(component.fetchLoadDashboard).toHaveBeenCalled();
+    });
+  });
+
+  describe('Function: fetchLoadDashboard', function() {
+    beforeEach(function() {
+      component.fetchLoadDashboard.and.callThrough();
+    });
+
+    it('should fetch dashboard page data', function() {
+      component.fetchLoadDashboard();
+      requestDefer.resolve(availableData);
+      scope.$digest();
+
+      expect(component.multiStopLoads).toEqual(availableData.multiStopLoads.loads);
+      expect(component.activeLoads).toEqual(availableData.singleStopLoads.loads);
+    });
+
+    it('should default loads to empty array', function() {
+      component.fetchLoadDashboard();
+      requestDefer.resolve({});
+      scope.$digest();
+
+      expect(component.multiStopLoads).toEqual([]);
+      expect(component.activeLoads).toEqual([]);
     });
   });
 });

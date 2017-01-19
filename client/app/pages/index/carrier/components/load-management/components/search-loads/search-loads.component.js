@@ -13,34 +13,36 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
     carrierId: '<',
     searchText: '<'
   },
-  controller: function ($state, routesConfig, loadsApi, PagingModel, appConstants, loadTypesEnum) {
-    var that = this;
-    that.showLoading = false;
+  controller: function($state, routesConfig, loadsApi, PagingModel, appConstants, loadTypesEnum) {
 
-    that.routesConfig = routesConfig;
-    that.loadCount = 0;
-
-    that.previousRouteName = _.get($state.previous, 'data.name');
-    that.previousRoute = _.get($state.previous, 'name');
-    that.paging = new PagingModel(appConstants.LIMIT.loadsList);
-    that.loadType = loadTypesEnum.UNBILLED;
-
-    that.getLoadsBySearchText = function () {
-      that.paging.reset();
-      that.getLoads();
+    this.getLoadsBySearchText = function() {
+      this.paging.reset();
+      this.getLoads();
     };
 
-    that.getLoads = function () {
+    this.getLoads = function() {
+      var that = this;
+
       that.showLoading = true;
-      loadsApi.fetchLoadsBySearchText(that.carrierId, that.searchText, that.paging).then(function (searchLoads) {
+      loadsApi.fetchLoadsBySearchText(that.carrierId, that.searchText, that.paging).then(function(searchLoads) {
         that.paging.totalRecords = searchLoads.totalLoadCount;
         that.paging.recordCount = _.size(searchLoads.loads);
         that.loads = searchLoads.loads;
-      }).finally(function () {
+      }).finally(function() {
         that.showLoading = false;
       });
     };
 
-    that.$onInit = that.getLoadsBySearchText;
+    this.$onInit = function() {
+      this.showLoading = false;
+      this.routesConfig = routesConfig;
+      this.loadCount = 0;
+      this.previousRouteName = _.get($state.previous, 'data.name');
+      this.previousRoute = _.get($state.previous, 'name');
+      this.paging = new PagingModel(appConstants.LIMIT.loadsList);
+      this.loadType = loadTypesEnum.UNBILLED;
+
+      this.getLoadsBySearchText();
+    };
   }
 });

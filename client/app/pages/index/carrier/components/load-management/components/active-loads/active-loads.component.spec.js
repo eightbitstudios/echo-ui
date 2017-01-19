@@ -1,19 +1,17 @@
+describe('Component: Active Loads', function() {
+  var component, scope, $q, carrierId, availableData,
+    loadCountService, ActiveLoadsRequestBuilder, requestBuilderObj, requestDefer;
 
-describe('Component: Active Loads', function () {
-  var component, scope, $q, carrierId, loadsApi, availableData;
-
-  beforeEach(function () {
-    module('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html');
-    module('echo.index.carrier.loadManagement.activeLoads', function ($provide) {
-      $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchAvailableLoads']));
-      $provide.value('googleMapsDirective', {});
-      $provide.value('googleMapsMarkerDirective', {});
-      $provide.value('googleMapsInfoWindowDirective', {});
-      $provide.value('googleMapsApi', _.noop);
+  beforeEach(function() {
+    module('echo.index.carrier.loadManagement.activeLoads', function($provide) {
+      $provide.value('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html', '');
+      $provide.value('loadCountService', loadCountService = jasmine.createSpyObj('loadCountService', ['getLoadCount', 'setLoadCount']));
+      $provide.value('ActiveLoadsRequestBuilder',
+        ActiveLoadsRequestBuilder = jasmine.createSpy('ActiveLoadsRequestBuilder'));
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_) {
+  beforeEach(inject(function($rootScope, $compile, $componentController, _$q_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -23,98 +21,192 @@ describe('Component: Active Loads', function () {
 
     carrierId = 1;
     availableData = {
-      totalLoadCount: 24,
-      loads: [
-        {
+      loads: {
+        totalLoadCount: 24,
+        loads: [{
           id: 1
-        },
-        {
+        }, {
           id: 2
-        },
-        {
+        }, {
           id: 3
-        },
-        {
+        }, {
           id: 4
-        }
-      ]
+        }]
+      },
+      mapLoads: [{
+        id: 1
+      }, {
+        id: 2
+      }],
+      loadsCount: {
+        active: 12,
+        unbilled: 13,
+        upcoming: 4
+      }
     };
+
+    requestBuilderObj = jasmine.createSpyObj('requestBuilderObj', ['fetchMapData', 'fetchLoadsCount', 'fetchActiveLoads', 'hasMapData', 'filterByPickupsToday', 'filterByDeliveriesToday', 'execute']);
+    ActiveLoadsRequestBuilder.and.returnValue(requestBuilderObj);
+    requestBuilderObj.fetchActiveLoads.and.returnValue({
+      execute: requestBuilderObj.execute
+    });
+    requestDefer = $q.defer();
+    requestBuilderObj.execute.and.returnValue(requestDefer.promise);
 
     component = $componentController('activeLoads', null, {
       carrierId: carrierId
     });
+    spyOn(component, 'getPageData');
+    component.getPageData.and.callFake(function() {});
+
+    component.$onInit();
   }));
 
-  describe('Function: getAvailableLoads', function () {
-    it('should fetch available loads', function () {
-      var deferred = $q.defer();
-      loadsApi.fetchAvailableLoads.and.returnValue(deferred.promise);
-      component.getAvailableLoads();
-      deferred.resolve(availableData);
-
-      scope.$digest();
-
-      expect(loadsApi.fetchAvailableLoads).toHaveBeenCalledWith(carrierId, component.paging, component.isPickUpToday, component.isDeliveriesToday);
-      expect(component.paging.totalRecords).toBe(24);
-      expect(component.paging.recordCount).toBe(4);
-      expect(component.activeLoads).toBe(availableData.loads);
+  describe('Function: deliveriesTodayHandler', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
     });
-  });
-
-  describe('Function: deliveriesTodayHandler', function () {
-    it('should set filter text to default', function () {
-      var deferred = $q.defer();
-      loadsApi.fetchAvailableLoads.and.returnValue(deferred.promise);
+    it('should set filter text to default', function() {
       component.deliveriesTodayHandler(false);
-      deferred.resolve(availableData);
-
-      scope.$digest();
 
       expect(component.filterText).toBe('By Next Appointment');
       expect(component.isPickUpToday).toBe(false);
       expect(component.isDeliveriesToday).toBe(false);
+
+      expect(requestBuilderObj.filterByDeliveriesToday).not.toHaveBeenCalled();
     });
 
-    it('should set filter text to next delivery', function () {
-      var deferred = $q.defer();
-      loadsApi.fetchAvailableLoads.and.returnValue(deferred.promise);
+    it('should set filter text to next delivery', function() {
       component.deliveriesTodayHandler(true);
-      deferred.resolve(availableData);
-
-      scope.$digest();
-
       expect(component.filterText).toBe('By Next Delivery');
       expect(component.isPickUpToday).toBe(false);
       expect(component.isDeliveriesToday).toBe(true);
+      expect(requestBuilderObj.filterByDeliveriesToday).toHaveBeenCalled();
     });
   });
 
-  describe('Function: pickupsTodayHandler', function () {
-    it('should set filter text to default', function () {
-      var deferred = $q.defer();
-      loadsApi.fetchAvailableLoads.and.returnValue(deferred.promise);
+  describe('Function: pickupsTodayHandler', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+    it('should set filter text to default', function() {
       component.pickupsTodayHandler(false);
-      deferred.resolve(availableData);
-
-      scope.$digest();
 
       expect(component.filterText).toBe('By Next Appointment');
       expect(component.isPickUpToday).toBe(false);
       expect(component.isDeliveriesToday).toBe(false);
+      expect(requestBuilderObj.filterByPickupsToday).not.toHaveBeenCalled();
     });
 
-    it('should set filter text to next pickup', function () {
-      var deferred = $q.defer();
-      loadsApi.fetchAvailableLoads.and.returnValue(deferred.promise);
+    it('should set filter text to next pickup', function() {
       component.pickupsTodayHandler(true);
-      deferred.resolve(availableData);
-
-      scope.$digest();
 
       expect(component.filterText).toBe('By Next Pickup');
       expect(component.isPickUpToday).toBe(true);
       expect(component.isDeliveriesToday).toBe(false);
+      expect(requestBuilderObj.filterByPickupsToday).toHaveBeenCalled();
     });
   });
 
+  describe('Function: getPageData', function() {
+    beforeEach(function() {
+      component.getPageData.and.callThrough();
+    });
+    it('should fetch map data', function() {
+      requestBuilderObj.hasMapData.and.returnValue(true);
+      component.getPageData(requestBuilderObj);
+
+      expect(requestBuilderObj.hasMapData).toHaveBeenCalled();
+    });
+
+    it('should fetch only activeLoads', function() {
+      component.getPageData(requestBuilderObj);
+      requestDefer.resolve(availableData);
+
+      availableData.loadsCount = undefined;
+      availableData.mapLoads = undefined;
+
+      scope.$digest();
+
+      expect(component.activeLoads).toBe(availableData.loads.loads);
+      expect(component.paging.totalRecords).toBe(24);
+      expect(component.paging.recordCount).toBe(4);
+      expect(component.mapPoints).toBeUndefined();
+      expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
+    });
+
+    it('should fetch loadsCount', function() {
+      component.getPageData(requestBuilderObj);
+      requestDefer.resolve(availableData);
+
+      availableData.mapLoads = undefined;
+
+      scope.$digest();
+
+      expect(component.activeLoads).toBe(availableData.loads.loads);
+      expect(component.paging.totalRecords).toBe(24);
+      expect(component.paging.recordCount).toBe(4);
+      expect(component.mapPoints).toBe(availableData.mapLoads);
+      expect(loadCountService.setLoadCount).toHaveBeenCalled();
+    });
+
+    it('should fetch mapLoads', function() {
+      component.getPageData(requestBuilderObj);
+      requestDefer.resolve(availableData);
+
+      availableData.loadsCount = undefined;
+
+      scope.$digest();
+
+      expect(component.activeLoads).toBe(availableData.loads.loads);
+      expect(component.paging.totalRecords).toBe(24);
+      expect(component.paging.recordCount).toBe(4);
+      expect(component.mapPoints).toBe(availableData.mapLoads);
+      expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
+    });
+
+    it('should not load active loads', function() {
+      component.getPageData(requestBuilderObj);
+      requestDefer.resolve(availableData);
+
+      availableData.loads = undefined;
+
+      scope.$digest();
+
+      expect(component.activeLoads).toBeUndefined();
+    });
+  });
+
+  describe('Function: refreshPageData', function() {
+    it('should not fetch loadsCount', function() {
+      requestBuilderObj.fetchLoadsCount.calls.reset();
+      component.refreshPageData();
+      expect(requestBuilderObj.fetchMapData).toHaveBeenCalled();
+      expect(requestBuilderObj.fetchLoadsCount).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Function: fetchActiveLoads', function() {
+    it('should call getPageData', function() {
+      component.fetchActiveLoads();
+      expect(component.getPageData).toHaveBeenCalled();
+    });
+  });
+
+  describe('Function: $onInit', function() {
+
+    it('should fetch loadCount', function() {
+      component.$onInit();
+      expect(requestBuilderObj.fetchLoadsCount).toHaveBeenCalled();
+    });
+
+    it('should not fetch loadCount', function() {
+      requestBuilderObj.fetchLoadsCount.calls.reset();
+      loadCountService.getLoadCount.and.returnValue({
+        test: 1
+      });
+      component.$onInit();
+      expect(requestBuilderObj.fetchLoadsCount).not.toHaveBeenCalled();
+    });
+  });
 });

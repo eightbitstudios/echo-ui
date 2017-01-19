@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('echo.components.loadingButton', [
-  'echo.components.loading',
+  'echo.components.loading'
 ]).component('loadingButton', {
   bindings: {
     buttonText: '@',
@@ -11,6 +11,5 @@ angular.module('echo.components.loadingButton', [
     clickHandler: '&'
   },
   transclude: true,
-  templateUrl: 'app/common/components/loading-button/loading-button.template.html',
-  controller: function() {}
+  templateUrl: 'app/common/components/loading-button/loading-button.template.html'
 });

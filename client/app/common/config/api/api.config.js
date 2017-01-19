@@ -2,6 +2,8 @@ angular.module('echo.config.api', [])
   .constant('apiConfig', {
     googleMapsApiKey: '@googleMapsApiKey@',
     documentUpload: '@documentUpload@',
+    key: '@key@',
+    keyHeader: '@keyHeader@',
     availableLoadsByCarrierId: _.template('@availableLoadsByCarrierId@'),
     unbilledLoadsByCarrierId: _.template('@unbilledLoadsByCarrierId@'),
     upcomingLoadsByCarrierId: _.template('@upcomingLoadsByCarrierId@'),
@@ -54,8 +56,10 @@ angular.module('echo.config.api', [])
     mapPointsForActiveLoads: _.template('@mapPointsForActiveLoads@'),
     mapPointByLoadGuid: _.template('@mapPointByLoadGuid@'),
     mapPointsForLoadsNeedingAction: _.template('@mapPointsForLoadsNeedingAction@'),
+    activeLoadsPage: _.template('@activeLoadsPage@'),
+    loadDashboard: _.template('@loadDashboard@'),
     documents: _.template('@documents@'),
     documentById: _.template('@documentById@'),
     documentsByIdThumbnail: _.template('@documentsByIdThumbnail@'),
-    documentsByIdPDF: _.template('@documentsByIdPDF@'),
+    documentsByIdPDF: _.template('@documentsByIdPDF@')
   });
