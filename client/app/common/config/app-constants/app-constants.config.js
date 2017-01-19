@@ -21,7 +21,8 @@ angular.module('echo.config.appConstants', [])
       passwordLength: /^.{8,}$/,
       passwordLowerCase: /[a-z]/,
       passwordNumber: /[0-9]/,
-      passwordUpperCase: /[A-Z]/
+      passwordUpperCase: /[A-Z]/,
+      emailValidation: /^[\w.!#$%&’*+/=?^_`{|}~-]+@[\w-]+(?:\.[\w-]+)+$/
     },
     ERROR_MESSAGES: {
       DEFAULTS: {
@@ -74,7 +75,7 @@ angular.module('echo.config.appConstants', [])
         404105: 'City/State combination not found',
         404112: 'Invite already accepted',
         500: 'An unexpected error has occurred',
-        500100: 'Unable to change current password',
+        500100: 'Password must contain mix of the following: uppercase, lowercase, and numbers',
         500101: 'Username already in use',
         500102: 'Unable to Update OneLogin User',
         500103: 'Unable to create user',

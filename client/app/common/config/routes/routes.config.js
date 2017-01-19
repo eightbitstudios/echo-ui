@@ -83,6 +83,10 @@ angular.module('echo.config.routes', [])
         name: 'login.createPassword',
         route: '/createPassword?validationToken&userId'
       },
+      resetPassword: {
+        name: 'login.resetPassword',
+        route: '/resetPassword?validationToken&userId'
+      },
       forgotPassword: {
         name: 'login.forgotPassword',
         route: '/forgotPassword'

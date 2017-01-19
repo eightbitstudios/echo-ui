@@ -33,6 +33,7 @@ angular.module('echo.login.forgotPassword', [
       this.showValidationError = false;
       this.serverError = null;
       this.appConstants = appConstants;
+      this.emailValidation = appConstants.REGEX.emailValidation;
     };
   }
 });
