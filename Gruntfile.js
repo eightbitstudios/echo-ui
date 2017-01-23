@@ -142,8 +142,7 @@ module.exports = function(grunt) {
       'copy:deploy',
       'install',
       'grunticon',
-      'express:dist',
-      'keepalive'
+      'express:dist'
     ]);
   });
 
