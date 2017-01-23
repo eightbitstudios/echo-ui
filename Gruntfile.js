@@ -7,6 +7,7 @@ module.exports = function(grunt) {
   var apiConfigStage = require('./config/api-config-stage.js')(grunt);
   var apiConfigMocks = require('./config/api-config-mocks.js')(grunt);
   var apiConfigTest = require('./config/api-config-test.js')(grunt);
+  var apiConfigQA = require('./config/api-config-qa.js')(grunt);
 
   var userConfig = require('./build.config.js')(grunt);
   grunt.initConfig(userConfig);
@@ -118,6 +119,17 @@ module.exports = function(grunt) {
       'install',
       'grunticon',
       'env:stage',
+      'express:dist'
+    ]);
+  });
+
+  grunt.registerTask('qa', function(target) {
+    grunt.config.merge(apiConfigQA);
+    grunt.task.run([
+      'dist',
+      'copy:deploy',
+      'install',
+      'grunticon',
       'express:dist'
     ]);
   });
