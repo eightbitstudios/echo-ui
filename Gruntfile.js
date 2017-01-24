@@ -34,6 +34,16 @@ module.exports = function(grunt) {
         'express:dev',
         'watch'
       ]);
+    } else if (target === 'qa') {
+      grunt.log.write("LOADING CONFIGS FOR QA");
+      grunt.config.merge(apiConfigQA);
+
+      grunt.task.run([
+        'build',
+        'env:local',
+        'express:dev',
+        'watch'
+      ]);
     } else if (target === 'stage') {
       grunt.log.write("LOADING CONFIGS FOR STAGING");
       grunt.config.merge(apiConfigStage);
