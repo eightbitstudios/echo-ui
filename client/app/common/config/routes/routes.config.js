@@ -73,7 +73,8 @@ angular.module('echo.config.routes', [])
       base: {
         name: 'login',
         route: '/login.html',
-        url: _.template('/login.html#/?redirect=${redirect}')
+        url: '/login.html#/',
+        redirectUrl: _.template('/login.html#/?redirect=${redirect}')
       },
       signIn: {
         name: 'login.signIn',

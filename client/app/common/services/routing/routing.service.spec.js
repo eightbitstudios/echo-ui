@@ -32,7 +32,7 @@ describe('Service: routingService', function () {
         },
         LOGIN: {
           base: {
-            url: jasmine.createSpy('base')
+            redirectUrl: jasmine.createSpy('base')
           }
         }
       });
@@ -68,7 +68,7 @@ describe('Service: routingService', function () {
 
     it('should redirect to login page', function () {
       routingService.handleRouting(event, toState, from);
-      expect(routesConfig.LOGIN.base.url).toHaveBeenCalled();
+      expect(routesConfig.LOGIN.base.redirectUrl).toHaveBeenCalled();
     });
 
     it('should prevent state from loading', function () {
