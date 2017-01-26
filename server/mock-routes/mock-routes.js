@@ -55,7 +55,7 @@ module.exports = function (app) {
   app.get(endpoints.api.refresh, authHandler.refresh);
   app.post(endpoints.api.createPassword, authHandler.createPassword);
   app.post(endpoints.api.forgotPassword, authHandler.forgotPassword);
-  app.post(endpoints.api.deactivateUserById, userHandler.deactivateUserById);
+  app.put(endpoints.api.deactivateUserById, userHandler.deactivateUserById);
   app.get(endpoints.api.driverCount, carrierHandler.getDriverCount);
   app.post(endpoints.api.driver, driverHandler.insertDriver);
   app.get(endpoints.api.driverById, driverHandler.getDriverById);

@@ -31,7 +31,7 @@ angular.module('echo.services.routing', [
             }
           } else {
             event.preventDefault(); // Reroute user to the login page if they are not authenticated
-            $window.location = routesConfig.LOGIN.base.url({ redirect: encodeURIComponent($window.location.hash) });
+            $window.location = routesConfig.LOGIN.base.redirectUrl({ redirect: encodeURIComponent($window.location.hash) });
           }
         }
       }
