@@ -4,9 +4,6 @@ module.exports = function(grunt) {
     local: {
       NODE_ENV: 'local'
     },
-    demo: {
-      NODE_ENV: 'demo'
-    },
     stage: {
       NODE_ENV: 'stage'
     },
@@ -15,9 +12,6 @@ module.exports = function(grunt) {
     },
     test: {
       NODE_ENV: 'test'
-    },
-    heroku: {
-      NODE_ENV: 'heroku'
     },
     production: {
       NODE_ENV: 'production'
