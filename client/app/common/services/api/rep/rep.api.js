@@ -15,7 +15,7 @@ angular.module('echo.api.rep', [
        */
       fetchRepByCarrierId: function (carrierId) {
 
-        var url = apiConfig.repByCarrierId({ carrierId: carrierId });
+        var url = _.template(apiConfig.repByCarrierId)({ carrierId: carrierId });
 
         return $http.get(url).then(function (resp) {
           repDetails = new RepModel(resp.data.data);

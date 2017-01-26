@@ -28,6 +28,7 @@ module.exports = function (config) {
       'client/app/app.js',
       'client/app/**/*.js',
       'build/public/app/templates-*.js',
+      'build/public/app/common/config/api/api.config.js',
       'client/app/**/*.spec.js'
     ],
 

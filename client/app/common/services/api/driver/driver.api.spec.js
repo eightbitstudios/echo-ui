@@ -68,7 +68,7 @@ describe('Api: driverApi', function () {
       driverConverterService.driverRequest.and.returnValue(driver);
 
       driverApi.updateDriverById(carrierId, driver).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.driverById({ carrierId: carrierId, driverId: driver.id }), driver);
+        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.driverById)({ carrierId: carrierId, driverId: driver.id }), driver);
         done();
       });
 
@@ -106,7 +106,7 @@ describe('Api: driverApi', function () {
       putRes.data = { data: '' };
 
       driverApi.deactivateDriverById(carrierId, driver).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.deactivateUserById({ userId: driver.id }), driver);
+        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.deactivateUserById)({ userId: driver.id }), driver);
         done();
       });
 
@@ -182,7 +182,7 @@ describe('Api: driverApi', function () {
       getRes.data = { data: '' };
 
       driverApi.fetchDriverById(carrierId, driverId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.driverById({ carrierId: carrierId, driverId: driverId }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.driverById)({ carrierId: carrierId, driverId: driverId }));
         done();
       });
 

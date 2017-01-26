@@ -31,7 +31,7 @@ angular.module('echo.api.portalUser', [
        */
       updatePortalUserById: function (portalUser) {
 
-        var url = apiConfig.userById({ userId: portalUser.id });
+        var url = _.template(apiConfig.userById)({ userId: portalUser.id });
         var data = portalUserReqConverterService.convertPortalUser(portalUser);
 
         return $http.put(url, data).then(function (resp) {
@@ -48,7 +48,7 @@ angular.module('echo.api.portalUser', [
        */
       deactivatePortalUserById: function (portalUser) {
 
-        var url = apiConfig.deactivateUserById({ userId: portalUser.id });
+        var url = _.template(apiConfig.deactivateUserById)({ userId: portalUser.id });
         var data = portalUserReqConverterService.convertPortalUser(portalUser);
 
         return $http.put(url, data).then(function (resp) {
@@ -82,7 +82,7 @@ angular.module('echo.api.portalUser', [
        */
       fetchPortalUserById: function (carrierId, userId) {
 
-        var url = apiConfig.userById({ carrierId: carrierId, userId: userId });
+        var url = _.template(apiConfig.userById)({ carrierId: carrierId, userId: userId });
 
         return $http.get(url).then(function (resp) {
           return resp.data.data;
