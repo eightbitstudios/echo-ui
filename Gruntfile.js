@@ -6,10 +6,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', function(env) {
     grunt.task.run([
-        'build:' + (env || 'mocks'),
-        'env:local',
-        'express:dev',
-        'watch'
+      'build:' + (env || 'mocks'),
+      'env:local',
+      'express:dev',
+      'watch'
       ]);
   });
 
