@@ -36,6 +36,23 @@ module.exports = function(grunt) {
       }
     },
 
+    qa: {
+      constants: function() {
+        basePath = basePath + 'qa/';
+        grunt.log.write('Merging \'qa\' config overrides from: ' + basePath + '\r\n');
+        return {
+          /**
+           * Add overridden configuration values as needed per envrionment in their own folder.
+           * Only properties that are being overridden need to be defined (not the entire config file)
+           *
+           * Example: 'apiEndpoints: grunt.file.readJSON('.tmp/config/local/app.constants.json')'
+           **/
+          apiConfig: grunt.file.readJSON(basePath + 'api.config.json'),
+          keyConstants: grunt.file.readJSON(basePath + 'keys.constants.json')
+        };
+      }
+    },
+
     local: {
       constants: function() {
         basePath = basePath + 'local/';
