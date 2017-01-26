@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       name: 'echo.config.api',
       dest: '<%= build_dir %>/public/app/common/config/api/api.config.js',
       template: grunt.file.read('config/constant.tpl.ejs'),
-      constants: function(options) {
+      constants: function() {
         return {
           /**
            * These are default configurations. Any envrionment specific values should be
