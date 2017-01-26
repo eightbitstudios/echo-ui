@@ -119,7 +119,8 @@ module.exports = function(grunt) {
            *
            * Example: 'apiEndpoints: grunt.file.readJSON('.tmp/config/local/app.constants.json')'
            **/
-          apiConfig: grunt.file.readJSON(basePath + 'api.config.json')
+          apiConfig: grunt.file.readJSON(basePath + 'api.config.json'),
+          keyConstants: grunt.file.readJSON(basePath + 'keys.constants.json')
         };
       }
     },
