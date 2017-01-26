@@ -14,45 +14,30 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('dev', function() {
-    grunt.task.run([
-      'dist:dev',
-      'copy:deploy',
-      'install',
-      'grunticon',
-      'env:dev',
-      'express:dist'
-    ]);
+    grunt.task.run(['prepareDeploy:dev']);
   });
 
   grunt.registerTask('stage', function() {
-    grunt.task.run([
-      'dist:stage',
-      'copy:deploy',
-      'install',
-      'grunticon',
-      'env:stage',
-      'express:dist'
-    ]);
+    grunt.task.run(['prepareDeploy:stage']);
   });
 
   grunt.registerTask('qa', function() {
-    grunt.task.run([
-      'dist:qa',
-      'copy:deploy',
-      'install',
-      'grunticon',
-      'express:dist'
-    ]);
+    grunt.task.run(['prepareDeploy:qa']);
   });
 
   grunt.registerTask('test', function() {
+    grunt.task.run(['prepareDeploy:test']);
+  });
+
+  grunt.registerTask('prepareDeploy', function(env) {
     grunt.task.run([
-      'dist:test',
+      'dist:' + env,
       'copy:deploy',
       'install',
       'grunticon',
-      'env:test',
-      'express:dist'
+      'env:' + env,
+      'express:dist',
+        'watch'
     ]);
   });
 
