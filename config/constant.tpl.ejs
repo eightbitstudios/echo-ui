@@ -19,7 +19,6 @@ angular.module('{%- moduleName %}'{% if (deps) { %}, [{%= deps.map(function (nam
             if(key !== 'host' && key !== 'path' && key !== 'version' && key !== 'baseEndpoint') {
               valueObject[key] = baseEndpoint + valueObject[key];
             }
-            console.log(valueObject[key]);
           });
 
           constant.value = JSON.stringify(valueObject);
