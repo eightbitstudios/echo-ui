@@ -4,17 +4,8 @@ module.exports = function(grunt) {
     local: {
       NODE_ENV: 'local'
     },
-    stage: {
-      NODE_ENV: 'stage'
-    },
     dev: {
       NODE_ENV: 'dev'
-    },
-    test: {
-      NODE_ENV: 'test'
-    },
-    production: {
-      NODE_ENV: 'production'
     }
   });
 

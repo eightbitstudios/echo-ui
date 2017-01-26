@@ -29,15 +29,18 @@ module.exports = function(grunt) {
     grunt.task.run(['prepareDeploy:test']);
   });
 
+  grunt.registerTask('bat2', function() {
+    grunt.task.run(['prepareDeploy:bat2']);
+  });
+
   grunt.registerTask('prepareDeploy', function(env) {
     grunt.task.run([
       'dist:' + env,
       'copy:deploy',
       'install',
       'grunticon',
-      'env:' + env,
-      'express:dist',
-        'watch'
+      'env:dev',
+      'express:dist'
     ]);
   });
 

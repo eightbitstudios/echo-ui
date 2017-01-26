@@ -91,6 +91,22 @@ module.exports = function(grunt) {
       }
     },
 
+    bat2: {
+      constants: function() {
+        basePath = basePath + 'bat2/';
+        grunt.log.write('Merging \'bat2\' config overrides from: ' + basePath + '\r\n');
+        return {
+          /**
+           * Add overridden configuration values as needed per envrionment in their own folder.
+           * Only properties that are being overridden need to be defined (not the entire config file)
+           *
+           * Example: 'apiEndpoints: grunt.file.readJSON('.tmp/config/local/app.constants.json')'
+           **/
+          apiConfig: grunt.file.readJSON(basePath + 'api.config.json')
+        };
+      }
+    },
+
     prod: {
       constants: function() {
         basePath = basePath + 'prod/';

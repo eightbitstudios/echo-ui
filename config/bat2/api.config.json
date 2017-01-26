@@ -1,0 +1,5 @@
+{
+  "host": "https://carrierportal-www-bat2.echo.com",
+  "path": "/api",
+  "version": "/v1"
+}
