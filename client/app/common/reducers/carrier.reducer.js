@@ -10,6 +10,5 @@ angular.module('echo.reducers.carrier', [
           return state;
       }
     };
-
     return reducer;
   });

@@ -1,3 +1,8 @@
+/**
+ * @description This structure follows the redux pattern: 
+ * http://redux.js.org/docs/introduction/CoreConcepts.html
+ */
+
 angular.module('echo.store', [
   'echo.action',
   'echo.reducers',
@@ -5,6 +10,9 @@ angular.module('echo.store', [
 ]).factory('store$', function(combineReducers, action$, loadCountReducer, userReducer,
   carrierReducer, repReducer, actionDispatcher) {
 
+  /**
+   * @description Holds the whole state tree of the application
+   */
   function Store() {
     var that = this;
 
@@ -17,8 +25,8 @@ angular.module('echo.store', [
 
     // Reduxification
     that._store$ = action$
-      .startWith(initState)
-      .scan(combineReducers({
+      .startWith(initState) // Call reducers with initState
+      .scan(combineReducers({ // Calls all reducers when an observer notifies store.
         loadCounts: loadCountReducer,
         user: userReducer,
         carrier: carrierReducer,
@@ -30,17 +38,29 @@ angular.module('echo.store', [
     });
   }
 
+  /**
+   * @description Listen to any state changes to the tree
+   * @
+   */
   Store.prototype.subscribe = function(callback) {
     return this._store$.subscribe(callback);
   };
 
+  /**
+   * @description Dispatch an action to change the state of the tree
+   * @param {Object} action - Action to dispatch
+   */
   Store.prototype.dispatch = function(action) {
     actionDispatcher(action);
   };
 
+  /**
+   * @description Get application state tree
+   * @returns {Object} State
+   */
   Store.prototype.getState = function() {
     return this._state;
   };
 
-  return new Store();
+  return new Store(); // Create application store
 });

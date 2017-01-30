@@ -18,7 +18,7 @@ angular.module('echo.index.carrier', [
       var repPromise = repApi.fetchRepByCarrierId(that.carrierId);
 
       store$.dispatch({
-        type: 'LOADING_CARRIER',
+        type: carrierActions.LOADING_CARRIER,
         payload:  Rx.Observable.fromPromise(carrierPromise)
           .map((carrierDetails) => ({
             type: carrierActions.SET_CARRIER,
@@ -26,7 +26,7 @@ angular.module('echo.index.carrier', [
           })).concatAll()
       });
       store$.dispatch({
-        type: 'LOADING_REP',
+        type: repActions.LOADING_REP,
         payload:  Rx.Observable.fromPromise(repPromise)
           .map((rep) => ({
             type: repActions.SET_REP,

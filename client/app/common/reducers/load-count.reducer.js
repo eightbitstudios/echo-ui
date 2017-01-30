@@ -13,6 +13,5 @@ angular.module('echo.reducers.loadCount', [
           return state;
       }
     };
-
     return reducer;
   });

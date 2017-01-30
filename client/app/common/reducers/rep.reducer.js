@@ -10,6 +10,5 @@ angular.module('echo.reducers.rep', [
           return state;
       }
     };
-
     return reducer;
   });

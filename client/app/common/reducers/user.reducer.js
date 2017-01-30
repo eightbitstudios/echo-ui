@@ -10,6 +10,5 @@ angular.module('echo.reducers.user', [
       default: return state;
     }
   };
-
   return reducer;
 });
