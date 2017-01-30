@@ -106,5 +106,6 @@ angular.module('echo.config.appConstants', [])
       lat: 39.50,
       lng: -98.35
     },
+    MAX_STAR_RATING: 4,
     PRIVACY_POLICY_URL: 'https://www.echo.com/privacypolicy.html'
   });
