@@ -19,7 +19,7 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
       showLoading: '=',
       carrierId: '<'
     },
-    controller: function(userProfileService, PasswordChangeModel) {
+    controller: function(store$, PasswordChangeModel) {
 
       this.goBackToPortal = function() {
         this.goBackHandler();
@@ -32,7 +32,7 @@ angular.module('echo.index.carrier.myCompany.userProfile', [
       this.$onInit = function() {
         this.passwordChange = new PasswordChangeModel();
         this.currentPassword = null;
-        this.user = userProfileService.getUser();
+        this.user = store$.getState().user;
       };
     }
   });

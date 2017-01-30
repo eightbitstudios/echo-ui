@@ -18,7 +18,7 @@ angular.module('echo.index.carrier.loadManagement', [
       carrierId: '<',
       count: '<'
     },
-    controller: function($stateParams, $state, Rx, loadCountsActions, routesConfig, actionDispatcher, store$, loadsApi) {
+    controller: function($stateParams, $state, loadCountsActions, routesConfig, actionDispatcher, store$, loadsApi) {
 
       this.routeToSearch = function(searchText) {
         $state.go(routesConfig.INDEX.searchLoads.name, {
@@ -58,11 +58,13 @@ angular.module('echo.index.carrier.loadManagement', [
         if (!that.isActiveLoads) {
           store$.dispatch({
             type: loadCountsActions.FETCH_LOAD_COUNTS,
-            payload: Rx.Observable.fromPromise(loadsApi.fetchLoadCount(that.carrierId))
-              .map((loadCounts) => ({
-                type: loadCountsActions.LOAD_COUNTS_LOADED,
-                payload: loadCounts
-              })).concatAll()
+            payload: loadsApi.fetchLoadCount(that.carrierId)
+              .map(function(loadCounts) {
+                return {
+                  type: loadCountsActions.LOAD_COUNTS_LOADED,
+                  payload: loadCounts
+                };
+              }).concatAll()
           });
         }
       };

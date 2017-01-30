@@ -19,19 +19,23 @@ angular.module('echo.index.carrier', [
 
       store$.dispatch({
         type: carrierActions.LOADING_CARRIER,
-        payload:  Rx.Observable.fromPromise(carrierPromise)
-          .map((carrierDetails) => ({
-            type: carrierActions.SET_CARRIER,
-            payload: carrierDetails
-          })).concatAll()
+        payload: Rx.Observable.fromPromise(carrierPromise)
+          .map(function(carrierDetails) {
+            return {
+              type: carrierActions.SET_CARRIER,
+              payload: carrierDetails
+            };
+          }).concatAll()
       });
       store$.dispatch({
         type: repActions.LOADING_REP,
-        payload:  Rx.Observable.fromPromise(repPromise)
-          .map((rep) => ({
-            type: repActions.SET_REP,
-            payload: rep
-          })).concatAll()
+        payload: Rx.Observable.fromPromise(repPromise)
+          .map(function(rep) {
+            return {
+              type: repActions.SET_REP,
+              payload: rep
+            };
+          }).concatAll()
       });
 
       $q.all([carrierPromise, repPromise]).then(function() {

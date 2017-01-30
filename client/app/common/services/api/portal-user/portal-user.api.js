@@ -7,8 +7,8 @@ angular.module('echo.api.portalUser', [
     'echo.config.routes',
     'echo.services.userProfile'
   ])
-  .factory('portalUserApi', function($http, $q, $window, apiConfig, routesConfig,
-    cookieService, userProfileService, portalUserReqConverterService) {
+  .factory('portalUserApi', function($http, $q, $window, store$, apiConfig, routesConfig,
+    cookieService, portalUserReqConverterService) {
 
     return {
 
@@ -56,8 +56,8 @@ angular.module('echo.api.portalUser', [
         var data = portalUserReqConverterService.convertPortalUser(portalUser);
 
         return $http.put(url, data).then(function(resp) {
-
-          if (userProfileService.getUser().userId === portalUser.id) {
+          var state = store$.getState();
+          if (state.user.userId === portalUser.id) {
             cookieService.clearToken();
             cookieService.clearRefreshToken();
             $window.location = routesConfig.LOGIN.base.url;

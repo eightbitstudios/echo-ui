@@ -10,7 +10,7 @@ angular.module('echo.index.myCarriers.allCarriers', [
   .component('allCarriers', {
     templateUrl: 'app/pages/index/my-carriers/components/all-carriers/all-carriers.template.html',
     bindings: {},
-    controller: function($stateParams, store$, routesConfig, carrierApi, appConstants, userProfileService) {
+    controller: function($stateParams, store$, routesConfig, carrierApi, appConstants) {
 
       /**
        * @description Sets a state for a carrier to selected
