@@ -52,7 +52,7 @@ describe('Api: authenticationApi', function () {
       };
 
       authenticationApi.createPassword(userId, token, passwordChange).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.createPassword({ userId: userId }), {
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.createPassword)({ userId: userId }), {
           password: passwordChange.newPassword,
           confirmPassword: passwordChange.confirmPassword,
           invitationToken: token
@@ -127,7 +127,7 @@ describe('Api: authenticationApi', function () {
       };
       
       authenticationApi.changePassword(userId, passwordChange).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.changePassword({userId: userId}), {
+        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.changePassword)({userId: userId}), {
           password: passwordChange.newPassword,
           confirmPassword: passwordChange.confirmPassword
         });

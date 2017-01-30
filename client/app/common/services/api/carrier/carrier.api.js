@@ -33,7 +33,7 @@ angular.module('echo.api.carrier', [
     */
     fetchCarrierById: function (carrierId) {
 
-      var url = apiConfig.carrierById({ carrierId: carrierId });
+      var url = _.template(apiConfig.carrierById)({ carrierId: carrierId });
 
       return $http.get(url).then(function (resp) {
         return new CarrierModel(resp.data.data);
@@ -47,7 +47,7 @@ angular.module('echo.api.carrier', [
      */
     fetchCarrierPortalUsers: function (carrierId) {
 
-      var url = apiConfig.portalUsers({ carrierId: carrierId });
+      var url = _.template(apiConfig.portalUsers)({ carrierId: carrierId });
 
       return $http.get(url).then(function (resp) {
         return _(resp.data.data).map(function (user) {
@@ -63,7 +63,7 @@ angular.module('echo.api.carrier', [
      */
     fetchCarrierDriverCount: function (carrierId) {
 
-      var url = apiConfig.driverCount({ carrierId: carrierId });
+      var url = _.template(apiConfig.driverCount)({ carrierId: carrierId });
 
       return $http.get(url).then(function (resp) {
         return resp.data.data;
@@ -77,7 +77,7 @@ angular.module('echo.api.carrier', [
      */
     fetchDrivers: function (carrierId, paging) {
 
-      var url = apiConfig.drivers({ carrierId: carrierId });
+      var url = _.template(apiConfig.drivers)({ carrierId: carrierId });
 
       var params = {
         offset: paging.offset,
@@ -104,7 +104,7 @@ angular.module('echo.api.carrier', [
      */
     searchDrivers: function (carrierId, searchTerm) {
 
-      var url = apiConfig.searchDrivers({ carrierId: carrierId, searchTerm: searchTerm });
+      var url = _.template(apiConfig.searchDrivers)({ carrierId: carrierId, searchTerm: searchTerm });
 
       return $http.get(url).then(function (resp) {
         var drivers = _.map(resp.data.data, function (driver) {

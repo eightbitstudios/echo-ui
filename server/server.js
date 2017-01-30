@@ -1,7 +1,6 @@
 var express = require('express'),
   bodyParser = require('body-parser'),
   cookieParser = require('cookie-parser'),
-  basicAuth = require('./middleware/auth/basic-auth'),
   fs = require('fs'),
   http = require('http'),
   https = require('https'),
@@ -81,9 +80,6 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-if (config.server.auth) {
-  app.use(basicAuth(config.server.auth.username, config.server.auth.password));
-}
 
 // Static Resources
 console.log('Using dirname: %s', __dirname);

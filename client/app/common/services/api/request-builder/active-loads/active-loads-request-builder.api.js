@@ -5,7 +5,7 @@ angular.module('echo.api.requestBuilder.activeLoads', [
 ]).factory('ActiveLoadsRequestBuilder', function($q, $http, apiConfig) {
 
   function ActiveLoadsRequestBuilder(carrierId) {
-    this._url = apiConfig.activeLoadsPage({
+    this._url = _.template(apiConfig.activeLoadsPage)({
       carrierId: carrierId
     });
 
