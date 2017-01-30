@@ -24,13 +24,8 @@ angular.module('echo', [
     $httpProvider.interceptors.push('authInterceptor');
   })
   .controller('AppCtrl', function() {})
-  .run(function($rootScope, $uibModalStack, $state, routingService) {
+  .run(function($rootScope, $uibModalStack, $state) {
     $rootScope.$state = $state; //Expose $state to rootScope
-
-    // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, from) { //jshint unused:false
-      routingService.handleRouting(event, toState, from);
-    });
 
     $rootScope.$on('$stateChangeSuccess',
       function(event, toState, toParams, fromState, fromParams) { //jshint unused:false

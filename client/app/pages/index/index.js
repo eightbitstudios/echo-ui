@@ -3,6 +3,7 @@ angular.module('echo.index', [
   'echo',
   'ui.router',
   'echo.config',
+  'echo.services.routing',
   'echo.directives.echoIcon',
   'echo.index.controller',
   'echo.index.myCarriers',
@@ -167,4 +168,10 @@ angular.module('echo.index', [
         hideTabBar: true
       }
     });
-});
+}).run(function($rootScope, $uibModalStack, $state, routingService) {
+
+  // Redirect to login if route requires auth and you're not logged in
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, from) { //jshint unused:false
+    routingService.handleRouting(event, toState, from);
+  });
+});;

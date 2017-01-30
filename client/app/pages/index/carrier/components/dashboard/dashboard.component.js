@@ -129,10 +129,8 @@ angular.module('echo.index.carrier.dashboard', [
         that.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
         that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
         that.loadType = loadTypesEnum.ACTIVE;
+        that.repDetails = store$.getState().rep;
 
-        store$.subscribe(function(state) {
-          that.repDetails = state.rep;
-        });
         that.fetchLoadDashboard();
       };
     }
