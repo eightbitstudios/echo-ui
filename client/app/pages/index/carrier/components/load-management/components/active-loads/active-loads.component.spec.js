@@ -5,7 +5,6 @@ describe('Component: Active Loads', function() {
   beforeEach(function() {
     module('echo.index.carrier.loadManagement.activeLoads', function($provide) {
       $provide.value('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html', '');
-      $provide.value('loadCountService', loadCountService = jasmine.createSpyObj('loadCountService', ['getLoadCount', 'setLoadCount']));
       $provide.value('ActiveLoadsRequestBuilder',
         ActiveLoadsRequestBuilder = jasmine.createSpy('ActiveLoadsRequestBuilder'));
     });

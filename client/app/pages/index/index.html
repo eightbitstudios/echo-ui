@@ -44,13 +44,12 @@
 </head>
 
 <body ng-app="echo.index" ng-controller="AppCtrl as appCtrl" id="ng-app">
-  <loading show-loading="showLoading" overlay="true"></loading>
-  <div ui-view="header" ng-if="!showLoading"></div>
-  <div class="main-content-container"  ng-if="!showLoading" ng-class="{'white-container': $state.current.data.whiteContainer}">
+  <div ui-view="header"></div>
+  <div class="main-content-container" ng-class="{'white-container': $state.current.data.whiteContainer}">
     <!-- body view to load remaining child routes -->
     <div ui-view="body"></div>
   </div>
-  <div ui-view="footer" ng-if="!showLoading"></div>
+  <div ui-view="footer"></div>
 </body>
 
 </html>

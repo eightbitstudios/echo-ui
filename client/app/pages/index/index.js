@@ -12,14 +12,15 @@ angular.module('echo.index', [
   'echo.components.header',
   'echo.components.footer',
   'echo.api.rep',
-  'echo.services.repDetails',
   'echo.api.carrier',
   'echo.index.carrier.myCompany.driverProfile',
   'echo.services.cookie',
   'echo.services.googleMapsApi',
   'echo.services.userProfile',
-  'templates-app'
-]).config(function ($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
+  'templates-app',
+  'echo.action',
+  'echo.store'
+]).config(function($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
 
   // ROUTES
   $stateProvider
@@ -29,16 +30,14 @@ angular.module('echo.index', [
         auth: true
       },
       resolve: {
-        user: function ($q, cookieService, userProfileService) {
+        user: function($q, store$, userActions, cookieService, userProfileService) {
           var jwt = cookieService.getToken();
-
           if (jwt) {
-            var userObj = userProfileService.mapJwtToUser(jwt);
-            userProfileService.setUser(userObj);
+            store$.dispatch({
+              type: userActions.SET_USER,
+              payload: userProfileService.mapJwtToUser(jwt)
+            });
           }
-
-          var user = userProfileService.getUser();
-          return $q.when(user);
         }
       },
       views: {
@@ -58,7 +57,7 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.settings.route,
       component: 'settings'
     })
-    .state(routesConfig.INDEX.myCarriers.name, {  // #/myCarrier
+    .state(routesConfig.INDEX.myCarriers.name, { // #/myCarrier
       url: routesConfig.INDEX.myCarriers.route,
       component: 'my-carriers',
       data: {
@@ -76,15 +75,6 @@ angular.module('echo.index', [
       resolve: {
         carrierId: function($stateParams) {
           return $stateParams.carrierId;
-        },
-        carrierDetails: function (carrierId, carrierApi) {
-          return carrierApi.fetchCarrierById(carrierId);
-        },
-        repDetails: function (repDetailsService, user, repApi) {
-          return repApi.fetchRepByCarrierId(user.carrierId).then(function(rep){
-            repDetailsService.setRep(rep);
-            return rep;
-          });
         }
       }
     })
@@ -107,7 +97,8 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.activeLoads.route,
       component: 'active-loads',
       data: {
-        name: 'active loads'
+        name: 'active loads',
+        isActiveLoads: true
       }
     })
     .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
@@ -153,18 +144,18 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCompany.route,
       component: 'my-company'
     })
-    .state(routesConfig.INDEX.myCompanyUsers.name, {  // #/carrier/:carrierId/myCompany/portalUsers
+    .state(routesConfig.INDEX.myCompanyUsers.name, { // #/carrier/:carrierId/myCompany/portalUsers
       url: routesConfig.INDEX.myCompanyUsers.route,
       component: 'my-company-portal-users'
     })
-    .state(routesConfig.INDEX.myCompanyDrivers.name, {  // #/carrier/:carrierId/myCompany/drivers
+    .state(routesConfig.INDEX.myCompanyDrivers.name, { // #/carrier/:carrierId/myCompany/drivers
       url: routesConfig.INDEX.myCompanyDrivers.route,
       component: 'driver-grid',
       data: {
         whiteContainer: true
       }
     })
-    .state(routesConfig.INDEX.myCompanyDriverProfile.name, {  // #/carrier/:carrierId/myCompany/drivers/:driverId
+    .state(routesConfig.INDEX.myCompanyDriverProfile.name, { // #/carrier/:carrierId/myCompany/drivers/:driverId
       url: routesConfig.INDEX.myCompanyDriverProfile.route,
       component: 'my-company-driver-profile',
       resolve: {

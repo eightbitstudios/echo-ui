@@ -2,11 +2,10 @@
 
 angular.module('echo.components.header', [
   'echo.services.userProfile',
-  'echo.api.authentication',
-  'echo.services.repDetails'
+  'echo.api.authentication'
 ]).component('appHeader', {
   templateUrl: 'app/common/components/header/header.template.html',
-  controller: function($window, repDetailsService, routesConfig, userProfileService, authenticationApi) {
+  controller: function($window, store$, routesConfig, authenticationApi) {
     this.signOutHandler = function() {
       authenticationApi.signOut(this.user.userId).then(function() {
         $window.location = routesConfig.LOGIN.base.route;
@@ -14,8 +13,13 @@ angular.module('echo.components.header', [
     };
 
     this.$onInit = function() {
-      this.repDetails = repDetailsService.getRep();
-      this.user = userProfileService.getUser();
+
+      var that = this;
+      
+      store$.subscribe(function(state) {
+        that.user = state.user;
+      });
+      
       this.routesConfig = routesConfig;
     };
   }

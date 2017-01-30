@@ -11,10 +11,9 @@ angular.module('echo.index.carrier.dashboard', [
   .component('dashboard', {
     templateUrl: 'app/pages/index/carrier/components/dashboard/dashboard.template.html',
     bindings: {
-      repDetails: '<',
       carrierId: '<'
     },
-    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, DashboardRequestBuilder) {
+    controller: function($q, store$, appConstants, loadTypesEnum, routesConfig, PagingModel, DashboardRequestBuilder) {
 
       this.showMoreActionLoadsHandler = function() {
         var that = this;
@@ -120,16 +119,21 @@ angular.module('echo.index.carrier.dashboard', [
       };
 
       this.$onInit = function() {
-        this.showActionLoadsLoading = false;
-        this.showMultiStopLoading = false;
-        this.showMoreActionLoadsLoading = false;
-        this.showMoreMultiStopLoading = false;
-        this.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
-        this.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
-        this.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
-        this.loadType = loadTypesEnum.ACTIVE;
+        var that = this;
 
-        this.fetchLoadDashboard();
+        that.showActionLoadsLoading = false;
+        that.showMultiStopLoading = false;
+        that.showMoreActionLoadsLoading = false;
+        that.showMoreMultiStopLoading = false;
+        that.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
+        that.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
+        that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
+        that.loadType = loadTypesEnum.ACTIVE;
+
+        store$.subscribe(function(state) {
+          that.repDetails = state.rep;
+        });
+        that.fetchLoadDashboard();
       };
     }
   });

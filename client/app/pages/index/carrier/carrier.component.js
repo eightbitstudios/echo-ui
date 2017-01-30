@@ -4,17 +4,40 @@ angular.module('echo.index.carrier', [
   'echo.index.carrier.carrierAdminNav',
   'echo.index.carrier.loadManagement',
   'echo.components.navbar',
-  'echo.services.loadCount'
 ]).component('carrier', {
   bindings: {
-    repDetails: '<',
-    carrierDetails: '<'
+    carrierId: '<'
   },
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
-  controller: function(loadCountService) {
+  controller: function($q, Rx, store$, carrierApi, repApi, carrierActions, repActions) {
     this.$onInit = function() {
-      this.carrierId = this.carrierDetails.carrierId;
-      loadCountService.clear();
+      var that = this;
+      that.showLoading = true;
+
+      var carrierPromise = carrierApi.fetchCarrierById(that.carrierId);
+      var repPromise = repApi.fetchRepByCarrierId(that.carrierId);
+
+      store$.dispatch({
+        type: 'LOADING_CARRIER',
+        payload:  Rx.Observable.fromPromise(carrierPromise)
+          .map((carrierDetails) => ({
+            type: carrierActions.SET_CARRIER,
+            payload: carrierDetails
+          })).concatAll()
+      });
+      store$.dispatch({
+        type: 'LOADING_REP',
+        payload:  Rx.Observable.fromPromise(repPromise)
+          .map((rep) => ({
+            type: repActions.SET_REP,
+            payload: rep
+          })).concatAll()
+      });
+
+      $q.all([carrierPromise, repPromise]).then(function() {
+        that.showLoading = false;
+      });
     };
+
   }
 });

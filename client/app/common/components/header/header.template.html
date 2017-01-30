@@ -1,8 +1,8 @@
 <header class='navbar'>
   <div class='eyebrow-header'>
     <div class='container'>
-      <div ng-if="!$ctrl.user.isRepAdmin()" class="eyebrow-text pull-left">
-        <billing-questions phone-number="$ctrl.repDetails.getPhoneNumber()"></billing-questions>
+      <div ng-if="$ctrl.user.isCarrierAdmin()" class="eyebrow-text pull-left">
+        <billing-questions></billing-questions>
       </div>
       <ul class='eyebrow-nav list-inline navbar-right'>
         <li ui-sref-active="active" ng-if="$ctrl.user.isRepAdmin()">
