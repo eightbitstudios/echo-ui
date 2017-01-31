@@ -73,7 +73,8 @@ angular.module('echo.config.routes', [])
       base: {
         name: 'login',
         route: '/login.html',
-        url: _.template('/login.html#/?redirect=${redirect}')
+        url: '/login.html#/',
+        redirectUrl: _.template('/login.html#/?redirect=${redirect}')
       },
       signIn: {
         name: 'login.signIn',
@@ -82,6 +83,10 @@ angular.module('echo.config.routes', [])
       createPassword: {
         name: 'login.createPassword',
         route: '/createPassword?validationToken&userId'
+      },
+      resetPassword: {
+        name: 'login.resetPassword',
+        route: '/resetPassword?validationToken&userId'
       },
       forgotPassword: {
         name: 'login.forgotPassword',

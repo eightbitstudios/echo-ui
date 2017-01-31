@@ -3,17 +3,18 @@
 ## Quickstart
 
 1. Clone the repo and checkout develop
-2. `npm install`
-3. `bower install`
-4. `grunt serve`
-5. Navigate to [http://localhost:9000](http://localhost:9000)
+2. `npm install -g grunt-cli`
+3. `npm install -g bower`
+4. `npm install`
+5. `bower install`
+6. `grunt serve:mocks`
+7. Navigate to [http://localhost:9000](http://localhost:9000)
 
 ## Core Technologies
 
 * Angular 1.5
 * Express 4.x
 * Bootstrap 3.3 (LESS)
-* Jade
 * Grunt 1.x
 * Karma, Jasmine, and Protractor 3.x
 
@@ -126,7 +127,7 @@ type extensions are added using periods before the final real file extension.
 * model     - `user.model.js`
 * service   - `auth.service.js`
 * filter    - `ellipsis.filter.js`
-* partial   - `header.template.jade`, `custom-grid.component.template.jade`, `slider-bar.directive.template.jade`
+* partial   - `header.template.html`
 * style     - `slider-bar.directive.less`
 
 By sticking to a common naming convention, it's easy to search for and to setup grunt tasks
@@ -185,10 +186,6 @@ of font sizes.
 Prepend all font size vairables with `@fs-` and all font weight variables with `@fw-`. This makes it easier for
 auto-complete and searching.
 
-#### Bootstrap Configuration
-
-
-
 ## Grunt Tasks / Configuration
 
 At the highest level, grunt is used to build and start an express server to serve the site during development.
@@ -202,83 +199,24 @@ It's also used to minify and deploy the site to a remote host (untethered from G
 
 The application is runnable from two different sets of front end files.
 #### 1. /build/public
-When the server is started (`grunt serve`), the build process is ran, and the express server is started directly from
+When the server is started (`grunt serve:envName`), the build process is ran, and the express server is started directly from
 the `/server` folder with a dev configuration. It statically serves up the `build/public` folder.
 
 #### 2. /dist/public
-When the server is started (`grunt serve:dist`), the build process is ran, the build is minified and copied to dist, the server and package.json are copied to dist, 
-and the server is started from `/dist/server` with a heroku configuration. It statically serves up the `dist/public` folder.
-
-### Deployment
-
-#### Heroku
-
-Since the `dist` folder created using `grunt dist` followed by `grunt copy:deploy` is entirely runnable on its own, it makes sense
-to be able to deploy this folder to a remote host. To do this, we use [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control).
-To get this functioning for you, do the following just once.
-
-1. `mkdir dist`
-2. `cd dist`
-3. `git init`                                  - Initialize git repository
-4. `heroku git:remote -a YOUR_HEROKU_APP_NAME` - Add your heroku git repo as the remote
-5. `git remote rename heroku heroku-dev`       - Rename it, so it matches the name in your `buildcontrol` configuration of Gruntfile
-6. `git pull heroku-dev master`                - Initial pull of the heroku instance
-
-*NOTE: The above steps assume heroku and the heroku toolbelt. This doesn't need either. If you want to deploy the code to some other
- remote, just add the remote using git instead of steps 4 and 5. You'll need to add a configuration in Gruntfile `buildcontrol` for that
- remote.*
-
-**All done.** At this point you can now deploy the minified site by running:
-
-`grunt deploy:heroku-dev`
-
-#### AWS
-
-Configurations are provided to deploy the application to the AWS platform using the Elastic Beanstalk service.  AWS Cloud Formation templates are provided to manage the provisioning and configuration of the resources.  Grunt tasks have also been configured to automate all of the steps necessary for a deployment using Elastic Beanstalk and Cloud Formation.
-
-
-Credentials for AWS are automatically loaded by the AWS NodeJS SDK using the provider chain.  If you have the AWS command line SDK installed and credentials configured, they will be read from the on-disk store (~/.aws/credentials).  If not, you can configure an access key ID and secret access key as environment variables.
-
-```
-export AWS_ACCESS_KEY_ID=myaccesskey
-export AWS_SECRET_ACCESS_KEY=mysecretkey
-```
-
-All other configuration values are defined in `build.config.js`.  Options are available for configuring the region to use, auto-scaling group sizes, SSH key pair name to use for the EC2 hosts, EC2 instance type to use, and the S3 bucket name the application artifacts will be uploaded to prior to deployment.
-
-To facilitate the deployment of the application to AWS, a Grunt task (`awscf`) has been provided.  The task leverages the AWS NodeJS SDK to create, update, and delete CloudFormation stacks, as well as retrieve information about the existing stack.
-
-Prior to performing any deployment to AWS, the app must be compiled and packaged into a ZIP file.   For convenience, a `prepareDeploy` task has been defined to perform all of the necessary packaging work.
-
-To deploy the application to AWS, use the deploy task.  The task will check for an existing stack by the name of the package concatenated with the target environment.  If found, the stack will be updated.  Else, a new stack will be created.  A target environment must be specified:
-
-```
-grunt prepareDeploy awscf:dev:deploy
-```
-
-You can then use the `describe` configuration to check on the status of the provisioning.  Once provisioning has completed, the URL to access the application will be available using this configuration:
-
-```
-grunt awscf:dev:describe
-```
-
-To delete the stack, use the `delete` configuration:
-
-```
-grunt awscf:dev:delete
-```
+When the server is started (`grunt envName`), the build process is ran, the build is minified and copied to dist, the server and package.json are copied to dist, 
+and the server is started from `/dist/server`. It statically serves up the `dist/public` folder.
 
 ## Testing
 
 ### Unit
 
 Karma is used in conjunction with Jasmine for running and writing unit tests. Each js file that is being tested should
-have a corresponding `*.spec.js` file. The grunt task `grunt test` builds the app, then runs karma tests wherever a `*.spec.js`
+have a corresponding `*.spec.js` file. The grunt task `grunt build` builds the app, then runs karma tests wherever a `*.spec.js`
 file can be found in client/app.
 
 To run unit tests:
 
-1. `grunt test`
+1. `grunt karma`
 
 ### E2E
 
@@ -304,9 +242,19 @@ for debugging.
 For CSS, since we are using the LESS preprocessor, we generate a sourceMap and place it next to the main css file. This
 sourceMap file contains all of the LESS code from main.less.
 
-#### Dist mode (grunt serve:dist)
+* `grunt serve:mocks` - Points to local express mocks
+* `grunt serve:local` - Points to http://api.local 
+* `grunt serve:dev` - Points to the dev environment http://carrierportal.dev.echogl.net:81
+* `grunt serve:stage` - Points to the stage environment http://carrierportal-stage.dev.echogl.net:81
+* `grunt serve:test` - Points to the test environment http://test-carrapi.dev.echogl.net:81
+
+#### Dist mode (grunt envName)
 
 For each JavaScript file that is minified and concatenated, a source map should be generated. 
 
 For the CSS files, a sourceMap is not included. The browser debugging tools are good enough to find what is needed. This is partially
 a limitation of using cssmin since the sourceMaps generated by contrib-less don't carry over after minification.
+
+* `grunt dev` - Points to the dev environment http://carrierportal.dev.echogl.net:81
+* `grunt stage` - Points to the stage environment http://carrierportal-stage.dev.echogl.net:81
+* `grunt test` - Points to the test environment http://test-carrapi.dev.echogl.net:81

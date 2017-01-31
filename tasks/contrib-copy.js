@@ -1,7 +1,28 @@
 var _ = require('lodash');
-module.exports = function (grunt, options) {
+module.exports = function (grunt) {
 
   grunt.config('copy', {
+    configFiles: {
+      files: [
+        {
+          cwd: 'config',
+          src: '**/*.json',
+          dest: '<%= temp_dir %>/config',
+          expand: true
+        }
+      ]
+    },
+
+    appConfig: {
+      files: [
+        {
+          cwd: '<%= build_dir %>/public/app/common/config/',
+          src: 'app-config.js',
+          dest: '<%= temp_dir %>/config/',
+          expand: true
+        }
+      ]
+    },
     //htmlPartials is only here because jade normally puts our partials in the correct directory
     //to be transformed by html2js. However, since we are grabbing html from a bower component we need to
     //specifically put that in the partials directory before html2js is ran.

@@ -23,7 +23,11 @@ angular.module('echo.login', [
     })
     .state(routesConfig.LOGIN.createPassword.name, {
       url: routesConfig.LOGIN.createPassword.route,
-      template: '<create-password></create-password>'
+      template: '<create-password show-terms="true"></create-password>'
+    })
+    .state(routesConfig.LOGIN.resetPassword.name, {
+      url: routesConfig.LOGIN.resetPassword.route,
+      template: '<create-password show-terms="false"></create-password>'
     })
     .state(routesConfig.LOGIN.forgotPassword.name, {
       url: routesConfig.LOGIN.forgotPassword.route,

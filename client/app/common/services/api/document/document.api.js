@@ -5,7 +5,7 @@ angular.module('echo.api.document', [
 ]).factory('documentApi', function($q, $http, apiConfig) {
   return {
     fetchDocuments: function(loadGuid) {
-      var url = apiConfig.documents({
+      var url = _.template(apiConfig.documents)({
         loadGuid: loadGuid
       });
       return $http.get(url).then(function(resp) {
@@ -16,7 +16,7 @@ angular.module('echo.api.document', [
     },
     fetchDocument: function(documentName) {
 
-      var url = apiConfig.documentsByIdPDF({
+      var url = _.template(apiConfig.documentsByIdPDF)({
         documentName: documentName
       });
 
@@ -32,7 +32,7 @@ angular.module('echo.api.document', [
       });
     },
     fetchImage: function(imageGuid) {
-      var url = apiConfig.documentById({
+      var url = _.template(apiConfig.documentById)({
         documentId: imageGuid
       });
 

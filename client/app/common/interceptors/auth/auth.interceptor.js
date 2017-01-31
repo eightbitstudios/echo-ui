@@ -36,7 +36,7 @@ angular.module('echo.interceptors.auth', [
             }).catch(function() {
               cookieService.clearToken();
               cookieService.clearRefreshToken();
-              $window.location = routesConfig.LOGIN.base.url({
+              $window.location = routesConfig.LOGIN.base.redirectUrl({
                 redirect: encodeURIComponent($window.location.hash)
               });
             });

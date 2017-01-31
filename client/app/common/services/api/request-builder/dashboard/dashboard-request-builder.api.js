@@ -6,7 +6,7 @@ angular.module('echo.api.requestBuilder.dashboard', [
 ]).factory('DashboardRequestBuilder', function($q, $http, apiConfig) {
 
   function DashboardRequestBuilder(carrierId) {
-    this._url = apiConfig.loadDashboard({
+    this._url = _.template(apiConfig.loadDashboard)({
       carrierId: carrierId
     });
 

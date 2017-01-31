@@ -58,6 +58,7 @@ angular.module('echo.components.driverProfile', [
       that.showConfirmation = false;
       that.other = appConstants.LANGUAGES.other;
       that.errorMessageOverride = appConstants.ERROR_MESSAGES.DRIVER;
+      that.emailValidation = appConstants.REGEX.emailValidation;
 
       // Check to see if user has a language that is not listed
       if (!_.find(that.languages, {

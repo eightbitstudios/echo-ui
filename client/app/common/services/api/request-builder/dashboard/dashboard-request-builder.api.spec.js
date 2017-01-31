@@ -31,7 +31,7 @@ describe('Api: DashboardRequestBuilder', function() {
   it('should create an empty active loads request', function() {
     var dashboardRequestBuilder = new DashboardRequestBuilder(carrierId);
 
-    expect(dashboardRequestBuilder._url).toEqual(apiConfig.loadDashboard({
+    expect(dashboardRequestBuilder._url).toEqual(_.template(apiConfig.loadDashboard)({
       carrierId: carrierId
     }));
 
