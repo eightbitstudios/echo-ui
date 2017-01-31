@@ -11,7 +11,8 @@ angular.module('echo', [
     'ui.bootstrap',
     'echo.decorators.uiRouter',
     'echo.store',
-    'echo.config.globals'
+    'echo.config.globals',
+    'echo.services.routing'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, keyConstants) {
     $urlRouterProvider.otherwise('/');
@@ -24,8 +25,13 @@ angular.module('echo', [
     $httpProvider.interceptors.push('authInterceptor');
   })
   .controller('AppCtrl', function() {})
-  .run(function($rootScope, $uibModalStack, $state) {
+  .run(function($rootScope, $uibModalStack, $state, routingService) {
     $rootScope.$state = $state; //Expose $state to rootScope
+
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, from) { //jshint unused:false
+      routingService.handleRouting(event, toState, from);
+    });
 
     $rootScope.$on('$stateChangeSuccess',
       function(event, toState, toParams, fromState, fromParams) { //jshint unused:false
