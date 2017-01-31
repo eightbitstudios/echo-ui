@@ -5,7 +5,7 @@ angular.module('echo.services.routing', [
   'echo.services.userProfile',
   'echo.config.routes'
 ])
-  .factory('routingService', function ($window, $state, store$, routesConfig, cookieService, userProfileService) {
+  .factory('routingService', function ($window, $state, routesConfig, cookieService, userProfileService) {
     return {
       handleRouting: function (event, toState, from) {
         if (_.get(toState.data, 'auth')) { // Check if state requires authentication

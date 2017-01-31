@@ -11,7 +11,8 @@ describe('Api: authenticationApi', function () {
     getRes,
     postRes,
     putRes,
-    deleteRes;
+    deleteRes,
+    store$;
 
   beforeEach(function () {
 
@@ -19,6 +20,7 @@ describe('Api: authenticationApi', function () {
       $provide.value('$http', $http = jasmine.createSpyObj('$http', ['get', 'post', 'put', 'delete']));
       $provide.value('$base64', $base64 = jasmine.createSpyObj('$base64', ['encode']));
       $provide.value('cookieService', cookieService = jasmine.createSpyObj('cookieService', ['setRefreshToken', 'setToken', 'clearToken', 'clearRefreshToken']));
+      $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));
     });
 
     inject(function ($rootScope, _$q_, _apiConfig_, _authenticationApi_) {

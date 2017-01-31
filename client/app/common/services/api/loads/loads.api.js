@@ -3,7 +3,7 @@
 angular.module('echo.api.loads', [
   'echo.config.api',
   'echo.models.user'
-]).factory('loadsApi', function($q, $http, Rx, apiConfig, UserModel) {
+]).factory('loadsApi', function($q, $http, apiConfig, UserModel) {
   return {
     fetchUnbilledLoads: function(carrierId, paging, podNeeded, invoiceNeeded) {
       var url = _.template(apiConfig.unbilledLoadsByCarrierId)({
@@ -130,9 +130,9 @@ angular.module('echo.api.loads', [
       var url = _.template(apiConfig.loadCountByCarrierId)({
         carrierId: carrierId
       });
-      return Rx.Observable.fromPromise($http.get(url).then(function(resp) {
+      return $http.get(url).then(function(resp) {
         return $q.when(resp.data.data);
-      }));
+      });
     },
     createReportEmpty: function(loadGuid, reportEmpty) {
       var url = _.template(apiConfig.reportEmptyByLoadGuid)({

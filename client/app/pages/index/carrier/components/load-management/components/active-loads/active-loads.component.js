@@ -7,7 +7,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.config.appConstants',
   'echo.index.carrier.loadManagement.loadsFilter',
   'echo.enums.loadTypes',
-  'echo.actions.actionDispatcher',
   'echo.components.filterButton',
   'echo.components.loadMap',
   'echo.api.requestBuilder.activeLoads',
@@ -17,7 +16,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   bindings: {
     carrierId: '<'
   },
-  controller: function(loadsApi, PagingModel, appConstants, actionDispatcher, store$, loadCountsActions, loadTypesEnum, ActiveLoadsRequestBuilder) {
+  controller: function(loadsApi, PagingModel, appConstants, store$, loadCountsActions, loadTypesEnum, ActiveLoadsRequestBuilder) {
 
     this.deliveriesTodayHandler = function(value) {
       this.filterText = value ? 'By Next Delivery' : this.defaultFilterText;
@@ -108,14 +107,13 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
 
       that.defaultFilterText = 'By Next Appointment';
       that.filterText = that.defaultFilterText;
+      var state = store$.getState();
 
-      if (_.isEmpty(store$.getState().loadCounts)) {
+      if (_.isEmpty(state.loadCounts)) {
         activeLoadsPageApiRequest.fetchLoadsCount();
       }
 
-      store$.subscribe(function(state) {
-        that.repDetails = state.rep;
-      });
+      that.repDetails = state.rep;
 
       that.getPageData(activeLoadsPageApiRequest);
     };

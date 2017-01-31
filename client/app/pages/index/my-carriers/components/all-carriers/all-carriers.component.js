@@ -34,13 +34,13 @@ angular.module('echo.index.myCarriers.allCarriers', [
         that.searchParam = '';
         that.minSearchCharacters = appConstants.MIN_SEARCH_CHARACTERS.CARRIERS;
         var state = store$.getState();
-
+        
         carrierApi.fetchCarriers(state.user.userId).then(function(carriers) {
           that.carrierList = _(carriers).sortBy('carrierName').value(); // Sort all carriers by their name
           // Set a carrier to selected if user is routed to page with a carrier id  
           that.selectCarrier(that.carrierList, $stateParams.carrierId);
         }).finally(function() {
-           that.showLoading = false;
+          that.showLoading = false;
         });
       };
     }

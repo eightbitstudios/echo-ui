@@ -96,11 +96,6 @@ describe('Service: routingService', function () {
       userProfileService.mapJwtToUser.and.returnValue(user);
     });
 
-    it('should continue loading state if user has permission', function () {
-      routingService.handleRouting(event, toState, from);
-      expect($scope.showLoading).toBeTruthy();
-    });
-
     it('should prevent user from routing to a page they dont have access to', function () {
       user.role = 'normalUser';
       toState.data.role = 'admin';
