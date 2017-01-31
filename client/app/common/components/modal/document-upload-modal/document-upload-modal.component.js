@@ -27,6 +27,7 @@ angular.module('echo.components.modal.documentUpload', [
         documentApi.createDocuments(that.load.loadNumber, that.selectedDocumentType, that.files)
           .then(function() {
             that.showSavedMessage = true;
+            that.refreshDocuments();
           }).catch(function(message) {
             that.showErrorMessage = true;
             that.serverError = message;
@@ -35,7 +36,13 @@ angular.module('echo.components.modal.documentUpload', [
             that.files = [];
           });
       };
-      
+
+      that.refreshDocuments = function() {
+        documentApi.fetchDocuments(that.load.loadGuid).then(function(documents) {
+          that.documents = documents;
+        });
+      };
+
       that.$onInit = function() {
         that.files = [];
         that.selectedDocumentType = documentTypes.POD.value;
