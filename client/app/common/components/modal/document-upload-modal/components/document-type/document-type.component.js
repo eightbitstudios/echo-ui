@@ -10,10 +10,13 @@ angular.module('echo.components.modal.documentUpload.documentType', [
   },
   controller: function(documentTypes) {
     var that = this;
-    that.documentTypes = documentTypes;
 
-    that.numberOfPODS = _(that.documents).filter(function(document) {
-      return document.documentSubType === documentTypes.POD.value;
-    }).size() + 1;
+    that.$onInit = function() {
+      that.documentTypes = documentTypes;
+
+      that.numberOfPODS = _(that.documents).filter(function(document) {
+        return document.documentSubType === documentTypes.POD.value;
+      }).size() + 1;
+    };
   }
 });

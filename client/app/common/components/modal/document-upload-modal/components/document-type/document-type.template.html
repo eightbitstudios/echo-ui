@@ -6,7 +6,7 @@
 <form>
   <div class="row">
     <div class="col-sm-7">
-      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.POD.value" label="Proof of Delivery #{{$ctrl.numberOfPODS}} ({{$ctrl.numberOfStops}} Needed)" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.POD.value" label="Proof of Delivery #{{::$ctrl.numberOfPODS}} ({{::$ctrl.numberOfStops}} Needed)" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
       <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.LUMPER_RECEIPT.value" label="Lumper Receipt" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
       <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.BILL_OF_LADING.value" label="Bill of Lading" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
     </div>

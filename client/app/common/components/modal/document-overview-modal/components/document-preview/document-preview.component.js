@@ -18,8 +18,21 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
     },
     controller: function($http, $window, PagingModel, apiConfig, documentApi, saveAs) {
       var that = this;
-      that.paging = new PagingModel(1);
-      that.apiConfig = apiConfig;
+
+      that.printDocument = function() {
+        documentApi.fetchDocument(that.document.documentName).then(function(document) {
+          var printWindow = $window.open(URL.createObjectURL(document), '_blank');
+          printWindow.print();
+        });
+      };
+
+      that.downloadDocument = function() {
+        documentApi.fetchDocument(that.document.documentName).then(function(document) {
+          saveAs(document, _.template('${documentName}.pdf')({
+            documentName: that.document.documentName
+          }));
+        });
+      };
 
       that.$onChanges = function(changeObj) {
         if (changeObj.document.currentValue) {
@@ -28,19 +41,9 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
         }
       };
 
-      that.printDocument = function() {
-        documentApi.fetchDocument(that.document.documentName).then(function(document){
-          var printWindow = $window.open(URL.createObjectURL(document), '_blank');
-          printWindow.print();
-        });
-      };
-
-      that.downloadDocument = function() {
-        documentApi.fetchDocument(that.document.documentName).then(function(document){
-          saveAs(document, _.template('${documentName}.pdf')({
-            documentName: that.document.documentName
-          }));
-        });
+      that.$onInit = function() {
+        that.paging = new PagingModel(1);
+        that.apiConfig = apiConfig;
       };
     }
   });

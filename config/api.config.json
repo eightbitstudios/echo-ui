@@ -56,7 +56,7 @@
   "mapPointsForLoadsNeedingAction": "/carriers/${carrierId}/loads/needsAction/map",
   "activeLoadsPage": "/carriers/${carrierId}/loads/activeLoadsPage",
   "loadDashboard": "/carriers/${carrierId}/loads/dashboardPage",
-  "documentUpload": "/upload",
+  "documentUpload": "/documents/loadDocument",
   "documents": "/documents/${loadGuid}/manifestbyload",
   "documentById": "/documents/${documentId}",
   "documentsByIdPDF": "/documents/download/pdf/${documentName}",
