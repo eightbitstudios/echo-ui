@@ -64,7 +64,7 @@ describe('Api: carrierApi', function () {
       getRes.data = { data: '' };
 
       carrierApi.fetchCarrierById(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.carrierById({ carrierId: carrierId }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.carrierById)({ carrierId: carrierId }));
         done();
       });
 
@@ -79,7 +79,7 @@ describe('Api: carrierApi', function () {
       getRes.data = { data: '' };
 
       carrierApi.fetchCarrierPortalUsers(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.portalUsers({ carrierId: carrierId }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.portalUsers)({ carrierId: carrierId }));
         done();
       });
 
@@ -93,7 +93,7 @@ describe('Api: carrierApi', function () {
       getRes.data = { data: '' };
 
       carrierApi.fetchCarrierDriverCount(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.driverCount({ carrierId: carrierId }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.driverCount)({ carrierId: carrierId }));
         done();
       });
 
@@ -111,7 +111,7 @@ describe('Api: carrierApi', function () {
       getRes.data = { data: '' };
 
       carrierApi.fetchDrivers(carrierId, page).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.drivers({ carrierId: carrierId }), {
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.drivers)({ carrierId: carrierId }), {
           params: {
             offset: page.offset,
             limit: page.limit
