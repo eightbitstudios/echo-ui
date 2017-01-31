@@ -11,6 +11,7 @@
   "carrierById": "/carriers/${carrierId}",
   "userById": "/users/${userId}",
   "deactivateUserById": "/users/${userId}/deactivate",
+  "resendInviteToUserById": "/users/${userId}/resendInvite",
   "user": "/users",
   "signIn": "/auth/signIn",
   "signOut": "/auth/signOut",

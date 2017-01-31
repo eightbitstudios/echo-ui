@@ -106,7 +106,7 @@ angular.module('echo.api.portalUser', [
        * @returns {Promise} - Promise containing updated invite info
        */
       resendInviteToPortalUserById: function (userId) {
-        var url = apiConfig.resendInviteToUserById({userId: userId});
+        var url = _.template(apiConfig.resendInviteToUserById)({userId: userId});
 
         return $http.post(url, {}).then(function (resp) {
           return resp.data.data;
