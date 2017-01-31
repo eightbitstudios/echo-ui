@@ -31,7 +31,7 @@ describe('Api: ActiveLoadsRequestBuilder', function() {
   it('should create an empty active loads request', function() {
     var activeLoadsRequestBuilder = new ActiveLoadsRequestBuilder(carrierId);
 
-    expect(activeLoadsRequestBuilder._url).toEqual(apiConfig.activeLoadsPage({
+    expect(activeLoadsRequestBuilder._url).toEqual(_.template(apiConfig.activeLoadsPage)({
       carrierId: carrierId
     }));
     expect(activeLoadsRequestBuilder._params).toEqual({});

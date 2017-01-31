@@ -11,12 +11,12 @@ angular.module('echo', [
     'ui.bootstrap',
     'echo.decorators.uiRouter'
   ])
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, apiConfig) {
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, keyConstants) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(false);
 
-    if (!_.isEmpty(apiConfig.key)) {
-      $httpProvider.defaults.headers.common[$base64.decode(apiConfig.keyHeader)] = $base64.decode(apiConfig.key);
+    if (!_.isEmpty(keyConstants.KEY)) {
+      $httpProvider.defaults.headers.common[$base64.decode(keyConstants.KEY_HEADER)] = $base64.decode(keyConstants.KEY);
     }
 
     $httpProvider.interceptors.push('authInterceptor');

@@ -43,7 +43,7 @@ describe('Api: loadsApi', function () {
         invoiceNeeded = false;
 
       loadsApi.fetchUnbilledLoads(carrierId, paging, podNeeded, invoiceNeeded).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.unbilledLoadsByCarrierId({ carrierId: carrierId }), {
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.unbilledLoadsByCarrierId)({ carrierId: carrierId }), {
           params: {
             limit: paging.limit,
             offset: paging.offset,
@@ -69,7 +69,7 @@ describe('Api: loadsApi', function () {
         driverNeeded = false;
 
       loadsApi.fetchUpcomingLoads(carrierId, paging, driverNeeded).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.upcomingLoadsByCarrierId({ carrierId: carrierId }), {
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.upcomingLoadsByCarrierId)({ carrierId: carrierId }), {
           params: {
             limit: paging.limit,
             offset: paging.offset,
@@ -94,7 +94,7 @@ describe('Api: loadsApi', function () {
         searchText = 'test';
 
       loadsApi.fetchLoadsBySearchText(carrierId, searchText, paging).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.loadsBySearchText({ carrierId: carrierId, searchText: searchText }), {
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.loadsBySearchText)({ carrierId: carrierId, searchText: searchText }), {
           params: {
             limit: paging.limit,
             offset: paging.offset
@@ -113,7 +113,7 @@ describe('Api: loadsApi', function () {
       var loadId = 1;
 
       loadsApi.fetchLoadDetails(loadId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.loadById({ loadId: loadId }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.loadById)({ loadId: loadId }));
         done();
       });
 
@@ -127,7 +127,7 @@ describe('Api: loadsApi', function () {
       var carrierId = 1;
 
       loadsApi.fetchLoadCount(carrierId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.loadCountByCarrierId({ carrierId: carrierId }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.loadCountByCarrierId)({ carrierId: carrierId }));
         done();
       });
 
@@ -142,7 +142,7 @@ describe('Api: loadsApi', function () {
         driverId = 2;
 
       loadsApi.assignDriver(loadId, driverId).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.assignDriverByLoadId({ loadId: loadId, userId: driverId }));
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.assignDriverByLoadId)({ loadId: loadId, userId: driverId }));
         done();
       });
 
@@ -156,7 +156,7 @@ describe('Api: loadsApi', function () {
       var loadId = 1;
 
       loadsApi.unassignDriver(loadId).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.unassignDriverByLoadId({ loadId: loadId }));
+        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.unassignDriverByLoadId)({ loadId: loadId }));
         done();
       });
 
@@ -170,8 +170,8 @@ describe('Api: loadsApi', function () {
       var loadId = 1,
         driverId = 2;
 
-      loadsApi.reassignDriver(loadId).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.reassignDriverByLoadId({ loadId: loadId, userId: driverId }));
+      loadsApi.reassignDriver(loadId, driverId).then(function () {
+        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.reassignDriverByLoadId)({ loadId: loadId, userId: driverId }));
         done();
       });
 
@@ -185,8 +185,8 @@ describe('Api: loadsApi', function () {
       var loadId = 1,
         carrierId = 2;
 
-      loadsApi.fetchUnassignedDriversByLoadId(loadId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.unassignedDriversByLoadId({ loadId: loadId, carrierId: carrierId }));
+      loadsApi.fetchUnassignedDriversByLoadId(loadId, carrierId).then(function () {
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.unassignedDriversByLoadId)({ loadId: loadId, carrierId: carrierId }));
         done();
       });
 
@@ -201,7 +201,7 @@ describe('Api: loadsApi', function () {
         driverId = 2;
 
       loadsApi.fetchDriverStatusByLoadId(loadId, driverId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.driverStatusByLoadId({ loadId: loadId, userId: driverId }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.driverStatusByLoadId)({ loadId: loadId, userId: driverId }));
         done();
       });
 
@@ -219,7 +219,7 @@ describe('Api: loadsApi', function () {
       var loadId = 1;
 
       loadsApi.fetchActivityLogByLoadId(loadId).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.activityLogByLoadId({ loadId: loadId }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.activityLogByLoadId)({ loadId: loadId }));
         done();
       });
 
@@ -236,7 +236,7 @@ describe('Api: loadsApi', function () {
         };
 
       loadsApi.createReportEmpty(loadGuid, reportEmpty).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid }), reportEmpty);
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.reportEmptyByLoadGuid)({ loadGuid: loadGuid }), reportEmpty);
         done();
       });
 
@@ -253,7 +253,7 @@ describe('Api: loadsApi', function () {
         };
 
       loadsApi.createReportLocation(loadGuid, reportLocation).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.reportLocation({ loadGuid: loadGuid }), reportLocation);
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.reportLocation)({ loadGuid: loadGuid }), reportLocation);
         done();
       });
 
@@ -270,7 +270,7 @@ describe('Api: loadsApi', function () {
         };
 
       loadsApi.createReportTrailer(loadGuid, reportTrailer).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.reportTrailerByLoadGuid({ loadGuid: loadGuid }), reportTrailer);
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.reportTrailerByLoadGuid)({ loadGuid: loadGuid }), reportTrailer);
         done();
       });
 
@@ -287,7 +287,7 @@ describe('Api: loadsApi', function () {
         };
 
       loadsApi.createReportLoaded(loadGuid, reportLoaded).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid }), reportLoaded);
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.reportLoadedByLoadGuid)({ loadGuid: loadGuid }), reportLoaded);
         done();
       });
 
@@ -304,7 +304,7 @@ describe('Api: loadsApi', function () {
         };
 
       loadsApi.updateProNumber(loadId, payload).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.proNumberByLoadId({ loadId: loadId }), payload);
+        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.proNumberByLoadId)({ loadId: loadId }), payload);
         done();
       });
 
@@ -318,7 +318,7 @@ describe('Api: loadsApi', function () {
       var loadGuid = 1;
 
       loadsApi.fetchReportLoadedByLoadGuid(loadGuid).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.reportLoadedByLoadGuid({ loadGuid: loadGuid }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.reportLoadedByLoadGuid)({ loadGuid: loadGuid }));
         done();
       });
 
@@ -332,7 +332,7 @@ describe('Api: loadsApi', function () {
       var loadGuid = 1;
 
       loadsApi.fetchItemsByLoadGuid(loadGuid).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.itemsByLoadGuid({ loadGuid: loadGuid }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.itemsByLoadGuid)({ loadGuid: loadGuid }));
         done();
       });
 
@@ -346,7 +346,7 @@ describe('Api: loadsApi', function () {
       var loadGuid = 1;
 
       loadsApi.fetchReportEmptyByLoadGuid(loadGuid).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.reportEmptyByLoadGuid({ loadGuid: loadGuid }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.reportEmptyByLoadGuid)({ loadGuid: loadGuid }));
         done();
       });
 
@@ -363,7 +363,7 @@ describe('Api: loadsApi', function () {
         };
 
       loadsApi.updateTrailerNumber(loadGuid, payload).then(function () {
-        expect($http.put).toHaveBeenCalledWith(apiConfig.trailerNumberByLoadId({ loadGuid: loadGuid }), payload);
+        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.trailerNumberByLoadId)({ loadId: loadGuid }), payload);
         done();
       });
 
@@ -380,7 +380,7 @@ describe('Api: loadsApi', function () {
         };
 
       loadsApi.createReportArrivalByLoadGuid(loadGuid, reportArrival).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.reportArrivalByLoadGuid({ loadGuid: loadGuid }), reportArrival);
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.reportArrivalByLoadGuid)({ loadGuid: loadGuid }), reportArrival);
         done();
       });
 
@@ -394,7 +394,7 @@ describe('Api: loadsApi', function () {
       var loadGuid = 1;
 
       loadsApi.fetchReportArrivalByLoadGuid(loadGuid).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.reportArrivalByLoadGuid({ loadGuid: loadGuid }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.reportArrivalByLoadGuid)({ loadGuid: loadGuid }));
         done();
       });
 
@@ -408,7 +408,7 @@ describe('Api: loadsApi', function () {
       var loadGuid = 1;
 
       loadsApi.fetchLoadUpdateOptionsByLoadGuid(loadGuid).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.loadUpdateOptionsByLoadGuid({ loadGuid: loadGuid }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.loadUpdateOptionsByLoadGuid)({ loadGuid: loadGuid }));
         done();
       });
 
@@ -422,7 +422,7 @@ describe('Api: loadsApi', function () {
       var loadGuid = 1;
 
       loadsApi.fetchReportDeliveredByLoadGuid(loadGuid).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.reportDeliveredByLoadGuid({ loadGuid: loadGuid }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.reportDeliveredByLoadGuid)({ loadGuid: loadGuid }));
         done();
       });
 
@@ -439,7 +439,7 @@ describe('Api: loadsApi', function () {
         };
 
       loadsApi.createReportDelivered(loadGuid, reportDelivery).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.reportDeliveredByLoadGuid({ loadGuid: loadGuid }), reportDelivery);
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.reportDeliveredByLoadGuid)({ loadGuid: loadGuid }), reportDelivery);
         done();
       });
 
@@ -453,7 +453,7 @@ describe('Api: loadsApi', function () {
       var loadGuid = 1;
 
       loadsApi.fetchEquipmentByLoadId(loadGuid).then(function () {
-        expect($http.get).toHaveBeenCalledWith(apiConfig.equipmentByLoadId({ loadGuid: loadGuid }));
+        expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.equipmentByLoadId)({ loadId: loadGuid }));
         done();
       });
 
@@ -469,7 +469,7 @@ describe('Api: loadsApi', function () {
         comment = 'test comment';
 
       loadsApi.createFeedback(loadGuid, starRatings, comment).then(function () {
-        expect($http.post).toHaveBeenCalledWith(apiConfig.feedbackByLoadGuid({ loadGuid: loadGuid }), {
+        expect($http.post).toHaveBeenCalledWith(_.template(apiConfig.feedbackByLoadGuid)({ loadGuid: loadGuid }), {
           starRatings: starRatings,
           comment: comment
         });

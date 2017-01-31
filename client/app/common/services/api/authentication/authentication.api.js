@@ -15,7 +15,7 @@ angular.module('echo.api.authentication', [
      * @returns {Promise} - Users password was created
      */
     createPassword: function (userId, token, passwordChange) {
-      var url = apiConfig.createPassword({ userId: userId });
+      var url = _.template(apiConfig.createPassword)({ userId: userId });
 
       var data = {
         password: passwordChange.newPassword,
@@ -66,7 +66,7 @@ angular.module('echo.api.authentication', [
     refresh: function () {
 
       var user = userProfileService.mapJwtToUser(cookieService.getToken());
-      var url = apiConfig.refresh({userId: user.userId});
+      var url = _.template(apiConfig.refresh)({userId: user.userId});
 
       cookieService.setToken(cookieService.getRefreshToken());
 
@@ -125,7 +125,7 @@ angular.module('echo.api.authentication', [
      * @returns {Promise} - Users change password request has been sent
      */
     changePassword: function (userId, changePassword) {
-      var url = apiConfig.changePassword({ userId: userId });
+      var url = _.template(apiConfig.changePassword)({ userId: userId });
 
       var data = {
         password: changePassword.newPassword,
