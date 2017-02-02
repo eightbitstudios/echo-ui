@@ -37,24 +37,26 @@ angular.module('echo.api.document', [
       });
 
       var config = {
-        responseType: 'arraybuffer',
         cache: 'true'
       };
 
       return $http.get(url, config)
-        .then(function(document) {
-          var arr = new Uint8Array(document.data);
+        .then(function(resp) {
+          return 'data:image/jpeg;base64,' + resp.data.data;
+        });
+    },
+    fetchImageThumbnail: function(imageGuid) {
+      var url = _.template(apiConfig.documentsByIdThumbnail)({
+        documentId: imageGuid
+      });
 
-          var raw = '';
-          var i, j, subArray, chunk = 5000;
-          for (i = 0, j = arr.length; i < j; i += chunk) {
-            subArray = arr.subarray(i, i + chunk);
-            raw += String.fromCharCode.apply(null, subArray);
-          }
+      var config = {
+        cache: 'true'
+      };
 
-          var b64 = btoa(raw);
-
-          return 'data:image/jpeg;base64,' + b64;
+      return $http.get(url, config)
+        .then(function(resp) {
+          return 'data:image/jpeg;base64,' + resp.data.data;
         });
     },
     createDocuments: function(loadNumber, documentType, loadDocumentPages) {

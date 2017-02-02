@@ -58,7 +58,7 @@
   "loadDashboard": "/carriers/${carrierId}/loads/dashboardPage",
   "documentUpload": "/documents/loadDocument",
   "documents": "/documents/${loadGuid}/manifestbyload",
-  "documentById": "/documents/${documentId}",
+  "documentById": "/documents/images/${documentId}",
   "documentsByIdPDF": "/documents/download/pdf/${documentName}",
-  "documentsByIdThumbnail": "/documents/${documentId}/thumbnail"
+  "documentsByIdThumbnail": "/documents/images/${documentId}/thumbnail"
 }
