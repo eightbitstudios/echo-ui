@@ -34,16 +34,21 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
         });
       };
 
+      that.setupPagination = function() {
+        that.paging.reset();
+        that.paging.setRecords(_.size(that.document.orderedPageGuids), 1);
+      };
+
       that.$onChanges = function(changeObj) {
         if (changeObj.document.currentValue && that.paging) {
-          that.paging.reset();
-          that.paging.setRecords(_.size(changeObj.document.currentValue.orderedPageGuids), 1);
+          that.setupPagination();
         }
       };
 
       that.$onInit = function() {
         that.paging = new PagingModel(1);
         that.apiConfig = apiConfig;
+        that.setupPagination();
       };
     }
   });
