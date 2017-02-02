@@ -3,8 +3,8 @@ module.exports = [
     loadId: 12345678,
     loadGuid: '8d34ba4f8baa4cd09c776826df55bae1',
     currentLocation: {
-      cityName: 'Chicago',
-      stateCode: 'IL'
+      cityName: 'Jackson',
+      stateCode: 'MS'
     },
     pickUp: {
       city: 'Dallas',
@@ -30,6 +30,15 @@ module.exports = [
     capturedBy: {
       firstName: 'Michael',
       lastName: 'West'
+    },
+    nextAction: {
+      lastAction: 1,
+      firstName: 'Tim',
+      lastName: 'Potatoe',
+      actionPerformedOn: '13:50 CST Today',
+      nextAction: 1,
+      onTime: false,
+      lateBy: null
     }
   },
   {
@@ -63,6 +72,15 @@ module.exports = [
     capturedBy: {
       firstName: 'Alan',
       lastName: 'Shanahan'
+    },
+    nextAction: {
+      lastAction: 1,
+      firstName: 'Tim',
+      lastName: 'Potatoe',
+      actionPerformedOn: '13:50 CST Today',
+      nextAction: 4,
+      onTime: false,
+      lateBy: null
     }
   },
   {
@@ -96,6 +114,15 @@ module.exports = [
     capturedBy: {
       firstName: 'Jack',
       lastName: 'Ainsley'
+    },
+    nextAction: {
+      lastAction: 1,
+      firstName: 'Tim',
+      lastName: 'Potatoe',
+      actionPerformedOn: '13:50 CST Today',
+      nextAction: 3,
+      onTime: false,
+      lateBy: null
     }
   },
   {
@@ -129,6 +156,15 @@ module.exports = [
     capturedBy: {
       firstName: 'Richard',
       lastName: 'Lewis'
+    },
+    nextAction: {
+      lastAction: 1,
+      firstName: 'Tim',
+      lastName: 'Potatoe',
+      actionPerformedOn: '13:50 CST Today',
+      nextAction: 9,
+      onTime: false,
+      lateBy: null
     }
   }
 ];

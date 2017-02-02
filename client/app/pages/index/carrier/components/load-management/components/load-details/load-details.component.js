@@ -19,7 +19,6 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 
       this.getMapPoint = function() {
         var that = this;
-
         that.showMap = false;
         that.mapPoints = [];
         loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid')).then(function(mapPointData) {
@@ -32,8 +31,10 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 
       this.$onInit = function() {
         var that = this;
-        
+
         that.showLoading = true;
+        that.showMap = false;
+
         loadsApi.fetchLoadDetails(that.loadId)
           .then(function(loadDetails) {
             that.loadDetails = loadDetails;

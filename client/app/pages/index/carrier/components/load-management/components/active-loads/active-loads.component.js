@@ -9,6 +9,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.enums.loadTypes',
   'echo.components.filterButton',
   'echo.components.loadMap',
+  'echo.components.originDestinationMap',
   'echo.services.loadCount',
   'echo.api.requestBuilder.activeLoads'
 ]).component('activeLoads', {
@@ -85,6 +86,22 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       this.getPageData(activeLoadsPageApiRequest);
     };
 
+    this.toggleExpandedMap = function () {
+      this.showExpandedMap = true;
+      this.showLoadDetailsMap = false;
+    };
+
+    this.shrinkMap = function () {
+      this.showExpandedMap = false;
+      this.showLoadDetailsMap = false;
+    };
+
+    this.viewMapHandler = function(mapPoint) {
+      this.loadDetailsMapPoint = mapPoint;
+      this.showExpandedMap = false;
+      this.showLoadDetailsMap = true;
+    };
+
     this.refreshPageData = function() {
       var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
       activeLoadsPageApiRequest.fetchMapData();
@@ -98,6 +115,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       this.isPickUpToday = false;
       this.loadType = loadTypesEnum.ACTIVE;
       this.isDeliveriesToday = false;
+      this.showExpandedMap = false;
+      this.showLoadDetailsMap = false;
 
       var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
       activeLoadsPageApiRequest.fetchMapData();

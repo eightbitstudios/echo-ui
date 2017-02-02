@@ -7,12 +7,25 @@
           <li>
             <strong ng-if="$ctrl.showMap">{{$ctrl.mapPoints.length}} Loads Located</strong>
           </li>
+          <li ng-if="!$ctrl.showExpandedMap && !$ctrl.showLoadDetailsMap">
+            <a href="javascript:void(0)" ng-click="$ctrl.toggleExpandedMap()">View Full Map</a>
+          </li>
+          <li ng-if="$ctrl.showExpandedMap">
+            <a href="javascript:void(0)" ng-click="$ctrl.shrinkMap()">Back to Dashboard</a>
+          </li>
+          <li ng-if="$ctrl.showLoadDetailsMap">
+            <a href="javascript:void(0)" ng-click="$ctrl.shrinkMap()">Back to Dashboard</a>
+          </li>
         </ul>
         <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
       </div>
     </div>
-    <load-map show-map="true" map-points="$ctrl.mapPoints" detailed-info="true"></load-map>
-    <div class="container main-content">
+    <load-map ng-if="$ctrl.showExpandedMap" show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="true"
+              view-map-handler="$ctrl.viewMapHandler(mapPoint)" carrier-id="$ctrl.carrierId" map-refresh-handler="$ctrl.refreshPageData()"></load-map>
+    <origin-destination-map ng-if="$ctrl.showLoadDetailsMap" map-point="$ctrl.loadDetailsMapPoint"></origin-destination-map>
+    <div ng-if="!$ctrl.showExpandedMap && !$ctrl.showLoadDetailsMap">
+      <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="false" view-map-handler="$ctrl.viewMapHandler(mapPoint)" map-refresh-handler="$ctrl.refreshPageData()"></load-map>
+      <div class="container main-content">
       <section>
         <div class="section-head">
           <h1 class="section-label">
@@ -20,7 +33,9 @@
           </h1>
           <a ui-sref="{{$ctrl.activeLoadsRoute}}">View All {{$ctrl.activeLoadsCount}} Active Loads</a>
         </div>
-        <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0" loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" refresh-table-callback="$ctrl.fetchLoadsNeedingAction()"></load-table>
+        <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0"
+                    loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId"
+                    show-loading="$ctrl.showActionLoadsLoading" refresh-table-callback="$ctrl.fetchLoadsNeedingAction()"></load-table>
         <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads" click-handler="$ctrl.showMoreActionLoadsHandler()" />
         <div class="no-loads-message" ng-if="!$ctrl.showActionLoadsLoading && $ctrl.activeLoads.length === 0">
           <h3>You have no loads that need online actions right now.</h3>
@@ -36,7 +51,7 @@
               </span>
           </h1>
         </div>
-        <load-table rep-details="$ctrl.repDetails" loads="$ctrl.multiStopLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" refresh-table-callback="$ctrl.fetchMultistopLoads()"></load-table>
+        <load-table rep-details="$ctrl.repDetails" loads="$ctrl.multiStopLoads" load-type="$ctrl.loadType" show-loading="$ctrl.showMultiStopLoading" carrier-id="$ctrl.carrierId" refresh-table-callback="$ctrl.fetchMultistopLoads()"></load-table>
       <show-more show-loading="$ctrl.showMoreMultiStopLoading" paging-model="$ctrl.pagingMultistopLoads" record-type="Loads" click-handler="$ctrl.showMoreMultiStopLoadsHandler()"></show-more>
       </section>
     </div>

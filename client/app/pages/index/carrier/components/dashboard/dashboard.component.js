@@ -5,6 +5,7 @@ angular.module('echo.index.carrier.dashboard', [
     'echo.enums.loadTypes',
     'echo.config.appConstants',
     'echo.components.loadMap',
+    'echo.components.originDestinationMap',
     'echo.components.showMore',
     'echo.api.requestBuilder.dashboard'
   ])
@@ -116,7 +117,24 @@ angular.module('echo.index.carrier.dashboard', [
             that.activeLoads = _.get(loadsNeedingAction, 'loads') || [];
           }).finally(function() {
             that.showLoading = false;
+            that.showMap = true;
           });
+      };
+
+      this.toggleExpandedMap = function () {
+        this.showExpandedMap = true;
+        this.showLoadDetailsMap = false;
+      };
+
+      this.shrinkMap = function () {
+        this.showExpandedMap = false;
+        this.showLoadDetailsMap = false;
+      };
+
+      this.viewMapHandler = function(mapPoint) {
+        this.loadDetailsMapPoint = mapPoint;
+        this.showExpandedMap = false;
+        this.showLoadDetailsMap = true;
       };
 
       this.$onInit = function() {
@@ -128,6 +146,9 @@ angular.module('echo.index.carrier.dashboard', [
         this.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
         this.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
         this.loadType = loadTypesEnum.ACTIVE;
+        this.showExpandedMap = false;
+        this.showLoadDetailsMap = false;
+        this.showMap = false;
 
         this.fetchLoadDashboard();
       };
