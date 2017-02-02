@@ -24,9 +24,8 @@ angular.module('echo.directives.renderPdf', [])
 
             task.then(function() {
               element.append(canvas);
-            }).catch(function() {
-              scope.error();
             });
+
           }).catch(function() {
             scope.error();
           });

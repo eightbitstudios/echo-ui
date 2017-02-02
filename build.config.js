@@ -95,7 +95,6 @@ module.exports = function (grunt) {
      */
     vendor_files: {
       js: [
-        'bower_components/jquery/dist/jquery.js', //Needed for date range picker
         'bower_components/angular/angular.js',
         'bower_components/angular-cookies/angular-cookies.js',
         'bower_components/angular-animate/angular-animate.js',
@@ -104,16 +103,13 @@ module.exports = function (grunt) {
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'bower_components/lodash/dist/lodash.js',
         'bower_components/moment/moment.js',
-        'bower_components/bootstrap-daterangepicker/daterangepicker.js',
         'bower_components/angular-ui-mask/src/mask.js',
         'bower_components/pdfjs-dist/web/compatibility.js',
         'bower_components/pdfjs-dist/build/pdf.js',
         'bower_components/pdfjs-dist/build/pdf.worker.js',
         'bower_components/file-saver/FileSaver.js'
       ],
-      css: [
-        'bower_components/bootstrap-daterangepicker/daterangepicker.css',
-      ],
+      css: [],
       assets: [
         'assets/icons/icons.data.svg.css'
       ]

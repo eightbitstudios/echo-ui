@@ -1,6 +1,7 @@
   .uib-datepicker-popup {
-    font-family: @body-font !important;
-    font-weight: 400 !important;
+    strong {
+      font-weight: @fw-normal !important;
+    }
     .uib-daypicker {
       outline: none;
       thead tr:first-child th button:hover {
@@ -9,9 +10,12 @@
       }
     }
     .btn {
+      font-family: @body-font !important;
+      font-weight: @fw-normal !important;
       border: none !important;
       color: @c-black;
-      font-size: 14px !important;
+      font-size: 12px !important;
+      padding: 10px;
       &.active {
         background-color: @c-bright-blue !important;
       }
@@ -42,5 +46,8 @@
       background: none;
       font-size: 14px;
       .btn.btn-link.btn-alt !important;
+      &:hover {
+        background-color: transparent;
+      }
     }
   }

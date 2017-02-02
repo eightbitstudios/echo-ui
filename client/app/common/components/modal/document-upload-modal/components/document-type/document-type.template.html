@@ -1,8 +1,8 @@
 <div class="document-type">
   <form class="form-inline">
     <legend>TYPE</legend>
-    <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.loadDocumentsHandler()" label="Load Document" name="optionsRadiosType" />
-    <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.INVOICE.value" label="Invoices" name="optionsRadiosType" />
+    <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.loadDocumentsHandler()" label="Load Document" name="optionsRadiosType"></radio-button>
+    <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.INVOICE.value" label="Invoices" name="optionsRadiosType"></radio-button>
   </form>
   <hr class="hr">
   <form ng-if="$ctrl.selectedDocumentType !== $ctrl.documentTypes.INVOICE.value">

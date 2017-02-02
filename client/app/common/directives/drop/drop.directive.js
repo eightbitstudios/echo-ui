@@ -15,7 +15,7 @@ angular.module('echo.directives.drop', [
       element.on('drop', function(event) {
         if (drop) {
             drop(scope, {
-              file: new FileModel(_.get(event.originalEvent.dataTransfer.files, '0'))
+              file: new FileModel(_.get(event.dataTransfer.files, '0'))
             });
           scope.$apply();
         }

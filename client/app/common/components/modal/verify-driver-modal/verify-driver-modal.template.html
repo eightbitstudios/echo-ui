@@ -14,7 +14,7 @@
     <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
-    <driver-sidebar load="$ctrl.load" equipment="$ctrl.equipment"/>
+    <driver-sidebar load="$ctrl.load" equipment="$ctrl.equipment"></driver-sidebar>
     <section class="modal-main-content">
 
       <div ng-if="$ctrl.currentState === $ctrl.modes.findDriver">
@@ -34,14 +34,14 @@
             <span ng-if="!$ctrl.showPossibleMatchText">We found no matching drivers. Please choose a replacement.</span>
           </p>
         </div>
-        <unassigned-driver-search driver="$ctrl.verifiedDriver" carrier-id="$ctrl.carrierId" />
+        <unassigned-driver-search driver="$ctrl.verifiedDriver" carrier-id="$ctrl.carrierId"></unassigned-driver-search>
         <div class="modal-action-links find-driver">
           <a class="btn btn-link invite-new-driver" ng-click="$ctrl.showInviteNewDriver()">Invite New Driver</a>
           <a class="btn btn-link" ui-sref="{{$ctrl.viewAllDrivers}}">View All Drivers</a>
         </div>
       </div>
       <div class="new-driver-section" ng-if="$ctrl.currentState === $ctrl.modes.inviteNewDriver">
-        <new-driver cancel-callback="$ctrl.showFindDriver()" carrier-id="$ctrl.carrierId" continue-callback="$ctrl.invitedNewDriver(driver)" />
+        <new-driver cancel-callback="$ctrl.showFindDriver()" carrier-id="$ctrl.carrierId" continue-callback="$ctrl.invitedNewDriver(driver)"></new-driver>
       </div>
     </section>
   </div>
@@ -53,5 +53,5 @@
     </div>
     <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Cancel</button>
   </div>
-  <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" />
+  <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages"></error-messages>
 </div>

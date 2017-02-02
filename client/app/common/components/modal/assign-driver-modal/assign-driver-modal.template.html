@@ -20,7 +20,7 @@
     <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
-    <driver-sidebar load="$ctrl.load" equipment="$ctrl.equipment"/>
+    <driver-sidebar load="$ctrl.load" equipment="$ctrl.equipment"></driver-sidebar>
     <section class="modal-main-content">
       <load-driver assigned-driver="$ctrl.assignedDriver" state="$ctrl.state" carrier-id="$ctrl.carrierId" load-id="$ctrl.load.loadNumber" new-driver="$ctrl.newDriver" submit-control="$ctrl.submitControl"></load-driver>
     </section>

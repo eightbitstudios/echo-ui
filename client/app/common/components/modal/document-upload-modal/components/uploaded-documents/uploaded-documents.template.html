@@ -2,7 +2,7 @@
   <div class="document-uploading">
     <div class="document-upload" ng-class="{empty: $ctrl.files.length === 0}">
       <div class="btn btn-document btn-dropzone-lg">
-        <file-upload files="$ctrl.files" error="$ctrl.error" upload-constraints="$ctrl.uploadConstraints" />
+        <file-upload files="$ctrl.files" error="$ctrl.error" upload-constraints="$ctrl.uploadConstraints"></file-upload>
         <div class="add-type">
           <span ng-if="$ctrl.files.length === 0">ADD A DOCUMENT <small>You can also drag and drop</small></span>
           <span ng-if="$ctrl.files.length > 0">ADD PAGE</span>

@@ -21,7 +21,7 @@
           <a ui-sref="{{$ctrl.activeLoadsRoute}}">View All {{$ctrl.activeLoadsCount}} Active Loads</a>
         </div>
         <load-table rep-details="$ctrl.repDetails" ng-if="$ctrl.showActionLoadsLoading || $ctrl.activeLoads.length > 0" loads="$ctrl.activeLoads" load-type="$ctrl.loadType" carrier-id="$ctrl.carrierId" refresh-table-callback="$ctrl.fetchLoadsNeedingAction()"></load-table>
-        <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads" click-handler="$ctrl.showMoreActionLoadsHandler()" />
+        <show-more paging-model="$ctrl.pagingActionLoads" show-loading="$ctrl.showMoreActionLoadsLoading" record-type="Loads" click-handler="$ctrl.showMoreActionLoadsHandler()"></show-more>
         <div class="no-loads-message" ng-if="!$ctrl.showActionLoadsLoading && $ctrl.activeLoads.length === 0">
           <h3>You have no loads that need online actions right now.</h3>
           <div>You have <a ui-sref="{{$ctrl.activeLoadsRoute}}">{{$ctrl.activeLoadsCount}} active loads</a> at this time.</div>
