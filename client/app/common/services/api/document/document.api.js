@@ -45,6 +45,20 @@ angular.module('echo.api.document', [
           return 'data:image/jpeg;base64,' + resp.data.data;
         });
     },
+    fetchImageThumbnail: function(imageGuid) {
+      var url = _.template(apiConfig.documentsByIdThumbnail)({
+        documentId: imageGuid
+      });
+
+      var config = {
+        cache: 'true'
+      };
+
+      return $http.get(url, config)
+        .then(function(resp) {
+          return 'data:image/jpeg;base64,' + resp.data.data;
+        });
+    },
     createDocuments: function(loadNumber, documentType, loadDocumentPages) {
       var url = apiConfig.documentUpload;
 

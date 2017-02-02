@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('echo.components.secureImage', [
-  'echo.api.document'
-])
+    'echo.api.document'
+  ])
   .component('secureImage', {
     bindings: {
-      imageGuid: '<'
+      imageGuid: '<',
+      thumbnail: '<'
     },
     templateUrl: 'app/common/components/secure-image/secure-image.template.html',
     controller: function(documentApi) {
@@ -13,7 +14,15 @@ angular.module('echo.components.secureImage', [
 
       that.$onChanges = function(changeObj) {
         if (_.get(changeObj.imageGuid, 'currentValue')) {
-          documentApi.fetchImage(that.imageGuid).then(function(data) {
+          var promise;
+
+          if (that.thumbnail) {
+            promise = documentApi.fetchImageThumbnail(that.imageGuid);
+          } else {
+            promise = documentApi.fetchImage(that.imageGuid);
+          }
+
+          promise.then(function(data) {
             that.imageData = data;
           });
         }
