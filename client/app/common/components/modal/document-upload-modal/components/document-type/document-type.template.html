@@ -1,19 +1,40 @@
-<form class="form-inline">
-  <legend>TYPE</legend>
-  <radio-button label="Load Document" name="optionsRadiosType" />
-</form>
-<hr class="hr">
-<form>
-  <div class="row">
-    <div class="col-sm-7">
-      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.POD.value" label="Proof of Delivery #{{::$ctrl.numberOfPODS}} ({{::$ctrl.numberOfStops}} Needed)" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
-      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.LUMPER_RECEIPT.value" label="Lumper Receipt" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
-      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.BILL_OF_LADING.value" label="Bill of Lading" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+<div class="document-type">
+  <form class="form-inline">
+    <legend>TYPE</legend>
+    <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.loadDocumentsHandler()" label="Load Document" name="optionsRadiosType" />
+    <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.INVOICE.value" label="Invoices" name="optionsRadiosType" />
+  </form>
+  <hr class="hr">
+  <form ng-if="$ctrl.selectedDocumentType !== $ctrl.documentTypes.INVOICE.value">
+    <div class="row">
+      <div class="col-sm-7">
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.POD.value" label="Proof of Delivery #{{::$ctrl.numberOfPODS}} ({{::$ctrl.numberOfStops}} Needed)" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.LUMPER_RECEIPT.value" label="Lumper Receipt" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.BILL_OF_LADING.value" label="Bill of Lading" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+      </div>
+      <div class="col-sm-5">
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.FUEL_RECEIPT.value" label="Fuel Receipts" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.SCALE_TICKETS.value" label="Scale Tickets" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.OTHER.value" label="Other" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+      </div>
     </div>
-    <div class="col-sm-5">
-      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.FUEL_RECEIPT.value" label="Fuel Receipts" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
-      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.SCALE_TICKETS.value" label="Scale Tickets" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
-      <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.OTHER.value" label="Other" is-disabled="$ctrl.isDisabled" name="optionsRadios"></radio-button>
+  </form>
+  <form ng-if="$ctrl.selectedDocumentType === $ctrl.documentTypes.INVOICE.value">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Invoice Number</label>
+          <input class="form-control" placeholder="e.g. 123456789" type="text">
+        </div>
+        <div class="form-group">
+          <label>Original Bill Rate: $1,500</label>
+          <input class="form-control" placeholder="Invoice amount if different" type="text">
+        </div>
+        <div class="form-group">
+          <label>Invoice Date</label>
+          <input class="form-control input-modal-dp" uib-datepicker-popup="MM/dd/yyyy" ng-model="$ctrl.datePicker" close-on-date-selection="false" close-text="Apply" ng-click="$ctrl.openDatePicker()" is-open="$ctrl.isOpen" placeholder="MM/DD/YYYY" type="text" datepicker-options="$ctrl.dateOptions"></input>
+        </div>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>
