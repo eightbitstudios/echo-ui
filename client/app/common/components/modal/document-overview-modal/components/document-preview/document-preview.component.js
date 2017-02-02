@@ -35,7 +35,7 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
       };
 
       that.$onChanges = function(changeObj) {
-        if (changeObj.document.currentValue) {
+        if (changeObj.document.currentValue && that.paging) {
           that.paging.reset();
           that.paging.setRecords(_.size(changeObj.document.currentValue.orderedPageGuids), 1);
         }
