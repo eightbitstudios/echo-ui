@@ -6,7 +6,11 @@ angular.module('echo.components.modal.documentUpload.documentType', [
     documents: '<',
     selectedDocumentType: '=',
     isDisabled: '<',
-    numberOfStops: '<'
+    numberOfStops: '<',
+    invoiceDate: '=',
+    originalBillRate: '<',
+    newBillRate: '=',
+    invoiceNumber: '='
   },
   controller: function(documentTypes) {
     var that = this;
@@ -25,7 +29,6 @@ angular.module('echo.components.modal.documentUpload.documentType', [
     that.$onInit = function() {
       that.isOpen = false;
       that.documentTypes = documentTypes;
-      that.datePicker = null;
       that.numberOfPODS = _(that.documents).filter(function(document) {
         return document.documentSubType === documentTypes.POD.value;
       }).size() + 1;

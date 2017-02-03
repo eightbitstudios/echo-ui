@@ -14,7 +14,9 @@ angular.module('echo.components.modal.documentUpload', [
     bindings: {
       load: '=',
       modalActions: '<',
-      documents: '<'
+      documents: '<',
+      selectedDocumentType: '<',
+      originalBillRate: '<'
     },
     controller: function(documentTypes, documentApi) {
       var that = this;
@@ -45,7 +47,10 @@ angular.module('echo.components.modal.documentUpload', [
 
       that.$onInit = function() {
         that.files = [];
-        that.selectedDocumentType = documentTypes.POD.value;
+        that.documentTypes = documentTypes;
+        that.invoiceDate = new Date();
+        that.newBillRate = '';
+        that.invoiceNumber = '';
         that.numberOfStops = _.max([_.size(that.load.pickUp), _.size(that.load.delivery)]);
       };
     }

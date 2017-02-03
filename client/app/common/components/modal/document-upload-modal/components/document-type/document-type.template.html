@@ -25,22 +25,22 @@
         <div class="row">
           <div class="col-xs-6 form-group">
             <label>Invoice Number</label>
-            <input class="form-control" placeholder="e.g. 123456789" required type="text">
+            <input class="form-control" placeholder="e.g. 123456789" ng-model="$ctrl.invoiceNumber" required type="text">
           </div>
         </div>
         <div class="row">
           <div class="col-xs-6 form-group">
-            <label>Original Bill Rate: $1,500</label>
-            <input class="form-control" ng-model="$ctrl.billRate" placeholder="Invoice amount if different" type="text">
+            <label>Original Bill Rate: {{::$ctrl.originalBillRate}}</label>
+            <input class="form-control" ng-model="$ctrl.newBillRate" placeholder="Invoice amount if different" type="text">
           </div>
-          <div ng-show="$ctrl.billRate.length > 0" class="help-block">
+          <div ng-show="$ctrl.newBillRate.length > 0" class="help-block">
             Please remember to add documents needed in support of this difference (lumper receipts, etc)
           </div>
         </div>
         <div class="row">
           <div class="col-xs-6 form-group">
             <label>Invoice Date</label>
-            <input required class="form-control input-modal-dp" uib-datepicker-popup="MM/dd/yyyy" ng-model="$ctrl.datePicker" close-on-date-selection="false" close-text="Apply" ng-click="$ctrl.openDatePicker()" is-open="$ctrl.isOpen" placeholder="MM/DD/YYYY" type="text"
+            <input required class="form-control input-modal-dp" uib-datepicker-popup="MM/dd/yyyy" ng-model="$ctrl.invoiceDate" close-on-date-selection="false" close-text="Apply" ng-click="$ctrl.openDatePicker()" is-open="$ctrl.isOpen" placeholder="MM/DD/YYYY" type="text"
               datepicker-options="$ctrl.dateOptions"></input>
           </div>
         </div>
