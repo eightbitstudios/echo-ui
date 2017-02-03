@@ -6,11 +6,11 @@ angular.module('echo.components.modal.documentUpload.documentType', [
     documents: '<',
     selectedDocumentType: '=',
     isDisabled: '<',
-    numberOfStops: '<',
-    invoiceDate: '=',
-    originalBillRate: '<',
-    newBillRate: '=',
-    invoiceNumber: '='
+    numberOfStops: '<'
+  },
+  transclude: {
+    invoices: 'invoices',
+    loadDocumentTypes: 'loadDocumentTypes'
   },
   controller: function(documentTypes) {
     var that = this;
@@ -22,12 +22,8 @@ angular.module('echo.components.modal.documentUpload.documentType', [
       return that.selectedDocumentType === documentTypes.INVOICE.value ? null : that.selectedDocumentType;
     };
 
-    that.openDatePicker = function() {
-      that.isOpen = true;
-    };
-
     that.$onInit = function() {
-      that.isOpen = false;
+
       that.documentTypes = documentTypes;
       that.numberOfPODS = _(that.documents).filter(function(document) {
         return document.documentSubType === documentTypes.POD.value;
@@ -36,12 +32,6 @@ angular.module('echo.components.modal.documentUpload.documentType', [
       if(that.numberOfPODS < that.numberOfStops) {
         that.selectedDocumentType = that.documentTypes.POD.value;
       }
-
-      that.dateOptions = {
-        showWeeks: false,
-        initDate: new Date()
-      };
-
     };
   }
 });

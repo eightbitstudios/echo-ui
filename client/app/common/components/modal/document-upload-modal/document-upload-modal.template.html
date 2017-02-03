@@ -4,14 +4,14 @@
     <document-upload-sidebar documents="$ctrl.documents"></document-upload-sidebar>
     <section class="modal-main-content">
       <uploaded-documents files="$ctrl.files" added-file-callback="$ctrl.fileAdded()"></uploaded-documents>
-      <document-type documents="$ctrl.documents" selected-document-type="$ctrl.selectedDocumentType" 
-        is-disabled="$ctrl.files.length > 0" number-of-stops="$ctrl.numberOfStops" invoice-date="$ctrl.invoiceDate"
-        original-bill-rate="$ctrl.originalBillRate" new-bill-rate="$ctrl.newBillRate" invoice-number="$ctrl.invoiceNumber"></document-type>
+      <document-type documents="$ctrl.documents" selected-document-type="$ctrl.selectedDocumentType" is-disabled="$ctrl.files.length > 0" number-of-stops="$ctrl.numberOfStops">
+        <invoices invoice-date="$ctrl.invoiceDate" original-bill-rate="$ctrl.originalBillRate" new-bill-rate="$ctrl.newBillRate" invoice-number="$ctrl.invoiceNumber"></invoices>
+        <load-document-types selected-document-type="$ctrl.selectedDocumentType" is-disabled="$ctrl.files.length > 0" number-of-stops="$ctrl.numberOfStops"></load-document-types>
+      </document-type>
       <div class="modal-action-links">
         <div class="row">
           <div class="col-sm-6">
-            <loading-button disable-button="$ctrl.files.length === 0" click-handler="$ctrl.uploadDocuments()" 
-              button-text="{{$ctrl.selectedDocumentType ===  $ctrl.documentTypes.INVOICE.value? 'Send Invoices' : 'Send Documents'}}" show-loading="$ctrl.showLoading"></loading-button>
+            <loading-button disable-button="$ctrl.files.length === 0" click-handler="$ctrl.uploadDocuments()" button-text="{{$ctrl.selectedDocumentType ===  $ctrl.documentTypes.INVOICE.value? 'Send Invoices' : 'Send Documents'}}" show-loading="$ctrl.showLoading"></loading-button>
           </div>
           <div class="col-sm-6 upload-messages">
             <fading-text class="text-success" ng-if="$ctrl.showSavedMessage" text="Document successfully added"></fading-text>
