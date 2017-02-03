@@ -29,17 +29,6 @@ angular.module('echo.index', [
       data: {
         auth: true
       },
-      resolve: {
-        user: function($q, store$, userActions, cookieService, userProfileService) {
-          var jwt = cookieService.getToken();
-          if (jwt) {
-            store$.dispatch({
-              type: userActions.SET_USER,
-              payload: userProfileService.mapJwtToUser(jwt)
-            });
-          }
-        }
-      },
       views: {
         'header': {
           template: '<app-header/>'
@@ -147,4 +136,12 @@ angular.module('echo.index', [
         hideTabBar: true
       }
     });
+}).run(function(store$, userActions, cookieService, userProfileService) {
+  var jwt = cookieService.getToken();
+  if (jwt) {
+    store$.dispatch({
+      type: userActions.SET_USER,
+      payload: userProfileService.mapJwtToUser(jwt)
+    });
+  }
 });
