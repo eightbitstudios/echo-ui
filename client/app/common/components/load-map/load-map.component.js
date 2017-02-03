@@ -23,40 +23,24 @@ angular.module('echo.components.loadMap', [
     bindings: {
       mapPoints: '=',
       detailedInfo: '<',
-      showMap: '<'
+      showMap: '<',
+      showExpanded: '<',
+      viewMapHandler: '&',
+      carrierId: '<',
+      mapRefreshHandler: '&'
     },
-    controller: function($q, googleMapsApi, googleMaps, googleMapsConst) {
-
-      this.formatMapPoints = function(google) {
-        var that = this;
-
-        var geocoder = new google.maps.Geocoder();
-        var promises = [];
-        _.forEach(that.mapPoints, function(mapPoint) {
-          promises.push(googleMaps.appendPosition(geocoder, mapPoint));
-        });
-
-        if (_.size(promises) === 0) {
-          that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
-          return that.mapCenter;
-        } else {
-          return $q.all(promises).then(function() {
-            that.mapPoints = _.filter(that.mapPoints, function(mapPoint) {
-              return !!mapPoint.position;
-            });
-            that.mapCenter = googleMaps.findCenter(that.google, that.mapPoints);
-          });
-        }
-      };
-
+    controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
       this.$onChanges = function(changeObj) {
         var that = this;
 
-        if (changeObj.showMap.currentValue) {
-          googleMapsApi.then(function(google) {
+        if(_.get(changeObj.showMap, 'currentValue') || _.get(changeObj.showExpanded, 'currentValue')) {
+          googleMapsApi.then(function (google) {
             that.google = google;
-            return that.formatMapPoints(google);
+            return googleMaps.formatMapPoints(google, new google.maps.Geocoder(), that.mapPoints);
+          }).then(function (mapCenter) {
+            that.mapCenter = mapCenter;
           }).finally(function() {
+            googleMaps.resizeAndCenter(that.google, that.map, that.mapPoints);
             that.showLoading = false;
           });
         } else {
@@ -67,6 +51,10 @@ angular.module('echo.components.loadMap', [
       this.$onInit = function() {
         this.popupOffset = this.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
         this.showLoading = true;
+        this.mapCenter = null;
+        _.forEach(this.mapPoints, function (mapPoint) {
+          mapPoint.loadNumber = mapPoint.loadId;
+        });
       };
     }
   });

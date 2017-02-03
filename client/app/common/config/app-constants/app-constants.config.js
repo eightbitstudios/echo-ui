@@ -107,5 +107,6 @@ angular.module('echo.config.appConstants', [])
       lng: -98.35
     },
     MAX_STAR_RATING: 4,
-    PRIVACY_POLICY_URL: 'https://www.echo.com/privacypolicy.html'
+    PRIVACY_POLICY_URL: 'https://www.echo.com/privacypolicy.html',
+    GOOGLE_MAPS_HOST_URL: 'http://maps.google.com/'
   });

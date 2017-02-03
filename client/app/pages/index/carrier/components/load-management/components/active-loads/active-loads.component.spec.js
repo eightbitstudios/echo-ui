@@ -1,6 +1,6 @@
 describe('Component: Active Loads', function() {
   var component, scope, $q, carrierId, availableData,
-    loadCountService, ActiveLoadsRequestBuilder, requestBuilderObj, requestDefer,
+    ActiveLoadsRequestBuilder, requestBuilderObj, requestDefer,
     store$;
 
   beforeEach(function() {

@@ -1,7 +1,7 @@
 describe('Service: googleMaps', function() {
   'use strict';
 
-  var $scope,
+  var scope,
     $q,
     appConstants,
     googleMaps;
@@ -10,7 +10,7 @@ describe('Service: googleMaps', function() {
     module('echo.services.googleMaps');
 
     inject(function($rootScope, _$q_, _appConstants_, _googleMaps_) {
-      $scope = $rootScope.$new();
+      scope = $rootScope.$new();
       $q = _$q_;
       googleMaps = _googleMaps_;
       appConstants = _appConstants_;
@@ -101,6 +101,60 @@ describe('Service: googleMaps', function() {
     });
   });
 
+  describe('Function: resizeAndCenter', function () {
+
+    var google,
+      bounds;
+
+    beforeEach(function() {
+      google = {
+        maps: {
+          event: {
+            trigger: function (map, trigger) {
+              expect(trigger).toBe('resize');
+            }
+          },
+          LatLng: jasmine.createSpy('LatLng'),
+          LatLngBounds: jasmine.createSpy('LatLngBounds')
+        }
+      };
+      google.maps.LatLngBounds.and.returnValue(
+        bounds = jasmine.createSpyObj('bounds', ['extend', 'getCenter']));
+    });
+
+    it('should do nothing without a map object', function () {
+      googleMaps.resizeAndCenter(google, undefined, []);
+
+      expect(google.maps.LatLngBounds).not.toHaveBeenCalled();
+    });
+
+    it('should fit bounds and center the map', function () {
+      var fitBoundsCalled = false;
+      var setCenterCalled = false;
+      var map = {
+        fitBounds: function(boundsObj) { fitBoundsCalled = true; },
+        setCenter: function(latLngObj) { setCenterCalled = true; }
+      };
+      var mapPoints = [{
+        position: {
+          lat: 30,
+          lng: 40
+        }
+      }, {
+        position: {
+          lat: 45,
+          lng: 60
+        }
+      }];
+
+      googleMaps.resizeAndCenter(google, map, mapPoints);
+
+      expect(fitBoundsCalled).toBe(true);
+      expect(setCenterCalled).toBe(true);
+    });
+
+  });
+
   describe('Function: getDefaultZoom', function() {
 
     it('should zoom on a single point', function() {
@@ -129,5 +183,78 @@ describe('Service: googleMaps', function() {
 
       expect(googleMaps.getDefaultZoom(mapPoints)).toEqual(appConstants.DEFAULT_MAP_ZOOM.OTHER);
     });
+  });
+
+  describe('Function: formatMapPoints', function () {
+
+    var google,
+      geocoder,
+      bounds;
+    var results = [{
+      geometry: {
+        location: {
+          lat: 30,
+          lng: 50
+        }
+      }
+    }];
+
+    beforeEach(function() {
+      google = {
+        maps: {
+          event: {
+            trigger: function (map, trigger) {
+              expect(trigger).toBe('resize');
+            }
+          },
+          LatLng: jasmine.createSpy('LatLng'),
+          LatLngBounds: jasmine.createSpy('LatLngBounds')
+        }
+      };
+      google.maps.LatLngBounds.and.returnValue(
+        bounds = jasmine.createSpyObj('bounds', ['extend', 'getCenter']));
+      geocoder = {
+        geocode: function(address, callback) {
+          callback(results, 'OK');
+        }
+      };
+    });
+
+    it('should return default center with 0 map points', function () {
+      googleMaps.formatMapPoints(google, geocoder, []).then(function (result) {
+        expect(google.maps.LatLng).toHaveBeenCalledWith(appConstants.DEFAULT_MAP_CENTER.lat, appConstants.DEFAULT_MAP_CENTER.lng);
+      });
+
+      scope.$digest();
+    });
+
+    it('should return center with multiple map points', function () {
+      var mapPoints = [{
+        currentLocation: {
+          cityName: 'Chicago',
+          stateCode: 'IL'
+        }
+      }, {
+        currentLocation: {
+          cityName: 'Houston',
+          stateCode: 'TX'
+        }
+      }];
+
+      var center = {
+        lat: 30,
+        lng: 50
+      };
+
+      bounds.getCenter.and.returnValue(center);
+
+      googleMaps.formatMapPoints(google, geocoder, mapPoints).then(function (result) {
+        expect(bounds.getCenter).toHaveBeenCalled();
+        expect(result).toBe(center);
+      });
+
+      scope.$digest();
+    });
+
   });
 });
