@@ -15,7 +15,8 @@ angular.module('echo.components.modal.milestones.locationSearch', [
           return _.map(locations, function(location) {
             return {
               name: _.join([location.cityName, location.stateCode], ', '),
-              stateId: location.stateId
+              stateId: location.stateId,
+              countryCD: location.countryCD
             };
           });
         });
@@ -24,6 +25,7 @@ angular.module('echo.components.modal.milestones.locationSearch', [
       this.selectedLocation = function(selected) {
         this.location.setLocation(_.get(selected, 'name'));
         this.location.stateId = _.get(selected, 'stateId');
+        this.location.countryCD = _.get(selected, 'countryCD');
       };
     }
   });
