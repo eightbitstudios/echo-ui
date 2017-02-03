@@ -1,10 +1,11 @@
 describe('Component: Upcoming Loads', function() {
-  var component, scope, $q, carrierId, loadsApi, upcomingLoadData;
+  var component, scope, $q, carrierId, loadsApi, upcomingLoadData, store$;
 
   beforeEach(function() {
     module('app/pages/index/carrier/components/load-management/components/upcoming-loads/upcoming-loads.template.html');
     module('echo.index.carrier.loadManagement.upcomingLoads', function($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchUpcomingLoads']));
+      $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));
     });
   });
 
@@ -30,9 +31,9 @@ describe('Component: Upcoming Loads', function() {
       }]
     };
 
-    component = $componentController('upcomingLoads', null, {
-      carrierId: carrierId
-    });
+    store$.getState.and.returnValue({ carrier: {carrierId: carrierId}, rep:{} });
+
+    component = $componentController('upcomingLoads', null, {});
 
     spyOn(component, 'getUpcomingLoads');
     component.getUpcomingLoads.and.callFake(function() {});

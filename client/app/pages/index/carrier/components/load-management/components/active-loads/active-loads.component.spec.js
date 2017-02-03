@@ -57,14 +57,14 @@ describe('Component: Active Loads', function() {
 
     store$.getState.and.returnValue({
       rep: {},
-      loadCounts: {}
+      loadCounts: {},
+      carrier: {
+        carrierId: carrierId
+      }
     });
 
-    component = $componentController('activeLoads', null, {
-      carrierId: carrierId
-    });
+    component = $componentController('activeLoads', null, {});
     spyOn(component, 'getPageData');
-    component.getPageData.and.callFake(function() {});
 
     component.$onInit();
   }));
@@ -214,6 +214,9 @@ describe('Component: Active Loads', function() {
         rep: {},
         loadCounts: {
           active: 10
+        },
+        carrier: {
+          carrierId: carrierId
         }
       });
 

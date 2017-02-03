@@ -10,14 +10,13 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
   'echo.components.filterButton'
 ]).component('unbilledLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/unbilled-loads/unbilled-loads.template.html',
-  bindings: {
-    repDetails: '<',
-    carrierId: '<'
-  },
-  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum) {
+  bindings: {},
+  controller: function(store$, loadsApi, PagingModel, appConstants, loadTypesEnum) {
 
-    this.getUnbilledLoads = function() {
-      var that = this;
+    var that = this;
+
+    that.getUnbilledLoads = function() {
+
       that.showLoading = true;
       loadsApi.fetchUnbilledLoads(that.carrierId, that.paging, that.isPODNeeded, that.isInvoiceNeeded).then(function(unbilledLoadData) {
         that.paging.totalRecords = unbilledLoadData.totalLoadCount;
@@ -28,40 +27,44 @@ angular.module('echo.index.carrier.loadManagement.unbilledLoads', [
       });
     };
 
-    this.invoiceNeededHandler = function(value) {
+    that.invoiceNeededHandler = function(value) {
       if (!value) {
-        this.filterText = this.defaultFilterText;
+        that.filterText = that.defaultFilterText;
       } else {
-        this.filterText = 'By Invoice Needed';
+        that.filterText = 'By Invoice Needed';
       }
-      this.isPODNeeded = false;
-      this.isInvoiceNeeded = value;
-      this.paging.reset();
-      this.getUnbilledLoads();
+      that.isPODNeeded = false;
+      that.isInvoiceNeeded = value;
+      that.paging.reset();
+      that.getUnbilledLoads();
     };
 
-    this.podNeededHandler = function(value) {
+    that.podNeededHandler = function(value) {
       if (!value) {
-        this.filterText = this.defaultFilterText;
+        that.filterText = that.defaultFilterText;
       } else {
-        this.filterText = 'By POD Needed';
+        that.filterText = 'By POD Needed';
       }
-      this.isInvoiceNeeded = false;
-      this.isPODNeeded = value;
-      this.paging.reset();
-      this.getUnbilledLoads();
+      that.isInvoiceNeeded = false;
+      that.isPODNeeded = value;
+      that.paging.reset();
+      that.getUnbilledLoads();
     };
 
-    this.$onInit = function() {
-      this.showLoading = false;
-      this.paging = new PagingModel(appConstants.LIMIT.loadsList);
-      this.isInvoiceNeeded = false;
-      this.loadType = loadTypesEnum.UNBILLED;
-      this.isPODNeeded = false;
-      this.defaultFilterText = 'By Last Delivery Stop';
-      this.filterText = this.defaultFilterText;
+    that.$onInit = function() {
+      var state = store$.getState();
 
-      this.getUnbilledLoads();
+      that.repDetails = state.rep;
+      that.carrierId = state.carrier.carrierId;
+      that.showLoading = false;
+      that.paging = new PagingModel(appConstants.LIMIT.loadsList);
+      that.isInvoiceNeeded = false;
+      that.loadType = loadTypesEnum.UNBILLED;
+      that.isPODNeeded = false;
+      that.defaultFilterText = 'By Last Delivery Stop';
+      that.filterText = that.defaultFilterText;
+
+      that.getUnbilledLoads();
     };
   }
 });

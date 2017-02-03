@@ -10,15 +10,11 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
   ])
   .component('loadDetails', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/load-details.template.html',
-    bindings: {
-      repDetails: '<',
-      carrierId: '<',
-      loadId: '<'
-    },
-    controller: function($state, $q, loadsApi) {
+    controller: function($state, $q, $stateParams, store$, loadsApi) {
+      var that = this;
 
       this.getMapPoint = function() {
-        var that = this;
+
         that.showMap = false;
         that.mapPoints = [];
         loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid')).then(function(mapPointData) {
@@ -30,12 +26,15 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       };
 
       this.$onInit = function() {
-        var that = this;
+
+        var state = store$.getState();
 
         that.showLoading = true;
         that.showMap = false;
+        that.repDetails = state.rep;
+        that.carrierId = state.carrier.carrierId;
 
-        loadsApi.fetchLoadDetails(that.loadId)
+        loadsApi.fetchLoadDetails($stateParams.loadId)
           .then(function(loadDetails) {
             that.loadDetails = loadDetails;
             that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');

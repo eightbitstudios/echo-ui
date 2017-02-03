@@ -1,10 +1,11 @@
 describe('Component: Unbilled Loads', function() {
-  var component, scope, $q, carrierId, loadsApi, unbilledLoadData;
+  var component, scope, $q, carrierId, store$, loadsApi, unbilledLoadData;
 
   beforeEach(function() {
     module('app/pages/index/carrier/components/load-management/components/unbilled-loads/unbilled-loads.template.html');
     module('echo.index.carrier.loadManagement.unbilledLoads', function($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchUnbilledLoads']));
+      $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));
     });
   });
 
@@ -30,9 +31,9 @@ describe('Component: Unbilled Loads', function() {
       }]
     };
 
-    component = $componentController('unbilledLoads', null, {
-      carrierId: carrierId
-    });
+    store$.getState.and.returnValue({ carrier: {carrierId: carrierId}, rep:{} });
+
+    component = $componentController('unbilledLoads', null, {});
 
     spyOn(component, 'getUnbilledLoads');
     component.getUnbilledLoads.and.callFake(function() { });

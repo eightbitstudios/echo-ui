@@ -14,45 +14,44 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.action'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
-  bindings: {
-    carrierId: '<'
-  },
+  bindings: {},
   controller: function(loadsApi, PagingModel, appConstants, store$, loadCountsActions, loadTypesEnum, ActiveLoadsRequestBuilder) {
+    
+    var that = this;
 
-    this.deliveriesTodayHandler = function(value) {
-      this.filterText = value ? 'By Next Delivery' : this.defaultFilterText;
+    that.deliveriesTodayHandler = function(value) {
+      that.filterText = value ? 'By Next Delivery' : that.defaultFilterText;
 
-      this.isPickUpToday = false;
-      this.isDeliveriesToday = value;
-      this.paging.reset();
+      that.isPickUpToday = false;
+      that.isDeliveriesToday = value;
+      that.paging.reset();
 
-      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(that.carrierId);
 
-      if (this.isDeliveriesToday) {
+      if (that.isDeliveriesToday) {
         activeLoadsPageApiRequest.filterByDeliveriesToday();
       }
 
-      this.getPageData(activeLoadsPageApiRequest);
+      that.getPageData(activeLoadsPageApiRequest);
     };
 
-    this.pickupsTodayHandler = function(value) {
+    that.pickupsTodayHandler = function(value) {
 
-      this.filterText = value ? 'By Next Pickup' : this.defaultFilterText;
-      this.isDeliveriesToday = false;
-      this.isPickUpToday = value;
-      this.paging.reset();
+      that.filterText = value ? 'By Next Pickup' : that.defaultFilterText;
+      that.isDeliveriesToday = false;
+      that.isPickUpToday = value;
+      that.paging.reset();
 
-      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(that.carrierId);
 
-      if (this.isPickUpToday) {
+      if (that.isPickUpToday) {
         activeLoadsPageApiRequest.filterByPickupsToday();
       }
 
-      this.getPageData(activeLoadsPageApiRequest);
+      that.getPageData(activeLoadsPageApiRequest);
     };
 
-    this.getPageData = function(requestBuilder) {
-      var that = this;
+    that.getPageData = function(requestBuilder) {
 
       if (requestBuilder.hasMapData()) {
         that.showMap = false;
@@ -82,38 +81,41 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       });
     };
 
-    this.fetchActiveLoads = function() {
-      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
-      this.getPageData(activeLoadsPageApiRequest);
+    that.fetchActiveLoads = function() {
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(that.carrierId);
+      that.getPageData(activeLoadsPageApiRequest);
     };
 
-    this.toggleExpandedMap = function () {
-      this.showExpandedMap = true;
-      this.showLoadDetailsMap = false;
+    that.toggleExpandedMap = function() {
+      that.showExpandedMap = true;
+      that.showLoadDetailsMap = false;
     };
 
-    this.shrinkMap = function () {
-      this.showExpandedMap = false;
-      this.showLoadDetailsMap = false;
+    that.shrinkMap = function() {
+      that.showExpandedMap = false;
+      that.showLoadDetailsMap = false;
     };
 
-    this.viewMapHandler = function(mapPoint) {
-      this.loadDetailsMapPoint = mapPoint;
-      this.showExpandedMap = false;
-      this.showLoadDetailsMap = true;
+    that.viewMapHandler = function(mapPoint) {
+      that.loadDetailsMapPoint = mapPoint;
+      that.showExpandedMap = false;
+      that.showLoadDetailsMap = true;
     };
 
-    this.refreshPageData = function() {
-      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(this.carrierId);
+    that.refreshPageData = function() {
+      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(that.carrierId);
       activeLoadsPageApiRequest.fetchMapData();
-      this.getPageData(activeLoadsPageApiRequest);
+      that.getPageData(activeLoadsPageApiRequest);
     };
 
 
-    this.$onInit = function() {
-      var that = this;
-      this.showExpandedMap = false;
-      this.showLoadDetailsMap = false;
+    that.$onInit = function() {
+
+      var state = store$.getState();
+      that.showExpandedMap = false;
+      that.showLoadDetailsMap = false;
+      that.carrierId = state.carrier.carrierId;
+      that.repDetails = state.rep;
 
       that.showLoading = false;
       that.paging = new PagingModel(appConstants.LIMIT.loadsList);
@@ -126,13 +128,10 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
 
       that.defaultFilterText = 'By Next Appointment';
       that.filterText = that.defaultFilterText;
-      var state = store$.getState();
 
       if (_.isEmpty(state.loadCounts)) {
         activeLoadsPageApiRequest.fetchLoadsCount();
       }
-
-      that.repDetails = state.rep;
 
       that.getPageData(activeLoadsPageApiRequest);
     };

@@ -63,6 +63,9 @@ describe('Component: Dashboard Loads', function() {
       store$.getState.and.returnValue({
         rep: {
           userId: 100
+        },
+        carrier: {
+          carrierId: carrierId
         }
       });
 
@@ -84,12 +87,9 @@ describe('Component: Dashboard Loads', function() {
       pagingModelObj = jasmine.createSpyObj('pagingModelObj', ['setRecords', 'reset']);
       PagingModel.and.returnValue(pagingModelObj);
 
-      component = $componentController('dashboard', null, {
-        carrierId: carrierId
-      });
+      component = $componentController('dashboard', null, {});
 
       spyOn(component, 'fetchLoadDashboard');
-      component.fetchLoadDashboard.and.callFake(_.noop);
 
       component.$onInit();
     });

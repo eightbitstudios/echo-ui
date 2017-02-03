@@ -12,21 +12,18 @@ angular.module('echo.index.carrier.loadManagement', [
   ])
   .component('loadManagement', {
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
-    bindings: {
-      repDetails: '<',
-      carrierId: '<',
-      count: '<'
-    },
     controller: function($stateParams, $state, Rx, loadCountsActions, routesConfig, store$, loadsApi) {
 
-      this.routeToSearch = function(searchText) {
+      var that = this;
+
+      that.routeToSearch = function(searchText) {
         $state.go(routesConfig.INDEX.searchLoads.name, {
           searchText: searchText
         });
       };
 
-      this.createTabItems = function(loadCounts) {
-        this.tabItems = [{
+      that.createTabItems = function(loadCounts) {
+        that.tabItems = [{
           title: loadCounts.active + ' Active Loads',
           link: routesConfig.INDEX.activeLoads.name
         }, {
@@ -38,8 +35,11 @@ angular.module('echo.index.carrier.loadManagement', [
         }];
       };
 
-      this.$onInit = function() {
-        var that = this;
+      that.$onInit = function() {
+        var state = store$.getState();
+
+        that.repDetails = state.rep;
+        that.carrierId = state.carrier.carrierId;
         that.activeLoadCount = 0;
         that.stateParams = $stateParams;
         that.showLoading = true;

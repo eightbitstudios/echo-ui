@@ -5,14 +5,15 @@ angular.module('echo.index.carrier', [
   'echo.index.carrier.loadManagement',
   'echo.components.navbar',
 ]).component('carrier', {
-  bindings: {
-    carrierId: '<'
-  },
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
-  controller: function($q, Rx, store$, carrierApi, repApi, carrierActions, repActions) {
+  controller: function($stateParams, $q, Rx, store$, carrierApi, repApi, carrierActions, repActions) {
+
+    var that = this;
+
     this.$onInit = function() {
-      var that = this;
+
       that.showLoading = true;
+      that.carrierId = $stateParams.carrierId;
 
       var carrierPromise = carrierApi.fetchCarrierById(that.carrierId);
       var repPromise = repApi.fetchRepByCarrierId(that.carrierId);
