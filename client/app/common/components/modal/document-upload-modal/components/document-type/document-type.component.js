@@ -31,8 +31,12 @@ angular.module('echo.components.modal.documentUpload.documentType', [
       that.documentTypes = documentTypes;
       that.numberOfPODS = _(that.documents).filter(function(document) {
         return document.documentSubType === documentTypes.POD.value;
-      }).size() + 1;
-      
+      }).size();
+
+      if(that.numberOfPODS < that.numberOfStops) {
+        that.selectedDocumentType = that.documentTypes.POD.value;
+      }
+
       that.dateOptions = {
         showWeeks: false,
         initDate: new Date()
