@@ -3,6 +3,7 @@ angular.module('echo.index.carrier', [
   'echo.index.carrier.dashboard',
   'echo.index.carrier.carrierAdminNav',
   'echo.index.carrier.loadManagement',
+  'echo.index.carrier.invoicing',
   'echo.components.navbar',
   'echo.services.loadCount'
 ]).component('carrier', {

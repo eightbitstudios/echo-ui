@@ -54,6 +54,7 @@ module.exports = {
     mapPointByLoadGuid: '/mock/api/v1/loads/:loadGuid/details/map',
     mapPointsForLoadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction/map',
     activeLoadsPage: '/mock/api/v1/carriers/:carrierId/loads/activeLoadsPage',
-    loadDashboard: '/mock/api/v1/carriers/:carrierId/loads/dashboardPage'
+    loadDashboard: '/mock/api/v1/carriers/:carrierId/loads/dashboardPage',
+    activeInvoicesPage: '/mock/api/v1/carriers/:carrierId/invoices/activeInvoicesPage'
   }
 };

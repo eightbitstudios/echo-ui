@@ -6,10 +6,12 @@ var carrierHandler = require('./handlers/carrier-handler'),
   loadsHandler = require('./handlers/loads-handler'),
   locationHandler = require('./handlers/location-handler'),
   timeZonesHandler = require('./handlers/time-zones-handler'),
+  invoiceHandler = require('./handlers/invoice-handler')
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
   app.get(endpoints.api.activeLoadsPage, loadsHandler.fetchActiveLoadsPage);
+  app.get(endpoints.api.activeInvoicesPage, invoiceHandler.getInvoices);
   app.get(endpoints.api.verifyDriverByPhone, driverHandler.fetchVerifyDriver);
   app.get(endpoints.api.equipmentByLoadId, loadsHandler.getEquipmentByLoadId);
   app.get(endpoints.api.timeZones, timeZonesHandler.getTimeZones);

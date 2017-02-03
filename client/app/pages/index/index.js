@@ -149,6 +149,20 @@ angular.module('echo.index', [
         }
       }
     })
+    .state(routesConfig.INDEX.invoicing.name, { // #/carrier/:carrierId/invoicing
+      url: routesConfig.INDEX.invoicing.route,
+      component: 'invoicing',
+      data: {
+        whiteContainer: true
+      }
+    })
+    .state(routesConfig.INDEX.activeInvoices.name, { // #/carrier/:carrierId/invoicing/activeInvoices
+      url: routesConfig.INDEX.activeInvoices.route,
+      component: 'active-invoices',
+      data: {
+        name: 'active invoices'
+      }
+    })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,
       component: 'my-company'

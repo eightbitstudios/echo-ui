@@ -55,5 +55,7 @@
   "mapPointByLoadGuid": "/loads/${loadGuid}/details/map",
   "mapPointsForLoadsNeedingAction": "/carriers/${carrierId}/loads/needsAction/map",
   "activeLoadsPage": "/carriers/${carrierId}/loads/activeLoadsPage",
-  "loadDashboard": "/carriers/${carrierId}/loads/dashboardPage"
+  "loadDashboard": "/carriers/${carrierId}/loads/dashboardPage",
+  "activeInvoicesPage": "/carriers/${carrierId}/invoices/activeInvoicesPage"
+
 }
