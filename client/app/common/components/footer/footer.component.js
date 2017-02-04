@@ -11,7 +11,10 @@ angular.module('echo.components.footer', [
 ]).component('appFooter', {
   templateUrl: 'app/common/components/footer/footer.template.html',
   controller: function(store$, routesConfig, appConstants, modalService) {
-    this.showTermsAndConditionsModal = function() {
+    var that = this;
+    var sub = null;
+
+    that.showTermsAndConditionsModal = function() {
       modalService.open({
         component: 'terms-and-conditions',
         bindings: {
@@ -20,14 +23,17 @@ angular.module('echo.components.footer', [
       });
     };
 
-    this.$onInit = function() {
-      var that = this;
-      store$.subscribe(function(state) {
+    that.$onInit = function() {
+      sub = store$.subscribe(function(state) {
         that.repDetails = state.rep;
         that.user = state.user;
       });
 
       that.privacyPolicyRoute = appConstants.PRIVACY_POLICY_URL;
+    };
+
+    that.$onDestroy = function() {
+      sub.dispose();
     };
   }
 });

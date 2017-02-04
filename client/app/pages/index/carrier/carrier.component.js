@@ -4,9 +4,11 @@ angular.module('echo.index.carrier', [
   'echo.index.carrier.carrierAdminNav',
   'echo.index.carrier.loadManagement',
   'echo.components.navbar',
+  'echo.actions.creators.rep',
+  'echo.actions.creators.carrier'
 ]).component('carrier', {
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
-  controller: function($stateParams, $q, Rx, store$, carrierApi, repApi, carrierActions, repActions) {
+  controller: function($stateParams, $q, store$, carrierActionCreator, repActionCreator) {
 
     var that = this;
 
@@ -15,31 +17,13 @@ angular.module('echo.index.carrier', [
       that.showLoading = true;
       that.carrierId = $stateParams.carrierId;
 
-      var carrierPromise = carrierApi.fetchCarrierById(that.carrierId);
-      var repPromise = repApi.fetchRepByCarrierId(that.carrierId);
+      var carrierAction = carrierActionCreator.fetchCarrier(that.carrierId);
+      var repAction = repActionCreator.fetchRep(that.carrierId);
 
-      store$.dispatch({
-        type: carrierActions.LOADING_CARRIER,
-        payload: Rx.Observable.fromPromise(carrierPromise)
-          .map(function(carrierDetails) {
-            return {
-              type: carrierActions.SET_CARRIER,
-              payload: carrierDetails
-            };
-          }).concatAll()
-      });
-      store$.dispatch({
-        type: repActions.LOADING_REP,
-        payload: Rx.Observable.fromPromise(repPromise)
-          .map(function(rep) {
-            return {
-              type: repActions.SET_REP,
-              payload: rep
-            };
-          }).concatAll()
-      });
+      store$.dispatch(carrierAction);
+      store$.dispatch(repAction);
 
-      $q.all([carrierPromise, repPromise]).then(function() {
+      $q.all([carrierAction.payload.source.toPromise(), repAction.payload.source.toPromise()]).then(function() {
         that.showLoading = false;
       });
     };

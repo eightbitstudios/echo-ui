@@ -2,19 +2,19 @@ angular.module('echo.index.carrier.loadManagement', [
     'echo.components.tabBar',
     'echo.components.searchBar',
     'echo.config.routes',
-    'echo.api.loads',
     'echo.index.carrier.loadManagement.activeLoads',
     'echo.index.carrier.loadManagement.unbilledLoads',
     'echo.index.carrier.loadManagement.upcomingLoads',
     'echo.index.carrier.loadManagement.searchLoads',
     'echo.index.carrier.loadManagement.loadDetails',
-    'echo.action'
+    'echo.action',
+    'echo.actions.creators.loadCounts'
   ])
   .component('loadManagement', {
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
-    controller: function($stateParams, $state, Rx, loadCountsActions, routesConfig, store$, loadsApi) {
-
+    controller: function($stateParams, $state, Rx, loadCountsActionCreator, routesConfig, store$) {
       var that = this;
+      var sub = null;
 
       that.routeToSearch = function(searchText) {
         $state.go(routesConfig.INDEX.searchLoads.name, {
@@ -47,7 +47,7 @@ angular.module('echo.index.carrier.loadManagement', [
         that.routesConfig = routesConfig;
         that.isActiveLoads = $state.$current.data.isActiveLoads;
 
-        store$.subscribe(function(state) {
+        sub = store$.subscribe(function(state) {
           if (!_.isEmpty(state.loadCounts)) {
             that.createTabItems(state.loadCounts);
             that.showLoading = false;
@@ -55,17 +55,13 @@ angular.module('echo.index.carrier.loadManagement', [
         });
 
         if (!that.isActiveLoads) {
-          store$.dispatch({
-            type: loadCountsActions.FETCH_LOAD_COUNTS,
-            payload: Rx.Observable.fromPromise(loadsApi.fetchLoadCount(that.carrierId))
-              .map(function(loadCounts) {
-                return {
-                  type: loadCountsActions.LOAD_COUNTS_LOADED,
-                  payload: loadCounts
-                };
-              }).concatAll()
-          });
+          var action = loadCountsActionCreator.fetchLoadCounts(that.carrierId);
+          store$.dispatch(action);
         }
+      };
+
+      that.$onDestroy = function() {
+        sub.dispose();
       };
     }
   });

@@ -11,12 +11,13 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.loadMap',
   'echo.api.requestBuilder.activeLoads',
   'echo.components.originDestinationMap',
-  'echo.action'
+  'echo.action',
+  'echo.actions.creators.loadCounts'
 ]).component('activeLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {},
-  controller: function(loadsApi, PagingModel, appConstants, store$, loadCountsActions, loadTypesEnum, ActiveLoadsRequestBuilder) {
-    
+  controller: function(loadsApi, PagingModel, appConstants, store$, loadCountsActionCreator, loadTypesEnum, ActiveLoadsRequestBuilder) {
+
     var that = this;
 
     that.deliveriesTodayHandler = function(value) {
@@ -73,10 +74,8 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
         }
 
         if (activeLoadsPageData.loadsCount) {
-          store$.dispatch({
-            type: loadCountsActions.LOAD_COUNTS_LOADED,
-            payload: activeLoadsPageData.loadsCount
-          });
+          var action = loadCountsActionCreator.setLoadCounts(activeLoadsPageData.loadsCount);
+          store$.dispatch(action);
         }
       });
     };

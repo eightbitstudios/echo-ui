@@ -6,21 +6,25 @@ angular.module('echo.components.header', [
 ]).component('appHeader', {
   templateUrl: 'app/common/components/header/header.template.html',
   controller: function($window, store$, routesConfig, authenticationApi) {
-    this.signOutHandler = function() {
-      authenticationApi.signOut(this.user.userId).then(function() {
+    var that = this;
+    var sub = null;
+
+    that.signOutHandler = function() {
+      authenticationApi.signOut(that.user.userId).then(function() {
         $window.location = routesConfig.LOGIN.base.route;
       });
     };
 
-    this.$onInit = function() {
-
-      var that = this;
-      
-      store$.subscribe(function(state) {
+    that.$onInit = function() {
+      sub = store$.subscribe(function(state) {
         that.user = state.user;
       });
-      
-      this.routesConfig = routesConfig;
+
+      that.routesConfig = routesConfig;
+    };
+
+    that.$onDestroy = function() {
+      sub.dispose();
     };
   }
 });
