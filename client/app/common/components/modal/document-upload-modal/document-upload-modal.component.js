@@ -2,7 +2,6 @@ angular.module('echo.components.modal.documentUpload', [
     'echo.components.radioButton',
     'echo.constants.documentTypes',
     'echo.components.loadingButton',
-    'echo.api.document',
     'echo.components.modal.documentUpload.documentUploadSidebar',
     'echo.components.modal.documentUpload.documentType',
     'echo.components.modal.modalHeader',
@@ -23,35 +22,21 @@ angular.module('echo.components.modal.documentUpload', [
     controller: function(documentTypes, documentApi) {
       var that = this;
 
-      that.uploadDocuments = function() {
-        that.showLoading = true;
-        that.showSavedMessage = false;
-        that.showErrorMessage = false;
-
-        documentApi.createDocuments(that.load.loadNumber, that.selectedDocumentType, that.files)
-          .then(function() {
-            that.showSavedMessage = true;
-            that.refreshDocuments();
-          }).catch(function(message) {
-            that.showErrorMessage = true;
-            that.serverError = message;
-          }).finally(function() {
-            that.showLoading = false;
-          });
-      };
-
       that.refreshDocuments = function() {
         documentApi.fetchDocuments(that.load.loadGuid).then(function(documents) {
           that.documents = documents;
         });
+        that.resetModal();
+      };
+
+      that.resetModal = function() {
+        that.selectedDocumentType = documentTypes.POD.value;
+        that.files = [];
       };
 
       that.$onInit = function() {
         that.files = [];
         that.documentTypes = documentTypes;
-        that.invoiceDate = new Date();
-        that.newBillRate = '';
-        that.invoiceNumber = '';
         that.numberOfStops = _.max([_.size(that.load.pickUp), _.size(that.load.delivery)]);
       };
     }
