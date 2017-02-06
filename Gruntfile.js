@@ -10,20 +10,8 @@ module.exports = function(grunt) {
       'env:local',
       'express:dev',
       'watch'
-      ]);
-    } else if (target === 'qa') {
-      grunt.log.write("LOADING CONFIGS FOR QA");
-      grunt.config.merge(apiConfigQA);
-
-      grunt.task.run([
-        'build',
-        'env:local',
-        'express:dev',
-        'watch'
-      ]);
-    } else if (target === 'stage') {
-      grunt.log.write("LOADING CONFIGS FOR STAGING");
-      grunt.config.merge(apiConfigStage);
+    ]);
+  });
 
   grunt.registerTask('dev', function() {
     grunt.task.run(['prepareDeploy:dev']);
