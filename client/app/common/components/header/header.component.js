@@ -7,7 +7,6 @@ angular.module('echo.components.header', [
   templateUrl: 'app/common/components/header/header.template.html',
   controller: function($window, store$, routesConfig, authenticationApi) {
     var that = this;
-    var sub = null;
 
     that.signOutHandler = function() {
       authenticationApi.signOut(that.user.userId).then(function() {
@@ -16,15 +15,14 @@ angular.module('echo.components.header', [
     };
 
     that.$onInit = function() {
-      sub = store$.subscribe(function(state) {
-        that.user = state.user;
+      var sub = store$.subscribe(function(state) {
+        if (!_.isEmpty(that.user)) {
+          that.user = state.user;
+          sub.dispose();
+        }
       });
 
       that.routesConfig = routesConfig;
-    };
-
-    that.$onDestroy = function() {
-      sub.dispose();
     };
   }
 });

@@ -7,16 +7,15 @@ angular.module('echo.components.carrierAdminFooter', [
   controller: function(store$) {
 
     var that = this;
-    var sub = null;
 
     that.$onInit = function() {
-      sub = store$.subscribe(function(state) {
-        that.repDetails = state.rep;
+      that.repDetails = {};
+      var sub = store$.subscribe(function(state) {
+        if (!_.isEmpty(state.rep)) {
+          that.repDetails = state.rep;
+          sub.dispose();
+        }
       });
-    };
-
-    that.$onDestroy = function() {
-      sub.dispose();
     };
   }
 });
