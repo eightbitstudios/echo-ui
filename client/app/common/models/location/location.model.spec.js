@@ -49,10 +49,11 @@ describe('Model: location', function () {
       expect(location.isValid()).toBeFalsy();
     });
         
-    it('should be valid if state and city are not empty', function () {
+    it('should be valid if state, country code, and city are not empty', function () {
       var location = new LocationModel({
         cityName: 'Chicago',
-        stateCode: 'IL'
+        stateCode: 'IL',
+        countryCD: 'US'
       });
       expect(location.isValid()).toBeTruthy();
     });

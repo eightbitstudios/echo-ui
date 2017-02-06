@@ -1,38 +1,15 @@
 module.exports = function(grunt) {
 
-  // API endpoints by env
-  var apiConfigLocal = require('./config/api-config-local.js')(grunt);
-  var apiConfigDev = require('./config/api-config-dev.js')(grunt);
-  var apiConfigDemo = require('./config/api-config-demo.js')(grunt);
-  var apiConfigStage = require('./config/api-config-stage.js')(grunt);
-  var apiConfigMocks = require('./config/api-config-mocks.js')(grunt);
-  var apiConfigTest = require('./config/api-config-test.js')(grunt);
-  var apiConfigQA = require('./config/api-config-qa.js')(grunt);
-
   var userConfig = require('./build.config.js')(grunt);
   grunt.initConfig(userConfig);
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('serve', function(target) {
-    if (target === 'dist') {
-      grunt.log.write("LOADING CONFIGS FOR DIST");
-      grunt.task.run([
-        'dist',
-        'copy:deploy',
-        'install',
-        'env:heroku',
-        'express:dist',
-        'keepalive'
-      ]);
-    } else if (target === 'demo') {
-      grunt.log.write("LOADING CONFIGS FOR DEMO");
-      grunt.config.merge(apiConfigDemo);
-
-      grunt.task.run([
-        'build',
-        'env:local',
-        'express:dev',
-        'watch'
+  grunt.registerTask('serve', function(env) {
+    grunt.task.run([
+      'build:' + (env || 'mocks'),
+      'env:local',
+      'express:dev',
+      'watch'
       ]);
     } else if (target === 'qa') {
       grunt.log.write("LOADING CONFIGS FOR QA");
@@ -48,71 +25,29 @@ module.exports = function(grunt) {
       grunt.log.write("LOADING CONFIGS FOR STAGING");
       grunt.config.merge(apiConfigStage);
 
-      grunt.task.run([
-        'build',
-        'env:local',
-        'express:dev',
-        'watch'
-      ]);
-    } else if (target === 'dev') {
-      grunt.log.write("LOADING CONFIGS FOR DEV");
-      grunt.config.merge(apiConfigDev);
-
-      grunt.task.run([
-        'build',
-        'env:local',
-        'express:dev',
-        'watch'
-      ]);
-    } else if (target === 'local') {
-      grunt.log.write("LOADING CONFIGS FOR LOCAL");
-      grunt.config.merge(apiConfigLocal);
-
-      grunt.task.run([
-        'build',
-        'env:local',
-        'express:dev',
-        'watch'
-      ]);
-    } else if (target === 'test') {
-      grunt.log.write("LOADING CONFIGS FOR TEST");
-      grunt.config.merge(apiConfigTest);
-
-      grunt.task.run([
-        'build',
-        'env:local',
-        'express:dev',
-        'watch'
-      ]);
-    } else {
-      grunt.log.write("LOADING CONFIGS FOR MOCKS");
-      grunt.config.merge(apiConfigMocks);
-
-      grunt.task.run([
-        'build',
-        'env:local',
-        'express:dev',
-        'watch'
-      ]);
-    }
+  grunt.registerTask('dev', function() {
+    grunt.task.run(['prepareDeploy:dev']);
   });
 
-  grunt.registerTask('demo', function(target) {
-    grunt.config.merge(apiConfigDemo);
-    grunt.task.run([
-      'dist',
-      'copy:deploy',
-      'install',
-      'grunticon',
-      'env:demo',
-      'express:dist'
-    ]);
+  grunt.registerTask('stage', function() {
+    grunt.task.run(['prepareDeploy:stage']);
   });
 
-  grunt.registerTask('dev', function(target) {
-    grunt.config.merge(apiConfigDev);
+  grunt.registerTask('qa', function() {
+    grunt.task.run(['prepareDeploy:qa']);
+  });
+
+  grunt.registerTask('test', function() {
+    grunt.task.run(['prepareDeploy:test']);
+  });
+
+  grunt.registerTask('bat2', function() {
+    grunt.task.run(['prepareDeploy:bat2']);
+  });
+
+  grunt.registerTask('prepareDeploy', function(env) {
     grunt.task.run([
-      'dist',
+      'dist:' + env,
       'copy:deploy',
       'install',
       'grunticon',
@@ -121,48 +56,8 @@ module.exports = function(grunt) {
     ]);
   });
 
-  grunt.registerTask('stage', function(target) {
-    grunt.config.merge(apiConfigStage);
-    grunt.task.run([
-      'dist',
-      'copy:deploy',
-      'install',
-      'grunticon',
-      'env:stage',
-      'express:dist'
-    ]);
-  });
-
-  grunt.registerTask('test', function(target) {
-    grunt.config.merge(apiConfigTest);
-    grunt.task.run([
-      'dist',
-      'copy:deploy',
-      'install',
-      'grunticon',
-      'env:test',
-      'express:dist'
-    ]);
-  });
-
-  grunt.registerTask('qa', function(target) {
-    grunt.config.merge(apiConfigQA);
-    grunt.task.run([
-      'dist',
-      'copy:deploy',
-      'install',
-      'grunticon',
-      'express:dist'
-    ]);
-  });
-
-
-  grunt.registerTask('default', function(target) {
-    grunt.task.run(['dist']);
-  });
-
   // Creates a runnable non minified application in the root build directory
-  grunt.registerTask('build', function() {
+  grunt.registerTask('build', function(env) {
     grunt.task.run([
       'clean:build',
       'jshint',
@@ -170,6 +65,7 @@ module.exports = function(grunt) {
       'grunticon',
       'copy:htmlPartials',
       'html2js',
+      'appConfig:' + env,
       'copy:build',
       'gitinfo',
       'copy:version',
@@ -182,10 +78,10 @@ module.exports = function(grunt) {
   // Does a build then minifies and copies all front end code over to the root dist directory
   // To get a fully running app in this directory, you'll need to copy the server and package.json
   // over then do an npm install. (This can all be done by calling 'grunt dist copy:deploy')
-  grunt.registerTask('dist', function() {
+  grunt.registerTask('dist', function(env) {
     grunt.task.run([
       'clean',
-      'build',
+      'build:' + env,
       'useminPrepare',
       'ngAnnotate',
       'concat:generated',
@@ -197,23 +93,12 @@ module.exports = function(grunt) {
     ]);
   });
 
-  grunt.registerTask('prepareDeploy', function() {
+  // Creates a runnable non minified application in the root build directory
+  grunt.registerTask('appConfig', function(env) {
     grunt.task.run([
-      'dist',
-      'copy:deploy',
-      'compress'
-    ]);
-  });
-
-  grunt.registerTask('deploy', function(target) {
-    if (!target) {
-      console.error(); // TODO: Populate this
-      grunt.fail.fatal('Target must be specified for deployment.  Valid targets are heroku-dev and heroku-qa');
-      return;
-    }
-    grunt.task.run([
-      'prepareDeploy',
-      'buildcontrol:' + target
+      'copy:configFiles',
+      'ngconstant:' + env,
+      'copy:appConfig' // just copying back to config for ide command + click jumps.
     ]);
   });
 
@@ -229,7 +114,4 @@ module.exports = function(grunt) {
       async();
     });
   });
-
-
-
 };

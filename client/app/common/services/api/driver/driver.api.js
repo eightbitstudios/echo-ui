@@ -30,7 +30,7 @@ angular.module('echo.api.driver', [
        */
       updateDriverById: function (carrierId, driver) {
 
-        var url = apiConfig.driverById({ carrierId: carrierId, driverId: driver.id });
+        var url = _.template(apiConfig.driverById)({ carrierId: carrierId, driverId: driver.id });
         var data = driverConverterService.driverRequest(driver, carrierId);
 
         return $http.put(url, data).then(function (resp) {
@@ -47,7 +47,7 @@ angular.module('echo.api.driver', [
        */
       deactivateDriverById: function (carrierId, driver) {
 
-        var url = apiConfig.deactivateUserById({ userId: driver.id });
+        var url = _.template(apiConfig.deactivateUserById)({ userId: driver.id });
 
         return $http.put(url, driver).then(function (resp) {
           return resp.data.data;
@@ -80,7 +80,7 @@ angular.module('echo.api.driver', [
        */
       fetchDriverById: function (carrierId, driverId) {
 
-        var url = apiConfig.driverById({ carrierId: carrierId, driverId: driverId });
+        var url = _.template(apiConfig.driverById)({ carrierId: carrierId, driverId: driverId });
         
         return $http.get(url).then(function (resp) {
           return new DriverModel(driverConverterService.driverResponse(resp.data.data));
@@ -89,7 +89,7 @@ angular.module('echo.api.driver', [
 
       verifyDriverByPhone: function (carrierId, phoneNumber) {
         
-        var url = apiConfig.verifyDriverByPhone({ carrierId: carrierId, phoneNumber: phoneNumber});
+        var url = _.template(apiConfig.verifyDriverByPhone)({ carrierId: carrierId, phoneNumber: phoneNumber});
         
         return $http.get(url).then(function (resp) {
           return new DriverModel(resp.data.data);

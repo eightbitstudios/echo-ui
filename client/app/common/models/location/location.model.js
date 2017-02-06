@@ -8,7 +8,8 @@ angular.module('echo.models.location', [])
       var that = this;
       var defaults = {
         cityName: '',
-        stateCode: ''
+        stateCode: '',
+        countryCD: ''
       };
       
       _.assign(that, defaults, data);
@@ -31,7 +32,7 @@ angular.module('echo.models.location', [])
 
     Location.prototype.isValid = function () {
 
-      return !_.isEmpty(this.cityName) && !_.isEmpty(this.stateCode);
+      return !_.isEmpty(this.cityName) && !_.isEmpty(this.stateCode) && !_.isEmpty(this.countryCD);
     };
 
     /**

@@ -40,7 +40,7 @@ describe('Interceptor: authInterceptor', function() {
         },
         LOGIN: {
           base: {
-            url: jasmine.createSpy('base')
+            redirectUrl: jasmine.createSpy('base')
           }
         }
       });
@@ -128,7 +128,7 @@ describe('Interceptor: authInterceptor', function() {
         refreshDefer.promise.catch(function() {
           expect(cookieService.clearToken).toHaveBeenCalled();
           expect(cookieService.clearRefreshToken).toHaveBeenCalled();
-          expect(routesConfig.LOGIN.base.url).toHaveBeenCalled();
+          expect(routesConfig.LOGIN.base.redirectUrl).toHaveBeenCalled();
           done();
         });
 
