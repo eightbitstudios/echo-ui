@@ -24,6 +24,7 @@ angular.module('echo.index.carrier', [
       store$.dispatch(repAction);
 
       $q.all([carrierAction.payload.source.toPromise(), repAction.payload.source.toPromise()]).then(function() {
+        that.carrierDetails = store$.getState().carrier;
         that.showLoading = false;
       });
     };
