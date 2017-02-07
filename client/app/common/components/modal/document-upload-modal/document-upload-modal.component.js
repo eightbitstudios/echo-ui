@@ -37,6 +37,7 @@ angular.module('echo.components.modal.documentUpload', [
       that.$onInit = function() {
         that.files = [];
         that.documentTypes = documentTypes;
+        that.selectedDocumentType = that.selectedDocumentType || documentTypes.POD.value;
         that.numberOfStops = _.max([_.size(that.load.pickUp), _.size(that.load.delivery)]);
       };
     }

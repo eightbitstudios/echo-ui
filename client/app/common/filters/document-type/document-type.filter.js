@@ -8,13 +8,13 @@ angular.module('echo.filters.documentType', [
       var description = '';
 
       var documentType = _.find(documentTypes, function(type) {
-        return type.value === document.documentSubType;
+        return type.value === _.parseInt(document.documentSubType, 10);
       });
 
       if (_(documentType).chain().get('description').isFunction().value()) {
         description = documentType.description({
           documentNumber: (_(documents).filter(function(document) {
-            return document.documentSubType === documentType.value;
+            return _.parseInt(document.documentSubType, 10) === documentType.value;
           }).findIndex(document) + 1)
         });
       } else {

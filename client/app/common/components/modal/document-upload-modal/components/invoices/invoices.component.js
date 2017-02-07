@@ -10,7 +10,7 @@ angular.module('echo.components.modal.documentUpload.invoices', [
     originalBillRate: '<',
     refreshDocumentsCallback: '&'
   },
-  controller: function(documentApi) {
+  controller: function(documentApi, documentTypes) {
     var that = this;
 
     that.openDatePicker = function() {
@@ -21,8 +21,8 @@ angular.module('echo.components.modal.documentUpload.invoices', [
       that.showLoading = true;
       that.showSavedMessage = false;
       that.showErrorMessage = false;
-
-      documentApi.createDocuments(that.loadId, that.selectedDocumentType, that.files)
+      
+      documentApi.createDocuments(that.loadId, documentTypes.INVOICE.description, that.files)
         .then(function() {
           that.showSavedMessage = true;
           that.refreshDocumentsCallback();
