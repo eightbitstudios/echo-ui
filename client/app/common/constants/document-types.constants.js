@@ -2,31 +2,31 @@ angular.module('echo.constants.documentTypes', [])
   .constant('documentTypes', {
     BILL_OF_LADING: {
       description: 'Bill of Lading',
-      value: 1
+      value: 'Bill of Lading'
     },
     OTHER: {
       description: 'Other',
-      value: 2
+      value: 'Other'
     },
     LUMPER_RECEIPT: {
       description: 'Lumper Receipt',
-      value: 3
+      value: 'Lumper Receipt'
     },
     POD: {
       description: _.template('Proof of Delivery #${documentNumber}'),
-      value: 4
+      value: 'Proof of Delivery'
     },
     SCALE_TICKETS: {
       description: 'Scale Tickets',
-      value: 5
+      value: 'Scale Tickets'
     },
     INVOICE: {
       description: 'Invoice',
-      value: 6
+      value: 'Invoice'
     },
     FUEL_RECEIPT: {
       description: 'Fuel Receipts',
-      value: 7
+      value: 'Fuel Receipts'
     },
     RATE_CONFIRMATION: {
       description: 'Rate Confirmation',
