@@ -8,15 +8,30 @@ angular.module('echo.components.modal.documentUpload.documentType', [
     isDisabled: '<',
     numberOfStops: '<'
   },
+  transclude: {
+    invoices: 'invoices',
+    loadDocumentTypes: 'loadDocumentTypes'
+  },
   controller: function(documentTypes) {
     var that = this;
 
-    that.$onInit = function() {
-      that.documentTypes = documentTypes;
+    that.loadDocumentsHandler = function() {
+      if (that.selectedDocumentType === null) {
+        that.selectedDocumentType = documentTypes.POD.value; // Default to POD
+      }
+      return that.selectedDocumentType === documentTypes.INVOICE.value ? null : that.selectedDocumentType;
+    };
 
+    that.$onInit = function() {
+
+      that.documentTypes = documentTypes;
       that.numberOfPODS = _(that.documents).filter(function(document) {
         return document.documentSubType === documentTypes.POD.value;
-      }).size() + 1;
+      }).size();
+
+      if(that.numberOfPODS < that.numberOfStops) {
+        that.selectedDocumentType = that.documentTypes.POD.value;
+      }
     };
   }
 });

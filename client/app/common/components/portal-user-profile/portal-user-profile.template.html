@@ -35,7 +35,7 @@
           </div>
           <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.portalUser.id && !$ctrl.showConfirmation && $ctrl.portalUser.isCarrierAdmin()" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
           <loading-button ng-if="!$ctrl.showConfirmation" button-text="Save{{$ctrl.portalUser.id ? ' Changes': ''}}" disable-button="userProfile.$invalid" click-handler="$ctrl.saveChangesHandler($ctrl.portalUser)" show-loading="$ctrl.showButtonLoading" class="pull-right"></loading-button>
-          <server-errors error="$ctrl.serverError"  message-override="$ctrl.errorMessageOverride"/>
+          <server-errors error="$ctrl.serverError"  message-override="$ctrl.errorMessageOverride"></server-errors>
         </div>
       </fieldset>
     </form>

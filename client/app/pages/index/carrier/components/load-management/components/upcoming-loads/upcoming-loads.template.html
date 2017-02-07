@@ -13,7 +13,7 @@
     <filter-button filter-enabled="$ctrl.isDriverNeeded" click-handler="$ctrl.driverNeededHandler(value)" button-text="Driver Needed"></filter-button>
   </loads-filter>
   <div class="container main-content">
-    <load-table rep-details="$ctrl.repDetails" loads="$ctrl.upcomingLoads" show-loading="$ctrl.showLoading" load-type="$ctrl.loadType"  refresh-table-callback="$ctrl.getUpcomingLoads()" carrier-id="$ctrl.carrierId"/>
+    <load-table rep-details="$ctrl.repDetails" loads="$ctrl.upcomingLoads" show-loading="$ctrl.showLoading" load-type="$ctrl.loadType"  refresh-table-callback="$ctrl.getUpcomingLoads()" carrier-id="$ctrl.carrierId"></load-table>
     <pagination page-click-handler="$ctrl.getUpcomingLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Loads"></pagination>
   </div>
 </div>

@@ -17,15 +17,9 @@ angular.module('echo.directives.renderPdf', [])
             canvas.height = viewport.height;
             canvas.width = viewport.width;
 
-            var task = pdf.render({
+            pdf.render({
               canvasContext: context,
               viewport: viewport
-            });
-
-            task.then(function() {
-              element.append(canvas);
-            }).catch(function() {
-              scope.error();
             });
           }).catch(function() {
             scope.error();

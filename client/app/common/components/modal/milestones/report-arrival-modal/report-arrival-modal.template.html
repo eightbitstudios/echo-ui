@@ -14,11 +14,11 @@
     <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
-    <arrival-sidebar load="$ctrl.load" report-arrival="$ctrl.reportArrival" />
+    <arrival-sidebar load="$ctrl.load" report-arrival="$ctrl.reportArrival"></arrival-sidebar>
     <section class="modal-main-content">
       <h4 class="content-header">What time did the driver arrive<br> at the {{$ctrl.arrivalType.description}} stop?</h4>
       <disclaimer></disclaimer>
-      <date-time-picker time-zones="$ctrl.timeZones" date-time="$ctrl.dateTimePicker" />
+      <date-time-picker time-zones="$ctrl.timeZones" date-time="$ctrl.dateTimePicker"></date-time-picker>
       <div class="date-select"></div>
     </section>
   </div>
