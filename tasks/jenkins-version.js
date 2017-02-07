@@ -1,11 +1,6 @@
 module.exports = function(grunt) {
-  var version = {
-    buildVersion: '0.0.0'
-  };
+  var version = grunt.file.readJSON('version.json');
   
-  if (grunt.file.exists('version.json')) {
-    version = grunt.file.readJSON('version.json');
-  }
   grunt.config('version', {
     buildVersion: version.buildVersion
   });
