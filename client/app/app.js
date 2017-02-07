@@ -9,9 +9,7 @@ angular.module('echo', [
     'echo.services.routing',
     'echo.interceptors.auth',
     'ui.bootstrap',
-    'echo.decorators.uiRouter',
-    'angulartics',
-    'angulartics.kissmetrics'
+    'echo.decorators.uiRouter'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, keyConstants) {
     $urlRouterProvider.otherwise('/');
