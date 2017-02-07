@@ -15,9 +15,7 @@
     "moment": "^2.13.0",
     "bootstrap-daterangepicker": "~2.1.24",
     "angular-ui-mask": "~1.8.7",
-    "jquery": "~2.2.3",
-    "angulartics": "~0.20.3",
-    "angulartics-kissmetrics": "^0.2.0"
+    "jquery": "~2.2.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.5",
