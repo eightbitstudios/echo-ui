@@ -25,7 +25,7 @@ module.exports = {
       "invoiceNumber": 23450982,
       "receivedDate": "Jan 3 2017",
       "status": 1,
-      "statusReason": null,
+      "statusReason": 0,
       "invoiceAmount": 10500,
       "balanceRemaining": 1020,
       "loadId": 12347421,
@@ -81,8 +81,8 @@ module.exports = {
         "city": "Boulder",
         "state": "CO"
       },
-      "pickupDate": "Dec 13 2016",
-      "deliveryDate": "Dec 6 2016"
+      "pickupDate": "Dec 6 2016",
+      "deliveryDate": "Dec 13 2016"
     },
     {
       "invoiceNumber": 23098432,
@@ -254,9 +254,9 @@ module.exports = {
     }
   ],
   "invoicesCount": {
-    activeInvoices: 200,
+    activeInvoices: 12,
     archivedInvoices: 1234,
-    unbilledInvoices: 159,
+    unbilledInvoices: 13,
     unbilledValue: 273432.55
   }
 };

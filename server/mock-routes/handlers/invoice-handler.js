@@ -10,7 +10,7 @@ module.exports = {
   getInvoices: function (req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data.invoices = _.slice(invoicesRes.invoices, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
-    resTemplate.data.totalInvoiceCount = invoicesRes.invoices.length;
+    resTemplate.data.invoicesCount = invoicesRes.invoicesCount;
 
     responseUtil.timeout(function() {
       res.json(resTemplate);

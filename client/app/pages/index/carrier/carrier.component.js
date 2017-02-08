@@ -5,17 +5,19 @@ angular.module('echo.index.carrier', [
   'echo.index.carrier.loadManagement',
   'echo.index.carrier.invoicing',
   'echo.components.navbar',
-  'echo.services.loadCount'
+  'echo.services.loadCount',
+  'echo.services.invoicingCount'
 ]).component('carrier', {
   bindings: {
     repDetails: '<',
     carrierDetails: '<'
   },
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
-  controller: function(loadCountService) {
+  controller: function(loadCountService, invoicingCountService) {
     this.$onInit = function() {
       this.carrierId = this.carrierDetails.carrierId;
       loadCountService.clear();
+      invoicingCountService.clear();
     };
   }
 });

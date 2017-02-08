@@ -1,7 +1,9 @@
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-invoice">
-      <thead>
+<section class="invoice-table">
+  <div class="row">
+    <div class="col-md-12">
+      <loading show-loading="$ctrl.showLoading" fixed="true"></loading>
+      <table class="table table-invoice">
+        <thead>
         <tr>
           <th>Invoice #</th>
           <th>Received Date</th>
@@ -12,8 +14,8 @@
           <th>Lane</th>
           <th>Picked Up<hr>Delivered</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr ng-if="$ctrl.invoices.length === 0">
           <td colspan="6" class="text-center">
             <h3>No invoices found</h3>
@@ -21,41 +23,42 @@
         </tr>
         <tr ng-repeat="invoice in $ctrl.invoices">
           <td class="invoice-number">
-            <a href="#">1234567
+            <a href="#">{{invoice.invoiceNumber}}
               <span class="echo-icon icon-document"></span>
             </a>
           </td>
           <td class="invoice-received-date">
-            Feb 3 2016
+            {{invoice.receivedDate}}
           </td>
           <td class="invoice-status">
-            <strong>In Review</strong>
+            <strong>{{$ctrl.mapInvoiceCode(invoice.status)}}</strong>
             <br>
-            Weight Discrepancy
+            {{$ctrl.mapReasonCode(invoice.statusReason)}}
           </td>
           <td class="invoice-total">
-            <span>$10,202.00</span><br><div class="text-warning">
-            $10,202.00
+            <span>{{invoice.invoiceAmount | currency : '$'}}</span><br><div class="text-warning">
+            {{invoice.balanceRemaining | currency : '$'}}
           </div>
           </td>
           <td class="invoice-load-number">
-            <a href="#">123443211</a>
+            <a ui-sref="{{$ctrl.loadDetails}}({loadId: invoice.loadGuid})">{{invoice.loadId}}</a>
           </td>
           <td class="invoice-pro-number">
-            1234567890
+            {{invoice.proNumber}}
           </td>
           <td class="invoice-lane">
-            Jersey City, NJ
+            {{invoice.laneOrigin | formatCityState}}
             <br>
-            Marietta, GA
+            {{invoice.laneDestination | formatCityState}}
           </td>
           <td class="invoice-dates">
-            <span>Feb 3 2016</span><br><span>
-                      Feb 6 2016
+            <span>{{invoice.pickupDate}}</span><br><span>
+                      {{invoice.deliveryDate}}
                     </span>
           </td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+</section>

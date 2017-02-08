@@ -1,7 +1,8 @@
 angular.module('echo.index.carrier.invoicing', [
   'echo.components.tabBar',
   'echo.config.routes',
-  'echo.index.carrier.invoicing.activeInvoices'
+  'echo.index.carrier.invoicing.activeInvoices',
+  'echo.services.invoicingCount'
 ])
   .component('invoicing', {
     templateUrl: 'app/pages/index/carrier/components/invoicing/invoicing.template.html',
@@ -9,7 +10,7 @@ angular.module('echo.index.carrier.invoicing', [
       repDetails: '<',
       carrierId: '<'
     },
-    controller: function($stateParams, $state, routesConfig) {
+    controller: function($stateParams, $state, routesConfig, invoicingCountService) {
       this.$onInit = function() {
         var that = this;
 
@@ -17,12 +18,16 @@ angular.module('echo.index.carrier.invoicing', [
         that.showLoading = true;
         that.state = $state;
         that.routesConfig = routesConfig;
+        that.isActiveInvoices = ($state.$current.name === routesConfig.INDEX.activeInvoices.name);
 
-        that.tabItems = [{
-          title: 200 + ' Active Invoices',
-          link: routesConfig.INDEX.activeInvoices.name
-        }];
-        that.showLoading = false;
+        invoicingCountService.fetchInvoiceCount(that.carrierId, that.isActiveInvoices).then(function(invoiceCounts) {
+          that.tabItems = [{
+            title: invoiceCounts.activeInvoices + ' Active Invoices',
+            link: routesConfig.INDEX.activeInvoices.name
+          }];
+        }).finally(function () {
+          that.showLoading = false;
+        });
       };
     }
   });
