@@ -1,0 +1,23 @@
+<div class="uploaded-document">
+  <div class="document-uploading">
+    <div class="document-upload" ng-class="{empty: $ctrl.files.length === 0}">
+      <div class="btn btn-document btn-dropzone-lg">
+        <file-upload files="$ctrl.files" error="$ctrl.error" upload-constraints="$ctrl.uploadConstraints"></file-upload>
+        <div class="add-type">
+          <span ng-if="$ctrl.files.length === 0">ADD A DOCUMENT <small>You can also drag and drop</small></span>
+          <span ng-if="$ctrl.files.length > 0">ADD PAGE</span>
+        </div>
+      </div>
+    </div>
+    <div class="added-document" ng-repeat="file in $ctrl.files">
+      <div ng-click="$ctrl.removeFile(file)" class="btn-close close">X</div>
+      <preview-document class="added-doc-thumb" document="file"></preview-document>
+      <div class="added-doc-text">
+        {{$index | pages}}
+      </div>
+    </div>
+  </div>
+  <div class="upload-error text-danger text-center">
+    <fading-text ng-if="$ctrl.error" text="{{$ctrl.error}}"></fading-text>
+  </div>
+</div>

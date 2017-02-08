@@ -6,7 +6,6 @@ angular.module('echo.index', [
   'echo.directives.echoIcon',
   'echo.index.controller',
   'echo.index.myCarriers',
-  'echo.index.settings',
   'echo.enums.roles',
   'echo.index.carrier',
   'echo.components.header',

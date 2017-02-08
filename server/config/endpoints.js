@@ -55,6 +55,11 @@ module.exports = {
     mapPointsForLoadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction/map',
     activeLoadsPage: '/mock/api/v1/carriers/:carrierId/loads/activeLoadsPage',
     loadDashboard: '/mock/api/v1/carriers/:carrierId/loads/dashboardPage',
+    documentUpload: '/mock/api/v1/documents/loadDocument',
+    documents: '/mock/api/v1/documents/:loadId/manifestbyload',
+    documentById: '/mock/api/v1/documents/:documentId',
+    documentsByIdThumbnail: '/mock/api/v1/documents/:documentId/thumbnail',
+    documentsByIdPDF: '/mock/api/v1/documents/download/pdf/:documentName',
     activeInvoicesPage: '/mock/api/v1/carriers/:carrierId/invoices/activeInvoicesPage'
   }
 };

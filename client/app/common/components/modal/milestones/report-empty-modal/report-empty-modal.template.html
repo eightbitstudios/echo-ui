@@ -14,13 +14,13 @@
     <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
-    <milestone-sidebar load="$ctrl.load" />
+    <milestone-sidebar load="$ctrl.load"></milestone-sidebar>
     <section class="modal-main-content">
       <div ng-if="$ctrl.currentStep === $ctrl.modes.confirm">
-        <confirm-empty report-empty="$ctrl.reportEmpty" checkbox-items="$ctrl.checkboxItems"/>
+        <confirm-empty report-empty="$ctrl.reportEmpty" checkbox-items="$ctrl.checkboxItems"></confirm-empty>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
-        <driver-location time-zones="$ctrl.timeZones" date-time-picker-text="When did the driver report empty?" location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker"/>
+        <driver-location time-zones="$ctrl.timeZones" date-time-picker-text="When did the driver report empty?" location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker"></driver-location>
       </div>
     </section>
   </div>

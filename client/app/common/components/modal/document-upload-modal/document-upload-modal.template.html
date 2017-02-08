@@ -1,0 +1,18 @@
+<div class="document-upload-modal">
+  <modal-header header-text="ADD DOCUMENT FOR" load-number="$ctrl.load.loadNumber" pro-number="$ctrl.proNumber" modal-actions="$ctrl.modalActions"></modal-header>
+  <div class="modal-body">
+    <document-upload-sidebar documents="$ctrl.documents"></document-upload-sidebar>
+    <section class="modal-main-content">
+      <uploaded-documents files="$ctrl.files" added-file-callback="$ctrl.fileAdded()"></uploaded-documents>
+      <document-type documents="$ctrl.documents" selected-document-type="$ctrl.selectedDocumentType" 
+        is-disabled="$ctrl.files.length > 0" number-of-stops="$ctrl.numberOfStops">
+        <invoices load-id="$ctrl.load.loadNumber" files="$ctrl.files" original-bill-rate="$ctrl.originalBillRate" refresh-documents-callback="$ctrl.refreshDocuments()"></invoices>
+        <load-document-types load-id="$ctrl.load.loadNumber" selected-document-type="$ctrl.selectedDocumentType" documents="$ctrl.documents" files="$ctrl.files" 
+        refresh-documents-callback="$ctrl.refreshDocuments()" number-of-stops="$ctrl.numberOfStops"></load-document-types>
+      </document-type>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
+  </div>
+</div>

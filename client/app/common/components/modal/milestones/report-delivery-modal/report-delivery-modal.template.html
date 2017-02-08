@@ -14,19 +14,19 @@
     <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
-    <milestone-sidebar load="$ctrl.load" />
+    <milestone-sidebar load="$ctrl.load"></milestone-sidebar>
     <section class="modal-main-content">
       <div ng-if="$ctrl.currentStep === $ctrl.modes.deliveryItems">
-        <delivery-items items="$ctrl.items" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+        <delivery-items items="$ctrl.items" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"></delivery-items>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.optionalDocuments">
         <div class="rating">
           <p>
             <strong>How was your experience with Echo?</strong>
           </p>
-          <rating rating="$ctrl.starRatings" />
+          <rating rating="$ctrl.starRatings"></rating>
         </div>
-        <comment comment="$ctrl.comment" />
+        <comment comment="$ctrl.comment"></comment>
       </div>
     </section>
   </div>

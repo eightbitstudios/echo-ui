@@ -5,7 +5,7 @@
   <div class="action-align-bottom" ng-if="$ctrl.nextAction && !$ctrl.isAddDocuments">
     <action-button load="$ctrl.load" action-changed-callback="$ctrl.actionChangedCallback()" carrier-id="$ctrl.carrierId" map-view="false"></action-button>
   </div>
-  <div class="action-align-bottom" ng-if="!$ctrl.nextAction || $ctrl.isAddDocuments">
+  <div class="action-align-bottom" ng-if="!$ctrl.nextAction">
     <h3>No Action Available</h3>
   </div>
 </div>

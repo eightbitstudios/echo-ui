@@ -23,7 +23,7 @@
     <div class="modal-subheading" ng-if="$ctrl.load.proNumber">PRO {{$ctrl.load.proNumber}}</div>
   </div>
   <div class="modal-body">
-    <milestone-sidebar load="$ctrl.load" />
+    <milestone-sidebar load="$ctrl.load"></milestone-sidebar>
     <section class="modal-main-content">
       <div ng-if="$ctrl.currentStep === $ctrl.modes.overview">
         <h4 class="content-header">What kind of update do you want to send?</h4>
@@ -33,13 +33,13 @@
         <p>For other situations that may cause a missed <br>appointment, such as a breakdown or a shortage of <br>hours, please call Echo.</p>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.location">
-        <driver-location location="$ctrl.location" />
+        <driver-location location="$ctrl.location"></driver-location>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.trailerDropOff">
-        <dropped-load location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"/>
+        <dropped-load location="$ctrl.location" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"></dropped-load>
       </div>
       <div ng-if="$ctrl.currentStep === $ctrl.modes.trailerPickup" class="trailer-pickup">
-        <pickup-at-yard load="$ctrl.load" carrier-id="$ctrl.carrierId" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones" assigned-driver="$ctrl.assignedDriver"/>
+        <pickup-at-yard load="$ctrl.load" carrier-id="$ctrl.carrierId" date-time-picker="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones" assigned-driver="$ctrl.assignedDriver"></pickup-at-yard>
       </div>
     </section>
   </div>

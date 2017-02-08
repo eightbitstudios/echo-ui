@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <button aria-label="Close" class="close btn-close" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">
+              <span aria-hidden="true">×</span>
+            </button>
+  <h1 class="modal-title">
+    <span class="assign-action-type">
+                {{$ctrl.headerText}}
+              </span>
+    <span class="assign-action-to">
+                Load {{$ctrl.loadNumber}}
+              </span>
+  </h1>
+  <div class="modal-subheading" ng-if="$ctrl.proNumber">PRO {{$ctrl.proNumber}}</div>
+</div>

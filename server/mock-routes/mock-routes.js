@@ -6,7 +6,8 @@ var carrierHandler = require('./handlers/carrier-handler'),
   loadsHandler = require('./handlers/loads-handler'),
   locationHandler = require('./handlers/location-handler'),
   timeZonesHandler = require('./handlers/time-zones-handler'),
-  invoiceHandler = require('./handlers/invoice-handler')
+  documentHandler = require('./handlers/document-handler'),
+  invoiceHandler = require('./handlers/invoice-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
@@ -71,4 +72,11 @@ module.exports = function (app) {
   app.get(endpoints.api.carrierById, carrierHandler.getCarrierById);
   app.get(endpoints.api.repByCarrierId, carrierHandler.getRepByCarrierId);
   app.get(endpoints.api.language, languageHandler.getLanguage);
+
+  app.post(endpoints.api.documentUpload, documentHandler.createDocuments);
+  app.get(endpoints.api.documents, documentHandler.fetchDocuments);
+  app.get(endpoints.api.documentById, documentHandler.fetchDocumentById);
+  app.get(endpoints.api.documentsByIdThumbnail, documentHandler.fetchDocumentByIdThumbnail);
+  app.get(endpoints.api.documentsByIdPDF, documentHandler.fetchDocumentByIdPDF);
+
 };
