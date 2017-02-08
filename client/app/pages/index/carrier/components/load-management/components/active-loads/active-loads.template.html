@@ -29,7 +29,7 @@
     </loads-filter>
     <div class="container main-content">
       <load-table rep-details="$ctrl.repDetails" loads="$ctrl.activeLoads" refresh-table-callback="$ctrl.refreshPageData()" load-type="$ctrl.loadType" show-loading="$ctrl.showLoading" carrier-id="$ctrl.carrierId"></load-table>
-      <pagination page-click-handler="$ctrl.getPageData(true, false, false)" paging-model="$ctrl.paging" record-type="Loads" ng-if="!$ctrl.showLoading"></pagination>
+      <pagination page-click-handler="$ctrl.fetchActiveLoads()" paging-model="$ctrl.paging" record-type="Loads" ng-if="!$ctrl.showLoading"></pagination>
     </div>
   </div>
 </div>
