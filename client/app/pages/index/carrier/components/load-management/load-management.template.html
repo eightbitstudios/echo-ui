@@ -1,6 +1,6 @@
 <div class="load-management">
   <loading show-loading="$ctrl.showLoading"></loading>
-  <div ng-show="!$ctrl.showLoading" ng-if="($ctrl.isLoadDetails && !$ctrl.showLoading) || !$ctrl.isLoadDetails">
+  <div ng-show="!$ctrl.showLoading">
     <tab-bar ng-if="$ctrl.tabItems && $ctrl.state.current.name !== $ctrl.routesConfig.INDEX.loadDetails.name" tab-items="$ctrl.tabItems" tab-replacement-text="$ctrl.tabReplacementText">
       <h2>Search Results for {{$ctrl.stateParams.searchText}}</h2>
       <search-bar search-callback="$ctrl.routeToSearch(searchText)"></search-bar>

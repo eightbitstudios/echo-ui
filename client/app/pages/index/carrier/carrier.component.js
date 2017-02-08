@@ -5,19 +5,30 @@ angular.module('echo.index.carrier', [
   'echo.index.carrier.loadManagement',
   'echo.index.carrier.invoicing',
   'echo.components.navbar',
-  'echo.services.loadCount',
-  'echo.services.invoicingCount'
+  'echo.actions.creators.rep',
+  'echo.actions.creators.carrier'
 ]).component('carrier', {
-  bindings: {
-    repDetails: '<',
-    carrierDetails: '<'
-  },
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
-  controller: function(loadCountService, invoicingCountService) {
+  controller: function($stateParams, $q, store$, carrierActionCreator, repActionCreator) {
+
+    var that = this;
+
     this.$onInit = function() {
-      this.carrierId = this.carrierDetails.carrierId;
-      loadCountService.clear();
-      invoicingCountService.clear();
+
+      that.showLoading = true;
+      that.carrierId = $stateParams.carrierId;
+
+      var carrierAction = carrierActionCreator.fetchCarrier(that.carrierId);
+      var repAction = repActionCreator.fetchRep(that.carrierId);
+
+      store$.dispatch(carrierAction);
+      store$.dispatch(repAction);
+
+      $q.all([carrierAction.payload.source.toPromise(), repAction.payload.source.toPromise()]).then(function() {
+        that.carrierDetails = store$.getState().carrier;
+        that.showLoading = false;
+      });
     };
+
   }
 });

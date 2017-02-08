@@ -6,18 +6,6 @@ angular.module('echo.services.userProfile', [
   .factory('userProfileService', function ($base64, UserModel) {
 
     return {
-      _user: {},
-      /**
-       * @description Retrieves stored user model
-       */
-      getUser: function () {
-        return this._user;
-      },
-
-      setUser: function (user) {
-        this._user = new UserModel(user);
-      },
-
       /**
        * @description Maps a jwt to a user model
        * @param {string} jwt - base64 encoded jwt

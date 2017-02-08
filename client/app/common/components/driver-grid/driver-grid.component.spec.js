@@ -1,16 +1,16 @@
+describe('Component: driverGrid', function() {
+  var component, $q, carrierApi, appConstants, store$, scope, state, carrierId;
 
-describe('Component: driverGrid', function () {
-  var component, $q, carrierApi, driverList, element, state;
-
-  beforeEach(function () {
+  beforeEach(function() {
     module('app/common/components/driver-grid/driver-grid.template.html');
-    module('echo.components.driverGrid', function ($provide) {
+    module('echo.components.driverGrid', function($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchDrivers', 'searchDrivers']));
       $provide.value('$state', state = jasmine.createSpyObj('$state', ['go']));
+      $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));
     });
   });
 
-  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController, _appConstants_) {
+  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController, _appConstants_) {
     scope = $rootScope.$new();
     appConstants = _appConstants_;
     $q = _$q_;
@@ -19,26 +19,37 @@ describe('Component: driverGrid', function () {
     };
 
     scope.$digest();
-
+    carrierId = 1;
     carrierApi.fetchDrivers.and.returnValue($q.when({}));
-    component = $componentController('driverGrid', null, { carrierId: 1 });
+    store$.getState.and.returnValue({
+      carrier: {
+        carrierId: carrierId
+      }
+    });
+    component = $componentController('driverGrid', null, {});
+    spyOn(component, 'getDrivers');
+    component.$onInit();
   }));
 
-  describe('Function: searchDrivers', function () {
-    it('should call carrier service to search drivers', function () {
+  describe('Function: searchDrivers', function() {
+    it('should call carrier service to search drivers', function() {
       var searchText = 'test';
 
       carrierApi.searchDrivers.and.returnValue($q.when());
       component.searchDrivers(searchText);
 
-      expect(carrierApi.searchDrivers).toHaveBeenCalledWith(1, searchText);
+      expect(carrierApi.searchDrivers).toHaveBeenCalledWith(carrierId, searchText);
     });
 
-    it('should map drivers to typeahead model', function (done) {
+    it('should map drivers to typeahead model', function(done) {
       var searchText = 'test',
-        drivers = [{ id: 1, firstName: 'Bob', lastName: 'Ted' }]
+        drivers = [{
+          id: 1,
+          firstName: 'Bob',
+          lastName: 'Ted'
+        }]
       carrierApi.searchDrivers.and.returnValue($q.when(drivers));
-      component.searchDrivers(searchText).then(function (convertedDrivers) {
+      component.searchDrivers(searchText).then(function(convertedDrivers) {
         expect(convertedDrivers).toEqual([{
           id: 1,
           name: 'Bob Ted',
@@ -52,8 +63,11 @@ describe('Component: driverGrid', function () {
     });
   });
 
-  describe('Function: getDrivers', function () {
-    it('should fetch drivers', function () {
+  describe('Function: getDrivers', function() {
+    beforeEach(function() {
+      component.getDrivers.and.callThrough();
+    });
+    it('should fetch drivers', function() {
       var page = 2;
       carrierApi.fetchDrivers.and.returnValue($q.when());
       component.getDrivers();

@@ -1,10 +1,11 @@
 
 describe('Component: myCompany', function () {
-  var scope, component, routesConfig;
+  var scope, component, store$, routesConfig;
 
   beforeEach(function () {
     module('app/pages/index/carrier/components/my-company/my-company.template.html');
     module('echo.index.carrier.myCompany', function ($provide) {
+      $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));
       $provide.value('$stateParams', {});
       $provide.value('$state', {});
       $provide.constant('routesConfig', routesConfig = {
@@ -29,7 +30,9 @@ describe('Component: myCompany', function () {
 
     scope.$digest();
 
-    component = $componentController('myCompany', null, { carrierId: 1 });
+    store$.getState.and.returnValue({ carrier: {carrierId: 1} });
+
+    component = $componentController('myCompany', null, { });
   }));
 
   describe('Function: $onInit', function () {

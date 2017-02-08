@@ -3,15 +3,13 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
   'echo.models.paging',
   'echo.config.appConstants',
   'echo.api.invoices',
-  'echo.services.invoicingCount'
+  'echo.action',
+  'echo.actions.creators.invoiceCounts'
 ])
   .component('activeInvoices', {
     templateUrl: 'app/pages/index/carrier/components/invoicing/components/active-invoices/active-invoices.template.html',
-    bindings: {
-      repDetails: '<',
-      carrierId: '<'
-    },
-    controller: function (PagingModel, appConstants, invoicesApi, invoicingCountService, routesConfig) {
+    bindings: {},
+    controller: function (PagingModel, appConstants, invoicesApi, store$, invoiceCountsActionCreator, routesConfig) {
       this.fetchActiveInvoices = function () {
         var that = this;
         that.showLoading = true;
@@ -26,7 +24,8 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
             that.paging.totalRecords = invoicesPageData.invoicesCount.activeInvoices;
             that.unbilledInvoices = invoicesPageData.invoicesCount.unbilledInvoices;
             that.unbilledValue = invoicesPageData.invoicesCount.unbilledValue;
-            invoicingCountService.setInvoiceCount(invoicesPageData.invoicesCount);
+            var action = invoiceCountsActionCreator.setInvoiceCounts(invoicesPageData.invoicesCount);
+            store$.dispatch(action);
           }
         }).finally(function () {
           that.showLoading = false;
@@ -34,6 +33,10 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
       };
 
       this.$onInit = function() {
+        var state = store$.getState();
+        this.carrierId = state.carrier.carrierId;
+        this.repDetails = state.rep;
+
         this.unbilledLoads = routesConfig.INDEX.unbilledLoads.name;
         this.paging = new PagingModel(appConstants.LIMIT.invoicesList);
         this.fetchActiveInvoices();

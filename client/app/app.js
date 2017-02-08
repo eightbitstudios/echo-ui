@@ -9,7 +9,9 @@ angular.module('echo', [
     'echo.services.routing',
     'echo.interceptors.auth',
     'ui.bootstrap',
-    'echo.decorators.uiRouter'
+    'echo.store',
+    'echo.config.globals',
+    'echo.services.routing'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, keyConstants) {
     $urlRouterProvider.otherwise('/');
@@ -33,7 +35,6 @@ angular.module('echo', [
     $rootScope.$on('$stateChangeSuccess',
       function(event, toState, toParams, fromState, fromParams) { //jshint unused:false
         $uibModalStack.dismissAll();
-        $rootScope.showLoading = false;
       }
     );
   });

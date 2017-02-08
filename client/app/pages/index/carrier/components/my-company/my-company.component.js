@@ -1,29 +1,33 @@
 angular.module('echo.index.carrier.myCompany', [
-  'echo.config.routes',
-  'echo.components.tabBar',
-  'echo.index.carrier.myCompany.portalUsers',
-  'echo.components.driverGrid',
-  'echo.index.carrier.myCompany.userProfile'
-])
+    'echo.config.routes',
+    'echo.components.tabBar',
+    'echo.index.carrier.myCompany.portalUsers',
+    'echo.components.driverGrid',
+    'echo.index.carrier.myCompany.userProfile'
+  ])
   .component('myCompany', {
     templateUrl: 'app/pages/index/carrier/components/my-company/my-company.template.html',
-    bindings: {
-      carrierId: '<'
-    },
-    controller: function ($stateParams, $state, routesConfig) {
-      this.$onInit = function () {
-        this.routesConfig = routesConfig;
-        this.state = $state;
+    bindings: {},
+    controller: function($stateParams, $state, store$, routesConfig) {
+      var that = this;
 
-        this.tabItems = [{
+      that.$onInit = function() {
+        var state = store$.getState();
+
+        that.carrierId = state.carrier.carrierId;
+        that.routesConfig = routesConfig;
+        that.state = $state;
+
+
+        that.tabItems = [{
           title: 'Portal Users',
           link: routesConfig.INDEX.myCompanyUsers.name,
           icon: 'icon-portal-user'
         }, {
-            title: 'Drivers',
-            link: routesConfig.INDEX.myCompanyDrivers.name,
-            icon: 'icon-driver'
-          }];
+          title: 'Drivers',
+          link: routesConfig.INDEX.myCompanyDrivers.name,
+          icon: 'icon-driver'
+        }];
       };
     }
   });

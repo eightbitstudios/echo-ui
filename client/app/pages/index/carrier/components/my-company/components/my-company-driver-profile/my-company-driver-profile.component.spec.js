@@ -1,14 +1,16 @@
 
 describe('Component: myCompanyDriverProfile', function () {
-  var scope, $q, $componentController, component, driverId, carrierId, routesConfig, $state, DriverModel, driverApi, languageApi;
+  var scope, $q, $componentController, $stateParams, component, store$, routesConfig, carrierId, routesConfig, $state, DriverModel, driverApi, languageApi;
 
   beforeEach(function () {
     module('app/pages/index/carrier/components/my-company/components/my-company-driver-profile/my-company-driver-profile.template.html');
     module('echo.index.carrier.myCompany.driverProfile', function ($provide) {
       $provide.value('$state', $state = jasmine.createSpyObj('$state', ['go']));
+      $provide.value('$stateParams', $stateParams = {});
       $provide.value('DriverModel', DriverModel = jasmine.createSpy('DriverModel'));
       $provide.value('driverApi', driverApi = jasmine.createSpyObj('driverApi', ['fetchDriverById']));
       $provide.value('languageApi', languageApi = jasmine.createSpyObj('languageApi', ['fetchLanguages']));
+      $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));
       $provide.constant('routesConfig', routesConfig = {
         INDEX: {
           myCompanyDrivers: {
@@ -26,9 +28,11 @@ describe('Component: myCompanyDriverProfile', function () {
       getComponent: jasmine.createSpy('getComponent')
     };
 
-    driverId = 1;
+    $stateParams.driverId = 1;
     carrierId = 2;
     scope.$digest();
+
+    store$.getState.and.returnValue({ carrier: {carrierId: carrierId} });
 
     $componentController = _$componentController_;
 
@@ -48,14 +52,14 @@ describe('Component: myCompanyDriverProfile', function () {
     describe('driver id', function () {
 
       beforeEach(function () {
-        component = $componentController('myCompanyDriverProfile', null, { carrierId: carrierId, driverId: driverId });
+        component = $componentController('myCompanyDriverProfile', null, { carrierId: carrierId, driverId: $stateParams.driverId });
       });
 
       it('should call fetch driver by id', function () {
         driverDefer.resolve();
         component.$onInit();
         scope.$digest();
-        expect(driverApi.fetchDriverById).toHaveBeenCalledWith(carrierId, driverId);
+        expect(driverApi.fetchDriverById).toHaveBeenCalledWith(carrierId, $stateParams.driverId);
       });
 
       it('should call language api', function () {
@@ -91,7 +95,7 @@ describe('Component: myCompanyDriverProfile', function () {
       });
 
       it('should call language api', function () {
-        driverId = null;
+        $stateParams.driverId = null;
         languageDefer.resolve();
         component.$onInit();
         scope.$digest();
