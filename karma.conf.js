@@ -22,6 +22,7 @@ module.exports = function (config) {
       'client/bower_components/angular-base64/angular-base64.min.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       'client/bower_components/lodash/dist/lodash.js',
+      'client/bower_components/rxjs/dist/rx.js',
       'client/bower_components/moment/moment.js',
       'client/app/app.js',
       'client/app/**/*.js',

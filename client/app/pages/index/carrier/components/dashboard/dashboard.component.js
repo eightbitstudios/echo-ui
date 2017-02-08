@@ -11,14 +11,12 @@ angular.module('echo.index.carrier.dashboard', [
   ])
   .component('dashboard', {
     templateUrl: 'app/pages/index/carrier/components/dashboard/dashboard.template.html',
-    bindings: {
-      repDetails: '<',
-      carrierId: '<'
-    },
-    controller: function($q, appConstants, loadTypesEnum, routesConfig, PagingModel, DashboardRequestBuilder) {
+    bindings: {},
+    controller: function($q, store$, appConstants, loadTypesEnum, routesConfig, PagingModel, DashboardRequestBuilder) {
 
-      this.showMoreActionLoadsHandler = function() {
-        var that = this;
+      var that = this;
+
+      that.showMoreActionLoadsHandler = function() {
 
         that.showMoreActionLoadsLoading = true;
 
@@ -34,8 +32,7 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
-      this.fetchLoadsNeedingAction = function() {
-        var that = this;
+      that.fetchLoadsNeedingAction = function() {
 
         that.showActionLoadsLoading = true;
         that.pagingActionLoads.reset();
@@ -52,8 +49,7 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
-      this.fetchMultistopLoads = function() {
-        var that = this;
+      that.fetchMultistopLoads = function() {
 
         that.showMultiStopLoading = true;
         that.pagingMultistopLoads.reset();
@@ -70,8 +66,7 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
-      this.showMoreMultiStopLoadsHandler = function() {
-        var that = this;
+      that.showMoreMultiStopLoadsHandler = function() {
 
         that.showMoreMultiStopLoading = true;
 
@@ -86,12 +81,12 @@ angular.module('echo.index.carrier.dashboard', [
         });
       };
 
-      this.refreshPageData = function() {
-        this.fetchLoadDashboard();
+      that.refreshPageData = function() {
+        that.fetchLoadDashboard();
       };
 
-      this.fetchLoadDashboard = function() {
-        var that = this;
+      that.fetchLoadDashboard = function() {
+
         that.showLoading = true;
 
         var dashboardRequestBuilder = new DashboardRequestBuilder(that.carrierId);
@@ -121,36 +116,40 @@ angular.module('echo.index.carrier.dashboard', [
           });
       };
 
-      this.toggleExpandedMap = function () {
-        this.showExpandedMap = true;
-        this.showLoadDetailsMap = false;
+      that.toggleExpandedMap = function() {
+        that.showExpandedMap = true;
+        that.showLoadDetailsMap = false;
       };
 
-      this.shrinkMap = function () {
-        this.showExpandedMap = false;
-        this.showLoadDetailsMap = false;
+      that.shrinkMap = function() {
+        that.showExpandedMap = false;
+        that.showLoadDetailsMap = false;
       };
 
-      this.viewMapHandler = function(mapPoint) {
-        this.loadDetailsMapPoint = mapPoint;
-        this.showExpandedMap = false;
-        this.showLoadDetailsMap = true;
+      that.viewMapHandler = function(mapPoint) {
+        that.loadDetailsMapPoint = mapPoint;
+        that.showExpandedMap = false;
+        that.showLoadDetailsMap = true;
       };
 
-      this.$onInit = function() {
-        this.showActionLoadsLoading = false;
-        this.showMultiStopLoading = false;
-        this.showMoreActionLoadsLoading = false;
-        this.showMoreMultiStopLoading = false;
-        this.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
-        this.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
-        this.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
-        this.loadType = loadTypesEnum.ACTIVE;
-        this.showExpandedMap = false;
-        this.showLoadDetailsMap = false;
-        this.showMap = false;
+      that.$onInit = function() {
+        var state = store$.getState();
 
-        this.fetchLoadDashboard();
+        that.carrierId = state.carrier.carrierId;
+        that.showExpandedMap = false;
+        that.showLoadDetailsMap = false;
+        that.showMap = false;
+        that.showActionLoadsLoading = false;
+        that.showMultiStopLoading = false;
+        that.showMoreActionLoadsLoading = false;
+        that.showMoreMultiStopLoading = false;
+        that.pagingActionLoads = new PagingModel(appConstants.LIMIT.loadsNeedingAction);
+        that.pagingMultistopLoads = new PagingModel(appConstants.LIMIT.multistopLoads);
+        that.activeLoadsRoute = routesConfig.INDEX.activeLoads.name;
+        that.loadType = loadTypesEnum.ACTIVE;
+        that.repDetails = state.rep;
+
+        that.fetchLoadDashboard();
       };
     }
   });

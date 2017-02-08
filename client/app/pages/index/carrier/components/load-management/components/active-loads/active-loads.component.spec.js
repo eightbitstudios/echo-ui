@@ -1,13 +1,15 @@
 describe('Component: Active Loads', function() {
   var component, scope, $q, carrierId, availableData,
-    loadCountService, ActiveLoadsRequestBuilder, requestBuilderObj, requestDefer;
+    ActiveLoadsRequestBuilder, requestBuilderObj, requestDefer,
+    store$;
 
   beforeEach(function() {
     module('echo.index.carrier.loadManagement.activeLoads', function($provide) {
       $provide.value('app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html', '');
-      $provide.value('loadCountService', loadCountService = jasmine.createSpyObj('loadCountService', ['getLoadCount', 'setLoadCount']));
       $provide.value('ActiveLoadsRequestBuilder',
         ActiveLoadsRequestBuilder = jasmine.createSpy('ActiveLoadsRequestBuilder'));
+      $provide.value('store$',
+        store$ = jasmine.createSpyObj('store$', ['dispatch', 'getState']));
     });
   });
 
@@ -53,11 +55,16 @@ describe('Component: Active Loads', function() {
     requestDefer = $q.defer();
     requestBuilderObj.execute.and.returnValue(requestDefer.promise);
 
-    component = $componentController('activeLoads', null, {
-      carrierId: carrierId
+    store$.getState.and.returnValue({
+      rep: {},
+      loadCounts: {},
+      carrier: {
+        carrierId: carrierId
+      }
     });
+
+    component = $componentController('activeLoads', null, {});
     spyOn(component, 'getPageData');
-    component.getPageData.and.callFake(function() {});
 
     component.$onInit();
   }));
@@ -132,7 +139,7 @@ describe('Component: Active Loads', function() {
       expect(component.paging.totalRecords).toBe(24);
       expect(component.paging.recordCount).toBe(4);
       expect(component.mapPoints).toBeUndefined();
-      expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
+      expect(store$.dispatch).not.toHaveBeenCalled();
     });
 
     it('should fetch loadsCount', function() {
@@ -147,7 +154,7 @@ describe('Component: Active Loads', function() {
       expect(component.paging.totalRecords).toBe(24);
       expect(component.paging.recordCount).toBe(4);
       expect(component.mapPoints).toBe(availableData.mapLoads);
-      expect(loadCountService.setLoadCount).toHaveBeenCalled();
+      expect(store$.dispatch).toHaveBeenCalled();
     });
 
     it('should fetch mapLoads', function() {
@@ -162,7 +169,7 @@ describe('Component: Active Loads', function() {
       expect(component.paging.totalRecords).toBe(24);
       expect(component.paging.recordCount).toBe(4);
       expect(component.mapPoints).toBe(availableData.mapLoads);
-      expect(loadCountService.setLoadCount).not.toHaveBeenCalled();
+      expect(store$.dispatch).not.toHaveBeenCalled();
     });
 
     it('should not load active loads', function() {
@@ -202,9 +209,17 @@ describe('Component: Active Loads', function() {
 
     it('should not fetch loadCount', function() {
       requestBuilderObj.fetchLoadsCount.calls.reset();
-      loadCountService.getLoadCount.and.returnValue({
-        test: 1
+
+      store$.getState.and.returnValue({
+        rep: {},
+        loadCounts: {
+          active: 10
+        },
+        carrier: {
+          carrierId: carrierId
+        }
       });
+
       component.$onInit();
       expect(requestBuilderObj.fetchLoadsCount).not.toHaveBeenCalled();
     });

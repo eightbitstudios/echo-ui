@@ -8,15 +8,12 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
   'echo.enums.loadTypes'
 ]).component('upcomingLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/upcoming-loads/upcoming-loads.template.html',
-  bindings: {
-    repDetails: '<',
-    carrierId: '<'
-  },
-  controller: function(loadsApi, PagingModel, appConstants, loadTypesEnum) {
+  bindings: {},
+  controller: function(store$, loadsApi, PagingModel, appConstants, loadTypesEnum) {
 
-    this.getUpcomingLoads = function() {
-      var that = this;
+    var that = this;
 
+    that.getUpcomingLoads = function() {
       that.showLoading = true;
       loadsApi.fetchUpcomingLoads(that.carrierId, that.paging, that.isDriverNeeded).then(function(upcomingLoadData) {
         that.paging.totalRecords = upcomingLoadData.totalLoadCount;
@@ -27,24 +24,28 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
       });
     };
 
-    this.driverNeededHandler = function(value) {
+    that.driverNeededHandler = function(value) {
       if (!value) {
-        this.filterText = this.defaultFilterText;
+        that.filterText = that.defaultFilterText;
       } else {
-        this.filterText = 'By Driver Needed';
+        that.filterText = 'By Driver Needed';
       }
-      this.isDriverNeeded = value;
-      this.paging.reset();
-      this.getUpcomingLoads();
+      that.isDriverNeeded = value;
+      that.paging.reset();
+      that.getUpcomingLoads();
     };
 
-    this.$onInit = function() {
-      this.showLoading = false;
-      this.paging = new PagingModel(appConstants.LIMIT.loadsList);
-      this.loadType = loadTypesEnum.UPCOMING;
-      this.defaultFilterText = 'By First Pickup Stop';
-      this.filterText = this.defaultFilterText;
-      this.getUpcomingLoads();
+    that.$onInit = function() {
+      var state = store$.getState();
+
+      that.repDetails = state.rep;
+      that.carrierId = state.carrier.carrierId;
+      that.showLoading = false;
+      that.paging = new PagingModel(appConstants.LIMIT.loadsList);
+      that.loadType = loadTypesEnum.UPCOMING;
+      that.defaultFilterText = 'By First Pickup Stop';
+      that.filterText = that.defaultFilterText;
+      that.getUpcomingLoads();
     };
   }
 });

@@ -10,15 +10,16 @@ angular.module('echo.index.carrier.myCompany.driverProfile', [
   ])
   .component('myCompanyDriverProfile', {
     templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-driver-profile/my-company-driver-profile.template.html',
-    bindings: {
-      carrierId: '<',
-      driverId: '<'
-    },
-    controller: function($q, $state, routesConfig, DriverModel, driverApi, languageApi) {
+    bindings: {},
+    controller: function($q, $state, $stateParams, store$, routesConfig, DriverModel, driverApi, languageApi) {
+      var that = this;
 
       this.$onInit = function() {
-        var that = this;
-        
+
+        var state = store$.getState();
+
+        that.driverId = $stateParams.driverId;
+        that.carrierId = state.carrier.carrierId;
         that.loading = true;
         that.routesConfig = routesConfig;
 
@@ -40,7 +41,7 @@ angular.module('echo.index.carrier.myCompany.driverProfile', [
         }
       };
 
-      this.profileUpdated = function() {
+      that.profileUpdated = function() {
         $state.go(routesConfig.INDEX.myCompanyDrivers.name);
       };
     }

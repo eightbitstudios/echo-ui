@@ -1,17 +1,17 @@
+describe('Component: All Carriers', function() {
+  var component, scope, $q, carrierApi, $stateParams, carriers, store$;
 
-describe('Component: All Carriers', function () {
-  var component, scope, $q, carrierApi, $stateParams, userProfileService, carriers;
-
-  beforeEach(function () {
+  beforeEach(function() {
     module('app/pages/index/my-carriers/components/all-carriers/all-carriers.template.html');
-    module('echo.index.myCarriers.allCarriers', function ($provide) {
+    module('echo.index.myCarriers.allCarriers', function($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchCarriers']));
-      $provide.value('userProfileService', userProfileService = jasmine.createSpyObj('userProfileService', ['getUser']));
       $provide.value('$stateParams', $stateParams = jasmine.createSpy('$stateParams'));
+      $provide.value('store$',
+        store$ = jasmine.createSpyObj('store$', ['getState']));
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_) {
+  beforeEach(inject(function($rootScope, $compile, $componentController, _$q_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -19,26 +19,25 @@ describe('Component: All Carriers', function () {
 
     $q = _$q_;
 
-    carriers = [
-      {
-        carrierName: 'B',
-        carrierId: 2
-      },
-      {
-        carrierName: 'A',
-        carrierId: 1
-      },
-      {
-        carrierName: 'D',
-        carrierId: 4
-      },
-      {
-        carrierName: 'C',
-        carrierId: 3
-      }
-    ];
+    carriers = [{
+      carrierName: 'B',
+      carrierId: 2
+    }, {
+      carrierName: 'A',
+      carrierId: 1
+    }, {
+      carrierName: 'D',
+      carrierId: 4
+    }, {
+      carrierName: 'C',
+      carrierId: 3
+    }];
 
-    userProfileService.getUser.and.returnValue({ userId: 100 });
+    store$.getState.and.returnValue({
+      user: {
+        userId: 100
+      }
+    });
 
     var deferred = $q.defer();
     carrierApi.fetchCarriers.and.returnValue(deferred.promise);
@@ -50,32 +49,32 @@ describe('Component: All Carriers', function () {
     component.$onInit();
   }));
 
-  describe('Function: selectCarrier', function () {
-    it('should select carrier A (id: 1)', function () {
+  describe('Function: selectCarrier', function() {
+    it('should select carrier A (id: 1)', function() {
       component.selectCarrier(carriers, '1');
 
       expect(carriers[1].selected).toBe(true);
     });
 
-    it('should select carrier B (id: 2)', function () {
+    it('should select carrier B (id: 2)', function() {
       component.selectCarrier(carriers, '2');
 
       expect(carriers[0].selected).toBe(true);
     });
 
-    it('should select carrier C (id: 3)', function () {
+    it('should select carrier C (id: 3)', function() {
       component.selectCarrier(carriers, '3');
 
       expect(carriers[3].selected).toBe(true);
     });
 
-    it('should select carrier D (id: 4)', function () {
+    it('should select carrier D (id: 4)', function() {
       component.selectCarrier(carriers, '4');
 
       expect(carriers[2].selected).toBe(true);
     });
 
-    it('should select no carrier', function () {
+    it('should select no carrier', function() {
       component.selectCarrier(carriers, '5');
 
       expect(carriers[0].selected).toBeUndefined();

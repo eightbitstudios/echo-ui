@@ -1,16 +1,19 @@
+describe('Component: myCompanyPortalUsers', function() {
+  var scope, $q, component, userProfileService, carrierId,
+    PasswordChangeModel, portalUser, goBackHandler, reloadPortalHandler,
+    showLoading, store$;
 
-describe('Component: myCompanyPortalUsers', function () {
-  var scope, $q, component, userProfileService, carrierId, PasswordChangeModel, portalUser, goBackHandler, reloadPortalHandler, showLoading;
-
-  beforeEach(function () {
+  beforeEach(function() {
     module('app/pages/index/carrier/components/my-company/components/my-company-user-profile/my-company-user-profile.template.html');
-    module('echo.index.carrier.myCompany.userProfile', function ($provide) {
+    module('echo.index.carrier.myCompany.userProfile', function($provide) {
       $provide.value('userProfileService', userProfileService = jasmine.createSpyObj('userProfileService', ['getUser']));
       $provide.value('PasswordChangeModel', PasswordChangeModel = jasmine.createSpy('PasswordChangeModel'));
+      $provide.value('store$',
+        store$ = jasmine.createSpyObj('store$', ['getState']));
     });
   });
 
-  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController) {
+  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController) {
     scope = $rootScope.$new();
     $q = _$q_;
     scope.ctrl = {
@@ -27,7 +30,7 @@ describe('Component: myCompanyPortalUsers', function () {
 
     scope.$digest();
 
-    component = $componentController('myCompanyUserProfile', null, {       
+    component = $componentController('myCompanyUserProfile', null, {
       portalUser: portalUser,
       goBackHandler: goBackHandler,
       reloadPortalHandler: reloadPortalHandler,
