@@ -13,12 +13,12 @@ angular.module('echo.index.carrier.invoicing.invoiceTable', [
     controller: function (invoiceEnums, routesConfig) {
       this.mapInvoiceCode = function (invoiceCode) {
         var enumObject = _.find(invoiceEnums.STATUSES, function(obj) { return obj.value === invoiceCode; });
-        return enumObject ? enumObject.description || null : null;
+        return _.get(enumObject, 'description', null);
       };
 
       this.mapReasonCode = function (reasonCode) {
         var enumObject = _.find(invoiceEnums.STATUS_REASONS, function(obj) { return obj.value === reasonCode; });
-        return enumObject ? enumObject.description || null : null;
+        return _.get(enumObject, 'description', null);
       };
 
       this.$onInit = function () {
