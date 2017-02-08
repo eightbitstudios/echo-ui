@@ -55,7 +55,6 @@ module.exports = function(grunt) {
       'html2js',
       'appConfig:' + env,
       'copy:build',
-      'gitinfo',
       'copy:version',
       'copy:endpoints',
       'injector',
