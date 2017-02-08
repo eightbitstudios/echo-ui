@@ -12,19 +12,19 @@ angular.module('echo.components.driverGrid', [
   'echo.api.carrier',
   'echo.filters.fullName'
 ]).component('driverGrid', {
-  bindings: {
-    carrierId: '<'
-  },
+  bindings: {},
   templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
-  controller: function($state, $filter, routesConfig, carrierApi, PagingModel, appConstants) {
+  controller: function($state, $filter, store$, routesConfig, carrierApi, PagingModel, appConstants) {
+
+    var that = this;
 
     /**
      * Call api to search for drivers
      * @param {string} val - Search text
      * @retuns {Promise} - List of drivers formatted for typeahead search
      */
-    this.searchDrivers = function(val) {
-      var that = this;
+    that.searchDrivers = function(val) {
+
       return carrierApi.searchDrivers(that.carrierId, val).then(function(drivers) {
         return _.map(drivers, function(driver) {
           return {
@@ -41,25 +41,24 @@ angular.module('echo.components.driverGrid', [
      * Returns text for filter
      * @example Availability 10/15/2015 - 11/12/2015
      */
-    this.formatDateText = function() {
-      return 'Availability ' + _.join([moment(this.startDate).format('MM/DD/YY'), moment(this.endDate).format('MM/DD/YY')], ' - ');
+    that.formatDateText = function() {
+      return 'Availability ' + _.join([moment(that.startDate).format('MM/DD/YY'), moment(that.endDate).format('MM/DD/YY')], ' - ');
     };
 
     /**
      * Clears out filter dates
      * @param {Object} $event - JQuery event
      */
-    this.clearDates = function($event) {
-      this.startDate = null;
-      this.endDate = null;
+    that.clearDates = function($event) {
+      that.startDate = null;
+      that.endDate = null;
       $event.stopPropagation();
     };
 
     /**
      * Calls api to fetch a list of drivers 
      */
-    this.getDrivers = function() {
-      var that = this;
+    that.getDrivers = function() {
       that.showLoading = true;
       carrierApi.fetchDrivers(that.carrierId, that.paging).then(function(drivers) {
         that.paging.totalRecords = drivers.totalRecordCount;
@@ -70,20 +69,22 @@ angular.module('echo.components.driverGrid', [
       });
     };
 
-    this.newDriverHandler = function() {
-      $state.go(this.routesConfig.INDEX.myCompanyDriverProfile.name);
+    that.newDriverHandler = function() {
+      $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name);
     };
 
-    this.onSelectCallback = function(driver) {
+    that.onSelectCallback = function(driver) {
       if (driver) {
-        $state.go(this.routesConfig.INDEX.myCompanyDriverProfile.name, {
+        $state.go(that.routesConfig.INDEX.myCompanyDriverProfile.name, {
           driverId: driver.id
         });
       }
     };
 
-    this.$onInit = function() {
-      var that = this;
+    that.$onInit = function() {
+      var state = store$.getState();
+
+      that.carrierId = state.carrier.carrierId;
       that.drivers = null;
       that.pagination = null;
       that.showLoading = true;

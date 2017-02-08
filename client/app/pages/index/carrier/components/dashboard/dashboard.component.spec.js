@@ -1,7 +1,7 @@
 describe('Component: Dashboard Loads', function() {
   var component, scope, $q, carrierId, availableData,
     PagingModel, DashboardRequestBuilder, requestBuilderObj,
-    requestDefer, pagingModelObj;
+    requestDefer, pagingModelObj, store$;
 
   beforeEach(function() {
     module('echo.index.carrier.dashboard', function($provide) {
@@ -9,6 +9,9 @@ describe('Component: Dashboard Loads', function() {
       $provide.value('app/pages/index/carrier/components/dashboard/dashboard.template.html');
       $provide.value('DashboardRequestBuilder',
         DashboardRequestBuilder = jasmine.createSpy('DashboardRequestBuilder'));
+      $provide.value('store$',
+        store$ = jasmine.createSpyObj('store$', ['getState']));
+
     });
 
     inject(function($rootScope, $compile, $componentController, _$q_) {
@@ -57,6 +60,15 @@ describe('Component: Dashboard Loads', function() {
         }
       };
 
+      store$.getState.and.returnValue({
+        rep: {
+          userId: 100
+        },
+        carrier: {
+          carrierId: carrierId
+        }
+      });
+
       requestBuilderObj = jasmine.createSpyObj('requestBuilderObj', ['fetchSingleStopLoads', 'fetchSingleStopLoads', 'fetchMultiStopLoads', 'fetchDashboardPage', 'execute']);
       DashboardRequestBuilder.and.returnValue(requestBuilderObj);
       requestBuilderObj.fetchSingleStopLoads.and.returnValue({
@@ -75,12 +87,9 @@ describe('Component: Dashboard Loads', function() {
       pagingModelObj = jasmine.createSpyObj('pagingModelObj', ['setRecords', 'reset']);
       PagingModel.and.returnValue(pagingModelObj);
 
-      component = $componentController('dashboard', null, {
-        carrierId: carrierId
-      });
+      component = $componentController('dashboard', null, {});
 
       spyOn(component, 'fetchLoadDashboard');
-      component.fetchLoadDashboard.and.callFake(_.noop);
 
       component.$onInit();
     });

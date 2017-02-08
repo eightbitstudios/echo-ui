@@ -24,6 +24,7 @@ module.exports = function (config) {
       'client/bower_components/angular-mocks/angular-mocks.js',
       'client/bower_components/lodash/dist/lodash.js',
       'client/bower_components/bootstrap/js/dropdown.js',
+      'client/bower_components/rxjs/dist/rx.js',
       'client/bower_components/moment/moment.js',
       'client/app/app.js',
       'client/app/**/*.js',

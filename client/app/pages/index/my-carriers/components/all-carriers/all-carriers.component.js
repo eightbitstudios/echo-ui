@@ -10,7 +10,7 @@ angular.module('echo.index.myCarriers.allCarriers', [
   .component('allCarriers', {
     templateUrl: 'app/pages/index/my-carriers/components/all-carriers/all-carriers.template.html',
     bindings: {},
-    controller: function($stateParams, routesConfig, carrierApi, appConstants, userProfileService) {
+    controller: function($stateParams, store$, routesConfig, carrierApi, appConstants) {
 
       /**
        * @description Sets a state for a carrier to selected
@@ -33,15 +33,13 @@ angular.module('echo.index.myCarriers.allCarriers', [
         that.showLoading = true;
         that.searchParam = '';
         that.minSearchCharacters = appConstants.MIN_SEARCH_CHARACTERS.CARRIERS;
-
-        var repId = userProfileService.getUser().userId;
-
-        carrierApi.fetchCarriers(repId).then(function(carriers) {
-
+        var state = store$.getState();
+        
+        carrierApi.fetchCarriers(state.user.userId).then(function(carriers) {
           that.carrierList = _(carriers).sortBy('carrierName').value(); // Sort all carriers by their name
-
           // Set a carrier to selected if user is routed to page with a carrier id  
           that.selectCarrier(that.carrierList, $stateParams.carrierId);
+        }).finally(function() {
           that.showLoading = false;
         });
       };
