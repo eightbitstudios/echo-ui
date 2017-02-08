@@ -14,7 +14,7 @@ describe('Service: routingService', function () {
 
   beforeEach(function () {
     module('echo.services.routing', function ($provide) {
-      $provide.value('$window', $window = { location: '' });
+      $provide.value('$window', $window = { location: {}, angular: {callbacks: {} }});
       $provide.value('$state', $state = jasmine.createSpyObj('$state', ['go']));
       $provide.value('userProfileService', userProfileService = jasmine.createSpyObj('userProfileService', ['mapJwtToUser']));
       $provide.value('cookieService', cookieService = jasmine.createSpyObj('cookieService', ['getToken']));

@@ -15,9 +15,7 @@ describe('Interceptor: authInterceptor', function() {
   beforeEach(function() {
     module('echo.interceptors.auth', function($provide) {
       
-      $provide.value('$window', window = {
-        location: ''
-      });
+      $provide.value('$window', window = { location: {}, angular: {callbacks: {} }});
 
       $provide.value('$base64', jasmine.createSpyObj('$base64', ['encode', 'decode']));
       $provide.value('cookieService', cookieService = jasmine.createSpyObj('cookieService', ['getToken', 'getRefreshToken', 'clearToken', 'clearRefreshToken']));
