@@ -9,7 +9,8 @@ describe('Model: dateTimePicker', function () {
     });
     inject(function (_DateTimePickerModel_) {
       DateTimePickerModel = _DateTimePickerModel_;
-      moment.and.returnValue(momentObj = jasmine.createSpyObj('moment', ['set', 'format']));
+      moment.and.returnValue(momentObj = jasmine.createSpyObj('moment', ['set', 'subtract', 'format']));
+      momentObj.subtract.and.returnValue(momentObj);
     });
   });
 
