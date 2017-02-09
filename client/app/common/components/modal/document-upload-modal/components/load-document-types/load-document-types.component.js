@@ -26,9 +26,9 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
       });
 
       if(_.isFunction(documentType.description)) {
-        podDescription = _.replace(documentType.description({
+        podDescription = _.trim(_.replace(documentType.description({
           documentNumber: ''
-        }), '#', '');
+        }), '#', ''));
       }
 
       documentApi.createDocuments(that.loadId, podDescription || documentType.description, that.files)
@@ -47,7 +47,7 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
       that.documentTypes = documentTypes;
       that.numberOfPODS = _(that.documents).filter(function(document) {
         return _.parseInt(document.documentSubType, 10) === documentTypes.POD.value;
-      }).size();
+      }).size() + 1;
     };
   }
 });
