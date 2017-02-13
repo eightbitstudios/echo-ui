@@ -16,12 +16,14 @@ angular.module('echo', [
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, keyConstants) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(false);
+    $locationProvider.hashPrefix('');
 
     if (!_.isEmpty(keyConstants.KEY)) {
       $httpProvider.defaults.headers.common[$base64.decode(keyConstants.KEY_HEADER)] = $base64.decode(keyConstants.KEY);
     }
 
     $httpProvider.interceptors.push('authInterceptor');
+    
   })
   .controller('AppCtrl', function() {})
   .run(function($rootScope, $uibModalStack, $state, routingService) {
