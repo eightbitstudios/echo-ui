@@ -15,8 +15,6 @@ angular.module('echo.components.fileUpload', [
   templateUrl: 'app/common/components/file-upload/file-upload.template.html',
   controller: function() {
     var that = this;
-    that.isDrag = false;
-    that.acceptedFiles = _.replace(that.uploadConstraints.documentTypes, /[\w]+\//g, ' .');
 
     that.dragEnter = function() {
       that.isDrag = true;
@@ -37,6 +35,11 @@ angular.module('echo.components.fileUpload', [
       } else if (!file.isValidFileSize(that.uploadConstraints.fileSizeLimit)) {
         that.error = that.uploadConstraints.validationMessages.fileSize;
       }
+    };
+
+    that.$onInit = function() {
+      that.isDrag = false;
+      that.acceptedFiles = _.replace(that.uploadConstraints.documentTypes, /[\w]+\//g, ' .');
     };
   }
 });
