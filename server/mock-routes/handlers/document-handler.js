@@ -1,6 +1,8 @@
 var ResTemplate = require('../data/res-template.js'),
   _ = require('lodash'),
   documentsRes = require('../data/documents-res.js'),
+  thumbnailRes = require('../data/documents/thumbnail-res.js'),
+  documentOverviewRes = require('../data/documents/document-overview-res.js'),
   responseUtil = require('../util/response-util.js'),
   path = require('path');
 
@@ -21,15 +23,18 @@ module.exports = {
     }, minDelay, maxDelay);
   },
   fetchDocumentById: function(req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = documentOverviewRes.image;
+    console.log(documentOverviewRes.image);
     responseUtil.timeout(function() {
-      res.sendFile(path.resolve('server/mock-routes/data/document-preview-TEMP.jpg'));
+      res.json(resTemplate);
     }, minDelay, maxDelay);
   },
   fetchDocumentByIdThumbnail: function(req, res) {
     var resTemplate = new ResTemplate();
-    resTemplate.data = documentsRes;
+    resTemplate.data = thumbnailRes.image;
     responseUtil.timeout(function() {
-      res.sendFile(path.resolve('server/mock-routes/data/document_image.png'));
+      res.json(resTemplate);
     }, minDelay, maxDelay);
   },
   fetchDocumentByIdPDF: function(req, res) {
