@@ -83,6 +83,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
     that.fetchActiveLoads = function() {
       var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(that.carrierId);
       that.getPageData(activeLoadsPageApiRequest);
+      that.activeLoads = null;
     };
 
     that.toggleExpandedMap = function() {
