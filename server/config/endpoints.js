@@ -58,8 +58,8 @@ module.exports = {
     documentUpload: '/mock/api/v1/documents/loadDocument',
     invoiceUpload: '/mock/api/v1/documents/invoiceDocument',
     documents: '/mock/api/v1/documents/:loadId/manifestbyload',
-    documentById: '/mock/api/v1/documents/:documentId',
-    documentsByIdThumbnail: '/mock/api/v1/documents/:documentId/thumbnail',
+    documentById: '/mock/api/v1/documents/images/:documentId',
+    documentsByIdThumbnail: '/mock/api/v1/documents/images/:documentId/thumbnail',
     documentsByIdPDF: '/mock/api/v1/documents/download/pdf/:documentName'
   }
 };

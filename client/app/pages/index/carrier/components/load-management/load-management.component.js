@@ -46,11 +46,10 @@ angular.module('echo.index.carrier.loadManagement', [
         that.routesConfig = routesConfig;
         that.isActiveLoads = $state.$current.data.isActiveLoads;
 
-        var sub = store$.subscribe(function(state) {
+        store$.subscribe(function(state) {
           if (!_.isEmpty(state.loadCounts)) {
             that.createTabItems(state.loadCounts);
             that.showLoading = false;
-            sub.dispose();
           }
         });
 
