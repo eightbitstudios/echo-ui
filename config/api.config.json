@@ -57,6 +57,7 @@
   "activeLoadsPage": "/carriers/${carrierId}/loads/activeLoadsPage",
   "loadDashboard": "/carriers/${carrierId}/loads/dashboardPage",
   "documentUpload": "/documents/loadDocument",
+  "invoiceUpload": "/documents/invoiceDocument",
   "documents": "/documents/${loadGuid}/manifestbyload",
   "documentById": "/documents/images/${documentId}",
   "documentsByIdPDF": "/documents/download/pdf/${documentName}",

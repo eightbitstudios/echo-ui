@@ -8,7 +8,7 @@ describe('Component: signIn', function () {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['signIn']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
-      $provide.value('$window', window = { location: null });
+      $provide.value('$window', window = { location: null, angular: {callbacks: {} }});
       $provide.value('userProfileService', userProfileService = jasmine.createSpyObj('userProfileService', ['mapJwtToUser']));
     });
   });
@@ -24,8 +24,8 @@ describe('Component: signIn', function () {
 
     scope.$digest();
 
-    component = $componentController('signIn', null, {});
     userProfileService.mapJwtToUser.and.returnValue(user = jasmine.createSpyObj('user', ['isRepAdmin']));
+    component = $componentController('signIn', null, {});
     component.$onInit();
   }));
 

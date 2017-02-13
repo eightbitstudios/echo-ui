@@ -8,7 +8,7 @@ describe('Component: createPassword', function () {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['createPassword']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
-      $provide.value('$window', window = { location: null });
+      $provide.value('$window', window = { location: null, angular: {callbacks: {} }});
       $provide.value('PasswordChangeModel', jasmine.createSpy('PasswordChangeModel'));
     });
   });

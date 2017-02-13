@@ -8,15 +8,17 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail', [
     bindings: {
       loadDetail: '=',
       carrierId: '<',
-      repDetails: '<'
+      repDetails: '<',
+      refreshLoad: '&'
     },
     controller: function($state, loadTypesEnum, actionEnums) {
+      var that = this;
 
-      this.reloadState = function() {
-        $state.reload();
+      that.reloadState = function() {
+        that.refreshLoad();
       };
 
-      this.determineInactive = function(nextAction, isPickup) {
+      that.determineInactive = function(nextAction, isPickup) {
         if (!nextAction) {
           return false;
         }
@@ -30,9 +32,9 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail', [
         }
       };
 
-      this.$onInit = function() {
-        this.loadType = loadTypesEnum.ACTIVE;
-        this.isMultiStop = _.size(this.loadDetail.pickUp) > 1 || _.size(this.loadDetail.delivery) > 1;
+      that.$onInit = function() {
+        that.loadType = loadTypesEnum.ACTIVE;
+        that.isMultiStop = _.size(that.loadDetail.pickUp) > 1 || _.size(that.loadDetail.delivery) > 1;
       };
     }
   });

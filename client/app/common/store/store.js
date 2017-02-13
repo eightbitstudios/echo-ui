@@ -7,7 +7,7 @@ angular.module('echo.store', [
   'echo.action',
   'echo.reducers',
   'echo.actions.actionDispatcher'
-]).factory('store$', function(combineReducers, action$, loadCountReducer, userReducer,
+]).factory('store$', function($rootScope, combineReducers, action$, loadCountReducer, userReducer,
   carrierReducer, repReducer, invoiceCountReducer, actionDispatcher) {
 
   /**
@@ -45,7 +45,16 @@ angular.module('echo.store', [
    * @
    */
   Store.prototype.subscribe = function(callback) {
-    return this._store$.subscribe(callback);
+    return this._store$.subscribe(function(value) {
+      // Observables don't trigger a digest cycle so we do it manually if a value is changed in the store.
+      if ($rootScope.$$phase) { // Don't trigger another digest cycle if one is in phase.
+        callback(value);
+      } else {
+        $rootScope.$apply(function() { // Manually trigger digest cycle.
+          callback(value);
+        });
+      }
+    });
   };
 
   /**

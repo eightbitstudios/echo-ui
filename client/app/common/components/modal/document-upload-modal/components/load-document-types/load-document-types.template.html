@@ -1,14 +1,14 @@
   <div class="load-document-types">
     <div class="row">
       <div class="col-sm-7">
-        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.POD.value" label="Proof of Delivery #{{::$ctrl.numberOfPODS}} ({{::$ctrl.numberOfStops}} Needed)" is-disabled="$ctrl.files.length > 0" name="optionsRadios"></radio-button>
-        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.LUMPER_RECEIPT.value" label="Lumper Receipt" is-disabled="$ctrl.files.length > 0" name="optionsRadios"></radio-button>
-        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.BILL_OF_LADING.value" label="Bill of Lading" is-disabled="$ctrl.files.length > 0" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.POD.value" label="Proof of Delivery #{{::$ctrl.numberOfPODS}} ({{::$ctrl.numberOfStops}} Needed)" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypes.POD.value" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.LUMPER_RECEIPT.value" label="Lumper Receipt" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypes.LUMPER_RECEIPT.value" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.BILL_OF_LADING.value" label="Bill of Lading" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypes.BILL_OF_LADING.value" name="optionsRadios"></radio-button>
       </div>
       <div class="col-sm-5">
-        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.FUEL_RECEIPT.value" label="Fuel Receipts" is-disabled="$ctrl.files.length > 0" name="optionsRadios"></radio-button>
-        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.SCALE_TICKETS.value" label="Scale Tickets" is-disabled="$ctrl.files.length > 0" name="optionsRadios"></radio-button>
-        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.OTHER.value" label="Other" is-disabled="$ctrl.files.length > 0" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.FUEL_RECEIPT.value" label="Fuel Receipts" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypes.FUEL_RECEIPT.value" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.SCALE_TICKETS.value" label="Scale Tickets" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypes.SCALE_TICKETS.value" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypes.OTHER.value" label="Other" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypes.OTHER.value" name="optionsRadios"></radio-button>
       </div>
     </div>
     <div class="modal-action-links">

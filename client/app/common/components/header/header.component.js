@@ -15,10 +15,9 @@ angular.module('echo.components.header', [
     };
 
     that.$onInit = function() {
-      var sub = store$.subscribe(function(state) {
-        if (!_.isEmpty(that.user)) {
+      store$.subscribe(function(state) {
+        if (!_.isEmpty(state.user)) {
           that.user = state.user;
-          sub.dispose();
         }
       });
 

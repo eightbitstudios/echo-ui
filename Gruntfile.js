@@ -6,8 +6,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', function(env) {
     grunt.task.run([
-      'build:' + (env || 'mocks'),
       'env:local',
+      'build:' + (env || 'mocks'),
       'express:dev',
       'watch'
       ]);
@@ -35,11 +35,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prepareDeploy', function(env) {
     grunt.task.run([
+      'env:dev',
       'dist:' + env,
       'copy:deploy',
-      'install',
       'grunticon',
-      'env:dev',
       'express:dist'
     ]);
   });
@@ -87,18 +86,5 @@ module.exports = function(grunt) {
       'ngconstant:' + env,
       'copy:appConfig' // just copying back to config for ide command + click jumps.
     ]);
-  });
-
-
-  grunt.registerTask('install', 'install server dependencies', function() {
-    var exec = require('child_process').exec;
-    var async = this.async();
-    exec('npm install --production', {
-      cwd: './dist'
-    }, function(err, stdout, stderr) {
-      console.log(stdout);
-      console.log(stderr);
-      async();
-    });
   });
 };

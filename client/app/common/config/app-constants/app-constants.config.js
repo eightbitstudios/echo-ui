@@ -97,6 +97,7 @@ angular.module('echo.config.appConstants', [])
         500109: 'Unable to Unassign Driver from Load',
         500110: 'Unable to Unassign Driver from Load',
         500111: 'Error writing into shipment activity service',
+        500134: 'Unable to find user in Optimizer.',
         500117: 'Invalid date for the action.',
         500119: 'Unable to assign load because the driver is not available'
       },

@@ -79,6 +79,29 @@ angular.module('echo.api.document', [
       }).catch(function(resp) {
         return $q.reject(resp.data.status);
       });
+    },
+    createInvoices: function(loadNumber, invoicePages, invoiceNumber, invoiceRate, invoiceDate) {
+      var url = apiConfig.invoiceUpload;
+
+      var body = new FormData();
+
+      body.append('loadNumber', loadNumber);
+      body.append('invoiceNumber', invoiceNumber);
+      body.append('invoiceRate', invoiceRate);
+      body.append('invoiceDate', invoiceDate);
+
+      _.forEach(invoicePages, function(page) {
+        body.append('invoicePages', page.fileData);
+      });
+
+      return $http.post(url, body, {
+        headers: {
+          'Content-Type': undefined
+        },
+        transformRequest: angular.identity
+      }).catch(function(resp) {
+        return $q.reject(resp.data.status);
+      });
     }
   };
 });
