@@ -15,7 +15,7 @@
   <loading show-loading="$ctrl.showLoading"></loading>
   <div ng-if="!$ctrl.showLoading" class="container-fluid load-table_detail">
     <div class="container">
-      <load-detail rep-details="$ctrl.repDetails" load-detail="$ctrl.loadDetails" carrier-id="$ctrl.carrierId"></load-detail>
+      <load-detail rep-details="$ctrl.repDetails" load-detail="$ctrl.loadDetails" carrier-id="$ctrl.carrierId" refresh-load="$ctrl.fetchLoadDetails()"></load-detail>
     </div>
   </div>
   <div class="container main-content">

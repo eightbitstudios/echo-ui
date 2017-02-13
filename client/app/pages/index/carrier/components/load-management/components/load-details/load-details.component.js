@@ -14,7 +14,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     controller: function($state, $q, $stateParams, store$, loadsApi, documentApi) {
       var that = this;
 
-      this.getMapPoint = function() {
+      that.getMapPoint = function() {
 
         that.showMap = false;
         that.mapPoints = [];
@@ -26,16 +26,12 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         });
       };
 
-      this.$onInit = function() {
-
-        var state = store$.getState();
-
+      that.fetchLoadDetails = function() {
+     
         that.showLoading = true;
         that.showMap = false;
-        that.repDetails = state.rep;
-        that.carrierId = state.carrier.carrierId;
 
-        loadsApi.fetchLoadDetails($stateParams.loadId)
+       loadsApi.fetchLoadDetails(that.loadId)
           .then(function(loadDetails) {
             that.loadDetails = loadDetails;
             that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
@@ -51,6 +47,17 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
             that.showLoading = false;
             that.getMapPoint();
           });
+      };
+
+      that.$onInit = function() {
+
+        var state = store$.getState();
+
+        that.repDetails = state.rep;
+        that.carrierId = state.carrier.carrierId;
+        that.loadId = $stateParams.loadId;
+
+        that.fetchLoadDetails();
 
         if ($state.previous.data) {
           that.previousRouteName = $state.previous.data.name;
