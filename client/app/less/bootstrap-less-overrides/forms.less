@@ -88,6 +88,11 @@ select {
   color: @c-danger;
 }
 
+.success {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
 .has-error {
   .form-control {
     box-shadow: none;
@@ -321,4 +326,32 @@ textarea.form-control {
     resize: none;
     border-radius: 2px;
     background-color: @c-gray-lightest;
+}
+
+.fading-text {
+  animation-name: fadeOut;
+  animation-duration: 5s;
+  .opacity(0);
+  @-webkit-keyframes fadeOut {
+    0% {
+      .opacity(1);
+    }
+    50% {
+      .opacity(1);
+    }
+    100% {
+      .opacity(0);
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      .opacity(1);
+    }
+    50% {
+      .opacity(1);
+    }
+    100% {
+      .opacity(0);
+    }
+  }
 }

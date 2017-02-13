@@ -78,7 +78,7 @@ angular.module('echo.api.portalUser', [
         var url = apiConfig.user;
         var data = portalUserReqConverterService.convertPortalUser(portalUser);
 
-        return $http.post(url, data).then(function(resp) {
+        return $http.post(url, data).then(function (resp) {
           return resp.data.data;
         }).catch(function(resp) {
           return $q.reject(resp.data.status.code);
@@ -97,6 +97,21 @@ angular.module('echo.api.portalUser', [
 
         return $http.get(url).then(function(resp) {
           return resp.data.data;
+        });
+      },
+
+      /**
+       * @description Creates a new invitation email for a user
+       * @param {number} userId - Id for user
+       * @returns {Promise} - Promise containing updated invite info
+       */
+      resendInviteToPortalUserById: function (userId) {
+        var url = _.template(apiConfig.resendInviteToUserById)({userId: userId});
+
+        return $http.post(url, {}).then(function (resp) {
+          return resp.data.data;
+        }).catch(function (resp) {
+          return $q.reject(resp.data.status.code);
         });
       }
     };
