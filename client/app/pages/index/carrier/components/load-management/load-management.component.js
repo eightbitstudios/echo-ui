@@ -14,7 +14,6 @@ angular.module('echo.index.carrier.loadManagement', [
     templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
     controller: function($stateParams, $state, Rx, loadCountsActionCreator, routesConfig, store$) {
       var that = this;
-      var sub = null;
 
       that.routeToSearch = function(searchText) {
         $state.go(routesConfig.INDEX.searchLoads.name, {
@@ -47,10 +46,11 @@ angular.module('echo.index.carrier.loadManagement', [
         that.routesConfig = routesConfig;
         that.isActiveLoads = $state.$current.data.isActiveLoads;
 
-        sub = store$.subscribe(function(state) {
+        var sub = store$.subscribe(function(state) {
           if (!_.isEmpty(state.loadCounts)) {
             that.createTabItems(state.loadCounts);
             that.showLoading = false;
+            sub.dispose();
           }
         });
 
@@ -58,10 +58,6 @@ angular.module('echo.index.carrier.loadManagement', [
           var action = loadCountsActionCreator.fetchLoadCounts(that.carrierId);
           store$.dispatch(action);
         }
-      };
-
-      that.$onDestroy = function() {
-        sub.dispose();
       };
     }
   });
