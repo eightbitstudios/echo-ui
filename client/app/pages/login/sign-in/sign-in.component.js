@@ -6,6 +6,7 @@ angular.module('echo.login.signIn', [
   'echo.components.serverErrors'
 ]).component('signIn', {
   templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
+  bindings: {},
   controller: function($window, $location, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, appConstants) {
 
     /**
@@ -13,7 +14,6 @@ angular.module('echo.login.signIn', [
      */
     this.signInHandler = function() {
       var that = this;
-
       that.serverError = null;
       if (that.signInForm.$valid) {
         that.showButtonLoading = true;

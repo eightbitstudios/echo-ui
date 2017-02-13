@@ -47,13 +47,11 @@
   <div class="main-content-container" ng-class="{'white-container': $state.current.data.whiteContainer}">
     <script type="text/javascript">
       (function(a,b,c,d){
-
-      a='//tags.tiqcdn.com/utag/echo/main/qa/utag.js';
-
-      b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
-
-      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
-
+        if(<%= process.env.NODE_ENV != 'local' %>) {
+          a='//tags.tiqcdn.com/utag/echo/main/qa/utag.js';
+          b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+          a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+        }
       })();
   </script>
     <!-- body view to load remaining child routes -->

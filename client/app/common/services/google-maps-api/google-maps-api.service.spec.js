@@ -10,7 +10,7 @@ describe('Service: googleMapsApi', function() {
   beforeEach(function() {
     spyOn(document.body, 'appendChild');
     module('echo.services.googleMapsApi', function($provide){
-      $provide.value('$window', $window = {});
+      $provide.value('$window', $window = { location: null, angular: {callbacks: {} }});
     });
 
     inject(function($rootScope, _$q_, _googleMapsApi_, _apiConfig_) {
