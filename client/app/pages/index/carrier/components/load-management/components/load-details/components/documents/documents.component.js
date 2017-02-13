@@ -20,8 +20,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.documents', [
           bindings: {
             load: that.load,
             documents: that.documents,
-            selectedDocumentType: documentType || documentTypes.POD.value,
-            originalBillRate: '$1,300'
+            selectedDocumentType: documentType || documentTypes.POD.value
           }
         });
       };
