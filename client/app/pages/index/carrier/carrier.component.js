@@ -32,7 +32,12 @@ angular.module('echo.index.carrier', [
 
     that.$onDestroy = function() {
       var loadCountsAction = loadCountsActionCreator.clearLoadCounts();
+      var carrierAction = carrierActionCreator.clearCarrier();
+      var repAction = repActionCreator.clearRep();
+
       store$.dispatch(loadCountsAction);
+      store$.dispatch(carrierAction);
+      store$.dispatch(repAction);
     };
   }
 });

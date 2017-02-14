@@ -16,6 +16,11 @@ angular.module('echo.actions.creators.carrier', [
         type: carrierActions.SET_CARRIER,
         payload: carrierDetails
       };
+    },
+    clearCarrier: function() {
+      return {
+        type: carrierActions.CLEAR_CARRIER
+      };
     }
   };
 });
