@@ -5,7 +5,7 @@ angular.module('echo.index.myCarriers.carrierDetails', [
     'echo.components.portalUsers',
     'echo.components.loading',
     'echo.components.portalUserProfile',
-    'echo.components.resendInvite',
+    'echo.components.usage',
     'echo.models.user',
     'echo.models.driver',
     'echo.components.driverProfile',

@@ -38,6 +38,7 @@ module.exports = function(grunt) {
       'env:dev',
       'dist:' + env,
       'copy:deploy',
+      'install',
       'grunticon',
       'express:dist'
     ]);
@@ -60,6 +61,8 @@ module.exports = function(grunt) {
       'karma:unit'
     ]);
   });
+
+
 
   // Does a build then minifies and copies all front end code over to the root dist directory
   // To get a fully running app in this directory, you'll need to copy the server and package.json
@@ -87,4 +90,17 @@ module.exports = function(grunt) {
       'copy:appConfig' // just copying back to config for ide command + click jumps.
     ]);
   });
+
+    grunt.registerTask('install', 'install server dependencies', function() {
+    var exec = require('child_process').exec;
+    var async = this.async();
+    exec('npm install --production', {
+      cwd: './dist'
+    }, function(err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      async();
+    });
+  });
+
 };

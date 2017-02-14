@@ -1,8 +1,25 @@
 'use strict';
 
-angular.module('echo.components.usage', []).component('usage', {
+angular.module('echo.components.usage', [
+  'echo.components.resendInvite',
+  'echo.models.user',
+  'echo.models.driver'
+]).component('usage', {
   bindings: {
-    driver: '<'
+    user: '<'
   },
-  templateUrl: 'app/common/components/usage/usage.template.html'
+  templateUrl: 'app/common/components/usage/usage.template.html',
+  controller: function (UserModel, DriverModel) {
+    this.hasUserLoggedIn = function () {
+      return this.user.lastLogin !== 'Never';
+    };
+
+    this.isPortalUser = function () {
+      return this.user instanceof UserModel;
+    };
+
+    this.isDriver = function () {
+      return this.user instanceof DriverModel;
+    };
+  }
 });
