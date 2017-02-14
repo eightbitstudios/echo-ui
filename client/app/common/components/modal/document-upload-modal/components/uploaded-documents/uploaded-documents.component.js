@@ -2,7 +2,6 @@ angular.module('echo.components.modal.documentUpload.uploadedDocuments', [
     'echo.components.fileUpload',
     'echo.filters.pages',
     'echo.config.appConstants',
-    'echo.components.fadingText',
     'echo.components.previewDocument'
   ])
   .component('uploadedDocuments', {

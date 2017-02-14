@@ -6,7 +6,6 @@ angular.module('echo.components.modal.documentUpload', [
     'echo.components.modal.documentUpload.documentType',
     'echo.components.modal.modalHeader',
     'echo.components.modal.documentUpload.uploadedDocuments',
-    'echo.components.fadingText',
     'echo.components.modal.documentUpload.invoices',
     'echo.components.modal.documentUpload.loadDocumentTypes'
   ])
