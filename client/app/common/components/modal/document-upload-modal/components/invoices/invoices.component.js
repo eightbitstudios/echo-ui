@@ -1,7 +1,8 @@
 angular.module('echo.components.modal.documentUpload.invoices', [
   'echo.constants.documentTypes',
   'echo.api.document',
-  'echo.directives.currency'
+  'echo.directives.currency',
+  'echo.config.globals'
 ]).component('invoices', {
   templateUrl: 'app/common/components/modal/document-upload-modal/components/invoices/invoices.template.html',
   bindings: {
@@ -10,7 +11,7 @@ angular.module('echo.components.modal.documentUpload.invoices', [
     originalBillRate: '<',
     refreshDocumentsCallback: '&'
   },
-  controller: function(store$, documentApi) {
+  controller: function(store$, documentApi, moment) {
     var that = this;
 
     that.openDatePicker = function() {
@@ -22,7 +23,8 @@ angular.module('echo.components.modal.documentUpload.invoices', [
       that.showSavedMessage = false;
       that.showErrorMessage = false;
 
-      documentApi.createInvoices(that.carrierId, that.loadId, that.files, that.invoiceNumber, that.newBillRate, that.invoiceDate)
+      documentApi.createInvoices(that.carrierId, that.loadId, that.files, 
+        that.invoiceNumber, that.newBillRate, moment(that.invoiceDate))
         .then(function() {
           that.showSavedMessage = true;
           that.refreshDocumentsCallback();
