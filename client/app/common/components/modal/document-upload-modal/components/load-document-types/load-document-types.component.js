@@ -11,7 +11,7 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
     files: '<',
     refreshDocumentsCallback: '&'
   },
-  controller: function(documentTypes, documentApi) {
+  controller: function(store$, documentTypes, documentApi) {
     var that = this;
 
     that.uploadDocuments = function() {
@@ -31,7 +31,7 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
         }), '#', ''));
       }
 
-      documentApi.createDocuments(that.loadId, podDescription || documentType.description, that.files)
+      documentApi.createDocuments(that.carrierId, that.loadId, podDescription || documentType.description, that.files)
         .then(function() {
           that.showSavedMessage = true;
           that.refreshDocumentsCallback();
@@ -44,6 +44,7 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
     };
 
     that.$onInit = function() {
+      that.carrierId = store$.getState().carrier.carrierId;
       that.documentTypes = documentTypes;
       that.numberOfPODS = _(that.documents).filter(function(document) {
         return _.parseInt(document.documentSubType, 10) === documentTypes.POD.value;
