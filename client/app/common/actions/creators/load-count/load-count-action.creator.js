@@ -16,6 +16,11 @@ angular.module('echo.actions.creators.loadCounts', [
         type: loadCountsActions.LOAD_COUNTS_LOADED,
         payload: loadCounts
       };
+    },
+    clearLoadCounts: function() {
+      return {
+        type: loadCountsActions.CLEAR_LOAD_COUNTS
+      };
     }
   };
 });
