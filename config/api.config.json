@@ -62,6 +62,6 @@
   "documentById": "/documents/images/${documentId}",
   "documentsByIdPDF": "/documents/download/pdf/${documentName}",
   "documentsByIdThumbnail": "/documents/images/${documentId}/thumbnail",
-  "activeInvoicesPage": "/carriers/${carrierId}/invoices/activeInvoicesPage"
-
+  "activeInvoicesPage": "/carriers/${carrierId}/invoices/activeInvoicesPage",
+  "invoicesSearch": "/carriers/${carrierId}/invoices/search"
 }

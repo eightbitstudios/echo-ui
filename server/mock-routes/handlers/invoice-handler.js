@@ -15,5 +15,18 @@ module.exports = {
     responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
+  },
+  getInvoicesBySearchText: function(req, res) {
+    var resTemplate = new ResTemplate();
+    var searchText = req.query.searchText;
+    resTemplate.data.invoices = _.filter(invoicesRes.invoices, function(item) {
+      return item.invoiceNumber.toString().indexOf(searchText) > -1;
+    });
+
+    resTemplate.data.count = invoicesRes.invoicesCount.activeInvoices;
+
+    responseUtil.timeout(function() {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };

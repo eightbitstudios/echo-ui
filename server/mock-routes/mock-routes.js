@@ -12,7 +12,6 @@ var carrierHandler = require('./handlers/carrier-handler'),
 
 module.exports = function (app) {
   app.get(endpoints.api.activeLoadsPage, loadsHandler.fetchActiveLoadsPage);
-  app.get(endpoints.api.activeInvoicesPage, invoiceHandler.getInvoices);
   app.get(endpoints.api.verifyDriverByPhone, driverHandler.fetchVerifyDriver);
   app.get(endpoints.api.equipmentByLoadId, loadsHandler.getEquipmentByLoadId);
   app.get(endpoints.api.timeZones, timeZonesHandler.getTimeZones);
@@ -49,6 +48,8 @@ module.exports = function (app) {
   app.get(endpoints.api.mapPointsForActiveLoads, loadsHandler.fetchMapPoints);
   app.get(endpoints.api.mapPointsForLoadsNeedingAction, loadsHandler.fetchMapPoints);
   app.get(endpoints.api.mapPointByLoadGuid, loadsHandler.fetchMapPointByLoadGuid);
+  app.get(endpoints.api.activeInvoicesPage, invoiceHandler.getInvoices);
+  app.get(endpoints.api.invoicesSearch, invoiceHandler.getInvoicesBySearchText);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);
