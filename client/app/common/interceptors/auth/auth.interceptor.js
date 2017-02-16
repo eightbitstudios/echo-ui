@@ -29,7 +29,8 @@ angular.module('echo.interceptors.auth', [
            cookieService.clearToken();
            cookieService.clearRefreshToken();
            $window.location = routesConfig.LOGIN.base.url;
-          } else if (_.get(rejection, 'data.code') === errorsConfig.EXPIRED_TOKEN && refreshCookie) {
+        } 
+        else if (_.get(rejection, 'data.code') === errorsConfig.EXPIRED_TOKEN && refreshCookie) {
 
           var authenticationApi = $injector.get('authenticationApi'); // Avoid circular dependency
 
