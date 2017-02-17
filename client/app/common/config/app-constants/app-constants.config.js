@@ -24,6 +24,16 @@ angular.module('echo.config.appConstants', [])
       passwordUpperCase: /[A-Z]/,
       emailValidation: /^[\w.!#$%&’*+/=?^_`{|}~-]+@[\w-]+(?:\.[\w-]+)+$/
     },
+    FILE_UPLOAD: {
+      DOCUMENTS: {
+        fileSizeLimit: 20971520, // 20MB in bytes
+        documentTypes: ['application/pdf', 'image/jpg', 'image/jpeg', 'image/png'],
+        validationMessages: {
+          fileType: 'Invalid file type.',
+          fileSize: 'File is larger than 20MB\'s.'
+        }
+      }
+    },
     ERROR_MESSAGES: {
       DEFAULTS: {
         400: 'An error occurred',

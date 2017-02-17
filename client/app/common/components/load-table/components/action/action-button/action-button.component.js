@@ -5,8 +5,10 @@ angular.module('echo.components.loadTable.action.actionButton', [
   'echo.components.modal.milestones.reportArrival',
   'echo.components.modal.milestones.sendLoadUpdate',
   'echo.components.modal.milestones.reportDelivery',
+  'echo.components.modal.documentUpload',
   'echo.services.modal',
   'echo.api.loads',
+  'echo.api.document',
   'echo.config.globals',
   'echo.enums.actions',
   'echo.enums.arrivalTypes',
@@ -21,7 +23,7 @@ angular.module('echo.components.loadTable.action.actionButton', [
       carrierId: '<',
       mapView: '<'
     },
-    controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, timeZoneApi) {
+    controller: function ($q, moment, appConstants, actionEnums, arrivalTypeEnums, modalService, loadsApi, documentApi, timeZoneApi) {
       var that = this;
 
       that.appConstants = appConstants;
@@ -104,6 +106,18 @@ angular.module('echo.components.loadTable.action.actionButton', [
               },
               timeZones: timeZones,
               arrivalType: arrivalTypeEnums.PICKUP
+            }
+          });
+        });
+      };
+
+      actionHandler[actionEnums.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value] = function () {
+        return documentApi.fetchDocuments(that.carrierId, that.load.loadGuid).then(function (documents) {
+          return modalService.open({
+            component: 'document-upload-modal',
+            bindings: {
+              load: that.load,
+              documents: documents
             }
           });
         });

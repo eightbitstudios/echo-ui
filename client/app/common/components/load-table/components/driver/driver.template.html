@@ -13,7 +13,7 @@
     </div>
   </div>
   <div ng-if="$ctrl.noDriver">
-     <loading-button ng-if="!$ctrl.isDisabled" button-text="Assign Driver" click-handler="$ctrl.showAssignDriverModal()" show-loading="$ctrl.showButtonLoading" />
+    <loading-button ng-if="!$ctrl.isDisabled" button-text="Assign Driver" click-handler="$ctrl.showAssignDriverModal()" show-loading="$ctrl.showButtonLoading"></loading-button>
      <h4 ng-if="$ctrl.isDisabled">No Driver Assigned</h4>
   </div>
 </div>

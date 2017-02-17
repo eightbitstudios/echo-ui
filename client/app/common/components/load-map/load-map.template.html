@@ -1,6 +1,6 @@
 <div class="load-map">
   <div class="map-container" ng-class="{'detailed': $ctrl.detailedInfo, 'expanded': $ctrl.showExpanded}">
-    <loading show-loading="$ctrl.showLoading" overlay="false" />
+    <loading show-loading="$ctrl.showLoading" overlay="false"></loading>
     <google-maps ng-if="!$ctrl.showLoading && $ctrl.showMap" popup-offset="$ctrl.popupOffset" center="$ctrl.mapCenter" total-points="$ctrl.mapPoints.length" map="$ctrl.map">
       <google-maps-marker ng-repeat="mapPoint in $ctrl.mapPoints" position="mapPoint.position">
         <google-maps-info-window>

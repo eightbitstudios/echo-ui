@@ -1,0 +1,4 @@
+<div class="preview-document added-doc-thumb">
+  <img ng-if="!$ctrl.document.isPDF() || $ctrl.pdfError" ng-src="{{$ctrl.imageData}}" image-fallback="{{$ctrl.imageFallback}}"/>
+  <canvas ng-if="$ctrl.document.isPDF() && !$ctrl.pdfError" render-pdf="$ctrl.document" error="$ctrl.renderPdfError()"></canvas>
+</div>

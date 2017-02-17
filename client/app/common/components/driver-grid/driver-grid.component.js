@@ -5,7 +5,6 @@ angular.module('echo.components.driverGrid', [
   'echo.components.loading',
   'echo.config.routes',
   'echo.components.pagination',
-  'echo.directives.dateRangePicker',
   'echo.models.paging',
   'echo.config.appConstants',
   'echo.components.driverGrid.driverAssignment',

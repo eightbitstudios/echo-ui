@@ -13,7 +13,9 @@ angular.module('echo.services.modal', [
     keyboard: true,
     modalFade: true,
     template: '',
-    size: 'md'
+    size: 'md',
+    windowTopClass: '',
+    openedClass: ''
   };
 
   /**

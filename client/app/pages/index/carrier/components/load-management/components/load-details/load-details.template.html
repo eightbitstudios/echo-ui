@@ -1,4 +1,4 @@
-<loading show-loading="$ctrl.showLoading"/>
+<loading show-loading="$ctrl.showLoading"></loading>
 <div class="load-details" ng-if="!$ctrl.showLoading">
   <div class="container-fluid carrier-dashboard-header">
     <div class="container">
@@ -15,7 +15,7 @@
   <loading show-loading="$ctrl.showLoading"></loading>
   <div ng-if="!$ctrl.showLoading" class="container-fluid load-table_detail">
     <div class="container">
-      <load-detail rep-details="$ctrl.repDetails" load-detail="$ctrl.loadDetails" carrier-id="$ctrl.carrierId"></load-detail>
+      <load-detail rep-details="$ctrl.repDetails" load-detail="$ctrl.loadDetails" carrier-id="$ctrl.carrierId" refresh-load="$ctrl.fetchLoadDetails()"></load-detail>
     </div>
   </div>
   <div class="container main-content">
@@ -26,20 +26,20 @@
     </div>
     <div class="row">
       <section class="col-md-8">
-        <stop-accordion ng-repeat="pickUp in $ctrl.loadDetails.pickUp" stop-type="Pickup" stop="pickUp" pickup-numbers="$ctrl.pickupNumbers" />
-        <stop-accordion ng-repeat="delivery in $ctrl.loadDetails.delivery" stop-type="Delivery" stop="delivery" pickup-numbers="$ctrl.deliveryNumbers" />
-        <activity-log activity-log="$ctrl.activityLog" total-stops="$ctrl.totalStops" />
+        <stop-accordion ng-repeat="pickUp in $ctrl.loadDetails.pickUp" stop-type="Pickup" stop="pickUp" pickup-numbers="$ctrl.pickupNumbers"></stop-accordion>
+        <stop-accordion ng-repeat="delivery in $ctrl.loadDetails.delivery" stop-type="Delivery" stop="delivery" pickup-numbers="$ctrl.deliveryNumbers"></stop-accordion>
+        <activity-log activity-log="$ctrl.activityLog" total-stops="$ctrl.totalStops"></activity-log>
       </section>
       <div class="col-md-4">
         <section class="sidebar-container">
-          <equipment equipment="$ctrl.loadDetails.equipments" trailer-number="$ctrl.loadDetails.trailerNumber" tractor-number="$ctrl.loadDetails.tractorNumber" load-guid="$ctrl.loadDetails.loadGuid" />
+          <equipment equipment="$ctrl.loadDetails.equipments" trailer-number="$ctrl.loadDetails.trailerNumber" tractor-number="$ctrl.loadDetails.tractorNumber" load-guid="$ctrl.loadDetails.loadGuid"></equipment>
         </section>
         <section class="sidebar-container">
           <h4 class="section-header sh-short">General Instructions</h4>
           <p>{{$ctrl.loadDetails.generalInstructions || 'No Additional Instructions'}}</p>
         </section>
-        <section class="sidebar-container" ng-if="false">
-          <documents />
+        <section class="sidebar-container">
+          <documents load="$ctrl.loadDetails" documents="$ctrl.documents"></documents>
         </section>
       </div>
     </div>

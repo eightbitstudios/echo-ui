@@ -6,6 +6,8 @@ angular.module('echo.reducers.carrier', [
       switch (action.type) {
         case carrierActions.SET_CARRIER:
           return action.payload;
+        case carrierActions.CLEAR_CARRIER:
+          return {};
         default:
           return state;
       }

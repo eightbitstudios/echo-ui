@@ -15,7 +15,7 @@ describe('Component: pagination', function () {
 
     pageClickHandler = jasmine.createSpy('pageClickHandler');
     recordType = 'Test';
-    pagingModel = jasmine.createSpyObj('pagingModel', ['previousPage', 'nextPage', 'setPage']);
+    pagingModel = jasmine.createSpyObj('pagingModel', ['previousPage', 'nextPage', 'setPage' , 'getNumberOfPages']);
     onlyShowCurrentPage = false;
     pagingModel.totalRecords = 10;
     pagingModel.limit = 5;
@@ -53,18 +53,21 @@ describe('Component: pagination', function () {
 
   describe('Function: nextPage', function () {
     it('should not call next page if selected page is on the last page', function () {
+      pagingModel.getNumberOfPages.and.returnValue(2);
       pagingModel.selectedPage = 2;
       component.nextPage();
       expect(pagingModel.nextPage).not.toHaveBeenCalled();
     });
         
     it('should call next page', function () {
+      pagingModel.getNumberOfPages.and.returnValue(2);
       pagingModel.selectedPage = 1;
       component.nextPage();
       expect(pagingModel.nextPage).toHaveBeenCalled();
     });
 
     it('should call page click handler', function () {
+      pagingModel.getNumberOfPages.and.returnValue(2);
       pagingModel.selectedPage = 1;
       component.nextPage();
       expect(pageClickHandler).toHaveBeenCalled();

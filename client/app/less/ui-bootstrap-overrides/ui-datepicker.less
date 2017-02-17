@@ -1,0 +1,53 @@
+  .uib-datepicker-popup {
+    strong {
+      font-weight: @fw-normal !important;
+    }
+    .uib-daypicker {
+      outline: none;
+      thead tr:first-child th button:hover {
+        background-color: @c-gray-lightest;
+        border-color: @c-gray-lightest;
+      }
+    }
+    .btn {
+      font-family: @body-font !important;
+      font-weight: @fw-normal !important;
+      border: none !important;
+      color: @c-black;
+      font-size: 12px !important;
+      padding: 10px;
+      &.active {
+        background-color: @c-bright-blue !important;
+      }
+    }
+    thead > tr:last-child th {
+      background-color: @c-gray-lightest;
+    }
+    .uib-day {
+      background-color: @c-gray-lightest;
+    }
+    .text-muted {
+      color: #ccc;
+    }
+    .uib-datepicker-current {
+      display: none !important;
+    }
+    .btn-success {
+      .btn.btn-default !important;
+      float: none !important;
+    }
+    .btn-group.pull-left {
+      float: none !important;
+    }
+    .uib-button-bar {
+      text-align: center;
+    }
+    .btn-danger {
+      background: none;
+      font-size: 14px;
+      .btn.btn-link.btn-alt !important;
+      &:hover, &:focus {
+        background-color: transparent;
+      }
+    }
+  }

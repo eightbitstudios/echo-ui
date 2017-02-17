@@ -1,15 +1,15 @@
 <nav>
-  <ul class="pagination" ng-if="$ctrl.numberOfPages > 1">
+  <ul class="pagination" ng-if="$ctrl.pagingModel.getNumberOfPages() > 1">
     <li>
       <a ng-click="$ctrl.previousPage()" href="javascript:void(0)">
         <span class="echo-icon icon-left-chevron"></span>
       </a>
     </li>
-    <li ng-if="!$ctrl.onlyShowCurrentPage" ng-repeat="page in $ctrl.pages" ng-class="{'active-page': $ctrl.pagingModel.selectedPage === page}">
+    <li ng-if="!$ctrl.onlyShowCurrentPage" ng-repeat="page in $ctrl.pagingModel.getListOfPages()" ng-class="{'active-page': $ctrl.pagingModel.selectedPage === page}">
       <a ng-click="$ctrl.pageClick(page)" href="javascript:void(0)">{{page}}</a>
     </li>
     <li class="show-current-page" ng-if="$ctrl.onlyShowCurrentPage">
-      <a href="javascript:void(0)">{{$ctrl.pagingModel.selectedPage}}/{{$ctrl.numberOfPages}}</a>
+      <a href="javascript:void(0)">{{$ctrl.pagingModel.selectedPage}}/{{$ctrl.pagingModel.getNumberOfPages()}}</a>
     </li>
     <li>
       <a ng-click="$ctrl.nextPage()" href="javascript:void(0)">

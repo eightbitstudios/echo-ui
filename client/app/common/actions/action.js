@@ -13,8 +13,10 @@ angular.module('echo.action', [])
     CLEAR_LOAD_COUNTS: 'CLEAR_LOAD_COUNTS'
   }).constant('carrierActions', {
     SET_CARRIER: 'SET_CARRIER',
-    LOADING_CARRIER: 'LOADING_CARRIER'
+    LOADING_CARRIER: 'LOADING_CARRIER',
+    CLEAR_CARRIER: 'CLEAR_CARRIER'
   }).constant('repActions', {
     SET_REP: 'SET_REP',
-    LOADING_REP: 'LOADING_REP'
+    LOADING_REP: 'LOADING_REP',
+    CLEAR_REP: 'CLEAR_REP'
   });

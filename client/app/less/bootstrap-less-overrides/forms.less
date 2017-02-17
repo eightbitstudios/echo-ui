@@ -76,6 +76,11 @@ select {
   &.control {
     display: block;
   }
+
+  &.disabled {
+    color: @c-gray-mid-light;
+    cursor: not-allowed !important;
+  }
 }
 
 /////////////
@@ -319,13 +324,14 @@ select:focus {
     }
   }
 }
+
 textarea.form-control {
-    height: 150px;
-    padding: 10px;
-    border: 0;
-    resize: none;
-    border-radius: 2px;
-    background-color: @c-gray-lightest;
+  height: 150px;
+  padding: 10px;
+  border: 0;
+  resize: none;
+  border-radius: 2px;
+  background-color: @c-gray-lightest;
 }
 
 .fading-text {
@@ -352,6 +358,182 @@ textarea.form-control {
     }
     100% {
       .opacity(0);
+    }
+  }
+}
+
+.form-control {
+  color: @c-gray-darkest;
+  box-shadow: none;
+  padding-left: 0;
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+  border-color: @c-gray-mid-light;
+  &::-webkit-input-placeholder {
+    color: @c-gray-mid-light;
+  }
+  &::-moz-placeholder {
+    color: @c-gray-mid-light;
+  }
+  &:-ms-input-placeholder {
+    color: @c-gray-mid-light;
+  }
+  &:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: @c-gray-darkest;
+  }
+}
+
+.form-group-inline {
+  display: inline-block;
+  .form-inline-editing {
+    .form-control {
+      background-color: transparent;
+    }
+    .btn-link + .btn-link {
+      margin-left: 10px;
+    }
+  }
+}
+
+// Checkbox & Radio
+input[type="radio"], input[type="checkbox"] {
+  margin-top: 0;
+  position: absolute;
+  margin-left: -20px;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkbox, .radio {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  label {
+    letter-spacing: 0;
+    font-weight: 400 !important;
+  }
+  &:hover {
+    font-weight: 400 !important;
+    label {
+      font-weight: 400;
+    }
+  }
+  .control:hover .control-indicator {
+    background: @c-gray-light;
+  }
+  &.control {
+    display: block;
+    margin-right: 16px;
+    padding-left: 25px;
+  }
+  .control-indicator {
+    top: 0;
+    margin-right: 5px;
+  }
+}
+
+/// Customized WTFForms Checkbox
+//////////
+.control {
+  input:checked ~ .control-indicator {
+    background-color: @c-gray-light;
+  }
+  input:active ~ .control-indicator {
+    background-color: #f7f7f7;
+  }
+  input:focus ~ .control-indicator {
+    box-shadow: 0 0 0 0;
+  }
+  &.radio input:checked ~ .control-indicator {
+    border: solid 1px @c-gray-light;
+    background-color: @c-gray-lightest;
+    background-image: url('../assets/images/radial-selected.svg');
+    background-size: 10px;
+  }
+}
+
+.checkbox {
+  .control-indicator {
+    border-radius: 0;
+  }
+  &.control-x, &.control-lrg {
+    padding-left: 30px;
+    height: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    .checkbox input[type="checkbox"] {
+      margin-left: -40px;
+    }
+    .control-indicator {
+      top: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      background-color: @c-white;
+      border: solid 1px @c-gray-light;
+    }
+  }
+  &.control-x {
+    input:checked ~ .control-indicator {
+      background-color: @c-white;
+      background-image: image-url("icon-remove.svg");
+    }
+  }
+  &.control-lrg {
+    .control-indicator input:checked ~ .control-indicator {
+      border: solid 1px @c-green;
+      background-color: @c-green;
+      background-image: image-url("icon-checkmark-wht.svg");
+    }
+  }
+}
+
+.control.radio {
+  cursor: pointer;
+  .control-indicator {
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1rem;
+    font-size: 65%;
+    color: #eee;
+    text-align: center;
+    border: solid 1px #e1e2e3;
+    background-color: #f7f7f7;
+    background-size: 50% 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+input.input-modal-dp {
+  background-image: url(../assets/images/icon-calendar-gray.svg);
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: 15px;
+}
+
+/// Customized Inline form elements
+/////////
+.form-inline {
+  legend {
+    display: inline-block;
+    margin: 0 15px 0 0;
+    width: auto;
+  }
+  .checkbox.control, .radio.control {
+    display: inline-block;
+    input[type="radio"], input[type="checkbox"] {
+      margin-left: -15px;
     }
   }
 }

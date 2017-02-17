@@ -56,5 +56,11 @@
   "mapPointByLoadGuid": "/loads/${loadGuid}/details/map",
   "mapPointsForLoadsNeedingAction": "/carriers/${carrierId}/loads/needsAction/map",
   "activeLoadsPage": "/carriers/${carrierId}/loads/activeLoadsPage",
-  "loadDashboard": "/carriers/${carrierId}/loads/dashboardPage"
+  "loadDashboard": "/carriers/${carrierId}/loads/dashboardPage",
+  "documentUpload": "/${carrierId}/documents/loadDocument",
+  "invoiceUpload": "/${carrierId}/documents/invoiceDocument",
+  "documents": "/${carrierId}/documents/${loadGuid}/manifestbyload",
+  "documentById": "/${carrierId}/documents/images/${documentId}",
+  "documentsByIdPDF": "/${carrierId}/documents/download/pdf/${documentName}",
+  "documentsByIdThumbnail": "/${carrierId}/documents/images/${documentId}/thumbnail"
 }

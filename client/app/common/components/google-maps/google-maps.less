@@ -2,14 +2,6 @@ google-maps {
   height: 100%;
   width: 100%;
   display: inline-block;
-}
-
-.map-container {
-  height: 300px;
-  width: 100%;
-  display: block;
-  position: relative;
-  background: @c-gray-light;
 
   > div > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(4) > div > div:nth-child(1) > div:nth-child(3) {
     -webkit-transform: rotate(90deg);
@@ -26,9 +18,17 @@ google-maps {
     left: 0 !important;
     top: 40px !important;
   }
+}
+
+.map-container {
+  height: 300px;
+  width: 100%;
+  display: block;
+  position: relative;
+  background: @c-gray-light;
 
   &.detailed .gm-style-iw > div {
-    height: 245px;
+    height: 252px;
     width: 350px;
   }
   .gm-style-iw > div {
