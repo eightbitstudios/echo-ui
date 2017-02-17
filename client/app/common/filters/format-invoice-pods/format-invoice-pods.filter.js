@@ -7,8 +7,8 @@ angular.module('echo.filters.formatInvoicePODs', [
         return '';
       }
 
-      var invoiceRequired = _.get(load, 'invoiceRequired');
-      var podsRequired = _.get(load, 'podsRequired');
+      var invoiceRequired = _.get(load, 'needsInvoice');
+      var podsRequired = _.get(load, 'neededPODs');
       var isMultiStop = _.size(load.pickUp) > 1 || _.size(load.delivery) > 1;
 
       if (!_.isBoolean(invoiceRequired)) {

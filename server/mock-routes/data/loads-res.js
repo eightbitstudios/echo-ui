@@ -115,8 +115,8 @@ module.exports = {
     "trailerNumber": "8956 7412",
     "tractorNumber": "7894 9216",
     "sumOfWeightInPounds": 2080.5,
-    "podsRequired": 1,
-    "invoiceRequired": true,
+    "neededPODs": 1,
+    "needsInvoice": true,
     "balanceRemaining": 1380
   }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -164,8 +164,8 @@ module.exports = {
       },
       isLoadDetailUpdated: false,
       isDriverVerified: true,
-    "podsRequired": 2,
-    "invoiceRequired": true,
+    "neededPODs": 2,
+    "needsInvoice": true,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -201,8 +201,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 0,
-    "invoiceRequired": true,
+    "neededPODs": 0,
+    "needsInvoice": true,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -240,8 +240,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 0,
-    "invoiceRequired": true,
+    "neededPODs": 0,
+    "needsInvoice": true,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -278,8 +278,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 1,
-    "invoiceRequired": false,
+    "neededPODs": 1,
+    "needsInvoice": false,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -315,8 +315,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 2,
-    "invoiceRequired": false,
+    "neededPODs": 2,
+    "needsInvoice": false,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -353,8 +353,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 0,
-    "invoiceRequired": false,
+    "neededPODs": 0,
+    "needsInvoice": false,
     "balanceRemaining": 0
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -391,8 +391,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 1,
-    "invoiceRequired": false,
+    "neededPODs": 1,
+    "needsInvoice": false,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -428,8 +428,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 1,
-    "invoiceRequired": false,
+    "neededPODs": 1,
+    "needsInvoice": false,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -465,8 +465,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 1,
-    "invoiceRequired": false,
+    "neededPODs": 1,
+    "needsInvoice": false,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -502,8 +502,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 1,
-    "invoiceRequired": false,
+    "neededPODs": 1,
+    "needsInvoice": false,
     "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
@@ -539,8 +539,8 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-    "podsRequired": 1,
-    "invoiceRequired": false,
+    "neededPODs": 1,
+    "needsInvoice": false,
     "balanceRemaining": 1380
     }],
   totalLoadCount: 22
