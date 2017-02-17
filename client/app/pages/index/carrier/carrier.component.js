@@ -7,10 +7,11 @@ angular.module('echo.index.carrier', [
   'echo.components.navbar',
   'echo.actions.creators.rep',
   'echo.actions.creators.carrier',
-  'echo.actions.creators.loadCounts'
+  'echo.actions.creators.loadCounts',
+  'echo.actions.creators.invoiceCounts'
 ]).component('carrier', {
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
-  controller: function($stateParams, $q, store$, carrierActionCreator, repActionCreator, loadCountsActionCreator) {
+  controller: function($stateParams, $q, store$, carrierActionCreator, repActionCreator, loadCountsActionCreator, invoiceCountsActionCreator) {
 
     var that = this;
 
@@ -33,10 +34,12 @@ angular.module('echo.index.carrier', [
 
     that.$onDestroy = function() {
       var loadCountsAction = loadCountsActionCreator.clearLoadCounts();
+      var invoiceCountsAction = invoiceCountsActionCreator.clearInvoiceCounts();
       var carrierAction = carrierActionCreator.clearCarrier();
       var repAction = repActionCreator.clearRep();
 
       store$.dispatch(loadCountsAction);
+      store$.dispatch(invoiceCountsAction);
       store$.dispatch(carrierAction);
       store$.dispatch(repAction);
     };

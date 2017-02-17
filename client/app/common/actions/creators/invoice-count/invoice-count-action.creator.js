@@ -16,6 +16,11 @@ angular.module('echo.actions.creators.invoiceCounts', [
         type: invoiceCountsActions.INVOICE_COUNTS_LOADED,
         payload: invoiceCounts
       };
+    },
+    clearInvoiceCounts: function() {
+      return {
+        type: invoiceCountsActions.CLEAR_INVOICE_COUNTS
+      };
     }
   };
 });
