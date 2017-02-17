@@ -1,0 +1,14 @@
+<div class="container main-content">
+  <div class="section-head">
+    <div class="filter-bar-wrap">
+      <div class="filter-bar">
+        <div class="label">Filter By</div>
+        <ng-transclude></ng-transclude>
+        <div class="filter-summary pull-right text-center">
+                <h5>{{$ctrl.invoiceCount}} Invoices</h5>
+                {{$ctrl.filterText}}
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
