@@ -28,7 +28,6 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
       };
 
       that.fetchActiveInvoices = function () {
-        var that = this;
         that.showLoading = true;
 
         invoicesApi.fetchActiveInvoices(that.carrierId, that.paging, that.filterBy).then(function(invoicesPageData) {
