@@ -16,18 +16,18 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
       document: '<',
       documents: '<'
     },
-    controller: function($http, $window, PagingModel, apiConfig, documentApi, saveAs) {
+    controller: function($http, $window, store$, PagingModel, apiConfig, documentApi, saveAs) {
       var that = this;
 
       that.printDocument = function() {
-        documentApi.fetchDocument(that.document.documentName).then(function(document) {
+        documentApi.fetchDocument(that.carrierId, that.document.documentName).then(function(document) {
           var printWindow = $window.open(URL.createObjectURL(document), '_blank');
           printWindow.print();
         });
       };
 
       that.downloadDocument = function() {
-        documentApi.fetchDocument(that.document.documentName).then(function(document) {
+        documentApi.fetchDocument(that.carrierId, that.document.documentName).then(function(document) {
           saveAs(document, _.template('${documentName}.pdf')({
             documentName: that.document.documentName
           }));
@@ -47,6 +47,7 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
 
       that.$onInit = function() {
         that.paging = new PagingModel(1);
+        that.carrierId = store$.getState().carrier.carrierId;
         that.apiConfig = apiConfig;
         that.setupPagination();
       };

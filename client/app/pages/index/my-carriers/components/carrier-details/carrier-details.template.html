@@ -36,6 +36,7 @@
               </button>
             </success-button>
           </portal-user-profile>
+          <usage ng-if="$ctrl.portalUser.id" user="$ctrl.portalUser"></usage>
         </div>
         <div ng-if="$ctrl.showMode === $ctrl.mode.DRIVER">
           <a ng-click="$ctrl.showDetailsHandler()" class="btn btn-link">
@@ -43,7 +44,7 @@
           </a>
           <driver-profile driver="$ctrl.driver" languages="$ctrl.languages" carrier-id="$ctrl.carrierId" profile-updated-handler="$ctrl.loadCarrierDetails()">
           </driver-profile>
-          <resend-invite ng-if="$ctrl.portalUser.id"></resend-invite>
+          <usage ng-if="$ctrl.driver.id" user="$ctrl.driver"></usage>
         </div>
       </div>
     </section>

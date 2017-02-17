@@ -6,14 +6,15 @@ angular.module('echo.index.carrier', [
   'echo.index.carrier.invoicing',
   'echo.components.navbar',
   'echo.actions.creators.rep',
-  'echo.actions.creators.carrier'
+  'echo.actions.creators.carrier',
+  'echo.actions.creators.loadCounts'
 ]).component('carrier', {
   templateUrl: 'app/pages/index/carrier/carrier.template.html',
-  controller: function($stateParams, $q, store$, carrierActionCreator, repActionCreator) {
+  controller: function($stateParams, $q, store$, carrierActionCreator, repActionCreator, loadCountsActionCreator) {
 
     var that = this;
 
-    this.$onInit = function() {
+    that.$onInit = function() {
 
       that.showLoading = true;
       that.carrierId = $stateParams.carrierId;
@@ -30,5 +31,14 @@ angular.module('echo.index.carrier', [
       });
     };
 
+    that.$onDestroy = function() {
+      var loadCountsAction = loadCountsActionCreator.clearLoadCounts();
+      var carrierAction = carrierActionCreator.clearCarrier();
+      var repAction = repActionCreator.clearRep();
+
+      store$.dispatch(loadCountsAction);
+      store$.dispatch(carrierAction);
+      store$.dispatch(repAction);
+    };
   }
 });

@@ -84,6 +84,7 @@ angular.module('echo.config.appConstants', [])
         404103: 'Carrier Not Found',
         404104: 'Load Shipment Details Not Found',
         404105: 'City/State combination not found',
+        404112: 'Invite already accepted',
         500: 'An unexpected error has occurred',
         500100: 'Password must contain mix of the following: uppercase, lowercase, and numbers',
         500101: 'Username already in use',

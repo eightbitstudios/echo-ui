@@ -52,5 +52,14 @@ module.exports = {
         res.json(resTemplate);
       }
     }, minDelay, maxDelay);
+  },
+  resendInviteToUserById: function (req, res) {
+    var resTemplate = new ResTemplate();
+
+    resTemplate.data.invitationStatus = 'Invited on Jan 4, 2017';
+
+    responseUtil.timeout(function () {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };

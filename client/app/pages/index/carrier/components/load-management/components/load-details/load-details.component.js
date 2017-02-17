@@ -38,7 +38,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
             that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
             that.totalStops = _.size(that.loadDetails.pickUp) + _.size(that.loadDetails.delivery);
             return $q.all([loadsApi.fetchActivityLogByLoadId(that.loadDetails.loadNumber),
-              documentApi.fetchDocuments(that.loadDetails.loadGuid)
+              documentApi.fetchDocuments(that.carrierId, that.loadDetails.loadGuid)
             ]);
           }).then(_.spread(function(activityLog, documents) {
             that.activityLog = activityLog;

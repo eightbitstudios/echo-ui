@@ -69,6 +69,7 @@ angular.module('echo.components.loadTable.driver', [
       this.$onInit = function() {
         this.noDriver = _.isUndefined(_.get(this.load.driver, 'id'));
         this.loadTypesEnum = loadTypesEnum;
+        this.isDisabled = this.loadType === loadTypesEnum.UNBILLED || this.isMultiStop;
       };
     }
   });

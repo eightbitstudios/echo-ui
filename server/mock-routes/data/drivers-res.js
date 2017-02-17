@@ -9,7 +9,9 @@ module.exports = {
       preferredLanguage: 'English',
       isAppInstalled: true,
       isTrackingEnabled: false,
-      isDoNotDisturb: true
+      isDoNotDisturb: true,
+      lastLogin:'Dec 21, 2016',
+      invitationStatus:'Invitation Accepted'
     }, {
       id: 2,
       firstName: 'Ted',
@@ -19,7 +21,9 @@ module.exports = {
       preferredLanguage: 'English',
       isAppInstalled: false,
       isTrackingEnabled: false,
-      isDoNotDisturb: false
+      isDoNotDisturb: false,
+      lastLogin:'Never',
+      invitationStatus:'Invited on Sep 20, 2016'
     }, {
       id: 3,
       firstName: 'Billy',
@@ -29,7 +33,9 @@ module.exports = {
       preferredLanguage: 'Spanish',
       isAppInstalled: true,
       isTrackingEnabled: true,
-      isDoNotDisturb: false
+      isDoNotDisturb: false,
+      lastLogin:'Dec 21, 2016',
+      invitationStatus:'Invitation Accepted'
     }, {
       id: 4,
       firstName: 'Jeff',
@@ -39,7 +45,9 @@ module.exports = {
       preferredLanguage: 'Portuguese',
       isAppInstalled: true,
       isTrackingEnabled: true,
-      isDoNotDisturb: false
+      isDoNotDisturb: false,
+      lastLogin:'Dec 21, 2016',
+      invitationStatus:'Invitation Accepted'
     }, {
       id: 5,
       firstName: 'Bob',
@@ -49,7 +57,9 @@ module.exports = {
       preferredLanguage: 'English',
       isAppInstalled: true,
       isTrackingEnabled: true,
-      isDoNotDisturb: false
+      isDoNotDisturb: false,
+      lastLogin:'Dec 21, 2016',
+      invitationStatus:'Invitation Accepted'
     }
     ],
   totalRecordCount: 10

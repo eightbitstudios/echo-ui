@@ -11,6 +11,7 @@
   "carrierById": "/carriers/${carrierId}",
   "userById": "/users/${userId}",
   "deactivateUserById": "/users/${userId}/deactivate",
+  "resendInviteToUserById": "/users/${userId}/resendInvite",
   "user": "/users",
   "signIn": "/auth/signIn",
   "signOut": "/auth/signOut",
@@ -56,12 +57,12 @@
   "mapPointsForLoadsNeedingAction": "/carriers/${carrierId}/loads/needsAction/map",
   "activeLoadsPage": "/carriers/${carrierId}/loads/activeLoadsPage",
   "loadDashboard": "/carriers/${carrierId}/loads/dashboardPage",
-  "documentUpload": "/documents/loadDocument",
-  "invoiceUpload": "/documents/invoiceDocument",
-  "documents": "/documents/${loadGuid}/manifestbyload",
-  "documentById": "/documents/images/${documentId}",
-  "documentsByIdPDF": "/documents/download/pdf/${documentName}",
-  "documentsByIdThumbnail": "/documents/images/${documentId}/thumbnail",
+  "documentUpload": "/${carrierId}/documents/loadDocument",
+  "invoiceUpload": "/${carrierId}/documents/invoiceDocument",
+  "documents": "/${carrierId}/documents/${loadGuid}/manifestbyload",
+  "documentById": "/${carrierId}/documents/images/${documentId}",
+  "documentsByIdPDF": "/${carrierId}/documents/download/pdf/${documentName}",
+  "documentsByIdThumbnail": "/${carrierId}/documents/images/${documentId}/thumbnail",
   "activeInvoicesPage": "/carriers/${carrierId}/invoices/activeInvoicesPage"
 
 }

@@ -6,7 +6,6 @@ angular.module('echo.components.modal.documentUpload', [
     'echo.components.modal.documentUpload.documentType',
     'echo.components.modal.modalHeader',
     'echo.components.modal.documentUpload.uploadedDocuments',
-    'echo.components.fadingText',
     'echo.components.modal.documentUpload.invoices',
     'echo.components.modal.documentUpload.loadDocumentTypes'
   ])
@@ -19,11 +18,11 @@ angular.module('echo.components.modal.documentUpload', [
       selectedDocumentType: '<',
       originalBillRate: '<'
     },
-    controller: function(documentTypes, documentApi) {
+    controller: function(store$, documentTypes, documentApi) {
       var that = this;
 
       that.refreshDocuments = function() {
-        documentApi.fetchDocuments(that.load.loadGuid).then(function(documents) {
+        documentApi.fetchDocuments(that.carrierId, that.load.loadGuid).then(function(documents) {
           that.documents = documents;
         });
         that.resetModal();
@@ -36,6 +35,7 @@ angular.module('echo.components.modal.documentUpload', [
 
       that.$onInit = function() {
         that.files = [];
+        that.carrierId = store$.getState().carrier.carrierId;
         that.documentTypes = documentTypes;
         that.selectedDocumentType = that.selectedDocumentType || documentTypes.POD.value;
         that.numberOfStops = _.max([_.size(that.load.pickUp), _.size(that.load.delivery)]);
