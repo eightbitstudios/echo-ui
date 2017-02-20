@@ -4,7 +4,7 @@ angular.module('echo.api.invoices', [
   'echo.config.api'
 ]).factory('invoicesApi', function($q, $http, apiConfig) {
   return {
-    fetchActiveInvoices: function(carrierId, paging) {
+    fetchActiveInvoices: function(carrierId, paging, filterBy) {
       var url = _.template(apiConfig.activeInvoicesPage)({
         carrierId: carrierId
       });
@@ -13,6 +13,10 @@ angular.module('echo.api.invoices', [
         limit: paging.limit,
         offset: paging.offset
       };
+
+      if (!_.isUndefined(filterBy)) {
+        params.filterBy = filterBy;
+      }
 
       return $http.get(url, {
         params: params

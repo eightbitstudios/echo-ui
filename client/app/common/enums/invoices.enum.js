@@ -5,17 +5,17 @@ angular.module('echo.enums.invoices', [])
         value: 0,
         description: 'In Review'
       },
-      REJECTED: {
-        value: 1,
-        description: 'Rejected'
-      },
       SUBMITTED: {
-        value: 2,
+        value: 1,
         description: 'Submitted'
       },
       APPROVED: {
-        value: 3,
+        value: 2,
         description: 'Approved'
+      },
+      VOID: {
+        value: 3,
+        description: 'Void'
       },
       PAID: {
         value: 4,

@@ -25,7 +25,7 @@ module.exports = {
       "invoiceNumber": 23450982,
       "receivedDate": "Jan 3 2017",
       "status": 1,
-      "statusReason": 0,
+      "statusReason": null,
       "invoiceAmount": 10500,
       "balanceRemaining": 1020,
       "loadId": 12347421,
