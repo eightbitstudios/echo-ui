@@ -113,6 +113,20 @@ angular.module('echo.index', [
         whiteContainer: false
       }
     })
+    .state(routesConfig.INDEX.invoicing.name, { // #/carrier/:carrierId/invoicing
+      url: routesConfig.INDEX.invoicing.route,
+      template: '<invoicing></invoicing>',
+      data: {
+        whiteContainer: true
+      }
+    })
+    .state(routesConfig.INDEX.activeInvoices.name, { // #/carrier/:carrierId/invoicing/activeInvoices
+      url: routesConfig.INDEX.activeInvoices.route,
+      template: '<active-invoices></active-invoices>',
+      data: {
+        name: 'active invoices'
+      }
+    })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,
       template: '<my-company></my-company>'

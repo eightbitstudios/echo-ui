@@ -51,6 +51,14 @@ angular.module('echo.config.routes', [])
         name: 'index.carrier.loadManagement.searchLoads',
         route: '/searchLoads/{searchText}'
       },
+      invoicing: {
+        name: 'index.carrier.invoicing',
+        route: '/invoicing'
+      },
+      activeInvoices: {
+        name: 'index.carrier.invoicing.activeInvoices',
+        route: '/activeInvoices'
+      },
       myCompany: {
         name: 'index.carrier.myCompany',
         route:'/myCompany',

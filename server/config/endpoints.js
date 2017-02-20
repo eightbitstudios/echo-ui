@@ -61,6 +61,7 @@ module.exports = {
     documents: '/mock/api/v1/carriers/:carrierId/documents/:loadId/manifestbyload',
     documentById: '/mock/api/v1/carriers/:carrierId/documents/images/:documentId',
     documentsByIdThumbnail: '/mock/api/v1/carriers/:carrierId/documents/images/:documentId/thumbnail',
-    documentsByIdPDF: '/mock/api/v1/carriers/:carrierId/documents/download/pdf/:documentName'
+    documentsByIdPDF: '/mock/api/v1/carriers/:carrierId/documents/download/pdf/:documentName',
+    activeInvoicesPage: '/mock/api/v1/carriers/:carrierId/invoices/activeInvoicesPage'
   }
 };

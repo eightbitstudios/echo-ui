@@ -62,5 +62,6 @@
   "documents": "/carriers/${carrierId}/documents/${loadGuid}/manifestbyload",
   "documentById": "/carriers/${carrierId}/documents/images/${documentId}",
   "documentsByIdPDF": "/carriers/${carrierId}/documents/download/pdf/${documentName}",
-  "documentsByIdThumbnail": "/carriers/${carrierId}/documents/images/${documentId}/thumbnail"
+  "documentsByIdThumbnail": "/carriers/${carrierId}/documents/images/${documentId}/thumbnail",
+  "activeInvoicesPage": "/carriers/${carrierId}/invoices/activeInvoicesPage"
 }
