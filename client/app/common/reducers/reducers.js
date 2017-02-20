@@ -5,11 +5,12 @@ angular.module('echo.reducers', [
   'echo.reducers.loadCount',
   'echo.reducers.user',
   'echo.reducers.carrier',
-  'echo.reducers.rep'
+  'echo.reducers.rep',
+  'echo.reducers.invoiceCount'
 ]).factory('combineReducers', function() {
   /**
    * @description Bundles reducers together into a single reducer. This allows us to split up our reducers into
-   * multiple modules. This is called by the application store when an action is dispatched. 
+   * multiple modules. This is called by the application store when an action is dispatched.
    * @reference http://redux.js.org/docs/api/combineReducers.html
    */
   return  function (reducersObject) {

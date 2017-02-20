@@ -1,0 +1,63 @@
+.invoice-table {
+  .col-md-12 {
+    min-height: 300px;
+  }
+  .loading {
+    background: @c-white;
+    opacity: .8;
+  }
+}
+
+table.table-invoice {
+  tr > th:last-child,
+  tr > td:last-child {
+    padding-right: 0;
+  }
+
+  tr > th,
+  tr > td {
+    padding-left: 15px;
+  }
+
+  tr > th hr {
+    margin: 2px 0;
+  }
+
+  .invoice-number {
+    width: 120px;
+  }
+
+  .load-col {
+    width: 43%;
+
+    &.load-direction {
+      width: 40px;
+      padding: 0;
+      text-align: center;
+    }
+  }
+}
+
+.table-invoice-details {
+  tr > th {
+    width: 145px;
+
+    &:first-child {
+      text-align: left;
+      padding-left: 0;
+      width: 45%;
+    }
+  }
+}
+
+
+.invoice-lane {
+  .load-info {
+    align-items: center;
+    max-width: 275px;
+  }
+}
+
+.invoicing .tab-bar {
+  margin-bottom: 0;
+}

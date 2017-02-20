@@ -1,5 +1,5 @@
 /**
- * @description This structure follows the redux pattern: 
+ * @description This structure follows the redux pattern:
  * http://redux.js.org/docs/introduction/CoreConcepts.html
  */
 
@@ -8,7 +8,7 @@ angular.module('echo.store', [
   'echo.reducers',
   'echo.actions.actionDispatcher'
 ]).factory('store$', function($rootScope, combineReducers, action$, loadCountReducer, userReducer,
-  carrierReducer, repReducer, actionDispatcher) {
+  carrierReducer, repReducer, invoiceCountReducer, actionDispatcher) {
 
   /**
    * @description Holds the whole state tree of the application
@@ -20,7 +20,8 @@ angular.module('echo.store', [
       loadCounts: {},
       user: {},
       carrier: {},
-      rep: {}
+      rep: {},
+      invoiceCounts: {}
     };
 
     // Reduxification
@@ -30,7 +31,8 @@ angular.module('echo.store', [
         loadCounts: loadCountReducer,
         user: userReducer,
         carrier: carrierReducer,
-        rep: repReducer
+        rep: repReducer,
+        invoiceCounts: invoiceCountReducer
       }));
 
     that._store$.subscribe(function(state) {

@@ -1,0 +1,7 @@
+<div class="invoicing">
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div ng-show="!$ctrl.showLoading">
+    <tab-bar ng-if="$ctrl.tabItems" tab-items="$ctrl.tabItems" tab-replacement-text="$ctrl.tabReplacementText"></tab-bar>
+    <div ui-view></div>
+  </div>
+</div>
