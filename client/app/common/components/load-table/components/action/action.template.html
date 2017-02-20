@@ -5,10 +5,16 @@
     <span ng-if="!$ctrl.isMultiStop && !$ctrl.isBooked">{{$ctrl.load.nextAction | lastModifiedBy}}</span>
   </div>
   <div ng-if="$ctrl.loadType === $ctrl.loadTypesEnum.UNBILLED">
-    <h3 class="driver-name">Bill ${{$ctrl.load.balanceRemaining}}</h3>
-    <span>{{$ctrl.load | formatInvoicePODs}}</span>
+    <div ng-if="$ctrl.documentsRequired()">
+      <h3 class="driver-name">Bill ${{$ctrl.load.balanceRemaining}}</h3>
+      <span>{{$ctrl.load | formatInvoicePODs}}</span>
+    </div>
+    <div ng-if="!$ctrl.documentsRequired()">
+      <h3 class="driver-name">Invoice and POD Added</h3>
+      <a ui-sref="{{::$ctrl.routesConfig.INDEX.activeInvoices.name}}">Moved to Invoicing</a>
+    </div>
   </div>
-  <div class="action-align-bottom" ng-if="$ctrl.nextAction">
+  <div class="action-align-bottom" ng-if="$ctrl.nextAction && !$ctrl.disableActionButton()">
     <action-button load="$ctrl.load" action-changed-callback="$ctrl.actionChangedCallback()" carrier-id="$ctrl.carrierId" map-view="false"></action-button>
   </div>
   <div class="action-align-bottom" ng-if="!$ctrl.nextAction">
