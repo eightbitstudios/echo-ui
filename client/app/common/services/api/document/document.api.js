@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('echo.api.document', [
-  'echo.config.api'
-]).factory('documentApi', function($q, $http, apiConfig) {
+  'echo.config.api',
+  'echo.config.globals'
+]).factory('documentApi', function($q, $http, apiConfig, moment) {
   return {
-    fetchDocuments: function(loadGuid) {
+    fetchDocuments: function(carrierId, loadGuid) {
       var url = _.template(apiConfig.documents)({
-        loadGuid: loadGuid
+        loadGuid: loadGuid,
+        carrierId: carrierId
       });
       return $http.get(url).then(function(resp) {
         return resp.data.data;
@@ -14,10 +16,11 @@ angular.module('echo.api.document', [
         return $q.reject(resp.data.status);
       });
     },
-    fetchDocument: function(documentName) {
+    fetchDocument: function(carrierId, documentName) {
 
       var url = _.template(apiConfig.documentsByIdPDF)({
-        documentName: documentName
+        documentName: documentName,
+        carrierId: carrierId
       });
 
       var config = {
@@ -31,9 +34,10 @@ angular.module('echo.api.document', [
         });
       });
     },
-    fetchImage: function(imageGuid) {
+    fetchImage: function(carrierId, imageGuid) {
       var url = _.template(apiConfig.documentById)({
-        documentId: imageGuid
+        documentId: imageGuid,
+        carrierId: carrierId
       });
 
       var config = {
@@ -45,9 +49,10 @@ angular.module('echo.api.document', [
           return 'data:image/jpeg;base64,' + resp.data.data;
         });
     },
-    fetchImageThumbnail: function(imageGuid) {
+    fetchImageThumbnail: function(carrierId, imageGuid) {
       var url = _.template(apiConfig.documentsByIdThumbnail)({
-        documentId: imageGuid
+        documentId: imageGuid,
+        carrierId: carrierId
       });
 
       var config = {
@@ -59,8 +64,10 @@ angular.module('echo.api.document', [
           return 'data:image/jpeg;base64,' + resp.data.data;
         });
     },
-    createDocuments: function(loadNumber, documentType, loadDocumentPages) {
-      var url = apiConfig.documentUpload;
+    createDocuments: function(carrierId, loadNumber, documentType, loadDocumentPages) {
+      var url = _.template(apiConfig.documentUpload)({
+        carrierId: carrierId
+      });
 
       var body = new FormData();
 
@@ -80,15 +87,17 @@ angular.module('echo.api.document', [
         return $q.reject(resp.data.status);
       });
     },
-    createInvoices: function(loadNumber, invoicePages, invoiceNumber, invoiceRate, invoiceDate) {
-      var url = apiConfig.invoiceUpload;
+    createInvoices: function(carrierId, loadNumber, invoicePages, invoiceNumber, invoiceRate, invoiceDate) {
+      var url = _.template(apiConfig.invoiceUpload)({
+        carrierId: carrierId
+      });
 
       var body = new FormData();
 
       body.append('loadNumber', loadNumber);
       body.append('invoiceNumber', invoiceNumber);
       body.append('invoiceRate', invoiceRate);
-      body.append('invoiceDate', invoiceDate);
+      body.append('invoiceDate', moment(invoiceDate).format('ddd MMM DD YYYY'));
 
       _.forEach(invoicePages, function(page) {
         body.append('invoicePages', page.fileData);

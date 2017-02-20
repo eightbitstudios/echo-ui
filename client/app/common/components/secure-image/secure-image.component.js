@@ -9,17 +9,18 @@ angular.module('echo.components.secureImage', [
       thumbnail: '<'
     },
     templateUrl: 'app/common/components/secure-image/secure-image.template.html',
-    controller: function(documentApi) {
+    controller: function(store$, documentApi) {
       var that = this;
 
       that.$onChanges = function(changeObj) {
         if (_.get(changeObj.imageGuid, 'currentValue')) {
-          var promise;
+          var promise,
+            carrierId = store$.getState().carrier.carrierId;
 
           if (that.thumbnail) {
-            promise = documentApi.fetchImageThumbnail(that.imageGuid);
+            promise = documentApi.fetchImageThumbnail(carrierId, that.imageGuid);
           } else {
-            promise = documentApi.fetchImage(that.imageGuid);
+            promise = documentApi.fetchImage(carrierId, that.imageGuid);
           }
 
           promise.then(function(data) {

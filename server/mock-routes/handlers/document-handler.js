@@ -25,7 +25,6 @@ module.exports = {
   fetchDocumentById: function(req, res) {
     var resTemplate = new ResTemplate();
     resTemplate.data = documentOverviewRes.image;
-    console.log(documentOverviewRes.image);
     responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);

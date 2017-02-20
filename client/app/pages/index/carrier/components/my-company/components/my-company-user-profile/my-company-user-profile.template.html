@@ -13,8 +13,9 @@
         </success-button>
       </portal-user-profile>
     </div>
-    <div class="col-sm-6 change-password-container" ng-if="$ctrl.portalUser.id && $ctrl.portalUser.isCarrierAdmin()">
-      <change-password ng-if="$ctrl.user.userId === $ctrl.portalUser.id" user-id="$ctrl.user.userId"></change-password>
+    <div class="col-sm-6 additional-info-container" ng-if="$ctrl.portalUser.id">
+      <usage user="$ctrl.portalUser"></usage>
+      <change-password ng-if="$ctrl.user.userId === $ctrl.portalUser.id && $ctrl.portalUser.isCarrierAdmin()" user-id="$ctrl.user.userId"></change-password>
     </div>
   </div>
 </div>
