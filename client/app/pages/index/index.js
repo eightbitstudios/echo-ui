@@ -127,6 +127,13 @@ angular.module('echo.index', [
         name: 'active invoices'
       }
     })
+    .state(routesConfig.INDEX.searchInvoices.name, { // #/carrier/:carrierId/invoicing/:searchText
+      url: routesConfig.INDEX.searchInvoices.route,
+      template: '<search-invoices></search-invoices>',
+      data: {
+        hideTabBar: true
+      }
+    })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,
       template: '<my-company></my-company>'

@@ -35,6 +35,23 @@ angular.module('echo.api.invoices', [
       }).then(function(resp) {
         return $q.when(resp.data.data.invoicesCount);
       });
+    },
+    fetchInvoicesBySearchText: function(carrierId, searchText, paging) {
+      var url = _.template(apiConfig.invoicesSearch)({
+        carrierId: carrierId
+      });
+
+      var params = {
+        searchText: searchText,
+        limit: paging.limit,
+        offset: paging.offset
+      };
+
+      return $http.get(url, {
+        params: params
+      }).then(function(resp) {
+        return $q.when(resp.data.data);
+      });
     }
   };
 });

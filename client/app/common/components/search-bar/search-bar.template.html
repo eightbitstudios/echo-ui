@@ -7,7 +7,7 @@
         ng-keydown="$ctrl.searchKeyDown($event)"
         class="form-control search-form-input search-form-input_dark"
         ng-model="$ctrl.searchText"
-        placeholder="Load or PRO Number"
+        placeholder="{{$ctrl.placeholderText}}"
         maxlength="{{$ctrl.maxLength}}"
         type="text"
       >

@@ -6,7 +6,8 @@ angular.module('echo.components.searchBar', [
 ])
   .component('searchBar', {
     bindings: {
-      searchCallback: '&'
+      searchCallback: '&',
+      placeholderText: '@'
     },
     transclude: true,
     templateUrl: 'app/common/components/search-bar/search-bar.template.html',

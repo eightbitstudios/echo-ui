@@ -1,7 +1,9 @@
 angular.module('echo.index.carrier.invoicing', [
   'echo.components.tabBar',
+  'echo.components.searchBar',
   'echo.config.routes',
   'echo.index.carrier.invoicing.activeInvoices',
+  'echo.index.carrier.invoicing.searchInvoices',
   'echo.action',
   'echo.actions.creators.invoiceCounts'
 ])
@@ -11,6 +13,12 @@ angular.module('echo.index.carrier.invoicing', [
     controller: function($stateParams, $state, Rx, invoiceCountsActionCreator, store$, routesConfig) {
       var that = this;
       var sub = null;
+
+      that.routeToSearch = function(searchText) {
+        $state.go(routesConfig.INDEX.searchInvoices.name, {
+          searchText: searchText
+        });
+      };
 
       that.createTabItems = function (invoiceCounts) {
         that.tabItems = [{
