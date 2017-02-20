@@ -5,7 +5,7 @@
     <span ng-if="!$ctrl.isMultiStop && !$ctrl.isBooked">{{$ctrl.load.nextAction | lastModifiedBy}}</span>
   </div>
   <div ng-if="$ctrl.loadType === $ctrl.loadTypesEnum.UNBILLED">
-    <h3 class="driver-name">{{$ctrl.load.bill}}</h3>
+    <h3 class="driver-name">Bill ${{$ctrl.load.balanceRemaining}}</h3>
     <span>{{$ctrl.load | formatInvoicePODs}}</span>
   </div>
   <div class="action-align-bottom" ng-if="$ctrl.nextAction">

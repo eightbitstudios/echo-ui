@@ -40,7 +40,7 @@ module.exports = function (app) {
   app.put(endpoints.api.proNumberByLoadId, loadsHandler.updateProNumber);
   app.put(endpoints.api.trailerNumberByLoadId, loadsHandler.updateTrailerNumber);
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
-  app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
+  app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getUnbilledLoadsByCarrierId);
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.loadCountByCarrierId, loadsHandler.getLoadCount);
   app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
