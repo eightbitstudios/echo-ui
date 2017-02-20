@@ -112,7 +112,7 @@ angular.module('echo.components.loadTable.action.actionButton', [
       };
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value] = function () {
-        return documentApi.fetchDocuments(that.load.loadGuid).then(function (documents) {
+        return documentApi.fetchDocuments(that.carrierId, that.load.loadGuid).then(function (documents) {
           return modalService.open({
             component: 'document-upload-modal',
             bindings: {

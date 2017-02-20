@@ -39,7 +39,7 @@ module.exports = function (app) {
   app.put(endpoints.api.proNumberByLoadId, loadsHandler.updateProNumber);
   app.put(endpoints.api.trailerNumberByLoadId, loadsHandler.updateTrailerNumber);
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
-  app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
+  app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getUnbilledLoadsByCarrierId);
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.loadCountByCarrierId, loadsHandler.getLoadCount);
   app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
@@ -53,6 +53,7 @@ module.exports = function (app) {
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);
+  app.post(endpoints.api.resendInviteToUserById, userHandler.resendInviteToUserById);
   app.post(endpoints.api.signIn, authHandler.signIn);
   app.put(endpoints.api.changePassword, authHandler.changePassword);
   app.post(endpoints.api.signOut, authHandler.signOut);

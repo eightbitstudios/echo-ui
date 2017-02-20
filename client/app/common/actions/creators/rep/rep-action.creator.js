@@ -16,6 +16,11 @@ angular.module('echo.actions.creators.rep', [
         type: repActions.SET_REP,
         payload: repData
       };
+    },
+    clearRep: function() {
+      return {
+        type: repActions.CLEAR_REP
+      };
     }
   };
 });
