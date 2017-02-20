@@ -56,12 +56,12 @@ module.exports = {
     mapPointsForLoadsNeedingAction: '/mock/api/v1/carriers/:carrierId/loads/needsAction/map',
     activeLoadsPage: '/mock/api/v1/carriers/:carrierId/loads/activeLoadsPage',
     loadDashboard: '/mock/api/v1/carriers/:carrierId/loads/dashboardPage',
-    documentUpload: '/mock/api/v1/:carrierId/documents/loadDocument',
-    invoiceUpload: '/mock/api/v1/:carrierId/documents/invoiceDocument',
-    documents: '/mock/api/v1/:carrierId/documents/:loadId/manifestbyload',
-    documentById: '/mock/api/v1/:carrierId/documents/images/:documentId',
-    documentsByIdThumbnail: '/mock/api/v1/:carrierId/documents/images/:documentId/thumbnail',
-    documentsByIdPDF: '/mock/api/v1/:carrierId/documents/download/pdf/:documentName',
+    documentUpload: '/mock/api/v1/carriers/:carrierId/documents/loadDocument',
+    invoiceUpload: '/mock/api/v1/carriers/:carrierId/documents/invoiceDocument',
+    documents: '/mock/api/v1/carriers/:carrierId/documents/:loadId/manifestbyload',
+    documentById: '/mock/api/v1/carriers/:carrierId/documents/images/:documentId',
+    documentsByIdThumbnail: '/mock/api/v1/carriers/:carrierId/documents/images/:documentId/thumbnail',
+    documentsByIdPDF: '/mock/api/v1/carriers/:carrierId/documents/download/pdf/:documentName',
     activeInvoicesPage: '/mock/api/v1/carriers/:carrierId/invoices/activeInvoicesPage'
   }
 };
