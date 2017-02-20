@@ -19,4 +19,8 @@ angular.module('echo.action', [])
     SET_REP: 'SET_REP',
     LOADING_REP: 'LOADING_REP',
     CLEAR_REP: 'CLEAR_REP'
+  }).constant('invoiceCountsActions', {
+    FETCH_INVOICE_COUNTS: 'FETCH_INVOICE_COUNTS',
+    INVOICE_COUNTS_LOADED: 'INVOICE_COUNTS_LOADED',
+    CLEAR_INVOICE_COUNTS: 'CLEAR_INVOICE_COUNTS'
   });

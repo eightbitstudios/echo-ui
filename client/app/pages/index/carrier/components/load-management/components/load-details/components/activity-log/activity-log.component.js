@@ -8,13 +8,14 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.activityLog', [
       totalStops: '<'
     },
     controller: function() {
+      var that = this;
 
-      this.showDisclaimer = function() {
-        return this.totalStops > 2 && this.activityLog.length === 0;
+      that.showDisclaimer = function() {
+        return that.totalStops > 2 && that.activityLog.length === 0;
       };
 
-      this.$onInit = function() {
-        this.isOpen = false;
+      that.$onInit = function() {
+        that.isOpen = false;
       };
     }
   });

@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('echo.api.document', [
-  'echo.config.api'
-]).factory('documentApi', function($q, $http, apiConfig) {
+  'echo.config.api',
+  'echo.config.globals'
+]).factory('documentApi', function($q, $http, apiConfig, moment) {
   return {
     fetchDocuments: function(carrierId, loadGuid) {
       var url = _.template(apiConfig.documents)({
@@ -96,7 +97,7 @@ angular.module('echo.api.document', [
       body.append('loadNumber', loadNumber);
       body.append('invoiceNumber', invoiceNumber);
       body.append('invoiceRate', invoiceRate);
-      body.append('invoiceDate', invoiceDate);
+      body.append('invoiceDate', moment(invoiceDate).format('ddd MMM DD YYYY'));
 
       _.forEach(invoicePages, function(page) {
         body.append('invoicePages', page.fileData);

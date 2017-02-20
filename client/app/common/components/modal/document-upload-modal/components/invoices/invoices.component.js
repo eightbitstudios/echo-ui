@@ -22,7 +22,8 @@ angular.module('echo.components.modal.documentUpload.invoices', [
       that.showSavedMessage = false;
       that.showErrorMessage = false;
 
-      documentApi.createInvoices(that.carrierId, that.loadId, that.files, that.invoiceNumber, that.newBillRate, that.invoiceDate)
+      documentApi.createInvoices(that.carrierId, that.loadId, that.files, 
+        that.invoiceNumber, that.newBillRate, that.invoiceDate)
         .then(function() {
           that.showSavedMessage = true;
           that.refreshDocumentsCallback();

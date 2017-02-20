@@ -11,7 +11,8 @@ angular.module('echo.config.appConstants', [])
       driverList: 5,
       loadsList: 10,
       loadsNeedingAction: 5,
-      multistopLoads: 5
+      multistopLoads: 5,
+      invoicesList: 10
     },
     LANGUAGES: {
       default: 'English',
