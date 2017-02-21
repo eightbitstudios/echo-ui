@@ -94,6 +94,12 @@ angular.module('echo.components.loadTable.action.actionButton', [
 
       actionHandler[actionEnums.AVAILABLE_ACTIONS.REPORT_ARRIVAL_AT_PICKUP.value] = function () {
         return timeZoneApi.fetchTimeZones().then(function (timeZones) {
+          var address;
+          if (_.isArray(that.load.pickUp)) {
+            address = _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.load.pickUp);
+          } else {
+            address = that.load.pickUp;
+          }
           return modalService.open({
             component: 'report-arrival-modal',
             bindings: {
@@ -101,7 +107,7 @@ angular.module('echo.components.loadTable.action.actionButton', [
               carrierId: that.carrierId,
               reportArrival: {
                 actionPerformedOn: moment(that.load.nextAction.actionPerformedOnDate, 'MM/DD/YYYY HH:mm:ss'),
-                address: _.find(that.load.pickUp, { isCurrent: true }) || _.last(that.load.pickUp),
+                address: address,
                 driver: that.load.driver
               },
               timeZones: timeZones,
