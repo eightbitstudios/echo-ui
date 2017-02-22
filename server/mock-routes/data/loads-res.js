@@ -84,7 +84,7 @@ module.exports = {
       "isDoNotDisturb": true
     },
     nextAction: {
-      lastAction: 15,
+      lastAction: 6,
       firstName: 'Tim',
       lastName: 'Potatoe',
       actionPerformedOn: '13:50 CST Today',
@@ -114,10 +114,11 @@ module.exports = {
       }    ],
     "trailerNumber": "8956 7412",
     "tractorNumber": "7894 9216",
-    "sumOfWeightInPounds": 2080.5
+    "sumOfWeightInPounds": 2080.5,
+    isDriverVerified: true
   }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
-      loadNumber: 12344321,
+      loadNumber: 123443252,
       proNumber: null,
       pickUp: [{
         pickupNumber: 56985478,
@@ -126,14 +127,7 @@ module.exports = {
         zip: '60655',
         isCurrent: false,
         time: '2016-08-02T16:20:14-05:00'
-      }, {
-          pickupNumber: 5698543478,
-          city: 'LA',
-          state: 'California',
-          zip: '60655',
-          isCurrent: true,
-          time: '2016-08-02T16:20:14-05:00'
-        }],
+      }],
       delivery: [{
         city: 'Chicago',
         state: 'IL',
@@ -194,7 +188,8 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+      isDriverVerified: true
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
