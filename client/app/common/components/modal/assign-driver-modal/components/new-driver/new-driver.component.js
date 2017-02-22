@@ -1,10 +1,8 @@
 angular.module('echo.components.modal.assignDriver.newDriver', [
     'echo.models.driver',
-    'echo.config.appConstants',
     'echo.components.driverProfile',
     'echo.api.driver',
-    'echo.api.language',
-    'echo.components.serverErrors'
+    'echo.api.language'
   ])
   .component('newDriver', {
     templateUrl: 'app/common/components/modal/assign-driver-modal/components/new-driver/new-driver.template.html',
@@ -13,7 +11,7 @@ angular.module('echo.components.modal.assignDriver.newDriver', [
       continueCallback: '&',
       carrierId: '<'
     },
-    controller: function(languageApi, driverApi, DriverModel, appConstants) {
+    controller: function(languageApi, driverApi, DriverModel) {
 
       this.saveNewDriver = function() {
         var that = this;
@@ -23,8 +21,6 @@ angular.module('echo.components.modal.assignDriver.newDriver', [
             that.continueCallback({
               driver: newDriver
             });
-          }).catch(function(errorMessage) {
-            that.serverError = errorMessage;
           }).finally(function() {
             that.showLoading = false;
           });
@@ -35,7 +31,6 @@ angular.module('echo.components.modal.assignDriver.newDriver', [
         var that = this;
         that.newDriver = new DriverModel();
         that.showLoading = true;
-        that.errorMessageOverride = appConstants.ERROR_MESSAGES.DRIVER;
         languageApi.fetchLanguages().then(function(languages) {
           that.languages = languages;
         }).finally(function() {
