@@ -24,6 +24,7 @@ angular.module('echo.components.modal.documentUpload', [
       that.refreshDocuments = function() {
         documentApi.fetchDocuments(that.carrierId, that.load.loadGuid).then(function(documents) {
           that.documents = documents;
+          that.updateDocumentNeeds();
         });
         that.resetModal();
       };
@@ -31,6 +32,15 @@ angular.module('echo.components.modal.documentUpload', [
       that.resetModal = function() {
         that.selectedDocumentType = documentTypes.POD.value;
         that.files = [];
+      };
+
+      that.updateDocumentNeeds = function () {
+        that.numberOfPODs = _(that.documents).filter(function(document) {
+          return document.documentSubType === documentTypes.POD.value;
+        }).size();
+
+        that.load.needsInvoice = !_.includes(_.map(that.documents, function (document) { return document.documentSubType; }), documentTypes.INVOICE.value);
+        that.load.neededPODs = that.numberOfStops - that.numberOfPODs;
       };
 
       that.$onInit = function() {
