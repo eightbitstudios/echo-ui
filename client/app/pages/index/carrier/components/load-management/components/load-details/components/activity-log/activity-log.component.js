@@ -11,7 +11,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.activityLog', [
       var that = this;
 
       that.showDisclaimer = function() {
-        return that.totalStops > 2 && _.size(that.activityLog) === 0;
+        return that.totalStops > 2 && _.isEmpty(that.activityLog);
       };
 
       that.$onInit = function() {
