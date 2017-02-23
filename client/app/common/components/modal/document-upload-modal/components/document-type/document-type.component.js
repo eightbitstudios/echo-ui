@@ -28,10 +28,6 @@ angular.module('echo.components.modal.documentUpload.documentType', [
       that.numberOfPODS = _(that.documents).filter(function(document) {
         return document.documentSubType === documentTypes.POD.value;
       }).size();
-
-      if(that.numberOfPODS < that.numberOfStops) {
-        that.selectedDocumentType = that.documentTypes.POD.value;
-      }
     };
   }
 });

@@ -45,15 +45,19 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
             that.currentStep = that.modes.trailerPickup;
             break;
           case loadUpdateOptionEnums.ARRIVAL_AT_DELIVERY.value:
+            var address;
+            if (_.isArray(that.load.delivery)) {
+              address = _.find(that.load.delivery, { isCurrent: true }) || _.last(that.load.delivery);
+            } else {
+              address = that.load.delivery;
+            }
             var modalInstance = modalService.open({
               component: 'report-arrival-modal',
               bindings: {
                 load: that.load,
                 reportArrival: {
                   actionPerformedOn: that.load.nextAction.actionPerformedOnDate,
-                  address: _.find(that.load.delivery, {
-                    isCurrent: true
-                  }) || _.last(that.shippingDetails),
+                  address: address,
                   driver: that.load.driver
                 },
                 timeZones: that.timeZones,

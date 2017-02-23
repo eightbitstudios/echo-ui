@@ -34,7 +34,10 @@ angular.module('echo.index.myCarriers.carrierDetails', [
               that.showLoading = false;
             }));
           } else {
-            that.showLoading = false;
+            languageApi.fetchLanguages().then(function (languages) {
+              that.languages = languages;
+              that.showLoading = false;
+            });
           }
         });
       };

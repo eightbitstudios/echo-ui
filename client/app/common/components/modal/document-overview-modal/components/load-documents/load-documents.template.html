@@ -1,4 +1,5 @@
 <div class="load-documents">
+  <div ng-if="$ctrl.hidePreview && (!$ctrl.documents || $ctrl.documents.length === 0)">No Documents</div>
   <div ng-class="{active: document === $ctrl.selectedDocument}" class="load-doc" ng-repeat="document in $ctrl.documents" ng-click="$ctrl.selectDocument(document)">
     <div class="doc-image" ng-if="!$ctrl.hidePreview">
       <a href="javascript:void(0)">
