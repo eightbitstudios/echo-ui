@@ -31,9 +31,9 @@
             {{invoice.receivedDate}}
           </td>
           <td class="invoice-status">
-            <strong>{{$ctrl.mapInvoiceCode(invoice.status)}}</strong>
+            <strong>{{invoice.status | invoiceCode}}</strong>
             <br>
-            {{$ctrl.mapReasonCode(invoice.statusReason)}}
+            {{invoice.statusReason | invoiceReasonCode}}
           </td>
           <td class="invoice-total">
             <span>{{invoice.invoiceAmount | currency : '$'}}</span><br><div class="text-warning">
@@ -41,7 +41,7 @@
           </div>
           </td>
           <td class="invoice-load-number">
-            <a ui-sref="{{$ctrl.loadDetails}}({loadId: invoice.loadGuid})">{{invoice.loadId}}</a>
+            <a ui-sref="{{$ctrl.loadDetailsRoute}}({loadId: invoice.loadGuid})">{{invoice.loadId}}</a>
           </td>
           <td class="invoice-pro-number">
             {{invoice.proNumber}}

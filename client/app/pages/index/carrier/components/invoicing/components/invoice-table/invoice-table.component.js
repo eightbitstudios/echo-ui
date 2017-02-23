@@ -1,6 +1,7 @@
 angular.module('echo.index.carrier.invoicing.invoiceTable', [
   'echo.filters.formatCityState',
-  'echo.enums.invoices'
+  'echo.filters.invoiceCode',
+  'echo.filters.invoiceReasonCode'
 ])
   .component('invoiceTable', {
     templateUrl: 'app/pages/index/carrier/components/invoicing/components/invoice-table/invoice-table.template.html',
@@ -10,19 +11,11 @@ angular.module('echo.index.carrier.invoicing.invoiceTable', [
       invoices: '<',
       showLoading: '<'
     },
-    controller: function (invoiceEnums, routesConfig) {
-      this.mapInvoiceCode = function (invoiceCode) {
-        var enumObject = _.find(invoiceEnums.STATUSES, function(obj) { return obj.value === invoiceCode; });
-        return _.get(enumObject, 'description', null);
-      };
+    controller: function (routesConfig) {
+      var that = this;
 
-      this.mapReasonCode = function (reasonCode) {
-        var enumObject = _.find(invoiceEnums.STATUS_REASONS, function(obj) { return obj.value === reasonCode; });
-        return _.get(enumObject, 'description', null);
-      };
-
-      this.$onInit = function () {
-        this.loadDetails = routesConfig.INDEX.loadDetails.name;
+      that.$onInit = function () {
+        that.loadDetailsRoute = routesConfig.INDEX.loadDetails.name;
       };
     }
   });
