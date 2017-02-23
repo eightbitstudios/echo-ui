@@ -18,7 +18,7 @@ angular.module('echo.components.loadTable.action.actionButton', [
   .component('actionButton', {
     templateUrl: 'app/common/components/load-table/components/action/action-button/action-button.template.html',
     bindings: {
-      load: '<',
+      load: '=',
       actionChangedCallback: '&',
       carrierId: '<',
       mapView: '<'
