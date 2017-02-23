@@ -29,14 +29,7 @@ angular.module('echo.api.invoices', [
         carrierId: carrierId
       });
 
-      var params = {
-        limit: 1,
-        offset: 0
-      };
-
-      return $http.get(url, {
-        params: params
-      }).then(function(resp) {
+      return $http.get(url).then(function(resp) {
         return $q.when(resp.data.data.invoicesCount);
       });
     },
