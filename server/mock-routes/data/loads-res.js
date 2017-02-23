@@ -5,7 +5,7 @@ module.exports = {
     "proNumber": "1200987860859657",
     "bolNumber": "56765676",
     "pickUp": [{
-      "pickupNumber": 56985478,
+      "pickupNumber": "56985478",
       "name": "Walmart Warehouse",
       "address": "123 Main Street",
       "city": "New York City",
@@ -39,7 +39,7 @@ module.exports = {
     }],
     escalationLevel: 2,
     "delivery": [{
-      "pickupNumber": 56985478,
+      "pickupNumber": "56985478",
       "name": "Walmart Supercenter",
       "address": "123 North Avenue",
       "city": "Chicago",
@@ -120,14 +120,14 @@ module.exports = {
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
-        pickupNumber: 56985478,
+        pickupNumber: "56985478",
         city: 'New York',
         state: 'New York',
         zip: '60655',
         isCurrent: false,
         time: '2016-08-02T16:20:14-05:00'
       }, {
-          pickupNumber: 5698543478,
+          pickupNumber: "5698543478",
           city: 'LA',
           state: 'California',
           zip: '60655',
