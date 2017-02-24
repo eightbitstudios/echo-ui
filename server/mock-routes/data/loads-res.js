@@ -5,7 +5,7 @@ module.exports = {
     "proNumber": "1200987860859657",
     "bolNumber": "56765676",
     "pickUp": [{
-      "pickupNumber": 56985478,
+      "pickupNumber": "56985478",
       "name": "Walmart Warehouse",
       "address": "123 Main Street",
       "city": "New York City",
@@ -39,7 +39,7 @@ module.exports = {
     }],
     escalationLevel: 2,
     "delivery": [{
-      "pickupNumber": 56985478,
+      "pickupNumber": "56985478",
       "name": "Walmart Supercenter",
       "address": "123 North Avenue",
       "city": "Chicago",
@@ -84,7 +84,7 @@ module.exports = {
       "isDoNotDisturb": true
     },
     nextAction: {
-      lastAction: 6,
+      lastAction: 15,
       firstName: 'Tim',
       lastName: 'Potatoe',
       actionPerformedOn: '13:50 CST Today',
@@ -114,20 +114,26 @@ module.exports = {
       }    ],
     "trailerNumber": "8956 7412",
     "tractorNumber": "7894 9216",
-    "sumOfWeightInPounds": 2080.5,
-    isDriverVerified: true
+    "sumOfWeightInPounds": 2080.5
   }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
-      loadNumber: 123443252,
+      loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
-        pickupNumber: 56985478,
+        pickupNumber: "56985478",
         city: 'New York',
         state: 'New York',
         zip: '60655',
         isCurrent: false,
         time: '2016-08-02T16:20:14-05:00'
-      }],
+      }, {
+          pickupNumber: "5698543478",
+          city: 'LA',
+          state: 'California',
+          zip: '60655',
+          isCurrent: true,
+          time: '2016-08-02T16:20:14-05:00'
+        }],
       delivery: [{
         city: 'Chicago',
         state: 'IL',
@@ -188,8 +194,7 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false,
-      isDriverVerified: true
+      isLoadDetailUpdated: false
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,

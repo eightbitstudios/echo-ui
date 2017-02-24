@@ -1,0 +1,5 @@
+<div class="details-location col-sm-3">
+  <h5 class="small-header" ng-if="!$ctrl.isDelivery">Pickup Numbers</h5>
+  <h5 class="small-header" ng-if="$ctrl.isDelivery">Delivery Numbers</h5>
+  <span class="pickup-number" ng-repeat="number in $ctrl.numbers track by $index">{{number}}<br></span>
+</div>
