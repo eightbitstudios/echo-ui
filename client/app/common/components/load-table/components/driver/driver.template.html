@@ -1,8 +1,8 @@
 <div class="carrier-dashboard-driver">
   <div ng-if="!$ctrl.noDriver">
     <h3 class="driver-name">
-      <a ng-if="$ctrl.load.isDriverVerified || !$ctrl.isDisabled" href="javascript:void(0)" ng-click="$ctrl.showAssignDriverModal()">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</a>
-      <span ng-if="!$ctrl.load.isDriverVerified && $ctrl.isDisabled">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</span>
+      <a ng-if="$ctrl.load.isDriverVerified && !$ctrl.isDisabled" href="javascript:void(0)" ng-click="$ctrl.showAssignDriverModal()">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</a>
+      <span ng-if="!$ctrl.load.isDriverVerified || $ctrl.isDisabled">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</span>
     </h3>
     <span><tel>{{$ctrl.load.driver.phone | phoneNumber}}</tel></span>
     <div class="driver-status">
