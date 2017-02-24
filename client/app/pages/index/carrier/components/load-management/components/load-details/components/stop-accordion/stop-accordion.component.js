@@ -2,10 +2,10 @@
 
 angular.module('echo.components.stopAccordion', [
   'echo.components.itemList',
-  'echo.components.detailsLocation',
-  'echo.components.detailsPickupNumbers',
-  'echo.components.detailsContact',
-  'echo.components.detailsNotes',
+  'echo.components.stopLocation',
+  'echo.components.stopLoadNumbers',
+  'echo.components.stopContact',
+  'echo.components.stopNotes',
   'echo.components.loadItemDetails'
 ]).component('stopAccordion', {
   bindings: {
