@@ -3,7 +3,7 @@ module.exports = {
     {
       "invoiceNumber": 2345432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 0,
       "invoiceAmount": 10200,
       "balanceRemaining": 10200,
@@ -87,7 +87,7 @@ module.exports = {
     {
       "invoiceNumber": 23098432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 1,
       "invoiceAmount": 100,
       "balanceRemaining": 100,
@@ -108,7 +108,7 @@ module.exports = {
     {
       "invoiceNumber": 26453432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 0,
       "invoiceAmount": 10200,
       "balanceRemaining": 10200,
@@ -129,7 +129,7 @@ module.exports = {
     {
       "invoiceNumber": 2345432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 0,
       "invoiceAmount": 10200,
       "balanceRemaining": 10200,
@@ -150,7 +150,7 @@ module.exports = {
     {
       "invoiceNumber": 2345432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 0,
       "invoiceAmount": 10200,
       "balanceRemaining": 10200,
@@ -171,7 +171,7 @@ module.exports = {
     {
       "invoiceNumber": 2345432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 0,
       "invoiceAmount": 10200,
       "balanceRemaining": 10200,
@@ -192,7 +192,7 @@ module.exports = {
     {
       "invoiceNumber": 2345432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 0,
       "invoiceAmount": 10200,
       "balanceRemaining": 10200,
@@ -213,7 +213,7 @@ module.exports = {
     {
       "invoiceNumber": 2345432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 0,
       "invoiceAmount": 10200,
       "balanceRemaining": 10200,
@@ -234,7 +234,7 @@ module.exports = {
     {
       "invoiceNumber": 2345432,
       "receivedDate": "Feb 3 2016",
-      "status": 0,
+      "status": 2,
       "statusReason": 0,
       "invoiceAmount": 10200,
       "balanceRemaining": 10200,

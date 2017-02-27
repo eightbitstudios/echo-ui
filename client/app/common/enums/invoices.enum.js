@@ -1,25 +1,25 @@
 angular.module('echo.enums.invoices', [])
   .constant('invoiceEnums', {
     STATUSES: {
-      IN_REVIEW: {
-        value: 0,
-        description: 'In Review'
-      },
       SUBMITTED: {
         value: 1,
         description: 'Submitted'
       },
-      APPROVED: {
+      IN_REVIEW: {
         value: 2,
+        description: 'In Review'
+      },
+      APPROVED: {
+        value: 3,
         description: 'Approved'
       },
-      VOID: {
-        value: 3,
-        description: 'Void'
-      },
       PAID: {
-        value: 4,
+        value: 5,
         description: 'Paid'
+      },
+      VOID: {
+        value: 6,
+        description: 'Void'
       }
     },
     STATUS_REASONS: {

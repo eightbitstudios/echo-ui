@@ -3,7 +3,7 @@ angular.module('echo.directives.focus', [])
     return {
       restrict: 'A',
       link: function (scope, element) {
-        element.focus();
+        element[0].focus();
       }
     };
   });
