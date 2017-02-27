@@ -181,4 +181,26 @@
 .carrier-dashboard-arrow
   img
     width: 23px
-    height: auto
+    height: 18px
+
+// Load Alert
+
+.load-canceled
+  .carrier-dashboard-load
+    &:before
+      content: 'Canceled'
+      position: absolute
+      top: 30px
+      left: 190%
+      font-size: 60px
+      font-family: "Teko"
+      font-weight: 800
+      transform: rotateZ(-9deg)
+      z-index: 111111
+      color: rgba(0,0,0,0.45)
+
+  .load-number
+    color: $dark-grey
+
+  .carrier-dashboard-arrow
+    opacity: 0.4

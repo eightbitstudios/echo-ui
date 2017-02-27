@@ -10944,7 +10944,27 @@ body.user-profile {
 /* line 182, pages/_carrier_dashboard.sass */
 .carrier-dashboard-arrow img {
   width: 23px;
-  height: auto; }
+  height: 18px; }
+
+/* line 190, pages/_carrier_dashboard.sass */
+.load-canceled .carrier-dashboard-load:before {
+  content: "Canceled";
+  position: absolute;
+  top: 30px;
+  left: 190%;
+  font-size: 60px;
+  font-family: "Teko";
+  font-weight: 800;
+  -webkit-transform: rotateZ(-9deg);
+          transform: rotateZ(-9deg);
+  z-index: 111111;
+  color: rgba(0, 0, 0, 0.45); }
+/* line 202, pages/_carrier_dashboard.sass */
+.load-canceled .load-number {
+  color: #414344; }
+/* line 205, pages/_carrier_dashboard.sass */
+.load-canceled .carrier-dashboard-arrow {
+  opacity: 0.4; }
 
 /* line 5, pages/_load_details.sass */
 body.load-management-detail {
