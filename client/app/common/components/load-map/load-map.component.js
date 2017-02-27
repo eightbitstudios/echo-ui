@@ -38,6 +38,7 @@ angular.module('echo.components.loadMap', [
             that.google = google;
             return googleMaps.formatMapPoints(google, new google.maps.Geocoder(), that.mapPoints);
           }).then(function (mapCenter) {
+            that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
             that.mapCenter = mapCenter;
           }).finally(function() {
             googleMaps.resizeAndCenter(that.google, that.map, that.mapPoints);
