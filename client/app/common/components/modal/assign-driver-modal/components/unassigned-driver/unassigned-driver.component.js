@@ -7,7 +7,7 @@ angular.module('echo.components.modal.assignDriver.unassignedDriver', [
     'echo.filters.fullName'
   ])
   .component('unassignedDriver', {
-    templateUrl: 'app/common/components/modal/assign-driver-modal/components/unassigned-driver/unassigned-driver.component.html',
+    templateUrl: 'app/common/components/modal/assign-driver-modal/components/unassigned-driver/unassigned-driver.template.html',
     bindings: {
       carrierId: '<',
       loadId: '<',

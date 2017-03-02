@@ -5,7 +5,7 @@ angular.module('echo.components.originDestinationMap', [
   'echo.components.googleMapsMarker'
 ])
   .component('originDestinationMap', {
-    templateUrl: 'app/common/components/origin-destination-map/origin-destination-map.component.html',
+    templateUrl: 'app/common/components/origin-destination-map/origin-destination-map.template.html',
     bindings: {
       mapPoint: '<'
     },

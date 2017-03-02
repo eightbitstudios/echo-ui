@@ -3,7 +3,7 @@ describe('Component: reportEmptyModal', function () {
   var component, $q, modalActions, items, loadsApi, modalService, DateTimePickerModel, LocationModel, scope, element, state;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/report-empty-modal/report-empty-modal.component.html');
+    module('app/common/components/modal/milestones/report-empty-modal/report-empty-modal.template.html');
     module('echo.components.modal.milestones.reportEmpty', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportEmpty']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));

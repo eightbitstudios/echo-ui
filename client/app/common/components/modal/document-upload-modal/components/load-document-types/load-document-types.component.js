@@ -2,7 +2,7 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
   'echo.constants.documentTypes',
   'echo.api.document'
 ]).component('loadDocumentTypes', {
-  templateUrl: 'app/common/components/modal/document-upload-modal/components/load-document-types/load-document-types.component.html',
+  templateUrl: 'app/common/components/modal/document-upload-modal/components/load-document-types/load-document-types.template.html',
   bindings: {
     loadId: '<',
     selectedDocumentType: '=',

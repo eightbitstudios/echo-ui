@@ -9,7 +9,7 @@ angular.module('echo.components.equipment', [
     trailerNumber: '<',
     loadGuid: '<'
   },
-  templateUrl: 'app/common/components/equipment/equipment.component.html',
+  templateUrl: 'app/common/components/equipment/equipment.template.html',
   controller: function(loadsApi) {
 
     this.updateTrailerNumber = function(newTrailerNumber) {

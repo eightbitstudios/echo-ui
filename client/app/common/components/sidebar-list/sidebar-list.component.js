@@ -8,7 +8,7 @@ angular.module('echo.components.sidebarList', [])
       searchParam: '=',
       minSearchCharacters: '<'
     },
-    templateUrl: 'app/common/components/sidebar-list/sidebar-list.component.html',
+    templateUrl: 'app/common/components/sidebar-list/sidebar-list.template.html',
     controller: function () {
       
       /**

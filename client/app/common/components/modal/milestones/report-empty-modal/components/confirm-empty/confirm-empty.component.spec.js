@@ -3,7 +3,7 @@ describe('Component: confirmEmpty', function () {
   var component, $q, checkboxItems, reportEmpty, scope;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/report-empty-modal/components/confirm-empty/confirm-empty.component.html');
+    module('app/common/components/modal/milestones/report-empty-modal/components/confirm-empty/confirm-empty.template.html');
     module('echo.components.modal.milestones.reportEmpty.confirmEmpty');
   });
 

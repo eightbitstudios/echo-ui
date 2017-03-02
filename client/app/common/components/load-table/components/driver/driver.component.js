@@ -8,7 +8,7 @@ angular.module('echo.components.loadTable.driver', [
     'echo.components.modal.verifyDriver'
   ])
   .component('driver', {
-    templateUrl: 'app/common/components/load-table/components/driver/driver.component.html',
+    templateUrl: 'app/common/components/load-table/components/driver/driver.template.html',
     bindings: {
       load: '<',
       loadType: '<',

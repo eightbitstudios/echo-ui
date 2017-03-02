@@ -3,7 +3,7 @@ describe('Component: Resend Invite', function () {
   var component, scope, $q, user, portalUserApi;
 
   beforeEach(function () {
-    module('app/common/components/resend-invite/resend-invite.component.html');
+    module('app/common/components/resend-invite/resend-invite.template.html');
     module('echo.components.resendInvite', function ($provide) {
       $provide.value('portalUserApi', portalUserApi = jasmine.createSpyObj('portalUserApi', ['resendInviteToPortalUserById']));
     });

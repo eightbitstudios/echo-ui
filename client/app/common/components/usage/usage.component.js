@@ -8,7 +8,7 @@ angular.module('echo.components.usage', [
   bindings: {
     user: '<'
   },
-  templateUrl: 'app/common/components/usage/usage.component.html',
+  templateUrl: 'app/common/components/usage/usage.template.html',
   controller: function (UserModel, DriverModel) {
     this.hasUserLoggedIn = function () {
       return this.user.lastLogin !== 'Never';

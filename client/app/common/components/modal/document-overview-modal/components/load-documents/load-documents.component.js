@@ -5,7 +5,7 @@ angular.module('echo.components.modal.documentOverview.loadDocuments', [
     'echo.components.secureImage'
   ])
   .component('loadDocuments', {
-    templateUrl: 'app/common/components/modal/document-overview-modal/components/load-documents/load-documents.component.html',
+    templateUrl: 'app/common/components/modal/document-overview-modal/components/load-documents/load-documents.template.html',
     bindings: {
       documents: '<',
       selectedDocument: '<',

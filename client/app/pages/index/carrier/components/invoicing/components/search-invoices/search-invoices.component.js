@@ -6,7 +6,7 @@ angular.module('echo.index.carrier.invoicing.searchInvoices', [
   'echo.components.pagination',
   'echo.config.appConstants'
 ]).component('searchInvoices', {
-  templateUrl: 'app/pages/index/carrier/components/invoicing/components/search-invoices/search-invoices.component.html',
+  templateUrl: 'app/pages/index/carrier/components/invoicing/components/search-invoices/search-invoices.template.html',
   bindings: {},
   controller: function($state, $stateParams, store$, routesConfig, invoicesApi, PagingModel, appConstants) {
     var that = this;

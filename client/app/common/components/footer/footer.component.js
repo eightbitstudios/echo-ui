@@ -9,7 +9,7 @@ angular.module('echo.components.footer', [
   'echo.services.modal',
   'echo.components.modal.termsAndConditions'
 ]).component('appFooter', {
-  templateUrl: 'app/common/components/footer/footer.component.html',
+  templateUrl: 'app/common/components/footer/footer.template.html',
   controller: function(store$, routesConfig, appConstants, modalService) {
     var that = this;
     var sub = null;

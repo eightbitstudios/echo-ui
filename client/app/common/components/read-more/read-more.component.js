@@ -6,7 +6,7 @@ angular.module('echo.components.readMore', [
   bindings: {
     text: '<'
   },
-  templateUrl: 'app/common/components/read-more/read-more.component.html',
+  templateUrl: 'app/common/components/read-more/read-more.template.html',
   controller: function (appConstants) {
 
     this.clickHandler = function () {

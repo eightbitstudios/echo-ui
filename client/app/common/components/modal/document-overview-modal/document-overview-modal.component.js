@@ -3,7 +3,7 @@ angular.module('echo.components.modal.documentOverview', [
   'echo.components.modal.documentOverview.documentPreview'
 ])
   .component('documentOverviewModal', {
-    templateUrl: 'app/common/components/modal/document-overview-modal/document-overview-modal.component.html',
+    templateUrl: 'app/common/components/modal/document-overview-modal/document-overview-modal.template.html',
     bindings: {
       modalActions: '<',
       documents: '<',

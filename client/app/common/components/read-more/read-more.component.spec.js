@@ -3,7 +3,7 @@ describe('Component: pagination', function () {
   var scope, text, appConstants, component;
 
   beforeEach(function () {
-    module('app/common/components/read-more/read-more.component.html');
+    module('app/common/components/read-more/read-more.template.html');
     module('echo.components.readMore', function($provide){
       $provide.constant('appConstants', appConstants = {
         TEXT_TRUNCATE: {

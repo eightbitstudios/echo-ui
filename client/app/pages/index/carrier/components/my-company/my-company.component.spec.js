@@ -3,7 +3,7 @@ describe('Component: myCompany', function () {
   var scope, component, store$, routesConfig;
 
   beforeEach(function () {
-    module('app/pages/index/carrier/components/my-company/my-company.component.html');
+    module('app/pages/index/carrier/components/my-company/my-company.template.html');
     module('echo.index.carrier.myCompany', function ($provide) {
       $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));
       $provide.value('$stateParams', {});

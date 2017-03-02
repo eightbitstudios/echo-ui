@@ -3,7 +3,7 @@ describe('Component: driver', function () {
   var component, $q, modalOpenDefer, driverChangedCallback, modalService, verifiedDriver, load, driverApi, carrierId, loadsApi, scope;
 
   beforeEach(function () {
-    module('app/common/components/load-table/components/driver/driver.component.html');
+    module('app/common/components/load-table/components/driver/driver.template.html');
     module('echo.components.loadTable.driver', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchEquipmentByLoadId']));
       $provide.value('driverApi', driverApi = jasmine.createSpyObj('driverApi', ['verifyDriverByPhone']));

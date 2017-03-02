@@ -7,7 +7,7 @@ angular.module('echo.components.filterBar', []).component('filterBar', {
     searchParam: '=',
     minSearchCharacters: '<'
   },
-  templateUrl: 'app/common/components/filter-bar/filter-bar.component.html',
+  templateUrl: 'app/common/components/filter-bar/filter-bar.template.html',
   controller: function() {
     /**
      * @description Sets a search item state to selected

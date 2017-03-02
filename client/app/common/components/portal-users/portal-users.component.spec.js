@@ -3,7 +3,7 @@ describe('Component: portalUsers', function () {
   var scope, portalUsers, clickHandler, component;
 
   beforeEach(function () {
-    module('app/common/components/portal-users/portal-users.component.html');
+    module('app/common/components/portal-users/portal-users.template.html');
     module('echo.components.portalUsers');
   });
 

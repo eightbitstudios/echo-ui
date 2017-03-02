@@ -7,7 +7,7 @@ angular.module('echo.components.modal.milestones.reportArrival', [
     'echo.components.modal.disclaimer'
   ])
   .component('reportArrivalModal', {
-    templateUrl: 'app/common/components/modal/milestones/report-arrival-modal/report-arrival-modal.component.html',
+    templateUrl: 'app/common/components/modal/milestones/report-arrival-modal/report-arrival-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',

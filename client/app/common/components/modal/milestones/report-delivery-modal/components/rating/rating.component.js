@@ -2,7 +2,7 @@ angular.module('echo.components.modal.milestones.rating', [
     'echo.config.appConstants'
   ])
   .component('rating', {
-    templateUrl: 'app/common/components/modal/milestones/report-delivery-modal/components/rating/rating.component.html',
+    templateUrl: 'app/common/components/modal/milestones/report-delivery-modal/components/rating/rating.template.html',
     bindings: {
       rating: '='
     },

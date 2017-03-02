@@ -3,7 +3,7 @@ describe('Component: searchBar', function () {
   var scope, searchCallback, appConstants, keyCodes, component;
 
   beforeEach(function () {
-    module('app/common/components/search-bar/search-bar.component.html');
+    module('app/common/components/search-bar/search-bar.template.html');
     module('echo.components.searchBar', function ($provide) {
       $provide.constant('keyCodes', keyCodes = {
         ENTER: 'enter'

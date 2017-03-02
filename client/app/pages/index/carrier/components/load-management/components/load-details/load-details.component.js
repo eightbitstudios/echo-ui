@@ -10,7 +10,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     'echo.api.document'
   ])
   .component('loadDetails', {
-    templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/load-details.component.html',
+    templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/load-details.template.html',
     controller: function($state, $q, $stateParams, store$, loadsApi, documentApi) {
       var that = this;
 

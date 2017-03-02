@@ -3,7 +3,7 @@ describe('Component: actionButton', function () {
   var component, $q, loadsApi, timeZoneApi, actionEnums, arrivalTypeEnums, load, actionChangedCallback, carrierId, modalOpenDefer, modalService, scope;
 
   beforeEach(function () {
-    module('app/common/components/load-table/components/action/action-button/action-button.component.html');
+    module('app/common/components/load-table/components/action/action-button/action-button.template.html');
     module('echo.components.loadTable.action.actionButton', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchReportEmptyByLoadGuid', 'fetchItemsByLoadGuid', 'fetchLoadUpdateOptionsByLoadGuid', 'fetchItemsByLoadGuid']));
       $provide.value('timeZoneApi', timeZoneApi = jasmine.createSpyObj('timeZoneApi', ['fetchTimeZones']));

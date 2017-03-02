@@ -3,7 +3,7 @@ angular.module('echo.components.modal.milestones.driverLocation', [
   'echo.components.dateTimePicker'
 ])
   .component('driverLocation', {
-    templateUrl: 'app/common/components/modal/milestones/components/driver-location/driver-location.component.html',
+    templateUrl: 'app/common/components/modal/milestones/components/driver-location/driver-location.template.html',
     bindings: {
       location: '=',
       dateTimePicker: '=',

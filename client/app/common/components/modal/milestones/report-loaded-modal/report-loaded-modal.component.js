@@ -11,7 +11,7 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
     'echo.components.modal.errorMessages'
   ])
   .component('reportLoadedModal', {
-    templateUrl: 'app/common/components/modal/milestones/report-loaded-modal/report-loaded-modal.component.html',
+    templateUrl: 'app/common/components/modal/milestones/report-loaded-modal/report-loaded-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',

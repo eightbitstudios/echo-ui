@@ -3,7 +3,7 @@ describe('Component: pagination', function () {
   var scope, recordType, pageClickHandler, pagingModel, onlyShowCurrentPage, component;
 
   beforeEach(function () {
-    module('app/common/components/pagination/pagination.component.html');
+    module('app/common/components/pagination/pagination.template.html');
     module('echo.components.pagination');
   });
 

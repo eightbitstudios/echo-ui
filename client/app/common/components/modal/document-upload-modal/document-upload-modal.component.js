@@ -10,7 +10,7 @@ angular.module('echo.components.modal.documentUpload', [
     'echo.components.modal.documentUpload.loadDocumentTypes'
   ])
   .component('documentUploadModal', {
-    templateUrl: 'app/common/components/modal/document-upload-modal/document-upload-modal.component.html',
+    templateUrl: 'app/common/components/modal/document-upload-modal/document-upload-modal.template.html',
     bindings: {
       load: '=',
       modalActions: '<',

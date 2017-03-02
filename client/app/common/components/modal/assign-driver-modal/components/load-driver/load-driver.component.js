@@ -6,7 +6,7 @@ angular.module('echo.components.modal.assignDriver.loadDriver', [
     'echo.components.modal.assignDriver.enums.assignedDriver'
   ])
   .component('loadDriver', {
-    templateUrl: 'app/common/components/modal/assign-driver-modal/components/load-driver/load-driver.component.html',
+    templateUrl: 'app/common/components/modal/assign-driver-modal/components/load-driver/load-driver.template.html',
     bindings: {
       assignedDriver: '<',
       state: '=',

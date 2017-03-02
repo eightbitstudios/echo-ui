@@ -9,7 +9,7 @@ angular.module('echo.components.pagination', [
     pagingModel: '=',
     onlyShowCurrentPage: '<'
   },
-  templateUrl: 'app/common/components/pagination/pagination.component.html',
+  templateUrl: 'app/common/components/pagination/pagination.template.html',
   controller: function() {
 
     this.previousPage = function() {

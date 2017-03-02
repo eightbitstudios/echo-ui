@@ -10,7 +10,7 @@ angular.module('echo.components.tabBar', [])
       replaceSlot: '?h2',
       searchSlot: '?searchBar'
     },
-    templateUrl: 'app/common/components/tab-bar/tab-bar.component.html',
+    templateUrl: 'app/common/components/tab-bar/tab-bar.template.html',
     controller: function ($state) {
       this.$onInit = function() {
         this.state = $state;

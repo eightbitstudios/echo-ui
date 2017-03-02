@@ -10,7 +10,7 @@ angular.module('echo.components.searchBar', [
       placeholderText: '@'
     },
     transclude: true,
-    templateUrl: 'app/common/components/search-bar/search-bar.component.html',
+    templateUrl: 'app/common/components/search-bar/search-bar.template.html',
     controller: function (appConstants, keyCodes) {
 
       this.toggleFocus = function () {

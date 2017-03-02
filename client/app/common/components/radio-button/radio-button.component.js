@@ -8,6 +8,6 @@ angular.module('echo.components.radioButton', []).component('radioButton', {
     name: '@',
     isDisabled: '='
   },
-  templateUrl: 'app/common/components/radio-button/radio-button.component.html',
+  templateUrl: 'app/common/components/radio-button/radio-button.template.html',
   controller: function() { }
 });

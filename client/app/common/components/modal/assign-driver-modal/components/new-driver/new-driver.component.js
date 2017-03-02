@@ -5,7 +5,7 @@ angular.module('echo.components.modal.assignDriver.newDriver', [
     'echo.api.language'
   ])
   .component('newDriver', {
-    templateUrl: 'app/common/components/modal/assign-driver-modal/components/new-driver/new-driver.component.html',
+    templateUrl: 'app/common/components/modal/assign-driver-modal/components/new-driver/new-driver.template.html',
     bindings: {
       cancelCallback: '&',
       continueCallback: '&',

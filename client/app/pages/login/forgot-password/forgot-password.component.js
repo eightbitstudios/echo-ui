@@ -4,7 +4,7 @@ angular.module('echo.login.forgotPassword', [
   'echo.api.authentication',
   'echo.components.serverErrors'
 ]).component('forgotPassword', {
-  templateUrl: 'app/pages/login/forgot-password/forgot-password.component.html',
+  templateUrl: 'app/pages/login/forgot-password/forgot-password.template.html',
   controller: function($state, routesConfig, authenticationApi, appConstants) {
 
     this.sendHandler = function() {

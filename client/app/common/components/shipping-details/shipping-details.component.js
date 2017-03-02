@@ -3,7 +3,7 @@ angular.module('echo.components.shippingDetails', [
     'echo.models.paging'
   ])
   .component('shippingDetails', {
-    templateUrl: 'app/common/components/shipping-details/shipping-details.component.html',
+    templateUrl: 'app/common/components/shipping-details/shipping-details.template.html',
     bindings: {
       shippingDetails: '<',
       inactive: '<'

@@ -16,7 +16,7 @@ angular.module('echo.components.loadTable.action.actionButton', [
   'echo.filters.lastModifiedBy'
 ])
   .component('actionButton', {
-    templateUrl: 'app/common/components/load-table/components/action/action-button/action-button.component.html',
+    templateUrl: 'app/common/components/load-table/components/action/action-button/action-button.template.html',
     bindings: {
       load: '=',
       actionChangedCallback: '&',

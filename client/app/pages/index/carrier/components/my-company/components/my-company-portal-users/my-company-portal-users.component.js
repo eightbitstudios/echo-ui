@@ -8,7 +8,7 @@ angular.module('echo.index.carrier.myCompany.portalUsers', [
     'echo.index.carrier.myCompany.userProfile'
   ])
   .component('myCompanyPortalUsers', {
-    templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.component.html',
+    templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html',
     controller: function(store$, carrierApi, UserModel) {
 
       var that = this;

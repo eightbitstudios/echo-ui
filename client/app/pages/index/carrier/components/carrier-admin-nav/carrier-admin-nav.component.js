@@ -6,7 +6,7 @@ angular.module('echo.index.carrier.carrierAdminNav', [
   bindings: {
     carrierDetails: '='
   },
-  templateUrl: 'app/pages/index/carrier/components/carrier-admin-nav/carrier-admin-nav.component.html',
+  templateUrl: 'app/pages/index/carrier/components/carrier-admin-nav/carrier-admin-nav.template.html',
   controller: function($state, routesConfig) {
     this.$onInit = function() {
       this.routesConfig = routesConfig;

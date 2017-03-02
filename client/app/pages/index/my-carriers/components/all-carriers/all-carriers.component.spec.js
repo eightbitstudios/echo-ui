@@ -2,7 +2,7 @@ describe('Component: All Carriers', function() {
   var component, scope, $q, carrierApi, $stateParams, carriers, store$;
 
   beforeEach(function() {
-    module('app/pages/index/my-carriers/components/all-carriers/all-carriers.component.html');
+    module('app/pages/index/my-carriers/components/all-carriers/all-carriers.template.html');
     module('echo.index.myCarriers.allCarriers', function($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchCarriers']));
       $provide.value('$stateParams', $stateParams = jasmine.createSpy('$stateParams'));

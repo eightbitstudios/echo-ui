@@ -20,7 +20,7 @@ angular.module('echo.components.portalUserProfile', [
     'go-back-button': 'goBackButton',
     'success-button': 'successButton'
   },
-  templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.component.html',
+  templateUrl: 'app/common/components/portal-user-profile/portal-user-profile.template.html',
   controller: function(appConstants, routesConfig, portalUserApi) {
 
     this.saveChangesHandler = function(portalUser) {

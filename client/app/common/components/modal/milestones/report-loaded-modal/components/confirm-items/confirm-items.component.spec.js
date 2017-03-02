@@ -3,7 +3,7 @@ describe('Component: confirmItems', function () {
   var component, $q, scope, pickupNumbers;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/report-loaded-modal/components/confirm-items/confirm-items.component.html');
+    module('app/common/components/modal/milestones/report-loaded-modal/components/confirm-items/confirm-items.template.html');
     module('echo.components.modal.milestones.reportLoaded.confirmItems');
   });
 

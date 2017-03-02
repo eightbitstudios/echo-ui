@@ -10,7 +10,7 @@ angular.module('echo.components.typeaheadSearch', [
     placeholderText: '@',
     darkTheme: '<'
   },
-  templateUrl: 'app/common/components/typeahead-search/typeahead-search.component.html',
+  templateUrl: 'app/common/components/typeahead-search/typeahead-search.template.html',
   controller: function($q) {
 
     this.onSelect = function() {

@@ -5,7 +5,7 @@ angular.module('echo.components.loadTable', [
   'echo.components.loadTable.load',
   'echo.enums.actions'
 ]).component('loadTable', {
-    templateUrl: 'app/common/components/load-table/load-table.component.html',
+    templateUrl: 'app/common/components/load-table/load-table.template.html',
     bindings: {
       loads: '<',
       loadType: '<',

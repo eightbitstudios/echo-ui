@@ -3,7 +3,7 @@ describe('Component: createPassword', function () {
   var component, $q, window, scope, createPassword, element, authenticationApi, state, routesConfig, createPasswordRes;
 
   beforeEach(function () {
-    module('app/pages/login/create-password/create-password.component.html');
+    module('app/pages/login/create-password/create-password.template.html');
     module('echo.login.createPassword', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['createPassword']));
       $provide.value('$stateParams', stateParams = {});

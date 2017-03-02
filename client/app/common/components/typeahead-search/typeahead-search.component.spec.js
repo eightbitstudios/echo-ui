@@ -3,7 +3,7 @@ describe('Component: typeaheadSearch', function () {
   var component, $q, scope;
 
   beforeEach(function () {
-    module('app/common/components/typeahead-search/typeahead-search.component.html');
+    module('app/common/components/typeahead-search/typeahead-search.template.html');
     module('echo.components.typeaheadSearch');
   });
 

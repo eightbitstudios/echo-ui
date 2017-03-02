@@ -3,7 +3,7 @@ describe('Component: showMore', function () {
   var component, scope, clickHandler, recordType, pagingModel, showLoading;
 
   beforeEach(function () {
-    module('app/common/components/show-more/show-more.component.html');
+    module('app/common/components/show-more/show-more.template.html');
     module('echo.components.showMore');
   });
 

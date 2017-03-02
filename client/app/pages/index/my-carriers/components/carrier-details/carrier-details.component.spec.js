@@ -3,7 +3,7 @@ describe('Component: Carrier Details', function () {
   var component, scope, $q, carrierApi, $stateParams, languageApi;
 
   beforeEach(function () {
-    module('app/pages/index/my-carriers/components/carrier-details/carrier-details.component.html');
+    module('app/pages/index/my-carriers/components/carrier-details/carrier-details.template.html');
     module('echo.index.myCarriers.carrierDetails', function ($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchCarrierById', 'fetchCarrierPortalUsers', 'fetchCarrierDriverCount']));
       $provide.value('languageApi', languageApi = jasmine.createSpyObj('languageApi', ['fetchLanguages']));

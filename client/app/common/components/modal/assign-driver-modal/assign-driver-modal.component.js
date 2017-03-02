@@ -10,7 +10,7 @@ angular.module('echo.components.modal.assignDriver', [
     'echo.components.modal.errorMessages'
   ])
   .component('assignDriverModal', {
-    templateUrl: 'app/common/components/modal/assign-driver-modal/assign-driver-modal.component.html',
+    templateUrl: 'app/common/components/modal/assign-driver-modal/assign-driver-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',

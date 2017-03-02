@@ -3,7 +3,7 @@ describe('Component: pickupAtYard', function () {
   var component, $q, scope, $filter, carrierApi, DateTimePickerModel, load, carrierId, timeZones, assignedDriver;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/components/pickup-at-yard/pickup-at-yard.component.html');
+    module('app/common/components/modal/milestones/components/pickup-at-yard/pickup-at-yard.template.html');
     module('echo.components.modal.milestones.pickupAtYard', function ($provide) {
       $provide.value('$filter', $filter = jasmine.createSpy('$filter'));
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['searchDrivers']));

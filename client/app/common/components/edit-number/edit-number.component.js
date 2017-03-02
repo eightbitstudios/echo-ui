@@ -11,7 +11,7 @@ angular.module('echo.components.editNumber', [
       updateCallback: '&',
       maxLength: '@'
     },
-    templateUrl: 'app/common/components/edit-number/edit-number.component.html',
+    templateUrl: 'app/common/components/edit-number/edit-number.template.html',
     controller: function() {
       this.editNumberHandler = function() {
         this.showForm = true;

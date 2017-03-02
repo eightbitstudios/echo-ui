@@ -11,7 +11,7 @@ angular.module('echo.index.carrier.loadManagement', [
     'echo.actions.creators.loadCounts'
   ])
   .component('loadManagement', {
-    templateUrl: 'app/pages/index/carrier/components/load-management/load-management.component.html',
+    templateUrl: 'app/pages/index/carrier/components/load-management/load-management.template.html',
     controller: function($stateParams, $state, Rx, loadCountsActionCreator, routesConfig, store$) {
       var that = this;
 

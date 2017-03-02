@@ -3,7 +3,7 @@ describe('Component: modalSteps', function () {
   var component, $q, scope, steps, availableSteps, currentStep;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/components/modal-steps/modal-steps.component.html');
+    module('app/common/components/modal/milestones/components/modal-steps/modal-steps.template.html');
     module('echo.components.modal.milestones.modalSteps');
   });
 

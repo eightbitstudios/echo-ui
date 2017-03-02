@@ -6,7 +6,7 @@ angular.module('echo.components.modal.milestones.pickupAtYard', [
     'echo.api.loads'
   ])
   .component('pickupAtYard', {
-    templateUrl: 'app/common/components/modal/milestones/components/pickup-at-yard/pickup-at-yard.component.html',
+    templateUrl: 'app/common/components/modal/milestones/components/pickup-at-yard/pickup-at-yard.template.html',
     bindings: {
       load: '<',
       carrierId: '<',

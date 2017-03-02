@@ -13,7 +13,7 @@ angular.module('echo.components.driverProfile', [
     languages: '<',
     profileUpdatedHandler: '&'
   },
-  templateUrl: 'app/common/components/driver-profile/driver-profile.component.html',
+  templateUrl: 'app/common/components/driver-profile/driver-profile.template.html',
   controller: function(driverApi, appConstants) {
     this.saveDriverHandler = function() {
       var that = this;

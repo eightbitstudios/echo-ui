@@ -19,7 +19,7 @@ angular.module('echo.components.loadMap', [
     }
   })
   .component('loadMap', {
-    templateUrl: 'app/common/components/load-map/load-map.component.html',
+    templateUrl: 'app/common/components/load-map/load-map.template.html',
     bindings: {
       mapPoints: '=',
       detailedInfo: '<',

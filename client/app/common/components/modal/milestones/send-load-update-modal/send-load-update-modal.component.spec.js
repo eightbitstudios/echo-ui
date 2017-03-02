@@ -3,7 +3,7 @@ describe('Component: sendLoadUpdateModal', function () {
   var component, $q, modalServiceOpenDefer, modalActions, loadsApi, modalService, LocationModel, DateTimePickerModel, DriverModel, arrivalTypeEnums, loadUpdateOptionEnums, scope, element, state;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.component.html');
+    module('app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.template.html');
     module('echo.components.modal.milestones.sendLoadUpdate', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportLocation', 'createReportTrailer', 'assignDriver']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));

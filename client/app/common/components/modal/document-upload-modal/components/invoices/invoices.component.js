@@ -3,7 +3,7 @@ angular.module('echo.components.modal.documentUpload.invoices', [
   'echo.api.document',
   'echo.directives.currency'
 ]).component('invoices', {
-  templateUrl: 'app/common/components/modal/document-upload-modal/components/invoices/invoices.component.html',
+  templateUrl: 'app/common/components/modal/document-upload-modal/components/invoices/invoices.template.html',
   bindings: {
     loadId: '<',
     files: '<',

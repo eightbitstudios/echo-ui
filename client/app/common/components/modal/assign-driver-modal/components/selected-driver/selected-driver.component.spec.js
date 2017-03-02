@@ -3,7 +3,7 @@ describe('Component: Selected Driver', function () {
   var component, scope, $q, driver, loadId, loadsApi;
 
   beforeEach(function () {
-    module('app/common/components/modal/assign-driver-modal/components/selected-driver/selected-driver.component.html');
+    module('app/common/components/modal/assign-driver-modal/components/selected-driver/selected-driver.template.html');
     module('echo.components.modal.assignDriver.selectedDriver', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchDriverStatusByLoadId']));
     });

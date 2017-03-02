@@ -10,7 +10,7 @@ angular.module('echo.components.showMore', [
       pagingModel: '=',
       showLoading: '<'
     },
-    templateUrl: 'app/common/components/show-more/show-more.component.html',
+    templateUrl: 'app/common/components/show-more/show-more.template.html',
     controller: function() {
 
       this.showMoreHandler = function() {

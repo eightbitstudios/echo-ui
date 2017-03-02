@@ -2,7 +2,7 @@ describe('Component: Driver Profile', function() {
   var component, scope, $q, component, $componentController, carrierId, driver, languages, profileUpdatedHandler, driverApi;
 
   beforeEach(function() {
-    module('app/common/components/driver-profile/driver-profile.component.html');
+    module('app/common/components/driver-profile/driver-profile.template.html');
     module('echo.components.driverProfile', function($provide) {
       $provide.value('driverApi', driverApi = jasmine.createSpyObj('driverApi', ['upsertDriver', 'deactivateDriverById']));
     });

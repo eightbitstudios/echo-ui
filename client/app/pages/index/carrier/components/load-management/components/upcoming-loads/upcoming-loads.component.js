@@ -7,7 +7,7 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
   'echo.config.appConstants',
   'echo.enums.loadTypes'
 ]).component('upcomingLoads', {
-  templateUrl: 'app/pages/index/carrier/components/load-management/components/upcoming-loads/upcoming-loads.component.html',
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/upcoming-loads/upcoming-loads.template.html',
   bindings: {},
   controller: function(store$, loadsApi, PagingModel, appConstants, loadTypesEnum) {
 

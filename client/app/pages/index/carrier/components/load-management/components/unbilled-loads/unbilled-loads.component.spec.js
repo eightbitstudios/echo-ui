@@ -2,7 +2,7 @@ describe('Component: Unbilled Loads', function() {
   var component, scope, $q, carrierId, store$, loadsApi, unbilledLoadData;
 
   beforeEach(function() {
-    module('app/pages/index/carrier/components/load-management/components/unbilled-loads/unbilled-loads.component.html');
+    module('app/pages/index/carrier/components/load-management/components/unbilled-loads/unbilled-loads.template.html');
     module('echo.index.carrier.loadManagement.unbilledLoads', function($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchUnbilledLoads']));
       $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));

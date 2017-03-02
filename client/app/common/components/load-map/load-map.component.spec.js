@@ -3,7 +3,7 @@ describe('Component: loadMap', function () {
   var scope, component, $q, googleMapsApi, googleMaps, google;
 
   beforeEach(function () {
-    module('app/common/components/load-map/load-map.component.html');
+    module('app/common/components/load-map/load-map.template.html');
     module('echo.components.loadMap', function ($provide) {
       $provide.value('googleMapsApi', googleMapsApi = {});
       $provide.value('googleMaps', googleMaps = jasmine.createSpyObj('googleMaps', ['formatMapPoints', 'resizeAndCenter']));

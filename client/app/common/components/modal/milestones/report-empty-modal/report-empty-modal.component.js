@@ -11,7 +11,7 @@ angular.module('echo.components.modal.milestones.reportEmpty', [
     'echo.components.modal.errorMessages'
   ])
   .component('reportEmptyModal', {
-    templateUrl: 'app/common/components/modal/milestones/report-empty-modal/report-empty-modal.component.html',
+    templateUrl: 'app/common/components/modal/milestones/report-empty-modal/report-empty-modal.template.html',
     bindings: {
       modalActions: '<',
       load: '<',

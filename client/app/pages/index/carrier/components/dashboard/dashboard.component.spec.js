@@ -6,7 +6,7 @@ describe('Component: Dashboard Loads', function() {
   beforeEach(function() {
     module('echo.index.carrier.dashboard', function($provide) {
       $provide.value('PagingModel', PagingModel = jasmine.createSpy('PagingModel'));
-      $provide.value('app/pages/index/carrier/components/dashboard/dashboard.component.html');
+      $provide.value('app/pages/index/carrier/components/dashboard/dashboard.template.html');
       $provide.value('DashboardRequestBuilder',
         DashboardRequestBuilder = jasmine.createSpy('DashboardRequestBuilder'));
       $provide.value('store$',

@@ -14,7 +14,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.action',
   'echo.actions.creators.loadCounts'
 ]).component('activeLoads', {
-  templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.component.html',
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/active-loads/active-loads.template.html',
   bindings: {},
   controller: function(loadsApi, PagingModel, appConstants, store$, loadCountsActionCreator, loadTypesEnum, ActiveLoadsRequestBuilder) {
 

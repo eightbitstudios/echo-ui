@@ -3,7 +3,7 @@ describe('Component: tabBar', function () {
   var component, scope, tabItems, $state, tabReplacementText;
 
   beforeEach(function () {
-    module('app/common/components/tab-bar/tab-bar.component.html');
+    module('app/common/components/tab-bar/tab-bar.template.html');
     module('echo.components.tabBar', function ($provide) {
       $provide.value('$state', $state = {
         id: 1

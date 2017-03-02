@@ -3,7 +3,7 @@ describe('Component: locationSearch', function () {
   var component, $q, location, locationApi, scope;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/components/location-search/location-search.component.html');
+    module('app/common/components/modal/milestones/components/location-search/location-search.template.html');
     module('echo.components.modal.milestones.locationSearch', function($provide) {
       $provide.value('locationApi', locationApi = jasmine.createSpyObj('locationApi', ['fetchLocations']));
     });

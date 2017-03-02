@@ -12,7 +12,7 @@ angular.module('echo.components.fileUpload', [
     uploadConstraints: '<',
     error: '='
   },
-  templateUrl: 'app/common/components/file-upload/file-upload.component.html',
+  templateUrl: 'app/common/components/file-upload/file-upload.template.html',
   controller: function() {
     var that = this;
 

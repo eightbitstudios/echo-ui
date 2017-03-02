@@ -3,7 +3,7 @@ describe('Component: myCompanyDriverProfile', function () {
   var scope, $q, $componentController, $stateParams, component, store$, routesConfig, carrierId, routesConfig, $state, DriverModel, driverApi, languageApi;
 
   beforeEach(function () {
-    module('app/pages/index/carrier/components/my-company/components/my-company-driver-profile/my-company-driver-profile.component.html');
+    module('app/pages/index/carrier/components/my-company/components/my-company-driver-profile/my-company-driver-profile.template.html');
     module('echo.index.carrier.myCompany.driverProfile', function ($provide) {
       $provide.value('$state', $state = jasmine.createSpyObj('$state', ['go']));
       $provide.value('$stateParams', $stateParams = {});
