@@ -7,11 +7,11 @@
                   </span>
     </uib-accordion-heading>
     <div class="row">
-      <details-location stop="$ctrl.stop"/>
-      <details-pickup-numbers pickup-numbers="$ctrl.pickupNumbers"/>
-      <details-notes notes="$ctrl.stop.notes"/>
-      <details-contact stop="$ctrl.stop"/>
+      <stop-location stop="$ctrl.stop"></stop-location>
+      <stop-load-numbers is-delivery="$ctrl.stopType === 'Delivery'" numbers="$ctrl.pickupNumbers"></stop-load-numbers>
+      <stop-notes notes="$ctrl.stop.notes"></stop-notes>
+      <stop-contact stop="$ctrl.stop"></stop-contact>
     </div>
-    <load-item-details items="$ctrl.stop.items" total-weight="$ctrl.stop.stopTotalWeightInPounds"/>
+    <load-item-details items="$ctrl.stop.items" total-weight="$ctrl.stop.stopTotalWeightInPounds"></load-item-details>
   </div>
 </uib-accordion>

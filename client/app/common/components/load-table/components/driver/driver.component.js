@@ -5,7 +5,8 @@ angular.module('echo.components.loadTable.driver', [
     'echo.filters.driverStatus',
     'echo.services.modal',
     'echo.components.modal.assignDriver',
-    'echo.components.modal.verifyDriver'
+    'echo.components.modal.verifyDriver',
+    'echo.enums.actions'
   ])
   .component('driver', {
     templateUrl: 'app/common/components/load-table/components/driver/driver.template.html',
@@ -16,10 +17,10 @@ angular.module('echo.components.loadTable.driver', [
       driverChangedCallback: '&',
       isMultiStop: '<'
     },
-    controller: function($q, loadTypesEnum, modalService, loadsApi, driverApi) {
+    controller: function($q, loadTypesEnum, modalService, loadsApi, driverApi, actionEnums) {
+      var that = this;
 
-      this.showVerifyDriverModal = function() {
-        var that = this;
+      that.showVerifyDriverModal = function() {
 
         $q.all([driverApi.verifyDriverByPhone(that.carrierId, that.load.driver.phone),
           loadsApi.fetchEquipmentByLoadId(that.load.loadNumber)
@@ -42,8 +43,7 @@ angular.module('echo.components.loadTable.driver', [
         }));
       };
 
-      this.showAssignDriverModal = function() {
-        var that = this;
+      that.showAssignDriverModal = function() {
 
         that.showButtonLoading = true;
         loadsApi.fetchEquipmentByLoadId(that.load.loadNumber).then(function(equipment) {
@@ -66,10 +66,10 @@ angular.module('echo.components.loadTable.driver', [
         });
       };
 
-      this.$onInit = function() {
-        this.noDriver = _.isUndefined(_.get(this.load.driver, 'id'));
-        this.loadTypesEnum = loadTypesEnum;
-        this.isDisabled = this.loadType === loadTypesEnum.UNBILLED || this.isMultiStop;
+      that.$onInit = function() {
+        that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
+        that.loadTypesEnum = loadTypesEnum;
+        that.isDisabled = (that.loadType === loadTypesEnum.UNBILLED || that.isMultiStop || that.load.nextAction.lastAction === actionEnums.LAST_ACTION.REPORTED_UNLOADED.value);
       };
     }
   });
