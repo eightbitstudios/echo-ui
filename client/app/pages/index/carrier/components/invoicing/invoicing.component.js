@@ -44,11 +44,6 @@ angular.module('echo.index.carrier.invoicing', [
             that.showLoading = false;
           }
         });
-
-        if (!that.isActiveInvoices) {
-          var action = invoiceCountsActionCreator.fetchInvoiceCounts(that.carrierId);
-          store$.dispatch(action);
-        }
       };
 
       that.$onDestroy = function() {

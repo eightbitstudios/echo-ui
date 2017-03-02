@@ -3,10 +3,10 @@
     <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <a ui-sref="{{$ctrl.unbilledLoads}}">{{$ctrl.unbilledInvoices}} Loads Unbilled</a>
+          <a ui-sref="{{$ctrl.unbilledLoads}}">{{::$ctrl.unbilledInvoices}} Loads Unbilled</a>
         </li>
         <li>
-          Worth {{$ctrl.unbilledValue | currency: '$'}}
+          Worth {{::$ctrl.unbilledValue | currency: '$'}}
         </li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
@@ -14,7 +14,7 @@
   </div>
   <div class="container main-content">
     <invoices-filter filter-text="$ctrl.filterText" invoice-count="$ctrl.paging.totalRecords">
-      <filter-button filter-enabled="$ctrl.filterBy === $ctrl.statusEnums.IN_REVIEW.value" click-handler="$ctrl.filterHandler(value, $ctrl.statusEnums.IN_REVIEW.value)" button-text="{{$ctrl.statusEnums.IN_REVIEW.description}}"></filter-button>
+      <filter-button filter-enabled="$ctrl.filterBy === $ctrl.statusEnums.IN_REVIEW.value" secondary-text="{{$ctrl.totalActiveInvoiceAmount | currency: '$'}}" click-handler="$ctrl.filterHandler(value, $ctrl.statusEnums.IN_REVIEW.value)" button-text="{{$ctrl.statusEnums.IN_REVIEW.description}}"></filter-button>
       <filter-button filter-enabled="$ctrl.filterBy === $ctrl.statusEnums.SUBMITTED.value" click-handler="$ctrl.filterHandler(value, $ctrl.statusEnums.SUBMITTED.value)" button-text="{{$ctrl.statusEnums.SUBMITTED.description}}"></filter-button>
       <filter-button filter-enabled="$ctrl.filterBy === $ctrl.statusEnums.APPROVED.value" click-handler="$ctrl.filterHandler(value, $ctrl.statusEnums.APPROVED.value)" button-text="{{$ctrl.statusEnums.APPROVED.description}}"></filter-button>
       <filter-button filter-enabled="$ctrl.filterBy === $ctrl.statusEnums.VOID.value" click-handler="$ctrl.filterHandler(value, $ctrl.statusEnums.VOID.value)" button-text="{{$ctrl.statusEnums.VOID.description}}"></filter-button>

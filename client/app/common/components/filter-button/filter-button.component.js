@@ -4,7 +4,8 @@ angular.module('echo.components.filterButton', []).component('filterButton', {
   bindings: {
     buttonText: '@',
     filterEnabled: '=',
-    clickHandler: '&'
+    clickHandler: '&',
+    secondaryText: '@'
   },
   templateUrl: 'app/common/components/filter-button/filter-button.template.html',
     controller: function() {

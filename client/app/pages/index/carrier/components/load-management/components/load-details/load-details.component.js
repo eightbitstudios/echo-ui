@@ -27,11 +27,11 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       };
 
       that.fetchLoadDetails = function() {
-     
+
         that.showLoading = true;
         that.showMap = false;
 
-       loadsApi.fetchLoadDetails(that.loadId)
+        loadsApi.fetchLoadDetails(that.loadId)
           .then(function(loadDetails) {
             that.loadDetails = loadDetails;
             that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
@@ -43,10 +43,9 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
           }).then(_.spread(function(activityLog, documents) {
             that.activityLog = activityLog;
             that.documents = documents;
-          })).finally(function() {
             that.showLoading = false;
             that.getMapPoint();
-          });
+          }));
       };
 
       that.$onInit = function() {

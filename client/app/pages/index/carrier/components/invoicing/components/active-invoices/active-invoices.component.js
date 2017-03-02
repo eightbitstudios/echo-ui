@@ -1,21 +1,23 @@
 angular.module('echo.index.carrier.invoicing.activeInvoices', [
-  'echo.index.carrier.invoicing.invoiceTable',
-  'echo.index.carrier.invoicing.invoicesFilter',
-  'echo.models.paging',
-  'echo.enums.invoices',
-  'echo.config.appConstants',
-  'echo.api.invoices',
-  'echo.action',
-  'echo.actions.creators.invoiceCounts'
-])
+    'echo.index.carrier.invoicing.invoiceTable',
+    'echo.index.carrier.invoicing.invoicesFilter',
+    'echo.models.paging',
+    'echo.enums.invoices',
+    'echo.config.appConstants',
+    'echo.api.invoices',
+    'echo.action',
+    'echo.actions.creators.invoiceCounts'
+  ])
   .component('activeInvoices', {
     templateUrl: 'app/pages/index/carrier/components/invoicing/components/active-invoices/active-invoices.template.html',
     bindings: {},
-    controller: function (PagingModel, appConstants, invoicesApi, store$, invoiceCountsActionCreator, routesConfig, invoiceEnums) {
+    controller: function(PagingModel, appConstants, invoicesApi, store$, invoiceCountsActionCreator, routesConfig, invoiceEnums) {
       var that = this;
 
       that.filterHandler = function(value, enumValue) {
-        var statusEnum = _.find(invoiceEnums.STATUSES, function(status) { return status.value === enumValue; });
+        var statusEnum = _.find(invoiceEnums.STATUSES, function(status) {
+          return status.value === enumValue;
+        });
         if (!value || !statusEnum) {
           that.filterText = that.defaultFilterText;
           delete that.filterBy;
@@ -27,7 +29,7 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
         that.fetchActiveInvoices();
       };
 
-      that.fetchActiveInvoices = function () {
+      that.fetchActiveInvoices = function() {
         that.showLoading = true;
 
         invoicesApi.fetchActiveInvoices(that.carrierId, that.paging, that.filterBy).then(function(invoicesPageData) {
@@ -40,10 +42,15 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
             that.paging.totalRecords = invoicesPageData.invoicesCount.activeInvoices;
             that.unbilledInvoices = invoicesPageData.invoicesCount.unbilledInvoices;
             that.unbilledValue = invoicesPageData.invoicesCount.unbilledValue;
-            var action = invoiceCountsActionCreator.setInvoiceCounts(invoicesPageData.invoicesCount);
-            store$.dispatch(action);
+            that.totalActiveInvoiceAmount = invoicesPageData.invoicesCount.totalActiveInvoiceAmount;
+
+            var state = store$.getState();
+            if (_.isEmpty(state.invoiceCounts)) {
+              var action = invoiceCountsActionCreator.setInvoiceCounts(invoicesPageData.invoicesCount);
+              store$.dispatch(action);
+            }
           }
-        }).finally(function () {
+        }).finally(function() {
           that.showLoading = false;
         });
       };
