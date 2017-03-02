@@ -2,7 +2,7 @@ describe('Component: Search Loads', function() {
   var component, scope, $q, $state, carrierId, $stateParams, store$, loadsApi, searchLoads;
 
   beforeEach(function() {
-    module('app/pages/index/carrier/components/load-management/components/search-loads/search-loads.template.html');
+    module('app/pages/index/carrier/components/load-management/components/search-loads/search-loads.component.html');
     module('echo.index.carrier.loadManagement.searchLoads', function($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchLoadsBySearchText']));
       $provide.value('$state', $state = jasmine.createSpyObj('$state', ['previous']));

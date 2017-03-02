@@ -3,7 +3,7 @@
 angular.module('echo.components.carrierAdminFooter', [
   'echo.components.echoRepContact'
 ]).component('carrierAdminFooter', {
-  templateUrl: 'app/common/components/carrier-admin-footer/carrier-admin-footer.template.html',
+  templateUrl: 'app/common/components/carrier-admin-footer/carrier-admin-footer.component.html',
   controller: function(store$) {
 
     var that = this;

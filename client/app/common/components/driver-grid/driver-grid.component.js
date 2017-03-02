@@ -12,7 +12,7 @@ angular.module('echo.components.driverGrid', [
   'echo.filters.fullName'
 ]).component('driverGrid', {
   bindings: {},
-  templateUrl: 'app/common/components/driver-grid/driver-grid.template.html',
+  templateUrl: 'app/common/components/driver-grid/driver-grid.component.html',
   controller: function($state, $filter, store$, routesConfig, carrierApi, PagingModel, appConstants) {
 
     var that = this;

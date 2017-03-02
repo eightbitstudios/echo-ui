@@ -4,7 +4,7 @@ angular.module('echo.components.header', [
   'echo.services.userProfile',
   'echo.api.authentication'
 ]).component('appHeader', {
-  templateUrl: 'app/common/components/header/header.template.html',
+  templateUrl: 'app/common/components/header/header.component.html',
   controller: function($window, store$, routesConfig, authenticationApi) {
     var that = this;
 

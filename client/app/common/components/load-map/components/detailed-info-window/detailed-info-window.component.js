@@ -6,7 +6,7 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
   'echo.components.loadTable.action.actionButton'
 ])
   .component('detailedInfoWindow', {
-    templateUrl: 'app/common/components/load-map/components/detailed-info-window/detailed-info-window.template.html',
+    templateUrl: 'app/common/components/load-map/components/detailed-info-window/detailed-info-window.component.html',
     bindings: {
       mapPoint: '<',
       viewMapHandler: '&',

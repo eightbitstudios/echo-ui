@@ -3,7 +3,7 @@ describe('Component: New Driver', function () {
   var component, scope, $q, carrierId, languageApi, driverApi;
 
   beforeEach(function () {
-    module('app/common/components/modal/assign-driver-modal/components/new-driver/new-driver.template.html');
+    module('app/common/components/modal/assign-driver-modal/components/new-driver/new-driver.component.html');
     module('echo.components.modal.assignDriver.newDriver', function ($provide) {
       $provide.value('languageApi', languageApi = jasmine.createSpyObj('languageApi', ['fetchLanguages']));
       $provide.value('driverApi', driverApi = jasmine.createSpyObj('driverApi', ['insertDriver']));

@@ -3,7 +3,7 @@ describe('Component: Unassigned Driver', function () {
   var component, scope, $q, loadId, carrierId, carrierApi;
 
   beforeEach(function () {
-    module('app/common/components/modal/assign-driver-modal/components/unassigned-driver/unassigned-driver.template.html');
+    module('app/common/components/modal/assign-driver-modal/components/unassigned-driver/unassigned-driver.component.html');
     module('echo.components.modal.assignDriver.unassignedDriver', function ($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['searchDrivers']));
     });

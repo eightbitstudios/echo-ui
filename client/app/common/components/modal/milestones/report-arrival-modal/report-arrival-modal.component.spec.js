@@ -3,7 +3,7 @@ describe('Component: reportArrivalModal', function () {
   var component, $q, modalActions, items, loadsApi, modalService, DateTimePickerModel, scope, element, state;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/report-arrival-modal/report-arrival-modal.template.html');
+    module('app/common/components/modal/milestones/report-arrival-modal/report-arrival-modal.component.html');
     module('echo.components.modal.milestones.reportArrival', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['createReportArrivalByLoadGuid']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));

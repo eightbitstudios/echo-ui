@@ -15,7 +15,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
     'echo.components.modal.errorMessages'
   ])
   .component('sendLoadUpdateModal', {
-    templateUrl: 'app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.template.html',
+    templateUrl: 'app/common/components/modal/milestones/send-load-update-modal/send-load-update-modal.component.html',
     bindings: {
       modalActions: '<',
       load: '<',

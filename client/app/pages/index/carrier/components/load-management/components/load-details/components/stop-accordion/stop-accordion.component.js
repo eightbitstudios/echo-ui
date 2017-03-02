@@ -13,7 +13,7 @@ angular.module('echo.components.stopAccordion', [
     stopType: '@',
     pickupNumbers: '<'
   },
-  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/stop-accordion.template.html',
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/stop-accordion.component.html',
   controller: function() {
     this.$onInit = function() {
       this.isOpen = true;

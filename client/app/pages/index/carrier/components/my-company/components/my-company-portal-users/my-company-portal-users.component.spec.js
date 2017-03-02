@@ -2,7 +2,7 @@ describe('Component: myCompanyPortalUsers', function() {
   var scope, $q, component, UserModel, carrierId, carrierApi, store$;
 
   beforeEach(function() {
-    module('app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.template.html');
+    module('app/pages/index/carrier/components/my-company/components/my-company-portal-users/my-company-portal-users.component.html');
     module('echo.index.carrier.myCompany.portalUsers', function($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchCarrierPortalUsers']));
       $provide.value('UserModel', UserModel = jasmine.createSpy('UserModel'));

@@ -4,7 +4,7 @@ angular.module('echo.index.carrier.invoicing.invoiceTable', [
   'echo.filters.invoiceReasonCode'
 ])
   .component('invoiceTable', {
-    templateUrl: 'app/pages/index/carrier/components/invoicing/components/invoice-table/invoice-table.template.html',
+    templateUrl: 'app/pages/index/carrier/components/invoicing/components/invoice-table/invoice-table.component.html',
     bindings: {
       repDetails: '<',
       carrierId: '<',

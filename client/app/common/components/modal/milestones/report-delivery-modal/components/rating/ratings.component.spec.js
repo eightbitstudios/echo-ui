@@ -3,7 +3,7 @@ describe('Component: rating', function () {
   var component, $q, scope;
 
   beforeEach(function () {
-    module('app/common/components/modal/milestones/report-delivery-modal/components/rating/rating.template.html');
+    module('app/common/components/modal/milestones/report-delivery-modal/components/rating/rating.component.html');
     module('echo.components.modal.milestones.rating');
   });
 

@@ -5,7 +5,7 @@ angular.module('echo.components.modal.documentUpload.uploadedDocuments', [
     'echo.components.previewDocument'
   ])
   .component('uploadedDocuments', {
-    templateUrl: 'app/common/components/modal/document-upload-modal/components/uploaded-documents/uploaded-documents.template.html',
+    templateUrl: 'app/common/components/modal/document-upload-modal/components/uploaded-documents/uploaded-documents.component.html',
     bindings: {
       files: '='
     },

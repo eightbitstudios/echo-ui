@@ -10,7 +10,7 @@ angular.module('echo.index.carrier.dashboard', [
     'echo.api.requestBuilder.dashboard'
   ])
   .component('dashboard', {
-    templateUrl: 'app/pages/index/carrier/components/dashboard/dashboard.template.html',
+    templateUrl: 'app/pages/index/carrier/components/dashboard/dashboard.component.html',
     bindings: {},
     controller: function($q, store$, appConstants, loadTypesEnum, routesConfig, PagingModel, DashboardRequestBuilder) {
 

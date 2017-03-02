@@ -4,7 +4,7 @@ angular.module('echo.components.modal.milestones.locationSearch', [
     'echo.components.modal.milestones.locationSearch.selectedLocation'
   ])
   .component('locationSearch', {
-    templateUrl: 'app/common/components/modal/milestones/components/location-search/location-search.template.html',
+    templateUrl: 'app/common/components/modal/milestones/components/location-search/location-search.component.html',
     bindings: {
       location: '='
     },

@@ -7,7 +7,7 @@ angular.module('echo.components.portalUsers', [
     portalUsers: '=',
     clickHandler: '&'
   },
-  templateUrl: 'app/common/components/portal-users/portal-users.template.html',
+  templateUrl: 'app/common/components/portal-users/portal-users.component.html',
   controller: function() { 
 
     this.userTileClickHandler = function(portalUser) {

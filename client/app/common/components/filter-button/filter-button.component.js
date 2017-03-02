@@ -7,7 +7,7 @@ angular.module('echo.components.filterButton', []).component('filterButton', {
     clickHandler: '&',
     secondaryText: '@'
   },
-  templateUrl: 'app/common/components/filter-button/filter-button.template.html',
+  templateUrl: 'app/common/components/filter-button/filter-button.component.html',
     controller: function() {
       this.toggleFilter = function() {
         this.filterEnabled= !this.filterEnabled;

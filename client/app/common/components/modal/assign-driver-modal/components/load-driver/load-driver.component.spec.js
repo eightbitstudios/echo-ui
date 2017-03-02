@@ -3,7 +3,7 @@ describe('Component: Load Driver', function () {
   var component, scope, $q, carrierId, loadId;
 
   beforeEach(function () {
-    module('app/common/components/modal/assign-driver-modal/components/load-driver/load-driver.template.html');
+    module('app/common/components/modal/assign-driver-modal/components/load-driver/load-driver.component.html');
     module('echo.components.modal.assignDriver.loadDriver', function () {});
   });
 

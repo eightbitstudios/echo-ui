@@ -8,7 +8,7 @@ angular.module('echo.components.resendInvite', [
   bindings: {
     user: '<'
   },
-  templateUrl: 'app/common/components/resend-invite/resend-invite.template.html',
+  templateUrl: 'app/common/components/resend-invite/resend-invite.component.html',
   controller: function (portalUserApi) {
     this.resendInvite = function () {
       var that = this;

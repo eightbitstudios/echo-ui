@@ -3,7 +3,7 @@ describe('Component: Assign Driver Modal', function () {
   var component, scope, $q, loadsApi, modalActions, load, carrierId;
 
   beforeEach(function () {
-    module('app/common/components/modal/assign-driver-modal/assign-driver-modal.template.html');
+    module('app/common/components/modal/assign-driver-modal/assign-driver-modal.component.html');
     module('echo.components.modal.assignDriver', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['assignDriver', 'reassignDriver', 'unassignDriver']));
     });

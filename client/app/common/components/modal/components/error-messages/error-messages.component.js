@@ -2,7 +2,7 @@
       'echo.config.appConstants'
     ])
     .component('errorMessages', {
-      templateUrl: 'app/common/components/modal/components/error-messages/error-messages.template.html',
+      templateUrl: 'app/common/components/modal/components/error-messages/error-messages.component.html',
       bindings: {
         errorCode: '=',
         errorMessages: '<',

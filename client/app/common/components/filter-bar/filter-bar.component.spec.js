@@ -3,7 +3,7 @@ describe('Component: filterBar', function () {
   var scope, component, searchList, link, searchParam, minSearchCharacters;
 
   beforeEach(function () {
-    module('app/common/components/filter-bar/filter-bar.template.html');
+    module('app/common/components/filter-bar/filter-bar.component.html');
     module('echo.components.filterBar');
   });
 

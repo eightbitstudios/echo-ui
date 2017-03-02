@@ -8,7 +8,7 @@ angular.module('echo.index.carrier.invoicing', [
   'echo.actions.creators.invoiceCounts'
 ])
   .component('invoicing', {
-    templateUrl: 'app/pages/index/carrier/components/invoicing/invoicing.template.html',
+    templateUrl: 'app/pages/index/carrier/components/invoicing/invoicing.component.html',
     bindings: {},
     controller: function($stateParams, $state, Rx, invoiceCountsActionCreator, store$, routesConfig) {
       var that = this;

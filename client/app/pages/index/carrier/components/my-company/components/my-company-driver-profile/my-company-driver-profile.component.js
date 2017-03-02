@@ -9,7 +9,7 @@ angular.module('echo.index.carrier.myCompany.driverProfile', [
     'echo.api.language'
   ])
   .component('myCompanyDriverProfile', {
-    templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-driver-profile/my-company-driver-profile.template.html',
+    templateUrl: 'app/pages/index/carrier/components/my-company/components/my-company-driver-profile/my-company-driver-profile.component.html',
     bindings: {},
     controller: function($q, $state, $stateParams, store$, routesConfig, DriverModel, driverApi, languageApi) {
       var that = this;

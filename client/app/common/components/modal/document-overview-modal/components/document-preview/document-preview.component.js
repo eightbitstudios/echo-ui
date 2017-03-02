@@ -11,7 +11,7 @@ angular.module('echo.components.modal.documentOverview.documentPreview', [
     'echo.config.globals'
   ])
   .component('documentPreview', {
-    templateUrl: 'app/common/components/modal/document-overview-modal/components/document-preview/document-preview.template.html',
+    templateUrl: 'app/common/components/modal/document-overview-modal/components/document-preview/document-preview.component.html',
     bindings: {
       document: '<',
       documents: '<'

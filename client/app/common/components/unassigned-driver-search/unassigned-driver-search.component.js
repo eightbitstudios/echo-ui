@@ -10,7 +10,7 @@ angular.module('echo.components.unassignedDriverSearch', [
     driver: '='
   },
   transclude: true,
-  templateUrl: 'app/common/components/unassigned-driver-search/unassigned-driver-search.template.html',
+  templateUrl: 'app/common/components/unassigned-driver-search/unassigned-driver-search.component.html',
   controller: function ($filter, carrierApi, DriverModel) {
     /**
      * Call api to search for drivers
