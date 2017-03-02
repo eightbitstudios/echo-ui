@@ -4,7 +4,6 @@ angular.module('echo.index', [
   'ui.router',
   'echo.config',
   'echo.directives.echoIcon',
-  'echo.index.controller',
   'echo.index.myCarriers',
   'echo.enums.roles',
   'echo.index.carrier',
