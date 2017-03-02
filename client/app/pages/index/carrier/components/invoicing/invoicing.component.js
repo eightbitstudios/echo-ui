@@ -4,13 +4,12 @@ angular.module('echo.index.carrier.invoicing', [
   'echo.config.routes',
   'echo.index.carrier.invoicing.activeInvoices',
   'echo.index.carrier.invoicing.searchInvoices',
-  'echo.action',
-  'echo.actions.creators.invoiceCounts'
+  'echo.action'
 ])
   .component('invoicing', {
     templateUrl: 'app/pages/index/carrier/components/invoicing/invoicing.template.html',
     bindings: {},
-    controller: function($stateParams, $state, Rx, invoiceCountsActionCreator, store$, routesConfig) {
+    controller: function($stateParams, $state, store$, routesConfig) {
       var that = this;
       var sub = null;
 

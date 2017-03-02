@@ -4,6 +4,7 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
     'echo.models.paging',
     'echo.enums.invoices',
     'echo.config.appConstants',
+    'echo.config.routes',
     'echo.api.invoices',
     'echo.action',
     'echo.actions.creators.invoiceCounts'
@@ -11,14 +12,15 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
   .component('activeInvoices', {
     templateUrl: 'app/pages/index/carrier/components/invoicing/components/active-invoices/active-invoices.template.html',
     bindings: {},
-    controller: function(PagingModel, appConstants, invoicesApi, store$, invoiceCountsActionCreator, routesConfig, invoiceEnums) {
+    controller: function(PagingModel, appConstants, invoicesApi, store$,
+      invoiceCountsActionCreator, routesConfig, invoiceEnums) {
       var that = this;
 
-      that.filterHandler = function(value, enumValue) {
+      that.filterHandler = function(enumValue) {
         var statusEnum = _.find(invoiceEnums.STATUSES, function(status) {
           return status.value === enumValue;
         });
-        if (!value || !statusEnum) {
+        if (!statusEnum) {
           that.filterText = that.defaultFilterText;
           delete that.filterBy;
         } else {
@@ -32,27 +34,28 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
       that.fetchActiveInvoices = function() {
         that.showLoading = true;
 
-        invoicesApi.fetchActiveInvoices(that.carrierId, that.paging, that.filterBy).then(function(invoicesPageData) {
-          if (invoicesPageData.invoices) {
-            that.activeInvoices = invoicesPageData.invoices;
-            that.paging.recordCount = _.size(invoicesPageData.invoices);
-          }
-
-          if (invoicesPageData.invoicesCount) {
-            that.paging.totalRecords = invoicesPageData.invoicesCount.activeInvoices;
-            that.unbilledInvoices = invoicesPageData.invoicesCount.unbilledInvoices;
-            that.unbilledValue = invoicesPageData.invoicesCount.unbilledValue;
-            that.totalActiveInvoiceAmount = invoicesPageData.invoicesCount.totalActiveInvoiceAmount;
-
-            var state = store$.getState();
-            if (_.isEmpty(state.invoiceCounts)) {
-              var action = invoiceCountsActionCreator.setInvoiceCounts(invoicesPageData.invoicesCount);
-              store$.dispatch(action);
+        invoicesApi.fetchActiveInvoices(that.carrierId, that.paging, that.filterBy)
+          .then(function(invoicesPageData) {
+            if (invoicesPageData.invoices) {
+              that.activeInvoices = invoicesPageData.invoices;
+              that.paging.recordCount = _.size(invoicesPageData.invoices);
             }
-          }
-        }).finally(function() {
-          that.showLoading = false;
-        });
+
+            if (invoicesPageData.invoicesCount) {
+              that.paging.totalRecords = invoicesPageData.invoicesCount.activeInvoices;
+              that.unbilledInvoices = invoicesPageData.invoicesCount.unbilledInvoices;
+              that.unbilledValue = invoicesPageData.invoicesCount.unbilledValue;
+              that.totalActiveInvoiceAmount = invoicesPageData.invoicesCount.totalActiveInvoiceAmount;
+
+              var state = store$.getState();
+              if (_.isEmpty(state.invoiceCounts)) {
+                var action = invoiceCountsActionCreator.setInvoiceCounts(invoicesPageData.invoicesCount);
+                store$.dispatch(action);
+              }
+            }
+          }).finally(function() {
+            that.showLoading = false;
+          });
       };
 
       that.$onInit = function() {

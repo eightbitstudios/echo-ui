@@ -3,6 +3,7 @@ angular.module('echo.index.carrier.invoicing.searchInvoices', [
   'echo.api.invoices',
   'echo.components.echoRepContact',
   'echo.models.paging',
+  'echo.config.routes',
   'echo.components.pagination',
   'echo.config.appConstants'
 ]).component('searchInvoices', {
