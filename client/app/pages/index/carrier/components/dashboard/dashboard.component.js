@@ -110,7 +110,6 @@ angular.module('echo.index.carrier.dashboard', [
 
             that.multiStopLoads = _.get(multiStopLoads, 'loads') || [];
             that.activeLoads = _.get(loadsNeedingAction, 'loads') || [];
-          }).finally(function() {
             that.showLoading = false;
             that.showMap = true;
           });
