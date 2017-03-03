@@ -49,7 +49,7 @@ angular.module('echo.config.routes', [])
       },
       searchLoads: {
         name: 'index.carrier.loadManagement.searchLoads',
-        route: '/searchLoads/{searchText}'
+        route: '/searchLoads?searchText'
       },
       invoicing: {
         name: 'index.carrier.invoicing',
@@ -61,7 +61,7 @@ angular.module('echo.config.routes', [])
       },
       searchInvoices: {
         name: 'index.carrier.invoicing.searchInvoices',
-        route: '/searchInvoices/{searchText}'
+        route: '/searchInvoices?searchText'
       },
       myCompany: {
         name: 'index.carrier.myCompany',

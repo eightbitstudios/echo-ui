@@ -45,13 +45,13 @@ describe('Component: Invoicing', function() {
 
   describe('Function: filterHandler', function() {
     it('should fetch active invoices', function() {
-      component.filterHandler(invoiceEnums.STATUSES.IN_REVIEW.value);
+      component.filterHandler(true, invoiceEnums.STATUSES.IN_REVIEW.value);
       expect(component.filterBy).toEqual(invoiceEnums.STATUSES.IN_REVIEW.value);
       expect(component.fetchActiveInvoices).toHaveBeenCalled();
     });
 
     it('should reset filter', function() {
-      component.filterHandler();
+      component.filterHandler(false);
       expect(component.filterBy).toBeUndefined();
       expect(component.fetchActiveInvoices).toHaveBeenCalled();
     });
@@ -85,8 +85,8 @@ describe('Component: Invoicing', function() {
       var invoicesPageData = {
         invoicesCount: {
           activeInvoices: 12,
-          unbilledInvoices: 20,
-          unbilledValue: 10.56,
+          unbilledLoads: 20,
+          unbilledAmount: 10.56,
           totalActiveInvoiceAmount: 300.23
         }
       };
@@ -95,8 +95,8 @@ describe('Component: Invoicing', function() {
       component.fetchActiveInvoices();
       scope.$digest();
       expect(component.paging.totalRecords).toEqual(invoicesPageData.invoicesCount.activeInvoices);
-      expect(component.unbilledInvoices).toEqual(invoicesPageData.invoicesCount.unbilledInvoices);
-      expect(component.unbilledValue).toEqual(invoicesPageData.invoicesCount.unbilledValue);
+      expect(component.unbilledLoads).toEqual(invoicesPageData.invoicesCount.unbilledLoads);
+      expect(component.unbilledAmount).toEqual(invoicesPageData.invoicesCount.unbilledAmount);
       expect(component.totalActiveInvoiceAmount).toEqual(invoicesPageData.invoicesCount.totalActiveInvoiceAmount);
     });
 
@@ -104,8 +104,8 @@ describe('Component: Invoicing', function() {
       var invoicesPageData = {
         invoicesCount: {
           activeInvoices: 12,
-          unbilledInvoices: 20,
-          unbilledValue: 10.56,
+          unbilledLoads: 20,
+          unbilledAmount: 10.56,
           totalActiveInvoiceAmount: 300.23
         }
       };
@@ -114,8 +114,8 @@ describe('Component: Invoicing', function() {
       component.fetchActiveInvoices();
       scope.$digest();
       expect(component.paging.totalRecords).toEqual(invoicesPageData.invoicesCount.activeInvoices);
-      expect(component.unbilledInvoices).toEqual(invoicesPageData.invoicesCount.unbilledInvoices);
-      expect(component.unbilledValue).toEqual(invoicesPageData.invoicesCount.unbilledValue);
+      expect(component.unbilledLoads).toEqual(invoicesPageData.invoicesCount.unbilledLoads);
+      expect(component.unbilledAmount).toEqual(invoicesPageData.invoicesCount.unbilledAmount);
       expect(component.totalActiveInvoiceAmount).toEqual(invoicesPageData.invoicesCount.totalActiveInvoiceAmount);
     });
 
@@ -123,8 +123,8 @@ describe('Component: Invoicing', function() {
       var invoicesPageData = {
         invoicesCount: {
           activeInvoices: 12,
-          unbilledInvoices: 20,
-          unbilledValue: 10.56,
+          unbilledLoads: 20,
+          unbilledAmount: 10.56,
           totalActiveInvoiceAmount: 300.23
         }
       };

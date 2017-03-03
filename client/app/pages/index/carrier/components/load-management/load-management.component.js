@@ -17,7 +17,9 @@ angular.module('echo.index.carrier.loadManagement', [
 
       that.routeToSearch = function(searchText) {
         $state.go(routesConfig.INDEX.searchLoads.name, {
-          searchText: searchText
+          searchText: searchText,
+        }, {
+          reload: routesConfig.INDEX.searchLoads.name
         });
       };
 

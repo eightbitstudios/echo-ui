@@ -1,11 +1,11 @@
 angular.module('echo.index.carrier.invoicing', [
-  'echo.components.tabBar',
-  'echo.components.searchBar',
-  'echo.config.routes',
-  'echo.index.carrier.invoicing.activeInvoices',
-  'echo.index.carrier.invoicing.searchInvoices',
-  'echo.action'
-])
+    'echo.components.tabBar',
+    'echo.components.searchBar',
+    'echo.config.routes',
+    'echo.index.carrier.invoicing.activeInvoices',
+    'echo.index.carrier.invoicing.searchInvoices',
+    'echo.action'
+  ])
   .component('invoicing', {
     templateUrl: 'app/pages/index/carrier/components/invoicing/invoicing.template.html',
     bindings: {},
@@ -16,10 +16,12 @@ angular.module('echo.index.carrier.invoicing', [
       that.routeToSearch = function(searchText) {
         $state.go(routesConfig.INDEX.searchInvoices.name, {
           searchText: searchText
+        }, {
+          reload: routesConfig.INDEX.searchInvoices.name
         });
       };
 
-      that.createTabItems = function (invoiceCounts) {
+      that.createTabItems = function(invoiceCounts) {
         that.tabItems = [{
           title: invoiceCounts.activeInvoices + ' Active Invoices',
           link: routesConfig.INDEX.activeInvoices.name

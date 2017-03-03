@@ -43,8 +43,8 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
 
             if (invoicesPageData.invoicesCount) {
               that.paging.totalRecords = invoicesPageData.invoicesCount.activeInvoices;
-              that.unbilledInvoices = invoicesPageData.invoicesCount.unbilledInvoices;
-              that.unbilledValue = invoicesPageData.invoicesCount.unbilledValue;
+              that.unbilledLoads = invoicesPageData.invoicesCount.unbilledLoads;
+              that.unbilledAmount = invoicesPageData.invoicesCount.unbilledAmount;
               that.totalActiveInvoiceAmount = invoicesPageData.invoicesCount.totalActiveInvoiceAmount;
 
               var state = store$.getState();
@@ -66,7 +66,7 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
         that.filterText = that.defaultFilterText;
         that.statusEnums = invoiceEnums.STATUSES;
 
-        that.unbilledLoads = routesConfig.INDEX.unbilledLoads.name;
+        that.unbilledLoadsRoute = routesConfig.INDEX.unbilledLoads.name;
         that.paging = new PagingModel(appConstants.LIMIT.invoicesList);
         that.fetchActiveInvoices();
       };

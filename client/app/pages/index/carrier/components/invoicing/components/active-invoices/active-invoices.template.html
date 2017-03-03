@@ -3,10 +3,10 @@
     <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
-          <a ui-sref="{{$ctrl.unbilledLoads}}">{{::$ctrl.unbilledInvoices}} Loads Unbilled</a>
+          <a ui-sref="{{$ctrl.unbilledLoadsRoute}}">{{::$ctrl.unbilledLoads}} Loads Unbilled</a>
         </li>
         <li>
-          Worth {{::$ctrl.unbilledValue | currency: '$'}}
+          Worth {{::$ctrl.unbilledAmount | currency: '$'}}
         </li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>

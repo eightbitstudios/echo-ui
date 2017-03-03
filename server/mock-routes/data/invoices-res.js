@@ -256,8 +256,8 @@ module.exports = {
   "invoicesCount": {
     activeInvoices: 12,
     archivedInvoices: 1234,
-    unbilledInvoices: 13,
-    unbilledValue: 273432.55,
+    unbilledLoads: 13,
+    unbilledAmount: 273432.55,
     totalActiveInvoiceAmount: 389000.23
   }
 };
