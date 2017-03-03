@@ -16,11 +16,11 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
       invoiceCountsActionCreator, routesConfig, invoiceEnums) {
       var that = this;
 
-      that.filterHandler = function(enumValue) {
+      that.filterHandler = function(value, enumValue) {
         var statusEnum = _.find(invoiceEnums.STATUSES, function(status) {
           return status.value === enumValue;
         });
-        if (!statusEnum) {
+        if (!value || !statusEnum) {
           that.filterText = that.defaultFilterText;
           delete that.filterBy;
         } else {
