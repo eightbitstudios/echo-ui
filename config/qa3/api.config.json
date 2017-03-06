@@ -1,5 +1,5 @@
 {
-  "host": "https://echocarrierportalqa.azure-api.net",
+  "host": "https://echocarrierportalqa3.azure-api.net",
   "path": "/web-api",
   "version": "/v1"
 }
