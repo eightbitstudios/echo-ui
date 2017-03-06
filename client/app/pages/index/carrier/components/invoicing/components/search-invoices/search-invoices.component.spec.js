@@ -3,7 +3,7 @@ describe('Component: Search Invoices', function() {
 
   beforeEach(function() {
     module('echo.index.carrier.invoicing.searchInvoices', function($provide) {
-      $provide.value('app/pages/index/carrier/components/invoicing/components/search-invoices/search-invoices.template.html', '');
+      $provide.value('app/pages/index/carrier/components/invoicing/components/search-invoices/search-invoices.component.html', '');
       $provide.value('$stateParams', stateParams = {
         searchText: 'test'
       });

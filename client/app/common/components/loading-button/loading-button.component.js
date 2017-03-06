@@ -11,5 +11,5 @@ angular.module('echo.components.loadingButton', [
     clickHandler: '&'
   },
   transclude: true,
-  templateUrl: 'app/common/components/loading-button/loading-button.template.html'
+  templateUrl: 'app/common/components/loading-button/loading-button.component.html'
 });

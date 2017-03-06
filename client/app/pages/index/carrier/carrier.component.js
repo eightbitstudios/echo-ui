@@ -10,7 +10,7 @@ angular.module('echo.index.carrier', [
   'echo.actions.creators.loadCounts',
   'echo.actions.creators.invoiceCounts'
 ]).component('carrier', {
-  templateUrl: 'app/pages/index/carrier/carrier.template.html',
+  templateUrl: 'app/pages/index/carrier/carrier.component.html',
   controller: function($stateParams, $q, store$, carrierActionCreator, repActionCreator, loadCountsActionCreator, invoiceCountsActionCreator) {
 
     var that = this;

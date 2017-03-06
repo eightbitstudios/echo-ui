@@ -5,7 +5,7 @@ angular.module('echo.components.loadTable.action', [
   'echo.filters.formatInvoicePODs'
 ])
   .component('action', {
-    templateUrl: 'app/common/components/load-table/components/action/action.template.html',
+    templateUrl: 'app/common/components/load-table/components/action/action.component.html',
     bindings: {
       load: '<',
       loadType: '<',

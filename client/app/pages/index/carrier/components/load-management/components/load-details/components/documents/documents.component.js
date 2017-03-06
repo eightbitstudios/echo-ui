@@ -6,7 +6,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.documents', [
     'echo.constants.documentTypes'
   ])
   .component('documents', {
-    templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/documents/documents.template.html',
+    templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/documents/documents.component.html',
     bindings: {
       load: '<',
       documents: '<'

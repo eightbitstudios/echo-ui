@@ -7,7 +7,7 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
   'echo.enums.loadTypes',
   'echo.config.appConstants'
 ]).component('searchLoads', {
-  templateUrl: 'app/pages/index/carrier/components/load-management/components/search-loads/search-loads.template.html',
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/search-loads/search-loads.component.html',
   bindings: {},
   controller: function($state, $stateParams, store$, routesConfig, loadsApi, PagingModel, appConstants, loadTypesEnum) {
     var that = this;

@@ -12,7 +12,7 @@ angular.module('echo.components.modal.milestones.reportDelivery', [
     'echo.components.modal.errorMessages'
   ])
   .component('reportDeliveryModal', {
-    templateUrl: 'app/common/components/modal/milestones/report-delivery-modal/report-delivery-modal.template.html',
+    templateUrl: 'app/common/components/modal/milestones/report-delivery-modal/report-delivery-modal.component.html',
     bindings: {
       modalActions: '<',
       load: '<',

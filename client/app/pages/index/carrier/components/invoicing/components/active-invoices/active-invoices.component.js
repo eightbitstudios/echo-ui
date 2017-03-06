@@ -10,7 +10,7 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
     'echo.actions.creators.invoiceCounts'
   ])
   .component('activeInvoices', {
-    templateUrl: 'app/pages/index/carrier/components/invoicing/components/active-invoices/active-invoices.template.html',
+    templateUrl: 'app/pages/index/carrier/components/invoicing/components/active-invoices/active-invoices.component.html',
     bindings: {},
     controller: function(PagingModel, appConstants, invoicesApi, store$,
       invoiceCountsActionCreator, routesConfig, invoiceEnums) {

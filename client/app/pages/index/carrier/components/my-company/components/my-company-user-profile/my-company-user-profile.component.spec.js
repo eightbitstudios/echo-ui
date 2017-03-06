@@ -4,7 +4,7 @@ describe('Component: myCompanyPortalUsers', function() {
     showLoading, store$;
 
   beforeEach(function() {
-    module('app/pages/index/carrier/components/my-company/components/my-company-user-profile/my-company-user-profile.template.html');
+    module('app/pages/index/carrier/components/my-company/components/my-company-user-profile/my-company-user-profile.component.html');
     module('echo.index.carrier.myCompany.userProfile', function($provide) {
       $provide.value('userProfileService', userProfileService = jasmine.createSpyObj('userProfileService', ['getUser']));
       $provide.value('PasswordChangeModel', PasswordChangeModel = jasmine.createSpy('PasswordChangeModel'));

@@ -3,7 +3,7 @@ describe('Component: editNumber', function () {
   var scope, $q, number, defaultText, updateCallback, component;
 
   beforeEach(function () {
-    module('app/common/components/edit-number/edit-number.template.html');
+    module('app/common/components/edit-number/edit-number.component.html');
     module('echo.components.editNumber');
   });
 

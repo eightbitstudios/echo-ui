@@ -3,7 +3,7 @@ describe('Component: Invoicing', function() {
 
   beforeEach(function() {
     module('echo.index.carrier.invoicing', function($provide) {
-      $provide.value('app/pages/index/carrier/components/invoicing/invoicing.template.html', '');
+      $provide.value('app/pages/index/carrier/components/invoicing/invoicing.component.html', '');
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
       $provide.value('store$',

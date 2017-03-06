@@ -3,7 +3,7 @@ describe('Component: shippingDetails', function () {
   var component, scope, component, $componentController;
 
   beforeEach(function () {
-    module('app/common/components/shipping-details/shipping-details.template.html');
+    module('app/common/components/shipping-details/shipping-details.component.html');
     module('echo.components.shippingDetails');
   });
 

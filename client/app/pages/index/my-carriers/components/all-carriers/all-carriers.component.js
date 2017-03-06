@@ -8,7 +8,7 @@ angular.module('echo.index.myCarriers.allCarriers', [
     'echo.config.appConstants'
   ])
   .component('allCarriers', {
-    templateUrl: 'app/pages/index/my-carriers/components/all-carriers/all-carriers.template.html',
+    templateUrl: 'app/pages/index/my-carriers/components/all-carriers/all-carriers.component.html',
     bindings: {},
     controller: function($stateParams, store$, routesConfig, carrierApi, appConstants) {
 

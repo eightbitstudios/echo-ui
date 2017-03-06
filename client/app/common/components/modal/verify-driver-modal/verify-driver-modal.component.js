@@ -10,7 +10,7 @@ angular.module('echo.components.modal.verifyDriver', [
     'echo.components.modal.errorMessages'
   ])
   .component('verifyDriverModal', {
-    templateUrl: 'app/common/components/modal/verify-driver-modal/verify-driver-modal.template.html',
+    templateUrl: 'app/common/components/modal/verify-driver-modal/verify-driver-modal.component.html',
     bindings: {
       modalActions: '<',
       load: '<',

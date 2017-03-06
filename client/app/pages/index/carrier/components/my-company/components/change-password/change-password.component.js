@@ -8,7 +8,7 @@ angular.module('echo.index.carrier.myCompany.userProfile.changePassword', [
     'echo.models.passwordChange'
   ])
   .component('changePassword', {
-    templateUrl: 'app/pages/index/carrier/components/my-company/components/change-password/change-password.template.html',
+    templateUrl: 'app/pages/index/carrier/components/my-company/components/change-password/change-password.component.html',
     bindings: {
       userId: '<'
     },

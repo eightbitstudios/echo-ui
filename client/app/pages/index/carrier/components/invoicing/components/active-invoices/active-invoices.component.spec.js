@@ -4,7 +4,7 @@ describe('Component: Invoicing', function() {
 
   beforeEach(function() {
     module('echo.index.carrier.invoicing.activeInvoices', function($provide) {
-      $provide.value('app/pages/index/carrier/components/invoicing/components/active-invoices/active-invoices.template.html', '');
+      $provide.value('app/pages/index/carrier/components/invoicing/components/active-invoices/active-invoices.component.html', '');
       $provide.value('PagingModel', PagingModel = jasmine.createSpy());
       $provide.value('invoicesApi', invoicesApi = jasmine.createSpyObj('invoicesApi', ['fetchActiveInvoices']));
       $provide.value('invoiceCountsActionCreator',

@@ -10,7 +10,7 @@ angular.module('echo.components.modal.milestones.deliveryItems', [
   'echo.components.modal.disclaimer'
 ])
   .component('deliveryItems', {
-    templateUrl: 'app/common/components/modal/milestones/report-delivery-modal/components/delivery-items/delivery-items.template.html',
+    templateUrl: 'app/common/components/modal/milestones/report-delivery-modal/components/delivery-items/delivery-items.component.html',
     bindings: {
       items: '<',
       dateTimePicker: '=',

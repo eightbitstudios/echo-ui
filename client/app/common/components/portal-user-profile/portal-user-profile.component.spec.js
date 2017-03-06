@@ -3,7 +3,7 @@ describe('Component: Portal User Profile', function () {
   var component, scope, $q, component, carrierId, portalUser, showLoading, isCarrierAdmin, userUpdatedHandler, portalUserApi;
 
   beforeEach(function () {
-    module('app/common/components/portal-user-profile/portal-user-profile.template.html');
+    module('app/common/components/portal-user-profile/portal-user-profile.component.html');
     module('echo.components.portalUserProfile', function ($provide) {
       $provide.value('portalUserApi', portalUserApi = jasmine.createSpyObj('portalUserApi', ['upsertPortalUser', 'deactivatePortalUserById']));
     });

@@ -6,5 +6,5 @@ angular.module('echo.components.stopLoadNumbers', [
     numbers: '<',
     isDelivery: '<'
   },
-  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/components/stop-load-numbers/stop-load-numbers.template.html'
+  templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/stop-accordion/components/stop-load-numbers/stop-load-numbers.component.html'
 });

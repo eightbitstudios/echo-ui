@@ -7,5 +7,5 @@ angular.module('echo.components.echoRepContact', [
   bindings: {
     repDetails: '<'
   },
-  templateUrl: 'app/common/components/echo-rep-contact/echo-rep-contact.template.html'
+  templateUrl: 'app/common/components/echo-rep-contact/echo-rep-contact.component.html'
 });

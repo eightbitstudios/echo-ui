@@ -3,7 +3,7 @@ angular.module('echo.components.modal.assignDriver.selectedDriver', [
     'echo.filters.fullName'
   ])
   .component('selectedDriver', {
-    templateUrl: 'app/common/components/modal/assign-driver-modal/components/selected-driver/selected-driver.template.html',
+    templateUrl: 'app/common/components/modal/assign-driver-modal/components/selected-driver/selected-driver.component.html',
     bindings: {
       driver: '<',
       loadId: '<',

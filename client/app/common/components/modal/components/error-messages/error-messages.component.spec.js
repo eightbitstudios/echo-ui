@@ -3,7 +3,7 @@ describe('Component: Error Messages', function () {
   var component, $q, scope, appConstants;
 
   beforeEach(function () {
-    module('app/common/components/modal/components/error-messages/error-messages.template.html');
+    module('app/common/components/modal/components/error-messages/error-messages.component.html');
     module('echo.components.modal.errorMessages', function () {});
   });
 

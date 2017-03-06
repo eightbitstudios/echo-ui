@@ -3,7 +3,7 @@ describe('Component: verifyDriverModal', function () {
   var component, $q, modalActions, verifiedDriver, load, loadsApi, routesConfig, scope;
 
   beforeEach(function () {
-    module('app/common/components/modal/verify-driver-modal/verify-driver-modal.template.html');
+    module('app/common/components/modal/verify-driver-modal/verify-driver-modal.component.html');
     module('echo.components.modal.verifyDriver', function ($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['reassignDriver']));
       $provide.value('routesConfig', routesConfig = {

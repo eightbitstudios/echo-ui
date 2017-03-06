@@ -2,7 +2,7 @@ angular.module('echo.components.modal.milestones.reportEmpty.confirmEmpty', [
   'echo.components.modal.milestones.checkboxCard'
 ])
   .component('confirmEmpty', {
-    templateUrl: 'app/common/components/modal/milestones/report-empty-modal/components/confirm-empty/confirm-empty.template.html',
+    templateUrl: 'app/common/components/modal/milestones/report-empty-modal/components/confirm-empty/confirm-empty.component.html',
     bindings: {
       reportEmpty: '<',
       checkboxItems: '='

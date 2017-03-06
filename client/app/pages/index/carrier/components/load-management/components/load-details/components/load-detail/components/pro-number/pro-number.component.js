@@ -3,7 +3,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail.proNumb
   'echo.api.loads'
 ])
   .component('proNumber', {
-    templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/load-detail/components/pro-number/pro-number.template.html',
+    templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/load-detail/components/pro-number/pro-number.component.html',
     bindings: {
       proNumber: '=',
       bolNumber: '<',

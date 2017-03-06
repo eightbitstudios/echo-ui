@@ -3,7 +3,7 @@ describe('Component: Usage', function () {
   var component, scope, $q, user;
 
   beforeEach(function () {
-    module('app/common/components/usage/usage.template.html');
+    module('app/common/components/usage/usage.component.html');
     module('echo.components.usage', function ($provide) {});
   });
 

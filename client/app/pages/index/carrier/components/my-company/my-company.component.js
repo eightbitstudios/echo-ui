@@ -6,7 +6,7 @@ angular.module('echo.index.carrier.myCompany', [
     'echo.index.carrier.myCompany.userProfile'
   ])
   .component('myCompany', {
-    templateUrl: 'app/pages/index/carrier/components/my-company/my-company.template.html',
+    templateUrl: 'app/pages/index/carrier/components/my-company/my-company.component.html',
     bindings: {},
     controller: function($stateParams, $state, store$, routesConfig) {
       var that = this;

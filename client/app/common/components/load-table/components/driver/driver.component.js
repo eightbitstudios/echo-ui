@@ -9,7 +9,7 @@ angular.module('echo.components.loadTable.driver', [
     'echo.enums.actions'
   ])
   .component('driver', {
-    templateUrl: 'app/common/components/load-table/components/driver/driver.template.html',
+    templateUrl: 'app/common/components/load-table/components/driver/driver.component.html',
     bindings: {
       load: '<',
       loadType: '<',

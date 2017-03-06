@@ -1,6 +1,6 @@
 angular.module('echo.components.modal.milestones.modalSteps', [])
   .component('modalSteps', {
-    templateUrl: 'app/common/components/modal/milestones/components/modal-steps/modal-steps.template.html',
+    templateUrl: 'app/common/components/modal/milestones/components/modal-steps/modal-steps.component.html',
     bindings: {
       currentStep: '=',
       steps: '<',
