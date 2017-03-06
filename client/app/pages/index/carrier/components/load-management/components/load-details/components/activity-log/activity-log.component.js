@@ -1,13 +1,14 @@
 angular.module('echo.index.carrier.loadManagement.loadDetails.activityLog', [
-    'echo.filters.firstCharacter'
+    'echo.filters.firstCharacter',
+    'echo.api.loads',
+    'echo.components.loading'
   ])
   .component('activityLog', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/activity-log/activity-log.component.html',
     bindings: {
-      activityLog: '<',
-      totalStops: '<'
+      load: '<'
     },
-    controller: function() {
+    controller: function(loadsApi) {
       var that = this;
 
       that.showDisclaimer = function() {
@@ -16,6 +17,18 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.activityLog', [
 
       that.$onInit = function() {
         that.isOpen = false;
+        that.showLoading = true;
+        that.showError = false;
+
+        that.totalStops = _.size(that.load.pickUp) + _.size(that.load.delivery);
+
+        loadsApi.fetchActivityLogByLoadId(that.load.loadNumber).then(function(activityLog){
+          that.activityLog = activityLog;
+        }).catch(function() {
+          that.showError = true;
+        }).finally(function() {
+          that.showLoading = false;
+        });
       };
     }
   });

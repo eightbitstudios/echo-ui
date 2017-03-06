@@ -50,7 +50,8 @@ module.exports = {
             refresh_token: '1234'
           }
         } else {
-          res.status(401001);
+          res.status(401);
+          resTemplate.status.code = 401102;
         }
       }
       res.json(resTemplate);

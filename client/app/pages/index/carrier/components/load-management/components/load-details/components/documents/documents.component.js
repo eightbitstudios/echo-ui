@@ -1,17 +1,18 @@
 angular.module('echo.index.carrier.loadManagement.loadDetails.documents', [
     'echo.components.modal.documentOverview.loadDocuments',
     'echo.services.modal',
+    'echo.components.loading',
     'echo.components.modal.documentOverview',
     'echo.components.modal.documentUpload',
-    'echo.constants.documentTypes'
+    'echo.constants.documentTypes',
+    'echo.api.document'
   ])
   .component('documents', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/components/documents/documents.component.html',
     bindings: {
-      load: '<',
-      documents: '<'
+      load: '<'
     },
-    controller: function(modalService, documentTypes) {
+    controller: function(store$, documentApi, modalService, documentTypes) {
       var that = this;
 
       that.openDocumentUploadModal = function(documentType) {
@@ -38,6 +39,20 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.documents', [
             documents: that.documents,
             selectedDocument: selectedDocument
           }
+        });
+      };
+
+      that.$onInit = function() {
+        var state = store$.getState();
+        that.showLoading = true;
+          that.showError = false;
+
+        documentApi.fetchDocuments(state.carrier.carrierId, that.load.loadGuid).then(function(documents){
+          that.documents = documents;
+        }).catch(function() {
+          that.showError = true;
+        }).finally(function() {
+          that.showLoading = false;
         });
       };
     }

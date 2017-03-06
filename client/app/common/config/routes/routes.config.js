@@ -45,11 +45,11 @@ angular.module('echo.config.routes', [])
       },
       loadDetails: {
         name: 'index.carrier.loadManagement.loadDetails',
-        route: '/loadDetails/:loadId'
+        route: '/loadDetails/:loadId&previous'
       },
       searchLoads: {
         name: 'index.carrier.loadManagement.searchLoads',
-        route: '/searchLoads?searchText'
+        route: '/searchLoads?searchText&previous'
       },
       invoicing: {
         name: 'index.carrier.invoicing',

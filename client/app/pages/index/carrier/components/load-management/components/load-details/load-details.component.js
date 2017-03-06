@@ -6,12 +6,11 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     'echo.index.carrier.loadManagement.loadDetails.loadDetail',
     'echo.index.carrier.loadManagement.loadDetails.documents',
     'echo.index.carrier.loadManagement.loadDetails.activityLog',
-    'echo.api.loads',
-    'echo.api.document'
+    'echo.api.loads'
   ])
   .component('loadDetails', {
     templateUrl: 'app/pages/index/carrier/components/load-management/components/load-details/load-details.component.html',
-    controller: function($state, $q, $stateParams, store$, loadsApi, documentApi) {
+    controller: function($state, $q, $stateParams, store$, loadsApi) {
       var that = this;
 
       that.getMapPoint = function() {
@@ -36,16 +35,9 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
             that.loadDetails = loadDetails;
             that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
             that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
-            that.totalStops = _.size(that.loadDetails.pickUp) + _.size(that.loadDetails.delivery);
-            return $q.all([loadsApi.fetchActivityLogByLoadId(that.loadDetails.loadNumber),
-              documentApi.fetchDocuments(that.carrierId, that.loadDetails.loadGuid)
-            ]);
-          }).then(_.spread(function(activityLog, documents) {
-            that.activityLog = activityLog;
-            that.documents = documents;
             that.showLoading = false;
             that.getMapPoint();
-          }));
+          });
       };
 
       that.$onInit = function() {
