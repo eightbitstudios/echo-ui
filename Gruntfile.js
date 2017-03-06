@@ -33,6 +33,10 @@ module.exports = function(grunt) {
     grunt.task.run(['prepareDeploy:bat2']);
   });
 
+  grunt.registerTask('qa3', function() {
+    grunt.task.run(['prepareDeploy:qa3']);
+  });
+
   grunt.registerTask('prepareDeploy', function(env) {
     grunt.task.run([
       'dist:' + env,
