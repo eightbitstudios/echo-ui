@@ -22,8 +22,7 @@ angular.module('echo.models.dateTimePicker', [
       var timeArray = _.split(this.time, '');
       var hours = _.parseInt(_.nth(timeArray, 0) + _.nth(timeArray, 1)),
         minutes = _.parseInt(_.nth(timeArray, 2) + _.nth(timeArray, 3));
-      return moment(this.date || undefined).set({ hour: hours, minute: minutes }); // Moment return invalid date for null and 
-                                                                                  // today for undefined. We want to return today if the date isn't set.
+      return moment(this.date).set({ hour: hours, minute: minutes, second: 0, millisecond: 0 });	// today for undefined. We want to return today if the date isn't set.
     };
 
     /**
