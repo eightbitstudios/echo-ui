@@ -2,39 +2,38 @@ describe('Component: driverTable', function() {
   var component, $q, carrierApi, appConstants, store$, scope, state, carrierId;
 
   beforeEach(function() {
-    module('driver-grid.component.html', '');
     module('echo.index.carrier.myCompany.driverTable', function($provide) {
       $provide.value('carrierApi', carrierApi = jasmine.createSpyObj('carrierApi', ['fetchDrivers', 'searchDrivers']));
       $provide.value('$state', state = jasmine.createSpyObj('$state', ['go']));
       $provide.value('store$', store$ = jasmine.createSpyObj('store$', ['getState']));
     });
-  });
 
-  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController, _appConstants_) {
-    scope = $rootScope.$new();
-    appConstants = _appConstants_;
-    $q = _$q_;
-    scope.ctrl = {
-      getComponent: jasmine.createSpy('getComponent')
-    };
+    inject(function($rootScope, _$q_, $compile, $componentController, _appConstants_) {
 
-    scope.$digest();
-    carrierId = 1;
-    carrierApi.fetchDrivers.and.returnValue($q.when({}));
-    store$.getState.and.returnValue({
-      carrier: {
-        carrierId: carrierId
-      }
+      scope = $rootScope.$new();
+      appConstants = _appConstants_;
+      $q = _$q_;
+      scope.ctrl = {
+        getComponent: jasmine.createSpy('getComponent')
+      };
+
+      scope.$digest();
+      carrierId = 1;
+      carrierApi.fetchDrivers.and.returnValue($q.when({}));
+      store$.getState.and.returnValue({
+        carrier: {
+          carrierId: carrierId
+        }
+      });
+      component = $componentController('driverTable', null, {});
+      spyOn(component, 'getDrivers');
+      component.$onInit();
     });
-    component = $componentController('driverTable', null, {});
-    spyOn(component, 'getDrivers');
-    component.$onInit();
-  }));
+  });
 
   describe('Function: searchDrivers', function() {
     it('should call carrier service to search drivers', function() {
       var searchText = 'test';
-
       carrierApi.searchDrivers.and.returnValue($q.when());
       component.searchDrivers(searchText);
 
