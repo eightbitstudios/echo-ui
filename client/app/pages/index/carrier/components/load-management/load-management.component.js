@@ -16,8 +16,18 @@ angular.module('echo.index.carrier.loadManagement', [
       var that = this;
 
       that.routeToSearch = function(searchText) {
+
+        if ($state.$current.name !== routesConfig.INDEX.searchLoads.name) {
+          that.previousRoute = $state.$current.name;
+        }
+
+        if($stateParams.previous !== routesConfig.INDEX.searchLoads.name){
+          that.previousRoute = $stateParams.previous || $state.$current.name;
+        }
+
         $state.go(routesConfig.INDEX.searchLoads.name, {
           searchText: searchText,
+          previous: that.previousRoute
         }, {
           reload: routesConfig.INDEX.searchLoads.name
         });
@@ -47,6 +57,7 @@ angular.module('echo.index.carrier.loadManagement', [
         that.state = $state;
         that.routesConfig = routesConfig;
         that.isActiveLoads = $state.$current.data.isActiveLoads;
+        that.previousRoute = $state.$current.name;
 
         store$.subscribe(function(state) {
           if (!_.isEmpty(state.loadCounts)) {

@@ -14,8 +14,18 @@ angular.module('echo.index.carrier.invoicing', [
       var sub = null;
 
       that.routeToSearch = function(searchText) {
+
+        if ($state.$current.name !== routesConfig.INDEX.searchInvoices.name) {
+          that.previousRoute = $state.$current.name;
+        }
+
+        if ($stateParams.previous !== routesConfig.INDEX.searchInvoices.name) {
+          that.previousRoute = $stateParams.previous || $state.$current.name;
+        }
+
         $state.go(routesConfig.INDEX.searchInvoices.name, {
-          searchText: searchText
+          searchText: searchText,
+          previous: that.previousRoute
         }, {
           reload: routesConfig.INDEX.searchInvoices.name
         });
@@ -37,7 +47,7 @@ angular.module('echo.index.carrier.invoicing', [
         that.showLoading = true;
         that.state = $state;
         that.routesConfig = routesConfig;
-        that.isActiveInvoices = ($state.$current.name === routesConfig.INDEX.activeInvoices.name);
+        that.previousRoute = $state.$current.name;
 
         sub = store$.subscribe(function(state) {
           if (!_.isEmpty(state.invoiceCounts)) {

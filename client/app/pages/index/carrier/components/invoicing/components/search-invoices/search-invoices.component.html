@@ -1,11 +1,13 @@
 <div>
-  <div class="container-fluid carrier-dashboard-header" ng-if="!$ctrl.showLoading">
+  <div class="container-fluid carrier-dashboard-header">
     <div class="container">
       <ul class="list-inline carrier-dashboard-header_left">
         <li>
           <strong>{{$ctrl.paging.totalRecords}} Invoices Located</strong>
+        </li>        
+        <li>
+          <previous-state></previous-state>
         </li>
-        <li ng-if="$ctrl.previousRoute"><a ui-sref="{{$ctrl.previousRoute}}">Back to {{$ctrl.previousRouteName}}</a></li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>

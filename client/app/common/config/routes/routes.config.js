@@ -33,19 +33,22 @@ angular.module('echo.config.routes', [])
       },
       activeLoads: {
         name: 'index.carrier.loadManagement.activeLoads',
-        route: '/activeLoads'
+        route: '/activeLoads',
+        title: 'Active Loads'
       },
       unbilledLoads: {
         name: 'index.carrier.loadManagement.unbilledLoads',
-        route: '/unbilledLoads'
+        route: '/unbilledLoads',
+        title: 'Unbilled Loads'
       },
       upcomingLoads: {
         name: 'index.carrier.loadManagement.upcomingLoads',
-        route: '/upcomingLoads'
+        route: '/upcomingLoads',
+        title: 'Upcoming Loads'
       },
       loadDetails: {
         name: 'index.carrier.loadManagement.loadDetails',
-        route: '/loadDetails/:loadId&previous'
+        route: '/loadDetails/:loadId?previous'
       },
       searchLoads: {
         name: 'index.carrier.loadManagement.searchLoads',
@@ -57,7 +60,8 @@ angular.module('echo.config.routes', [])
       },
       activeInvoices: {
         name: 'index.carrier.invoicing.activeInvoices',
-        route: '/activeInvoices'
+        route: '/activeInvoices',
+        title: 'Active Loads'
       },
       searchInvoices: {
         name: 'index.carrier.invoicing.searchInvoices',

@@ -77,25 +77,15 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
       url: routesConfig.INDEX.activeLoads.route,
-      template: '<active-loads></active-loads>',
-      data: {
-        name: 'active loads',
-        isActiveLoads: true
-      }
+      template: '<active-loads></active-loads>'
     })
     .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
       url: routesConfig.INDEX.unbilledLoads.route,
-      template: '<unbilled-loads></unbilled-loads>',
-      data: {
-        name: 'unbilled loads'
-      }
+      template: '<unbilled-loads></unbilled-loads>'
     })
     .state(routesConfig.INDEX.upcomingLoads.name, { // #/carrier/:carrierId/loadManagement/upcomingLoads
       url: routesConfig.INDEX.upcomingLoads.route,
-      template: '<upcoming-loads></upcoming-loads>',
-      data: {
-        name: 'upcoming loads'
-      }
+      template: '<upcoming-loads></upcoming-loads>'
     })
     .state(routesConfig.INDEX.searchLoads.name, { // #/carrier/:carrierId/loadManagement/searchText/:searchText
       url: routesConfig.INDEX.searchLoads.route,
@@ -129,6 +119,9 @@ angular.module('echo.index', [
     .state(routesConfig.INDEX.searchInvoices.name, { // #/carrier/:carrierId/invoicing/:searchText
       url: routesConfig.INDEX.searchInvoices.route,
       template: '<search-invoices></search-invoices>',
+      params: {
+        previous: null
+      },
       data: {
         hideTabBar: true
       }

@@ -6,7 +6,6 @@ angular.module('echo', [
     'base64',
     'echo.config.api',
     'ui.mask',
-    'ngAnimate',
     'echo.services.routing',
     'echo.interceptors.auth',
     'ui.bootstrap',

@@ -5,7 +5,8 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
   'echo.models.paging',
   'echo.components.pagination',
   'echo.enums.loadTypes',
-  'echo.config.appConstants'
+  'echo.config.appConstants',
+  'echo.index.carrier.previousState'
 ]).component('searchLoads', {
   templateUrl: 'app/pages/index/carrier/components/load-management/components/search-loads/search-loads.component.html',
   bindings: {},
@@ -38,8 +39,6 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
       that.searchText = $stateParams.searchText;
       that.routesConfig = routesConfig;
       that.loadCount = 0;
-      that.previousRouteName = _.get($state.previous, 'data.name');
-      that.previousRoute = _.get($state.previous, 'name');
       that.paging = new PagingModel(appConstants.LIMIT.loadsList);
       that.loadType = loadTypesEnum.UNBILLED;
 

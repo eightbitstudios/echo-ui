@@ -5,7 +5,8 @@ angular.module('echo.index.carrier.invoicing.searchInvoices', [
   'echo.models.paging',
   'echo.config.routes',
   'echo.components.pagination',
-  'echo.config.appConstants'
+  'echo.config.appConstants',
+  'echo.index.carrier.previousState'
 ]).component('searchInvoices', {
   templateUrl: 'app/pages/index/carrier/components/invoicing/components/search-invoices/search-invoices.component.html',
   bindings: {},
@@ -38,10 +39,8 @@ angular.module('echo.index.carrier.invoicing.searchInvoices', [
       that.searchText = $stateParams.searchText;
       that.routesConfig = routesConfig;
       that.invoiceCount = 0;
-      that.previousRouteName = _.get($state.previous, 'data.name');
-      that.previousRoute = _.get($state.previous, 'name');
-      that.paging = new PagingModel(appConstants.LIMIT.invoicesList);
 
+      that.paging = new PagingModel(appConstants.LIMIT.invoicesList);
       that.getInvoicesBySearchText();
     };
   }

@@ -6,7 +6,9 @@
         <li>
           <strong>Load {{$ctrl.loadDetails.loadNumber}}</strong>
         </li>
-        <li ng-if="$ctrl.previousRouteName"><a ui-sref="{{$ctrl.previousRoute}}">Back to {{$ctrl.previousRouteName}}</a></li>
+        <li>
+          <previous-state></previous-state>
+        </li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
