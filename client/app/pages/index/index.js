@@ -5,7 +5,7 @@ angular.module('echo.index', [
   'echo.config',
   'echo.directives.echoIcon',
   'echo.index.myCarriers',
-  'echo.enums.roles',
+  'echo.constant.roles',
   'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
@@ -18,7 +18,7 @@ angular.module('echo.index', [
   'templates-app',
   'echo.action',
   'echo.store'
-]).config(function($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
+]).config(function($base64, $urlRouterProvider, $stateProvider, routesConfig, roleConstants) {
 
   // ROUTES
   $stateProvider
@@ -48,7 +48,7 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCarriers.route,
       template: '<my-carriers></my-carriers>',
       data: {
-        role: RolesEnum.ECHO_REP,
+        role: roleConstants.ECHO_REP,
         reroute: routesConfig.INDEX.carrier.name
       }
     })
@@ -136,7 +136,7 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, { // #/carrier/:carrierId/myCompany/drivers
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      template: '<driver-grid></driver-grid>',
+      template: '<driver-table></driver-table>',
       data: {
         whiteContainer: true
       }

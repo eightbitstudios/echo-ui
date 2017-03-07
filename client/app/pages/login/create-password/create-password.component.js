@@ -11,7 +11,7 @@ angular.module('echo.login.createPassword', [
   bindings: {
     showTerms: '<'
   },
-  templateUrl: 'app/pages/login/create-password/create-password.component.html',
+  templateUrl: 'create-password.component.html',
   controller: function($stateParams, $state, $window, routesConfig, authenticationApi, PasswordChangeModel, appConstants, modalService) {
 
     this.createPassword = function() {

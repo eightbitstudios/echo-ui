@@ -3,7 +3,7 @@ describe('Component: signIn', function () {
   var component, $q, window, scope, state, userProfileService, element, authenticationApi, routesConfig, stateParams, errorsConfig, user;
 
   beforeEach(function () {
-    module('app/pages/login/sign-in/sign-in.component.html');
+    module('sign-in.component.html');
     module('echo.login.signIn', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['signIn']));
       $provide.value('$stateParams', stateParams = {});

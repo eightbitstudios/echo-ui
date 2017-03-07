@@ -5,5 +5,5 @@ angular.module('echo.components.checkbox', []).component('checkbox', {
     model: '=',
     large: '<'
   },
-  templateUrl: 'app/common/components/checkbox/checkbox.component.html'
+  templateUrl: 'checkbox.component.html'
 });

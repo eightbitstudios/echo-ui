@@ -1,0 +1,64 @@
+<section class="invoice-table">
+  <div class="row">
+    <div class="col-md-12">
+      <loading show-loading="$ctrl.showLoading" fixed="true"></loading>
+      <table class="table table-invoice">
+        <thead>
+        <tr>
+          <th>Invoice #</th>
+          <th>Received Date</th>
+          <th>Status</th>
+          <th>Invoice Amount<hr>Balance Remaining</th>
+          <th>Load Number</th>
+          <th>Pro Number</th>
+          <th>Lane</th>
+          <th>Picked Up<hr>Delivered</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-if="$ctrl.invoices.length === 0">
+          <td colspan="8" class="text-center">
+            <h3>No invoices found</h3>
+          </td>
+        </tr>
+        <tr ng-repeat="invoice in $ctrl.invoices">
+          <td class="invoice-number">
+            <a href="#">{{invoice.invoiceNumber}}
+              <span class="echo-icon icon-document"></span>
+            </a>
+          </td>
+          <td class="invoice-received-date">
+            {{invoice.receivedDate}}
+          </td>
+          <td class="invoice-status">
+            <strong>{{invoice.status | invoiceCode}}</strong>
+            <br>
+            {{invoice.statusReason | invoiceReasonCode}}
+          </td>
+          <td class="invoice-total">
+            <span>{{invoice.invoiceAmount | currency : '$'}}</span><br><div class="text-warning">
+            {{invoice.balanceRemaining | currency : '$'}}
+          </div>
+          </td>
+          <td class="invoice-load-number">
+            <a ui-sref="{{$ctrl.loadDetailsRoute}}({loadId: invoice.loadGuid, previous: $ctrl.currentRoute})">{{invoice.loadId}}</a>
+          </td>
+          <td class="invoice-pro-number">
+            {{invoice.proNumber}}
+          </td>
+          <td class="invoice-lane">
+            {{invoice.laneOrigin | formatCityState}}
+            <br>
+            {{invoice.laneDestination | formatCityState}}
+          </td>
+          <td class="invoice-dates">
+            <span>{{invoice.pickupDate}}</span><br><span>
+                      {{invoice.deliveryDate}}
+                    </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

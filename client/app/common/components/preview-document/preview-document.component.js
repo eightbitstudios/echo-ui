@@ -5,7 +5,7 @@ angular.module('echo.components.previewDocument', [
   bindings: {
     document: '<'
   },
-  templateUrl: 'app/common/components/preview-document/preview-document.component.html',
+  templateUrl: 'preview-document.component.html',
   controller: function(assetConfig) {
     var that = this;
 
