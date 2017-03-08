@@ -1,13 +1,13 @@
 angular.module('echo.interceptors.api', [
     'echo.config.api',
-    'echo.config.reference'
+    'echo.config.envVars'
   ])
-  .factory('apiInterceptor', function(referenceConfig, apiConfig) {
+  .factory('apiInterceptor', function(envVarsConfig, apiConfig) {
 
     return {
       request: function(config) {
         if(config.url.match(/\./g) === null){
-          config.url = _.join([referenceConfig.url, referenceConfig.path, apiConfig.version, config.url], '');
+          config.url = _.join([envVarsConfig.url, envVarsConfig.path, apiConfig.version, config.url], '');
         }
         return config;
       }

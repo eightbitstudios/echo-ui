@@ -31,7 +31,7 @@ module.exports = function (grunt) {
      */
     app_files: {
       js: ['app/**/*.js'],
-      keyConfig: ['app/reference/reference.config.js'],
+      envVars: ['app/env-vars/env-vars.config.js'],
       jsunit: ['app/**/*.spec.js'],
 
       page_specific_js: {}, //populated in grunt file

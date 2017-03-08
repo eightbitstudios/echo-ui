@@ -33,8 +33,8 @@
   <!-- endinjector -->
   <!-- endbuild -->
 
-  <!-- build:js app/reference.js -->
-  <% _.each( app_files.keyConfig, function( scriptSrc ){ %>
+  <!-- build:js app/env-vars.js -->
+  <% _.each( app_files.envVars, function( scriptSrc ){ %>
   <script src="<%= scriptSrc %>"></script><% }); %>
   <!-- endbuild -->
 
