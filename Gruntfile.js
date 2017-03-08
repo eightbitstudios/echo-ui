@@ -18,8 +18,7 @@ module.exports = function(grunt) {
       'dist',
       'copy:deploy',
       'install',
-      'express:dist',
-      'watch'
+      'express:dist'
     ]);
   });
 
