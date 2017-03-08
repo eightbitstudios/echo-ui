@@ -32,6 +32,11 @@
   <!-- injector:js -->
   <!-- endinjector -->
   <!-- endbuild -->
+  <!-- build:js app/reference.js -->
+  <% _.each( app_files.keyConfig, function( scriptSrc ){ %>
+  <script src="<%= scriptSrc %>"></script><% }); %>
+  <!-- endbuild -->
+
   <script>
     grunticon(["assets/icons/icons.data.svg.css", "assets/icons/icons.data.png.css", "assets/icon/icons.fallback.css"], grunticon.svgLoadedCallback);
   </script>

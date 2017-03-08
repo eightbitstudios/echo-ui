@@ -11,17 +11,21 @@ angular.module('echo', [
     'ui.bootstrap',
     'echo.store',
     'echo.config.globals',
-    'echo.services.routing'
+    'echo.services.routing',
+    'echo.decorators.uiRouter',
+    'echo.config.reference',
+    'echo.interceptors.api'
   ])
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, keyConstants) {
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, referenceConfig) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('');
 
-    if (!_.isEmpty(keyConstants.KEY)) {
-      $httpProvider.defaults.headers.common[$base64.decode(keyConstants.KEY_HEADER)] = $base64.decode(keyConstants.KEY);
+    if (!_.isEmpty(referenceConfig.key)) {
+      $httpProvider.defaults.headers.common[$base64.decode(referenceConfig.keyHeader)] = $base64.decode(referenceConfig.key);
     }
-
+    
+    $httpProvider.interceptors.push('apiInterceptor');
     $httpProvider.interceptors.push('authInterceptor');
     
   })

@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('echo.services.googleMapsApi', [
-  'echo.config.api'
+  'echo.config.api',
+  'echo.config.reference'
 ])
-  .factory('googleMapsApi', function ($window, $q, keyConstants) {
+  .factory('googleMapsApi', function ($window, $q, referenceConfig) {
     var deferred = $q.defer();
 
     function loadGoogleMapsApi() {
       var script = document.createElement('script');
-      script.src = _.template('//maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&callback=initMap')({ googleMapsApiKey: keyConstants.GOOGLE_MAPS });
+      script.src = _.template('//maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&callback=initMap')({ googleMapsApiKey: referenceConfig.googleMaps });
       document.body.appendChild(script);
     }
 
