@@ -12,17 +12,16 @@ angular.module('echo', [
     'echo.store',
     'echo.config.globals',
     'echo.services.routing',
-    'echo.decorators.uiRouter',
-    'echo.config.reference',
+    'echo.config.envVars',
     'echo.interceptors.api'
   ])
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, referenceConfig) {
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, envVarsConfig) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('');
 
-    if (!_.isEmpty(referenceConfig.key)) {
-      $httpProvider.defaults.headers.common[$base64.decode(referenceConfig.keyHeader)] = $base64.decode(referenceConfig.key);
+    if (!_.isEmpty(envVarsConfig.key)) {
+      $httpProvider.defaults.headers.common[$base64.decode(envVarsConfig.keyHeader)] = $base64.decode(envVarsConfig.key);
     }
     
     $httpProvider.interceptors.push('apiInterceptor');
