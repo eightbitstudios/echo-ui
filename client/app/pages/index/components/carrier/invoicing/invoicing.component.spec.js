@@ -68,7 +68,7 @@ describe('Component: Invoicing', function() {
       };
       component.createTabItems(invoiceCounts);
 
-      expect(component.tabItems.length).toBe(1);
+      expect(component.tabItems.length).toBe(2);
     });
   });
 
@@ -76,7 +76,7 @@ describe('Component: Invoicing', function() {
    it('should route to search page', function() {
       var searchText = 'test';
       component.routeToSearch(searchText);
-      expect(state.go).toHaveBeenCalled();;
+      expect(state.go).toHaveBeenCalled();
     });
   });
 

@@ -8,7 +8,8 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     'echo.index.carrier.loadManagement.loadDetails.documents',
     'echo.index.carrier.loadManagement.loadDetails.activityLog',
     'echo.api.loads',
-    'echo.index.carrier.previousState'
+    'echo.index.carrier.previousState',
+    'echo.components.invoiceAccordion'
   ])
   .component('loadDetails', {
     templateUrl: 'load-details.component.html',

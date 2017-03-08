@@ -1,0 +1,16 @@
+<div class="archived-invoices">
+  <div class="container-fluid carrier-dashboard-header">
+    <div class="container">
+      <ul class="list-inline carrier-dashboard-header_left">
+        <li>
+          <a ui-sref="{{$ctrl.unbilledLoadsRoute}}">{{::$ctrl.unbilledLoads}} Loads Unbilled</a>
+        </li>
+      </ul>
+      <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
+    </div>
+  </div>
+  <div class="container main-content">
+    <invoice-table rep-details="$ctrl.repDetails" invoices="$ctrl.archivedInvoices" show-loading="$ctrl.showLoading" carrier-id="$ctrl.carrierId"></invoice-table>
+    <pagination page-click-handler="$ctrl.fetchArchivedInvoices()" paging-model="$ctrl.paging" record-type="Invoices" ng-if="!$ctrl.showLoading"></pagination>
+  </div>
+</div>

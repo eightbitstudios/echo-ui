@@ -3,6 +3,7 @@ angular.module('echo.index.carrier.invoicing', [
     'echo.components.searchBar',
     'echo.config.routes',
     'echo.index.carrier.invoicing.activeInvoices',
+    'echo.index.carrier.invoicing.archivedInvoices',
     'echo.index.carrier.invoicing.searchInvoices',
     'echo.action'
   ])
@@ -35,7 +36,14 @@ angular.module('echo.index.carrier.invoicing', [
         that.tabItems = [{
           title: invoiceCounts.activeInvoices + ' Active Invoices',
           link: routesConfig.INDEX.activeInvoices.name
+        }, {
+          title: that.formatInvoiceCount(invoiceCounts.archivedInvoices) + ' Archived Invoices',
+          link: routesConfig.INDEX.archivedInvoices.name
         }];
+      };
+
+      that.formatInvoiceCount = function(invoiceCount) {
+        return invoiceCount > 1000 ? '1000+' : invoiceCount;
       };
 
       that.$onInit = function() {

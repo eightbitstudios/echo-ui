@@ -49,6 +49,7 @@ module.exports = function (app) {
   app.get(endpoints.api.mapPointsForLoadsNeedingAction, loadsHandler.fetchMapPoints);
   app.get(endpoints.api.mapPointByLoadGuid, loadsHandler.fetchMapPointByLoadGuid);
   app.get(endpoints.api.activeInvoicesPage, invoiceHandler.getInvoices);
+  app.get(endpoints.api.archivedInvoicesPage, invoiceHandler.getInvoices);
   app.get(endpoints.api.invoicesSearch, invoiceHandler.getInvoicesBySearchText);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
