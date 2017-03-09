@@ -22,10 +22,8 @@
           </td>
         </tr>
         <tr ng-repeat="invoice in $ctrl.invoices">
-          <td class="invoice-number">
-            <a href="#">{{invoice.invoiceNumber}}
-              <span class="echo-icon icon-document"></span>
-            </a>
+          <td>
+            <invoice-number carrier-id="$ctrl.carrierId" invoice="invoice"></invoice-number>
           </td>
           <td class="invoice-received-date">
             {{invoice.receivedDate}}

@@ -1,0 +1,18 @@
+<table class="paid-invoices table table-minimal table-invoice-details">
+  <thead>
+    <tr>
+      <th>PAID DATE</th>
+      <th>CHECK / ACH NUMBER</th>
+      <th>CHECK DATE</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="paidInvoice in $ctrl.paidInvoices">
+      <td>{{::paidInvoice.paidDate}}</td>
+      <td>{{::paidInvoice.checkNumber}}</td>
+      <td>{{::paidInvoice.checkDate}}</td>
+      <td>{{::paidInvoice.amount | currency: '$'}}</td>
+    </tr>
+  </tbody>
+</table>

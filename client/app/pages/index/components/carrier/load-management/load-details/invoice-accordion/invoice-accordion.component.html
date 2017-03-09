@@ -1,102 +1,48 @@
-<uib-accordion class="stop-accordion" ng-class="{'panel-closed': !$ctrl.isOpen}">
+<uib-accordion class="invoice-accordion accordion" ng-class="{'panel-closed': !$ctrl.isOpen}">
   <div uib-accordion-group is-open="$ctrl.isOpen">
-    <uib-accordion-heading><strong><strong>Invoice Number</strong> 1234567</strong> 
+    <uib-accordion-heading><strong><strong>Invoice Number</strong> 1234567</strong>
       <span class="pull-right">
-                    <strong>Status</strong> Paid
-                    <div class="caret"></div>
-                  </span>
+        <strong>Status</strong> Paid
+        <div class="caret"></div>
+      </span>
     </uib-accordion-heading>
     <div class="panel-body load-details">
       <h4 class="section-header sh-no_border section-header_items">
         Invoiced
         <em>
-                      Jun 20 2016
-                    </em>
+          Jun 20 2016
+        </em>
         <span>
-                      Received
-                      <em>
-                        JUN 26 2016
-                      </em>
-                    </span>
+          Received
+          <em>
+            JUN 26 2016
+          </em>
+        </span>
         <div class="pull-right">
           <span>
-                        Amount
-                        <em>
-                          $1850.00
-                        </em>
-                      </span>
+            Amount
+            <em>
+              $1850.00
+            </em>
+          </span>
         </div>
       </h4>
       <section class="well">
-        <table class="table table-minimal table-invoice-details">
-          <thead>
-            <tr>
-              <th>Activity</th>
-              <th>Quantity</th>
-              <th>Rate</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Line Haul</td>
-              <td>1.0</td>
-              <td>$1,200.00</td>
-              <td>$1,200.00</td>
-            </tr>
-            <tr>
-              <td>Fuel Surcharge</td>
-              <td>1.0</td>
-              <td>$650.00</td>
-              <td>$650.00</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3">Total</td>
-              <td><strong>$1,850.00</strong></td>
-            </tr>
-            <tr>
-              <td colspan="3">Amount Paid</td>
-              <td><strong>$1,850.00</strong></td>
-            </tr>
-            <tr>
-              <td colspan="3">Balance Due</td>
-              <td><strong>$0.00</strong></td>
-            </tr>
-          </tfoot>
-        </table>
+        <invoice-activity></invoice-activity>
       </section>
       <h4 class="section-header sh-no_border section-header_items">
         Paid Invoices
         <div class="pull-right">
           <span>
-                        Total Paid
-                        <em>
-                          $1850.00
-                        </em>
-                      </span>
+            Total Paid
+            <em>
+              $1850.00
+            </em>
+          </span>
         </div>
       </h4>
       <section class="well">
-        <table class="table table-minimal table-invoice-details">
-          <thead>
-            <tr>
-              <th>PAID DATE</th>
-              <th>CHECK / ACH NUMBER</th>
-              <th>CHECK DATE</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>JUN 26 2016</td>
-              <td>6572989</td>
-              <td>JUN 20 2016</td>
-              <td>$1,850.00</td>
-            </tr>
-          </tbody>
-        </table>
+        <paid-invoices></paid-invoices>
       </section>
     </div>
   </div>

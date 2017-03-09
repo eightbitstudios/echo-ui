@@ -1,8 +1,12 @@
-<div>
+<div class="invoices-filter">
   <div class="section-head">
     <div class="filter-bar-wrap">
       <div class="filter-bar">
-        <div class="label">Filter By</div>
+        <div class="label">
+          <span>Filter By</span>
+          <br />
+          <a href="javascript:void(0)" ng-click="$ctrl.openHelpModal()">Help?</a>
+        </div>
         <ng-transclude></ng-transclude>
         <div class="filter-summary pull-right text-center">
                 <h5>{{$ctrl.invoiceCount}} Invoices</h5>
