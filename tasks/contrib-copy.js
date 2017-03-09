@@ -123,11 +123,6 @@ module.exports = function (grunt) {
           expand: true
         }, {
           cwd: 'build/public',
-          src: 'app/env-vars/env-vars.config.js',
-          dest: '<%= dist_dir %>/public/',
-          expand: true
-        }, {
-          cwd: 'build/public',
           src: '.well-known/**',
           dest: '<%= dist_dir %>/public/',
           expand: true
