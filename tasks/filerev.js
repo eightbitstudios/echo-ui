@@ -6,8 +6,12 @@ module.exports = function(grunt) {
       length: 8
     },
     assets: {
-      //        src: 'dist/public//**/*.{jpg,jpeg,gif,png,webp}',
-      src: 'dist/public/{app,css}/**/*.{js,css}'
+      files: [{
+        src: [
+          'dist/public/{app,css}/**/*.{js,css}',
+          '!dist/public/app/env-vars.js'
+        ]
+      }]
     }
   });
 
