@@ -6,8 +6,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', function() {
     grunt.task.run([
-      'build',
       'env:local',
+      'build',
       'express:dev',
       'watch'
     ]);

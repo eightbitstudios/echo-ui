@@ -8,5 +8,5 @@
   </form>
   <hr class="hr">
   <div ng-if="$ctrl.selectedDocumentType === $ctrl.documentTypeConstants.INVOICE.value" ng-transclude="invoices"></div>
-  <div ng-if="$ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.INVOICE.value" ng-transclude="loaddocumentTypeConstants"></div>
+  <div ng-if="$ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.INVOICE.value" ng-transclude="loadDocumentTypes"></div>
 </div>
