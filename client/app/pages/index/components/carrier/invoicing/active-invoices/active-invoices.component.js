@@ -58,6 +58,11 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
           });
       };
 
+      that.changePage = function() {
+        that.activeInvoices = null;
+        that.fetchActiveInvoices();
+      };
+
       that.$onInit = function() {
         var state = store$.getState();
         that.carrierId = state.carrier.carrierId;

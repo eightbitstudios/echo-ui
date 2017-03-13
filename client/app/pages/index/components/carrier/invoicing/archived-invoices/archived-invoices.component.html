@@ -11,6 +11,6 @@
   </div>
   <div class="container main-content">
     <invoice-table rep-details="$ctrl.repDetails" invoices="$ctrl.archivedInvoices" show-loading="$ctrl.showLoading" carrier-id="$ctrl.carrierId"></invoice-table>
-    <pagination page-click-handler="$ctrl.fetchArchivedInvoices()" paging-model="$ctrl.paging" record-type="Invoices" ng-if="!$ctrl.showLoading"></pagination>
+    <pagination page-click-handler="$ctrl.changePage()" paging-model="$ctrl.paging" record-type="Invoices" ng-if="!$ctrl.showLoading"></pagination>
   </div>
 </div>

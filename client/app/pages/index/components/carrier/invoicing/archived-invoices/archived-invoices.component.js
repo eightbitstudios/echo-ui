@@ -43,6 +43,11 @@ angular.module('echo.index.carrier.invoicing.archivedInvoices', [
           });
       };
 
+      that.changePage = function() {
+        that.archivedInvoices = null;
+        that.fetchArchivedInvoices();
+      };
+
       that.$onInit = function() {
         var state = store$.getState();
         that.carrierId = state.carrier.carrierId;
