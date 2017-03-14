@@ -36,6 +36,12 @@
   <!-- build:js app/index/index.js -->
   <!-- injector:js -->
   <!-- endinjector -->
+
+  <!-- endbuild -->
+
+  <!-- build:js app/env-vars.js -->
+  <% _.each( app_files.envVars, function( scriptSrc ){ %>
+  <script src="<%= scriptSrc %>"></script><% }); %>
   <!-- endbuild -->
 
   <script>
