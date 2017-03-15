@@ -3,6 +3,6 @@ angular.module('echo.config.envVars', [])
     googleMapsKey: 'AIzaSyCVP3yvKSvxHj2dWHfKCVClFR0wz0vgutw',
     key: null,
     keyHeader: 'b2NwLWFwaW0tc3Vic2NyaXB0aW9uLWtleQ==',
-    url: null,
+    url: 'https://api.local',
     path: '/api'
   });
