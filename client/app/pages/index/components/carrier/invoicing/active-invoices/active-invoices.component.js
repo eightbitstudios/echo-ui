@@ -37,6 +37,7 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
               that.activeInvoices = invoicesPageData.invoices;
               that.paging.recordCount = _.size(invoicesPageData.invoices);
               that.unbilledAmount = invoicesPageData.totalInvoiceAmount;
+              that.paging.totalRecords = invoicesPageData.activeInvoiceCount;
             }
 
           }).finally(function() {
