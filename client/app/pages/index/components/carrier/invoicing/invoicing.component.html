@@ -5,6 +5,6 @@
       <h2>Search Results for {{$ctrl.stateParams.searchText}}</h2>
       <search-bar search-callback="$ctrl.routeToSearch(searchText)" placeholder-text="Invoice, Load, or PRO Number"></search-bar>
     </tab-bar>
-    <div ui-view></div>
+    <div ui-view ng-if="!$ctrl.showLoading"></div>
   </div>
 </div>

@@ -25,19 +25,6 @@ angular.module('echo.index.carrier.invoicing.archivedInvoices', [
               that.archivedInvoices = invoicesPageData.invoices;
               that.paging.recordCount = _.size(invoicesPageData.invoices);
             }
-
-            if (invoicesPageData.invoicesCount) {
-              that.paging.totalRecords = invoicesPageData.invoicesCount.activeInvoices;
-              that.unbilledLoads = invoicesPageData.invoicesCount.unbilledLoads;
-              that.unbilledAmount = invoicesPageData.invoicesCount.unbilledAmount;
-              that.totalActiveInvoiceAmount = invoicesPageData.invoicesCount.totalActiveInvoiceAmount;
-
-              var state = store$.getState();
-              if (_.isEmpty(state.invoiceCounts)) {
-                var action = invoiceCountsActionCreator.setInvoiceCounts(invoicesPageData.invoicesCount);
-                store$.dispatch(action);
-              }
-            }
           }).finally(function() {
             that.showLoading = false;
           });
@@ -57,6 +44,9 @@ angular.module('echo.index.carrier.invoicing.archivedInvoices', [
 
         that.unbilledLoadsRoute = routesConfig.INDEX.unbilledLoads.name;
         that.paging = new PagingModel(appConstants.LIMIT.invoicesList);
+        that.paging.totalRecords = state.invoiceCounts.activeInvoices;
+        that.unbilledLoads = state.invoiceCounts.unbilledLoads;
+
         that.fetchArchivedInvoices();
       };
     }

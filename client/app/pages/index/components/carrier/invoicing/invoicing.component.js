@@ -5,14 +5,15 @@ angular.module('echo.index.carrier.invoicing', [
     'echo.index.carrier.invoicing.activeInvoices',
     'echo.index.carrier.invoicing.archivedInvoices',
     'echo.index.carrier.invoicing.searchInvoices',
-    'echo.action'
+    'echo.action',
+    'echo.api.invoices',
+    'echo.index.actionsCreators.invoiceCounts'
   ])
   .component('invoicing', {
     templateUrl: 'invoicing.component.html',
     bindings: {},
-    controller: function($stateParams, $state, store$, routesConfig) {
+    controller: function($stateParams, $state, store$, routesConfig, invoicesApi, invoiceCountsActionCreator) {
       var that = this;
-      var sub = null;
 
       that.routeToSearch = function(searchText) {
 
@@ -29,6 +30,15 @@ angular.module('echo.index.carrier.invoicing', [
           previous: that.previousRoute
         }, {
           reload: routesConfig.INDEX.searchInvoices.name
+        });
+      };
+
+      that.fetchInvoicesCount = function() {
+        invoicesApi.fetchInvoiceCount(that.carrierId).then(function(invoiceCounts) {
+          var action = invoiceCountsActionCreator.setInvoiceCounts(invoiceCounts);
+          store$.dispatch(action);
+          that.createTabItems(invoiceCounts);
+          that.showLoading = false;
         });
       };
 
@@ -56,17 +66,7 @@ angular.module('echo.index.carrier.invoicing', [
         that.state = $state;
         that.routesConfig = routesConfig;
         that.previousRoute = $state.$current.name;
-
-        sub = store$.subscribe(function(state) {
-          if (!_.isEmpty(state.invoiceCounts)) {
-            that.createTabItems(state.invoiceCounts);
-            that.showLoading = false;
-          }
-        });
-      };
-
-      that.$onDestroy = function() {
-        sub.dispose();
+        that.fetchInvoicesCount();
       };
     }
   });

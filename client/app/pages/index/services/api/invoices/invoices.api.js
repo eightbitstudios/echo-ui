@@ -41,12 +41,12 @@ angular.module('echo.api.invoices', [
       });
     },
     fetchInvoiceCount: function (carrierId) {
-      var url = _.template(apiConfig.activeInvoicesPage)({
+      var url = _.template(apiConfig.invoiceCount)({
         carrierId: carrierId
       });
 
       return $http.get(url).then(function(resp) {
-        return $q.when(resp.data.data.invoicesCount);
+        return $q.when(resp.data.data);
       });
     },
     fetchInvoicesBySearchText: function(carrierId, searchText, paging) {
