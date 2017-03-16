@@ -54,5 +54,11 @@ angular.module('echo.config.api', [])
     mapPointByLoadGuid: '/loads/${loadGuid}/details/map',
     mapPointsForLoadsNeedingAction: '/carriers/${carrierId}/loads/needsAction/map',
     activeLoadsPage: '/carriers/${carrierId}/loads/activeLoadsPage',
-    loadDashboard: '/carriers/${carrierId}/loads/dashboardPage'
+    loadDashboard: '/carriers/${carrierId}/loads/dashboardPage',
+    documentUpload: '/carriers/${carrierId}/documents/loadDocument',
+    invoiceUpload: '/carriers/${carrierId}/documents/invoiceDocument',
+    documents: '/carriers/${carrierId}/documents/${loadGuid}/manifestbyload',
+    documentById: '/carriers/${carrierId}/documents/images/${documentId}',
+    documentsByIdThumbnail: '/carriers/${carrierId}/documents/images/${documentId}/thumbnail',
+    documentsByIdPDF: '/carriers/${carrierId}/documents/download/pdf/${documentName}'
   });
