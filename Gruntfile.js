@@ -4,7 +4,8 @@ module.exports = function(grunt) {
   grunt.initConfig(userConfig);
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('serve', function() {
+  grunt.registerTask('serve', function(env) {
+    grunt.config.set('apiConfig', env || 'mocks');
     grunt.task.run([
       'env:local',
       'build',
@@ -33,6 +34,7 @@ module.exports = function(grunt) {
       'copy:htmlPartials',
       'html2js',
       'copy:build',
+      'copy:envVars',
       'copy:version',
       'injector',
       'karma:unit'

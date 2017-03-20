@@ -6,7 +6,7 @@
   </div>
   <div ng-if="$ctrl.loadType === $ctrl.loadTypeConstants.UNBILLED">
     <div ng-if="$ctrl.documentsRequired()">
-      <h3 class="driver-name">Bill ${{$ctrl.load.balanceRemaining}}</h3>
+      <h3 class="driver-name">Bill ${{$ctrl.load.invoiceAmount}}</h3>
       <span>{{$ctrl.load | formatInvoicePODs}}</span>
     </div>
     <div ng-if="!$ctrl.documentsRequired()">

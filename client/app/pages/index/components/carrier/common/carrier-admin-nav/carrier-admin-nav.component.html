@@ -7,7 +7,7 @@
         <li ng-class="{'active': $ctrl.state.includes($ctrl.routesConfig.INDEX.loadManagement.name)}">
           <a ui-sref="{{::$ctrl.routesConfig.INDEX.activeLoads.name}}">Load Management</a>
         </li>
-        <li ng-class="{'active': $ctrl.state.includes($ctrl.routesConfig.INDEX.invoicing.name)}">
+        <li ng-if="false" ng-class="{'active': $ctrl.state.includes($ctrl.routesConfig.INDEX.invoicing.name)}">
           <a ui-sref="{{::$ctrl.routesConfig.INDEX.activeInvoices.name}}">Invoicing</a>
         </li>
         <li  ng-class="{'active': $ctrl.state.includes($ctrl.routesConfig.INDEX.myCompany.name)}">
