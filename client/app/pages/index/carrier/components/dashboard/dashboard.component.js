@@ -130,6 +130,7 @@ angular.module('echo.index.carrier.dashboard', [
         that.loadDetailsMapPoint = mapPoint;
         that.showExpandedMap = false;
         that.showLoadDetailsMap = true;
+        that.stopCount =  !_.isEmpty(_.get(mapPoint, 'pickUp')) +  !_.isEmpty(_.get(mapPoint, 'delivery'));
       };
 
       that.$onInit = function() {
