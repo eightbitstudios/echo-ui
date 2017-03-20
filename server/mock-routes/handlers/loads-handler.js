@@ -41,7 +41,7 @@ module.exports = {
     resTemplate.data = activityLogRes;
 
     responseUtil.timeout(function() {
-      res.json(resTemplate);
+      res.status(500).json(resTemplate);
     }, minDelay, maxDelay);
   },
   getDriverStatus: function(req, res) {
@@ -94,6 +94,20 @@ module.exports = {
     var resTemplate = new ResTemplate();
     resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
     resTemplate.data.totalLoadCount = loadsRes.loads.length;
+
+    responseUtil.timeout(function() {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getUnbilledLoadsByCarrierId: function(req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data.loads = _.slice(loadsRes.loads, _.parseInt(req.query.offset) - 1, _.parseInt(req.query.offset) + _.parseInt(req.query.limit) - 1);
+    resTemplate.data.totalLoadCount = loadsRes.loads.length;
+
+    _.forEach(resTemplate.data.loads, function (load) {
+      load.nextAction.nextAction = 10;
+      delete load.escalationLevel;
+    });
 
     responseUtil.timeout(function() {
       res.json(resTemplate);

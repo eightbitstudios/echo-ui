@@ -75,13 +75,6 @@ describe('Service: routingService', function () {
       routingService.handleRouting(event, toState, from);
       expect(event.preventDefault).toHaveBeenCalled();
     });
-
-    it('should save previous state', function () {
-      from.name = 'test';
-      toState.name = 'test1';
-      routingService.handleRouting(event, toState, from);
-      expect($state.previous).toBeDefined();
-    });
   });
   describe('authorized user', function () {
     var user;

@@ -19,7 +19,7 @@ module.exports = {
     var resTemplate = new ResTemplate();
     resTemplate.data = documentsRes;
     responseUtil.timeout(function() {
-      res.json(resTemplate);
+      res.status(500).json(resTemplate);
     }, minDelay, maxDelay);
   },
   fetchDocumentById: function(req, res) {

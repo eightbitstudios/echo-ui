@@ -10,6 +10,7 @@ angular.module('echo.config.api', [])
     carrierById: '/carriers/${carrierId}',
     userById: '/users/${userId}',
     deactivateUserById: '/users/${userId}/deactivate',
+    resendInviteToUserById: '/users/${userId}/resendInvite',
     user: '/users',
     signIn: '/auth/signIn',
     signOut: '/auth/signOut',
@@ -59,6 +60,8 @@ angular.module('echo.config.api', [])
     invoiceUpload: '/carriers/${carrierId}/documents/invoiceDocument',
     documents: '/carriers/${carrierId}/documents/${loadGuid}/manifestbyload',
     documentById: '/carriers/${carrierId}/documents/images/${documentId}',
+    documentsByIdPDF: '/carriers/${carrierId}/documents/download/pdf/${documentName}',
     documentsByIdThumbnail: '/carriers/${carrierId}/documents/images/${documentId}/thumbnail',
-    documentsByIdPDF: '/carriers/${carrierId}/documents/download/pdf/${documentName}'
+    activeInvoicesPage: '/carriers/${carrierId}/invoices/activeInvoicesPage',
+    invoicesSearch: '/carriers/${carrierId}/invoices/search'
   });

@@ -8,7 +8,7 @@ angular.module('echo.components.secureImage', [
       imageGuid: '<',
       thumbnail: '<'
     },
-    templateUrl: 'app/common/components/secure-image/secure-image.template.html',
+    templateUrl: 'secure-image.component.html',
     controller: function(store$, documentApi) {
       var that = this;
 

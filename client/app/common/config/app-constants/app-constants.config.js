@@ -11,7 +11,8 @@ angular.module('echo.config.appConstants', [])
       driverList: 5,
       loadsList: 10,
       loadsNeedingAction: 5,
-      multistopLoads: 5
+      multistopLoads: 5,
+      invoicesList: 10
     },
     LANGUAGES: {
       default: 'English',
@@ -27,7 +28,7 @@ angular.module('echo.config.appConstants', [])
     FILE_UPLOAD: {
       DOCUMENTS: {
         fileSizeLimit: 20971520, // 20MB in bytes
-        documentTypes: ['application/pdf', 'image/jpg', 'image/jpeg', 'image/png'],
+        documentTypeConstants: ['application/pdf', 'image/jpg', 'image/jpeg', 'image/png'],
         validationMessages: {
           fileType: 'Invalid file type.',
           fileSize: 'File is larger than 20MB\'s.'

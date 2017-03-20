@@ -9,7 +9,6 @@ angular.module('echo', [
     'echo.services.routing',
     'echo.interceptors.auth',
     'ui.bootstrap',
-    'echo.store',
     'echo.config.globals',
     'echo.services.routing',
     'echo.config.envVars',

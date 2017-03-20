@@ -4,9 +4,8 @@ angular.module('echo.index', [
   'ui.router',
   'echo.config',
   'echo.directives.echoIcon',
-  'echo.index.controller',
   'echo.index.myCarriers',
-  'echo.enums.roles',
+  'echo.constant.roles',
   'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
@@ -19,7 +18,7 @@ angular.module('echo.index', [
   'templates-app',
   'echo.action',
   'echo.store'
-]).config(function($base64, $urlRouterProvider, $stateProvider, routesConfig, RolesEnum) {
+]).config(function($base64, $urlRouterProvider, $stateProvider, routesConfig, roleConstants) {
 
   // ROUTES
   $stateProvider
@@ -49,7 +48,7 @@ angular.module('echo.index', [
       url: routesConfig.INDEX.myCarriers.route,
       template: '<my-carriers></my-carriers>',
       data: {
-        role: RolesEnum.ECHO_REP,
+        role: roleConstants.ECHO_REP,
         reroute: routesConfig.INDEX.carrier.name
       }
     })
@@ -78,25 +77,15 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.activeLoads.name, { // #/carrier/:carrierId/loadManagement/activeLoads
       url: routesConfig.INDEX.activeLoads.route,
-      template: '<active-loads></active-loads>',
-      data: {
-        name: 'active loads',
-        isActiveLoads: true
-      }
+      template: '<active-loads></active-loads>'
     })
     .state(routesConfig.INDEX.unbilledLoads.name, { // #/carrier/:carrierId/loadManagement/unbilled
       url: routesConfig.INDEX.unbilledLoads.route,
-      template: '<unbilled-loads></unbilled-loads>',
-      data: {
-        name: 'unbilled loads'
-      }
+      template: '<unbilled-loads></unbilled-loads>'
     })
     .state(routesConfig.INDEX.upcomingLoads.name, { // #/carrier/:carrierId/loadManagement/upcomingLoads
       url: routesConfig.INDEX.upcomingLoads.route,
-      template: '<upcoming-loads></upcoming-loads>',
-      data: {
-        name: 'upcoming loads'
-      }
+      template: '<upcoming-loads></upcoming-loads>'
     })
     .state(routesConfig.INDEX.searchLoads.name, { // #/carrier/:carrierId/loadManagement/searchText/:searchText
       url: routesConfig.INDEX.searchLoads.route,
@@ -113,6 +102,30 @@ angular.module('echo.index', [
         whiteContainer: false
       }
     })
+    .state(routesConfig.INDEX.invoicing.name, { // #/carrier/:carrierId/invoicing
+      url: routesConfig.INDEX.invoicing.route,
+      template: '<invoicing></invoicing>',
+      data: {
+        whiteContainer: true
+      }
+    })
+    .state(routesConfig.INDEX.activeInvoices.name, { // #/carrier/:carrierId/invoicing/activeInvoices
+      url: routesConfig.INDEX.activeInvoices.route,
+      template: '<active-invoices></active-invoices>',
+      data: {
+        name: 'active invoices'
+      }
+    })
+    .state(routesConfig.INDEX.searchInvoices.name, { // #/carrier/:carrierId/invoicing/:searchText
+      url: routesConfig.INDEX.searchInvoices.route,
+      template: '<search-invoices></search-invoices>',
+      params: {
+        previous: null
+      },
+      data: {
+        hideTabBar: true
+      }
+    })
     .state(routesConfig.INDEX.myCompany.name, { // #/carrier/:carrierId/myCompany
       url: routesConfig.INDEX.myCompany.route,
       template: '<my-company></my-company>'
@@ -123,7 +136,7 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.myCompanyDrivers.name, { // #/carrier/:carrierId/myCompany/drivers
       url: routesConfig.INDEX.myCompanyDrivers.route,
-      template: '<driver-grid></driver-grid>',
+      template: '<driver-table></driver-table>',
       data: {
         whiteContainer: true
       }

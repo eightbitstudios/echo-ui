@@ -1,0 +1,23 @@
+<div class="carrier-dashboard-action">
+  <div ng-if="$ctrl.loadType !== $ctrl.loadTypeConstants.UNBILLED">
+    <h3 class="driver-name" ng-if="!$ctrl.isMultiStop">{{$ctrl.currentStatus.description}}</h3>
+    <h3 class="driver-name" ng-if="$ctrl.isMultiStop">Call to Report: (855) RUN-ECHO</h3>
+    <span ng-if="!$ctrl.isMultiStop && !$ctrl.isBooked">{{$ctrl.load.nextAction | lastModifiedBy}}</span>
+  </div>
+  <div ng-if="$ctrl.loadType === $ctrl.loadTypeConstants.UNBILLED">
+    <div ng-if="$ctrl.documentsRequired()">
+      <h3 class="driver-name">Bill ${{$ctrl.load.invoiceAmount}}</h3>
+      <span>{{$ctrl.load | formatInvoicePODs}}</span>
+    </div>
+    <div ng-if="!$ctrl.documentsRequired()">
+      <h3 class="driver-name">Invoice and POD Added</h3>
+      <a ui-sref="{{::$ctrl.routesConfig.INDEX.activeInvoices.name}}">Moved to Invoicing</a>
+    </div>
+  </div>
+  <div class="action-align-bottom" ng-if="$ctrl.nextAction && !$ctrl.disableActionButton()">
+    <action-button load="$ctrl.load" action-changed-callback="$ctrl.actionChangedCallback()" carrier-id="$ctrl.carrierId" map-view="false"></action-button>
+  </div>
+  <div class="action-align-bottom" ng-if="!$ctrl.nextAction">
+    <h3>No Action Available</h3>
+  </div>
+</div>

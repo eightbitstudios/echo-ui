@@ -4,7 +4,7 @@ angular.module('echo.api.authentication', [
   'echo.config.api',
   'echo.services.cookie',
   'echo.services.userProfile'
-]).factory('authenticationApi', function ($base64, $q, $http, store$, cookieService, apiConfig) {
+]).factory('authenticationApi', function ($injector, $base64, $q, $http, cookieService, apiConfig) {
   return {
     /**
      * @description Creates a password
@@ -65,7 +65,7 @@ angular.module('echo.api.authentication', [
      */
     refresh: function () {
 
-      var user =  store$.getState().user;
+      var user =  $injector.get('store$').getState().user; // Only inject store when its needed.
       var url = _.template(apiConfig.refresh)({userId: user.userId});
 
       cookieService.setToken(cookieService.getRefreshToken());

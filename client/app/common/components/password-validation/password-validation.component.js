@@ -2,5 +2,5 @@ angular.module('echo.components.passwordValidation', []).component('passwordVali
   bindings: {
     passwordChange: '<'
   },
-  templateUrl: 'app/common/components/password-validation/password-validation.template.html'
+  templateUrl: 'password-validation.component.html'
 });

@@ -61,6 +61,8 @@ module.exports = {
     documents: '/api/v1/carriers/:carrierId/documents/:loadId/manifestbyload',
     documentById: '/api/v1/carriers/:carrierId/documents/images/:documentId',
     documentsByIdThumbnail: '/api/v1/carriers/:carrierId/documents/images/:documentId/thumbnail',
-    documentsByIdPDF: '/api/v1/carriers/:carrierId/documents/download/pdf/:documentName'
+    documentsByIdPDF: '/api/v1/carriers/:carrierId/documents/download/pdf/:documentName',
+    activeInvoicesPage: '/api/v1/carriers/:carrierId/invoices/activeInvoicesPage',
+    invoicesSearch: '/api/v1/carriers/:carrierId/invoices/search'
   }
 };

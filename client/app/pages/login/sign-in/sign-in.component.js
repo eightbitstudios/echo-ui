@@ -5,7 +5,7 @@ angular.module('echo.login.signIn', [
   'echo.config.errors',
   'echo.components.serverErrors'
 ]).component('signIn', {
-  templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
+  templateUrl: 'sign-in.component.html',
   bindings: {},
   controller: function($window, $location, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, appConstants) {
 

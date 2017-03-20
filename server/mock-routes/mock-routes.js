@@ -7,6 +7,7 @@ var carrierHandler = require('./handlers/carrier-handler'),
   locationHandler = require('./handlers/location-handler'),
   timeZonesHandler = require('./handlers/time-zones-handler'),
   documentHandler = require('./handlers/document-handler'),
+  invoiceHandler = require('./handlers/invoice-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
@@ -38,7 +39,7 @@ module.exports = function (app) {
   app.put(endpoints.api.proNumberByLoadId, loadsHandler.updateProNumber);
   app.put(endpoints.api.trailerNumberByLoadId, loadsHandler.updateTrailerNumber);
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
-  app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
+  app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getUnbilledLoadsByCarrierId);
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.loadCountByCarrierId, loadsHandler.getLoadCount);
   app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
@@ -47,6 +48,8 @@ module.exports = function (app) {
   app.get(endpoints.api.mapPointsForActiveLoads, loadsHandler.fetchMapPoints);
   app.get(endpoints.api.mapPointsForLoadsNeedingAction, loadsHandler.fetchMapPoints);
   app.get(endpoints.api.mapPointByLoadGuid, loadsHandler.fetchMapPointByLoadGuid);
+  app.get(endpoints.api.activeInvoicesPage, invoiceHandler.getInvoices);
+  app.get(endpoints.api.invoicesSearch, invoiceHandler.getInvoicesBySearchText);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);

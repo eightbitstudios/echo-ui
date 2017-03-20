@@ -127,7 +127,7 @@ type extensions are added using periods before the final real file extension.
 * model     - `user.model.js`
 * service   - `auth.service.js`
 * filter    - `ellipsis.filter.js`
-* partial   - `header.template.html`
+* partial   - `header.component.html`
 * style     - `slider-bar.directive.less`
 
 By sticking to a common naming convention, it's easy to search for and to setup grunt tasks
