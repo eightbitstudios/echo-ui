@@ -27,10 +27,11 @@
   </div>
   <div class="modal-footer">
     <div ng-if="$ctrl.state && $ctrl.state !== $ctrl.states.assignedDriverProfile">
-      <loading-button show-loading="$ctrl.showButtonLoading" button-class="btn-default" disable-button="$ctrl.disableAssignButton()">
-        <span ng-click="$ctrl.disableAssignButton() || $ctrl.assignDriver()" ng-if="$ctrl.noAssignedDriver()">Assign</span>
-        <span ng-click="$ctrl.disableAssignButton() || $ctrl.reassignDriver()" ng-if="!$ctrl.noAssignedDriver() && !$ctrl.noNewDriver()">Replace {{$ctrl.assignedDriver.firstName}}</span>
-        <span ng-click="$ctrl.disableAssignButton() || $ctrl.unassignDriver()" ng-if="!$ctrl.noAssignedDriver() && $ctrl.noNewDriver()">Unassign {{$ctrl.assignedDriver.firstName}}</span>
+      <loading-button ng-if="$ctrl.noAssignedDriver()" button-text="Assign" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.assignDriver()" button-class="btn-default" disable-button="$ctrl.disableAssignButton()">
+      </loading-button>
+      <loading-button ng-if="!$ctrl.noAssignedDriver() && !$ctrl.noNewDriver()" button-text="Replace {{$ctrl.assignedDriver.firstName}}" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.reassignDriver()" button-class="btn-default" disable-button="$ctrl.disableAssignButton()">
+      </loading-button>
+      <loading-button ng-if="!$ctrl.noAssignedDriver() && $ctrl.noNewDriver()" button-text="Unassign {{$ctrl.assignedDriver.firstName}}" show-loading="$ctrl.showButtonLoading" click-handler="$ctrl.unassignDriver()" button-class="btn-default" disable-button="$ctrl.disableAssignButton()">
       </loading-button>
     </div>
     <button class="btn btn-link" type="button" ng-click="$ctrl.modalActions.close($ctrl.driverChanged)">Cancel</button>
