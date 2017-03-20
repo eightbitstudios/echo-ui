@@ -49,9 +49,10 @@
       </div>
       <div class="form-group">
         <div ng-if="$ctrl.showConfirmation" class="confirmation text-center">
-          <div>Are you sure you want to remove this user?</div>
+          <div ng-if="$ctrl.driver.isDriverAssignedToLoad" class="text-danger">Please unassign this driver from all active loads before removing.</div>
+          <div ng-if="!$ctrl.driver.isDriverAssignedToLoad">Are you sure you want to remove this user?</div>
           <button class="btn btn-secondary" ng-disabled="$ctrl.showButtonLoading" type="submit" ng-click="$ctrl.toggleConfirmation()">Cancel</button>
-          <loading-button button-class="btn-danger" button-text="Remove" click-handler="$ctrl.removeUserHandler()" show-loading="$ctrl.showButtonLoading"></loading-button>
+          <loading-button ng-if="!$ctrl.driver.isDriverAssignedToLoad" button-class="btn-danger" button-text="Remove" click-handler="$ctrl.removeUserHandler()" show-loading="$ctrl.showButtonLoading"></loading-button>
         </div>
         <a href="javascript:void(0)" class="btn btn-link btn-alt" ng-if="$ctrl.driver.id && !$ctrl.showConfirmation" ng-click="$ctrl.toggleConfirmation()">Remove User</a>
         <loading-button ng-if="!$ctrl.showConfirmation" button-text="Save Changes" disable-button="$ctrl.driverProfileForm.$invalid" click-handler="$ctrl.saveDriverHandler()" show-loading="$ctrl.showButtonLoading" class="pull-right"></loading-button>
