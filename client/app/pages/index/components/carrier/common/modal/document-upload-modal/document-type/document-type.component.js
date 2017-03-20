@@ -10,7 +10,7 @@ angular.module('echo.components.modal.documentUpload.documentType', [
   },
   transclude: {
     invoices: 'invoices',
-    loaddocumentTypeConstants: 'loaddocumentTypeConstants'
+    loadDocumentTypes: 'loadDocumentTypes'
   },
   controller: function(documentTypeConstants) {
     var that = this;

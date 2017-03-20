@@ -7,7 +7,7 @@ angular.module('echo.components.modal.documentUpload', [
     'echo.components.modal.modalHeader',
     'echo.components.modal.documentUpload.uploadedDocuments',
     'echo.components.modal.documentUpload.invoices',
-    'echo.components.modal.documentUpload.loaddocumentTypeConstants'
+    'echo.components.modal.documentUpload.loadDocumentTypes'
   ])
   .component('documentUploadModal', {
     templateUrl: 'document-upload-modal.component.html',

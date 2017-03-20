@@ -1,7 +1,7 @@
-angular.module('echo.components.modal.documentUpload.loaddocumentTypeConstants', [
+angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
   'echo.constants.documentTypeConstants',
   'echo.api.document'
-]).component('loaddocumentTypeConstants', {
+]).component('loadDocumentTypes', {
   templateUrl: 'load-document-types.component.html',
   bindings: {
     loadId: '<',
