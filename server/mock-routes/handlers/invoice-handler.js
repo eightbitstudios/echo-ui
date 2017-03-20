@@ -28,5 +28,13 @@ module.exports = {
     responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);
+  },
+  getInvoicesCount: function(req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = invoicesRes.invoicesCount;
+
+    responseUtil.timeout(function() {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
   }
 };

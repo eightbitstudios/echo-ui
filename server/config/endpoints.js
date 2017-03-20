@@ -64,6 +64,7 @@ module.exports = {
     documentsByIdPDF: '/api/v1/carriers/:carrierId/documents/download/pdf/:documentName',
     activeInvoicesPage: '/api/v1/carriers/:carrierId/invoices/activeInvoicesPage',
     invoicesSearch: '/api/v1/carriers/:carrierId/invoices/search',
-    archivedInvoicesPage: '/api/v1/carriers/:carrierId/invoices/archivedInvoicesPage'
+    archivedInvoicesPage: '/api/v1/carriers/:carrierId/invoices/archivedInvoicesPage',
+    invoiceCount: '/api/v1/carriers/:carrierId/invoices/invoiceCount'
   }
 };
