@@ -11,7 +11,8 @@ angular.module('echo', [
     'ui.bootstrap',
     'echo.decorators.uiRouter',
     'echo.config.envVars',
-    'echo.interceptors.api'
+    'echo.interceptors.api',
+    'echo.directives.analytics'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, envVarsConfig) {
     $urlRouterProvider.otherwise('/');
@@ -24,7 +25,9 @@ angular.module('echo', [
     $httpProvider.interceptors.push('apiInterceptor');
     $httpProvider.interceptors.push('authInterceptor');
   })
-  .controller('AppCtrl', function() {})
+  .controller('AppCtrl', function() {
+
+  })
   .run(function($rootScope, $uibModalStack, $state, routingService) {
     $rootScope.$state = $state; //Expose $state to rootScope
 
