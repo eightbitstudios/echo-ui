@@ -47,20 +47,8 @@
     }
   </style>
 </head>
-
-<body ng-app="echo.login" ng-controller="AppCtrl as appCtrl" id="ng-app" class="login">
+<body ng-app="echo.login" ng-controller="AppCtrl as appCtrl" id="ng-app" class="login" analytics>
   <div class="main-content-container">
-    <script type="text/javascript">
-      (function(a,b,c,d){
-
-      a='//tags.tiqcdn.com/utag/echo/main/qa/utag.js';
-
-      b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
-
-      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
-
-      })();
-    </script>
     <!-- body view to load remaining child routes -->
     <div ui-view></div>
   </div>
