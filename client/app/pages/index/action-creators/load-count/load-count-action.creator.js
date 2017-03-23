@@ -1,5 +1,5 @@
 angular.module('echo.index.actionsCreators.loadCounts', [
-  'echo.action',
+  'echo.actions',
   'echo.api.loads'
 ]).factory('loadCountsActionCreator', function(Rx, loadCountsActions, loadsApi) {
   return {

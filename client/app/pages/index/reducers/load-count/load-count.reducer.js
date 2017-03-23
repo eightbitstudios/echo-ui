@@ -1,5 +1,5 @@
 angular.module('echo.reducers.loadCount', [
-    'echo.action',
+    'echo.actions',
     'echo.api.loads'
   ])
   .factory('loadCountReducer', function(loadCountsActions) {

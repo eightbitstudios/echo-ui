@@ -1,5 +1,5 @@
 angular.module('echo.reducers.carrier', [
-    'echo.action'
+    'echo.actions'
   ])
   .factory('carrierReducer', function(carrierActions) {
     var reducer = function(state, action) {

@@ -1,20 +1,20 @@
+describe('Component: actionButton', function() {
+  var component, $q, loadsApi, documentApi, timeZoneApi, actionConstants, arrivalTypeConstants, load, actionChangedCallback, carrierId, modalOpenDefer, modalService, scope;
 
-describe('Component: actionButton', function () {
-  var component, $q, loadsApi, timeZoneApi, actionConstants, arrivalTypeConstants, load, actionChangedCallback, carrierId, modalOpenDefer, modalService, scope;
-
-  beforeEach(function () {
+  beforeEach(function() {
     module('action-button.component.html');
-    module('echo.components.loadTable.action.actionButton', function ($provide) {
+    module('echo.components.loadTable.action.actionButton', function($provide) {
       $provide.value('loadsApi', loadsApi = jasmine.createSpyObj('loadsApi', ['fetchReportEmptyByLoadGuid', 'fetchItemsByLoadGuid', 'fetchLoadUpdateOptionsByLoadGuid', 'fetchItemsByLoadGuid']));
+      $provide.value('documentApi', documentApi = jasmine.createSpyObj('documentApi', ['fetchDocuments']));
       $provide.value('timeZoneApi', timeZoneApi = jasmine.createSpyObj('timeZoneApi', ['fetchTimeZones']));
       $provide.value('modalService', modalService = jasmine.createSpyObj('modalService', ['open']));
-      $provide.constant('moment', function(value){
+      $provide.constant('moment', function(value) {
         return value;
       });
     });
   });
 
-  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController, _actionConstants_, _arrivalTypeConstants_) {
+  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController, _actionConstants_, _arrivalTypeConstants_) {
     scope = $rootScope.$new();
     $q = _$q_;
     actionConstants = _actionConstants_;
@@ -50,47 +50,53 @@ describe('Component: actionButton', function () {
     component.$onInit();
   }));
 
-  describe('Function: $onInit', function () {
-    it('should set button class to warning', function () {
+  describe('Function: $onInit', function() {
+    it('should set button class to warning', function() {
       component.load.escalationLevel = 2;
       component.$onInit();
       expect(component.actionButtonEscalationClass).toEqual('btn-warning');
     });
 
-    it('should set button class to danger', function () {
+    it('should set button class to danger', function() {
       component.load.escalationLevel = 3;
       component.$onInit();
       expect(component.actionButtonEscalationClass).toEqual('btn-danger');
+    });
 
+    it('should set button class to primary', function() {
+      component.mapView = true;
+      component.$onInit();
+      expect(component.actionButtonEscalationClass).toEqual('btn-primary');
     });
   });
 
-  describe('Function: Report Empty', function () {
+  describe('Function: Report Empty', function() {
     var reportEmptyDefer,
       timeZoneDefer;
-    beforeEach(function () {
+    beforeEach(function() {
       reportEmptyDefer = $q.defer();
       timeZoneDefer = $q.defer();
       loadsApi.fetchReportEmptyByLoadGuid.and.returnValue(reportEmptyDefer.promise);
       timeZoneApi.fetchTimeZones.and.returnValue(timeZoneDefer.promise);
     });
 
-    it('should call report empty api', function () {
+    it('should call report empty api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_EMPTY.value);
       expect(loadsApi.fetchReportEmptyByLoadGuid).toHaveBeenCalledWith(load.loadGuid);
     });
 
-    it('should call timezone api', function () {
+    it('should call timezone api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_EMPTY.value);
       expect(timeZoneApi.fetchTimeZones).toHaveBeenCalled();
     });
 
-    it('should open modal', function (done) {
+    it('should open modal', function(done) {
       var reportEmpty = {
-        lastAction: '10/15/2016'
-      }, timeZones = [
-        'CST'
-      ];
+          lastAction: '10/15/2016'
+        },
+        timeZones = [
+          'CST'
+        ];
 
       reportEmptyDefer.resolve(reportEmpty);
       timeZoneDefer.resolve(timeZones);
@@ -98,7 +104,7 @@ describe('Component: actionButton', function () {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_EMPTY.value);
 
       scope.$digest();
-      reportEmptyDefer.promise.then(function () {
+      reportEmptyDefer.promise.then(function() {
         expect(modalService.open).toHaveBeenCalledWith({
           component: 'report-empty-modal',
           bindings: {
@@ -114,32 +120,33 @@ describe('Component: actionButton', function () {
     });
   });
 
-  describe('Function: Report Loaded', function () {
+  describe('Function: Report Loaded', function() {
     var itemsDefer,
       timeZoneDefer;
-    beforeEach(function () {
+    beforeEach(function() {
       itemsDefer = $q.defer();
       timeZoneDefer = $q.defer();
       loadsApi.fetchItemsByLoadGuid.and.returnValue(itemsDefer.promise);
       timeZoneApi.fetchTimeZones.and.returnValue(timeZoneDefer.promise);
     });
 
-    it('should call items api', function () {
+    it('should call items api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_LOADED.value);
       expect(loadsApi.fetchItemsByLoadGuid).toHaveBeenCalledWith(load.loadGuid);
     });
 
-    it('should call timezone api', function () {
+    it('should call timezone api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_LOADED.value);
       expect(timeZoneApi.fetchTimeZones).toHaveBeenCalled();
     });
 
-    it('should open modal', function (done) {
+    it('should open modal', function(done) {
       var items = [{
-        id: 1
-      }], timeZones = [
-        'CST'
-      ];
+          id: 1
+        }],
+        timeZones = [
+          'CST'
+        ];
 
       itemsDefer.resolve(items);
       timeZoneDefer.resolve(timeZones);
@@ -148,7 +155,7 @@ describe('Component: actionButton', function () {
 
       scope.$digest();
 
-      itemsDefer.promise.then(function () {
+      itemsDefer.promise.then(function() {
         expect(modalService.open).toHaveBeenCalledWith({
           component: 'report-loaded-modal',
           bindings: {
@@ -167,32 +174,33 @@ describe('Component: actionButton', function () {
     });
   });
 
-  describe('Function: Send Load Update', function () {
+  describe('Function: Send Load Update', function() {
     var loadUpdateDefer,
       timeZoneDefer;
-    beforeEach(function () {
+    beforeEach(function() {
       loadUpdateDefer = $q.defer();
       timeZoneDefer = $q.defer();
       loadsApi.fetchLoadUpdateOptionsByLoadGuid.and.returnValue(loadUpdateDefer.promise);
       timeZoneApi.fetchTimeZones.and.returnValue(timeZoneDefer.promise);
     });
 
-    it('should call load options api', function () {
+    it('should call load options api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value);
       expect(loadsApi.fetchLoadUpdateOptionsByLoadGuid).toHaveBeenCalledWith(load.loadGuid);
     });
 
-    it('should call timezone api', function () {
+    it('should call timezone api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.SEND_LOAD_UPDATE.value);
       expect(timeZoneApi.fetchTimeZones).toHaveBeenCalled();
     });
 
-    it('should open modal', function (done) {
+    it('should open modal', function(done) {
       var sendLoadUpdate = {
-        lastAction: '05/04/2016'
-      }, timeZones = [
-        'CST'
-      ];
+          lastAction: '05/04/2016'
+        },
+        timeZones = [
+          'CST'
+        ];
 
       loadUpdateDefer.resolve(sendLoadUpdate);
       timeZoneDefer.resolve(timeZones);
@@ -201,7 +209,7 @@ describe('Component: actionButton', function () {
 
       scope.$digest();
 
-      loadUpdateDefer.promise.then(function () {
+      loadUpdateDefer.promise.then(function() {
         expect(modalService.open).toHaveBeenCalledWith({
           component: 'send-load-update-modal',
           bindings: {
@@ -218,32 +226,33 @@ describe('Component: actionButton', function () {
     });
   });
 
-  describe('Function: Report Delivery', function () {
+  describe('Function: Report Delivery', function() {
     var loadItemsDefer,
       timeZoneDefer;
-    beforeEach(function () {
+    beforeEach(function() {
       loadItemsDefer = $q.defer();
       timeZoneDefer = $q.defer();
       loadsApi.fetchItemsByLoadGuid.and.returnValue(loadItemsDefer.promise);
       timeZoneApi.fetchTimeZones.and.returnValue(timeZoneDefer.promise);
     });
 
-    it('should call items api', function () {
+    it('should call items api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_DELIVERY.value);
       expect(loadsApi.fetchItemsByLoadGuid).toHaveBeenCalledWith(load.loadGuid);
     });
 
-    it('should call timezone api', function () {
+    it('should call timezone api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_DELIVERY.value);
       expect(timeZoneApi.fetchTimeZones).toHaveBeenCalled();
     });
 
-    it('should open modal', function (done) {
+    it('should open modal', function(done) {
       var items = [{
-        id: 1
-      }], timeZones = [
-        'CST'
-      ];
+          id: 1
+        }],
+        timeZones = [
+          'CST'
+        ];
 
       loadItemsDefer.resolve(items);
       timeZoneDefer.resolve(timeZones);
@@ -252,7 +261,7 @@ describe('Component: actionButton', function () {
 
       scope.$digest();
 
-      loadItemsDefer.promise.then(function () {
+      loadItemsDefer.promise.then(function() {
         expect(modalService.open).toHaveBeenCalledWith({
           component: 'report-delivery-modal',
           bindings: {
@@ -268,19 +277,19 @@ describe('Component: actionButton', function () {
     });
   });
 
-  describe('Function: Report Arrival At Pickup', function () {
+  describe('Function: Report Arrival At Pickup', function() {
     var timeZoneDefer;
-    beforeEach(function () {
+    beforeEach(function() {
       timeZoneDefer = $q.defer();
       timeZoneApi.fetchTimeZones.and.returnValue(timeZoneDefer.promise);
     });
 
-    it('should call timezone api', function () {
+    it('should call timezone api', function() {
       component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_ARRIVAL_AT_PICKUP.value);
       expect(timeZoneApi.fetchTimeZones).toHaveBeenCalled();
     });
 
-    it('should open modal', function (done) {
+    it('should open modal', function(done) {
       var timeZones = [
         'CST'
       ];
@@ -291,7 +300,7 @@ describe('Component: actionButton', function () {
 
       scope.$digest();
 
-      timeZoneDefer.promise.then(function () {
+      timeZoneDefer.promise.then(function() {
         expect(modalService.open).toHaveBeenCalledWith({
           component: 'report-arrival-modal',
           bindings: {
@@ -310,6 +319,60 @@ describe('Component: actionButton', function () {
       });
 
       scope.$digest();
+    });
+
+    it('should set address to pickup', function(done) {
+      var timeZones = [
+        'CST'
+      ];
+      load.pickUp = load.pickUp[0];
+
+      timeZoneDefer.resolve(timeZones);
+
+      component.openMilestone(actionConstants.AVAILABLE_ACTIONS.REPORT_ARRIVAL_AT_PICKUP.value);
+
+      scope.$digest();
+
+      timeZoneDefer.promise.then(function() {
+        expect(modalService.open).toHaveBeenCalledWith({
+          component: 'report-arrival-modal',
+          bindings: {
+            load: load,
+            carrierId: carrierId,
+            reportArrival: {
+              actionPerformedOn: load.nextAction.actionPerformedOn,
+              address: load.pickUp,
+              driver: load.driver
+            },
+            timeZones: timeZones,
+            arrivalType: arrivalTypeConstants.PICKUP
+          }
+        });
+        done();
+      });
+
+      scope.$digest();
+    });
+  });
+
+  describe('Function: Add Documents', function() {
+    it('should open modal', function() {
+      var documents = [{
+        documentId: 21
+      }];
+
+      documentApi.fetchDocuments.and.returnValue($q.when(documents));
+
+      component.openMilestone(actionConstants.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value);
+
+      scope.$digest();
+      expect(modalService.open).toHaveBeenCalledWith({
+        component: 'document-upload-modal',
+        bindings: {
+          load: load,
+          documents: documents
+        }
+      });
     });
   });
 });

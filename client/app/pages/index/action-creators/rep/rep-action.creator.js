@@ -1,5 +1,5 @@
 angular.module('echo.index.actionsCreators.rep', [
-  'echo.action',
+  'echo.actions',
   'echo.api.rep'
 ]).factory('repActionCreator', function(Rx, repActions, repApi) {
   return {

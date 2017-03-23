@@ -34,12 +34,15 @@ angular.module('echo.components.modal.documentUpload', [
         that.files = [];
       };
 
-      that.updateDocumentNeeds = function () {
+      that.updateDocumentNeeds = function() {
         that.numberOfPODs = _(that.documents).filter(function(document) {
           return document.documentSubType === documentTypeConstants.POD.value;
         }).size();
+        
+        that.load.needsInvoice = !_.includes(_.map(that.documents, function(document) {
+          return document.documentSubType;
+        }), documentTypeConstants.INVOICE.value);
 
-        that.load.needsInvoice = !_.includes(_.map(that.documents, function (document) { return document.documentSubType; }), documentTypeConstants.INVOICE.value);
         that.load.neededPODs = that.numberOfStops - that.numberOfPODs;
       };
 

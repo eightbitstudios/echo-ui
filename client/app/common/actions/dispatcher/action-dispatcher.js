@@ -1,5 +1,6 @@
 angular.module('echo.actions.actionDispatcher', [
-  'echo.action'
+  'echo.actions',
+  'echo.config.globals'
 ]).factory('actionDispatcher', function(Rx, action$) {
   /**
    * @description Dispatches an action to the store. 

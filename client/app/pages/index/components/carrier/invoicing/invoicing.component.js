@@ -4,7 +4,7 @@ angular.module('echo.index.carrier.invoicing', [
     'echo.config.routes',
     'echo.index.carrier.invoicing.activeInvoices',
     'echo.index.carrier.invoicing.searchInvoices',
-    'echo.action'
+    'echo.actions'
   ])
   .component('invoicing', {
     templateUrl: 'invoicing.component.html',

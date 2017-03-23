@@ -11,7 +11,7 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
   'echo.components.loadMap',
   'echo.api.requestBuilder.activeLoads',
   'echo.components.originDestinationMap',
-  'echo.action',
+  'echo.actions',
   'echo.index.actionsCreators.loadCounts'
 ]).component('activeLoads', {
   templateUrl: 'active-loads.component.html',

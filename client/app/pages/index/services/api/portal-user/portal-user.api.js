@@ -86,21 +86,6 @@ angular.module('echo.api.portalUser', [
       },
 
       /**
-       * @description Retrieves a portal user for a carrier
-       * @param {number} carrierId - Id for carrier
-       * @param {number} userId - Id for user
-       * @returns {Promise} - Promise containing driver counts
-       */
-      fetchPortalUserById: function(carrierId, userId) {
-
-        var url = _.template(apiConfig.userById)({ carrierId: carrierId, userId: userId });
-
-        return $http.get(url).then(function(resp) {
-          return resp.data.data;
-        });
-      },
-
-      /**
        * @description Creates a new invitation email for a user
        * @param {number} userId - Id for user
        * @returns {Promise} - Promise containing updated invite info

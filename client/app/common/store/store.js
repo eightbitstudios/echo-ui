@@ -4,7 +4,7 @@
  */
 
 angular.module('echo.store', [
-  'echo.action',
+  'echo.actions',
   'echo.reducers',
   'echo.actions.actionDispatcher'
 ]).factory('store$', function($rootScope, combineReducers, action$, loadCountReducer, userReducer,
@@ -23,7 +23,7 @@ angular.module('echo.store', [
       rep: {},
       invoiceCounts: {}
     };
-
+    
     // Reduxification
     that._store$ = action$
       .startWith(initState) // Call reducers with initState
