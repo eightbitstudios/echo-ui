@@ -1,15 +1,14 @@
-
-describe('Component: Portal User Profile', function () {
+describe('Component: Portal User Profile', function() {
   var component, scope, $q, component, carrierId, portalUser, showLoading, isCarrierAdmin, userUpdatedHandler, portalUserApi;
 
-  beforeEach(function () {
+  beforeEach(function() {
     module('portal-user-profile.component.html');
-    module('echo.components.portalUserProfile', function ($provide) {
+    module('echo.components.portalUserProfile', function($provide) {
       $provide.value('portalUserApi', portalUserApi = jasmine.createSpyObj('portalUserApi', ['upsertPortalUser', 'deactivatePortalUserById']));
     });
   });
 
-  beforeEach(inject(function ($rootScope, $compile, $componentController, _$q_) {
+  beforeEach(inject(function($rootScope, $compile, $componentController, _$q_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -32,16 +31,26 @@ describe('Component: Portal User Profile', function () {
     component.$onInit();
   }));
 
-  describe('Function: saveChangesHandler', function () {
+  describe('Function: $onInit', function() {
+    it('should remove international code', function() {
+      portalUser.phone = '13335555555';
+      component.$onInit();
 
-    it('should save profile', function () {
+      expect(component.portalUser.phone).toEqual('3335555555');
+    });
+  });
+
+  describe('Function: saveChangesHandler', function() {
+
+    it('should save profile', function() {
+      component.carrierId = 24;
       portalUserApi.upsertPortalUser.and.returnValue($q.defer().promise);
       component.saveChangesHandler(component.portalUser);
 
       expect(portalUserApi.upsertPortalUser).toHaveBeenCalledWith(component.portalUser);
     });
 
-    it('should call profile update handler if user edited a profile', function () {
+    it('should call profile update handler if user edited a profile', function() {
       portalUserApi.upsertPortalUser.and.returnValue($q.when());
       component.isNewProfile = false;
       component.saveChangesHandler();
@@ -51,7 +60,7 @@ describe('Component: Portal User Profile', function () {
       expect(component.userUpdatedHandler).toHaveBeenCalled();
     });
 
-    it('should not call profile update handler if a new profile', function () {
+    it('should not call profile update handler if a new profile', function() {
       portalUserApi.upsertPortalUser.and.returnValue($q.when());
       component.isNewProfile = true;
       component.saveChangesHandler();
@@ -61,7 +70,7 @@ describe('Component: Portal User Profile', function () {
       expect(component.userUpdatedHandler).not.toHaveBeenCalled();
     });
 
-    it('should set server error message on failure', function () {
+    it('should set server error message on failure', function() {
       var error = 'error message';
       portalUserApi.upsertPortalUser.and.returnValue($q.reject(error));
       component.saveChangesHandler();
@@ -70,9 +79,18 @@ describe('Component: Portal User Profile', function () {
 
       expect(component.serverError).toEqual(error);
     });
+
+    it('should not set carrier id if it isnt defined', function() {
+      component.carrierId = null;
+      portalUser.carrierId = 4;
+      portalUserApi.upsertPortalUser.and.returnValue($q.defer().promise);
+      component.saveChangesHandler(component.portalUser);
+
+      expect(portalUser.carrierId).toBe(4);
+    });
   });
 
-  describe('Function: removeUserHandler', function () {
+  describe('Function: removeUserHandler', function() {
 
     it('should call service to deactivate user', function() {
       portalUserApi.deactivatePortalUserById.and.returnValue($q.defer().promise);
@@ -88,7 +106,7 @@ describe('Component: Portal User Profile', function () {
       expect(component.userUpdatedHandler).toHaveBeenCalled();
     });
 
-    it('should set server error message on failure', function () {
+    it('should set server error message on failure', function() {
       var error = 'error message';
       portalUserApi.deactivatePortalUserById.and.returnValue($q.reject(error));
       component.removeUserHandler();
@@ -99,7 +117,7 @@ describe('Component: Portal User Profile', function () {
     });
   });
 
-   describe('Function: toggleConfirmation', function () {
+  describe('Function: toggleConfirmation', function() {
 
     it('should toggle showConfirmation', function() {
       component.toggleConfirmation();
@@ -107,7 +125,7 @@ describe('Component: Portal User Profile', function () {
     });
   });
 
-   describe('Function: checkIfNewProfile', function () {
+  describe('Function: checkIfNewProfile', function() {
 
     it('should check if it is a new profile', function() {
       component.checkIfNewProfile({
@@ -121,7 +139,7 @@ describe('Component: Portal User Profile', function () {
 
     it('should not set new profile flag if portal user is not defined', function() {
       component.checkIfNewProfile({});
-      
+
       expect(component.isNewProfile).toBeUndefined();
     });
   });

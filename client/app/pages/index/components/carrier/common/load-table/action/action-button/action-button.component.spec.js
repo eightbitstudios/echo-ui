@@ -375,4 +375,73 @@ describe('Component: actionButton', function() {
       });
     });
   });
+
+  describe('Function: openMilestone', function() {
+    it('should return action changed object', function(done) {
+      var documents = [{
+          documentId: 21
+        }],
+        returnObj = {
+          id: 1
+        };
+
+      var result = $q.when(returnObj)
+
+      documentApi.fetchDocuments.and.returnValue($q.when(documents));
+      modalService.open.and.returnValue($q.when({
+        result: result
+      }));
+
+      component.openMilestone(actionConstants.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value);
+      scope.$digest();
+      result.then(function(resultObj) {
+        expect(resultObj).toEqual(returnObj);
+        done();
+      });
+      scope.$digest();
+    });
+
+    it('should call action changed callback', function() {
+      var documents = [{
+          documentId: 21
+        }],
+        returnValue = true;
+
+      var result = $q.when(returnValue);
+
+      documentApi.fetchDocuments.and.returnValue($q.when(documents));
+      modalService.open.and.returnValue($q.when({
+        result: result
+      }));
+
+      component.openMilestone(actionConstants.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value);
+
+      scope.$digest();
+      scope.$digest();
+      expect(actionChangedCallback).toHaveBeenCalled()
+    });
+
+    it('should not call action changed callback', function(done) {
+      var documents = [{
+          documentId: 21
+        }],
+        returnValue = null;
+
+      var result = $q.when(returnValue);
+
+      documentApi.fetchDocuments.and.returnValue($q.when(documents));
+      modalService.open.and.returnValue($q.when({
+        result: result
+      }));
+
+      component.openMilestone(actionConstants.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value);
+
+      scope.$digest();
+      result.then(function(resultValue) {
+        expect(resultValue).toEqual(returnValue);
+        done();
+      });
+      scope.$digest();
+    });
+  });
 });

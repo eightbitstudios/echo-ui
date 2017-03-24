@@ -11,6 +11,10 @@ describe('Filter - Phone number filter', function () {
     });
   });
 
+  it('should be empty if no phone number is provided', function () {
+    expect(phoneNumber()).toEqual('');
+  });
+
   it('should truncate phone number', function () {
     expect(phoneNumber('1234567891')).toEqual('123-456-7891');
   });

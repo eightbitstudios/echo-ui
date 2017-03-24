@@ -46,4 +46,26 @@ describe('Api: carrierApi', function () {
       });
     });
   });
+
+  describe('Function: driverResponse', function () {
+    it('should omit international code', function () {
+      var driver = {
+        id: 1,
+        phone: '12312412312',
+        role: 'CarrierAdmin'
+      };
+
+      expect(driverConverterService.driverResponse(driver).phone).toEqual('2312412312');
+    });
+
+    it('should not strip international code', function () {
+      var driver = {
+        id: 1,
+        otherLanguage: 'German',
+        phone: '2312412312'
+      };
+
+      expect(driverConverterService.driverResponse(driver).phone).toEqual('2312412312');
+    });
+  });
 });

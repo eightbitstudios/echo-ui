@@ -133,7 +133,6 @@ angular.module('echo.components.loadTable.action.actionButton', [
         that.showButtonLoading = true;
         actionHandler[action](that.load.loadGuid)
           .then(function (modalInstance) {
-
             modalInstance.result.then(function (actionChanged) {
               if (_.isObject(actionChanged)) {
                 return actionChanged;

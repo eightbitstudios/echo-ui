@@ -1,5 +1,5 @@
 describe('Component: Invoicing', function() {
-  var component, scope, state, stateParams, store$;
+  var component, scope, state, stateParams, store$, routesConfig;
 
   beforeEach(function() {
     module('echo.index.carrier.invoicing', function($provide) {
@@ -10,12 +10,14 @@ describe('Component: Invoicing', function() {
         store$ = jasmine.createSpyObj('store$', ['subscribe', 'getState']));
     });
 
-    inject(function($rootScope, $compile, $componentController) {
+    inject(function($rootScope, $compile, $componentController, _routesConfig_) {
       scope = $rootScope.$new();
 
       scope.ctrl = {
         getComponent: jasmine.createSpy('getComponent')
       };
+
+      routesConfig = _routesConfig_;
 
       store$.getState.and.returnValue({
         rep: {},
@@ -73,10 +75,48 @@ describe('Component: Invoicing', function() {
   });
 
   describe('Function: routeToSearch', function() {
-   it('should route to search page', function() {
+    it('should set previous route to active loads page', function() {
       var searchText = 'test';
+      state.$current.name = routesConfig.INDEX.searchInvoices.name;
+      stateParams.previous = 'active';
+
       component.routeToSearch(searchText);
-      expect(state.go).toHaveBeenCalled();;
+
+      expect(state.go).toHaveBeenCalledWith(routesConfig.INDEX.searchInvoices.name, {
+        searchText: searchText,
+        previous: stateParams.previous
+      }, {
+        reload: routesConfig.INDEX.searchInvoices.name
+      });
+    });
+
+    it('should set previous route to search loads page', function() {
+      var searchText = 'test';
+      state.$current.name = routesConfig.INDEX.searchInvoices.name;
+
+      component.routeToSearch(searchText);
+
+      expect(state.go).toHaveBeenCalledWith(routesConfig.INDEX.searchInvoices.name, {
+        searchText: searchText,
+        previous: state.$current.name
+      }, {
+        reload: routesConfig.INDEX.searchInvoices.name
+      });
+    });
+
+    it('should set previous route to active loads page', function() {
+      var searchText = 'test';
+      state.$current.name = 'active';
+      stateParams.previous = routesConfig.INDEX.searchInvoices.name;
+
+      component.routeToSearch(searchText);
+
+      expect(state.go).toHaveBeenCalledWith(routesConfig.INDEX.searchInvoices.name, {
+        searchText: searchText,
+        previous: state.$current.name
+      }, {
+        reload: routesConfig.INDEX.searchInvoices.name
+      });
     });
   });
 
