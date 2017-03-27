@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('echo.components.secureImage', [
-    'echo.api.document'
+    'echo.api.document',
+    'echo.config.assetConfig'
   ])
   .component('secureImage', {
     bindings: {
@@ -9,7 +10,7 @@ angular.module('echo.components.secureImage', [
       thumbnail: '<'
     },
     templateUrl: 'secure-image.component.html',
-    controller: function(store$, documentApi) {
+    controller: function(store$, documentApi, assetConfig) {
       var that = this;
 
       that.$onChanges = function(changeObj) {
@@ -25,6 +26,8 @@ angular.module('echo.components.secureImage', [
 
           promise.then(function(data) {
             that.imageData = data;
+          }).catch(function() {
+            that.imageData = assetConfig.JPG_FALLBACK;
           });
         }
       };

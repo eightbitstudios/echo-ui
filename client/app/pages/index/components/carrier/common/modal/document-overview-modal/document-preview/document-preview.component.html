@@ -1,19 +1,23 @@
 <div class="document-preview">
   <header>
-    <div class="document-title pull-left">
-      <h4 class="content-header">{{$ctrl.document | documentType: $ctrl.documents}}</h4>
-      <p>{{$ctrl.document.documentLastModifiedAt}} By {{$ctrl.document.documentLastModifiedBy}}</p>
+    <div class="row">
+      <div class="document-title col-xs-6">
+        <h4 class="content-header">{{$ctrl.document | documentType: $ctrl.documents}}</h4>
+        <p>{{$ctrl.document.documentLastModifiedAt}} By {{$ctrl.document.documentLastModifiedBy}}</p>
+      </div>
+      <div class="col-xs-6 text-right">
+        <ul class="list-inline document-tool-links">
+          <li>
+            <a href="javascript:void(0)" ng-click="$ctrl.downloadDocument()"><span class="echo-icon icon-download"></span> Download Document</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" ng-click="$ctrl.printDocument()" target="_blank"><span class="echo-icon icon-print"></span>Print</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <ul class="list-inline pull-right document-tool-links">
-      <li>
-        <a href="javascript:void(0)" ng-click="$ctrl.downloadDocument()"><span class="echo-icon icon-download"></span> Download Document</a>
-      </li>
-      <li>
-        <a href="javascript:void(0)" ng-click="$ctrl.printDocument()" target="_blank"><span class="echo-icon icon-print"></span>Print</a>
-      </li>
-    </ul>
   </header>
-  <div class="document-preview">
+  <div class="document-preview text-center">
     <secure-image image-guid="$ctrl.document.orderedPageGuids[$ctrl.paging.selectedPage - 1]"></secure-image>
   </div>
   <footer>
