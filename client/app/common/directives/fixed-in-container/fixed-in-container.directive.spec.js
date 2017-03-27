@@ -4,7 +4,7 @@ describe('Directive: fixedInContainer', function() {
 
   beforeEach(function() {
     module('echo.directives.fixedInContainer', function($provide) {
-      $provide.value('$document', $document = jasmine.createSpyObj('$document', ['on']));
+      $provide.value('$document', $document = jasmine.createSpyObj('$document', ['on', 'off']));
     });
     inject(function(_$compile_, $rootScope) {
       element = angular.element('<div><div fixed-in-container=""></div></div>');
