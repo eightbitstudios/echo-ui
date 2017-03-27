@@ -11,7 +11,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.loadDetail', [
       repDetails: '<',
       refreshLoad: '&'
     },
-    controller: function($state, loadTypeConstants, actionConstants) {
+    controller: function(loadTypeConstants, actionConstants) {
       var that = this;
 
       that.reloadState = function() {

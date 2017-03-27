@@ -1,5 +1,5 @@
 angular.module('echo.index.actionsCreators.invoiceCounts', [
-  'echo.action',
+  'echo.actions',
   'echo.api.invoices'
 ]).factory('invoiceCountsActionCreator', function(Rx, invoiceCountsActions, invoicesApi) {
   return {

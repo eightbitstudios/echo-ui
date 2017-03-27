@@ -5,7 +5,9 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
     'echo.constants.invoices',
     'echo.config.appConstants',
     'echo.config.routes',
-    'echo.api.invoices'
+    'echo.api.invoices',
+    'echo.actions',
+    'echo.index.actionsCreators.invoiceCounts'
   ])
   .component('activeInvoices', {
     templateUrl: 'active-invoices.component.html',

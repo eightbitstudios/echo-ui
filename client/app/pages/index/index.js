@@ -16,7 +16,7 @@ angular.module('echo.index', [
   'echo.services.googleMapsApi',
   'echo.services.userProfile',
   'templates-app',
-  'echo.action',
+  'echo.actions',
   'echo.store'
 ]).config(function($base64, $urlRouterProvider, $stateProvider, routesConfig, roleConstants) {
 

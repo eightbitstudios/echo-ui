@@ -1,5 +1,5 @@
 angular.module('echo.reducers.invoiceCount', [
-  'echo.action',
+  'echo.actions',
   'echo.api.invoices'
 ])
   .factory('invoiceCountReducer', function(invoiceCountsActions) {

@@ -2,7 +2,8 @@ angular.module('echo.components.loadTable.action', [
   'echo.components.loadTable.action.actionButton',
   'echo.constants.actions',
   'echo.constants.loadTypes',
-  'echo.filters.formatInvoicePODs'
+  'echo.config.routes',
+  'echo.filters.formatInvoicePODs',
 ])
   .component('action', {
     templateUrl: 'action.component.html',

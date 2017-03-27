@@ -49,6 +49,19 @@ describe('Component: Assign Driver Modal', function () {
       expect(modalActions.close).toHaveBeenCalledWith(true);
     });
 
+    it('should show error message', function () {
+      var error = {
+        code: 500
+      };
+
+      loadsApi.assignDriver.and.returnValue($q.reject(error));
+      component.newDriver = { id: 123456 };
+      component.assignDriver();
+
+      scope.$digest();
+
+      expect(component.errorCode).toBe(error.code);
+    });
   });
 
   describe('Function: reassignDriver', function () {
@@ -66,6 +79,19 @@ describe('Component: Assign Driver Modal', function () {
       expect(modalActions.close).toHaveBeenCalledWith(true);
     });
 
+    it('should show error message', function () {
+      var error = {
+        code: 500
+      };
+
+      loadsApi.reassignDriver.and.returnValue($q.reject(error));
+      component.newDriver = { id: 123456 };
+      component.reassignDriver();
+
+      scope.$digest();
+
+      expect(component.errorCode).toBe(error.code);
+    });
   });
 
   describe('Function: unassignDriver', function () {
@@ -82,6 +108,19 @@ describe('Component: Assign Driver Modal', function () {
       expect(modalActions.close).toHaveBeenCalledWith(true);
     });
 
+    it('should show error message', function () {
+      var error = {
+        code: 500
+      };
+
+      loadsApi.unassignDriver.and.returnValue($q.reject(error));
+      component.newDriver = { id: 123456 };
+      component.unassignDriver();
+
+      scope.$digest();
+
+      expect(component.errorCode).toBe(error.code);
+    });
   });
 
   describe('Function: noNewDriver', function () {
@@ -142,6 +181,24 @@ describe('Component: Assign Driver Modal', function () {
     it('should be disabled if on invite driver page', function () {
       component.noAssignedDriver.and.returnValue(true);
       component.noNewDriver.and.returnValue(false);
+      component.state = component.states.newDriver;
+
+      expect(component.disableAssignButton()).toBeTruthy();
+    });
+
+    it('should be disabled if on invite driver page', function () {
+      component.noAssignedDriver.and.returnValue(true);
+      component.noNewDriver.and.returnValue(true);
+      component.submitControl = false;
+      component.state = component.states.newDriver;
+
+      expect(component.disableAssignButton()).toBeTruthy();
+    });
+
+    it('should be disabled if on invite driver page', function () {
+      component.noAssignedDriver.and.returnValue(false);
+      component.noNewDriver.and.returnValue(false);
+      component.submitControl = false;
       component.state = component.states.newDriver;
 
       expect(component.disableAssignButton()).toBeTruthy();

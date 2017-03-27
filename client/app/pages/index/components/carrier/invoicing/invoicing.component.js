@@ -5,7 +5,7 @@ angular.module('echo.index.carrier.invoicing', [
     'echo.index.carrier.invoicing.activeInvoices',
     'echo.index.carrier.invoicing.archivedInvoices',
     'echo.index.carrier.invoicing.searchInvoices',
-    'echo.action',
+    'echo.actions',
     'echo.api.invoices',
     'echo.index.actionsCreators.invoiceCounts'
   ])
