@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('echo.components.invoiceAccordion', [
-  'echo.components.invoiceAccordion.invoiceActivity',
   'echo.components.invoiceAccordion.paidInvoices'
 ]).component('invoiceAccordion', {
   bindings: {},
