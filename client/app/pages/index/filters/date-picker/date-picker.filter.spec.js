@@ -11,6 +11,10 @@ describe('Filter - Date picker filter', function () {
     });
   });
 
+  it('should return today if empty', function () {
+    expect(datePicker(null)).toBeDefined();
+  });
+
   it('should return Tue, Sep 20', function () {
     expect(datePicker('2016-09-20T12:00:00')).toEqual('Tue, Sep 20');
   });

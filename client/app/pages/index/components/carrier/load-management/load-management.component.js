@@ -7,12 +7,12 @@ angular.module('echo.index.carrier.loadManagement', [
     'echo.index.carrier.loadManagement.upcomingLoads',
     'echo.index.carrier.loadManagement.searchLoads',
     'echo.index.carrier.loadManagement.loadDetails',
-    'echo.action',
+    'echo.actions',
     'echo.index.actionsCreators.loadCounts'
   ])
   .component('loadManagement', {
     templateUrl: 'load-management.component.html',
-    controller: function($stateParams, $state, Rx, loadCountsActionCreator, routesConfig, store$) {
+    controller: function($stateParams, $state, loadCountsActionCreator, routesConfig, store$) {
       var that = this;
 
       that.routeToSearch = function(searchText) {
@@ -65,7 +65,7 @@ angular.module('echo.index.carrier.loadManagement', [
             that.showLoading = false;
           }
         });
-
+        
         if (!that.isActiveLoads) {
           var action = loadCountsActionCreator.fetchLoadCounts(that.carrierId);
           store$.dispatch(action);

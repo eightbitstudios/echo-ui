@@ -1,54 +1,117 @@
+describe('Component: loadMap', function() {
+  var scope, component, $q, googleMapsApi, googleMaps, google, mapPoints, googleMapsConst;
 
-describe('Component: loadMap', function () {
-  var scope, component, $q, googleMapsApi, googleMaps, google;
-
-  beforeEach(function () {
+  beforeEach(function() {
     module('load-map.component.html');
-    module('echo.components.loadMap', function ($provide) {
-      $provide.value('googleMapsApi', googleMapsApi = {});
+    module('echo.components.loadMap', function($provide) {
+      $provide.value('googleMapsApi', googleMapsApi = jasmine.createSpyObj('googleMapsApi', ['then']));
       $provide.value('googleMaps', googleMaps = jasmine.createSpyObj('googleMaps', ['formatMapPoints', 'resizeAndCenter']));
     });
   });
 
-  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController) {
+  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController, _googleMapsConst_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
     };
 
+    googleMapsConst = _googleMapsConst_;
     $q = _$q_;
 
     google = {
       maps: {
-        Geocoder: function () { return {}; }
+        Geocoder: function() {
+          return {};
+        }
       }
     };
-    googleMapsApi.then = function() { return $q.when({lat: function() { return 30; }, lng: function() { return 50; }}); };
+    mapPoints = [];
+    googleMapsApi.then.and.returnValue($q.when());
     googleMaps.resizeAndCenter.and.returnValue();
 
     scope.$digest();
 
-    component = $componentController('loadMap', null, {});
+    component = $componentController('loadMap', null, {
+      mapPoints: mapPoints
+    });
   }));
 
-  describe('Function: $onChanges', function () {
+  describe('Function: $onInit', function() {
+    it('should map each map point', function() {
+      mapPoints.push({
+        loadId: 1234
+      });
 
-    it('should show loading if changeObj does not contain map', function () {
-      component.$onChanges({detailedInfo: {currentValue: false}});
+      component.$onInit();
+
+      expect(mapPoints[0].loadNumber).toBe(mapPoints[0].loadId);
+    });
+
+    it('should offset map window', function() {
+      component.detailedInfo = true;
+      component.$onInit();
+
+      expect(component.popupOffset).toBe(googleMapsConst.detailedInfoOffset);
+    });
+  });
+
+  describe('Function: $onChanges', function() {
+
+    it('should show loading if changeObj does not contain map', function() {
+      component.$onChanges({
+        detailedInfo: {
+          currentValue: false
+        }
+      });
 
       expect(component.showLoading).toBe(true);
     });
 
-    it('should set mapCenter on showMap', function () {
-      component.$onChanges({showMap: {currentValue: true}});
+    it('should format map points', function() {
+      var google = {
+        maps: {
+          Geocoder: jasmine.createSpy('Geocoder')
+        }
+      };
+
+      component.$onChanges({
+        showMap: {
+          currentValue: true
+        }
+      });
+
+      googleMaps.formatMapPoints.and.returnValue($q.defer().promise);
+      googleMapsApi.then.calls.argsFor(0)[0](google);
 
       scope.$digest();
 
-      expect(component.showLoading).toBe(false);
-      expect(component.mapCenter.lat()).toBe(30);
-      expect(component.mapCenter.lng()).toBe(50);
+      expect(googleMaps.formatMapPoints).toHaveBeenCalled();
     });
 
-  });
+    it('should filter out bad map points', function() {
+      var google = {
+        maps: {
+          Geocoder: jasmine.createSpy('Geocoder')
+        }
+      };
 
+      component.mapPoints.push({
+        position: 10
+      });
+      component.$onChanges({
+        showMap: {
+          currentValue: true
+        }
+      });
+
+      component.mapPoints.push({});
+
+      googleMaps.formatMapPoints.and.returnValue($q.when());
+      googleMapsApi.then.calls.argsFor(0)[0](google);
+
+      scope.$digest();
+
+      expect(component.mapPoints.length).toBe(1);
+    });
+  });
 });

@@ -1,5 +1,5 @@
 angular.module('echo.reducers.user', [
-  'echo.action',
+  'echo.actions',
   'echo.models.user'
 ])
 .factory('userReducer', function(userActions) {

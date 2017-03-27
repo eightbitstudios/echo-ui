@@ -1,13 +1,12 @@
-
-describe('Component: editNumber', function () {
+describe('Component: editNumber', function() {
   var scope, $q, number, defaultText, updateCallback, component;
 
-  beforeEach(function () {
+  beforeEach(function() {
     module('edit-number.component.html');
     module('echo.components.editNumber');
   });
 
-  beforeEach(inject(function ($rootScope, _$q_, $compile, $componentController) {
+  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -27,22 +26,28 @@ describe('Component: editNumber', function () {
     component.$onInit();
   }));
 
-  describe('Function: editNumberHandler', function () {
-    it('should show edit number form', function () {
+  describe('Function: editNumberHandler', function() {
+    it('should show edit number form', function() {
       component.editNumberHandler();
       expect(component.showForm).toBeTruthy();
     });
   });
 
-  describe('Function: cancelButtonHandler', function () {
-    it('should hide edit number form', function () {
+  describe('Function: cancelButtonHandler', function() {
+    it('should hide edit number form', function() {
       component.cancelButtonHandler();
       expect(component.showForm).toBeFalsy();
     });
   });
 
-  describe('Function: saveButtonHandler', function () {
-    it('should call update callback', function () {
+  describe('Function: saveButtonHandler', function() {
+    it('should not allow user to submit if form is invalid', function() {
+      component.allowSubmit = false;
+      component.saveButtonHandler();
+      expect(updateCallback).not.toHaveBeenCalled();
+    });
+
+    it('should call update callback', function() {
       var updateNumber = 1234;
       updateCallback.and.returnValue($q.when());
       component.updateNumber = updateNumber;
@@ -53,7 +58,27 @@ describe('Component: editNumber', function () {
       });
     });
 
-    it('should hide edit number form', function (done) {
+    it('should not allow user to submit if form is invalid', function() {
+      var updateResolve = $q.when();
+      updateCallback.and.returnValue(updateResolve);
+      component.saveButtonHandler();
+      scope.$digest();
+      expect(component.updateNumber).toEqual(null);
+    });
+
+    it('should show error message', function() {
+      var error = {
+        code: 500
+      };
+
+      var updateResolve = $q.when(error);
+      updateCallback.and.returnValue(updateResolve);
+      component.saveButtonHandler();
+      scope.$digest();
+      expect(component.allowSubmit).toEqual(true);
+    });
+
+    it('should hide edit number form', function(done) {
       var updateNumber = 1234;
       var updateDefer = $q.defer();
       updateCallback.and.returnValue(updateDefer.promise);
@@ -62,7 +87,7 @@ describe('Component: editNumber', function () {
       component.saveButtonHandler();
       scope.$digest();
 
-      updateDefer.promise.then(function () {
+      updateDefer.promise.then(function() {
         expect(component.showForm).toBeFalsy();
         done();
       });

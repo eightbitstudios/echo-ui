@@ -7,7 +7,8 @@ angular.module('echo.components.loadTable.driver', [
     'echo.components.loading',
     'echo.components.modal.assignDriver',
     'echo.components.modal.verifyDriver',
-    'echo.constants.actions'
+    'echo.constants.actions',
+    'echo.constants.loadTypes'
   ])
   .component('driver', {
     templateUrl: 'driver.component.html',

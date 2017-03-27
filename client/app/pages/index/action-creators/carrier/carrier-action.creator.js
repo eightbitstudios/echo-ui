@@ -1,5 +1,5 @@
 angular.module('echo.index.actionsCreators.carrier', [
-  'echo.action',
+  'echo.actions',
   'echo.api.carrier'
 ]).factory('carrierActionCreator', function(Rx, carrierActions, carrierApi) {
   return {

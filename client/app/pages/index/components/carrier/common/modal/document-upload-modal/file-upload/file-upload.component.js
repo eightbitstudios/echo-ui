@@ -32,7 +32,7 @@ angular.module('echo.components.fileUpload', [
         that.files.push(file);
       } else if (!file.isValidFileType(that.uploadConstraints.documentTypeConstants)) {
         that.error = that.uploadConstraints.validationMessages.fileType;
-      } else if (!file.isValidFileSize(that.uploadConstraints.fileSizeLimit)) {
+      } else {
         that.error = that.uploadConstraints.validationMessages.fileSize;
       }
     };

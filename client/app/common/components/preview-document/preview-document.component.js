@@ -9,19 +9,19 @@ angular.module('echo.components.previewDocument', [
   controller: function(assetConfig) {
     var that = this;
 
-    that.pdfError = false;
-
     that.renderPdfError = function() {
       that.pdfError = true;
     };
 
     that.$onInit = function() {
+
+      that.pdfError = false;
       if (that.document.isPDF()) {
         that.imageData = assetConfig.PDF_FALLBACK;
       } else {
-        if(that.document.isPNG()){
+        if (that.document.isPNG()) {
           that.imageFallback = assetConfig.PNG_FALLBACK;
-        } else if(that.document.isJPG()) {
+        } else if (that.document.isJPG()) {
           that.imageFallback = assetConfig.JPG_FALLBACK;
         }
         that.document.getImage().then(function(image) {
