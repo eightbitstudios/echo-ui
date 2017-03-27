@@ -32,11 +32,6 @@ describe('Directive: fixedInContainer', function() {
     it('should bind to document scroll', function() {
       expect($document.on).toHaveBeenCalled();
     });
-
-    it('should call calculateLoadingPosition', function() {
-      $document.on.calls.argsFor(0)[1]();
-      expect($document.on).toHaveBeenCalled();
-    });
   });
 
   describe('document scroll', function() {
