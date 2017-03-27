@@ -29,6 +29,8 @@ angular.module('echo.components.secureImage', [
           }).catch(function() {
             that.imageData = assetConfig.JPG_FALLBACK;
           });
+        } else if(changeObj.imageGuid.isFirstChange()){
+          that.imageData = assetConfig.JPG_FALLBACK;
         }
       };
     }
