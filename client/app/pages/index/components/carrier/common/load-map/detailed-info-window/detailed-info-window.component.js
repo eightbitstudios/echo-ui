@@ -13,10 +13,13 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
       expanded: '<',
       actionChangedCallback: '&'
     },
-    controller: function(routesConfig) {
-      this.$onInit = function() {
-        this.noDriver = _.isUndefined(_.get(this.mapPoint.driver, 'id'));
-        this.loadDetails = routesConfig.INDEX.loadDetails.name;
+    controller: function(store$, routesConfig) {
+      var that = this;
+
+      that.$onInit = function() {
+        that.carrierId = store$.getState().carrier.carrierId;
+        that.noDriver = _.isUndefined(_.get(that.mapPoint.driver, 'id'));
+        that.loadDetails = routesConfig.INDEX.loadDetails.name;
       };
     }
   });
