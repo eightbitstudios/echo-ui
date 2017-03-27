@@ -7,7 +7,7 @@
       </a>
     </div>
     <div class="doc-descrip">
-      <h5><span class="echo-icon icon-check-approved"></span>{{::document | documentType: $ctrl.documents}}</h5>
+      <h5><span ng-if="!document.isPendingApproval" class="echo-icon icon-check-approved"></span>{{::document | documentType: $ctrl.documents}}</h5>
       <div class="doc-data">
         {{document.documentLastModifiedAt}}
         <br> By {{document.documentLastModifiedBy}}

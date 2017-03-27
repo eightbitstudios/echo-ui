@@ -41,7 +41,7 @@ module.exports = {
     resTemplate.data = activityLogRes;
 
     responseUtil.timeout(function() {
-      res.status(500).json(resTemplate);
+      res.json(resTemplate);
     }, minDelay, maxDelay);
   },
   getDriverStatus: function(req, res) {
