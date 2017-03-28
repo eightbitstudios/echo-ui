@@ -49,6 +49,7 @@ angular.module('echo.components.modal.documentUpload', [
 
       that.$onInit = function() {
         that.files = [];
+        that.originalBillRate = _.get(that.load, 'invoiceAmount');
         that.carrierId = store$.getState().carrier.carrierId;
         that.documentTypeConstants = documentTypeConstants;
         that.selectedDocumentType = that.selectedDocumentType || documentTypeConstants.POD.value;

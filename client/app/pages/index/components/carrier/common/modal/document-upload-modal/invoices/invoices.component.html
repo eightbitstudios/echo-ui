@@ -9,7 +9,7 @@
         </div>
         <div class="row">
           <div class="col-xs-6 form-group">
-            <label>Original Bill Rate: {{::$ctrl.originalBillRate}}</label>
+            <label>Original Bill Rate: {{::$ctrl.originalBillRate | currency: '$'}}</label>
             <input number class="form-control" ng-model="$ctrl.newBillRate" placeholder="Invoice amount if different" currency type="text">
           </div>
           <div ng-show="$ctrl.newBillRate.length > 0" class="help-block">
