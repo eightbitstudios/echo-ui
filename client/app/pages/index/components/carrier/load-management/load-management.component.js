@@ -57,6 +57,7 @@ angular.module('echo.index.carrier.loadManagement', [
         that.state = $state;
         that.routesConfig = routesConfig;
         that.isActiveLoads = $state.$current.data.isActiveLoads;
+        that.isLoadDetails = ($state.$current.name === routesConfig.INDEX.loadDetails.name);
         that.previousRoute = $state.$current.name;
 
         store$.subscribe(function(state) {
