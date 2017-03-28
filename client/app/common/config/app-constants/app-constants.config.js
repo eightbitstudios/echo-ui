@@ -77,6 +77,7 @@ angular.module('echo.config.appConstants', [])
         401104: 'Sorry, you have exceeded the allowed number of log-in attempts.',
         401106: 'Refresh Token is Invalid',
         401105: 'User Role Not Allowed To Reset Password in Portal',
+        401110: 'Your account is Suspended. Please contact Echo.',
         404: 'Not found',
         404100: 'Load not found',
         404101: 'Driver not found',
