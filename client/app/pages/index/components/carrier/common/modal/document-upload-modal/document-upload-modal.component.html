@@ -1,5 +1,5 @@
 <div class="document-upload-modal">
-  <modal-header header-text="ADD DOCUMENT FOR" load-number="$ctrl.load.loadNumber" pro-number="$ctrl.proNumber" modal-actions="$ctrl.modalActions"></modal-header>
+  <modal-header header-text="ADD DOCUMENT FOR" load-number="$ctrl.load.loadNumber" pro-number="$ctrl.proNumber" refresh="$ctrl.refreshParent" modal-actions="$ctrl.modalActions"></modal-header>
   <div class="modal-body">
     <document-upload-sidebar documents="$ctrl.documents"></document-upload-sidebar>
     <section class="modal-main-content">
@@ -13,6 +13,6 @@
     </section>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
+    <button class="btn btn-link btn-alt" data-dismiss="modal" type="button" ng-click="$ctrl.modalActions.close($ctrl.refreshParent)">CLOSE</button>
   </div>
 </div>
