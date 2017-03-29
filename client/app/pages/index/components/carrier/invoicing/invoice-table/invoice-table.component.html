@@ -23,7 +23,7 @@
         </tr>
         <tr ng-repeat="invoice in $ctrl.invoices">
           <td>
-            <invoice-number carrier-id="$ctrl.carrierId" invoice="invoice"></invoice-number>
+            <invoice-number ng-if="invoice.invoiceNumber" carrier-id="$ctrl.carrierId" invoice="invoice"></invoice-number>
           </td>
           <td class="invoice-received-date">
             {{invoice.receivedDate}}

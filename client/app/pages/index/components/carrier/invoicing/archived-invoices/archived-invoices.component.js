@@ -18,20 +18,17 @@ angular.module('echo.index.carrier.invoicing.archivedInvoices', [
 
       that.fetchArchivedInvoices = function() {
         that.showLoading = true;
-
+        that.archivedInvoices = null;
         invoicesApi.fetchArchivedInvoices(that.carrierId, that.paging)
           .then(function(invoicesPageData) {
-            if (invoicesPageData.invoices) {
-              that.archivedInvoices = invoicesPageData.invoices;
-              that.paging.recordCount = _.size(invoicesPageData.invoices);
-            }
+            that.archivedInvoices = invoicesPageData.invoices || [];
+            that.paging.recordCount = _.size(invoicesPageData.invoices);
           }).finally(function() {
             that.showLoading = false;
           });
       };
 
       that.changePage = function() {
-        that.archivedInvoices = null;
         that.fetchArchivedInvoices();
       };
 
@@ -44,7 +41,7 @@ angular.module('echo.index.carrier.invoicing.archivedInvoices', [
 
         that.unbilledLoadsRoute = routesConfig.INDEX.unbilledLoads.name;
         that.paging = new PagingModel(appConstants.LIMIT.invoicesList);
-        that.paging.totalRecords = state.invoiceCounts.activeInvoices;
+        that.paging.totalRecords = state.invoiceCounts.archivedInvoices;
         that.unbilledLoads = state.invoiceCounts.unbilledLoads;
 
         that.fetchArchivedInvoices();
