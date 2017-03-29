@@ -29,7 +29,7 @@
         <div class="row">
           <div class="col-sm-6">
             {{$ctrl.isDisabled}}
-            <loading-button disable-button="$ctrl.files.length === 0 || $ctrl.invoiceForm.$invalid" click-handler="$ctrl.uploadDocuments()" button-text="Send Invoices" show-loading="$ctrl.showLoading"></loading-button>
+            <loading-button disable-button="$ctrl.files.length === 0 || $ctrl.invoiceForm.$invalid" click-handler="$ctrl.uploadDocuments()" button-text="Send Invoice" show-loading="$ctrl.showLoading"></loading-button>
           </div>
           <div class="col-sm-6 upload-messages">
             <div class="text-success fading-text" ng-if="$ctrl.showSavedMessage">

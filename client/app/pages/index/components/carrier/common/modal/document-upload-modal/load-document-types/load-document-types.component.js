@@ -4,8 +4,9 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
 ]).component('loadDocumentTypes', {
   templateUrl: 'load-document-types.component.html',
   bindings: {
-    loadId: '<',
+    load: '<',
     selectedDocumentType: '=',
+    numberOfPods: '<',
     numberOfStops: '<',
     documents: '<',
     files: '<',
@@ -31,7 +32,7 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
         }), '#', ''));
       }
 
-      documentApi.createDocuments(that.carrierId, that.loadId, podDescription || documentType.description, that.files)
+      documentApi.createDocuments(that.carrierId, that.load.loadNumber, podDescription || documentType.description, that.files)
         .then(function() {
           that.showSavedMessage = true;
           that.refreshDocumentsCallback();
@@ -46,9 +47,6 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
     that.$onInit = function() {
       that.carrierId = store$.getState().carrier.carrierId;
       that.documentTypeConstants = documentTypeConstants;
-      that.numberOfPODS = _(that.documents).filter(function(document) {
-        return _.parseInt(document.documentSubType, 10) === documentTypeConstants.POD.value;
-      }).size() + 1;
     };
   }
 });

@@ -1,6 +1,8 @@
 .document-overview-modal {
   .modal-sidebar {
     width: 295px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     height: 85vh;
     padding: 30px 10px 15px;
     background: @c-white;
@@ -39,12 +41,11 @@
   .document-title p {
     margin-top: 0 !important;
   }
-  
   .document-preview img {
     max-height: 65vh;
   }
   .pagination {
-    a , a:hover, a:focus {
+    a, a:hover, a:focus {
       background: transparent;
     }
     a:hover {

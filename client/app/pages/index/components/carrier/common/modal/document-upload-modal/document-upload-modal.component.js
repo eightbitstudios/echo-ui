@@ -36,10 +36,10 @@ angular.module('echo.components.modal.documentUpload', [
       };
 
       that.updateDocumentNeeds = function() {
-        that.numberOfPODs = _(that.documents).filter(function(document) {
-          return document.documentSubType === documentTypeConstants.POD.value;
-        }).size();
-        
+        that.numberOfPODS = _(that.documents).filter(function(document) {
+          return _.parseInt(document.documentSubType, 10) === documentTypeConstants.POD.value;
+        }).size() + 1;
+
         that.load.needsInvoice = !_.includes(_.map(that.documents, function(document) {
           return document.documentSubType;
         }), documentTypeConstants.INVOICE.value);
@@ -54,6 +54,9 @@ angular.module('echo.components.modal.documentUpload', [
         that.documentTypeConstants = documentTypeConstants;
         that.selectedDocumentType = that.selectedDocumentType || documentTypeConstants.POD.value;
         that.numberOfStops = _.max([_.size(that.load.pickUp), _.size(that.load.delivery)]);
+        that.numberOfPODS = _(that.documents).filter(function(document) {
+          return _.parseInt(document.documentSubType, 10) === documentTypeConstants.POD.value;
+        }).size() + 1;
       };
     }
   });
