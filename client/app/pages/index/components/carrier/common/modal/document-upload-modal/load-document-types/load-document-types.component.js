@@ -16,11 +16,16 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
 
     that.$onChanges = function(changeObj) {
       if (_.get(changeObj.documents, 'currentValue')) {
-        that.podLabel = _.template('Proof of Delivery #${numberOfPods} (${numberOfStops} Needed')({
-          numberOfPods: _(that.documents).filter(function(document) {
+
+        var numberOfPods = _(that.documents).filter(function(document) {
             return _.parseInt(document.documentSubType, 10) === documentTypeConstants.POD.value;
-          }).size() + 1,
-          numberOfStops: that.numberOfStops
+          }).size();
+
+        var neededPODs = Math.max(that.numberOfStops - numberOfPods, 0);
+
+        that.podLabel = _.template('Proof of Delivery #${numberOfPods} (${numberOfStops} Needed)')({
+          numberOfPods: numberOfPods + 1,
+          numberOfStops: neededPODs
         });
       }
     };
