@@ -1,10 +1,12 @@
 describe('Component: loadDetails', function() {
-  var component, $scope, $stateParams, loadsApi, store$, $q;
+  var component, $scope, $stateParams, invoicesApi, loadsApi, store$, $q;
 
   beforeEach(function() {
     module('echo.index.carrier.loadManagement.loadDetails', function($provide) {
       $provide.value('load-details.component.html', '');
       $provide.value('$stateParams', $stateParams = {});
+      $provide.constant('invoicesApi',
+        invoicesApi = jasmine.createSpyObj('invoicesApi', ['fetchInvoiceDetailsByLoadId']));
       $provide.constant('loadsApi',
         loadsApi = jasmine.createSpyObj('loadsApi', ['fetchMapPointByLoadGuid', 'fetchLoadDetails']));
       $provide.constant('store$',
@@ -73,6 +75,7 @@ describe('Component: loadDetails', function() {
 
       var loadDetails = {};
 
+      invoicesApi.fetchInvoiceDetailsByLoadId.and.returnValue($q.when(loadDetails));
       loadsApi.fetchLoadDetails.and.returnValue($q.when(loadDetails));
       spyOn(component, 'getMapPoint');
 

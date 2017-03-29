@@ -1,6 +1,6 @@
 <uib-accordion class="invoice-accordion accordion" ng-class="{'panel-closed': !$ctrl.isOpen}">
   <div uib-accordion-group is-open="$ctrl.isOpen">
-    <uib-accordion-heading><strong><strong>Invoice Number</strong> 1234567</strong>
+    <uib-accordion-heading><strong>Payment Details</strong>
       <span class="pull-right">
         <strong>Status</strong> Paid
         <div class="caret"></div>
@@ -13,13 +13,13 @@
           <span>
             Total Paid
             <em>
-              $1850.00
+              {{$ctrl.invoiceDetails.totalAmountPaid | currency: '$'}}
             </em>
           </span>
         </div>
       </h4>
       <section class="well">
-        <paid-invoices></paid-invoices>
+        <paid-invoices paid-invoices="$ctrl.invoiceDetails.loadInvoices"></paid-invoices>
       </section>
     </div>
   </div>

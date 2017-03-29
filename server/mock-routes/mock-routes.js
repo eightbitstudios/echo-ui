@@ -76,6 +76,7 @@ module.exports = function (app) {
   app.get(endpoints.api.carrierById, carrierHandler.getCarrierById);
   app.get(endpoints.api.repByCarrierId, carrierHandler.getRepByCarrierId);
   app.get(endpoints.api.language, languageHandler.getLanguage);
+  app.get(endpoints.api.invoiceDetails, invoiceHandler.getInvoiceDetails);
 
   app.post(endpoints.api.documentUpload, documentHandler.createDocuments);
   app.post(endpoints.api.invoiceUpload, documentHandler.createDocuments);

@@ -1,5 +1,6 @@
 var responseUtil = require('../util/response-util.js'),
   invoicesRes = require('../data/invoices-res'),
+  invoiceDetailsRes = require('../data/invoice-details-res'),
   _ = require('lodash'),
   ResTemplate = require('../data/res-template.js');
 
@@ -33,6 +34,14 @@ module.exports = {
     var resTemplate = new ResTemplate();
     resTemplate.data = invoicesRes.invoicesCount;
 
+    responseUtil.timeout(function() {
+      res.json(resTemplate);
+    }, minDelay, maxDelay);
+  },
+  getInvoiceDetails: function(req, res) {
+    var resTemplate = new ResTemplate();
+    resTemplate.data = invoiceDetailsRes;
+    
     responseUtil.timeout(function() {
       res.json(resTemplate);
     }, minDelay, maxDelay);

@@ -65,6 +65,15 @@ angular.module('echo.api.invoices', [
       }).then(function(resp) {
         return $q.when(resp.data.data);
       });
+    },
+    fetchInvoiceDetailsByLoadId: function(loadId) {
+      var url = _.template(apiConfig.invoiceDetails)({
+        loadId: loadId
+      });
+
+      return $http.get(url).then(function(resp) {
+        return $q.when(resp.data.data);
+      });
     }
   };
 });

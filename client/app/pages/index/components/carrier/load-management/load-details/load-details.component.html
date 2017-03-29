@@ -21,14 +21,14 @@
     </div>
   </div>
   <div class="container main-content">
-    <div class="section-head">
+    <div class="section-head" ng-if="$ctrl.invoiceDetails">
       <h1 class="section-label">
         INVOICE DETAILS
       </h1>
     </div>
     <div class="row">
       <section class="col-md-8">
-        <invoice-accordion></invoice-accordion>
+        <invoice-accordion ng-if="$ctrl.invoiceDetails" invoice-details="$ctrl.invoiceDetails"></invoice-accordion>
         <div class="section-head">
           <h1 class="section-label">
             STOPS

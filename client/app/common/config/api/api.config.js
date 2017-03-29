@@ -65,5 +65,6 @@ angular.module('echo.config.api', [])
     activeInvoicesPage: '/carriers/${carrierId}/invoices/activeInvoicesPage',
     invoicesSearch: '/carriers/${carrierId}/invoices/search',
     archivedInvoicesPage: '/carriers/${carrierId}/invoices/archivedInvoicesPage',
-    invoiceCount: '/carriers/${carrierId}/invoices/invoiceCount'
+    invoiceCount: '/carriers/${carrierId}/invoices/invoiceCount',
+    invoiceDetails: '/loads/${loadId}/invoiceDetails'
   });

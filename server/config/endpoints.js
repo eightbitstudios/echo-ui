@@ -65,6 +65,7 @@ module.exports = {
     activeInvoicesPage: '/api/v1/carriers/:carrierId/invoices/activeInvoicesPage',
     invoicesSearch: '/api/v1/carriers/:carrierId/invoices/search',
     archivedInvoicesPage: '/api/v1/carriers/:carrierId/invoices/archivedInvoicesPage',
-    invoiceCount: '/api/v1/carriers/:carrierId/invoices/invoiceCount'
+    invoiceCount: '/api/v1/carriers/:carrierId/invoices/invoiceCount',
+    invoiceDetails: '/api/v1/loads/:loadId/invoiceDetails'
   }
 };

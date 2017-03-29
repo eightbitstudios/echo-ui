@@ -3,11 +3,15 @@
 angular.module('echo.components.invoiceAccordion', [
   'echo.components.invoiceAccordion.paidInvoices'
 ]).component('invoiceAccordion', {
-  bindings: {},
+  bindings: {
+    invoiceDetails: '<'
+  },
   templateUrl: 'invoice-accordion.component.html',
   controller: function() {
-    this.$onInit = function() {
-      this.isOpen = true;
+    var that = this;
+
+    that.$onInit = function() {
+      that.isOpen = true;
     };
   }
 });
