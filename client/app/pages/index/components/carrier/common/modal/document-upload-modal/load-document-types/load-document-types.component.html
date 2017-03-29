@@ -1,7 +1,7 @@
   <div class="load-document-types">
     <div class="row">
       <div class="col-sm-7">
-        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.POD.value" label="Proof of Delivery #{{$ctrl.numberOfPods}} ({{::$ctrl.numberOfStops}} Needed)" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.POD.value" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.POD.value" label="{{$ctrl.podLabel}}" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.POD.value" name="optionsRadios"></radio-button>
         <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.LUMPER_RECEIPT.value" label="Lumper Receipt" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.LUMPER_RECEIPT.value" name="optionsRadios"></radio-button>
         <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.BILL_OF_LADING.value" label="Bill of Lading" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.BILL_OF_LADING.value" name="optionsRadios"></radio-button>
       </div>

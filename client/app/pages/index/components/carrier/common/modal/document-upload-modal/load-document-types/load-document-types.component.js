@@ -6,14 +6,24 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
   bindings: {
     load: '<',
     selectedDocumentType: '=',
-    numberOfPods: '<',
-    numberOfStops: '<',
     documents: '<',
     files: '<',
+    numberOfStops: '<',
     refreshDocumentsCallback: '&'
   },
   controller: function(store$, documentTypeConstants, documentApi) {
     var that = this;
+
+    that.$onChanges = function(changeObj) {
+      if (_.get(changeObj.documents, 'currentValue')) {
+        that.podLabel = _.template('Proof of Delivery #${numberOfPods} (${numberOfStops} Needed')({
+          numberOfPods: _(that.documents).filter(function(document) {
+            return _.parseInt(document.documentSubType, 10) === documentTypeConstants.POD.value;
+          }).size() + 1,
+          numberOfStops: that.numberOfStops
+        });
+      }
+    };
 
     that.uploadDocuments = function() {
       that.showLoading = true;
@@ -26,7 +36,7 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
         return documentType.value === that.selectedDocumentType;
       });
 
-      if(_.isFunction(documentType.description)) {
+      if (_.isFunction(documentType.description)) {
         podDescription = _.trim(_.replace(documentType.description({
           documentNumber: ''
         }), '#', ''));
