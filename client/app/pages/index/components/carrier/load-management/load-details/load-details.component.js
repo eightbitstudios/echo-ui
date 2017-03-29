@@ -34,15 +34,18 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       that.showLoading = true;
       that.showMap = false;
 
-      $q.all([loadsApi.fetchLoadDetails(that.loadId), invoicesApi.fetchInvoiceDetailsByLoadId(that.loadId)])
-        .then(_.spread(function(loadDetails, invoiceDetails) {
+      invoicesApi.fetchInvoiceDetailsByLoadId(that.loadId).then(function(invoiceDetails) {
+        that.invoiceDetails = invoiceDetails;
+      });
+
+      loadsApi.fetchLoadDetails(that.loadId)
+        .then(function(loadDetails) {
           that.loadDetails = loadDetails;
           that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
           that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
           that.showLoading = false;
-          that.invoiceDetails = invoiceDetails;
           that.getMapPoint();
-        }));
+        });
     };
 
     that.$onInit = function() {
