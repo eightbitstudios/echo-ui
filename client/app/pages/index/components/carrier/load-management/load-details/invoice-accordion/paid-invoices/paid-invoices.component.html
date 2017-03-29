@@ -9,9 +9,9 @@
   </thead>
   <tbody>
     <tr ng-repeat="paidInvoice in $ctrl.paidInvoices">
-      <td>{{::paidInvoice.paidDate}}</td>
+      <td>{{::paidInvoice.paidDate | invoiceDate}}</td>
       <td>{{::paidInvoice.checkNumber}}</td>
-      <td>{{::paidInvoice.checkDate}}</td>
+      <td>{{::paidInvoice.checkDate | invoiceDate}}</td>
       <td>{{::paidInvoice.amountPaid | currency: '$'}}</td>
     </tr>
   </tbody>

@@ -34,17 +34,19 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       that.showLoading = true;
       that.showMap = false;
 
-      invoicesApi.fetchInvoiceDetailsByLoadId(that.loadId).then(function(invoiceDetails) {
-        that.invoiceDetails = invoiceDetails;
-      });
+
 
       loadsApi.fetchLoadDetails(that.loadId)
         .then(function(loadDetails) {
           that.loadDetails = loadDetails;
           that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
           that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
-          that.showLoading = false;
           that.getMapPoint();
+          return invoicesApi.fetchInvoiceDetailsByLoadId(that.loadDetails.loadNumber).then(function(invoiceDetails) {
+            that.invoiceDetails = invoiceDetails;
+          }).finally(function() {
+            that.showLoading = false;
+          });
         });
     };
 
