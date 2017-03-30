@@ -57,14 +57,6 @@ describe('Component: documentUpload', function() {
   });
 
   describe('Function: updateDocumentNeeds', function() {
-    it('should update pods needed', function() {
-      component.$onInit();
-      documents.push({
-        documentSubType: documentTypeConstants.POD.value
-      });
-      component.updateDocumentNeeds();
-      expect(load.neededPODs).toBe(0);
-    });
 
     it('should update invoices needed', function() {
       component.$onInit();

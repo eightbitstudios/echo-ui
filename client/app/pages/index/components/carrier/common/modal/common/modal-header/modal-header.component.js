@@ -5,6 +5,7 @@ angular.module('echo.components.modal.modalHeader', [])
       headerText: '@',
       modalActions: '<',
       loadNumber: '<',
-      proNumber: '<'
+      proNumber: '<',
+      refresh: '<'
     }
   });

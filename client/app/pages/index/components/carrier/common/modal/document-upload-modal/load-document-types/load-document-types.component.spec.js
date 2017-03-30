@@ -1,6 +1,6 @@
 describe('Component: loadDocumentTypes', function() {
   var component, $scope, store$, documentApi, documentTypeConstants,
-    documents, $q, carrierId, loadId, files, refreshDocumentsCallback;
+    documents, $q, carrierId, load, files, refreshDocumentsCallback;
 
   beforeEach(function() {
     module('echo.components.modal.documentUpload.loadDocumentTypes', function($provide) {
@@ -25,31 +25,19 @@ describe('Component: loadDocumentTypes', function() {
         }
       });
       documents = [];
-      loadId = 1234;
+      load = {
+        loadNumber: 1234
+      };
+
       files = [];
       refreshDocumentsCallback = jasmine.createSpy('refreshDocumentsCallback');
 
       component = $componentController('loadDocumentTypes', null, {
         documents: documents,
-        loadId: loadId,
+        load: load,
         files: files,
         refreshDocumentsCallback: refreshDocumentsCallback
       });
-    });
-  });
-
-  describe('Function: $onInit', function() {
-    it('should return current number of PODS', function() {
-      component.$onInit();
-      expect(component.numberOfPODS).toBe(1);
-    });
-    
-    it('should return current number of PODS', function() {
-      documents.push({
-        documentSubType: documentTypeConstants.POD.value
-      });
-      component.$onInit();
-      expect(component.numberOfPODS).toBe(2);
     });
   });
 
@@ -61,7 +49,7 @@ describe('Component: loadDocumentTypes', function() {
       component.uploadDocuments();
 
       expect(documentApi.createDocuments)
-        .toHaveBeenCalledWith(carrierId, loadId, 'Proof of Delivery', files);
+        .toHaveBeenCalledWith(carrierId, load.loadNumber, 'Proof of Delivery', files);
     });
 
     it('should upload invoice document', function() {
@@ -71,7 +59,7 @@ describe('Component: loadDocumentTypes', function() {
       component.uploadDocuments();
 
       expect(documentApi.createDocuments)
-        .toHaveBeenCalledWith(carrierId, loadId, documentTypeConstants.INVOICE.description, files);
+        .toHaveBeenCalledWith(carrierId, load.loadNumber, documentTypeConstants.INVOICE.description, files);
     });
 
     it('should refresh documents', function() {
