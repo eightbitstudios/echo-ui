@@ -27,9 +27,14 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.documents', [
       };
 
       that.openInvoiceDocumentUploadModal = function() {
-        that.openDocumentUploadModal(documentTypeConstants.INVOICE.value);
+        var modalInstance = that.openDocumentUploadModal(documentTypeConstants.INVOICE.value);
+        modalInstance.result.then(function(actionChanged) {
+          if (actionChanged) {
+            that.fetchDocuments();
+          }
+        });
       };
- 
+
       that.openDocumentOverviewModal = function(selectedDocument) {
         return modalService.open({
           component: 'document-overview-modal',
@@ -42,18 +47,23 @@ angular.module('echo.index.carrier.loadManagement.loadDetails.documents', [
         });
       };
 
-      that.$onInit = function() {
-        var state = store$.getState();
+      that.fetchDocuments = function() {
         that.showLoading = true;
-          that.showError = false;
+        that.showError = false;
 
-        documentApi.fetchDocuments(state.carrier.carrierId, that.load.loadGuid).then(function(documents){
+        documentApi.fetchDocuments(that.carrierId, that.load.loadGuid).then(function(documents) {
           that.documents = documents;
         }).catch(function() {
           that.showError = true;
         }).finally(function() {
           that.showLoading = false;
         });
+      };
+
+      that.$onInit = function() {
+        var state = store$.getState();
+        that.carrierId = state.carrier.carrierId;
+        that.fetchDocuments();
       };
     }
   });

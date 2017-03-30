@@ -25,6 +25,7 @@ angular.module('echo.components.modal.documentUpload', [
         documentApi.fetchDocuments(that.carrierId, that.load.loadGuid).then(function(documents) {
           that.documents = documents;
           that.updateDocumentNeeds();
+          that.refreshParent = true;
         });
         that.resetModal();
       };
@@ -35,10 +36,7 @@ angular.module('echo.components.modal.documentUpload', [
       };
 
       that.updateDocumentNeeds = function() {
-        that.numberOfPODs = _(that.documents).filter(function(document) {
-          return document.documentSubType === documentTypeConstants.POD.value;
-        }).size();
-        
+
         that.load.needsInvoice = !_.includes(_.map(that.documents, function(document) {
           return document.documentSubType;
         }), documentTypeConstants.INVOICE.value);
@@ -48,6 +46,7 @@ angular.module('echo.components.modal.documentUpload', [
 
       that.$onInit = function() {
         that.files = [];
+        that.originalBillRate = _.get(that.load, 'invoiceAmount');
         that.carrierId = store$.getState().carrier.carrierId;
         that.documentTypeConstants = documentTypeConstants;
         that.selectedDocumentType = that.selectedDocumentType || documentTypeConstants.POD.value;

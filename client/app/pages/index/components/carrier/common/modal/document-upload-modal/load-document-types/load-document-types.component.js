@@ -4,15 +4,31 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
 ]).component('loadDocumentTypes', {
   templateUrl: 'load-document-types.component.html',
   bindings: {
-    loadId: '<',
+    load: '<',
     selectedDocumentType: '=',
-    numberOfStops: '<',
     documents: '<',
     files: '<',
+    numberOfStops: '<',
     refreshDocumentsCallback: '&'
   },
   controller: function(store$, documentTypeConstants, documentApi) {
     var that = this;
+
+    that.$onChanges = function(changeObj) {
+      if (_.get(changeObj.documents, 'currentValue')) {
+
+        var numberOfPods = _(that.documents).filter(function(document) {
+            return _.parseInt(document.documentSubType, 10) === documentTypeConstants.POD.value;
+          }).size();
+
+        var neededPODs = Math.max(that.numberOfStops - numberOfPods, 0);
+
+        that.podLabel = _.template('Proof of Delivery #${numberOfPods} (${numberOfStops} Needed)')({
+          numberOfPods: numberOfPods + 1,
+          numberOfStops: neededPODs
+        });
+      }
+    };
 
     that.uploadDocuments = function() {
       that.showLoading = true;
@@ -25,13 +41,13 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
         return documentType.value === that.selectedDocumentType;
       });
 
-      if(_.isFunction(documentType.description)) {
+      if (_.isFunction(documentType.description)) {
         podDescription = _.trim(_.replace(documentType.description({
           documentNumber: ''
         }), '#', ''));
       }
 
-      documentApi.createDocuments(that.carrierId, that.loadId, podDescription || documentType.description, that.files)
+      documentApi.createDocuments(that.carrierId, that.load.loadNumber, podDescription || documentType.description, that.files)
         .then(function() {
           that.showSavedMessage = true;
           that.refreshDocumentsCallback();
@@ -46,9 +62,6 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
     that.$onInit = function() {
       that.carrierId = store$.getState().carrier.carrierId;
       that.documentTypeConstants = documentTypeConstants;
-      that.numberOfPODS = _(that.documents).filter(function(document) {
-        return _.parseInt(document.documentSubType, 10) === documentTypeConstants.POD.value;
-      }).size() + 1;
     };
   }
 });

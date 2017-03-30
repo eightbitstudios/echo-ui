@@ -16,7 +16,6 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       var that = this;
 
       that.getMapPoint = function() {
-
         that.showMap = false;
         that.mapPoints = [];
         loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid'))
