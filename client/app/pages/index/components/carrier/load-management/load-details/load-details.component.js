@@ -14,19 +14,19 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 ]).component('loadDetails', {
   templateUrl: 'load-details.component.html',
   controller: function($q, $stateParams, store$, loadsApi, invoicesApi) {
-      var that = this;
+    var that = this;
 
-      that.getMapPoint = function() {
-        that.showMap = false;
-        that.mapPoints = [];
-        loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid'))
-          .then(function(mapPointData) {
-            if (mapPointData) {
-              that.mapPoints.push(mapPointData);
-            }
-            that.showMap = true;
-          });
-      };
+    that.getMapPoint = function() {
+      that.showMap = false;
+      that.mapPoints = [];
+      loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid'))
+        .then(function(mapPointData) {
+          if (mapPointData) {
+            that.mapPoints.push(mapPointData);
+          }
+          that.showMap = true;
+        });
+    };
 
 
     that.fetchLoadDetails = function() {

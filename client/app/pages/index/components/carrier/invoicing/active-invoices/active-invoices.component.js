@@ -38,8 +38,8 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
             if (invoicesPageData.invoices) {
               that.activeInvoices = invoicesPageData.invoices;
               that.paging.recordCount = _.size(invoicesPageData.invoices);
-              that.unbilledAmount = invoicesPageData.totalInvoiceAmount;
               that.paging.totalRecords = invoicesPageData.activeInvoiceCount;
+              that.totalActiveInvoiceAmount = invoicesPageData.totalInvoiceAmount;
             }
 
           }).finally(function() {
@@ -56,6 +56,7 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
         var state = store$.getState();
         that.carrierId = state.carrier.carrierId;
         that.repDetails = state.rep;
+        that.unbilledAmount = state.invoiceCounts.unbilledAmount;
         that.defaultFilterText = 'By Received Date';
         that.filterText = that.defaultFilterText;
         that.statusEnums = invoiceConstants.STATUSES;
