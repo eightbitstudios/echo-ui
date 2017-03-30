@@ -23,7 +23,7 @@ angular.module('echo.index.carrier.invoicing.invoiceTable.invoiceNumber', [
             openedClass: 'dark modal-open',
             bindings: {
               documents: documents,
-              selectedDocument: _.find(documents, {documentSubType: documentTypeConstants.INVOICE.value})
+              selectedDocument: _.find(documents, {documentSubType: documentTypeConstants.INVOICE.value.toString()})
             }
           });
         }).finally(function() {
