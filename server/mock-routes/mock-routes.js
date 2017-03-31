@@ -19,6 +19,7 @@ module.exports = function (app) {
   app.get(endpoints.api.activityLogByLoadId, loadsHandler.getActivityLogByLoadId);
   app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
   app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
+  app.get(endpoints.api.invoiceCount, invoiceHandler.getInvoicesCount);
   app.post(endpoints.api.reportDeliveredByLoadGuid, loadsHandler.createModalAction);
   app.get(endpoints.api.reportDeliveredByLoadGuid, loadsHandler.getReportEmptyModalAction);
   app.post(endpoints.api.feedbackByLoadGuid, loadsHandler.createModalAction);
@@ -49,6 +50,7 @@ module.exports = function (app) {
   app.get(endpoints.api.mapPointsForLoadsNeedingAction, loadsHandler.fetchMapPoints);
   app.get(endpoints.api.mapPointByLoadGuid, loadsHandler.fetchMapPointByLoadGuid);
   app.get(endpoints.api.activeInvoicesPage, invoiceHandler.getInvoices);
+  app.get(endpoints.api.archivedInvoicesPage, invoiceHandler.getInvoices);
   app.get(endpoints.api.invoicesSearch, invoiceHandler.getInvoicesBySearchText);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
@@ -74,6 +76,7 @@ module.exports = function (app) {
   app.get(endpoints.api.carrierById, carrierHandler.getCarrierById);
   app.get(endpoints.api.repByCarrierId, carrierHandler.getRepByCarrierId);
   app.get(endpoints.api.language, languageHandler.getLanguage);
+  app.get(endpoints.api.invoiceDetails, invoiceHandler.getInvoiceDetails);
 
   app.post(endpoints.api.documentUpload, documentHandler.createDocuments);
   app.post(endpoints.api.invoiceUpload, documentHandler.createDocuments);

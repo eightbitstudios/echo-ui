@@ -84,3 +84,43 @@ table.table {
     padding-right: 15px;
   }
 }
+
+.table.table-minimal {
+  margin-bottom: 0;
+  tr > th {
+    color: @c-dark-grey;
+    font-size: 14px;
+    text-align: right;
+    padding: 0 0 10px 20px;
+    border-top: 0;
+    border-bottom: none;
+  }
+  tr {
+    td:first-child {
+      padding-left: 0;
+      border-left: none;
+    }
+    &:hover td:first-child {
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+  tr > td {
+    text-align: right;
+    border: none;
+    padding: 0 0 0 20px;
+    &:first-child {
+      text-align: left;
+    }
+    &:after {
+      display: none;
+    }
+  }
+  tbody tr:last-child td {
+    padding-bottom: 10px;
+  }
+  tfoot tr:first-child td {
+    padding-top: 10px;
+    border-top: solid 1px @c-gray-light;
+  }
+}

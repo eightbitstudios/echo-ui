@@ -21,6 +21,6 @@
       <filter-button filter-enabled="$ctrl.filterBy === $ctrl.statusEnums.PAID.value" click-handler="$ctrl.filterHandler(value, $ctrl.statusEnums.PAID.value)" button-text="{{$ctrl.statusEnums.PAID.description}}"></filter-button>
     </invoices-filter>
     <invoice-table rep-details="$ctrl.repDetails" invoices="$ctrl.activeInvoices" show-loading="$ctrl.showLoading" carrier-id="$ctrl.carrierId"></invoice-table>
-    <pagination page-click-handler="$ctrl.fetchActiveInvoices()" paging-model="$ctrl.paging" record-type="Invoices" ng-if="!$ctrl.showLoading"></pagination>
+    <pagination page-click-handler="$ctrl.changePage()" paging-model="$ctrl.paging" record-type="Invoices" ng-if="!$ctrl.showLoading"></pagination>
   </div>
 </div>
