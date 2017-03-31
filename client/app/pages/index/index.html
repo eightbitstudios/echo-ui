@@ -36,7 +36,6 @@
   <!-- build:js app/index/index.js -->
   <!-- injector:js -->
   <!-- endinjector -->
-
   <!-- endbuild -->
 
   <!-- build:js app/env-vars.js -->
@@ -48,22 +47,12 @@
   </script>
 </head>
 
-<body ng-app="echo.index" ng-controller="AppCtrl as appCtrl" id="ng-app">
+<body ng-app="echo.index" ng-controller="AppCtrl as appCtrl" id="ng-app" analytics>
   <div ui-view="header"></div>
   <div class="main-content-container" ng-class="{'white-container': $state.current.data.whiteContainer}">
-    <script type="text/javascript">
-      (function(a,b,c,d){
-        if(<%= process.env.NODE_ENV != 'local' %>) {
-          a='//tags.tiqcdn.com/utag/echo/main/qa/utag.js';
-          b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
-          a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
-        }
-      })();
-  </script>
     <!-- body view to load remaining child routes -->
     <div ui-view="body"></div>
   </div>
   <div ui-view="footer"></div>
 </body>
-
 </html>
