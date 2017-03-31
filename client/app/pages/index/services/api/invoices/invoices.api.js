@@ -49,13 +49,13 @@ angular.module('echo.api.invoices', [
         return $q.when(resp.data.data);
       });
     },
-    fetchInvoicesBySearchText: function(carrierId, searchText, paging) {
+    fetchInvoicesBySearchText: function(carrierId, searchString, paging) {
       var url = _.template(apiConfig.invoicesSearch)({
         carrierId: carrierId
       });
 
       var params = {
-        searchText: searchText,
+        searchString: searchString,
         limit: paging.limit,
         offset: paging.offset
       };
