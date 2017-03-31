@@ -32,7 +32,8 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
 
       that.fetchActiveInvoices = function() {
         that.showLoading = true;
-
+        that.totalActiveInvoiceAmount = 0;
+        
         invoicesApi.fetchActiveInvoices(that.carrierId, that.paging, that.filterBy)
           .then(function(invoicesPageData) {
             if (invoicesPageData.invoices) {
