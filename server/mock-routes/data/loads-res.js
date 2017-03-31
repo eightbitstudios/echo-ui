@@ -5,7 +5,7 @@ module.exports = {
     "proNumber": "1200987860859657",
     "bolNumber": "56765676",
     "pickUp": [{
-      "pickupNumber": 56985478,
+      "pickupNumber": "56985478",
       "name": "Walmart Warehouse",
       "address": "123 Main Street",
       "city": "New York City",
@@ -39,7 +39,7 @@ module.exports = {
     }],
     escalationLevel: 2,
     "delivery": [{
-      "pickupNumber": 56985478,
+      "pickupNumber": "56985478",
       "name": "Walmart Supercenter",
       "address": "123 North Avenue",
       "city": "Chicago",
@@ -114,20 +114,23 @@ module.exports = {
       }    ],
     "trailerNumber": "8956 7412",
     "tractorNumber": "7894 9216",
-    "sumOfWeightInPounds": 2080.5
+    "sumOfWeightInPounds": 2080.5,
+    "neededPODs": 1,
+    "needsInvoice": true,
+    "balanceRemaining": 1380
   }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
       proNumber: null,
       pickUp: [{
-        pickupNumber: 56985478,
+        pickupNumber: "56985478",
         city: 'New York',
         state: 'New York',
         zip: '60655',
         isCurrent: false,
         time: '2016-08-02T16:20:14-05:00'
       }, {
-          pickupNumber: 5698543478,
+          pickupNumber: "5698543478",
           city: 'LA',
           state: 'California',
           zip: '60655',
@@ -160,7 +163,10 @@ module.exports = {
         lateBy: null
       },
       isLoadDetailUpdated: false,
-      isDriverVerified: true
+      isDriverVerified: true,
+    "neededPODs": 2,
+    "needsInvoice": true,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -194,7 +200,10 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 0,
+    "needsInvoice": true,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -230,7 +239,10 @@ module.exports = {
         onTime: true,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 0,
+    "needsInvoice": true,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -265,7 +277,10 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 1,
+    "needsInvoice": false,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -299,7 +314,10 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 2,
+    "needsInvoice": false,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -334,7 +352,10 @@ module.exports = {
         onTime: true,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 0,
+    "needsInvoice": false,
+    "balanceRemaining": 0
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -369,7 +390,10 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 1,
+    "needsInvoice": false,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 5555555555,
@@ -403,7 +427,10 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 1,
+    "needsInvoice": false,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -437,7 +464,10 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 1,
+    "needsInvoice": false,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -471,7 +501,10 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 1,
+    "needsInvoice": false,
+    "balanceRemaining": 1380
     }, {
     "loadGuid": "8d34ba4f8baa4cd09c776826df55bae1",
       loadNumber: 12344321,
@@ -505,7 +538,10 @@ module.exports = {
         onTime: false,
         lateBy: null
       },
-      isLoadDetailUpdated: false
+      isLoadDetailUpdated: false,
+    "neededPODs": 1,
+    "needsInvoice": false,
+    "balanceRemaining": 1380
     }],
   totalLoadCount: 22
 };

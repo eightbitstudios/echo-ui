@@ -1,7 +1,7 @@
 angular.module('echo.models.user', [
-  'echo.enums.roles'
+  'echo.constant.roles'
 ])
-  .factory('UserModel', function (RolesEnum) {
+  .factory('UserModel', function (roleConstants) {
     /**
      * @description Model for a User
      * @param {Object} userData - Data to be converted to a User Model
@@ -22,7 +22,7 @@ angular.module('echo.models.user', [
      * @return {boolean}
      */
     User.prototype.isRepAdmin = function () {
-      return this.roleName === RolesEnum.ECHO_REP;
+      return this.roleName === roleConstants.ECHO_REP;
     };
 
     /**
@@ -30,7 +30,7 @@ angular.module('echo.models.user', [
      * @return {boolean}
      */
     User.prototype.isCarrierAdmin = function () {
-      return this.roleName === RolesEnum.CARRIER_ADMIN;
+      return this.roleName === roleConstants.CARRIER_ADMIN;
     };
 
     /**

@@ -1,16 +1,24 @@
 'use strict';
 
 angular.module('echo.components.secureImage', [
-    'echo.api.document'
+    'echo.api.document',
+    'echo.config.assetConfig'
   ])
   .component('secureImage', {
     bindings: {
       imageGuid: '<',
       thumbnail: '<'
     },
-    templateUrl: 'app/common/components/secure-image/secure-image.template.html',
-    controller: function(store$, documentApi) {
+    templateUrl: 'secure-image.component.html',
+    controller: function(store$, documentApi, assetConfig) {
       var that = this;
+      that.showStagedDocument = function() {
+        if (that.thumbnail) {
+          that.imageData = assetConfig.STAGE_DOCUMENT_THUMBNAIL;
+        } else {
+          that.imageData = assetConfig.STAGE_DOCUMENT;
+        }
+      };
 
       that.$onChanges = function(changeObj) {
         if (_.get(changeObj.imageGuid, 'currentValue')) {
@@ -25,7 +33,11 @@ angular.module('echo.components.secureImage', [
 
           promise.then(function(data) {
             that.imageData = data;
+          }).catch(function() {
+            that.showStagedDocument();
           });
+        } else {
+          that.showStagedDocument();
         }
       };
     }

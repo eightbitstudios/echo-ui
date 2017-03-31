@@ -1,0 +1,20 @@
+<div>
+  <div class="container-fluid carrier-dashboard-header">
+    <div class="container">
+      <ul class="list-inline carrier-dashboard-header_left">
+        <li>
+          <strong>{{$ctrl.paging.totalRecords}} Unbilled Loads</strong>
+        </li>
+      </ul>
+      <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
+    </div>
+  </div>
+  <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
+    <filter-button filter-enabled="$ctrl.isPODNeeded" click-handler="$ctrl.podNeededHandler(value)" button-text="POD Needed"></filter-button>
+    <filter-button filter-enabled="$ctrl.isInvoiceNeeded" click-handler="$ctrl.invoiceNeededHandler(value)" button-text="Invoice Needed"></filter-button>
+  </loads-filter>
+  <div class="container main-content">
+    <load-table rep-details="$ctrl.repDetails" show-loading="$ctrl.showLoading" loads="$ctrl.unbilledLoads" load-type="$ctrl.loadType" refresh-table-callback="$ctrl.getUnbilledLoads()" carrier-id="$ctrl.carrierId"></load-table>
+    <pagination page-click-handler="$ctrl.getUnbilledLoads()" paging-model="$ctrl.paging" ng-if="!$ctrl.showLoading" record-type="Loads"></pagination>
+  </div>
+</div>

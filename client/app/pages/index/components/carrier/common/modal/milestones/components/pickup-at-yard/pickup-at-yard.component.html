@@ -1,0 +1,13 @@
+<div class="pickup-at-yard">
+  <div ng-if="$ctrl.currentState === $ctrl.modes.findDriver">
+    <h4 class="content-header">Which driver picked up the trailer?</h4>
+    <typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.setDriver(selection)" template="driver-results.template.html" placeholder-text="Find a Driver"></typeahead-search>
+    <selected-driver ng-if="$ctrl.assignedDriver" driver="$ctrl.assignedDriver" remove-callback="$ctrl.setDriver()" load-id="$ctrl.load.loadNumber"></selected-driver>
+    <a class="btn btn-link invite-new-driver" ng-click="$ctrl.showInviteNewDriver()">Invite New Driver</a>
+    <h4 class="content-header">When did the driver pick it up?</h4>
+    <date-time-picker date-time="$ctrl.dateTimePicker" time-zones="$ctrl.timeZones"></date-time-picker>
+  </div>
+  <div class="new-driver-section" ng-if="$ctrl.currentState === $ctrl.modes.inviteNewDriver">
+    <new-driver cancel-callback="$ctrl.showFindDriver()" carrier-id="$ctrl.carrierId" continue-callback="$ctrl.invitedNewDriver(driver)"></new-driver>
+  </div>
+</div>

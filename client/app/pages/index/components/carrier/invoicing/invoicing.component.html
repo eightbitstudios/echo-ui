@@ -1,0 +1,10 @@
+<div class="invoicing">
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div ng-show="!$ctrl.showLoading">
+    <tab-bar ng-if="$ctrl.tabItems" tab-items="$ctrl.tabItems" tab-replacement-text="$ctrl.tabReplacementText">
+      <h2>Search Results for {{$ctrl.stateParams.searchText}}</h2>
+      <search-bar search-callback="$ctrl.routeToSearch(searchText)" placeholder-text="Invoice, Load, or PRO Number"></search-bar>
+    </tab-bar>
+    <div ui-view ng-if="!$ctrl.showLoading"></div>
+  </div>
+</div>

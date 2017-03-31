@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     },
     js: {
       files: ['client/app/**/*.js'],
-      tasks: ['jshint:src', 'copy:build', 'copy:endpoints', 'injector', 'karma:unit']
+      tasks: ['jshint:src', 'copy:build', 'copy:envVars', 'injector', 'karma:unit']
     },
     jsunit: {
       files: ['client/app/**/*.spec.js'],

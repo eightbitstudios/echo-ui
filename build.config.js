@@ -31,6 +31,7 @@ module.exports = function (grunt) {
      */
     app_files: {
       js: ['app/**/*.js'],
+      envVars: ['app/env-vars/env-vars.config.js'],
       jsunit: ['app/**/*.spec.js'],
 
       page_specific_js: {}, //populated in grunt file
@@ -97,7 +98,6 @@ module.exports = function (grunt) {
       js: [
         'bower_components/angular/angular.js',
         'bower_components/angular-cookies/angular-cookies.js',
-        'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
         'bower_components/angular-base64/angular-base64.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
