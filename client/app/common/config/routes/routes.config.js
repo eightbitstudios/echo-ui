@@ -63,6 +63,11 @@ angular.module('echo.config.routes', [])
         route: '/activeInvoices',
         title: 'Active Invoices'
       },
+      archivedInvoices: {
+        name: 'index.carrier.invoicing.archivedInvoices',
+        route: '/archivedInvoices',
+        title: 'Archived Invoices'
+      },
       searchInvoices: {
         name: 'index.carrier.invoicing.searchInvoices',
         route: '/searchInvoices?searchText'

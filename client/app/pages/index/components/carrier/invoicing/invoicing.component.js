@@ -3,15 +3,17 @@ angular.module('echo.index.carrier.invoicing', [
     'echo.components.searchBar',
     'echo.config.routes',
     'echo.index.carrier.invoicing.activeInvoices',
+    'echo.index.carrier.invoicing.archivedInvoices',
     'echo.index.carrier.invoicing.searchInvoices',
-    'echo.actions'
+    'echo.actions',
+    'echo.api.invoices',
+    'echo.index.actionsCreators.invoiceCounts'
   ])
   .component('invoicing', {
     templateUrl: 'invoicing.component.html',
     bindings: {},
-    controller: function($stateParams, $state, store$, routesConfig) {
+    controller: function($stateParams, $state, store$, routesConfig, invoicesApi, invoiceCountsActionCreator) {
       var that = this;
-      var sub = null;
 
       that.routeToSearch = function(searchText) {
 
@@ -31,11 +33,27 @@ angular.module('echo.index.carrier.invoicing', [
         });
       };
 
+      that.fetchInvoicesCount = function() {
+        invoicesApi.fetchInvoiceCount(that.carrierId).then(function(invoiceCounts) {
+          var action = invoiceCountsActionCreator.setInvoiceCounts(invoiceCounts);
+          store$.dispatch(action);
+          that.createTabItems(invoiceCounts);
+          that.showLoading = false;
+        });
+      };
+
       that.createTabItems = function(invoiceCounts) {
         that.tabItems = [{
           title: invoiceCounts.activeInvoices + ' Active Invoices',
           link: routesConfig.INDEX.activeInvoices.name
+        }, {
+          title: that.formatInvoiceCount(invoiceCounts.archivedInvoices) + ' Archived Invoices',
+          link: routesConfig.INDEX.archivedInvoices.name
         }];
+      };
+
+      that.formatInvoiceCount = function(invoiceCount) {
+        return invoiceCount > 1000 ? '1000+' : invoiceCount;
       };
 
       that.$onInit = function() {
@@ -48,17 +66,7 @@ angular.module('echo.index.carrier.invoicing', [
         that.state = $state;
         that.routesConfig = routesConfig;
         that.previousRoute = $state.$current.name;
-
-        sub = store$.subscribe(function(state) {
-          if (!_.isEmpty(state.invoiceCounts)) {
-            that.createTabItems(state.invoiceCounts);
-            that.showLoading = false;
-          }
-        });
-      };
-
-      that.$onDestroy = function() {
-        sub.dispose();
+        that.fetchInvoicesCount();
       };
     }
   });

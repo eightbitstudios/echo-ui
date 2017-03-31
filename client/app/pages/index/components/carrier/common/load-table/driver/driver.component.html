@@ -1,5 +1,4 @@
 <div class="carrier-dashboard-driver">
-  <loading show-loading="$ctrl.showComponentLoading"></loading>
   <div ng-if="!$ctrl.noDriver">
     <h3 class="driver-name">
       <a ng-if="$ctrl.load.isDriverVerified && !$ctrl.isDisabled" href="javascript:void(0)" ng-click="$ctrl.showAssignDriverModal()">{{$ctrl.load.driver.firstName}} {{$ctrl.load.driver.lastName | firstCharacter}}</a>
@@ -17,4 +16,5 @@
     <loading-button ng-if="!$ctrl.isDisabled" button-text="Assign Driver" click-handler="$ctrl.showAssignDriverModal()" show-loading="$ctrl.showButtonLoading"></loading-button>
      <h4 ng-if="$ctrl.isDisabled">No Driver Assigned</h4>
   </div>
+  <loading show-loading="$ctrl.showComponentLoading"></loading>
 </div>

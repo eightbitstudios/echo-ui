@@ -111,10 +111,11 @@ angular.module('echo.index', [
     })
     .state(routesConfig.INDEX.activeInvoices.name, { // #/carrier/:carrierId/invoicing/activeInvoices
       url: routesConfig.INDEX.activeInvoices.route,
-      template: '<active-invoices></active-invoices>',
-      data: {
-        name: 'active invoices'
-      }
+      template: '<active-invoices></active-invoices>'
+    })
+    .state(routesConfig.INDEX.archivedInvoices.name, { // #/carrier/:carrierId/invoicing/archivedInvoices
+      url: routesConfig.INDEX.archivedInvoices.route,
+      template: '<archived-invoices></archived-invoices>'
     })
     .state(routesConfig.INDEX.searchInvoices.name, { // #/carrier/:carrierId/invoicing/:searchText
       url: routesConfig.INDEX.searchInvoices.route,

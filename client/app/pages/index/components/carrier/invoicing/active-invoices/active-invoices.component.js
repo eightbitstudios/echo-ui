@@ -12,8 +12,7 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
   .component('activeInvoices', {
     templateUrl: 'active-invoices.component.html',
     bindings: {},
-    controller: function(PagingModel, appConstants, invoicesApi, store$,
-      invoiceCountsActionCreator, routesConfig, invoiceConstants) {
+    controller: function(PagingModel, appConstants, invoicesApi, store$, routesConfig, invoiceConstants) {
       var that = this;
 
       that.filterHandler = function(value, enumValue) {
@@ -33,41 +32,41 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
 
       that.fetchActiveInvoices = function() {
         that.showLoading = true;
-
+        that.totalActiveInvoiceAmount = 0;
+        
         invoicesApi.fetchActiveInvoices(that.carrierId, that.paging, that.filterBy)
           .then(function(invoicesPageData) {
             if (invoicesPageData.invoices) {
               that.activeInvoices = invoicesPageData.invoices;
               that.paging.recordCount = _.size(invoicesPageData.invoices);
+              that.paging.totalRecords = invoicesPageData.activeInvoiceCount;
+              that.totalActiveInvoiceAmount = invoicesPageData.totalInvoiceAmount;
             }
 
-            if (invoicesPageData.invoicesCount) {
-              that.paging.totalRecords = invoicesPageData.invoicesCount.activeInvoices;
-              that.unbilledLoads = invoicesPageData.invoicesCount.unbilledLoads;
-              that.unbilledAmount = invoicesPageData.invoicesCount.unbilledAmount;
-              that.totalActiveInvoiceAmount = invoicesPageData.invoicesCount.totalActiveInvoiceAmount;
-
-              var state = store$.getState();
-              if (_.isEmpty(state.invoiceCounts)) {
-                var action = invoiceCountsActionCreator.setInvoiceCounts(invoicesPageData.invoicesCount);
-                store$.dispatch(action);
-              }
-            }
           }).finally(function() {
             that.showLoading = false;
           });
+      };
+
+      that.changePage = function() {
+        that.activeInvoices = null;
+        that.fetchActiveInvoices();
       };
 
       that.$onInit = function() {
         var state = store$.getState();
         that.carrierId = state.carrier.carrierId;
         that.repDetails = state.rep;
+        that.unbilledAmount = state.invoiceCounts.unbilledAmount;
         that.defaultFilterText = 'By Received Date';
         that.filterText = that.defaultFilterText;
         that.statusEnums = invoiceConstants.STATUSES;
 
         that.unbilledLoadsRoute = routesConfig.INDEX.unbilledLoads.name;
         that.paging = new PagingModel(appConstants.LIMIT.invoicesList);
+        that.paging.totalRecords = state.invoiceCounts.activeInvoices;
+        that.unbilledLoads = state.invoiceCounts.unbilledLoads;
+
         that.fetchActiveInvoices();
       };
     }

@@ -23,11 +23,17 @@
   <div class="container main-content">
     <div class="section-head">
       <h1 class="section-label">
-          STOPS
-        </h1>
+        {{$ctrl.invoiceDetails.invoiceDetails.length > 0 ? 'INVOICE DETAILS' : 'STOPS'}}
+      </h1>
     </div>
     <div class="row">
       <section class="col-md-8">
+        <invoice-accordion ng-if="$ctrl.invoiceDetails.invoiceDetails.length > 0" invoice-details="$ctrl.invoiceDetails"></invoice-accordion>
+        <div class="section-head" ng-if="$ctrl.invoiceDetails.invoiceDetails.length > 0">
+          <h1 class="section-label">
+            STOPS
+          </h1>
+        </div>
         <stop-accordion ng-repeat="pickUp in $ctrl.loadDetails.pickUp" stop-type="Pickup" stop="pickUp" pickup-numbers="$ctrl.pickupNumbers"></stop-accordion>
         <stop-accordion ng-repeat="delivery in $ctrl.loadDetails.delivery" stop-type="Delivery" stop="delivery" pickup-numbers="$ctrl.deliveryNumbers"></stop-accordion>
         <activity-log load="$ctrl.loadDetails"></activity-log>
