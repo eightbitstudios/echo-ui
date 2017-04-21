@@ -12,7 +12,7 @@ angular.module('echo.models.dateTimePicker', [
       var defaults = {
         date: undefined,
         timeZone: 'CT',
-        time: moment().subtract(1, 'm').format('HHmm')
+        time: moment().subtract(2, 'm').format('HHmm')
       };
 
       _.assign(that, defaults, data);
