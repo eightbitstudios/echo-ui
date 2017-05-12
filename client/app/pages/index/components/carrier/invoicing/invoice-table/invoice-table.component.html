@@ -31,7 +31,7 @@
           <td class="invoice-status">
             <strong>{{invoice.status | invoiceCode}}</strong>
             <br>
-            {{invoice.statusReason | invoiceReasonCode}}
+            {{invoice.statusReason}}
           </td>
           <td class="invoice-total">
             <span>{{invoice.invoiceAmount | currency : '$'}}</span><br><div class="text-warning">
