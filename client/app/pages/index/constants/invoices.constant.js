@@ -13,6 +13,10 @@ angular.module('echo.constants.invoices', [])
         value: 3,
         description: 'Approved'
       },
+      POSTED: {
+        value: 4,
+        description: 'Posted'
+      },
       PAID: {
         value: 5,
         description: 'Paid'
