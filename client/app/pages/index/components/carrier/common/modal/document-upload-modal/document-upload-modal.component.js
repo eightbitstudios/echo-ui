@@ -25,7 +25,6 @@ angular.module('echo.components.modal.documentUpload', [
         documentApi.fetchDocuments(that.carrierId, that.load.loadGuid).then(function(documents) {
           that.documents = documents;
           that.updateDocumentNeeds();
-          that.refreshParent = true;
         });
         that.resetModal();
       };
