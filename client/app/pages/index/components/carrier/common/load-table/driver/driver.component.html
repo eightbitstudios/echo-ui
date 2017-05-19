@@ -7,7 +7,7 @@
     <span><tel>{{$ctrl.load.driver.phone | phoneNumber}}</tel></span>
     <div class="driver-status">
       <span ng-if="$ctrl.load.isDriverVerified">{{$ctrl.load.driver.isDoNotDisturb | driverStatus}}</span>
-      <span ng-if="!$ctrl.load.isDriverVerified"><br> <a href="javascript:void(0)" ng-click="$ctrl.showVerifyDriverModal()">Verify Driver</a></span>
+      <span ng-if="!$ctrl.load.isDriverVerified && !$ctrl.isDisabled"><br> <a href="javascript:void(0)" ng-click="$ctrl.showVerifyDriverModal()">Verify Driver</a></span>
       <br> <span ng-if="$ctrl.loadType === $ctrl.loadTypeConstants.ACTIVE">Tracking {{$ctrl.load.driver.isTrackingEnabled | onOff}}</span>
       <span ng-if="$ctrl.loadType !== $ctrl.loadTypeConstants.ACTIVE && $ctrl.load.assignedByEcho">Entered By Echo</span>
     </div>

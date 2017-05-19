@@ -69,7 +69,9 @@ angular.module('echo.components.modal.milestones.reportLoaded', [
           minDate: moment(this.reportLoaded.actionPerformedOn, 'MM/DD/YYYY HH:mm:ss')
         });
 
-        this.pickupNumbers = _.map(this.load.pickUp, 'pickupNumber');
+        this.pickupNumbers = _.isArray(this.load.pickUp) ? 
+          _.map(this.load.pickUp, 'pickupNumber') : 
+          [_.get(this.load.pickUp, 'pickupNumber')];
 
         this.totalWeight = _.ceil(_.sumBy(this.items, 'estimatedWeight'));
         this.weightConfirmed = false;

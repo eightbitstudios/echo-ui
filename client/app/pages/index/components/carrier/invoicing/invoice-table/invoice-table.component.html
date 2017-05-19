@@ -24,9 +24,11 @@
         <tr ng-repeat="invoice in $ctrl.invoices">
           <td>
             <invoice-number ng-if="invoice.invoiceNumber" carrier-id="$ctrl.carrierId" invoice="invoice"></invoice-number>
+            <div ng-if="!invoice.invoiceNumber"><strong>-</strong></div>
           </td>
           <td class="invoice-received-date">
-            {{invoice.receivedDate}}
+            <span ng-if="invoice.receivedDate">{{invoice.receivedDate}}</span>
+            <span ng-if="!invoice.receivedDate"><strong>-</strong></span>
           </td>
           <td class="invoice-status">
             <strong>{{invoice.status | invoiceCode}}</strong>

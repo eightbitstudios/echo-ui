@@ -1,6 +1,10 @@
 angular.module('echo.constants.invoices', [])
   .constant('invoiceConstants', {
     STATUSES: {
+      PENDING: {
+        value: 0,
+        description: 'Pending'
+      },
       SUBMITTED: {
         value: 1,
         description: 'Submitted'

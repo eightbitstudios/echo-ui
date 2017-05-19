@@ -3,17 +3,7 @@
       <div class="col-sm-12">
         <div class="row">
           <div class="col-xs-6 form-group">
-            <label>Invoice Number (Required)</label>
-            <input class="form-control" placeholder="e.g. 123456789" ng-model="$ctrl.invoiceNumber" required type="text">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-6 form-group">
             <label>Original Bill Rate: {{::$ctrl.originalBillRate | currency: '$'}}</label>
-            <input number class="form-control" ng-model="$ctrl.newBillRate" placeholder="Invoice amount if different" currency type="text">
-          </div>
-          <div ng-show="$ctrl.newBillRate.length > 0" class="help-block">
-            Please remember to add documents needed in support of this difference (lumper receipts, etc)
           </div>
         </div>
         <div class="row">
@@ -27,7 +17,7 @@
     </div>
     <div class="modal-action-links">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-6 invoice-button">
             {{$ctrl.isDisabled}}
             <loading-button disable-button="$ctrl.files.length === 0 || $ctrl.invoiceForm.$invalid" click-handler="$ctrl.uploadDocuments()" button-text="Send Invoice" show-loading="$ctrl.showLoading"></loading-button>
           </div>
