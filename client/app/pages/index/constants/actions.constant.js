@@ -111,7 +111,7 @@ angular.module('echo.constants.actions', [])
       },
       BOOKED: {
         value: 15,
-        description: 'Added'
+        description: 'Booked'
       }
     }
   });
