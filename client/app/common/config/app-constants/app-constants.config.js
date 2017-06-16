@@ -74,7 +74,7 @@ angular.module('echo.config.appConstants', [])
         401101: 'User account is deactivated',
         401102: 'Incorrect Email Address or Password. Please Try Again.',
         401103: 'Unknown User Role',
-        401104: 'Sorry, you have exceeded the allowed number of log-in attempts.',
+        401104: 'This account has been temporarily locked. Please reset your password by using the \'Forgot Password\' link.',
         401106: 'Refresh Token is Invalid',
         401105: 'User Role Not Allowed To Reset Password in Portal',
         401110: 'Your account is Suspended. Please contact Echo.',
