@@ -4,13 +4,12 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
   'echo.components.echoRepContact',
   'echo.models.paging',
   'echo.components.pagination',
-  'echo.constants.loadTypes',
   'echo.config.appConstants',
   'echo.index.carrier.previousState'
 ]).component('searchLoads', {
   templateUrl: 'search-loads.component.html',
   bindings: {},
-  controller: function($state, $stateParams, store$, routesConfig, loadsApi, PagingModel, appConstants, loadTypeConstants) {
+  controller: function($state, $stateParams, store$, routesConfig, loadsApi, PagingModel, appConstants) {
     var that = this;
 
     that.getLoadsBySearchText = function() {
@@ -40,7 +39,6 @@ angular.module('echo.index.carrier.loadManagement.searchLoads', [
       that.routesConfig = routesConfig;
       that.loadCount = 0;
       that.paging = new PagingModel(appConstants.LIMIT.loadsList);
-      that.loadType = loadTypeConstants.UNBILLED;
 
       that.getLoadsBySearchText();
     };
