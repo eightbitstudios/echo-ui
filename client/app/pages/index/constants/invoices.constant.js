@@ -3,7 +3,7 @@ angular.module('echo.constants.invoices', [])
     STATUSES: {
       PENDING: {
         value: 0,
-        description: 'Pending'
+        description: 'Submitted'
       },
       SUBMITTED: {
         value: 1,

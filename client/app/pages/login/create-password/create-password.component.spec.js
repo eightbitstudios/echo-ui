@@ -33,6 +33,7 @@ describe('Component: createPassword', function () {
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
       component.userId = '142134123';
+      component.showTerms = true;
       authenticationApi.createPassword.and.returnValue($q.when());
       component.createPassword();
 
@@ -43,6 +44,7 @@ describe('Component: createPassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
+      component.showTerms = true;
       authenticationApi.createPassword.and.returnValue($q.reject());
       component.createPassword();
 
@@ -55,6 +57,7 @@ describe('Component: createPassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
+      component.showTerms = true;
       authenticationApi.createPassword.and.returnValue($q.when());
       component.createPassword();
 
@@ -67,6 +70,7 @@ describe('Component: createPassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
+      component.showTerms = true;
       authenticationApi.createPassword.and.returnValue($q.reject());
       component.createPassword();
 
