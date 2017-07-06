@@ -18,8 +18,9 @@ angular.module('echo.login.createPassword', [
       var that = this;
 
       that.showButtonLoading = true;
+      var passwordChangeService = that.showTerms ? authenticationApi.createPassword : authenticationApi.changePassword;
 
-      authenticationApi.createPassword(that.userId, that.token, that.passwordChange).then(function() {
+      passwordChangeService(that.userId, that.token, that.passwordChange).then(function() {
         $window.location = routesConfig.INDEX.base.url;
       }).catch(function() {
         $state.go(routesConfig.LOGIN.signIn.name, {

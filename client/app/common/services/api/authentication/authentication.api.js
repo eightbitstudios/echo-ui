@@ -119,13 +119,29 @@ angular.module('echo.api.authentication', [
       });
     },
 
+    changePassword: function (userId, invitationToken, changePassword) {
+      var url = _.template(apiConfig.changePassword)({ userId: userId });
+
+      var data = {
+        password: changePassword.newPassword,
+        confirmPassword: changePassword.confirmPassword,
+        invitationToken: invitationToken
+      };
+
+      return $http.put(url, data).then(function (resp) {
+        return resp;
+      }).catch(function (error) {
+        return $q.reject(error.data.status.code);
+      });
+    },
+
     /**
      * @description Change password
      * @param {string} username - Username
      * @returns {Promise} - Users change password request has been sent
      */
-    changePassword: function (userId, changePassword) {
-      var url = _.template(apiConfig.changePassword)({ userId: userId });
+    setPassword: function (userId, changePassword) {
+      var url = _.template(apiConfig.setPassword)({ userId: userId });
 
       var data = {
         password: changePassword.newPassword,

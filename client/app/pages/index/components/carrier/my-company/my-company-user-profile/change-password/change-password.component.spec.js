@@ -5,7 +5,7 @@ describe('Component: changePassword', function () {
   beforeEach(function () {
     module('change-password.component.html');
     module('echo.index.carrier.myCompany.userProfile.changePassword', function ($provide) {
-      $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['changePassword']));
+      $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['setPassword']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
       $provide.value('$window', window = { location: null, angular: {callbacks: {} }});
@@ -39,17 +39,17 @@ describe('Component: changePassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.userId = '1';
-      authenticationApi.changePassword.and.returnValue($q.when());
+      authenticationApi.setPassword.and.returnValue($q.when());
       component.changePasswordHandler();
 
-      expect(authenticationApi.changePassword).toHaveBeenCalledWith(component.userId, component.passwordChange);
+      expect(authenticationApi.setPassword).toHaveBeenCalledWith(component.userId, component.passwordChange);
     });
 
     it('should not call change password service if change password form is invalid', function () {
       component.changePasswordForm.$valid = false;
       component.changePasswordHandler();
 
-      expect(authenticationApi.changePassword).not.toHaveBeenCalled();
+      expect(authenticationApi.setPassword).not.toHaveBeenCalled();
     });
 
     it('should set server errors', function () {
@@ -57,7 +57,7 @@ describe('Component: changePassword', function () {
       component.passwordChange.confirmPassword = 'Test1234';
       component.userId = '1';
       var error = 400;
-      authenticationApi.changePassword.and.returnValue($q.reject(error));
+      authenticationApi.setPassword.and.returnValue($q.reject(error));
       component.changePasswordHandler();
 
       scope.$digest();
@@ -69,7 +69,7 @@ describe('Component: changePassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.userId = '1';
-      authenticationApi.changePassword.and.returnValue($q.when());
+      authenticationApi.setPassword.and.returnValue($q.when());
       component.changePasswordHandler();
 
       expect(component.showButtonLoading).toBeTruthy();

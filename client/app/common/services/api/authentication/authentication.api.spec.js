@@ -119,7 +119,7 @@ describe('Api: authenticationApi', function () {
     });
   });
 
-  describe('Function: changePassword', function () {
+  describe('Function: setPassword', function () {
 
     it('should make a PUT request with new and current password', function (done) {
       var userId = 1,
@@ -128,8 +128,8 @@ describe('Api: authenticationApi', function () {
         confirmPassword: 'Password1234'
       };
       
-      authenticationApi.changePassword(userId, passwordChange).then(function () {
-        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.changePassword)({userId: userId}), {
+      authenticationApi.setPassword(userId, passwordChange).then(function () {
+        expect($http.put).toHaveBeenCalledWith(_.template(apiConfig.setPassword)({userId: userId}), {
           password: passwordChange.newPassword,
           confirmPassword: passwordChange.confirmPassword
         });
