@@ -16,9 +16,13 @@ angular.module('echo.constants.documentTypeConstants', [])
       description: _.template('Proof of Delivery #${documentNumber}'),
       value: 4
     },
+    WGTX: {
+      description: 'Other',
+      value: 5
+    },
     SCALE_TICKETS: {
       description: 'Scale Tickets',
-      value: 5
+      value: 10
     },
     INVOICE: {
       description: 'Invoice',
