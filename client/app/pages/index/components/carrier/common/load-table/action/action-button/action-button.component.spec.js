@@ -63,10 +63,10 @@ describe('Component: actionButton', function() {
       expect(component.actionButtonEscalationClass).toEqual('btn-danger');
     });
 
-    it('should set button class to primary', function() {
+    it('should not set button class', function() {
       component.mapView = true;
       component.$onInit();
-      expect(component.actionButtonEscalationClass).toEqual('btn-primary');
+      expect(component.actionButtonEscalationClass).toBeUndefined();
     });
   });
 

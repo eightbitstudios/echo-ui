@@ -20,8 +20,7 @@ angular.module('echo.components.loadTable.action.actionButton', [
     bindings: {
       load: '=',
       actionChangedCallback: '&',
-      carrierId: '<',
-      mapView: '<'
+      carrierId: '<'
     },
     controller: function ($q, moment, appConstants, actionConstants, arrivalTypeConstants, modalService, loadsApi, documentApi, timeZoneApi) {
       var that = this;
@@ -159,8 +158,6 @@ angular.module('echo.components.loadTable.action.actionButton', [
           that.actionButtonEscalationClass = 'btn-warning';
         } else if (that.load.escalationLevel === 3) {
           that.actionButtonEscalationClass = 'btn-danger';
-        } else if (that.mapView) {
-          that.actionButtonEscalationClass = 'btn-primary';
         }
       };
     }

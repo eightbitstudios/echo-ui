@@ -4,7 +4,7 @@
       <a ui-sref="{{$ctrl.loadDetails}}({loadId: $ctrl.mapPoint.loadGuid})">{{$ctrl.mapPoint.loadId}}</a>
     </h2>
     <div class="btn btn-default" ng-if="!$ctrl.expanded" ng-click="$ctrl.viewMapHandler({mapPoint: $ctrl.mapPoint})">View Map</div>
-    <action-button ng-if="$ctrl.expanded" load="$ctrl.mapPoint" action-changed-callback="$ctrl.actionChangedCallback()" carrier-id="$ctrl.carrierId" map-view="true"></action-button>
+    <action-button ng-if="$ctrl.expanded" load="$ctrl.mapPoint" action-changed-callback="$ctrl.actionChangedCallback()" carrier-id="$ctrl.carrierId"></action-button>
   </div>
   <div class="gm-overlay-body">
     <div class="load-info row">
