@@ -17,7 +17,7 @@ angular.module('echo.components.modal.documentUpload.loadDocumentTypes', [
     that.$onChanges = function (changeObj) {
       if (_.get(changeObj.documents, 'currentValue')) {
 
-        numberOfPods = _(that.documents).filter(function (document) {
+        var numberOfPods = _(that.documents).filter(function (document) {
           return _.parseInt(document.documentSubType, 10) === documentTypeConstants.POD.value;
         }).size();
 
