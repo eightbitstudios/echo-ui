@@ -85,8 +85,8 @@ module.exports = {
         "escalationLevel": 1,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "d9a07e98b5654200bbf290e5e48a4476",
         "loadNumber": 22229655,
@@ -171,8 +171,8 @@ module.exports = {
         "escalationLevel": 3,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "6f9468ab3aa74d818cbbcd28231e7c37",
         "loadNumber": 22229659,
@@ -255,8 +255,8 @@ module.exports = {
         "escalationLevel": 1,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "9fab6aaa0293419eb11d804d873f7042",
         "loadNumber": 22229671,
@@ -339,8 +339,8 @@ module.exports = {
         "escalationLevel": 1,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "1133c57ee2334a6ca649cebad10bc850",
         "loadNumber": 22229672,
@@ -413,8 +413,8 @@ module.exports = {
         "escalationLevel": 1,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "6a250e2273f2450a996d1abbe04bbcbc",
         "loadNumber": 22229673,
@@ -487,8 +487,8 @@ module.exports = {
         "escalationLevel": 1,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "51aaa65590a84f5296849b0285ed944d",
         "loadNumber": 22229674,
@@ -571,8 +571,8 @@ module.exports = {
         "escalationLevel": 1,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "15aa9e880e4c40a587b4ee4c224876a7",
         "loadNumber": 22229675,
@@ -658,8 +658,8 @@ module.exports = {
         "escalationLevel": 3,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "5c6e1062b14948bcbdfe03dfb1bada54",
         "loadNumber": 22229676,
@@ -732,8 +732,8 @@ module.exports = {
         "escalationLevel": 3,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }, {
         "loadGuid": "19f061840b2e4673b648bd33ce8daaa0",
         "loadNumber": 22229678,
@@ -806,8 +806,8 @@ module.exports = {
         "escalationLevel": 1,
         "invoiceAmount": 0,
         "sumOfWeightInPounds": 0,
-        "needsInvoice": false,
-        "neededPODs": 0
+        "needsInvoice": true,
+        "neededPODs": 1
     }],
     "totalLoadCount": 18
 };
