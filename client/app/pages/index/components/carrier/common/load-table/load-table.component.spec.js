@@ -36,6 +36,36 @@ describe('Component: loadTable', function() {
     });
   });
 
+  describe('Function: isCanceledLoad', function() {
+    var load;
+    beforeEach(function() {
+      load = {
+        nextAction: {
+          lastAction: 16
+        }
+      };
+    });
+
+    it('should be a canceled load if nextAction.lastAction == 16', function() {
+      expect(component.isCanceledLoad(load)).toBeTruthy();
+    });
+
+    it('should not be a canceled load if nextAction.lastAction != 16', function() {
+      load.nextAction.lastAction = 15;
+      expect(component.isCanceledLoad(load)).toBeFalsy();
+    });
+
+    it('should not be a canceled load if nextAction.lastAction is unknown', function() {
+      delete load.nextAction.lastAction;
+      expect(component.isCanceledLoad(load)).toBeFalsy();
+    });
+
+    it('should not be a canceled load if nextAction is unknown', function() {
+      delete load.nextAction;
+      expect(component.isCanceledLoad(load)).toBeFalsy();
+    });
+  });
+
   describe('Function: isMultiStopLoad', function() {
     it('should be a multistop load if there are more than 1 pickup stops', function() {
       var load = {

@@ -21,6 +21,7 @@
           </tr>
           <tr ng-repeat="loadManagement in $ctrl.loads">
             <td class="carrier-dashboard-load">
+              <div ng-if="$ctrl.isCanceledLoad(loadManagement)" class="canceled-load-watermark">Canceled</div>
               <load load-guid="loadManagement.loadGuid" load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>
             </td>
             <td class="carrier-dashboard-pickup">
