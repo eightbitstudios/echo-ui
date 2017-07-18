@@ -41,16 +41,16 @@ describe('Component: loadTable', function() {
     beforeEach(function() {
       load = {
         nextAction: {
-          lastAction: 16
+          lastAction: 19
         }
       };
     });
 
-    it('should be a canceled load if nextAction.lastAction == 16', function() {
+    it('should be a canceled load if nextAction.lastAction == 19', function() {
       expect(component.isCanceledLoad(load)).toBeTruthy();
     });
 
-    it('should not be a canceled load if nextAction.lastAction != 16', function() {
+    it('should not be a canceled load if nextAction.lastAction != 119', function() {
       load.nextAction.lastAction = 15;
       expect(component.isCanceledLoad(load)).toBeFalsy();
     });

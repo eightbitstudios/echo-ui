@@ -78,23 +78,18 @@ describe('Component: Action', function() {
       component.$onInit();
     });
 
-    it('should return true for load.nextAction.lastAction == 16', function() {
-      load.nextAction.lastAction = 16;
+    it('should return true for currentStatus.value == 19', function() {
+      component.currentStatus = {value: 19};
       expect(component.isCanceledLoad()).toBeTruthy();
     });
 
-    it('should return false for load.nextAction.lastAction != 16', function() {
-      load.nextAction.lastAction = 15;
+    it('should return false for currentStatus.value != 19', function() {
+      component.currentStatus = {value: 15};
       expect(component.isCanceledLoad()).toBeFalsy();
     });
 
-    it('should return false for unknown nextAction', function() {
-      delete load.nextAction;
-      expect(component.isCanceledLoad()).toBeFalsy();
-    });
-
-    it('should return false for unknown nextAction.lastAction', function() {
-      delete load.nextAction.lastAction;
+    it('should return false for unknown currentStatus', function() {
+      delete component.currentStatus;
       expect(component.isCanceledLoad()).toBeFalsy();
     });
   });

@@ -23,7 +23,7 @@ angular.module('echo.components.loadTable.action', [
       };
 
       that.isCanceledLoad = function() {
-        return that.load.nextAction && that.load.nextAction.lastAction && that.load.nextAction.lastAction === actionConstants.LAST_ACTION.CANCELED.value;
+        return that.currentStatus && that.currentStatus.value === actionConstants.LAST_ACTION.CANCELED.value;
       };
 
       that.disableActionButton = function () {
