@@ -19,7 +19,7 @@
               <h3>No loads found</h3>
             </td>
           </tr>
-          <tr ng-class="{'load-canceled': $ctrl.isCancelledLoad(loadManagement)}" ng-repeat="loadManagement in $ctrl.loads">
+          <tr ng-class="{'load-cancelled': $ctrl.isCancelledLoad(loadManagement)}" ng-repeat="loadManagement in $ctrl.loads">
             <td class="carrier-dashboard-load">
               <load wrap-link="!$ctrl.isCancelledLoad(loadManagement)" load-guid="loadManagement.loadGuid" load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>
             </td>

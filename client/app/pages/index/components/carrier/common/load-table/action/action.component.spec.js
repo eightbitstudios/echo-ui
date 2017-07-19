@@ -73,7 +73,7 @@ describe('Component: Action', function() {
     });
   });
 
-  describe('Function isCanceledLoad', function() {
+  describe('Function isCancelledLoad', function() {
     beforeEach(function() {
       component.$onInit();
     });
@@ -120,7 +120,7 @@ describe('Component: Action', function() {
       expect(component.disableActionButton()).toBeFalsy();
     });
 
-    it('should be disabled if load is canceled', function() {
+    it('should be disabled if load is cancelled', function() {
       spyOn(component, 'documentsRequired').and.returnValue(true);
       spyOn(component, 'isCancelledLoad').and.returnValue(true);
       component.loadType = loadTypeConstants.UNBILLED;
