@@ -1,0 +1,69 @@
+-@title= 'Load Management - Active'
+-@page_classes= 'load-management load-management-active'
+
+= partial 'partials/header_load_management', locals: {link: 'active'}
+= partial 'partials/header_carrier_dashboard', locals: {loads: '9 Loads Located', map: true}
+
+.carrier-map-spacer.map-lg
+
+  .gm-overlay
+    %h4.small-header Current Loads
+    %ul.map-list.list-stacked
+      %li
+        =link_to '#' do
+          %span
+            11
+          Loads Located
+      %li.active
+        =link_to '#' do
+          %span
+            2
+          Loads Need Action
+      %li
+        =link_to '#' do
+          %span
+            1
+          May Miss Appointment
+      %li
+        =link_to '#' do
+          %span
+            4
+          Pick Up Today
+      %li
+        =link_to '#' do
+          %span
+            2
+          Deliver Today
+
+  .gm-info-window
+
+    .gm-overlay-header
+      %h2.load-number
+        =link_to '123443211', '#'
+      .btn.btn-primary
+        Report Arrival at Pickup
+
+    .gm-overlay-body
+      .load-info
+        .load-col.load-location
+          .load-citystate
+            .load-st Memphis
+            .load-st TN, 60655
+          .load-datetime 14:00-15:00 EST <br/>Today, Apr 20
+        .load-col.load-direction
+          =image_tag('icon-right-arrow-dark.svg', class: '')
+        .load-col.load-location
+          .load-citystate
+            .load-st Austin
+            .load-st TX, 50968
+          .load-datetime 16:00-18:00 EST <br/>Fri, May 23
+
+    .gm-overlay-footer
+      .driver-contact
+        =link_to 'Fred F', '#'
+        <br>
+        %span.small (899) 584-0803
+      .driver-location
+        %span.small Omaha, Nebraska
+        <br>
+        %span.small 1.5 hrs ago via tracking
