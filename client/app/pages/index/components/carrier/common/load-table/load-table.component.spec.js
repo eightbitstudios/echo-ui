@@ -36,7 +36,7 @@ describe('Component: loadTable', function() {
     });
   });
 
-  describe('Function: isCanceledLoad', function() {
+  describe('Function: isCancelledLoad', function() {
     var load;
     beforeEach(function() {
       load = {
@@ -46,23 +46,23 @@ describe('Component: loadTable', function() {
       };
     });
 
-    it('should be a canceled load if nextAction.lastAction == 19', function() {
-      expect(component.isCanceledLoad(load)).toBeTruthy();
+    it('should be a cancelled load if nextAction.lastAction == 19', function() {
+      expect(component.isCancelledLoad(load)).toBeTruthy();
     });
 
-    it('should not be a canceled load if nextAction.lastAction != 119', function() {
+    it('should not be a cancelled load if nextAction.lastAction != 119', function() {
       load.nextAction.lastAction = 15;
-      expect(component.isCanceledLoad(load)).toBeFalsy();
+      expect(component.isCancelledLoad(load)).toBeFalsy();
     });
 
-    it('should not be a canceled load if nextAction.lastAction is unknown', function() {
+    it('should not be a cancelled load if nextAction.lastAction is unknown', function() {
       delete load.nextAction.lastAction;
-      expect(component.isCanceledLoad(load)).toBeFalsy();
+      expect(component.isCancelledLoad(load)).toBeFalsy();
     });
 
-    it('should not be a canceled load if nextAction is unknown', function() {
+    it('should not be a cancelled load if nextAction is unknown', function() {
       delete load.nextAction;
-      expect(component.isCanceledLoad(load)).toBeFalsy();
+      expect(component.isCancelledLoad(load)).toBeFalsy();
     });
   });
 

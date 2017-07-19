@@ -27,8 +27,8 @@ angular.module('echo.components.loadTable', [
         }
       };
 
-      this.isCanceledLoad = function(load) {
-        return load.nextAction && load.nextAction.lastAction && load.nextAction.lastAction === actionConstants.LAST_ACTION.CANCELED.value;
+      this.isCancelledLoad = function(load) {
+        return load.nextAction && load.nextAction.lastAction && load.nextAction.lastAction === actionConstants.LAST_ACTION.CANCELLED.value;
       };
 
       this.isMultiStopLoad = function(load) {

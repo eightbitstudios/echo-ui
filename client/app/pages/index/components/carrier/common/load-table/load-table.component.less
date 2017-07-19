@@ -29,8 +29,26 @@
       color: @c-gray-mid-light;
     }
 
-    tr.ng-scope.canceled {
-      background-image: url('/client/assets/images/active-loads-canceled-watermark.png')
+    .load-canceled .carrier-dashboard-load:before {
+      content: "Canceled";
+      position: absolute;
+      top: 30px;
+      left: 175%;
+      font-size: 60px;
+      font-family: "Teko";
+      -webkit-transform: rotateZ(-9deg);
+      transform: rotateZ(-9deg);
+      z-index: 111111;
+      color: rgba(131, 135, 136, 0.6); 
+    }
+    .load-canceled .load-number {
+      color: #525966; 
+    }
+    .load-canceled .driver-name_canceled {
+      color: #eb004b; 
+    }
+    .load-canceled .carrier-dashboard-arrow {
+      opacity: 0.4; 
     }
 
     .carrier-dashboard-load {
@@ -43,20 +61,6 @@
       }
       p.label {
         margin-bottom: 3px;
-      }
-      div.canceled-load-watermark {
-        float:left;
-        height: 40px; 
-        width: 80px; 
-        font-size: 3em; 
-        transform:rotate(345deg);
-        -webkit-transform:rotate(345deg); 
-        position: absolute; 
-        left: 240px; 
-        top: 60px; 
-        font-weight: bold; 
-        color: red; 
-        z-index: 9999
       }
     }
     .loading {
