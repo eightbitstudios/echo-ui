@@ -11,11 +11,11 @@ angular.module('echo.components.loadMap', [
   .constant('googleMapsConst', {
     detailedInfoOffset: {
       x: 230,
-      y: 262
+      y: 310
     },
     defaultOffset: {
       x: 175,
-      y: 125
+      y: 105
     }
   })
   .component('loadMap', {
@@ -37,11 +37,11 @@ angular.module('echo.components.loadMap', [
           googleMapsApi.then(function (google) {
             that.google = google;
             return googleMaps.formatMapPoints(google, new google.maps.Geocoder(), that.mapPoints);
-          }).then(function (mapCenter) {
-            that.mapPoints = _.filter(that.mapPoints, function (mapPoint) { return !!mapPoint.position; });
-            that.mapCenter = mapCenter;
+          }).then(function (mapSettings) {
+            that.points = mapSettings.mapPoints;
+            that.mapCenter = mapSettings.center;
           }).finally(function() {
-            googleMaps.resizeAndCenter(that.google, that.map, that.mapPoints);
+            googleMaps.resizeAndCenter(that.google, that.map, that.points);
             that.showLoading = false;
           });
         } else {
@@ -53,6 +53,7 @@ angular.module('echo.components.loadMap', [
         this.popupOffset = this.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
         this.showLoading = true;
         this.mapCenter = null;
+        this.map = null;
         _.forEach(this.mapPoints, function (mapPoint) {
           mapPoint.loadNumber = mapPoint.loadId;
         });

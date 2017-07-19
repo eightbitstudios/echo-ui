@@ -9,19 +9,32 @@ angular.module('echo.components.googleMapsMarker', [
     mapsCtrl: '^googleMaps'
   },
   bindings: {
-    position: '<'
+    position: '<',
+    numberOfLoads: '<'
   },
   controller: function (googleMapsApi, assetConfig) {
     var that = this;
 
     that.$onInit = function () {
       googleMapsApi.then(function (google) {
+        var label = null,
+            icon = {
+            url: assetConfig.ICON_GOOGLE_MAPS_MARKER_URL,
+            anchor: new google.maps.Point(22, 22)
+          };
+
+        if (that.numberOfLoads > 1) {
+          label = {
+            text: _.toString(that.numberOfLoads),
+            color: 'white'
+          };
+          icon = null;
+        }
+        
         that.marker = new google.maps.Marker({
           position: that.position,
-          icon: {
-            url: assetConfig.ICON_GOOGLE_MAPS_MARKER_URL,
-            anchor: new google.maps.Point(22,22)
-          },
+          icon: icon,
+          label: label,
           map: that.mapsCtrl.map
         });
         that.mapsCtrl.bounds.extend(that.position);
