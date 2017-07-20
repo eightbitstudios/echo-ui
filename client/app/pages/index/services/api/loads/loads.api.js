@@ -23,7 +23,7 @@ angular.module('echo.api.loads', [
         return $q.when(resp.data.data);
       });
     },
-    fetchUpcomingLoads: function(carrierId, paging, driverNeeded) {
+    fetchUpcomingLoads: function(carrierId, paging, driverNeeded, cancelled) {
       var url = _.template(apiConfig.upcomingLoadsByCarrierId)({
         carrierId: carrierId
       });
@@ -31,7 +31,8 @@ angular.module('echo.api.loads', [
       var params = {
         limit: paging.limit,
         offset: paging.offset,
-        driverNeeded: driverNeeded
+        driverNeeded: driverNeeded,
+        cancelled: cancelled
       };
 
       return $http.get(url, {

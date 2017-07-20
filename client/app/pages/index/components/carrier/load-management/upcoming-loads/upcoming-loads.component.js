@@ -15,7 +15,7 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
 
     that.getUpcomingLoads = function() {
       that.showLoading = true;
-      loadsApi.fetchUpcomingLoads(that.carrierId, that.paging, that.isDriverNeeded).then(function(upcomingLoadData) {
+      loadsApi.fetchUpcomingLoads(that.carrierId, that.paging, that.isDriverNeeded, that.isCancelledLoad).then(function(upcomingLoadData) {
         that.paging.totalRecords = upcomingLoadData.totalLoadCount;
         that.paging.recordCount = _.size(upcomingLoadData.loads);
         that.upcomingLoads = upcomingLoadData.loads;
@@ -29,8 +29,21 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
         that.filterText = that.defaultFilterText;
       } else {
         that.filterText = 'By Driver Needed';
+        that.isCancelledLoad = false;
       }
       that.isDriverNeeded = value;
+      that.paging.reset();
+      that.getUpcomingLoads();
+    };
+
+    that.cancelledLoadsHandler = function(value) {
+      if (!value) {
+        that.filterText = that.defaultFilterText;
+      } else {
+        that.filterText = 'By Cancellations';
+        that.isDriverNeeded = false;
+      }
+      that.isCancelledLoad = value;
       that.paging.reset();
       that.getUpcomingLoads();
     };
