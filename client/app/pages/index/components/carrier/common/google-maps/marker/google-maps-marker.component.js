@@ -18,7 +18,7 @@ angular.module('echo.components.googleMapsMarker', [
     that.$onInit = function () {
       googleMapsApi.then(function (google) {
         var label = null,
-            icon = {
+          icon = {
             url: assetConfig.ICON_GOOGLE_MAPS_MARKER_URL,
             anchor: new google.maps.Point(22, 22)
           };
@@ -26,11 +26,13 @@ angular.module('echo.components.googleMapsMarker', [
         if (that.numberOfLoads > 1) {
           label = {
             text: _.toString(that.numberOfLoads),
-            color: 'white'
+            color: 'white',
+            fontSize: '18px'
           };
-          icon = null;
+          icon.url = assetConfig.ICON_GOOGLE_MAPS_MULTIPLE_MARKER_URL;
+          icon.scaledSize = new google.maps.Size(45, 45);
         }
-        
+
         that.marker = new google.maps.Marker({
           position: that.position,
           icon: icon,
