@@ -11,7 +11,6 @@
   </div>
   <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
     <filter-button filter-enabled="$ctrl.isDriverNeeded" click-handler="$ctrl.driverNeededHandler(value)" button-text="Driver Needed"></filter-button>
-    <filter-button filter-enabled="$ctrl.isCancelledLoad" click-handler="$ctrl.cancelledLoadsHandler(value)" button-text="Cancellations"></filter-button>
   </loads-filter>
   <div class="container main-content">
     <load-table rep-details="$ctrl.repDetails" loads="$ctrl.upcomingLoads" show-loading="$ctrl.showLoading" load-type="$ctrl.loadType"  refresh-table-callback="$ctrl.getUpcomingLoads()" carrier-id="$ctrl.carrierId"></load-table>

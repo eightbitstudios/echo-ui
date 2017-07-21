@@ -66,16 +66,14 @@ describe('Api: loadsApi', function () {
           limit: 10,
           offset: 1
         },
-        driverNeeded = false,
-        cancelled = false;
+        driverNeeded = false;
 
-      loadsApi.fetchUpcomingLoads(carrierId, paging, driverNeeded, cancelled).then(function () {
+      loadsApi.fetchUpcomingLoads(carrierId, paging, driverNeeded).then(function () {
         expect($http.get).toHaveBeenCalledWith(_.template(apiConfig.upcomingLoadsByCarrierId)({ carrierId: carrierId }), {
           params: {
             limit: paging.limit,
             offset: paging.offset,
-            driverNeeded: driverNeeded,
-            cancelled: cancelled
+            driverNeeded: driverNeeded
           }
         });
         done();

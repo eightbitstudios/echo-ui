@@ -27,7 +27,6 @@
     <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
       <filter-button filter-enabled="$ctrl.isPickUpToday" click-handler="$ctrl.pickupsTodayHandler(value)" button-text="Pickups Today"></filter-button>
       <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
-      <filter-button filter-enabled="$ctrl.isCancelledToday" click-handler="$ctrl.cancelledTodayHandler(value)" button-text="Cancellations"></filter-button>
     </loads-filter>
     <div class="container main-content">
       <load-table rep-details="$ctrl.repDetails" loads="$ctrl.activeLoads" refresh-table-callback="$ctrl.refreshPageData()" load-type="$ctrl.loadType" show-loading="$ctrl.showLoading" carrier-id="$ctrl.carrierId"></load-table>

@@ -36,20 +36,6 @@ angular.module('echo.index.carrier.loadManagement.activeLoads', [
       that.getPageData(activeLoadsPageApiRequest);
     };
 
-    that.cancelledTodayHandler = function(value) {
-      that.filterText = value ? 'By Cancelled' : that.defaultFilterText;
-      that.isCancelledToday = value;
-      that.paging.reset();
-
-      var activeLoadsPageApiRequest = new ActiveLoadsRequestBuilder(that.carrierId);
-
-      if(that.isCancelledToday) {
-        activeLoadsPageApiRequest.filterByCancelledToday();
-      }
-
-      that.getPageData(activeLoadsPageApiRequest);
-    };
-
     that.pickupsTodayHandler = function(value) {
 
       that.filterText = value ? 'By Next Pickup' : that.defaultFilterText;
