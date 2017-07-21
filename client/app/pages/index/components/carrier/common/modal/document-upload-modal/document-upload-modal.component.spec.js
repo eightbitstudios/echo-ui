@@ -61,7 +61,7 @@ describe('Component: documentUpload', function() {
     it('should update invoices needed', function() {
       component.$onInit();
       documents.push({
-        documentSubType: documentTypeConstants.INVOICE.value
+        documentSubType: _.toString(documentTypeConstants.INVOICE.value)
       });
       component.updateDocumentNeeds();
       expect(load.needsInvoice).toBeFalsy();
