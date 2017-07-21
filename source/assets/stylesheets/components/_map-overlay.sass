@@ -1,0 +1,81 @@
+//------------------------------------
+    #Google Maps Info Window
+//------------------------------------
+
+
+.carrier-map-spacer
+  position: relative
+  z-index: 1000
+
+  &.map-lg
+    height: calc(100vh - 61px - 80px - 115px - 122px)
+
+  + footer.footer
+    margin-top: 0
+
+.gm-overlay
+  position: absolute
+  top: 40px
+  left: 84px
+  width: 180px
+  height: auto
+  padding: 10px 18px 12px 18px
+  background-color: #fff
+  border-radius: 4px
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
+
+.gm-overlay-heading
+  color: $gray-mid-light
+  font-size: 12px
+  font-weight: bold
+  line-height: 1.33
+  text-align: center
+  text-transform: uppercase
+  margin-top: 0
+
+.gm-map-marker
+  font-family: $heading-font
+  font-size: 36px
+  line-height: 0.81
+  letter-spacing: 0.6px
+  color: #fff
+  width: 72px
+  height: 72px
+  text-align: center
+  line-height: 77px
+  background: image-url('icon-gm-marker.svg') 50% 50% no-repeat
+
+  &.placeholder-positioning
+    position: absolute
+    top: 64px
+    left: 38.5%
+// maps multi load overlay
+//////////
+.map-list
+  margin: 0 -18px -12px
+
+.multi-load-slider-footer
+  color: #fff
+  text-align: center
+  padding: 15px 20px
+  margin: 22px -18px -12px
+  border-radius: 0 0 4px 4px
+  background: $gray-mid-dark
+
+  .slick-arrow
+    padding: 0
+    border: none
+    background: none
+
+    &:focus
+      outline: none
+    &:active
+      opacity: 0.6
+
+  .slider-prev
+    float: left
+    cursor: pointer
+
+  .slider-next
+    float: right
+    cursor: pointer

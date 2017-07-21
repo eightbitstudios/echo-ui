@@ -66,7 +66,7 @@
         width: 155px
 
   tr > td
-    &.carrier-dashboard-arrow, 
+    &.carrier-dashboard-arrow,
     &.carrier-dashboard-pickup,
       border-right: none
 
@@ -149,7 +149,7 @@
     line-height: 16px
 
 .carrier-dashboard-action
-  justify-content: center
+  justify-content: space-around
 
 .carrier-dashboard-driver
   .btn
@@ -167,18 +167,41 @@
       text-align: left
       margin: 0
 
-  .action-align-bottom
-    margin-top: auto
+.action-align-bottom
+  margin-top: auto
+  margin-bottom: 5px
 
 .carrier-dashboard-multi-load
 
   .carrier-dashboard-action
-    .action-align-bottom
-      margin-top: auto
     .btn
       margin-bottom: 0
 
 .carrier-dashboard-arrow
   img
     width: 23px
-    height: auto
+    height: 18px
+
+// Load Alert
+
+.load-canceled
+  .carrier-dashboard-load
+    &:before
+      content: 'Cancelled'
+      position: absolute
+      top: 30px
+      left: 175%
+      font-size: 60px
+      font-family: "Teko"
+      transform: rotateZ(-9deg)
+      z-index: 111111
+      color: rgba(131, 135, 136, 0.6)
+
+  .load-number
+    color: $slate-grey
+
+  .driver-name_canceled
+    color: $danger
+
+  .carrier-dashboard-arrow
+    opacity: 0.4
