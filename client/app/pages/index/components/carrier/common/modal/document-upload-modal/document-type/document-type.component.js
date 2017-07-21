@@ -26,7 +26,7 @@ angular.module('echo.components.modal.documentUpload.documentType', [
 
       that.documentTypeConstants = documentTypeConstants;
       that.numberOfPODS = _(that.documents).filter(function(document) {
-        return document.documentSubType === documentTypeConstants.POD.value;
+        return document.documentSubType === _.toString(documentTypeConstants.POD.value);
       }).size();
     };
   }
