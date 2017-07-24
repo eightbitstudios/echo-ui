@@ -30,7 +30,7 @@ angular.module('echo.components.googleMapsMarker', [
             fontSize: '18px'
           };
           icon.url = assetConfig.ICON_GOOGLE_MAPS_MULTIPLE_MARKER_URL;
-          icon.scaledSize = new google.maps.Size(45, 45);
+          icon.scaledSize = new google.maps.Size(35, 35);
         }
 
         that.marker = new google.maps.Marker({
