@@ -28,6 +28,30 @@
     .muted {
       color: @c-gray-mid-light;
     }
+
+    .load-cancelled .carrier-dashboard-load:before {
+      content: "Cancelled";
+      position: absolute;
+      top: 30px;
+      left: 175%;
+      font-size: 60px;
+      font-family: "Teko";
+      -webkit-transform: rotateZ(-9deg);
+      transform: rotateZ(-9deg);
+      z-index: 111111;
+      color: rgba(131, 135, 136, 0.6); 
+    }
+    
+    .load-cancelled .load-number {
+      color: #525966; 
+    }
+    .load-cancelled .driver-name_cancelled {
+      color: #eb004b; 
+    }
+    .load-cancelled .carrier-dashboard-arrow {
+      opacity: 0.4; 
+    }
+
     .carrier-dashboard-load {
       p {
         margin-bottom: 10px;

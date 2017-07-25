@@ -22,8 +22,12 @@ angular.module('echo.components.loadTable.action', [
         return that.load.needsInvoice || that.load.neededPODs > 0;
       };
 
+      that.isCancelledLoad = function() {
+        return that.currentStatus && that.currentStatus.value === actionConstants.LAST_ACTION.CANCELLED.value;
+      };
+
       that.disableActionButton = function () {
-        return that.loadType === that.loadTypeConstants.UNBILLED && !that.documentsRequired();
+        return (that.loadType === that.loadTypeConstants.UNBILLED && !that.documentsRequired()) || that.isCancelledLoad();
       };
 
       that.$onInit = function () {

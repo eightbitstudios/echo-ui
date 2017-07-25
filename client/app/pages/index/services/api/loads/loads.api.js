@@ -31,7 +31,7 @@ angular.module('echo.api.loads', [
       var params = {
         limit: paging.limit,
         offset: paging.offset,
-        driverNeeded: driverNeeded
+        driverNeeded: driverNeeded,
       };
 
       return $http.get(url, {

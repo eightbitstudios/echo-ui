@@ -19,9 +19,9 @@
               <h3>No loads found</h3>
             </td>
           </tr>
-          <tr ng-repeat="loadManagement in $ctrl.loads">
+          <tr ng-class="{'load-cancelled': $ctrl.isCancelledLoad(loadManagement)}" ng-repeat="loadManagement in $ctrl.loads">
             <td class="carrier-dashboard-load">
-              <load load-guid="loadManagement.loadGuid" load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>
+              <load wrap-link="!$ctrl.isCancelledLoad(loadManagement)" load-guid="loadManagement.loadGuid" load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>
             </td>
             <td class="carrier-dashboard-pickup">
               <shipping-details shipping-details="loadManagement.pickUp" inactive="$ctrl.determineInactive(loadManagement.nextAction.nextAction, true)"></shipping-details>
@@ -33,7 +33,7 @@
               <shipping-details shipping-details="loadManagement.delivery" inactive="$ctrl.determineInactive(loadManagement.nextAction.nextAction, false)"></shipping-details>
             </td>
             <td>
-              <driver load="loadManagement" load-type="$ctrl.loadType" driver-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId" is-multi-stop="$ctrl.isMultiStopLoad(loadManagement)"></driver>
+              <driver load="loadManagement" load-type="$ctrl.loadType" driver-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId" is-multi-stop="$ctrl.isMultiStopLoad(loadManagement)" is-cancelled-load="$ctrl.isCancelledLoad(loadManagement)"></driver>
             </td>
             <td>
               <action load="loadManagement" load-type="$ctrl.loadType" action-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId" is-multi-stop="$ctrl.isMultiStopLoad(loadManagement)" rep-details="$ctrl.repDetails"></action>

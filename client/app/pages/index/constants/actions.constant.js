@@ -112,6 +112,10 @@ angular.module('echo.constants.actions', [])
       BOOKED: {
         value: 15,
         description: 'Booked'
+      },
+      CANCELLED: {
+        value: 19,
+        description: 'Load Cancelled'
       }
     }
   });

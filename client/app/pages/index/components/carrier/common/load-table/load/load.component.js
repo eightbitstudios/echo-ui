@@ -5,7 +5,8 @@ angular.module('echo.components.loadTable.load', [])
       loadNumber: '<',
       proNumber: '<',
       loadGuid: '<',
-      isDetailsUpdated: '<'
+      isDetailsUpdated: '<',
+      wrapLink: '<'
     },
     controller: function($state, routesConfig) {
       var that = this;

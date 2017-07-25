@@ -28,6 +28,13 @@ angular.module('echo.api.requestBuilder.activeLoads', [
     return this;
   };
 
+  ActiveLoadsRequestBuilder.prototype.filterByCancelledToday = function() {
+    _.assign(this._params, {
+      cancelledToday: true
+    });
+    return this;
+  };
+
   ActiveLoadsRequestBuilder.prototype.filterByDeliveriesToday = function() {
     _.assign(this._params, {
       deliveriesToday: true

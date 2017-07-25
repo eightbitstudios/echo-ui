@@ -75,7 +75,7 @@ module.exports = {
         "nextAction": {
             "nextAction": 10,
             "nextActionPriority": 0,
-            "lastAction": 6,
+            "lastAction": 16,
             "firstName": "Dustin",
             "lastName": "Lockwood",
             "actionPerformedOn": "12:42 CST Thu, Jun 1",
