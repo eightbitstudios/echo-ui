@@ -16,7 +16,10 @@ angular.module('echo.components.shippingDetails', [
 
       this.$onChanges = function (changeObject) {
         if (changeObject.shippingDetails.currentValue) {
-          this.paging = new PagingModel(1);
+          if(!this.paging) {
+            this.paging = new PagingModel(1);
+          }
+
           if (_.isArray(changeObject.shippingDetails.currentValue)) {
             this.location = _.find(changeObject.shippingDetails.currentValue, {
               isCurrent: true

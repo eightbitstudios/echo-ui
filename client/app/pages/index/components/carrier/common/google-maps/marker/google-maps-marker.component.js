@@ -27,10 +27,11 @@ angular.module('echo.components.googleMapsMarker', [
           label = {
             text: _.toString(that.numberOfLoads),
             color: 'white',
-            fontSize: '18px'
+            fontSize: '16px',
+            fontWeight: 'bold'
           };
           icon.url = assetConfig.ICON_GOOGLE_MAPS_MULTIPLE_MARKER_URL;
-          icon.scaledSize = new google.maps.Size(30, 30);
+          icon.scaledSize = new google.maps.Size(35, 35);
         }
 
         that.marker = new google.maps.Marker({
