@@ -37,11 +37,11 @@
   <div class="row gm-selection">
     <div class="col-xs-12 load-selection">
       <div class="selection-container">
-        <a ng-click="$ctrl.previousLoad()" href="javascript:void(0)">
+        <a ng-click="$ctrl.previousLoad()" href="javascript:void(0)" ng-if="$ctrl.mapPoint.loads.length > 1">
           <span class="echo-icon icon-dark-left-arrow"></span>
         </a>
         <span>Load <b>{{$ctrl.paging.selectedPage}}</b> of <b>{{$ctrl.paging.getNumberOfPages()}}</b> in <b>{{$ctrl.selectedLoad.currentLocation.cityName}}, {{$ctrl.selectedLoad.currentLocation.stateCode}}</b></span>
-        <a ng-click="$ctrl.nextLoad()" href="javascript:void(0)">
+        <a ng-click="$ctrl.nextLoad()" href="javascript:void(0)" ng-if="$ctrl.mapPoint.loads.length > 1">
           <span class="echo-icon icon-dark-right-arrow"></span>
         </a>
       </div>
