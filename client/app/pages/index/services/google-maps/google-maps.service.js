@@ -69,8 +69,8 @@ angular.module('echo.services.googleMaps', [
 
         _.forEach(mapPoints, function (load) {
           var index = _.findIndex(points, function (point) {
-            return load.currentLocation.cityName === point.currentLocation.cityName &&
-              load.currentLocation.stateCode === point.currentLocation.stateCode;
+            return _.lowerCase(load.currentLocation.cityName) === _.lowerCase(point.currentLocation.cityName) &&
+              _.lowerCase(load.currentLocation.stateCode) === _.lowerCase(point.currentLocation.stateCode);
           });
 
           if (index > -1) {

@@ -14,7 +14,7 @@ describe('Component: shippingDetails', function() {
     $componentController = _$componentController_
   }));
 
-  describe('Function: $onInit', function() {
+  describe('Function: $onChanges', function() {
     it('should find current shippment if there is only 1 stop', function() {
       var shippingDetails = {
         id: 3,
@@ -25,8 +25,12 @@ describe('Component: shippingDetails', function() {
         shippingDetails: shippingDetails
       });
 
-      component.$onInit();
-
+      component.$onChanges({
+        shippingDetails: {
+          currentValue: shippingDetails
+        }
+      });
+      
       expect(component.location).toEqual(shippingDetails);
     });
     it('should find current shippment', function() {
@@ -45,7 +49,11 @@ describe('Component: shippingDetails', function() {
         shippingDetails: shippingDetails
       });
 
-      component.$onInit();
+      component.$onChanges({
+        shippingDetails: {
+          currentValue: shippingDetails
+        }
+      });
 
       expect(component.location).toEqual(shippingDetails[1]);
     });
@@ -66,7 +74,11 @@ describe('Component: shippingDetails', function() {
         shippingDetails: shippingDetails
       });
 
-      component.$onInit();
+      component.$onChanges({
+        shippingDetails: {
+          currentValue: shippingDetails
+        }
+      });
 
       expect(component.location).toEqual(shippingDetails[2]);
     });
@@ -89,7 +101,12 @@ describe('Component: shippingDetails', function() {
         shippingDetails: shippingDetails
       });
 
-      component.$onInit();
+      component.$onChanges({
+        shippingDetails: {
+          currentValue: shippingDetails
+        }
+      });
+
       component.paging.selectedPage = 2;
       component.pageClickHandler();
 

@@ -21,6 +21,7 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
         if (that.paging.selectedPage > 1) {
           that.paging.previousPage();
           that.selectedLoad = that.mapPoint.loads[that.paging.selectedPage - 1];
+          that.noDriver = _.isUndefined(_.get(that.selectedLoad.driver, 'id'));
         }
       };
 
@@ -28,6 +29,7 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
         if (that.paging.selectedPage < that.paging.getNumberOfPages()) {
           that.paging.nextPage();
           that.selectedLoad = that.mapPoint.loads[that.paging.selectedPage - 1];
+          that.noDriver = _.isUndefined(_.get(that.selectedLoad.driver, 'id'));
         }
       };
 
@@ -36,8 +38,8 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
         that.paging.setRecords(_.size(that.mapPoint.loads), 1);
         that.selectedLoad = _.first(that.mapPoint.loads);
         that.carrierId = store$.getState().carrier.carrierId;
-        that.noDriver = _.isUndefined(_.get(that.selectedLoad.driver, 'id'));
         that.loadDetails = routesConfig.INDEX.loadDetails.name;
+        that.noDriver = _.isUndefined(_.get(that.selectedLoad.driver, 'id'));
       };
     }
   });
