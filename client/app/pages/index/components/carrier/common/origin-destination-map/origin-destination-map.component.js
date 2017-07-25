@@ -24,8 +24,10 @@ angular.module('echo.components.originDestinationMap', [
         googleMapsApi.then(function (google) {
           that.google = google;
           return googleMaps.formatMapPoints(google, new google.maps.Geocoder(), that.mapPoints, that.mapCenter);
-        }).finally(function() {
-          googleMaps.resizeAndCenter(that.google, that.map, that.mapPoints);
+        }).then(function(mapSettings) {
+          that.points = mapSettings.mapPoints;
+          that.mapCenter = mapSettings.center;
+          googleMaps.resizeAndCenter(that.google, that.map, that.points);
           that.showMap = true;
         });
       };

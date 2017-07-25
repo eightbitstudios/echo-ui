@@ -87,8 +87,8 @@ module.exports = [
     loadId: 2345675,
     loadGuid: '8d34ba4f8baa4cd09c776826df55bae1',
     currentLocation: {
-      cityName: 'Toledo',
-      stateCode: 'OH'
+      cityName: 'Jackson',
+      stateCode: 'MS'
     },
     pickUp: {
       city: 'Dallas',
@@ -120,7 +120,7 @@ module.exports = [
       firstName: 'Tim',
       lastName: 'Potatoe',
       actionPerformedOn: '13:50 CST Today',
-      nextAction: 3,
+      nextAction: 9,
       onTime: false,
       lateBy: null
     }
