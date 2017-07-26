@@ -1,0 +1,28 @@
+  <div class="load-document-types">
+    <div class="row">
+      <div class="col-sm-7">
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.POD.value" label="{{$ctrl.podLabel}}" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.POD.value" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.LUMPER_RECEIPT.value" label="Lumper Receipt" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.LUMPER_RECEIPT.value" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.BILL_OF_LADING.value" label="Bill of Lading" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.BILL_OF_LADING.value" name="optionsRadios"></radio-button>
+      </div>
+      <div class="col-sm-5">
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.SCALE_TICKETS.value" label="Scale Tickets" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.SCALE_TICKETS.value" name="optionsRadios"></radio-button>
+        <radio-button ng-model="$ctrl.selectedDocumentType" value="$ctrl.documentTypeConstants.OTHER.value" label="Other" is-disabled="$ctrl.files.length > 0 && $ctrl.selectedDocumentType !== $ctrl.documentTypeConstants.OTHER.value" name="optionsRadios"></radio-button>
+      </div>
+    </div>
+    <div class="modal-action-links">
+        <div class="row">
+          <div class="col-sm-6">
+            <loading-button disable-button="$ctrl.files.length === 0" click-handler="$ctrl.uploadDocuments()" button-text="Send Document" show-loading="$ctrl.showLoading"></loading-button>
+          </div>
+          <div class="col-sm-6 upload-messages">
+            <div class="text-success fading-text" ng-if="$ctrl.showSavedMessage">
+              Documents successfully added
+            </div>
+            <div class="text-danger" ng-if="$ctrl.showErrorMessage">
+              <error-messages error-code="$ctrl.serverError"></error-messages>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

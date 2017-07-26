@@ -3,19 +3,22 @@ angular.module('echo.login.signIn', [
   'echo.config.routes',
   'echo.config.appConstants',
   'echo.config.errors',
+  'echo.services.cookie',
   'echo.components.serverErrors'
 ]).component('signIn', {
-  templateUrl: 'app/pages/login/sign-in/sign-in.template.html',
-  controller: function($window, $location, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, appConstants) {
+  templateUrl: 'sign-in.component.html',
+  bindings: {},
+  controller: function($window, $location, $state, $stateParams, routesConfig, authenticationApi, errorsConfig, appConstants, cookieService) {
 
     /**
      * Call api to sign a user in
      */
     this.signInHandler = function() {
       var that = this;
-
       that.serverError = null;
       if (that.signInForm.$valid) {
+        cookieService.clearToken();
+        cookieService.clearRefreshToken();
         that.showButtonLoading = true;
         authenticationApi.signIn(that.email, that.password).then(function() {
           var queryParams = $location.search();

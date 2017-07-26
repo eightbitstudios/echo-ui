@@ -14,7 +14,6 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'client/bower_components/jquery/dist/jquery.min.js',
       'client/bower_components/angular/angular.js',
       'client/bower_components/angular-cookies/angular-cookies.js',
       'client/bower_components/angular-animate/angular-animate.js',
@@ -23,7 +22,7 @@ module.exports = function (config) {
       'client/bower_components/angular-base64/angular-base64.min.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       'client/bower_components/lodash/dist/lodash.js',
-      'client/bower_components/bootstrap/js/dropdown.js',
+      'client/bower_components/rxjs/dist/rx.js',
       'client/bower_components/moment/moment.js',
       'client/app/app.js',
       'client/app/**/*.js',

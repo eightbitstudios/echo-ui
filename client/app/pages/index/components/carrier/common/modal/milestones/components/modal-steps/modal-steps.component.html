@@ -1,0 +1,13 @@
+<div class="modal-steps row">
+  <div class="col-xs-5 text-left">
+    <button class="btn btn-link btn-alt" type="button" ng-click="$ctrl.modalActions.close()">CLOSE</button>
+  </div>
+  <div class="col-xs-1 progress-steps">
+    <progress-indicator current-step="$ctrl.currentStep" steps="$ctrl.steps"></progress-indicator>
+  </div>
+  <div class="col-xs-6 text-right">
+    <button class="btn btn-secondary" ng-click="$ctrl.previousStep()" type="button" ng-disabled="$ctrl.isBackDisabled" ng-class="{hidden: $ctrl.currentStep === 1}">Back</button>
+    <button class="btn btn-default" ng-click="$ctrl.nextStep()" type="button" ng-disabled="$ctrl.isNextDisabled" ng-class="{hidden: $ctrl.currentStep === $ctrl.maxStep}">Next</button>
+    <ng-transclude ng-class="{hidden: $ctrl.currentStep < $ctrl.maxStep}"></ng-transclude>
+  </div>
+</div>

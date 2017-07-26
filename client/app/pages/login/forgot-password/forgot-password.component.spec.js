@@ -3,12 +3,12 @@ describe('Component: forgotPassword', function () {
   var component, $q, window, scope, forgotPassword, element, authenticationApi, state, routesConfig;
 
   beforeEach(function () {
-    module('app/pages/login/forgot-password/forgot-password.template.html');
+    module('forgot-password.component.html');
     module('echo.login.forgotPassword', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['forgotPassword']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
-      $provide.value('$window', window = { location: null });
+      $provide.value('$window', window = { location: null, angular: {callbacks: {} }});
     });
   });
 

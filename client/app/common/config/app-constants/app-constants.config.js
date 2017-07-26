@@ -11,7 +11,8 @@ angular.module('echo.config.appConstants', [])
       driverList: 5,
       loadsList: 10,
       loadsNeedingAction: 5,
-      multistopLoads: 5
+      multistopLoads: 5,
+      invoicesList: 10
     },
     LANGUAGES: {
       default: 'English',
@@ -23,6 +24,16 @@ angular.module('echo.config.appConstants', [])
       passwordNumber: /[0-9]/,
       passwordUpperCase: /[A-Z]/,
       emailValidation: /^[\w.!#$%&’*+/=?^_`{|}~-]+@[\w-]+(?:\.[\w-]+)+$/
+    },
+    FILE_UPLOAD: {
+      DOCUMENTS: {
+        fileSizeLimit: 20971520, // 20MB in bytes
+        documentTypeConstants: ['application/pdf', 'image/jpg', 'image/jpeg', 'image/png'],
+        validationMessages: {
+          fileType: 'Invalid file type.',
+          fileSize: 'File is larger than 20MB\'s.'
+        }
+      }
     },
     ERROR_MESSAGES: {
       DEFAULTS: {
@@ -63,9 +74,10 @@ angular.module('echo.config.appConstants', [])
         401101: 'User account is deactivated',
         401102: 'Incorrect Email Address or Password. Please Try Again.',
         401103: 'Unknown User Role',
-        401104: 'Sorry, you have exceeded the allowed number of log-in attempts.',
+        401104: 'This account has been temporarily locked. Please reset your password by using the \'Forgot Password\' link.',
         401106: 'Refresh Token is Invalid',
         401105: 'User Role Not Allowed To Reset Password in Portal',
+        401110: 'Your account is Suspended. Please contact Echo.',
         404: 'Not found',
         404100: 'Load not found',
         404101: 'Driver not found',
@@ -73,6 +85,7 @@ angular.module('echo.config.appConstants', [])
         404103: 'Carrier Not Found',
         404104: 'Load Shipment Details Not Found',
         404105: 'City/State combination not found',
+        404112: 'Invite already accepted',
         500: 'An unexpected error has occurred',
         500100: 'Password must contain mix of the following: uppercase, lowercase, and numbers',
         500101: 'Username already in use',
@@ -108,5 +121,7 @@ angular.module('echo.config.appConstants', [])
       lng: -98.35
     },
     MAX_STAR_RATING: 4,
-    PRIVACY_POLICY_URL: 'https://www.echo.com/privacypolicy.html'
+    COMMENT_MAX_LENGTH: 1000,
+    PRIVACY_POLICY_URL: 'https://www.echo.com/privacypolicy.html',
+    GOOGLE_MAPS_HOST_URL: 'http://maps.google.com/'
   });

@@ -4,7 +4,7 @@ angular.module('echo.api.authentication', [
   'echo.config.api',
   'echo.services.cookie',
   'echo.services.userProfile'
-]).factory('authenticationApi', function ($base64, $q, $http, cookieService, apiConfig, userProfileService) {
+]).factory('authenticationApi', function ($injector, $base64, $q, $http, cookieService, apiConfig) {
   return {
     /**
      * @description Creates a password
@@ -65,7 +65,7 @@ angular.module('echo.api.authentication', [
      */
     refresh: function () {
 
-      var user = userProfileService.mapJwtToUser(cookieService.getToken());
+      var user =  $injector.get('store$').getState().user; // Only inject store when its needed.
       var url = _.template(apiConfig.refresh)({userId: user.userId});
 
       cookieService.setToken(cookieService.getRefreshToken());
@@ -119,13 +119,29 @@ angular.module('echo.api.authentication', [
       });
     },
 
+    changePassword: function (userId, invitationToken, changePassword) {
+      var url = _.template(apiConfig.changePassword)({ userId: userId });
+
+      var data = {
+        password: changePassword.newPassword,
+        confirmPassword: changePassword.confirmPassword,
+        invitationToken: invitationToken
+      };
+
+      return $http.put(url, data).then(function (resp) {
+        return resp;
+      }).catch(function (error) {
+        return $q.reject(error.data.status.code);
+      });
+    },
+
     /**
      * @description Change password
      * @param {string} username - Username
      * @returns {Promise} - Users change password request has been sent
      */
-    changePassword: function (userId, changePassword) {
-      var url = _.template(apiConfig.changePassword)({ userId: userId });
+    setPassword: function (userId, changePassword) {
+      var url = _.template(apiConfig.setPassword)({ userId: userId });
 
       var data = {
         password: changePassword.newPassword,

@@ -1,15 +1,16 @@
 
 describe('Component: signIn', function () {
-  var component, $q, window, scope, state, userProfileService, element, authenticationApi, routesConfig, stateParams, errorsConfig, user;
+  var component, $q, window, scope, state, userProfileService, cookieService, authenticationApi, routesConfig, stateParams, errorsConfig, user;
 
   beforeEach(function () {
-    module('app/pages/login/sign-in/sign-in.template.html');
+    module('sign-in.component.html');
     module('echo.login.signIn', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['signIn']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
-      $provide.value('$window', window = { location: null });
+      $provide.value('$window', window = { location: null, angular: {callbacks: {} }});
       $provide.value('userProfileService', userProfileService = jasmine.createSpyObj('userProfileService', ['mapJwtToUser']));
+      $provide.value('cookieService', cookieService = jasmine.createSpyObj('cookieService', ['clearToken', 'clearRefreshToken']));
     });
   });
 
@@ -24,8 +25,8 @@ describe('Component: signIn', function () {
 
     scope.$digest();
 
-    component = $componentController('signIn', null, {});
     userProfileService.mapJwtToUser.and.returnValue(user = jasmine.createSpyObj('user', ['isRepAdmin']));
+    component = $componentController('signIn', null, {});
     component.$onInit();
   }));
 

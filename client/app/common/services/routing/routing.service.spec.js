@@ -14,7 +14,7 @@ describe('Service: routingService', function () {
 
   beforeEach(function () {
     module('echo.services.routing', function ($provide) {
-      $provide.value('$window', $window = { location: '' });
+      $provide.value('$window', $window = { location: {}, angular: {callbacks: {} }});
       $provide.value('$state', $state = jasmine.createSpyObj('$state', ['go']));
       $provide.value('userProfileService', userProfileService = jasmine.createSpyObj('userProfileService', ['mapJwtToUser']));
       $provide.value('cookieService', cookieService = jasmine.createSpyObj('cookieService', ['getToken']));
@@ -75,13 +75,6 @@ describe('Service: routingService', function () {
       routingService.handleRouting(event, toState, from);
       expect(event.preventDefault).toHaveBeenCalled();
     });
-
-    it('should save previous state', function () {
-      from.name = 'test';
-      toState.name = 'test1';
-      routingService.handleRouting(event, toState, from);
-      expect($state.previous).toBeDefined();
-    });
   });
   describe('authorized user', function () {
     var user;
@@ -94,11 +87,6 @@ describe('Service: routingService', function () {
       toState.data.auth = true;
       cookieService.getToken.and.returnValue(true);
       userProfileService.mapJwtToUser.and.returnValue(user);
-    });
-
-    it('should continue loading state if user has permission', function () {
-      routingService.handleRouting(event, toState, from);
-      expect($scope.showLoading).toBeTruthy();
     });
 
     it('should prevent user from routing to a page they dont have access to', function () {

@@ -1,0 +1,25 @@
+.file-upload {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  label {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    input[type="file"] {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+  }
+  &.on-drag {
+    background: @c-white;
+    .opacity(.6);
+    z-index: 99;
+  }
+}

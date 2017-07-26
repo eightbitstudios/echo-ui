@@ -1,0 +1,37 @@
+<div class="gm-info-window">
+  <div class="gm-overlay-header">
+    <h2 class="load-number">
+      <a ui-sref="{{$ctrl.loadDetails}}({loadId: $ctrl.mapPoint.loadGuid})">{{$ctrl.mapPoint.loadId}}</a>
+    </h2>
+    <div class="btn btn-default" ng-if="!$ctrl.expanded" ng-click="$ctrl.viewMapHandler({mapPoint: $ctrl.mapPoint})">View Map</div>
+    <action-button ng-if="$ctrl.expanded" load="$ctrl.mapPoint" action-changed-callback="$ctrl.actionChangedCallback()" carrier-id="$ctrl.carrierId"></action-button>
+  </div>
+  <div class="gm-overlay-body">
+    <div class="load-info row">
+        <div class="col-xs-5">
+          <shipping-details shipping-details="$ctrl.mapPoint.pickUp"></shipping-details>
+        </div>
+        <div class="col-xs-2">
+          <div class="load-col load-direction">
+            <span class="echo-icon icon-right-arrow-dark"></span>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <shipping-details shipping-details="$ctrl.mapPoint.delivery"></shipping-details>
+        </div>
+    </div>
+  </div>
+  <div class="gm-overlay-footer row">
+    <div class="driver-contact col-xs-5" ng-if="!$ctrl.noDriver">
+      <span>{{$ctrl.mapPoint.driver.firstName}} {{$ctrl.mapPoint.driver.lastName | firstCharacter}}</span>
+      <br>
+      <span class="small">{{$ctrl.mapPoint.driver.phone | phoneNumber}}</span>
+    </div>
+    <div class="driver-contact col-xs-5" ng-if="$ctrl.noDriver">
+      No Driver Assigned
+    </div>
+    <div class="col-xs-5 col-xs-offset-2">
+      <driver-captured-location location="$ctrl.mapPoint.currentLocation" time-stamp="$ctrl.mapPoint.timeStamp" captured-by="$ctrl.mapPoint.capturedBy"></driver-captured-location>
+    </div>
+  </div>
+</div>

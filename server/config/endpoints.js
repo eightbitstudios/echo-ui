@@ -19,6 +19,7 @@ module.exports = {
     signOut: '/api/v1/auth/signOut',
     refresh: '/api/v1/auth/refresh/:userId',
     userById: '/api/v1/users/:userId',
+    resendInviteToUserById: '/api/v1/users/:userId/resendInvite',
     driverById: '/api/v1/users/drivers/:driverId',
     searchDrivers: '/api/v1/carriers/:carrierId/drivers/:searchTerm',
     deactivateDriverById: '/api/v1/carriers/:carrierId/drivers/:driverId/deactivate',
@@ -54,6 +55,17 @@ module.exports = {
     mapPointByLoadGuid: '/api/v1/loads/:loadGuid/details/map',
     mapPointsForLoadsNeedingAction: '/api/v1/carriers/:carrierId/loads/needsAction/map',
     activeLoadsPage: '/api/v1/carriers/:carrierId/loads/activeLoadsPage',
-    loadDashboard: '/api/v1/carriers/:carrierId/loads/dashboardPage'
+    loadDashboard: '/api/v1/carriers/:carrierId/loads/dashboardPage',
+    documentUpload: '/api/v1/carriers/:carrierId/documents/loadDocument',
+    invoiceUpload: '/api/v1/carriers/:carrierId/documents/invoiceDocument',
+    documents: '/api/v1/carriers/:carrierId/documents/:loadId/manifestbyload',
+    documentById: '/api/v1/carriers/:carrierId/documents/images/:documentId',
+    documentsByIdThumbnail: '/api/v1/carriers/:carrierId/documents/images/:documentId/thumbnail',
+    documentsByIdPDF: '/api/v1/carriers/:carrierId/documents/download/pdf/:documentName',
+    activeInvoicesPage: '/api/v1/carriers/:carrierId/invoices/activeInvoicesPage',
+    invoicesSearch: '/api/v1/carriers/:carrierId/invoices/search',
+    archivedInvoicesPage: '/api/v1/carriers/:carrierId/invoices/archivedInvoicesPage',
+    invoiceCount: '/api/v1/carriers/:carrierId/invoices/invoiceCount',
+    invoiceDetails: '/api/v1/loads/:loadId/invoiceDetails'
   }
 };

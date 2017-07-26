@@ -18,22 +18,6 @@ describe('Service: userProfile', function () {
     });
   });
 
-  describe('Function: getUser', function() {
-    it('should get user', function() {
-      userProfileService._user = {id: 1};
-      expect(userProfileService.getUser()).toEqual(userProfileService._user);
-    });
-  });
-
-  describe('Function: setUser', function() {
-    it('should set user', function() {
-      var user = {id: 2};
-      UserModel.and.returnValue(user);
-      userProfileService.setUser(user);
-      expect(userProfileService._user).toEqual(user);
-    });
-  });
-
   describe('Function: mapJwtToUser', function() {
     it('should map user', function() {
       var user = {

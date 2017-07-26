@@ -1,0 +1,6 @@
+<span class="resend-invite">
+  <loading-button class="pull-right" button-text="Resend Invite" show-loading="$ctrl.showLoading" click-handler="$ctrl.resendInvite()" disable-button="$ctrl.disableSubmit"></loading-button>
+  <error-messages error-code="$ctrl.errorCode" error-messages="$ctrl.errorMessages" step-sensitive="false"></error-messages>
+  <div ng-if="$ctrl.showSuccess" class="fading-text success">Invitation Sent!</div>
+  <div class="help-block" ng-if="$ctrl.showDefaultError && $ctrl.showError">An error has occurred. Please try again.</div>
+</span>

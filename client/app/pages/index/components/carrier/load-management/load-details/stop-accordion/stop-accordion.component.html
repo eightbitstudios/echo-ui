@@ -1,0 +1,17 @@
+<uib-accordion class="stop-accordion accordion" ng-class="{'panel-closed': !$ctrl.isOpen}">
+  <div uib-accordion-group is-open="$ctrl.isOpen">
+    <uib-accordion-heading><strong>{{$ctrl.stopType}}</strong> {{$ctrl.formattedCity}}, {{$ctrl.stop.state}} {{$ctrl.stop.zip}}
+      <span class="stops-date">
+                    {{$ctrl.stop.formattedDayTime}}
+                    <div class="caret"></div>
+                  </span>
+    </uib-accordion-heading>
+    <div class="row">
+      <stop-location stop="$ctrl.stop"></stop-location>
+      <stop-load-numbers is-delivery="$ctrl.stopType === 'Delivery'" numbers="$ctrl.pickupNumbers"></stop-load-numbers>
+      <stop-notes notes="$ctrl.stop.notes"></stop-notes>
+      <stop-contact stop="$ctrl.stop"></stop-contact>
+    </div>
+    <load-item-details items="$ctrl.stop.items" total-weight="$ctrl.stop.stopTotalWeightInPounds"></load-item-details>
+  </div>
+</uib-accordion>

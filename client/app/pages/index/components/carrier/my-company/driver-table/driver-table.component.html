@@ -1,0 +1,49 @@
+<div class="container main-content driver-table">
+  <div class="row">
+    <div class="col-sm-9">
+      <typeahead-search search-service="$ctrl.searchDrivers(val)" on-select-callback="$ctrl.onSelectCallback(selection)" template="driver-results.template.html" placeholder-text="Find a Driver"></typeahead-search>
+    </div>
+    <div class="col-sm-3 text-right">
+      <button class="btn btn-default" ng-click="$ctrl.newDriverHandler()">Invite New Driver</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <loading show-loading="$ctrl.showLoading"></loading>
+      <table class="table table-driverlist" ng-if="!$ctrl.showLoading">
+        <thead>
+          <tr>
+            <th>Driver Name</th>
+            <th>Usage</th>
+            <th>Tractor</th>
+            <th>Pref. Language</th>
+            <th>Current Assignment</th>
+            <th>Next Assignment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="driver in $ctrl.drivers">
+            <td class="driverlist-col-driver">
+              <h3 class="driver-name">
+                <a ui-sref="{{$ctrl.routesConfig.INDEX.myCompanyDriverProfile.name}}({driverId: driver.id})">{{driver | fullName}}</a>
+                </h3>
+              <span><tel>{{driver.phone | phoneNumber}}</tel></span>
+            </td>
+            <td class="driverlist-col-usage">App {{driver.isAppInstalled ? 'Installed' : 'Not Installed'}} <br>Tracking {{driver.isTrackingEnabled ? 'Enabled' : 'Disabled'}}</td>
+            <td class="driverlist-col-tractor">{{driver.tractorNumber}}</td>
+            <td class="driverlist-col-lang">{{driver.preferredLanguage}}</td>
+            <td class="driverlist-col-current">
+              <driver-assignment assignment="driver.currentAssignment" driver="driver"></driver-assignment>
+            </td>
+            <td class="driverlist-col-next">
+              <driver-assignment assignment="driver.nextAssignment" driver="driver"></driver-assignment>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div ng-if="!$ctrl.showLoading">
+        <pagination paging-model="$ctrl.paging" page-click-handler="$ctrl.getDrivers()" record-type="Drivers"></pagination>
+      </div>
+    </div>
+  </div>
+</div>

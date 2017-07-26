@@ -11,15 +11,16 @@ angular.module('echo.login.createPassword', [
   bindings: {
     showTerms: '<'
   },
-  templateUrl: 'app/pages/login/create-password/create-password.template.html',
+  templateUrl: 'create-password.component.html',
   controller: function($stateParams, $state, $window, routesConfig, authenticationApi, PasswordChangeModel, appConstants, modalService) {
 
     this.createPassword = function() {
       var that = this;
 
       that.showButtonLoading = true;
+      var passwordChangeService = that.showTerms ? authenticationApi.createPassword : authenticationApi.changePassword;
 
-      authenticationApi.createPassword(that.userId, that.token, that.passwordChange).then(function() {
+      passwordChangeService(that.userId, that.token, that.passwordChange).then(function() {
         $window.location = routesConfig.INDEX.base.url;
       }).catch(function() {
         $state.go(routesConfig.LOGIN.signIn.name, {

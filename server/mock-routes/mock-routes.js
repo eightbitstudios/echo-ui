@@ -6,6 +6,8 @@ var carrierHandler = require('./handlers/carrier-handler'),
   loadsHandler = require('./handlers/loads-handler'),
   locationHandler = require('./handlers/location-handler'),
   timeZonesHandler = require('./handlers/time-zones-handler'),
+  documentHandler = require('./handlers/document-handler'),
+  invoiceHandler = require('./handlers/invoice-handler'),
   endpoints = require('../config/endpoints');
 
 module.exports = function (app) {
@@ -17,6 +19,7 @@ module.exports = function (app) {
   app.get(endpoints.api.activityLogByLoadId, loadsHandler.getActivityLogByLoadId);
   app.post(endpoints.api.reportEmptyByLoadGuid, loadsHandler.createModalAction);
   app.get(endpoints.api.reportEmptyByLoadGuid, loadsHandler.getReportEmptyModalAction);
+  app.get(endpoints.api.invoiceCount, invoiceHandler.getInvoicesCount);
   app.post(endpoints.api.reportDeliveredByLoadGuid, loadsHandler.createModalAction);
   app.get(endpoints.api.reportDeliveredByLoadGuid, loadsHandler.getReportEmptyModalAction);
   app.post(endpoints.api.feedbackByLoadGuid, loadsHandler.createModalAction);
@@ -37,7 +40,7 @@ module.exports = function (app) {
   app.put(endpoints.api.proNumberByLoadId, loadsHandler.updateProNumber);
   app.put(endpoints.api.trailerNumberByLoadId, loadsHandler.updateTrailerNumber);
   app.get(endpoints.api.availableLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
-  app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
+  app.get(endpoints.api.unbilledLoadsByCarrierId, loadsHandler.getUnbilledLoadsByCarrierId);
   app.get(endpoints.api.upcomingLoadsByCarrierId, loadsHandler.getLoadsByCarrierId);
   app.get(endpoints.api.loadCountByCarrierId, loadsHandler.getLoadCount);
   app.get(endpoints.api.loadsBySearchText, loadsHandler.getLoadsBySearchText);
@@ -46,9 +49,13 @@ module.exports = function (app) {
   app.get(endpoints.api.mapPointsForActiveLoads, loadsHandler.fetchMapPoints);
   app.get(endpoints.api.mapPointsForLoadsNeedingAction, loadsHandler.fetchMapPoints);
   app.get(endpoints.api.mapPointByLoadGuid, loadsHandler.fetchMapPointByLoadGuid);
+  app.get(endpoints.api.activeInvoicesPage, invoiceHandler.getInvoices);
+  app.get(endpoints.api.archivedInvoicesPage, invoiceHandler.getInvoices);
+  app.get(endpoints.api.invoicesSearch, invoiceHandler.getInvoicesBySearchText);
   app.post(endpoints.api.users, userHandler.insertPortalUser);
   app.put(endpoints.api.userById, userHandler.updatePortalUserById);
   app.get(endpoints.api.userById, userHandler.getUserById);
+  app.post(endpoints.api.resendInviteToUserById, userHandler.resendInviteToUserById);
   app.post(endpoints.api.signIn, authHandler.signIn);
   app.put(endpoints.api.changePassword, authHandler.changePassword);
   app.post(endpoints.api.signOut, authHandler.signOut);
@@ -69,4 +76,13 @@ module.exports = function (app) {
   app.get(endpoints.api.carrierById, carrierHandler.getCarrierById);
   app.get(endpoints.api.repByCarrierId, carrierHandler.getRepByCarrierId);
   app.get(endpoints.api.language, languageHandler.getLanguage);
+  app.get(endpoints.api.invoiceDetails, invoiceHandler.getInvoiceDetails);
+
+  app.post(endpoints.api.documentUpload, documentHandler.createDocuments);
+  app.post(endpoints.api.invoiceUpload, documentHandler.createDocuments);
+  app.get(endpoints.api.documents, documentHandler.fetchDocuments);
+  app.get(endpoints.api.documentById, documentHandler.fetchDocumentById);
+  app.get(endpoints.api.documentsByIdThumbnail, documentHandler.fetchDocumentByIdThumbnail);
+  app.get(endpoints.api.documentsByIdPDF, documentHandler.fetchDocumentByIdPDF);
+
 };

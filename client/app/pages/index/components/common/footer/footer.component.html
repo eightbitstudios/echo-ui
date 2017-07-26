@@ -1,0 +1,24 @@
+<footer class="footer">
+  <carrier-admin-footer ng-if="$ctrl.user.isCarrierAdmin()" rep-details="$ctrl.repDetails"></carrier-admin-footer>
+  <div class="footer-secondary">
+    <div class="container">
+      <div class="pull-left">
+        <div ng-if="$ctrl.user.isRepAdmin()" class="navbar-brand">
+          <span class="echo-icon icon-logo-echo-sm"></span>
+        </div>
+        <div ng-if="$ctrl.user.isCarrierAdmin()">
+          <billing-questions></billing-questions>
+        </div>
+      </div>
+      <div class="pull-right copyright-container">
+        <span class="copyright">
+              &copy; 2016 Echo Global Logistics. All rights reserved.
+            </span>
+        <ul class="list-inline footer-nav navbar-right">
+          <li><a href="javascript:void(0)" ng-click="$ctrl.showTermsAndConditionsModal()">Terms &amp; Conditions</a></li>
+          <li><a ng-href="{{$ctrl.privacyPolicyRoute}}" target="_blank">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

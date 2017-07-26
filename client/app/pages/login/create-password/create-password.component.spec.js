@@ -3,12 +3,12 @@ describe('Component: createPassword', function () {
   var component, $q, window, scope, createPassword, element, authenticationApi, state, routesConfig, createPasswordRes;
 
   beforeEach(function () {
-    module('app/pages/login/create-password/create-password.template.html');
+    module('create-password.component.html');
     module('echo.login.createPassword', function ($provide) {
       $provide.value('authenticationApi', authenticationApi = jasmine.createSpyObj('authenticationApi', ['createPassword']));
       $provide.value('$stateParams', stateParams = {});
       $provide.value('$state', state = jasmine.createSpyObj('state', ['go']));
-      $provide.value('$window', window = { location: null });
+      $provide.value('$window', window = { location: null, angular: {callbacks: {} }});
       $provide.value('PasswordChangeModel', jasmine.createSpy('PasswordChangeModel'));
     });
   });
@@ -33,6 +33,7 @@ describe('Component: createPassword', function () {
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
       component.userId = '142134123';
+      component.showTerms = true;
       authenticationApi.createPassword.and.returnValue($q.when());
       component.createPassword();
 
@@ -43,6 +44,7 @@ describe('Component: createPassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
+      component.showTerms = true;
       authenticationApi.createPassword.and.returnValue($q.reject());
       component.createPassword();
 
@@ -55,6 +57,7 @@ describe('Component: createPassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
+      component.showTerms = true;
       authenticationApi.createPassword.and.returnValue($q.when());
       component.createPassword();
 
@@ -67,6 +70,7 @@ describe('Component: createPassword', function () {
       component.passwordChange.newPassword = 'Test1234';
       component.passwordChange.confirmPassword = 'Test1234';
       component.token = '1234';
+      component.showTerms = true;
       authenticationApi.createPassword.and.returnValue($q.reject());
       component.createPassword();
 

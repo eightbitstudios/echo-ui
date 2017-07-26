@@ -5,14 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta name="keywords" content="Slalom">
-  <meta name="description" content="Slalom">
+  <meta name="description" property="og:description" content="The most efficient solution for carrier dispatchers to simplify load management and the easiest app for drivers to see assigned load information in one place.">
   <meta name="author" content="Slalom">
 
   <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 
   <script type='text/javascript'  src='assets/icons/grunticon.loader.js'></script>
 
-  <title>Echo - Carrier Portal</title>
+  <title>EchoDrive - Carrier Portal | Echo Global Logistics</title>
 
   <!-- build:css css/main.css -->
   <link href="css/main.css" rel="stylesheet">
@@ -36,27 +36,23 @@
   <!-- build:js app/index/index.js -->
   <!-- injector:js -->
   <!-- endinjector -->
-
   <!-- endbuild -->
 
   <!-- build:js app/env-vars.js -->
   <% _.each( app_files.envVars, function( scriptSrc ){ %>
   <script src="<%= scriptSrc %>"></script><% }); %>
   <!-- endbuild -->
-
   <script>
     grunticon(["assets/icons/icons.data.svg.css", "assets/icons/icons.data.png.css", "assets/icon/icons.fallback.css"], grunticon.svgLoadedCallback);
   </script>
 </head>
 
 <body ng-app="echo.index" ng-controller="AppCtrl as appCtrl" id="ng-app" analytics>
-  <loading show-loading="showLoading" overlay="true"></loading>
-  <div ui-view="header" ng-if="!showLoading"></div>
-  <div class="main-content-container"  ng-if="!showLoading" ng-class="{'white-container': $state.current.data.whiteContainer}">
+  <div ui-view="header"></div>
+  <div class="main-content-container" ng-class="{'white-container': $state.current.data.whiteContainer}">
     <!-- body view to load remaining child routes -->
     <div ui-view="body"></div>
   </div>
-  <div ui-view="footer" ng-if="!showLoading"></div>
+  <div ui-view="footer"></div>
 </body>
-
 </html>

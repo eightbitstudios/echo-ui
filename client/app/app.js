@@ -9,7 +9,8 @@ angular.module('echo', [
     'echo.services.routing',
     'echo.interceptors.auth',
     'ui.bootstrap',
-    'echo.decorators.uiRouter',
+    'echo.config.globals',
+    'echo.services.routing',
     'echo.config.envVars',
     'echo.interceptors.api',
     'echo.directives.analytics'
@@ -17,6 +18,7 @@ angular.module('echo', [
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $base64, envVarsConfig) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(false);
+    $locationProvider.hashPrefix('');
 
     if (!_.isEmpty(envVarsConfig.key)) {
       $httpProvider.defaults.headers.common[$base64.decode(envVarsConfig.keyHeader)] = $base64.decode(envVarsConfig.key);
@@ -24,6 +26,7 @@ angular.module('echo', [
     
     $httpProvider.interceptors.push('apiInterceptor');
     $httpProvider.interceptors.push('authInterceptor');
+    
   })
   .controller('AppCtrl', function() {
 
@@ -39,7 +42,6 @@ angular.module('echo', [
     $rootScope.$on('$stateChangeSuccess',
       function(event, toState, toParams, fromState, fromParams) { //jshint unused:false
         $uibModalStack.dismissAll();
-        $rootScope.showLoading = false;
       }
     );
   });

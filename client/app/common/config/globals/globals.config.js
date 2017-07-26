@@ -1,3 +1,6 @@
 angular.module('echo.config.globals', [])
   .constant('moment', window.moment)
-  .constant('grunticon', window.grunticon);
+  .constant('PDFJS', window.PDFJS)
+  .constant('saveAs', window.saveAs)
+  .constant('grunticon', window.grunticon)
+  .constant('Rx', window.Rx);

@@ -33,23 +33,44 @@ angular.module('echo.config.routes', [])
       },
       activeLoads: {
         name: 'index.carrier.loadManagement.activeLoads',
-        route: '/activeLoads'
+        route: '/activeLoads',
+        title: 'Active Loads'
       },
       unbilledLoads: {
         name: 'index.carrier.loadManagement.unbilledLoads',
-        route: '/unbilledLoads'
+        route: '/unbilledLoads',
+        title: 'Unbilled Loads'
       },
       upcomingLoads: {
         name: 'index.carrier.loadManagement.upcomingLoads',
-        route: '/upcomingLoads'
+        route: '/upcomingLoads',
+        title: 'Upcoming Loads'
       },
       loadDetails: {
         name: 'index.carrier.loadManagement.loadDetails',
-        route: '/loadDetails/:loadId'
+        route: '/loadDetails/:loadId?previous'
       },
       searchLoads: {
         name: 'index.carrier.loadManagement.searchLoads',
-        route: '/searchLoads/{searchText}'
+        route: '/searchLoads?searchText&previous'
+      },
+      invoicing: {
+        name: 'index.carrier.invoicing',
+        route: '/invoicing'
+      },
+      activeInvoices: {
+        name: 'index.carrier.invoicing.activeInvoices',
+        route: '/activeInvoices',
+        title: 'Active Invoices'
+      },
+      archivedInvoices: {
+        name: 'index.carrier.invoicing.archivedInvoices',
+        route: '/archivedInvoices',
+        title: 'Archived Invoices'
+      },
+      searchInvoices: {
+        name: 'index.carrier.invoicing.searchInvoices',
+        route: '/searchInvoices?searchText'
       },
       myCompany: {
         name: 'index.carrier.myCompany',

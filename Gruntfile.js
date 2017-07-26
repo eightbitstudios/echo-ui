@@ -4,10 +4,11 @@ module.exports = function(grunt) {
   grunt.initConfig(userConfig);
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('serve', function() {
+  grunt.registerTask('serve', function(env) {
+    grunt.config.set('apiConfig', env || 'mocks');
     grunt.task.run([
-      'build',
       'env:local',
+      'build',
       'express:dev',
       'watch'
     ]);
@@ -15,6 +16,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prepareDeploy', function() {
     grunt.task.run([
+      'env:dev',
       'dist',
       'copy:deploy',
       'install',
@@ -32,11 +34,14 @@ module.exports = function(grunt) {
       'copy:htmlPartials',
       'html2js',
       'copy:build',
+      'copy:envVars',
       'copy:version',
       'injector',
       'karma:unit'
     ]);
   });
+
+
 
   // Does a build then minifies and copies all front end code over to the root dist directory
   // To get a fully running app in this directory, you'll need to copy the server and package.json
@@ -67,4 +72,5 @@ module.exports = function(grunt) {
       async();
     });
   });
+
 };
