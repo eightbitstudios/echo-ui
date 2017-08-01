@@ -50,22 +50,22 @@ describe('Component: actionButton', function() {
     component.$onInit();
   }));
 
-  describe('Function: $onInit', function() {
+  describe('Function: $doCheck', function() {
     it('should set button class to warning', function() {
       component.load.escalationLevel = 2;
-      component.$onInit();
+      component.$doCheck();
       expect(component.actionButtonEscalationClass).toEqual('btn-warning');
     });
 
     it('should set button class to danger', function() {
       component.load.escalationLevel = 3;
-      component.$onInit();
+      component.$doCheck();
       expect(component.actionButtonEscalationClass).toEqual('btn-danger');
     });
 
     it('should not set button class', function() {
       component.mapView = true;
-      component.$onInit();
+      component.$doCheck();
       expect(component.actionButtonEscalationClass).toBeUndefined();
     });
   });

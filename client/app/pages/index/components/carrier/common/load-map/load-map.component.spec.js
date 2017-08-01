@@ -26,7 +26,7 @@ describe('Component: loadMap', function() {
       }
     };
     mapPoints = [];
-    googleMapsApi.then.and.returnValue($q.when());
+    googleMapsApi.then.and.returnValue($q.when({}));
     googleMaps.resizeAndCenter.and.returnValue();
 
     scope.$digest();
@@ -72,7 +72,8 @@ describe('Component: loadMap', function() {
         maps: {
           Geocoder: jasmine.createSpy('Geocoder')
         }
-      };
+      },
+      mapSettings = {};
 
       component.$onChanges({
         showMap: {
@@ -86,32 +87,6 @@ describe('Component: loadMap', function() {
       scope.$digest();
 
       expect(googleMaps.formatMapPoints).toHaveBeenCalled();
-    });
-
-    it('should filter out bad map points', function() {
-      var google = {
-        maps: {
-          Geocoder: jasmine.createSpy('Geocoder')
-        }
-      };
-
-      component.mapPoints.push({
-        position: 10
-      });
-      component.$onChanges({
-        showMap: {
-          currentValue: true
-        }
-      });
-
-      component.mapPoints.push({});
-
-      googleMaps.formatMapPoints.and.returnValue($q.when());
-      googleMapsApi.then.calls.argsFor(0)[0](google);
-
-      scope.$digest();
-
-      expect(component.mapPoints.length).toBe(1);
     });
   });
 });

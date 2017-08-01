@@ -7,7 +7,7 @@ angular.module('echo.services.googleMaps', [
     return {
       appendPosition: function (geocoder, mapPoint) {
         var deferred = $q.defer();
-        geocoder.geocode({'address': _.template('${city}, ${state}')({ city: _.get(mapPoint.currentLocation, 'cityName'), state: _.get(mapPoint.currentLocation, 'stateCode')})}, function (results, status) {
+        geocoder.geocode({ 'address': _.template('${city}, ${state}')({ city: _.get(mapPoint.currentLocation, 'cityName'), state: _.get(mapPoint.currentLocation, 'stateCode') }) }, function (results, status) {
           if (status === 'OK') {
             mapPoint.position = results[0].geometry.location;
           }
@@ -19,7 +19,7 @@ angular.module('echo.services.googleMaps', [
       findCenter: function (google, mapPoints) {
         var useDefault = true;
         var bounds = new google.maps.LatLngBounds();
-        _.forEach(mapPoints, function(mapPoint) {
+        _.forEach(mapPoints, function (mapPoint) {
           if (mapPoint.position) {
             bounds.extend(mapPoint.position);
             useDefault = false;
@@ -51,7 +51,7 @@ angular.module('echo.services.googleMaps', [
 
       getDefaultZoom: function (mapPoints) {
         var validPoints = 0;
-        _.forEach(mapPoints, function(mapPoint) {
+        _.forEach(mapPoints, function (mapPoint) {
           if (mapPoint.position) {
             validPoints++;
           }
@@ -64,25 +64,56 @@ angular.module('echo.services.googleMaps', [
         }
       },
 
-      formatMapPoints: function (google, geocoder, mapPoints) {
-        var that = this;
-        var promises = [];
-        _.forEach(mapPoints, function (mapPoint) {
-          promises.push(that.appendPosition(geocoder, mapPoint));
+      buildMapPoints: function (mapPoints) {
+        var points = [];
+
+        _.forEach(mapPoints, function (load) {
+          var index = _.findIndex(points, function (point) {
+            return _.lowerCase(load.currentLocation.cityName) === _.lowerCase(point.currentLocation.cityName) &&
+              _.lowerCase(load.currentLocation.stateCode) === _.lowerCase(point.currentLocation.stateCode);
+          });
+
+          if (index > -1) {
+            points[index].loads.push(load);
+          } else {
+            points.push({
+              currentLocation: load.currentLocation,
+              loads: [
+                load
+              ]
+            });
+          }
         });
 
+        return points;
+      },
+
+      formatMapPoints: function (google, geocoder, mapPoints) {
+        var that = this;
+        var formatMapPoints = that.buildMapPoints(mapPoints);
+
+        var promises = _.map(formatMapPoints, function (mapPoint) {
+          return that.appendPosition(geocoder, mapPoint);
+        }) || [];
+
         if (_.size(promises) === 0) {
-          return $q.when(that.findCenter(google, mapPoints));
+          return $q.when({
+            center: that.findCenter(google, mapPoints),
+            mapPoints: formatMapPoints
+          });
         } else {
           return $q.all(promises).then(function () {
-            mapPoints = _.filter(mapPoints, function (mapPoint) { return !!mapPoint.position; });
-            return that.findCenter(google, mapPoints);
+            formatMapPoints = _.filter(formatMapPoints, function (mapPoint) { return !!mapPoint.position; });
+            return {
+              center: that.findCenter(google, formatMapPoints),
+              mapPoints: formatMapPoints
+            };
           });
         }
       },
 
       getMapsUrlByCityState: function (address, city, state) {
-        var urlTemplate =  _.template(appConstants.GOOGLE_MAPS_HOST_URL + '?q=${address},+${city},+${state}');
+        var urlTemplate = _.template(appConstants.GOOGLE_MAPS_HOST_URL + '?q=${address},+${city},+${state}');
         return urlTemplate({ 'address': address, 'city': city, 'state': state });
       }
     };

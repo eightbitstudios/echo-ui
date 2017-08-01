@@ -38,10 +38,10 @@ angular.module('echo.components.modal.documentUpload', [
 
         that.load.needsInvoice = !_.includes(_.map(that.documents, function (document) {
           return document.documentSubType;
-        }), documentTypeConstants.INVOICE.value);
+        }), _.toString(documentTypeConstants.INVOICE.value));
 
         that.numberOfPODs = _(that.documents).filter(function (document) {
-          return document.documentSubType === documentTypeConstants.POD.value;
+          return document.documentSubType === _.toString(documentTypeConstants.POD.value);
         }).size();
 
         that.load.neededPODs = Math.max(that.numberOfStops - that.numberOfPODs, 0);

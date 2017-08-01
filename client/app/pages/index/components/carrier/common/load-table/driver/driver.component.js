@@ -76,7 +76,7 @@ angular.module('echo.components.loadTable.driver', [
         that.showComponentLoading = false;
         that.noDriver = _.isUndefined(_.get(that.load.driver, 'id'));
         that.loadTypeConstants = loadTypeConstants;
-        that.isDisabled = (that.loadType === loadTypeConstants.UNBILLED || that.isMultiStop || that.load.nextAction.nextAction === actionConstants.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value);
+        that.isDisabled = (that.loadType === loadTypeConstants.UNBILLED || that.isMultiStop || (that.load.nextAction && that.load.nextAction.nextAction === actionConstants.AVAILABLE_ACTIONS.ADD_DOCUMENTS.value));
       };
     }
   });

@@ -101,7 +101,11 @@ angular.module('echo.config.appConstants', [])
         500111: 'Error writing into shipment activity service',
         500134: 'Unable to find user in Optimizer.',
         500117: 'Invalid date for the action.',
-        500119: 'Unable to assign load because the driver is not available'
+        500119: 'Unable to assign load because the driver is not available',
+        500141: 'Time provided conflicts with previous tracking update for this load, please try again.',
+        500142: 'Future dates and times are not accepted, please try a current or past time.',
+        500143: 'EchoDrive is processing the last update for this load, please refresh and wait a minute before trying again.',
+        500144: 'Updates exceeding 24 hours in the past are not accepted. Please contact your Echo Rep.'
       },
       DRIVER: {
         500101: 'Phone number already in use',
