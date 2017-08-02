@@ -19,6 +19,8 @@ angular.module('echo.filters.formatInvoicePODs', [
         podsRequired = 0;
       }
 
+      podsRequired = _.max([podsRequired, 0]);
+
       if (!invoiceRequired) {
         switch (podsRequired) {
           case 0:
