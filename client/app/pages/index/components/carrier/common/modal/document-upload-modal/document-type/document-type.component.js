@@ -5,7 +5,6 @@ angular.module('echo.components.modal.documentUpload.documentType', [
   bindings: {
     documents: '<',
     selectedDocumentType: '=',
-    isDisabled: '<',
     numberOfStops: '<'
   },
   transclude: {

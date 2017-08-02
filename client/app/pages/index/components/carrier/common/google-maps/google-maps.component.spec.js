@@ -48,7 +48,7 @@ describe('Component: googleMaps', function () {
         streetViewControl: false,
         rotateControl: false,
         fullscreenControl: false,
-        scrollwheel: false,
+        scrollwheel: true,
         disableDoubleClickZoom: false
       });
       expect(google.maps.LatLngBounds).toHaveBeenCalled();
@@ -70,7 +70,7 @@ describe('Component: googleMaps', function () {
         streetViewControl: false,
         rotateControl: false,
         fullscreenControl: false,
-        scrollwheel: false,
+        scrollwheel: true,
         disableDoubleClickZoom: false
       });
       expect(google.maps.LatLngBounds).toHaveBeenCalled();
