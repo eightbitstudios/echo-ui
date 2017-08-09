@@ -62,14 +62,15 @@ describe('Component: invoices', function() {
     });
 
     it('should show error message if create invoice fails', function() {
-      var error = {
-        message: 500
+      var serverError = {
+        code: 500,
+        message: "error has occurred"
       };
 
       documentApi.createInvoices.and.returnValue($q.reject(error));
       component.uploadDocuments();
       $scope.$digest();
-      expect(component.serverError).toEqual(error);
+      expect(component.serverError).toEqual(serverError.code);
     });
   });
 });

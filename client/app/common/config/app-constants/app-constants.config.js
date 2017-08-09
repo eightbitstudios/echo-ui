@@ -69,6 +69,7 @@ angular.module('echo.config.appConstants', [])
         400128: 'Phone Number already in use',
         400129: 'Submitted time is invalid',
         400140: 'Milestone already performed by other user',
+        400148: 'Unable to upload document at this time',
         401: 'Incorrect Email Address or Password. Please Try Again.',
         401100: 'Invalid Authorization Header',
         401101: 'User account is deactivated',
