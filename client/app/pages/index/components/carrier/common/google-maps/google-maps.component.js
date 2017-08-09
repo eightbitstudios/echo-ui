@@ -35,7 +35,7 @@ angular.module('echo.components.googleMaps', [
           streetViewControl: false,
           rotateControl: false,
           fullscreenControl: false,
-          scrollwheel: false,
+          scrollwheel: true,
           disableDoubleClickZoom: false
         });
         that.bounds = new google.maps.LatLngBounds();
