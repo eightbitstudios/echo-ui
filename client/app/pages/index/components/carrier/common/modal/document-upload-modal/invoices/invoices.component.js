@@ -27,9 +27,9 @@ angular.module('echo.components.modal.documentUpload.invoices', [
         .then(function() {
           that.showSavedMessage = true;
           that.refreshDocumentsCallback();
-        }).catch(function(message) {
+        }).catch(function(serverError) {
           that.showErrorMessage = true;
-          that.serverError = message;
+          that.serverError = serverError.code;
         }).finally(function() {
           that.showLoading = false;
         });
