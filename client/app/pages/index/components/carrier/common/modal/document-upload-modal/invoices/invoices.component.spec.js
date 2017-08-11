@@ -67,7 +67,7 @@ describe('Component: invoices', function() {
         message: "error has occurred"
       };
 
-      documentApi.createInvoices.and.returnValue($q.reject(error));
+      documentApi.createInvoices.and.returnValue($q.reject(serverError));
       component.uploadDocuments();
       $scope.$digest();
       expect(component.serverError).toEqual(serverError.code);
