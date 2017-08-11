@@ -9,7 +9,8 @@ angular.module('echo.components.googleMaps', [
     center: '<',
     totalPoints: '<',
     popupOffset: '<',
-    map: '='
+    map: '=',
+    fullscreen: '<'
   },
   transclude: true,
   template: '<div ng-transclude></div>',
@@ -35,7 +36,8 @@ angular.module('echo.components.googleMaps', [
           streetViewControl: false,
           rotateControl: false,
           fullscreenControl: false,
-          scrollwheel: true,
+          minZoom: 3,
+          scrollwheel: !!that.fullscreen,
           disableDoubleClickZoom: false
         });
         that.bounds = new google.maps.LatLngBounds();

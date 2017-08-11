@@ -16,6 +16,7 @@ angular.module('echo.components.originDestinationMap', [
         that.showMap = false;
         var pickUp = _.get(that.mapPoint, 'pickUp');
         var delivery = _.get(that.mapPoint, 'delivery');
+        that.showExpanded = true;
         that.mapCenter = null;
         that.mapPoints = [];
         that.mapPoints.push({ currentLocation: { cityName: _.get(pickUp, 'city'), stateCode: _.get(pickUp, 'state') }});

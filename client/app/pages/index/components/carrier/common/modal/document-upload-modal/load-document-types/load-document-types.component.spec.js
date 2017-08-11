@@ -77,7 +77,7 @@ describe('Component: loadDocumentTypes', function() {
       };
 
       component.selectedDocumentType = documentTypeConstants.INVOICE.value;
-      documentApi.createDocuments.and.returnValue($q.reject(message));
+      documentApi.createDocuments.and.returnValue($q.reject(serverError));
       component.uploadDocuments();
       $scope.$digest();
       expect(component.serverError)
