@@ -98,6 +98,11 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
+
+        if(that.load.delivery && !(that.load.delivery instanceof Array)) {
+          that.load.delivery = [that.load.delivery];
+        }
+
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
@@ -119,6 +124,11 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
+
+        if(that.load.pickUp && !(that.load.pickUp instanceof Array)) {
+          that.load.pickUp = [that.load.pickUp];
+        }
+
         that.assignDriver(that.load.loadNumber, _.get(that.assignedDriver, 'id')).then(function() {
           return loadsApi.createReportTrailer(that.load.loadGuid, {
             timeZone: that.dateTimePicker.timeZone,
