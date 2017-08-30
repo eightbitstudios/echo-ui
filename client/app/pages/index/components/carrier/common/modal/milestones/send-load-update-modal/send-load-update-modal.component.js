@@ -94,20 +94,20 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
 
       this.confirmDropOff = function() {
         var that = this;
-
         that.showButtonLoading = true;
         that.errorMessages = null;
         that.errorCode = null;
 
+        var delivery = that.load.delivery;
         if(that.load.delivery && !(that.load.delivery instanceof Array)) {
-          that.load.delivery = [that.load.delivery];
+          delivery = [that.load.delivery];
         }
 
         loadsApi.createReportTrailer(that.load.loadGuid, {
           timeZone: that.dateTimePicker.timeZone,
           eventTime: that.dateTimePicker.getDateTime(),
           driverLocation: that.location,
-          stopType: _.get(_.nth(that.load.delivery, 0), 'stopType')
+          stopType: _.get(_.nth(delivery, 0), 'stopType')
         }).then(function() {
           that.modalActions.close(true);
         }).catch(function(status) {
@@ -125,15 +125,16 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.errorMessages = null;
         that.errorCode = null;
 
+        var pickup = that.load.pickup;
         if(that.load.pickUp && !(that.load.pickUp instanceof Array)) {
-          that.load.pickUp = [that.load.pickUp];
+          pickup = [that.load.pickUp];
         }
 
         that.assignDriver(that.load.loadNumber, _.get(that.assignedDriver, 'id')).then(function() {
           return loadsApi.createReportTrailer(that.load.loadGuid, {
             timeZone: that.dateTimePicker.timeZone,
             eventTime: that.dateTimePicker.getDateTime(),
-            stopType: _.get(_.nth(that.load.pickUp, 0), 'stopType')
+            stopType: _.get(_.nth(pickup, 0), 'stopType')
           });
         }).then(function() {
           that.modalActions.close(true);
