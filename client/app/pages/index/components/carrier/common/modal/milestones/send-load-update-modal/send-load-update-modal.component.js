@@ -99,7 +99,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.errorCode = null;
 
         var delivery = that.load.delivery;
-        if(that.load.delivery && !(that.load.delivery instanceof Array)) {
+        if(!_.isArray(delivery)) {
           delivery = [that.load.delivery];
         }
 
@@ -126,7 +126,7 @@ angular.module('echo.components.modal.milestones.sendLoadUpdate', [
         that.errorCode = null;
 
         var pickup = that.load.pickup;
-        if(that.load.pickUp && !(that.load.pickUp instanceof Array)) {
+        if(!_.isArray(pickup)) {
           pickup = [that.load.pickUp];
         }
 
