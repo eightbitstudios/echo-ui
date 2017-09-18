@@ -1,1 +1,3 @@
-<span ng-if="$ctrl.previousRouteName"><a ui-sref="{{$ctrl.previousRoute}}">Back to {{$ctrl.previousRouteName}}</a></span>
+<span ng-if="$ctrl.previousRouteName"><a ng-if="!$ctrl.linkType" ui-sref="{{$ctrl.previousRoute}}">Back to {{$ctrl.previousRouteName}}</a>
+</span>
+<button ng-if="$ctrl.linkType === 'button'" ui-sref="{{$ctrl.previousRoute}}" class="btn back-to-dashboard-button">Back to {{$ctrl.previousRouteName}}</button>
