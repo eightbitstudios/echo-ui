@@ -6,14 +6,14 @@
         <li>
           <strong>Load {{$ctrl.loadDetails.loadNumber}}</strong>
         </li>
-        <li>
-          <previous-state></previous-state>
-        </li>
       </ul>
       <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
     </div>
   </div>
   <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="false" show-expanded="false"></load-map>
+  <div class="col-md-offset-5 col-md-2 col-xs-offset-4 col-xs-4 text-center">
+    <previous-state link-type="button"></previous-state>
+  </div>
   <loading show-loading="$ctrl.showLoading"></loading>
   <div ng-if="!$ctrl.showLoading" class="container-fluid load-table_detail">
     <div class="container">

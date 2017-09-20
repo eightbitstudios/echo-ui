@@ -2,7 +2,9 @@ angular.module('echo.index.carrier.previousState', [
   'echo.config.routes'
 ]).component('previousState', {
   templateUrl: 'previous-state.component.html',
-  bindings: {},
+  bindings: {
+    linkType: '@?'
+  },
   controller: function($stateParams, routesConfig) {
     var that = this;
 

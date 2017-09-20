@@ -25,7 +25,8 @@ angular.module('echo.config.routes', [])
       },
       dashboard: {
         name: 'index.carrier.dashboard',
-        route:'/dashboard'
+        route:'/dashboard',
+        title: 'Dashboard'
       },
       loadManagement: {
         name: 'index.carrier.loadManagement',
