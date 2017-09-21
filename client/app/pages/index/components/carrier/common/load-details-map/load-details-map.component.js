@@ -1,0 +1,147 @@
+angular.module('echo.components.loadDetailsMap', [
+  'echo.config.appConstants',
+  'echo.services.googleMapsApi',
+  'echo.services.googleMaps',
+  'echo.components.googleMapsLoadDetails',
+  'echo.components.googleMapsMarkerLoadDetails',
+  'echo.components.googleMapsPolyline',
+  'echo.components.googleMapsInfoWindowLoadDetails',
+  'echo.components.loadMap.warehouseInfoWindow',
+  'echo.components.loading'
+])
+  .constant('googleMapsConst', {
+    detailedInfoOffset: {
+      x: 230,
+      y: 262
+    },
+    defaultOffset: {
+      x: 175,
+      y: 125
+    }
+  })
+/**
+ * showMap [boolean] - flag to display map or not. note, that if the map is initalized before the dom has had a chance to render
+ * the div/container for the google map undefined exceptions may occur. Its best to toggle this after a promise of some sort
+ * (ex. after network call to get load detail or track and trace info)
+ */
+  .component('loadDetailsMap', {
+    templateUrl: 'load-details-map.component.html',
+    bindings: {
+      mapType: '<',
+      mapPoints: '<',
+      loadStatusCode: '<',
+      detailedInfo: '<',
+      showMap: '<',
+      onError: '&?',
+      onGeocodeComplete: '&?'
+    },
+    controller: function ($q, $window,  mapConstants, googleMapsApi, googleMaps, googleMapsConst) {
+
+      var that = this;
+
+      this.getNextStopOnArrival = function () {
+        return _.find(that.mapPoints, function(stop) {
+          console.log('ld stop', stop);
+          return stop.isIncomplete() && stop.getWarehouseSchedule().getActualArrivalDate();
+        });
+      };
+
+      this.toMapMarkers = function (newMapPoints, mapPoint) {
+        var index = _.findLastIndex(newMapPoints, function (newMapPoint) {
+          return false;
+        });
+
+
+        if (index !== -1 && newMapPoints[index].isComplete()) {
+          newMapPoints[index] = mapPoint;
+        } else if (index === -1 && (!that.getNextStopOnArrival(that.mapPoints))) {
+          newMapPoints.push(mapPoint);
+        }
+
+        return newMapPoints;
+      };
+
+
+      this.formatMapPoints = function (google) {
+        var geocoder = new google.maps.Geocoder();
+        var promises = [];
+
+        _.forEach(this.mapMarkers, function (mapMarker) {
+          if(!mapMarker.getPosition()) {
+            //format for use with existing google maps service
+            mapMarker.currentLocation = {};
+            mapMarker.currentLocation.cityName = mapMarker.getCity();
+            mapMarker.currentLocation.stateCode = mapMarker.getStateCode();
+            promises.push(googleMaps.appendPosition(geocoder, mapMarker));
+          }
+        });
+
+        if (_.size(promises) === 0) {
+          this.mapCenter = googleMaps.findCenter(this.google, this.mapMarkers);
+          return this.mapCenter;
+        } else {
+          return $q.all(promises).then(
+            function () {
+              console.log('map markers resolved', JSON.stringify(that.mapMarkers));
+              that.mapMarkers = _.filter(that.mapMarkers, function (point) {
+                return !!point.getPositionAsLatLng();
+              });
+
+              console.log('map markers resolved 2', that.mapMarkers);
+
+              that.mapCenter = googleMaps.findCenter(that.google, that.mapMarkers);
+            },
+            function(){
+              // if we registered an optional onError Call back
+              if(that.onError){
+                that.onError();
+              }
+            });
+        }
+      };
+
+
+      this.popupOffset = this.detailedInfo ? googleMapsConst.detailedInfoOffset : googleMapsConst.defaultOffset;
+
+      this.$onChanges = function (changeObj) {
+
+        // Overriding this maps object on
+        if(_.get($window, 'google.maps._echoAuthError') === 'AUTH_ERROR'){
+          this.onError();
+          return;
+        }
+
+        // Filter to unique locations
+        this.mapMarkers = _.reduce(that.mapPoints, that.toMapMarkers, []);
+        console.log('map markers');
+        console.log(JSON.stringify(that.mapMarkers));
+
+        if(changeObj.showMap.currentValue) {
+          googleMapsApi.then(
+            function (google) {
+              that.google = google;
+
+              // Stops constitue the are the route minus the origin and destination
+              that.totalTemporaryStops = _.reduce(that.mapPoints, function(count, point) {
+                var isTemporaryStop = !point.isOrigin() && !point.isDestination();
+                return isTemporaryStop ? count + 1 : count;
+              }, 0);
+
+              return that.formatMapPoints(google);
+            },
+            function(error) {
+              console.warn('error loading google maps component', error);
+              if (this.onError){
+                this.onError();
+              }
+            }).finally(function() {
+              that.onGeocodeComplete({mapMarkers: that.mapMarkers});
+              that.showLoading = false;
+              that.geoCodeComplete = true;
+            });
+        } else {
+          this.showLoading = true;
+        }
+      };
+    }
+  });

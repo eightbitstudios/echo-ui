@@ -188,8 +188,8 @@ module.exports = [
     "loadId": 22229647,
     "loadGuid": "6bc91eb3660647fb8677fec32d0e9690",
     "currentLocation": {
-      "cityName": "CHICAGO",
-      "stateCode": "IL",
+      "cityName": "St. Louis",
+      "stateCode": "MO",
       "stateId": 0
     },
     "pickUp": {
@@ -224,7 +224,7 @@ module.exports = [
       "name": "ATL Warehouse",
       "address": "900 ABC Ln",
       "city": "ATLANTA",
-      "state": "TX",
+      "state": "GA",
       "zip": "75551",
       "country": "US",
       "day": "Thu, May 25",
