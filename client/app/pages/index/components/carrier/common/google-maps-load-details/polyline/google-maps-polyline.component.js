@@ -102,17 +102,9 @@ angular.module('echo.components.googleMapsPolyline', [
       else {
         _.each(this.mapPoints, function(mapPoint) {
           var position = mapPoint.position;
-          var schedule = mapPoint.getWarehouseSchedule();
+          //var schedule = mapPoint.getWarehouseSchedule();
 
-          if (mapPoint.isTrackAndTrace()) {
-            var nextStop = that.getNextStopOnArrival();
-
-            if (!nextStop) {
-              that.trackAndTraceMapPointPosition = position;
-            } else {
-              that.completedRoute.push(nextStop.getPosition());
-            }
-          } else if (schedule && schedule.getActualDepartureDate() || schedule.getActualArrivalDate()) {
+          if (new Date(mapPoint.mapPoint.schedule.getAppointmentStartDate())  < new Date().getTime()) {
             that.completedRoute.push(position);
           } else {
             that.incompleteRoute.push(position);
@@ -129,7 +121,7 @@ angular.module('echo.components.googleMapsPolyline', [
     };
 
     this.isLoadDelivered = function (){
-      return this.loadStatusCode === 'DELIVERED';
+      return new Date(this.mapPoints[this.mapPoints.length-1].mapPoint.schedule.getAppointmentStartDate()).getTime() < new Date().getTime();
     };
 
   }

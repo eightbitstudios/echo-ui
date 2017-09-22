@@ -123,7 +123,7 @@ angular.module('echo.components.loadDetailsMap', [
 
               // Stops constitue the are the route minus the origin and destination
               that.totalTemporaryStops = _.reduce(that.mapPoints, function(count, point) {
-                var isTemporaryStop = !point.isOrigin() && !point.isDestination();
+                var isTemporaryStop = !point.isOrigin() && !point.isDestination() && point.getMapPointType() !== mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION;
                 return isTemporaryStop ? count + 1 : count;
               }, 0);
 

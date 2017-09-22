@@ -188,8 +188,8 @@ module.exports = [
     "loadId": 22229647,
     "loadGuid": "6bc91eb3660647fb8677fec32d0e9690",
     "currentLocation": {
-      "cityName": "St. Louis",
-      "stateCode": "MO",
+      "cityName": "Denver",
+      "stateCode": "CO",
       "stateId": 0
     },
     "pickUp": {

@@ -47,9 +47,9 @@ angular.module('echo.components.googleMapsMarkerLoadDetails', [
     };
 
     this.getMarkerAnchor = function(markerType){
-      if(markerType === mapConstants.MAP_POINT_TYPE.TRACK_AND_TRACE) {
+      if(markerType === mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION) {
         // Anchor the marker for track and trace to align it directly on top of the progress lines
-        return new google.maps.Point(10, 10); // jshint ignore:line
+        return new google.maps.Point(22, 22); // jshint ignore:line
       }
     };
 

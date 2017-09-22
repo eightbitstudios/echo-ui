@@ -5,10 +5,11 @@ angular.module('echo.components.loadMap.warehouseInfoWindow', [])
       mapMarker: '<',
       totalTemporaryStops: '<'
     },
-    controller: function () {
+    controller: function (mapConstants) {
       var that = this;
 
       this.$onInit = function () {
+        console.log('warehouse window mm', this.mapMarker);
         that.schedule = that.mapMarker.getWarehouseSchedule();
         that.isOrigin = that.mapMarker.isOrigin();
         that.isDestination = that.mapMarker.isDestination();
@@ -19,9 +20,11 @@ angular.module('echo.components.loadMap.warehouseInfoWindow', [])
           that.infoWindowHeader = 'Origin';
         } else if (that.isDestination) {
           that.infoWindowHeader = 'Destination';
+        } else if (that.mapMarker.getMapPointType() === mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION) {
+          that.infoWindowHeader = 'Current Location';
         } else {
           that.infoWindowHeader = 'Stop {X} out of {Y}'
-            .replace('{X}', that.mapMarker.getStopNumber() - 1)
+            .replace('{X}', that.mapMarker.getStopNumber())
             .replace('{Y}', that.totalTemporaryStops);
         }
       };

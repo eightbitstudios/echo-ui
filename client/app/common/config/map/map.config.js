@@ -9,14 +9,16 @@ angular.module('echo.config.mapConstants', [])
     'DESTINATION': 'DESTINATION',
     'INCOMPLETE': 'INCOMPLETE',
     'ORIGIN': 'ORIGIN',
-    'TRACK_AND_TRACE': 'TRACK_AND_TRACE'
+    'TRACK_AND_TRACE': 'TRACK_AND_TRACE',
+    'CURRENT_LOCATION': 'CURRENT_LOCATION'
   },
   'MAP_POINT_TYPE_ICON': {
     'ORIGIN': '/assets/images/icon-gm-origin-marker.png',
     'DESTINATION': '/assets/images/icon-gm-destination-marker.png',
     'TRACK_AND_TRACE': '/assets/images/icon-gm-track-n-trace-marker.png',
     'INCOMPLETE': '/assets/images/icon-gm-incomplete-marker.png',
-    'COMPLETE': '/assets/images/icon-gm-origin-marker.png'
+    'COMPLETE': '/assets/images/icon-gm-origin-marker.png',
+    'CURRENT_LOCATION': '/assets/images/icon-gm-marker.png'
   },
   'DEFAULT_MAP_ZOOM': {
     'ONE_POINT': 15,

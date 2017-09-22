@@ -25,10 +25,8 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       that.mapPoints = [];
       loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid'))
         .then(function(mapPointData) {
-          console.log(mapPointData);
-          console.log('map point import', that.buildMapPointsFromStops(mapPointData.pickUp, mapPointData.delivery, [mapPointData.currentLocation]));
           if (mapPointData) {
-            that.mapPoints = that.buildMapPointsFromStops(mapPointData.pickUp, mapPointData.delivery, [mapPointData.currentLocation]);
+            that.mapPoints = that.buildMapPointsFromStops(mapPointData.currentLocation);
           }
           that.showMap = true;
         });
@@ -37,20 +35,19 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     that.getStopScheduleModel = function(stop) {
       return new StopScheduleModel({
         stopType: stop.stopType,
-        appointmentStart: stop.appointmentStart,
-        appointmentEnd: stop.appointmentEnd,
+        appointmentStart: stop.startDate,
+        appointmentEnd: stop.endDate,
         actualArrival: stop.actualArrival,
         actualDeparture: stop.actualDeparture
       });
     };
 
-    that.getStopMapPointModel = function(stop, mapPointType) {
+    that.getStopMapPointModel = function(stop) {
       console.log('stop', stop);
-      var type = stop.isCurrent ? 'INCOMPLETE' : 'COMPLETE';
 
       return new MapPointModel({
-        stopNumber: _.get(stop, 'order'),
-        mapPointType: mapPointType || type,
+        stopNumber: _.get(stop, 'stopNumber'),
+        mapPointType: _.get(stop, 'mapPointType', mapConstants.MAP_POINT_TYPE.INCOMPLETE),
         countryCode:  _.get(stop, 'country'),
         clientWarehouseId:  _.get(stop, 'id'),
         name:  _.get(stop, 'name'),
@@ -64,18 +61,34 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       });
     };
 
-    that.buildMapPointsFromStops = function(origin, destination, stops) {
+    that.buildMapPointsFromStops = function(currentLocation) {
       var that = this;
 
-      var firstStop = [this.getStopMapPointModel(origin, mapConstants.MAP_POINT_TYPE.ORIGIN)];
-      var lastStop = [this.getStopMapPointModel(destination, mapConstants.MAP_POINT_TYPE.DESTINATION)];
-      var additionalStops = _.map(stops, function (stop) {
+      var stops = [];
+
+      stops = stops.concat(that.loadDetails.pickUp).concat(that.loadDetails.delivery);
+      _.forEach(stops, function(stop, index){
+        //add stop number here
+        stop.stopNumber = index;
+      });
+      if (currentLocation){
+        currentLocation.startDate = new Date();
+        currentLocation.mapPointType = mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION;
+        stops.push(currentLocation);
+      }
+
+      stops = _.sortBy(stops, function(stop) { return new Date(stop.startDate); });
+
+      stops[0].mapPointType =  mapConstants.MAP_POINT_TYPE.ORIGIN;
+      stops[stops.length-1].mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
+
+      stops = _.map(stops, function(stop){
         return that.getStopMapPointModel(stop);
       });
 
-      that.loadStatusCode = !destination.isCurrent;
+      //that.loadStatusCode = !destination.isCurrent;
 
-      return firstStop.concat(additionalStops).concat(lastStop);
+      return stops;
     };
 
 
