@@ -26,9 +26,7 @@ angular.module('echo.components.googleMapsLoadDetails', [
         styles: mapConstants.STYLES
       };
 
-      this.mapConfig = (this.mapType === mapConstants.MAP_TYPE.SMALL) ?
-          angular.extend({}, mapConstants.SMALL_MAP_CONFIG, runtimeConfig) :
-          angular.extend({}, mapConstants.LARGE_MAP_CONFIG, runtimeConfig);
+      this.mapConfig = angular.extend({}, mapConstants.LARGE_MAP_CONFIG, runtimeConfig);
 
       var that = this;
 
