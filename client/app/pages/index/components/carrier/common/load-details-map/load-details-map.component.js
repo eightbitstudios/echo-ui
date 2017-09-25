@@ -41,20 +41,12 @@ angular.module('echo.components.loadDetailsMap', [
 
       this.getNextStopOnArrival = function () {
         return _.find(that.mapPoints, function(stop) {
-          console.log('ld stop', stop);
           return stop.isIncomplete() && stop.getWarehouseSchedule().getActualArrivalDate();
         });
       };
 
       this.toMapMarkers = function (newMapPoints, mapPoint) {
-        var index = _.findLastIndex(newMapPoints, function (newMapPoint) {
-          return false;
-        });
-
-
-        if (index !== -1 && newMapPoints[index].isComplete()) {
-          newMapPoints[index] = mapPoint;
-        } else if (index === -1 && (!that.getNextStopOnArrival(that.mapPoints))) {
+        if ((!that.getNextStopOnArrival(that.mapPoints))) {
           newMapPoints.push(mapPoint);
         }
 
@@ -82,12 +74,9 @@ angular.module('echo.components.loadDetailsMap', [
         } else {
           return $q.all(promises).then(
             function () {
-              console.log('map markers resolved', JSON.stringify(that.mapMarkers));
               that.mapMarkers = _.filter(that.mapMarkers, function (point) {
                 return !!point.getPositionAsLatLng();
               });
-
-              console.log('map markers resolved 2', that.mapMarkers);
 
               that.mapCenter = googleMaps.findCenter(that.google, that.mapMarkers);
             },
@@ -111,10 +100,7 @@ angular.module('echo.components.loadDetailsMap', [
           return;
         }
 
-        // Filter to unique locations
-        this.mapMarkers = _.reduce(that.mapPoints, that.toMapMarkers, []);
-        console.log('map markers');
-        console.log(JSON.stringify(that.mapMarkers));
+        this.mapMarkers = that.mapPoints;
 
         if(changeObj.showMap.currentValue) {
           googleMapsApi.then(

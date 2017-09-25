@@ -9,7 +9,6 @@ angular.module('echo.components.loadMap.warehouseInfoWindow', [])
       var that = this;
 
       this.$onInit = function () {
-        console.log('warehouse window mm', this.mapMarker);
         that.schedule = that.mapMarker.getWarehouseSchedule();
         that.isOrigin = that.mapMarker.isOrigin();
         that.isDestination = that.mapMarker.isDestination();

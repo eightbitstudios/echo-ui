@@ -2,33 +2,31 @@ describe('Component: google-maps-marker', function () {
   var component;
 
   beforeEach( function() {
-    module('echo.components.googleMapsMarker');
+    module('echo.components.googleMapsMarkerLoadDetails');
     module('echo.services.googleMapsApi.mock');
+    module('echo.config.mapConstants');
   });
 
   describe('controller', function () {
 
     beforeEach(inject(function ($componentController) {
-      google.maps.Point = function(x,y){ return {x:x, y:y};};
-      component = $componentController('googleMapsMarker', null, {});
-    }));
-
-    afterEach(function() {
       google = {maps: {}};
-    });
+      google.maps.Point = function(x,y){ return {x:x, y:y};};
+      component = $componentController('googleMapsMarkerLoadDetails', null, {});
+    }));
 
     describe('getMarkerUrl()', function () {
       it('SHOULD return the configured asset url', function() {
-        var url = component.getMarkerUrl('TRACK_AND_TRACE');
-        expect(url).toEqual('/assets/images/icon-gm-track-n-trace-marker.png');
+        var url = component.getMarkerUrl('CURRENT_LOCATION');
+        expect(url).toEqual('/assets/images/icon-gm-marker.png');
       });
     });
 
 
     describe('getMarkerAnchor', function () {
-      it('SHOULD anchor track and trace markers', function() {
-        var anchor = component.getMarkerAnchor('TRACK_AND_TRACE');
-        expect(anchor).toEqual({x:10, y:10});
+      it('SHOULD anchor current location markers', function() {
+        var anchor = component.getMarkerAnchor('CURRENT_LOCATION');
+        expect(anchor).toEqual({x:22, y:22});
       });
 
       it('SHOULD not anchor origin markers', function() {

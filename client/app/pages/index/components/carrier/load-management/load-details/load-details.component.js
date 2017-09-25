@@ -43,13 +43,11 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     };
 
     that.getStopMapPointModel = function(stop) {
-      console.log('stop', stop);
 
       return new MapPointModel({
         stopNumber: _.get(stop, 'stopNumber'),
         mapPointType: _.get(stop, 'mapPointType', mapConstants.MAP_POINT_TYPE.INCOMPLETE),
         countryCode:  _.get(stop, 'country'),
-        clientWarehouseId:  _.get(stop, 'id'),
         name:  _.get(stop, 'name'),
         address1:  _.get(stop, 'address'),
         address2:  _.get(stop, 'address2'),
@@ -67,11 +65,19 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       var stops = [];
 
       stops = stops.concat(that.loadDetails.pickUp).concat(that.loadDetails.delivery);
+      //sort stops by startDate, before current location is added, so we can assign stop numbers
+      stops = _.sortBy(stops, function(stop) { return new Date(stop.startDate); });
       _.forEach(stops, function(stop, index){
         //add stop number here
         stop.stopNumber = index;
       });
-      if (currentLocation){
+
+      //designate the first stop as the origin and the last stop as the destination
+      stops[0].mapPointType =  mapConstants.MAP_POINT_TYPE.ORIGIN;
+      stops[stops.length-1].mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
+
+      //add currentLocation as a stop with date as the current date, if the load is not delivered
+      if (currentLocation && new Date(stops[stops.length-1].startDate).getTime() > new Date().getTime()){
         currentLocation.startDate = new Date();
         currentLocation.mapPointType = mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION;
         stops.push(currentLocation);
@@ -79,14 +85,9 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 
       stops = _.sortBy(stops, function(stop) { return new Date(stop.startDate); });
 
-      stops[0].mapPointType =  mapConstants.MAP_POINT_TYPE.ORIGIN;
-      stops[stops.length-1].mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
-
       stops = _.map(stops, function(stop){
         return that.getStopMapPointModel(stop);
       });
-
-      //that.loadStatusCode = !destination.isCurrent;
 
       return stops;
     };

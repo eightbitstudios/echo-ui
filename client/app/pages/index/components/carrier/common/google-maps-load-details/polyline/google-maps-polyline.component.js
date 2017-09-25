@@ -2,7 +2,6 @@
 'use strict';
 
 angular.module('echo.components.googleMapsPolyline', [
-  'echo.config.appConstants',
   'echo.services.googleMapsApi'
 ]).component('googleMapsPolyline', {
   require: {
@@ -12,7 +11,7 @@ angular.module('echo.components.googleMapsPolyline', [
     mapPoints: '<',
     loadStatusCode: '<'
   },
-  controller: function (googleMapsApi, appConstants, mapConstants) {
+  controller: function (googleMapsApi, mapConstants) {
 
     var that = this;
 
@@ -20,10 +19,11 @@ angular.module('echo.components.googleMapsPolyline', [
     this.incompleteRoute = [];
 
     this.$onInit = function () {
-      console.log('polyline init', JSON.stringify(this.mapPoints));
-      this.parseMapPoints();
-      this.drawCompletedRoute();
-      this.drawIncompleteRoute();
+      if (!_.isEmpty(this.mapPoints)){
+        this.parseMapPoints();
+        this.drawCompletedRoute();
+        this.drawIncompleteRoute();
+      }
     };
 
     this.drawCompletedRoute = function() {
@@ -88,21 +88,15 @@ angular.module('echo.components.googleMapsPolyline', [
       var isLoadDelivered = that.isLoadDelivered();
 
       if(isLoadDelivered) {
-        // if deliverd just show completed routes
-        this.completedRoute = _.chain(this.mapPoints)
-            .map(function(mp) {
-              if(!mp.isTrackAndTrace()){
-                return mp.getPosition();
-              }
-            })
-            .pull(undefined).pull(null)
-            .value();
+        // if delivered just show completed routes
+        this.completedRoute = this.mapPoints.map(function(mp) {
+          return mp.position;
+        });
       }
 
       else {
         _.each(this.mapPoints, function(mapPoint) {
           var position = mapPoint.position;
-          //var schedule = mapPoint.getWarehouseSchedule();
 
           if (new Date(mapPoint.mapPoint.schedule.getAppointmentStartDate())  < new Date().getTime()) {
             that.completedRoute.push(position);
@@ -111,16 +105,14 @@ angular.module('echo.components.googleMapsPolyline', [
           }
         });
 
-        if (that.trackAndTraceMapPointPosition) {
-          that.completedRoute.push(that.trackAndTraceMapPointPosition);
-          that.incompleteRoute.unshift(that.trackAndTraceMapPointPosition);
-        } else if(_.last(that.completedRoute)) {
+        if(_.last(that.completedRoute)) {
           that.incompleteRoute.unshift(_.last(that.completedRoute));
         }
       }
     };
 
     this.isLoadDelivered = function (){
+      //return true if the last stop's date is before today
       return new Date(this.mapPoints[this.mapPoints.length-1].mapPoint.schedule.getAppointmentStartDate()).getTime() < new Date().getTime();
     };
 

@@ -46,10 +46,6 @@ describe('Component: google-maps-polyline', function () {
         scope.$digest();
       });
 
-      it('parseMapPoints() SHOULD get the position for each marker', function() {
-        expect(component.trackAndTraceMapPointPosition).toBeUndefined();
-      });
-
       it('compileRoutes() SHOULD compile the incomplete route for ', function() {
         expect(component.incompleteRoute).toEqual([ ]);
       });
@@ -60,12 +56,20 @@ describe('Component: google-maps-polyline', function () {
 
     });
 
-    describe('when there is only an ORIGIN and DESTINATION', function () {
+    describe('when there is a stop with  ORIGIN, DESTINATION, and TRACK_AND_TRACE', function () {
       beforeEach(function() {
+        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1)})});
+        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
+        var mp3 = new MapPointModel({mapPointType: 'INCOMPLETE', schedule: new StopScheduleModel({appointmentStart: new Date(1802002283332)})});
+        var mp4 = new MapPointModel({mapPointType: 'CURRENT_LOCATION', schedule: new StopScheduleModel({appointmentStart: new Date(2)})});
+
+        mp1.position = {lat: 1, lng: 1};
+        mp2.position = {lat: 5, lng: 5};
+        mp3.position = {lat: 4, lng: 4};
+        mp4.position = {lat: 3, lng: 3};
 
         var mapPoints = [
-            new MapPointModel({mapPointType: 'ORIGIN', position: {lat: 1, lng: 1}, schedule: completeSchedule }),
-            new MapPointModel({mapPointType: 'DESTINATION', position: {lat: 2, lng: 1}, schedule: incompleteSchedule})
+          mp1, mp4, mp3, mp2
         ];
 
         component = $componentController('googleMapsPolyline', null, {
@@ -82,102 +86,25 @@ describe('Component: google-maps-polyline', function () {
         expect(polyLineSpy).toHaveBeenCalled();
       });
 
-      it('parseMapPoints() SHOULD get the position for each marker', function() {
-        expect(component.trackAndTraceMapPointPosition).not.toBeDefined();
-      });
-
       it('compileRoutes() SHOULD compile the incomplete route for ', function() {
-        expect(component.incompleteRoute).toEqual([{lat: 1, lng: 1}, {lat: 2, lng: 1}]);
-      });
-
-      it('compileRoutes() SHOULD compile the complete route: there is none', function() {
-        //
-        expect(component.completedRoute).toEqual([{ lat: 1, lng: 1 }]);
-      });
-
-    });
-
-    describe('when there is with  ORIGIN, DESTINATION, and TRACK_AND_TRACE', function () {
-      beforeEach(function() {
-        var mapPoints = [
-          new MapPointModel({mapPointType: 'ORIGIN', position: {lat: 1, lng: 1}, schedule: completeSchedule}),
-          new MapPointModel({mapPointType: 'COMPLETE', position: {lat: 2, lng: 1}, schedule: completeSchedule}),
-          new MapPointModel({mapPointType: 'INCOMPLETE', position: {lat: 3, lng: 1}, schedule: incompleteSchedule}),
-          new MapPointModel({mapPointType: 'DESTINATION', position: {lat: 4, lng: 1}, schedule: incompleteSchedule}),
-          new MapPointModel({mapPointType: 'TRACK_AND_TRACE', position: {lat: 5, lng: 1}, schedule: null})
-        ];
-
-        component = $componentController('googleMapsPolyline', null, {
-          mapPoints: mapPoints,
-          loadStatusCode: 'PickedUp'
-        });
-        component.mapsCtrl = { map: {}};
-
-        component.$onInit();
-        scope.$digest();
-      });
-
-      it('should create a Polyline', function() {
-        expect(polyLineSpy).toHaveBeenCalled();
-      });
-
-      it('parseMapPoints() SHOULD get the position for each marker', function() {
-        expect(component.trackAndTraceMapPointPosition).toEqual({lat: 5, lng: 1});
-      });
-
-      it('compileRoutes() SHOULD compile the incomplete route for ', function() {
-        expect(component.incompleteRoute).toEqual([{lat: 5, lng: 1},{lat: 3, lng: 1},{lat: 4, lng: 1}]);
+        expect(component.incompleteRoute).toEqual([{ lat: 3, lng: 3 }, {lat: 4, lng: 4},{lat: 5, lng:5}]);
       });
 
       it('compileRoutes() SHOULD compile the complete route', function() {
-        expect(component.completedRoute).toEqual([{lat: 1, lng: 1},{lat: 2, lng: 1}, {lat: 5, lng: 1}]);
+        expect(component.completedRoute).toEqual([{lat: 1, lng: 1},{lat: 3, lng: 3}]);
       });
 
     });
 
-    describe('when the load is CANCELED and there is with ORIGIN, DESTINATION, and TRACK_AND_TRACE', function () {
+    describe('when the load is not delivered and there is an ORIGIN, DESTINATION', function () {
       beforeEach(function() {
+
+        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
+        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
+        mp1.position = {lat: 1, lng: 1};
+        mp2.position = {lat: 3, lng: 3};
         var mapPoints = [
-          new MapPointModel({mapPointType: 'ORIGIN', position: {lat: 1, lng: 1}, schedule: completeSchedule}),
-          new MapPointModel({mapPointType: 'DESTINATION', position: {lat: 3, lng: 3}, schedule: incompleteSchedule}),
-          new MapPointModel({mapPointType: 'TRACK_AND_TRACE', position: {lat: 2, lng: 1}})
-        ];
-
-        component = $componentController('googleMapsPolyline', null, {
-          mapPoints: mapPoints,
-          loadStatusCode: 'Cancelled'
-        });
-
-        component.mapsCtrl = { map: {}};
-
-        component.$onInit();
-        scope.$digest();
-      });
-
-      it('should create a Polyline', function() {
-        expect(polyLineSpy).not.toHaveBeenCalled();
-      });
-
-      it('parseMapPoints() SHOULD get the position the track and trace marker', function() {
-        expect(component.trackAndTraceMapPointPosition).toEqual(undefined);
-      });
-
-      it('compileRoutes() SHOULD compile the incomplete route for ', function() {
-        expect(component.incompleteRoute).toEqual([]);
-      });
-
-      it('compileRoutes() SHOULD compile the complete route', function() {
-        expect(component.completedRoute).toEqual([]);
-      });
-
-    });
-
-
-    describe('when the load is UNLOADING and there is an ORIGIN, DESTINATION, and TRACK_AND_TRACE', function () {
-      beforeEach(function() {
-        var mapPoints = [
-          new MapPointModel({mapPointType: 'ORIGIN', position: {lat: 1, lng: 1}, schedule: new StopScheduleModel({actualDeparture: new Date(20170418)})}),
-          new MapPointModel({mapPointType: 'DESTINATION', position: {lat: 3, lng: 3}, schedule: new StopScheduleModel({actualArrival: new Date(new Date(20170423))})})
+          mp1, mp2
         ];
 
         component = $componentController('googleMapsPolyline', null, {
@@ -195,25 +122,24 @@ describe('Component: google-maps-polyline', function () {
         expect(polyLineSpy).toHaveBeenCalled();
       });
 
-      it('parseMapPoints() SHOULD get the position for each marker', function() {
-        expect(component.trackAndTraceMapPointPosition).not.toBeDefined();
-      });
-
       it('compileRoutes() SHOULD compile the incomplete route for ', function() {
-        expect(component.incompleteRoute).toEqual([{lat: 3, lng: 3}]);
+        expect(component.incompleteRoute).toEqual([{lat: 1, lng: 1}, {lat: 3, lng: 3}]);
       });
 
       it('compileRoutes() SHOULD compile the complete route', function() {
-        expect(component.completedRoute).toEqual([{lat: 1, lng: 1}, {lat: 3, lng: 3}]);
+        expect(component.completedRoute).toEqual([]);
       });
 
     });
 
-    describe('when the load is DELIVERED and there is with ORIGIN, DESTINATION, and TRACK_AND_TRACE', function () {
+    describe('when the load is DELIVERED and there is with ORIGIN, DESTINATION', function () {
       beforeEach(function() {
+        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1)})});
+        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(2)})});
+        mp1.position = {lat: 1, lng: 1};
+        mp2.position = {lat: 3, lng: 3};
         var mapPoints = [
-          new MapPointModel({mapPointType: 'ORIGIN', position: {lat: 1, lng: 1}, schedule: new StopScheduleModel({actualDeparture: new Date()})}),
-          new MapPointModel({mapPointType: 'DESTINATION', position: {lat: 3, lng: 3}, schedule: new StopScheduleModel({actualDeparture: new Date()})})
+          mp1, mp2
         ];
 
         component = $componentController('googleMapsPolyline', null, {
@@ -229,10 +155,6 @@ describe('Component: google-maps-polyline', function () {
 
       it('should create a Polyline', function() {
         expect(polyLineSpy).toHaveBeenCalled();
-      });
-
-      it('parseMapPoints() SHOULD get the position for each marker', function() {
-        expect(component.trackAndTraceMapPointPosition).not.toBeDefined();
       });
 
       it('compileRoutes() SHOULD compile the incomplete route for ', function() {

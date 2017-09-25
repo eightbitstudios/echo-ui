@@ -2,7 +2,6 @@
 'use strict';
 
 angular.module('echo.components.googleMapsMarkerLoadDetails', [
-  'echo.config.appConstants',
   'echo.services.googleMapsApi'
 ]).component('googleMapsMarkerLoadDetails', {
   require: {
@@ -12,11 +11,9 @@ angular.module('echo.components.googleMapsMarkerLoadDetails', [
     mapMarker: '<'
   },
   controller: function ($timeout, mapConstants, googleMapsApi) { // jshint ignore:line
-    /* jshint ignore:start */
     var that = this;
 
     this.$onInit = function () {
-      console.log('marker init ', JSON.stringify(that.mapMarker));
       googleMapsApi.then(
         function (google) {
 
@@ -40,7 +37,6 @@ angular.module('echo.components.googleMapsMarkerLoadDetails', [
           console.warn('error loading google maps component', error);
         });
     };
-    /* jshint ignore:end */
 
     this.getMarkerUrl = function(markerType){
       return mapConstants.MAP_POINT_TYPE_ICON[markerType];
@@ -48,7 +44,7 @@ angular.module('echo.components.googleMapsMarkerLoadDetails', [
 
     this.getMarkerAnchor = function(markerType){
       if(markerType === mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION) {
-        // Anchor the marker for track and trace to align it directly on top of the progress lines
+        // Anchor the marker for current location to align it directly on top of the progress lines
         return new google.maps.Point(22, 22); // jshint ignore:line
       }
     };
