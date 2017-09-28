@@ -59,11 +59,11 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     };
 
     that.buildMapPointsFromStops = function(currentLocation, timeStamp) {
-      var that = this;
 
       var stops = [];
 
       stops = stops.concat(that.loadDetails.pickUp).concat(that.loadDetails.delivery);
+
       //sort stops by startDate, before current location is added, so we can assign stop numbers
       stops = _.sortBy(stops, function(stop) { return new Date(stop.startDate); });
       _.forEach(stops, function(stop, index){
@@ -73,10 +73,10 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 
       //designate the first stop as the origin and the last stop as the destination
       stops[0].mapPointType =  mapConstants.MAP_POINT_TYPE.ORIGIN;
-      stops[stops.length-1].mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
+      _.last(stops).mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
 
       //add currentLocation as a stop with date as the current date, if the load is not delivered
-      if (currentLocation && !stops[stops.length-1].arrivalDate){
+      if (currentLocation && !_.last(stops).arrivalDate){
         //timeStamp comes in the format x hours/minutes/seconds ago, use moment to parse that into a usable format
         var timeStampArr = timeStamp.split(' ');
         currentLocation.arrivalDate = currentLocation.startDate = moment().subtract(timeStampArr[0].replace(',', ''), timeStampArr[1]);
