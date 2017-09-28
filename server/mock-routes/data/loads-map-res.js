@@ -259,7 +259,7 @@ module.exports = [
       "lastLogin": "6/30/2017 12:00:00 AM",
       "isDriverAssignedToLoad": false
     },
-    "timeStamp": "596.42 hours ago",
+    "timeStamp": "69.42 hours ago",
     "capturedBy": {
       "firstName": "John",
       "id": 0,

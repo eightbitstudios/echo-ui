@@ -58,10 +58,10 @@ describe('Component: google-maps-polyline', function () {
 
     describe('when there is a stop with  ORIGIN, DESTINATION, and TRACK_AND_TRACE', function () {
       beforeEach(function() {
-        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1)})});
+        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1), actualArrival: new Date(1)})});
         var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
         var mp3 = new MapPointModel({mapPointType: 'INCOMPLETE', schedule: new StopScheduleModel({appointmentStart: new Date(1802002283332)})});
-        var mp4 = new MapPointModel({mapPointType: 'CURRENT_LOCATION', schedule: new StopScheduleModel({appointmentStart: new Date(2)})});
+        var mp4 = new MapPointModel({mapPointType: 'CURRENT_LOCATION', schedule: new StopScheduleModel({appointmentStart: new Date(2), actualArrival: new Date(2)})});
 
         mp1.position = {lat: 1, lng: 1};
         mp2.position = {lat: 5, lng: 5};
@@ -134,8 +134,8 @@ describe('Component: google-maps-polyline', function () {
 
     describe('when the load is DELIVERED and there is with ORIGIN, DESTINATION', function () {
       beforeEach(function() {
-        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1)})});
-        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(2)})});
+        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1), actualArrival: new Date(1)})});
+        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(2), actualArrival: new Date(2)})});
         mp1.position = {lat: 1, lng: 1};
         mp2.position = {lat: 3, lng: 3};
         var mapPoints = [

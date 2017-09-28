@@ -2,10 +2,10 @@ angular.module('echo.components.loadDetailsMap', [
   'echo.config.appConstants',
   'echo.services.googleMapsApi',
   'echo.services.googleMaps',
-  'echo.components.googleMapsLoadDetails',
-  'echo.components.googleMapsMarkerLoadDetails',
+  'echo.components.googleMaps',
+  'echo.components.googleMapsMarker',
   'echo.components.googleMapsPolyline',
-  'echo.components.googleMapsInfoWindowLoadDetails',
+  'echo.components.googleMapsInfoWindow',
   'echo.components.loadMap.warehouseInfoWindow',
   'echo.components.loading'
 ])

@@ -5,7 +5,7 @@ angular.module('echo.components.googleMapsPolyline', [
   'echo.services.googleMapsApi'
 ]).component('googleMapsPolyline', {
   require: {
-    mapsCtrl: '^googleMapsLoadDetails'
+    mapsCtrl: '^googleMaps'
   },
   bindings: {
     mapPoints: '<',
@@ -98,7 +98,7 @@ angular.module('echo.components.googleMapsPolyline', [
         _.each(this.mapPoints, function(mapPoint) {
           var position = mapPoint.position;
 
-          if (new Date(mapPoint.mapPoint.schedule.getAppointmentStartDate())  < new Date().getTime()) {
+          if (mapPoint.mapPoint.schedule.hasActualArrivalDate()) {
             that.completedRoute.push(position);
           } else {
             that.incompleteRoute.push(position);
@@ -113,7 +113,7 @@ angular.module('echo.components.googleMapsPolyline', [
 
     this.isLoadDelivered = function (){
       //return true if the last stop's date is before today
-      return new Date(this.mapPoints[this.mapPoints.length-1].mapPoint.schedule.getAppointmentStartDate()).getTime() < new Date().getTime();
+      return this.mapPoints[this.mapPoints.length-1].mapPoint.schedule.hasActualArrivalDate();
     };
 
   }

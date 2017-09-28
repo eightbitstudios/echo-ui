@@ -44,7 +44,9 @@ module.exports = {
         "endTime": "15:00",
         "timeZone": "CT",
         "startDate": "06/05/2017 3:00:00 PM",
-        "endDate": "06/05/2017 3:00:00 PM"
+        "endDate": "06/05/2017 3:00:00 PM",
+        "arrivalDate": "06/06/2017 3:00:00 PM",
+        "departureDate": "06/06/2017 3:00:00 PM"
       }],
       "delivery": [{
         "pickupNumber": "",
@@ -78,7 +80,9 @@ module.exports = {
         "endTime": "17:00",
         "timeZone": "CT",
         "startDate": "06/07/2017 12:00:00 PM",
-        "endDate": "06/07/2017 5:00:00 PM"
+        "endDate": "06/07/2017 5:00:00 PM",
+        "arrivalDate": "06/08/2017 3:00:00 PM",
+        "departureDate": "06/08/2017 3:00:00 PM"
       },
         {
           "pickupNumber": "",

@@ -23,27 +23,12 @@ describe('StopScheduleModel', function () {
     var actualArrival = stopScheduleModel.getActualArrivalDate();
     var actualDeparture = stopScheduleModel.getActualDepartureDate();
 
-    console.log('appointmentStart ' + appointmentStart);
     expect(moment.isMoment(appointmentStart)).toBe(true);
     expect(moment.isMoment(appointmentEnd)).toBe(true);
     expect(moment.isMoment(actualArrival)).toBe(false);
     expect(moment.isMoment(actualDeparture)).toBe(false);
   });
 
-
-  it('should identify stop types', function() {
-    expect(stopScheduleModel.isPickup()).toBe(true);
-    expect(stopScheduleModel.isDelivery()).toBe(false);
-
-    stopScheduleModel.setStopType('Delivery');
-
-    expect(stopScheduleModel.isPickup()).toBe(false);
-    expect(stopScheduleModel.isDelivery()).toBe(true);
-  });
-
-  it('should identify it if has an appointment', function() {
-    expect(stopScheduleModel.hasAppointment()).toBe(true);
-  });
 
   it('should identify it if has an actual arrival and departure', function() {
     expect(stopScheduleModel.hasActualArrivalDate()).toBe(false);
@@ -54,28 +39,6 @@ describe('StopScheduleModel', function () {
 
     expect(stopScheduleModel.hasActualArrivalDate()).toBe(true);
     expect(stopScheduleModel.hasActualDepartureDate()).toBe(true);
-  });
-
-  it('should provide a date label dependent on schedule for Pickups', function() {
-    expect(stopScheduleModel.getDateLabel()).toBe('Estimated Pickup');
-
-    stopScheduleModel.setActualArrivalDate(new moment());
-    expect(stopScheduleModel.getDateLabel()).toBe('Estimated Pickup');
-
-    stopScheduleModel.setActualDepartureDate(new moment());
-    expect(stopScheduleModel.getDateLabel()).toBe('Picked Up');
-  });
-
-  it('should provide a date label dependent on schedule for Pickups', function() {
-    stopScheduleModel.setStopType('Delivery');
-
-    expect(stopScheduleModel.getDateLabel()).toBe('Estimated Delivery');
-
-    stopScheduleModel.setActualArrivalDate(new moment());
-    expect(stopScheduleModel.getDateLabel()).toBe('Estimated Delivery');
-
-    stopScheduleModel.setActualDepartureDate(new moment());
-    expect(stopScheduleModel.getDateLabel()).toEqual('Delivered');
   });
 
   it('should identify same day appointments', function() {

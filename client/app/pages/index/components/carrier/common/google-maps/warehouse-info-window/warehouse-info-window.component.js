@@ -13,7 +13,6 @@ angular.module('echo.components.loadMap.warehouseInfoWindow', [])
         that.isOrigin = that.mapMarker.isOrigin();
         that.isDestination = that.mapMarker.isDestination();
         that.isTemporaryStop = !that.mapMarker.isDestination() && !that.mapMarker.isOrigin();
-        that.scheduleHeader = that.schedule.getDateLabel();
 
         if (that.isOrigin) {
           that.infoWindowHeader = 'Origin';

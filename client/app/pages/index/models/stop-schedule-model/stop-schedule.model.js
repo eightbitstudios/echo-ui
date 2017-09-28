@@ -39,26 +39,12 @@ angular.module('echo.models.stopScheduleModel', [
       function StopScheduleModel(stopSchedule) {
         this.stopSchedule = {};
 
-        this.stopSchedule.guaranteedTypeId = stopSchedule.guaranteedTypeId;
-
         this.setStopType(stopSchedule.stopType);
         this.setAppointmentStartDate(stopSchedule.appointmentStart);
         this.setAppointmentEndDate(stopSchedule.appointmentEnd);
         this.setActualArrivalDate(stopSchedule.actualArrival);
         this.setActualDepartureDate(stopSchedule.actualDeparture);
       }
-
-      StopScheduleModel.prototype.getGuaranteedTypeId = function () {
-        return this.stopSchedule.guaranteedTypeId;
-      };
-
-      StopScheduleModel.prototype.isPickup = function () {
-        return this.stopSchedule.stopType === 'Pickup';
-      };
-
-      StopScheduleModel.prototype.isDelivery = function () {
-        return this.stopSchedule.stopType === 'Delivery';
-      };
 
       StopScheduleModel.prototype.setStopType = function (stopType) {
         this.stopSchedule.stopType = stopType;
@@ -83,12 +69,6 @@ angular.module('echo.models.stopScheduleModel', [
         this.stopSchedule.appointmentEnd = _convertToMoment(date);
       };
 
-      StopScheduleModel.prototype.hasAppointment = function() {
-        return !_.isEmpty(this.getAppointmentStartDate()) || !_.isEmpty(this.getAppointmentEndDate());
-      };
-
-
-
       StopScheduleModel.prototype.getActualArrivalDate = function () {
         return this.stopSchedule.actualArrival;
       };
@@ -101,8 +81,6 @@ angular.module('echo.models.stopScheduleModel', [
         return !_.isEmpty(this.getActualArrivalDate());
       };
 
-
-
       StopScheduleModel.prototype.getActualDepartureDate = function () {
         return this.stopSchedule.actualDeparture;
       };
@@ -113,28 +91,6 @@ angular.module('echo.models.stopScheduleModel', [
 
       StopScheduleModel.prototype.hasActualDepartureDate = function() {
         return !_.isEmpty(this.getActualDepartureDate());
-      };
-
-
-
-    // This would be better left as a view concern, but in an effort to standardize
-      // the presentation of the dates the consolidation seemed to outway the anti-pattern
-      StopScheduleModel.prototype.getDateLabel = function() {
-        if(this.isPickup()){
-          if(this.hasActualDepartureDate()){
-            return 'Picked Up';
-          } else if (this.getAppointmentStartDate() || this.getAppointmentEndDate()) {
-            return 'Estimated Pickup';
-          }
-        }
-
-        else if(this.isDelivery()) {
-          if(this.hasActualDepartureDate()){
-            return 'Delivered';
-          } else if (this.getAppointmentStartDate() || this.getAppointmentEndDate()) {
-            return 'Estimated Delivery';
-          }
-        }
       };
 
       StopScheduleModel.prototype.hasSameDayAppointment = function() {

@@ -5,7 +5,7 @@ angular.module('echo.components.googleMapsMarkerLoadDetails', [
   'echo.services.googleMapsApi'
 ]).component('googleMapsMarkerLoadDetails', {
   require: {
-    mapsCtrl: '^googleMapsLoadDetails'
+    mapsCtrl: '^googleMaps'
   },
   bindings: {
     mapMarker: '<'

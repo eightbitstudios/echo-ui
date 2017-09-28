@@ -26,7 +26,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid'))
         .then(function(mapPointData) {
           if (mapPointData) {
-            that.mapPoints = that.buildMapPointsFromStops(mapPointData.currentLocation);
+            that.mapPoints = that.buildMapPointsFromStops(mapPointData.currentLocation, mapPointData.timeStamp);
           }
           that.showMap = true;
         });
@@ -36,9 +36,8 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       return new StopScheduleModel({
         stopType: stop.stopType,
         appointmentStart: stop.startDate,
-        appointmentEnd: stop.endDate,
-        actualArrival: stop.actualArrival,
-        actualDeparture: stop.actualDeparture
+        actualArrival: stop.arrivalDate,
+        actualDeparture: stop.departureDate
       });
     };
 
@@ -59,7 +58,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       });
     };
 
-    that.buildMapPointsFromStops = function(currentLocation) {
+    that.buildMapPointsFromStops = function(currentLocation, timeStamp) {
       var that = this;
 
       var stops = [];
@@ -77,8 +76,10 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       stops[stops.length-1].mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
 
       //add currentLocation as a stop with date as the current date, if the load is not delivered
-      if (currentLocation && new Date(stops[stops.length-1].startDate).getTime() > new Date().getTime()){
-        currentLocation.startDate = new Date();
+      if (currentLocation && !stops[stops.length-1].arrivalDate){
+        //timeStamp comes in the format x hours/minutes/seconds ago, use moment to parse that into a usable format
+        var timeStampArr = timeStamp.split(' ');
+        currentLocation.arrivalDate = currentLocation.startDate = moment().subtract(timeStampArr[0].replace(',', ''), timeStampArr[1]);
         currentLocation.mapPointType = mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION;
         stops.push(currentLocation);
       }
