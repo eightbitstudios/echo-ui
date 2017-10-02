@@ -8,20 +8,19 @@
 
   <div class="gm-info-window-body">
     <div class="address-container">
-      <p class="warehouse-name">{{$ctrl.mapMarker.getName()}}</p>
-      <p>{{$ctrl.mapMarker.getAddress1()}}</p>
-      <p>{{$ctrl.mapMarker.getAddress2()}}</p>
-      <p>{{$ctrl.mapMarker.getAddress3()}}</p>
-      <p>{{$ctrl.mapMarker.getCity()}}, {{$ctrl.mapMarker.getStateCode()}} {{$ctrl.mapMarker.getPostalCode()}}</p>
-      <p>{{$ctrl.mapMarker.getCountryCode()}}</p>
+      <div class="warehouse-name">{{$ctrl.mapMarker.getName()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress1()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress2()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress3()}}</div>
+      <div>{{$ctrl.mapMarker.getCity()}}, {{$ctrl.mapMarker.getStateCode()}} {{$ctrl.mapMarker.getPostalCode()}}</div>
+      <div>{{$ctrl.mapMarker.getCountryCode()}}</div>
+      <br>
     </div>
 
     <div class="schedule-container">
-
       <div>
-        <p>{{$ctrl.schedule.getDate()}}</p>
-        <p>{{$ctrl.schedule.getTime()}}</p>
-        <p class="guaranteed-by-text">{{$ctrl.schedule.getGuaranteedByLabel()}}</p>
+        <div>{{$ctrl.schedule.getDate()}}</div>
+        <div>{{$ctrl.schedule.getTime()}}</div>
       </div>
     </div>
   </div>

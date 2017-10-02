@@ -45,7 +45,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 
       return new MapPointModel({
         stopNumber: _.get(stop, 'stopNumber'),
-        mapPointType: _.get(stop, 'mapPointType', mapConstants.MAP_POINT_TYPE.INCOMPLETE),
+        mapPointType: _.get(stop, 'mapPointType'),
         countryCode:  _.get(stop, 'country'),
         name:  _.get(stop, 'name'),
         address1:  _.get(stop, 'address'),
@@ -69,9 +69,17 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       _.forEach(stops, function(stop, index){
         //add stop number here
         stop.stopNumber = index;
+
+        //assign map point type incomplete or complete based on whether the stop has an arrival date or not
+        if (stop.arrivalDate) {
+          stop.mapPointType = mapConstants.MAP_POINT_TYPE.COMPLETE;
+        }
+        else {
+          stop.mapPointType = mapConstants.MAP_POINT_TYPE.INCOMPLETE;
+        }
       });
 
-      //designate the first stop as the origin and the last stop as the destination
+      //designate the first stop as the origin and the last stop as the destination (overwrite type set previously)
       stops[0].mapPointType =  mapConstants.MAP_POINT_TYPE.ORIGIN;
       _.last(stops).mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
 
