@@ -70,8 +70,8 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         //add stop number here
         stop.stopNumber = index;
 
-        //assign map point type incomplete or complete based on whether the stop has an arrival date or not
-        if (stop.arrivalDate) {
+        //assign map point type incomplete or complete based on whether the stop has an departure date or not
+        if (stop.departureDate) {
           stop.mapPointType = mapConstants.MAP_POINT_TYPE.COMPLETE;
         }
         else {
