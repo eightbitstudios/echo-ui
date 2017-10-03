@@ -12,7 +12,7 @@ angular.module('echo.components.loadDetailsMap', [
   .constant('googleMapsConst', {
     detailedInfoOffset: {
       x: 230,
-      y: 262
+      y: 308
     },
     defaultOffset: {
       x: 175,

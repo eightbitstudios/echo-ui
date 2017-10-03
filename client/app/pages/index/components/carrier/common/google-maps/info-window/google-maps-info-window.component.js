@@ -19,12 +19,14 @@ angular.module('echo.components.googleMapsInfoWindow', [
 
       that.$onInit = function () {
         googleMapsApi.then(function (google) {
-          var infoWindow = new google.maps.InfoWindow({
+          var infoWindow = {
             content: $element[0]
-          });
+          };
           if (!that.isDetails){
             infoWindow.pixelOffset = new google.maps.Size(that.mapsCtrl.popupOffset.x, that.mapsCtrl.popupOffset.y);
           }
+
+          infoWindow = new google.maps.InfoWindow(infoWindow);
 
           that.markerCtrl.marker.addListener('click', function () {
 
