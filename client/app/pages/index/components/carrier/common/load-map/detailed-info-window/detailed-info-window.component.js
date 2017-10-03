@@ -14,7 +14,7 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
       expanded: '<',
       actionChangedCallback: '&'
     },
-    controller: function (store$, routesConfig, PagingModel) {
+    controller: function (store$, routesConfig, PagingModel, $state) {
       var that = this;
 
       that.previousLoad = function () {
@@ -40,6 +40,7 @@ angular.module('echo.components.loadMap.detailedInfoWindow', [
         that.carrierId = store$.getState().carrier.carrierId;
         that.loadDetails = routesConfig.INDEX.loadDetails.name;
         that.noDriver = _.isUndefined(_.get(that.selectedLoad.driver, 'id'));
+        that.currentStateName = $state.$current.name;
       };
     }
   });

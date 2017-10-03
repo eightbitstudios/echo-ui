@@ -1,7 +1,7 @@
 <div class="gm-info-window">
   <div class="gm-overlay-header">
     <h2 class="load-number">
-      <a ui-sref="{{$ctrl.loadDetails}}({loadId: $ctrl.selectedLoad.loadGuid})">{{$ctrl.selectedLoad.loadId}}</a>
+      <a ui-sref="{{$ctrl.loadDetails}}({loadId: $ctrl.selectedLoad.loadGuid, previous: $ctrl.currentStateName})">{{$ctrl.selectedLoad.loadId}}</a>
     </h2>
     <div class="btn btn-default" ng-if="!$ctrl.expanded" ng-click="$ctrl.viewMapHandler({mapPoint: $ctrl.selectedLoad})">View Map</div>
     <action-button ng-if="$ctrl.expanded" load="$ctrl.selectedLoad" action-changed-callback="$ctrl.actionChangedCallback()" carrier-id="$ctrl.carrierId"></action-button>
