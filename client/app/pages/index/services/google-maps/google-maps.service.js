@@ -10,6 +10,9 @@ angular.module('echo.services.googleMaps', [
         geocoder.geocode({ 'address': _.template('${city}, ${state}')({ city: _.get(mapPoint.currentLocation, 'cityName'), state: _.get(mapPoint.currentLocation, 'stateCode') }) }, function (results, status) {
           if (status === 'OK') {
             mapPoint.position = results[0].geometry.location;
+            if (mapPoint.setPosition){
+              mapPoint.setPosition(results[0].geometry.location.toJSON());
+            }
           }
           deferred.resolve();
         });

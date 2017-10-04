@@ -188,8 +188,8 @@ module.exports = [
     "loadId": 22229647,
     "loadGuid": "6bc91eb3660647fb8677fec32d0e9690",
     "currentLocation": {
-      "cityName": "CHICAGO",
-      "stateCode": "IL",
+      "cityName": "Denver",
+      "stateCode": "CO",
       "stateId": 0
     },
     "pickUp": {
@@ -224,7 +224,7 @@ module.exports = [
       "name": "ATL Warehouse",
       "address": "900 ABC Ln",
       "city": "ATLANTA",
-      "state": "TX",
+      "state": "GA",
       "zip": "75551",
       "country": "US",
       "day": "Thu, May 25",
@@ -259,7 +259,7 @@ module.exports = [
       "lastLogin": "6/30/2017 12:00:00 AM",
       "isDriverAssignedToLoad": false
     },
-    "timeStamp": "596.42 hours ago",
+    "timeStamp": "69.42 hours ago",
     "capturedBy": {
       "firstName": "John",
       "id": 0,

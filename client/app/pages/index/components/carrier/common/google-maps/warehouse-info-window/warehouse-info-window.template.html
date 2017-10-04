@@ -1,0 +1,29 @@
+<div class="gm-warehouse-info-window" ng-blur="$ctrl.closeInfoWindow()">
+
+  <div class="gm-info-window-header">
+    <span>
+      {{$ctrl.infoWindowHeader}}
+    </span>
+  </div>
+
+  <div class="gm-info-window-body">
+    <div class="address-container">
+      <div class="warehouse-name">{{$ctrl.mapMarker.getName()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress1()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress2()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress3()}}</div>
+      <div>{{$ctrl.mapMarker.getCity()}}, {{$ctrl.mapMarker.getStateCode()}} {{$ctrl.mapMarker.getPostalCode()}}</div>
+      <div>{{$ctrl.mapMarker.getCountryCode()}}</div>
+      <br>
+    </div>
+
+    <div class="schedule-container">
+      <div>
+        <div>{{$ctrl.schedule.getDate()}}</div>
+        <div>{{$ctrl.schedule.getTime()}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
