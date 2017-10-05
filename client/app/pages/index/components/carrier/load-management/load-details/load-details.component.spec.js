@@ -68,7 +68,9 @@ describe('Component: loadDetails', function() {
     it('should not show map point if load doesnt have one', function() {
       var mapPoint = null;
       component.loadDetails = {
-        loadGuid: 'ABC'
+        loadGuid: 'ABC',
+        pickUp: [],
+        delivery: []
       };
 
       loadsApi.fetchMapPointByLoadGuid.and.returnValue($q.when(mapPoint));

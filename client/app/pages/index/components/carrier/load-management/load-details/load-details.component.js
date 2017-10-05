@@ -25,9 +25,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       that.mapPoints = [];
       loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid'))
         .then(function(mapPointData) {
-          if (mapPointData) {
-            that.mapPoints = that.buildMapPointsFromStops(mapPointData.currentLocation, mapPointData.timeStamp);
-          }
+            that.mapPoints = that.buildMapPointsFromStops(_.get(mapPointData, 'currentLocation'), _.get(mapPointData, 'timeStamp'));
           that.showMap = true;
         });
     };
@@ -65,7 +63,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       stops = stops.concat(that.loadDetails.pickUp).concat(that.loadDetails.delivery);
 
       //sort stops by startDate, before current location is added, so we can assign stop numbers
-      stops = _.sortBy(stops, function(stop) { return new Date(stop.startDate); });
+      stops = _.sortBy(stops, function(stop) { return new Date(_.get(stop, 'startDate')); });
       _.forEach(stops, function(stop, index){
         //add stop number here
         stop.stopNumber = index;
@@ -80,8 +78,10 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       });
 
       //designate the first stop as the origin and the last stop as the destination (overwrite type set previously)
-      stops[0].mapPointType =  mapConstants.MAP_POINT_TYPE.ORIGIN;
-      _.last(stops).mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
+      if (stops[0]){
+        stops[0].mapPointType =  mapConstants.MAP_POINT_TYPE.ORIGIN;
+        _.last(stops).mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
+      }
 
       //add currentLocation as a stop with date as the current date, if the load is not delivered
       if (currentLocation && !_.last(stops).arrivalDate){
@@ -92,7 +92,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         stops.push(currentLocation);
       }
 
-      stops = _.sortBy(stops, function(stop) { return new Date(stop.startDate); });
+      stops = _.sortBy(stops, function(stop) { return new Date(_.get(stop, 'startDate')); });
 
       stops = _.map(stops, function(stop){
         return that.getStopMapPointModel(stop);
