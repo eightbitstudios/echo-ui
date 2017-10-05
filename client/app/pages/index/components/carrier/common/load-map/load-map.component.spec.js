@@ -1,5 +1,5 @@
 describe('Component: loadMap', function() {
-  var scope, component, $q, googleMapsApi, googleMaps, google, mapPoints, googleMapsConst;
+  var scope, component, $q, googleMapsApi, googleMaps, google, mapPoints, googleMapsConst, $state;
 
   beforeEach(function() {
     module('load-map.component.html');
@@ -9,7 +9,7 @@ describe('Component: loadMap', function() {
     });
   });
 
-  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController, _googleMapsConst_) {
+  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController, _googleMapsConst_, _$state_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -17,6 +17,7 @@ describe('Component: loadMap', function() {
 
     googleMapsConst = _googleMapsConst_;
     $q = _$q_;
+    $state = _$state_;
 
     google = {
       maps: {
@@ -87,6 +88,20 @@ describe('Component: loadMap', function() {
       scope.$digest();
 
       expect(googleMaps.formatMapPoints).toHaveBeenCalled();
+    });
+  });
+
+  describe('Function: $onChanges', function() {
+    it('should return true if this is the load management page', function() {
+      $state.current.name = 'index.carrier.loadManagement.activeLoads';
+
+      expect(component.isLoadManagementPage()).toBe(true);
+    });
+
+    it('should return true false this is not the load management page', function() {
+      $state.current.name = 'index.carrier.dashboard';
+
+      expect(component.isLoadManagementPage()).toBe(false);
     });
   });
 });
