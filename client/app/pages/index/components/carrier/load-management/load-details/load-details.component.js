@@ -25,9 +25,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       that.mapPoints = [];
       loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid'))
         .then(function(mapPointData) {
-          if (mapPointData) {
-            that.mapPoints = that.buildMapPointsFromStops(mapPointData.currentLocation, mapPointData.timeStamp);
-          }
+            that.mapPoints = that.buildMapPointsFromStops(_.get(mapPointData, 'currentLocation'), _.get(mapPointData, 'timeStamp'));
           that.showMap = true;
         });
     };
