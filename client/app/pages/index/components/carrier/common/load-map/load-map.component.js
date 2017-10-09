@@ -6,7 +6,9 @@ angular.module('echo.components.loadMap', [
     'echo.components.googleMapsInfoWindow',
     'echo.components.loadMap.detailedInfoWindow',
     'echo.components.loadMap.basicInfoWindow',
-    'echo.components.loading'
+    'echo.components.loading',
+    'echo.config.routes',
+    'ui.router'
   ])
   .constant('googleMapsConst', {
     detailedInfoOffset: {
@@ -29,7 +31,7 @@ angular.module('echo.components.loadMap', [
       carrierId: '<',
       mapRefreshHandler: '&'
     },
-    controller: function ($q, googleMapsApi, googleMaps, googleMapsConst) {
+    controller: function ($q, googleMapsApi, googleMaps, googleMapsConst, routesConfig, $state) {
       this.$onChanges = function(changeObj) {
         var that = this;
 
@@ -57,6 +59,10 @@ angular.module('echo.components.loadMap', [
         _.forEach(this.mapPoints, function (mapPoint) {
           mapPoint.loadNumber = mapPoint.loadId;
         });
+      };
+
+      this.isLoadManagementPage = function(){
+        return $state.current.name === routesConfig.INDEX.activeLoads.name;
       };
     }
   });
