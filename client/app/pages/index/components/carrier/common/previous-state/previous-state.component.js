@@ -5,10 +5,12 @@ angular.module('echo.index.carrier.previousState', [
   bindings: {
     linkType: '@?'
   },
-  controller: function($stateParams, routesConfig) {
+  controller: function($stateParams, routesConfig, $window) {
     var that = this;
 
     that.$onInit = function() {
+      this.$window = $window;
+
       var previousRoute = _.find(routesConfig.INDEX, function(route) {
         return route.name === $stateParams.previous;
       });
