@@ -87,10 +87,9 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         _.last(stops).mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
       }
 
-      //add currentLocation as a stop with date as the current date, if the load is not delivered
-      //_.get(mapPointData, 'currentLocation'), _.get(mapPointData, 'timeStamp'), _.get(mapPointData, 'driver.firstName')
+      //add currentLocation as a stop with date as the current date, if the load is not delivered and the load has left the origin
       var currentLocation = _.get(mapPointData, 'currentLocation');
-      if (currentLocation && !_.last(stops).arrivalDate){
+      if (currentLocation && !_.last(stops).arrivalDate && _.first(stops).departureDate){
         //timeStamp comes in the format x hours/minutes/seconds ago, use moment to parse that into a usable format
         var timeStampArr = _.get(mapPointData, 'timeStamp').split(' ');
 
@@ -98,10 +97,10 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         currentLocation.reportTime = _.get(mapPointData, 'timeStamp');
         currentLocation.mapPointType = mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION;
         currentLocation.driverName = _.get(mapPointData, 'driver.firstName', '') + ' ' + _.get(mapPointData, 'driver.lastName', ' ').substring(0, 1);
-        stops.push(currentLocation);
-      }
 
-      stops = _.sortBy(stops, function(stop) { return new Date(_.get(stop, 'startDate')); });
+        //get the index of the last stop with a departure date and insert current position there
+        stops.splice(_.findLastIndex(stops, function(stop){ return stop.departureDate; })+1, 0, currentLocation);
+      }
 
       stops = _.map(stops, function(stop){
         return that.getStopMapPointModel(stop);
