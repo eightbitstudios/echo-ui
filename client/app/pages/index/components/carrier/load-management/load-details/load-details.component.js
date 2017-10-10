@@ -25,7 +25,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       that.mapPoints = [];
       loadsApi.fetchMapPointByLoadGuid(_.get(that.loadDetails, 'loadGuid'))
         .then(function(mapPointData) {
-            that.mapPoints = that.buildMapPointsFromStops(_.get(mapPointData, 'currentLocation'), _.get(mapPointData, 'timeStamp'));
+            that.mapPoints = that.buildMapPointsFromStops(mapPointData);
           that.showMap = true;
         });
     };
@@ -35,7 +35,9 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         stopType: stop.stopType,
         appointmentStart: stop.startDate,
         actualArrival: stop.arrivalDate,
-        actualDeparture: stop.departureDate
+        actualDeparture: stop.departureDate,
+        formattedDayTime: stop.formattedDayTime,
+        timeZone: stop.timeZone
       });
     };
 
@@ -52,11 +54,13 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         city:  _.get(stop, 'city') || _.get(stop, 'cityName'),
         stateCode:  _.get(stop, 'state') || _.get(stop, 'stateCode'),
         postalCode:  _.get(stop, 'zip'),
-        schedule: this.getStopScheduleModel(stop)
+        schedule: this.getStopScheduleModel(stop),
+        driverName: _.get(stop, 'driverName'),
+        reportTime: _.get(stop, 'reportTime')
       });
     };
 
-    that.buildMapPointsFromStops = function(currentLocation, timeStamp) {
+    that.buildMapPointsFromStops = function(mapPointData) {
 
       var stops = [];
 
@@ -84,11 +88,16 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       }
 
       //add currentLocation as a stop with date as the current date, if the load is not delivered
+      //_.get(mapPointData, 'currentLocation'), _.get(mapPointData, 'timeStamp'), _.get(mapPointData, 'driver.firstName')
+      var currentLocation = _.get(mapPointData, 'currentLocation');
       if (currentLocation && !_.last(stops).arrivalDate){
         //timeStamp comes in the format x hours/minutes/seconds ago, use moment to parse that into a usable format
-        var timeStampArr = timeStamp.split(' ');
+        var timeStampArr = _.get(mapPointData, 'timeStamp').split(' ');
+
         currentLocation.arrivalDate = currentLocation.startDate = moment().subtract(timeStampArr[0].replace(',', ''), timeStampArr[1]);
+        currentLocation.reportTime = _.get(mapPointData, 'timeStamp');
         currentLocation.mapPointType = mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION;
+        currentLocation.driverName = _.get(mapPointData, 'driver.firstName', '') + ' ' + _.get(mapPointData, 'driver.lastName', ' ').substring(0, 1);
         stops.push(currentLocation);
       }
 

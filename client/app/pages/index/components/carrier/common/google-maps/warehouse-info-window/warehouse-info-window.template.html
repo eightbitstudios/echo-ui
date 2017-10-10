@@ -18,9 +18,17 @@
     </div>
 
     <div class="schedule-container">
-      <div>
-        <div>{{$ctrl.schedule.getDate()}}</div>
-        <div>{{$ctrl.schedule.getTime()}}</div>
+      <span ng-if="!$ctrl.isCurrentLocation()" class="header">Time</span>
+      <span ng-if="$ctrl.isCurrentLocation()" class="header">Reported By</span>
+      <div ng-if="$ctrl.schedule.hasActualDepartureDate() && !$ctrl.isCurrentLocation()">
+        <div>{{$ctrl.schedule.getDate()}} {{$ctrl.schedule.getTime()}} {{$ctrl.schedule.getTimeZone()}}</div>
+      </div>
+      <div ng-if="$ctrl.isCurrentLocation()">
+        <div>{{$ctrl.mapMarker.getReportTime()}}</div>
+        <div>by {{$ctrl.mapMarker.getDriverName()}}.</div>
+      </div>
+      <div ng-if="!$ctrl.schedule.hasActualDepartureDate()">
+        <div>{{$ctrl.schedule.getFormattedDayTime()}}</div>
       </div>
     </div>
   </div>
