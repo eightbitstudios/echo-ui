@@ -136,7 +136,7 @@ angular.module('echo.models.mapPointModel', [
   };
 
   MapPointModel.prototype.getDriverName = function() {
-    return this.mapPoint.driverName;
+    return _.trim(this.mapPoint.driverName);
   };
 
   MapPointModel.prototype.getReportTime = function() {
