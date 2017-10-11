@@ -96,7 +96,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         currentLocation.arrivalDate = currentLocation.startDate = moment().subtract(timeStampArr[0].replace(',', ''), timeStampArr[1]);
         currentLocation.reportTime = _.get(mapPointData, 'timeStamp');
         currentLocation.mapPointType = mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION;
-        currentLocation.driverName = _.get(mapPointData, 'driver.firstName', '') + ' ' + _.get(mapPointData, 'driver.lastName', ' ').substring(0, 1);
+        currentLocation.driverName = _.get(mapPointData, 'capturedBy.firstName', '') + ' ' + _.get(mapPointData, 'capturedBy.lastName', ' ').substring(0, 1);
 
         //get the index of the last stop with a departure date and insert current position there
         stops.splice(_.findLastIndex(stops, function(stop){ return stop.departureDate; })+1, 0, currentLocation);
