@@ -44,6 +44,8 @@ angular.module('echo.models.stopScheduleModel', [
         this.setAppointmentEndDate(stopSchedule.appointmentEnd);
         this.setActualArrivalDate(stopSchedule.actualArrival);
         this.setActualDepartureDate(stopSchedule.actualDeparture);
+        this.stopSchedule.formattedDayTime = stopSchedule.formattedDayTime;
+        this.stopSchedule.timeZone = stopSchedule.timeZone;
       }
 
       StopScheduleModel.prototype.setStopType = function (stopType) {
@@ -103,18 +105,18 @@ angular.module('echo.models.stopScheduleModel', [
       StopScheduleModel.prototype.getDate = function() {
 
         if(this.hasActualDepartureDate()){
-          return this.getActualDepartureDate().format('ddd MMM D');
+          return this.getActualDepartureDate().format('ddd, MMM D');
         }
 
         else {
           if (this.hasSameDayAppointment()){
             if(this.getAppointmentStartDate()) {
-              return this.getAppointmentStartDate().format('ddd MMM D');
+              return this.getAppointmentStartDate().format('ddd, MMM D');
             }
             return '';
           } else {
-            var start =  this.getAppointmentStartDate() ? this.getAppointmentStartDate().format('ddd MMM D h:mm A') : '';
-            var end = this.getAppointmentEndDate() ? this.getAppointmentEndDate().format('ddd MMM D h:mm A') : '';
+            var start =  this.getAppointmentStartDate() ? this.getAppointmentStartDate().format('ddd MMM D HH:mm') : '';
+            var end = this.getAppointmentEndDate() ? this.getAppointmentEndDate().format('ddd MMM D HH:mm') : '';
             var delimiter = start && end ? ' - ' : '';
 
             return start + delimiter + end;
@@ -126,7 +128,7 @@ angular.module('echo.models.stopScheduleModel', [
 
         if(this.hasActualDepartureDate()){
           if( this.getActualDepartureDate()) {
-            return this.getActualDepartureDate().format('h:mm A');
+            return this.getActualDepartureDate().format('HH:mm');
           }
           return '';
         }
@@ -139,6 +141,14 @@ angular.module('echo.models.stopScheduleModel', [
 
           return start + delimiter + end;
         }
+      };
+
+      StopScheduleModel.prototype.getFormattedDayTime = function () {
+        return this.stopSchedule.formattedDayTime;
+      };
+
+      StopScheduleModel.prototype.getTimeZone = function () {
+        return this.stopSchedule.timeZone;
       };
 
       return StopScheduleModel;
