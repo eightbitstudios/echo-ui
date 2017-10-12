@@ -60,19 +60,67 @@
   }
   .table-assign-driver {
     margin-bottom: 0;
+
+    //change radio button color from global default gray to blue
+    .control.radio {
+      cursor: pointer;
+      .control-indicator {
+        border: solid 1px @c-bright-blue;
+        background-color: @c-white;
+      }
+    }
+
+    .control {
+      &.radio input:checked ~ .control-indicator {
+        border: solid 1px @c-bright-blue;
+        background-color: @c-white;
+        background-image: url('../assets/images/radial-selected-blue.svg');
+        background-size: 10px;
+      }
+    }
+
+    //override global table styles
+    tr {
+      td {
+        padding-left: 0 !important;
+        border-left: none !important;
+      }
+    }
+
+    table.table tr > td {
+      border-left: none !important;
+    }
+
+    //override global link styles
+    a {
+      color: @c-dark-grey;
+    }
+
+    a:hover {
+      color: @c-bright-blue;
+    }
   }
   .table-assign-driver .driver-status, .table-assign-driver .driver-contact {
     text-align: right;
   }
   .table-assign-driver td.driver-contact {
-    color: @c-gray-heavy-light;
-    width: 160px;
-  }
-  .table-assign-driver td.driver-status {
-    width: 75px;
+
+    a {
+      color: @c-gray-heavy-light;
+    }
+
+    a:hover {
+      color: @c-bright-blue;
+    }
   }
   .table-assign-driver .driver-name {
     font-size: 14px;
+  }
+  .table-assign-driver .driver-select {
+    label {
+      bottom: 24px;
+      left: 10px;
+    }
   }
   .icon-left-arrow {
     margin-right: 5px;

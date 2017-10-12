@@ -1,4 +1,3 @@
-
 describe('Component: Unassigned Driver List', function () {
   var component, scope, $q, loadId, carrierId, loadsApi;
 
@@ -26,20 +25,39 @@ describe('Component: Unassigned Driver List', function () {
     });
   }));
 
-  describe('Function: selectDriver', function () {
-    it('should set driver', function () {
+  describe('Function: toggleDriver', function () {
+    it('should set driver if driver is unset', function () {
       var driver = { id: 1234 };
-      component.selectDriver(driver);
+      component.selectedDriver = null;
+      component.toggleDriver(driver);
 
       expect(component.selectedDriver).toBe(driver);
     });
   });
 
-  describe('Function: deselectDriver', function () {
-    it('should set driver to null', function () {
-      component.deselectDriver();
+  describe('Function: toggleDriver 2', function () {
+    it('should set driver to null if driver is set', function () {
+      var driver = { id: 1234 };
+      component.selectedDriver = driver;
+      component.toggleDriver(driver);
 
       expect(component.selectedDriver).toBe(null);
+    });
+  });
+
+  describe('Function: driver is selected', function () {
+    it('should return true if the ids match', function () {
+      var driver = { id: 1234 };
+      component.selectedDriver = { id: 1234 };
+
+      expect(component.isSelected(driver)).toBeTruthy();
+    });
+
+    it('should return false if the ids do not match', function () {
+      var driver = { id: 1234 };
+      component.selectedDriver = { id: 2345 };
+
+      expect(component.isSelected(driver)).toBeFalsy();
     });
   });
 

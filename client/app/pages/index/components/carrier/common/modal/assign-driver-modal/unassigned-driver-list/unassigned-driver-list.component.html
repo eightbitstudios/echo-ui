@@ -11,14 +11,16 @@
     <loading show-loading="$ctrl.showLoading"></loading>
     <table class="table table-condensed table-assign-driver">
       <tbody>
-        <tr ng-repeat="driver in $ctrl.drivers" ng-class="{selected: $ctrl.selectedDriver.id === driver.id}">
-          <td class="driver-name">
-            <a href="javascript:void(0)">{{driver | fullName}}</a>
+        <tr ng-repeat="driver in $ctrl.drivers" class="driver-row">
+          <td class="driver-name col-xs-6">
+            <a href="javascript:void(0)" ng-click="$ctrl.toggleDriver(driver)">{{driver | fullName}}</a>
           </td>
-          <td class="driver-contact">{{driver.phone | phoneNumber}}</td>
-          <td class="driver-status">
-            <a href="javascript:void(0)" class="select-driver" ng-click="$ctrl.selectDriver(driver)">Select</a>
-            <a href="javascript:void(0)" class="selected-driver" ng-click="$ctrl.deselectDriver()">Selected</a>
+          <td class="driver-contact col-xs-5">
+            <a href="javascript:void(0)" ng-click="$ctrl.toggleDriver(driver)">{{driver.phone | phoneNumber}}</a>
+          </td>
+          <td class="driver-select col-xs-1">
+            <input type="radio" ng-model="$ctrl.selectedDriver" ng-value="driver">
+            <radio-button ng-model="$ctrl.selectedDriver" value="driver"></radio-button>
           </td>
         </tr>
       </tbody>
