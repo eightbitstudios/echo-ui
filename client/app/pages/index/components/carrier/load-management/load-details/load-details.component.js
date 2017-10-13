@@ -66,8 +66,12 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 
       stops = stops.concat(that.loadDetails.pickUp).concat(that.loadDetails.delivery);
 
-      //sort stops by startDate, before current location is added, so we can assign stop numbers
-      stops = _.sortBy(stops, function(stop) { return new Date(_.get(stop, 'startDate')); });
+      //if multi stop, sort stops by startDate, before current location is added, so we can assign stop numbers
+      //if not multi stop we dont need to sort
+      if (stops.length > 2){
+        stops = _.sortBy(stops, function(stop) { return new Date(_.get(stop, 'startDate')); });
+      }
+
       _.forEach(stops, function(stop, index){
         //add stop number here
         stop.stopNumber = index;
