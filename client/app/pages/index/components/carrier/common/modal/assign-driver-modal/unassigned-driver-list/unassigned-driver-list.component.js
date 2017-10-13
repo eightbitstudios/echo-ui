@@ -13,16 +13,8 @@ angular.module('echo.components.modal.assignDriver.unassignedDriverList', [
     },
     controller: function(loadsApi) {
 
-      this.toggleDriver = function(driver) {
-        if (this.isSelected(driver)){
-          this.selectedDriver = null;
-        } else {
-          this.selectedDriver = driver;
-        }
-      };
-
-      this.isSelected = function(driver) {
-        return driver && this.selectedDriver && this.selectedDriver.id === driver.id;
+      this.selectDriver = function(driver) {
+        this.selectedDriver = driver;
       };
 
       this.$onInit = function() {
