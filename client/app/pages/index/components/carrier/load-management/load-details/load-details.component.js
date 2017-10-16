@@ -93,7 +93,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
 
       //add currentLocation as a stop with date as the current date, if the load is not delivered and the load has left the origin
       var currentLocation = _.get(mapPointData, 'currentLocation');
-      if (currentLocation && !_.last(stops).arrivalDate && _.first(stops).departureDate){
+      if (currentLocation && !_.last(stops).arrivalDate){
         //timeStamp comes in the format x hours/minutes/seconds ago, use moment to parse that into a usable format
         var timeStampArr = _.get(mapPointData, 'timeStamp').split(' ');
 
