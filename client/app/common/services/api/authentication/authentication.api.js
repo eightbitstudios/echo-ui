@@ -58,6 +58,11 @@ angular.module('echo.api.authentication', [
         analyticsService.updateUserUdo(resp.config.data.username);
         return resp.data.data;
       }).catch(function (error) {
+        if(!error)
+        {
+          //failure for utag connection, no error code thrown here
+          return $q.reject(503);//utag service not availables
+        }
         return $q.reject(error.data.status.code);
       });
     },

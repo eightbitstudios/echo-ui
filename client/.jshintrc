@@ -34,6 +34,7 @@
     "browser": true,
     "element": true,
     "by": true,
-    "jasmine":true
+    "jasmine":true,
+    "utag": true
   }
 }

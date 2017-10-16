@@ -1,4 +1,4 @@
-'user strict'
+'user strict';
 
 angular.module('echo.services.analytics', [])
 .factory('analyticsService', function () {
