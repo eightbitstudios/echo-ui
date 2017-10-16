@@ -3,8 +3,9 @@
 angular.module('echo.api.authentication', [
   'echo.config.api',
   'echo.services.cookie',
-  'echo.services.userProfile'
-]).factory('authenticationApi', function ($injector, $base64, $q, $http, cookieService, apiConfig) {
+  'echo.services.userProfile',
+  'echo.services.analytics'
+]).factory('authenticationApi', function ($injector, $base64, $q, $http, cookieService, apiConfig, analyticsService) {
   return {
     /**
      * @description Creates a password
@@ -54,6 +55,7 @@ angular.module('echo.api.authentication', [
       }).then(function (resp) {
         cookieService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
         cookieService.setToken(resp.data.data.access_token); // jshint ignore:line
+        analyticsService.updateUserUdo(resp.config.data.username);
         return resp.data.data;
       }).catch(function (error) {
         return $q.reject(error.data.status.code);
