@@ -1,4 +1,4 @@
-'user strict'
+'user strict';
 
 angular.module('echo.services.analytics', [])
 .factory('analyticsService', function () {
@@ -10,6 +10,7 @@ angular.module('echo.services.analytics', [])
        */
       updateUserUdo: function(userData) {
         /*jshint camelcase: false */
+        /*jshint undef: false */
         if (typeof utag !== 'undefined' && userData) {
           utag.view({
             customer_email: userData.email

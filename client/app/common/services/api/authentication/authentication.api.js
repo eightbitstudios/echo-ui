@@ -55,10 +55,10 @@ angular.module('echo.api.authentication', [
       }).then(function (resp) {
         cookieService.setRefreshToken(resp.data.data.refresh_token); // jshint ignore:line
         cookieService.setToken(resp.data.data.access_token); // jshint ignore:line
-        analyticsService.updateUserUdo(resp.config.data.username);
+        analyticsService.updateUserUdo(_.get(resp, 'config.data.username'));
         return resp.data.data;
       }).catch(function (error) {
-        return $q.reject(error.data.status.code);
+        return $q.reject(_.get(error, 'data.status.code'));
       });
     },
     /**
