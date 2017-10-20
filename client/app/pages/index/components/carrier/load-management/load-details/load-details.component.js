@@ -63,7 +63,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
     that.buildMapPointsFromStops = function(mapPointData) {
 
       var stops = [];
-      var stopIsCurrentPoistion = false;
+      var stopIsCurrentPosition = false;
       stops = stops.concat(that.loadDetails.pickUp).concat(that.loadDetails.delivery);
 
       //if multi stop, sort stops by startDate, before current location is added, so we can assign stop numbers
@@ -80,7 +80,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         stop.mapPointType = stop.departureDate ?
             mapConstants.MAP_POINT_TYPE.COMPLETE : mapConstants.MAP_POINT_TYPE.INCOMPLETE;
 
-        stopIsCurrentPoistion = stopIsCurrentPoistion || ( stop.arrivalDate && !stop.departureDate)
+        stopIsCurrentPosition = stopIsCurrentPosition || ( stop.arrivalDate && !stop.departureDate)
 
       });
 
@@ -90,7 +90,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         _.last(stops).mapPointType =  mapConstants.MAP_POINT_TYPE.DESTINATION;
       }
 
-      if(!stopIsCurrentPoistion) {
+      if(!stopIsCurrentPosition) {
         //add currentLocation as a stop with date as the current date, if the load is not delivered and the load has left the origin
         var currentLocation = _.get(mapPointData, 'currentLocation');
         if (currentLocation && !_.last(stops).arrivalDate){
