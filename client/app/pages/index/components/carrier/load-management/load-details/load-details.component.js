@@ -80,7 +80,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
         stop.mapPointType = stop.departureDate ?
             mapConstants.MAP_POINT_TYPE.COMPLETE : mapConstants.MAP_POINT_TYPE.INCOMPLETE;
 
-        stopIsCurrentPosition = stopIsCurrentPosition || ( stop.arrivalDate && !stop.departureDate)
+        stopIsCurrentPosition = stopIsCurrentPosition || ( stop.arrivalDate && !stop.departureDate);
 
       });
 
