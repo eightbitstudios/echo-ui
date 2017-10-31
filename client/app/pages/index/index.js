@@ -158,6 +158,6 @@ angular.module('echo.index', [
       type: userActions.SET_USER,
       payload: jwtUser
     });
-    analyticsService.updateUserUdo(jwtUser);
+    analyticsService.updateUserUdo(jwtUser.unique_name);
   }
 });
