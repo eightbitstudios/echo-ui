@@ -73,7 +73,6 @@ angular.module('echo.config.mapConstants', [])
     { 'featureType': 'road.arterial', 'elementType': 'labels.text.fill', 'stylers': [{ 'color': '#757575' }] },
     { 'featureType': 'road.highway', 'elementType': 'geometry', 'stylers': [{ 'color': '#dadada' }] },
     { 'featureType': 'road.highway', 'elementType': 'labels.text.fill', 'stylers': [{ 'color': '#616161' }] },
-    { 'featureType': 'road.local', 'elementType': 'labels', 'stylers': [{ 'visibility': 'off' }] },
     { 'featureType': 'road.local', 'elementType': 'labels.text.fill', 'stylers': [{ 'color': '#9e9e9e' }] },
     { 'featureType': 'transit', 'stylers': [{ 'visibility': 'off' }] },
     { 'featureType': 'transit.line', 'elementType': 'geometry', 'stylers': [{ 'color': '#e5e5e5' }] },
