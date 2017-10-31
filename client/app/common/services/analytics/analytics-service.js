@@ -12,7 +12,7 @@ angular.module('echo.services.analytics', [])
         /*jshint camelcase: false */
         if (typeof utag !== 'undefined' && userData) {
           utag.view({
-            customer_email: userData.email
+            customer_email: userData.unique_name
           });
         }
       }

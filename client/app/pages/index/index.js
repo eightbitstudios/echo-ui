@@ -6,6 +6,7 @@ angular.module('echo.index', [
   'echo.directives.echoIcon',
   'echo.index.myCarriers',
   'echo.constant.roles',
+  'echo.services.analytics',
   'echo.index.carrier',
   'echo.components.header',
   'echo.components.footer',
@@ -149,12 +150,14 @@ angular.module('echo.index', [
         hideTabBar: true
       }
     });
-}).run(function(store$, userActions, cookieService, userProfileService) {
+}).run(function(store$, userActions, cookieService, userProfileService, analyticsService) {
   var jwt = cookieService.getToken();
   if (jwt) {
+    var jwtUser = userProfileService.mapJwtToUser(jwt);
     store$.dispatch({
       type: userActions.SET_USER,
-      payload: userProfileService.mapJwtToUser(jwt)
+      payload: jwtUser
     });
+    analyticsService.updateUserUdo(jwtUser);
   }
 });
