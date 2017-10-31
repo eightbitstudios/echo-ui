@@ -1,4 +1,3 @@
-
 describe('Component: Unassigned Driver List', function () {
   var component, scope, $q, loadId, carrierId, loadsApi;
 
@@ -29,17 +28,10 @@ describe('Component: Unassigned Driver List', function () {
   describe('Function: selectDriver', function () {
     it('should set driver', function () {
       var driver = { id: 1234 };
+      component.selectedDriver = null;
       component.selectDriver(driver);
 
       expect(component.selectedDriver).toBe(driver);
-    });
-  });
-
-  describe('Function: deselectDriver', function () {
-    it('should set driver to null', function () {
-      component.deselectDriver();
-
-      expect(component.selectedDriver).toBe(null);
     });
   });
 
