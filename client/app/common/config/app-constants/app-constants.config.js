@@ -78,6 +78,7 @@ angular.module('echo.config.appConstants', [])
         401106: 'Refresh Token is Invalid',
         401105: 'User Role Not Allowed To Reset Password in Portal',
         401110: 'Your account is Suspended. Please contact Echo.',
+        401111: 'This user is currently inactive. Please contact EchoDriveSupport@echo.com for assistance.',
         404: 'Not found',
         404100: 'Load not found',
         404101: 'Driver not found',
