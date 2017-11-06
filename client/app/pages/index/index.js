@@ -150,7 +150,7 @@ angular.module('echo.index', [
         hideTabBar: true
       }
     });
-}).run(function(store$, userActions, cookieService, userProfileService, analyticsService) {
+}).run(function($timeout, store$, userActions, cookieService, userProfileService, analyticsService) {
   var jwt = cookieService.getToken();
   if (jwt) {
     var jwtUser = userProfileService.mapJwtToUser(jwt);
@@ -158,6 +158,11 @@ angular.module('echo.index', [
       type: userActions.SET_USER,
       payload: jwtUser
     });
-    analyticsService.updateUserUdo(jwtUser.unique_name);
+    $timeout(function() {
+      //third party libraries shouldn't be added with script tags, it creates a large amount of coupling with components and their parent dom. 
+      //We should consider moving utag to webpack with a conditional bundle(qa or prod)
+      //this 1000 ms wait is due to us using a directive to set script depenedncies in the parent dom, this is not ideal in thsi structure. 
+      analyticsService.updateUserUdo(_.get(jwtUser, 'unique_name'));
+    }, 1000);
   }
 });
