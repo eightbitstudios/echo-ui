@@ -41,10 +41,6 @@ angular.module('echo.models.user', [
       return _.startCase(this.roleName);
     };
 
-    // User.prototype.unique_name = function () {
-    //   return _.startCase(this.unique_name);
-    // };
-
     /**
      * Return the constructor function
      */
