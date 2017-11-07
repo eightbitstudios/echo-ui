@@ -23,6 +23,9 @@ angular.module('echo.components.loadDetailsMap', [
  * showMap [boolean] - flag to display map or not. note, that if the map is initalized before the dom has had a chance to render
  * the div/container for the google map undefined exceptions may occur. Its best to toggle this after a promise of some sort
  * (ex. after network call to get load detail or track and trace info)
+ *
+ * onGeocodeComplete - Useful for merging geocoded locations if they are being cached in a parent component to help reduce the api calls (ex: EchoShip
+ * displays a map summary (origin and destination) but also provides a detailed map (with all intermediate stops).
  */
   .component('loadDetailsMap', {
     templateUrl: 'load-details-map.component.html',
@@ -121,7 +124,10 @@ angular.module('echo.components.loadDetailsMap', [
                 this.onError();
               }
             }).finally(function() {
-              that.onGeocodeComplete({mapMarkers: that.mapMarkers});
+              if(that.onGeocodeComplete) {
+                that.onGeocodeComplete({mapMarkers: that.mapMarkers});
+              }
+
               that.showLoading = false;
               that.geoCodeComplete = true;
             });

@@ -19,7 +19,7 @@ angular.module('echo.models.mapPointModel', [
     this.mapPoint.city = mapPoint.city;
     this.mapPoint.stateCode = mapPoint.stateCode;
     this.mapPoint.postalCode = mapPoint.postalCode;
-    this.mapPoint.position = mapPoint.position;
+    this.setPosition(mapPoint.position);
 
     // Extra Warehouse Details
     this.mapPoint.name = mapPoint.name;
@@ -33,6 +33,10 @@ angular.module('echo.models.mapPointModel', [
     this.mapPoint.driverName = mapPoint.driverName;
     this.mapPoint.reportTime = mapPoint.reportTime;
   }
+
+  MapPointModel.prototype.setMapPointType = function(mapPointType) {
+    this.mapPoint.mapPointType = mapPointType;
+  };
 
   MapPointModel.prototype.getMapPointType = function() {
     return this.mapPoint.mapPointType;
@@ -91,7 +95,11 @@ angular.module('echo.models.mapPointModel', [
   };
 
   MapPointModel.prototype.setPosition = function(position) {
-    this.mapPoint.position = position;
+    if(_.get(window, 'google.maps.LatLng') && position instanceof google.maps.LatLng){
+      this.mapPoint.position = position.toJSON();
+    } else {
+      this.mapPoint.position = position;
+    }
   };
 
   MapPointModel.prototype.isOrigin = function() {

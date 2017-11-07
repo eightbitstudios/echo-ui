@@ -20,7 +20,13 @@ describe('Component: google-maps-polyline', function () {
       MapPointModel = _MapPointModel_;
       StopScheduleModel = _StopScheduleModel_;
       polyLineSpy = jasmine.createSpy('polyLineSpy');
-      google.maps.Polyline = polyLineSpy;
+
+      google = {
+        maps: {
+          Polyline: polyLineSpy,
+          LatLng: function(position) { return position; }
+        }
+      };
 
       completeSchedule = new StopScheduleModel({actualArrival: new moment(), actualDeparture: new moment()});
       incompleteSchedule = new StopScheduleModel({actualArrival: null, actualDeparture: null});
@@ -58,24 +64,18 @@ describe('Component: google-maps-polyline', function () {
 
     describe('when there is a stop with  ORIGIN, DESTINATION, and TRACK_AND_TRACE', function () {
       beforeEach(function() {
-        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1), actualArrival: new Date(1)})});
-        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
-        var mp3 = new MapPointModel({mapPointType: 'INCOMPLETE', schedule: new StopScheduleModel({appointmentStart: new Date(1802002283332)})});
-        var mp4 = new MapPointModel({mapPointType: 'CURRENT_LOCATION', schedule: new StopScheduleModel({appointmentStart: new Date(2), actualArrival: new Date(2)})});
+        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', position: {lat: 1, lng: 1}, schedule: new StopScheduleModel({appointmentStart: new Date(1), actualArrival: new Date(1)})});
+        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', position: {lat: 5, lng: 5}, schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
+        var mp3 = new MapPointModel({mapPointType: 'INCOMPLETE', position: {lat: 4, lng: 4}, schedule: new StopScheduleModel({appointmentStart: new Date(1802002283332)})});
+        var mp4 = new MapPointModel({mapPointType: 'CURRENT_LOCATION', position: {lat: 3, lng: 3}, schedule: new StopScheduleModel({appointmentStart: new Date(2), actualArrival: new Date(2)})});
 
-        mp1.position = {lat: 1, lng: 1};
-        mp2.position = {lat: 5, lng: 5};
-        mp3.position = {lat: 4, lng: 4};
-        mp4.position = {lat: 3, lng: 3};
-
-        var mapPoints = [
-          mp1, mp4, mp3, mp2
-        ];
+        var mapPoints = [ mp1, mp4, mp3, mp2 ];
 
         component = $componentController('googleMapsPolyline', null, {
           mapPoints: mapPoints,
           loadStatusCode: 'PickedUp'
         });
+
         component.mapsCtrl = { map: {}};
 
         component.$onInit();
@@ -99,13 +99,10 @@ describe('Component: google-maps-polyline', function () {
     describe('when the load is not delivered and there is an ORIGIN, DESTINATION', function () {
       beforeEach(function() {
 
-        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
-        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
-        mp1.position = {lat: 1, lng: 1};
-        mp2.position = {lat: 3, lng: 3};
-        var mapPoints = [
-          mp1, mp2
-        ];
+        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', position: {lat: 1, lng: 1}, schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
+        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', position: {lat: 3, lng: 3}, schedule: new StopScheduleModel({appointmentStart: new Date(1802002293333)})});
+
+        var mapPoints = [ mp1, mp2 ];
 
         component = $componentController('googleMapsPolyline', null, {
           mapPoints: mapPoints,
@@ -134,13 +131,10 @@ describe('Component: google-maps-polyline', function () {
 
     describe('when the load is DELIVERED and there is with ORIGIN, DESTINATION', function () {
       beforeEach(function() {
-        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', schedule: new StopScheduleModel({appointmentStart: new Date(1), actualArrival: new Date(1)})});
-        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', schedule: new StopScheduleModel({appointmentStart: new Date(2), actualArrival: new Date(2)})});
-        mp1.position = {lat: 1, lng: 1};
-        mp2.position = {lat: 3, lng: 3};
-        var mapPoints = [
-          mp1, mp2
-        ];
+        var mp1 = new MapPointModel({mapPointType: 'ORIGIN', position: {lat: 1, lng: 1}, schedule: new StopScheduleModel({appointmentStart: new Date(1), actualArrival: new Date(1)})});
+        var mp2 = new MapPointModel({mapPointType: 'DESTINATION', position: {lat: 3, lng: 3}, schedule: new StopScheduleModel({appointmentStart: new Date(2), actualArrival: new Date(2)})});
+
+        var mapPoints = [ mp1, mp2 ];
 
         component = $componentController('googleMapsPolyline', null, {
           mapPoints: mapPoints,

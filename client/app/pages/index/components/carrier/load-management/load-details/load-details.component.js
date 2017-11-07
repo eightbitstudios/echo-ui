@@ -145,20 +145,5 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       that.fetchLoadDetails();
     };
 
-    /**
-     * Merge in coordinates to load detail map points as we determine them.
-     * This will help prevent excessive geocode api calls if a user bounces back
-     * and forth between map views.
-     * @param mapMarkers
-     */
-    this.mergeCoordinates = function(mapMarkers) {
-      _.each(mapMarkers, function(marker) {
-        _.each(that.mapPoints, function(mapPoint) {
-          if(mapPoint.getClientWarehouseId() === marker.getClientWarehouseId()){
-            mapPoint.setPosition(marker.getPosition());
-          }
-        });
-      });
-    };
   }
 });

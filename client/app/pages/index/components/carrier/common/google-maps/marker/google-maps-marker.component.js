@@ -24,7 +24,7 @@ angular.module('echo.components.googleMapsMarker', [
 
             if (that.isDetails){
               that.marker = new google.maps.Marker({
-                position: that.mapMarker.position,
+                position: that.mapMarker.getPositionAsLatLng(),
                 icon: {
                   url: that.getMarkerUrl(that.mapMarker.getMapPointType()),
                   anchor: that.getMarkerAnchor(that.mapMarker.getMapPointType())
@@ -32,8 +32,8 @@ angular.module('echo.components.googleMapsMarker', [
                 map: that.mapsCtrl.map
               });
 
-              if(that.mapMarker.position) {
-                that.mapsCtrl.bounds.extend(that.mapMarker.position);
+              if(that.mapMarker.getPosition()) {
+                that.mapsCtrl.bounds.extend(that.mapMarker.getPositionAsLatLng());
               }
             }
             else {
