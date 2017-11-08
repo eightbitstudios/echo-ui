@@ -8,12 +8,11 @@ angular.module('echo.services.analytics', [])
        * Update user data
        * @param userData
        */
-      updateUserUdo: function(userData) {
+      updateUserUdo: function(userIdentifier) {
         /*jshint camelcase: false */
-        /*jshint undef: false */
-        if (typeof utag !== 'undefined' && userData) {
+        if (typeof utag !== 'undefined' && userIdentifier) {
           utag.view({
-            customer_email: userData.email
+            customer_email: userIdentifier
           });
         }
       }
