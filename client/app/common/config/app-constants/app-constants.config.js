@@ -12,7 +12,7 @@ angular.module('echo.config.appConstants', [])
       loadsList: 10,
       loadsNeedingAction: 5,
       multistopLoads: 5,
-      invoicesList: 10
+      invoicesList: 3
     },
     LANGUAGES: {
       default: 'English',
