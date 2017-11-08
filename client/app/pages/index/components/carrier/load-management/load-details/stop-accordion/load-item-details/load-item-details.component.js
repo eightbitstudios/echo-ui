@@ -5,7 +5,7 @@ angular.module('echo.components.loadItemDetails', [
   bindings: {
     items: '<',
     totalWeight: '<',
-	stopType: '<'
+	  stopType: '<'
   },
   templateUrl: 'load-item-details.component.html'
 });
