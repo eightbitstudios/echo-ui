@@ -51,13 +51,13 @@ describe('StopScheduleModel', function () {
   it('should get formatted date for appt. that span multiple days', function() {
     stopScheduleModel.setAppointmentStartDate('2016-04-23T00:00:00');
     stopScheduleModel.setAppointmentEndDate('2016-04-24T00:00:00');
-    expect(stopScheduleModel.getDate()).toBe('Sat Apr 23 12:00 AM - Sun Apr 24 12:00 AM');
+    expect(stopScheduleModel.getDate()).toBe('Sat Apr 23 00:00 - Sun Apr 24 00:00');
   });
 
   it('should get formatted date for same day appointments', function() {
     stopScheduleModel.setAppointmentStartDate('2016-04-23T00:00:00');
     stopScheduleModel.setAppointmentEndDate('2016-04-23T00:00:00');
-    expect(stopScheduleModel.getDate()).toBe('Sat Apr 23');
+    expect(stopScheduleModel.getDate()).toBe('Sat, Apr 23');
   });
 
   it('should not return time for appt. that span multiple days', function() {
@@ -80,7 +80,7 @@ describe('StopScheduleModel', function () {
   it('should get time for actual appointment', function() {
     stopScheduleModel.setActualArrivalDate('2016-04-23T08:00:00');
     stopScheduleModel.setActualDepartureDate('2016-04-23T09:00:00');
-    expect(stopScheduleModel.getTime()).toBe('9:00 AM');
+    expect(stopScheduleModel.getTime()).toBe('09:00');
   });
 
 });

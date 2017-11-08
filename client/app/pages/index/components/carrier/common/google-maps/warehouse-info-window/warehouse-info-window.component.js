@@ -13,18 +13,23 @@ angular.module('echo.components.loadMap.warehouseInfoWindow', [])
         that.isOrigin = that.mapMarker.isOrigin();
         that.isDestination = that.mapMarker.isDestination();
         that.isTemporaryStop = !that.mapMarker.isDestination() && !that.mapMarker.isOrigin();
+        that.mapConstants = mapConstants;
 
         if (that.isOrigin) {
           that.infoWindowHeader = 'Origin';
         } else if (that.isDestination) {
           that.infoWindowHeader = 'Destination';
-        } else if (that.mapMarker.getMapPointType() === mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION) {
+        } else if (that.isCurrentLocation()) {
           that.infoWindowHeader = 'Current Location';
         } else {
           that.infoWindowHeader = 'Stop {X} out of {Y}'
             .replace('{X}', that.mapMarker.getStopNumber())
             .replace('{Y}', that.totalTemporaryStops);
         }
+      };
+
+      this.isCurrentLocation = function() {
+        return that.mapMarker.getMapPointType() === mapConstants.MAP_POINT_TYPE.CURRENT_LOCATION;
       };
     }
   });

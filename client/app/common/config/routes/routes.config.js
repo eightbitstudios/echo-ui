@@ -51,9 +51,10 @@ angular.module('echo.config.routes', [])
         name: 'index.carrier.loadManagement.loadDetails',
         route: '/loadDetails/:loadId?previous'
       },
-      searchLoads: {
+      searchLoads: {        
         name: 'index.carrier.loadManagement.searchLoads',
-        route: '/searchLoads?searchText&previous'
+        route: '/searchLoads?searchText&previous',
+        title: 'Active Loads'
       },
       invoicing: {
         name: 'index.carrier.invoicing',

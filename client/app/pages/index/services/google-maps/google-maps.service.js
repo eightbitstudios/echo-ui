@@ -7,15 +7,44 @@ angular.module('echo.services.googleMaps', [
     return {
       appendPosition: function (geocoder, mapPoint) {
         var deferred = $q.defer();
-        geocoder.geocode({ 'address': _.template('${city}, ${state}')({ city: _.get(mapPoint.currentLocation, 'cityName'), state: _.get(mapPoint.currentLocation, 'stateCode') }) }, function (results, status) {
+
+        var fullAddress;
+
+        if (mapPoint.getAddress1){
+          fullAddress = _.template('${address1}, ${address2}, ${address3}, ${city}, ${state} ${postalCode}')({
+            address1: mapPoint.getAddress1(),
+            address2: mapPoint.getAddress2(),
+            address3: mapPoint.getAddress3(),
+            city: mapPoint.getCity(),
+            state: mapPoint.getStateCode(),
+            postalCode: mapPoint.getPostalCode()
+          });
+        }
+        else {
+          fullAddress = _.template('${city}, ${state}')({ city: _.get(mapPoint.currentLocation, 'cityName'), state: _.get(mapPoint.currentLocation, 'stateCode') });
+        }
+
+        geocoder.geocode({ 'address': fullAddress }, function (results, status) {
           if (status === 'OK') {
             mapPoint.position = results[0].geometry.location;
             if (mapPoint.setPosition){
               mapPoint.setPosition(results[0].geometry.location.toJSON());
             }
           }
+          else if(status === 'ZERO_RESULTS') {
+            geocoder.geocode({ 'address': fullAddress}, function (results, status) {
+              if (status === 'OK') {
+                mapPoint.position = results[0].geometry.location;
+                if (mapPoint.setPosition){
+                  mapPoint.setPosition(results[0].geometry.location.toJSON());
+                }
+              }
+              deferred.resolve();
+            });
+          }
           deferred.resolve();
         });
+
         return deferred.promise;
       },
 

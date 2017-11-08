@@ -28,6 +28,10 @@ angular.module('echo.models.mapPointModel', [
     // Extra Track and Trace Details
     this.mapPoint.trackAndTraceTimestamp = mapPoint.trackAndTraceTimestamp;
     this.mapPoint.trackAndTraceStatus = mapPoint.trackAndTraceStatus;
+
+    //driver details
+    this.mapPoint.driverName = mapPoint.driverName;
+    this.mapPoint.reportTime = mapPoint.reportTime;
   }
 
   MapPointModel.prototype.getMapPointType = function() {
@@ -129,6 +133,14 @@ angular.module('echo.models.mapPointModel', [
   MapPointModel.prototype.getTrackAndTraceTimestampDisplay = function() {
     var dateObj = new Date(this.mapPoint.trackAndTraceTimestamp);
     return moment(dateObj).format('ddd MMM D h:mm A');
+  };
+
+  MapPointModel.prototype.getDriverName = function() {
+    return _.trim(this.mapPoint.driverName);
+  };
+
+  MapPointModel.prototype.getReportTime = function() {
+    return this.mapPoint.reportTime;
   };
 
   return MapPointModel;
