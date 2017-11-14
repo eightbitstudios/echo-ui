@@ -69,6 +69,14 @@ describe('Component: signIn', function () {
 
       expect(component.serverError).toBe(400);
     });
+    it('should show message for inactive user',function () {
+      component.email='ankit.patelbat2@eglqa.33mail.com';
+      component.password='abc123';
+      authenticationApi.signIn.and.returnValue($q.reject(errorsConfig.INACTIVEUSER));
+      component.signInHandler();
+      scope.$digest();
+      expect(component.serverError).toBe(401111);
+    });
 
     it('should reroute to forgot password if account is locked', function () {
       component.email = 'test';
