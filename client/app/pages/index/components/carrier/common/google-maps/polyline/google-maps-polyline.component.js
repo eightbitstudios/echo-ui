@@ -90,13 +90,13 @@ angular.module('echo.components.googleMapsPolyline', [
       if(isLoadDelivered) {
         // if delivered just show completed routes
         this.completedRoute = this.mapPoints.map(function(mp) {
-          return mp.position;
+          return mp.getPositionAsLatLng();
         });
       }
 
       else {
         _.each(this.mapPoints, function(mapPoint) {
-          var position = mapPoint.position;
+          var position = mapPoint.getPositionAsLatLng();
 
           if (mapPoint.mapPoint.schedule.hasActualArrivalDate()) {
             that.completedRoute.push(position);
