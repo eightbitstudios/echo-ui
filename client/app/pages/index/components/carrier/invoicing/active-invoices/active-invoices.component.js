@@ -40,7 +40,7 @@ angular.module('echo.index.carrier.invoicing.activeInvoices', [
               that.activeInvoices = invoicesPageData.invoices;
               that.paging.recordCount = _.size(invoicesPageData.invoices);
               that.paging.totalRecords = invoicesPageData.activeInvoiceCount;
-              that.totalActiveInvoiceAmount = invoicesPageData.allInvoicesAmount;
+              that.totalActiveInvoiceAmount = invoicesPageData.totalInvoiceAmount;
             }
 
           }).finally(function() {
