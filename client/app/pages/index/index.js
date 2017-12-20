@@ -159,9 +159,10 @@ angular.module('echo.index', [
       payload: jwtUser
     });
     $timeout(function() {
-      //third party libraries shouldn't be added with script tags, it creates a large amount of coupling with components and their parent dom. 
-      //We should consider moving utag to webpack with a conditional bundle(qa or prod)
-      //this 1000 ms wait is due to us using a directive to set script depenedncies in the parent dom, this is not ideal in thsi structure. 
+      var base64Jwt = jwt.split('.')[1];
+      var base64 = base64Jwt.replace('-', '+').replace('_', '/');
+      var json = JSON.parse(window.atob(base64));
+
       analyticsService.updateUserUdo(_.get(jwtUser, 'unique_name'));
     }, 1000);
   }
