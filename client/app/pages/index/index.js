@@ -159,11 +159,7 @@ angular.module('echo.index', [
       payload: jwtUser
     });
     $timeout(function() {
-      var base64Jwt = jwt.split('.')[1];
-      var base64 = base64Jwt.replace('-', '+').replace('_', '/');
-      var json = JSON.parse(window.atob(base64));
-
-      analyticsService.updateUserUdo(_.get(jwtUser, 'unique_name'));
+      analyticsService.updateUserUdo(_.get(jwtUser, 'user_name'));
     }, 1000);
   }
 });

@@ -21,6 +21,11 @@ angular.module('echo.services.userProfile', [
         if (userObj && userObj.carrierIds) {
           userObj.carrierId = _.parseInt(_.head(userObj.carrierIds), 10);
         }
+
+        if (userObj && userObj.unique_name) {
+          userObj.user_name = _.get(jsonstuff, 'unique_name');
+        }
+        
         return new UserModel(userObj);
       }
     };
