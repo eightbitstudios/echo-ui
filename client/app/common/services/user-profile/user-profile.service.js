@@ -23,9 +23,9 @@ angular.module('echo.services.userProfile', [
         }
 
         if (userObj && userObj.unique_name) {
-          userObj.user_name = _.get(jsonstuff, 'unique_name');
+          userObj.user_name = _.get(userObj.unique_name, 'unique_name');
         }
-        
+
         return new UserModel(userObj);
       }
     };
