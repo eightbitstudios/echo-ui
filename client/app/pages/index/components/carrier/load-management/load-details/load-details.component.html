@@ -34,8 +34,7 @@
             STOPS
           </h1>
         </div>
-        <stop-accordion ng-repeat="pickUp in $ctrl.loadDetails.pickUp" stop-type="Pickup" stop="pickUp" pickup-numbers="$ctrl.pickupNumbers"></stop-accordion>
-        <stop-accordion ng-repeat="delivery in $ctrl.loadDetails.delivery" stop-type="Delivery" stop="delivery" pickup-numbers="$ctrl.deliveryNumbers"></stop-accordion>
+        <stop-accordion ng-repeat="stop in $ctrl.loadDetails.stopList" stop-type="stop.stopType" stop="stop" pickup-numbers="$ctrl.stopNumbers"></stop-accordion>
         <activity-log load="$ctrl.loadDetails"></activity-log>
       </section>
       <div class="col-md-4">

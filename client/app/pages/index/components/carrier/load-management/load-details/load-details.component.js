@@ -123,8 +123,7 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
       loadsApi.fetchLoadDetails(that.loadId)
         .then(function(loadDetails) {
           that.loadDetails = loadDetails;
-          that.pickupNumbers = _.map(that.loadDetails.pickUp, 'pickupNumber');
-          that.deliveryNumbers = _.map(that.loadDetails.delivery, 'pickupNumber');
+          that.stopNumbers = [_.first(that.loadDetails.stopList, 0).pickupNumber, _.last(that.loadDetails.stopList, 0).pickupNumber];
           that.getMapPoint();
           return invoicesApi.fetchInvoiceDetailsByLoadId(that.loadDetails.loadNumber).then(function(invoiceDetails) {
             that.invoiceDetails = invoiceDetails;
