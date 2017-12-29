@@ -125,9 +125,14 @@ angular.module('echo.index.carrier.loadManagement.loadDetails', [
           that.loadDetails = loadDetails;
           var collection = _.reject(loadDetails.stopList, ['pickupNumber', '']);
           if(collection.length > 0)
+          {
             that.stopNumbers = [_.first(collection , 0).pickupNumber];
+          }
           if(collection.length > 1)
+          {
             that.stopNumbers.push(_.last(collection , 0).pickupNumber);
+          }
+            
           that.getMapPoint();
           return invoicesApi.fetchInvoiceDetailsByLoadId(that.loadDetails.loadNumber).then(function(invoiceDetails) {
             that.invoiceDetails = invoiceDetails;
