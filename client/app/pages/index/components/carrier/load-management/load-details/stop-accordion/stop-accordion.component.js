@@ -19,7 +19,9 @@ angular.module('echo.components.stopAccordion', [
       this.isOpen = true;
       this.formattedCity = _.startCase(_.lowerCase(this.stop.city));
       this.stopTypeLabel = this.stopType === 'Pick' ? 'Pickup' : 'Delivery';
-      this.pickNumber = this.stopType === 'Pick' ? this.pickupNumbers[0] : this.pickupNumbers[1];
+      if(this.pickupNumbers && this.pickupNumbers.length > 0){
+        this.pickNumber = this.stopType === 'Pick' ? this.pickupNumbers[0] : this.pickupNumbers.length > 1 ? this.pickupNumbers[1] : "";
+      }      
     };
   }
 });
