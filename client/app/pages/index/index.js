@@ -159,7 +159,7 @@ angular.module('echo.index', [
       payload: jwtUser
     });
     $timeout(function() {
-      analyticsService.updateUserUdo(_.get(jwtUser, 'user_name'));
+      analyticsService.updateUserUdo(_.get(jwtUser, 'unique_name'));
     }, 1000);
   }
 });
