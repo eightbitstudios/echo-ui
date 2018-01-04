@@ -10,7 +10,7 @@ angular.module('echo.components.stopAccordion', [
 ]).component('stopAccordion', {
   bindings: {
     stop: '<',
-    stopType: '@',
+    stopType: '<',
     pickupNumbers: '<'
   },
   templateUrl: 'stop-accordion.component.html',
@@ -18,6 +18,10 @@ angular.module('echo.components.stopAccordion', [
     this.$onInit = function() {
       this.isOpen = true;
       this.formattedCity = _.startCase(_.lowerCase(this.stop.city));
+      this.stopTypeLabel = this.stopType === 'Pick' ? 'Pickup' : 'Delivery';
+      if(this.pickupNumbers && this.pickupNumbers.length > 0){
+        this.pickNumber = this.stopType === 'Pick' ? this.pickupNumbers[0] : this.pickupNumbers.length > 1 ? this.pickupNumbers[1] : '';
+      }      
     };
   }
 });
