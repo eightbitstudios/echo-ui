@@ -24,7 +24,7 @@ angular.module('echo.services.userProfile', [
 
         /* jshint ignore:start */
         if (userObj && userObj.unique_name) {
-          userObj.user_name = _.get(userObj.unique_name, 'unique_name');
+          userObj.unique_name = _.get(userObj.unique_name, 'unique_name');
         }
         /* jshint ignore:end */
 
