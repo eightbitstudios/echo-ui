@@ -53,7 +53,7 @@ describe('Component: Upcoming Loads', function() {
 
       scope.$digest();
 
-      expect(loadsApi.fetchUpcomingLoads).toHaveBeenCalledWith(carrierId, component.paging, component.isDriverNeeded);
+      expect(loadsApi.fetchUpcomingLoads).toHaveBeenCalledWith(carrierId, component.paging, component.isDriverNeeded, component.isCancelledLoad);
       expect(component.paging.totalRecords).toBe(24);
       expect(component.paging.recordCount).toBe(4);
       expect(component.upcomingLoads).toBe(upcomingLoadData.loads);

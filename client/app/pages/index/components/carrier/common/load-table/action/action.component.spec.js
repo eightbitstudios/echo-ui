@@ -73,6 +73,27 @@ describe('Component: Action', function() {
     });
   });
 
+  describe('Function isCancelledLoad', function() {
+    beforeEach(function() {
+      component.$onInit();
+    });
+
+    it('should return true for currentStatus.value == 19', function() {
+      component.currentStatus = {value: 19};
+      expect(component.isCancelledLoad()).toBeTruthy();
+    });
+
+    it('should return false for currentStatus.value != 19', function() {
+      component.currentStatus = {value: 15};
+      expect(component.isCancelledLoad()).toBeFalsy();
+    });
+
+    it('should return false for unknown currentStatus', function() {
+      delete component.currentStatus;
+      expect(component.isCancelledLoad()).toBeFalsy();
+    });
+  });
+
   describe('Function disableActionButton', function() {
     beforeEach(function() {
       component.$onInit();
@@ -80,20 +101,30 @@ describe('Component: Action', function() {
 
     it('should be disabled if load is unbilled and no documents are required', function() {
       spyOn(component, 'documentsRequired').and.returnValue(false);
+      spyOn(component, 'isCancelledLoad').and.returnValue(false);
       component.loadType = loadTypeConstants.UNBILLED;
       expect(component.disableActionButton()).toBeTruthy();
     });
 
     it('should not be disabled if documents are required', function() {
       spyOn(component, 'documentsRequired').and.returnValue(true);
+      spyOn(component, 'isCancelledLoad').and.returnValue(false);
       component.loadType = loadTypeConstants.UNBILLED;
       expect(component.disableActionButton()).toBeFalsy();
     });
 
     it('should not be disabled if load is active', function() {
       spyOn(component, 'documentsRequired').and.returnValue(false);
+      spyOn(component, 'isCancelledLoad').and.returnValue(false);
       component.loadType = loadTypeConstants.ACTIVE;
       expect(component.disableActionButton()).toBeFalsy();
+    });
+
+    it('should be disabled if load is cancelled', function() {
+      spyOn(component, 'documentsRequired').and.returnValue(true);
+      spyOn(component, 'isCancelledLoad').and.returnValue(true);
+      component.loadType = loadTypeConstants.UNBILLED;
+      expect(component.disableActionButton()).toBeTruthy();
     });
   });
 });

@@ -1,7 +1,8 @@
 angular.module('echo.components.modal.assignDriver.unassignedDriverList', [
     'echo.api.loads',
     'echo.filters.phoneNumber',
-    'echo.filters.fullName'
+    'echo.filters.fullName',
+    'echo.components.radioButton'
   ])
   .component('unassignedDriverList', {
     templateUrl: 'unassigned-driver-list.component.html',
@@ -14,10 +15,6 @@ angular.module('echo.components.modal.assignDriver.unassignedDriverList', [
 
       this.selectDriver = function(driver) {
         this.selectedDriver = driver;
-      };
-
-      this.deselectDriver = function() {
-        this.selectedDriver = null;
       };
 
       this.$onInit = function() {

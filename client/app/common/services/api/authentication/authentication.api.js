@@ -4,7 +4,7 @@ angular.module('echo.api.authentication', [
   'echo.config.api',
   'echo.services.cookie',
   'echo.services.userProfile'
-]).factory('authenticationApi', function ($injector, $base64, $q, $http, cookieService, apiConfig) {
+]).factory('authenticationApi', function ($injector, $base64, $q, $http, cookieService, apiConfig){
   return {
     /**
      * @description Creates a password
@@ -56,7 +56,7 @@ angular.module('echo.api.authentication', [
         cookieService.setToken(resp.data.data.access_token); // jshint ignore:line
         return resp.data.data;
       }).catch(function (error) {
-        return $q.reject(error.data.status.code);
+        return $q.reject(_.get(error, 'data.status.code'));
       });
     },
     /**

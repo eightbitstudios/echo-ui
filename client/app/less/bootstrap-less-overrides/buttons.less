@@ -116,7 +116,7 @@
       text-decoration: underline;
       color: @c-gray-heavy-light;
       &:hover {
-        color: #505C61;
+        color: @c-gray-mid-dark;
       }
     }
     &.btn-sm {
@@ -336,4 +336,23 @@
 .btn-close.close:after {
   -webkit-transform: translateX(-50%) rotateZ(-45deg);
   transform: translateX(-50%) rotateZ(-45deg);
+}
+
+.view-full-map-button-row {
+  margin-bottom: -20px;
+  .view-full-map-button {
+    position: relative;
+    background-color: @c-bright-blue;
+    color: @c-white;
+    bottom: 20px;
+  }
+}
+.back-to-dashboard-button {
+  background-color: @c-bright-blue;
+  color: @c-white;
+  position: relative;
+  bottom: 50px;
+  &:hover {
+    color: @c-white;
+  }
 }

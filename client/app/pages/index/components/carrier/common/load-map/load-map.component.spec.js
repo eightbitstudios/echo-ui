@@ -1,5 +1,5 @@
 describe('Component: loadMap', function() {
-  var scope, component, $q, googleMapsApi, googleMaps, google, mapPoints, googleMapsConst;
+  var scope, component, $q, googleMapsApi, googleMaps, google, mapPoints, googleMapsConst, $state;
 
   beforeEach(function() {
     module('load-map.component.html');
@@ -9,7 +9,7 @@ describe('Component: loadMap', function() {
     });
   });
 
-  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController, _googleMapsConst_) {
+  beforeEach(inject(function($rootScope, _$q_, $compile, $componentController, _googleMapsConst_, _$state_) {
     scope = $rootScope.$new();
     scope.ctrl = {
       getComponent: jasmine.createSpy('getComponent')
@@ -17,6 +17,7 @@ describe('Component: loadMap', function() {
 
     googleMapsConst = _googleMapsConst_;
     $q = _$q_;
+    $state = _$state_;
 
     google = {
       maps: {
@@ -26,7 +27,7 @@ describe('Component: loadMap', function() {
       }
     };
     mapPoints = [];
-    googleMapsApi.then.and.returnValue($q.when());
+    googleMapsApi.then.and.returnValue($q.when({}));
     googleMaps.resizeAndCenter.and.returnValue();
 
     scope.$digest();
@@ -72,7 +73,8 @@ describe('Component: loadMap', function() {
         maps: {
           Geocoder: jasmine.createSpy('Geocoder')
         }
-      };
+      },
+      mapSettings = {};
 
       component.$onChanges({
         showMap: {
@@ -87,31 +89,19 @@ describe('Component: loadMap', function() {
 
       expect(googleMaps.formatMapPoints).toHaveBeenCalled();
     });
+  });
 
-    it('should filter out bad map points', function() {
-      var google = {
-        maps: {
-          Geocoder: jasmine.createSpy('Geocoder')
-        }
-      };
+  describe('Function: $onChanges', function() {
+    it('should return true if this is the load management page', function() {
+      $state.current.name = 'index.carrier.loadManagement.activeLoads';
 
-      component.mapPoints.push({
-        position: 10
-      });
-      component.$onChanges({
-        showMap: {
-          currentValue: true
-        }
-      });
+      expect(component.isLoadManagementPage()).toBe(true);
+    });
 
-      component.mapPoints.push({});
+    it('should return true false this is not the load management page', function() {
+      $state.current.name = 'index.carrier.dashboard';
 
-      googleMaps.formatMapPoints.and.returnValue($q.when());
-      googleMapsApi.then.calls.argsFor(0)[0](google);
-
-      scope.$digest();
-
-      expect(component.mapPoints.length).toBe(1);
+      expect(component.isLoadManagementPage()).toBe(false);
     });
   });
 });

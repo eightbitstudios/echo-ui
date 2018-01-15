@@ -250,7 +250,7 @@ describe('Service: googleMaps', function() {
 
       googleMaps.formatMapPoints(google, geocoder, mapPoints).then(function (result) {
         expect(bounds.getCenter).toHaveBeenCalled();
-        expect(result).toBe(center);
+        expect(result.center).toBe(center);
       });
 
       scope.$digest();

@@ -1,7 +1,7 @@
 <div class="origin-destination-map">
   <div class="map-container expanded">
-    <google-maps ng-if="$ctrl.showMap" center="$ctrl.mapCenter" total-points="$ctrl.mapPoints.length" map="$ctrl.map">
-      <google-maps-marker ng-repeat="mapPoint in $ctrl.mapPoints" position="mapPoint.position"></google-maps-marker>
+    <google-maps ng-if="$ctrl.showMap" fullscreen="$ctrl.showExpanded" center="$ctrl.mapCenter" total-points="$ctrl.points.length" map="$ctrl.map">
+      <google-maps-marker ng-repeat="mapPoint in $ctrl.points" is-details="true" map-marker="mapPoint" position="mapPoint.position"></google-maps-marker>
     </google-maps>
   </div>
 </div>

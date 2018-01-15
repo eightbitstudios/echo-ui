@@ -69,6 +69,7 @@ angular.module('echo.config.appConstants', [])
         400128: 'Phone Number already in use',
         400129: 'Submitted time is invalid',
         400140: 'Milestone already performed by other user',
+        400148: 'Unable to upload document at this time',
         401: 'Incorrect Email Address or Password. Please Try Again.',
         401100: 'Invalid Authorization Header',
         401101: 'User account is deactivated',
@@ -78,6 +79,7 @@ angular.module('echo.config.appConstants', [])
         401106: 'Refresh Token is Invalid',
         401105: 'User Role Not Allowed To Reset Password in Portal',
         401110: 'Your account is Suspended. Please contact Echo.',
+        401111: 'This user is currently inactive. Please contact EchoDriveSupport@echo.com for assistance.',
         404: 'Not found',
         404100: 'Load not found',
         404101: 'Driver not found',
@@ -101,7 +103,12 @@ angular.module('echo.config.appConstants', [])
         500111: 'Error writing into shipment activity service',
         500134: 'Unable to find user in Optimizer.',
         500117: 'Invalid date for the action.',
-        500119: 'Unable to assign load because the driver is not available'
+        500119: 'Unable to assign load because the driver is not available',
+        500141: 'Time provided conflicts with previous tracking update for this load, please try again.',
+        500142: 'Future dates and times are not accepted, please try a current or past time.',
+        500143: 'EchoDrive is processing the last update for this load, please refresh and wait a minute before trying again.',
+        500144: 'Updates exceeding 24 hours in the past are not accepted. Please contact your Echo Rep.',
+        500145: 'Updates 24 hours prior to appointment time cannot be completed. Please contact your Echo Rep.'
       },
       DRIVER: {
         500101: 'Phone number already in use',

@@ -1,1 +1,5 @@
-<span ng-if="$ctrl.previousRouteName"><a ui-sref="{{$ctrl.previousRoute}}">Back to {{$ctrl.previousRouteName}}</a></span>
+<span ng-if="$ctrl.previousRouteName"><a ng-if="!$ctrl.linkType" ui-sref="{{$ctrl.previousRoute}}">Back to {{$ctrl.previousRouteName}}</a>
+</span>
+<button ng-if="$ctrl.linkType === 'button' && $ctrl.previousRouteName" ui-sref="{{$ctrl.previousRoute}}" class="btn back-to-dashboard-button">Back to {{$ctrl.previousRouteName}}</button>
+<!--backup in case the user hits a page directly and we don't have a previous route in the url-->
+<button ng-if="$ctrl.linkType === 'button' && !$ctrl.previousRouteName" ng-click="$ctrl.$window.history.back()" class="btn back-to-dashboard-button">Back</button>

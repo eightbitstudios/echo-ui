@@ -82,4 +82,10 @@ describe('Filter - Format Invoice/PODs filter', function () {
       invoice = true;
     expect(formatInvoicePODs({ neededPODs: pods, needsInvoice: invoice })).toEqual('Need 7 PODs and Invoice');
   });
+
+  it('should return Need Invoice string if invalid POD count', function () {
+    var pods = -1,
+      invoice = true;
+    expect(formatInvoicePODs({ neededPODs: pods, needsInvoice: invoice })).toEqual('Need Invoice');
+  });
 });

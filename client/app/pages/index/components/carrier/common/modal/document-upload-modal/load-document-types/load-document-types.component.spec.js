@@ -72,16 +72,16 @@ describe('Component: loadDocumentTypes', function() {
     });
 
     it('should show server error message', function() {
-      var message = {
+      var serverError = {
         code: 500
       };
 
       component.selectedDocumentType = documentTypeConstants.INVOICE.value;
-      documentApi.createDocuments.and.returnValue($q.reject(message));
+      documentApi.createDocuments.and.returnValue($q.reject(serverError));
       component.uploadDocuments();
       $scope.$digest();
       expect(component.serverError)
-        .toEqual(message);
+        .toEqual(serverError.code);
     });
   });
 });

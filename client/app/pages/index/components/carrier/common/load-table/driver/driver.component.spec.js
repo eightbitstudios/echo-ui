@@ -45,20 +45,20 @@ describe('Component: driver', function() {
   }));
 
   describe('Function: $onInit', function() {
-    it('should be disbaled if load is unbilled', function() {
+    it('should be disabled if load is unbilled', function() {
       component.loadType = loadTypeConstants.UNBILLED;
       component.$onInit();
       expect(component.isDisabled).toBeTruthy();
     });
 
-    it('should be disbaled if load is multistop', function() {
+    it('should be disabled if load is multistop', function() {
       component.loadType = loadTypeConstants.ACTIVE;
       component.isMultiStop = true;
       component.$onInit();
       expect(component.isDisabled).toBeTruthy();
     });
 
-    it('should be disbaled if last action is report unloaded', function() {
+    it('should be disabled if last action is report unloaded', function() {
       component.loadType = loadTypeConstants.ACTIVE;
       load.nextAction.lastAction = actionConstants.LAST_ACTION.REPORTED_UNLOADED.value;
       component.isMultiStop = true;

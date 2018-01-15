@@ -4,7 +4,7 @@ describe('Component: googleMaps', function () {
   beforeEach(function () {
     module('echo.components.googleMaps', function ($provide) {
       $provide.value('$element', $element = [{}]);
-      $provide.value('googleMapsApi', googleMapsApi = {then: function(callback) {callback(google);}});
+      $provide.value('googleMapsApi', googleMapsApi = { then: function (callback) { callback(google); } });
       $provide.constant('googleMapsStyles', googleMapsStyles = {});
     });
   });
@@ -26,7 +26,7 @@ describe('Component: googleMaps', function () {
     };
 
     component = $componentController('googleMaps', null, {
-      center: {lat: 30, lng: 50}
+      center: { lat: 30, lng: 50 }
     });
   }));
 
@@ -48,6 +48,8 @@ describe('Component: googleMaps', function () {
         streetViewControl: false,
         rotateControl: false,
         fullscreenControl: false,
+        scrollwheel: true,
+        minZoom: 3,
         scrollwheel: false,
         disableDoubleClickZoom: false
       });
@@ -70,6 +72,7 @@ describe('Component: googleMaps', function () {
         streetViewControl: false,
         rotateControl: false,
         fullscreenControl: false,
+        minZoom: 3,
         scrollwheel: false,
         disableDoubleClickZoom: false
       });

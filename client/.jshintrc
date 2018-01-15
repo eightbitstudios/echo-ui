@@ -19,6 +19,7 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
+    "google": true,
     "jQuery": true,
     "angular": true,
     "console": true,
@@ -34,6 +35,7 @@
     "browser": true,
     "element": true,
     "by": true,
-    "jasmine":true
+    "jasmine":true,
+    "utag": true
   }
 }

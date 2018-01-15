@@ -15,7 +15,7 @@ angular.module('echo.index.carrier.loadManagement.upcomingLoads', [
 
     that.getUpcomingLoads = function() {
       that.showLoading = true;
-      loadsApi.fetchUpcomingLoads(that.carrierId, that.paging, that.isDriverNeeded).then(function(upcomingLoadData) {
+      loadsApi.fetchUpcomingLoads(that.carrierId, that.paging, that.isDriverNeeded, that.isCancelledLoad).then(function(upcomingLoadData) {
         that.paging.totalRecords = upcomingLoadData.totalLoadCount;
         that.paging.recordCount = _.size(upcomingLoadData.loads);
         that.upcomingLoads = upcomingLoadData.loads;
