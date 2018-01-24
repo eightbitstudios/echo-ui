@@ -12,6 +12,24 @@ $(window).load(function(){
     }
   })
 
+  // multi load Google map overlay
+  // Slick slider
+  // https://github.com/kenwheeler/slick
+
+  $('.multi-load-overlay')
+    .on('init', function(event, slick) {
+      $(this).next().find('.totalCount').text(slick.slideCount)
+    })
+    .slick({
+      appendArrows: '.multi-load-slider-footer',
+      fade: true,
+      prevArrow: '<button class="slider-prev"><img src="assets/images/icon-prev-white.svg"></button>',
+      nextArrow: '<button class="slider-next"><img src="assets/images/icon-next-white.svg"></button>',
+    })
+    .on('afterChange', function(event, slick, currentSlide){
+      $(this).next().find('.currPos').text(slick.currentSlide + 1)
+    })
+
   // positioning for modal on tablets
   function positionDatePicker() {
     var winHeight = $(window).height(),

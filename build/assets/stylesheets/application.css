@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 @import url(vendor/jquery.mCustomScrollbar.css);
+@import url(vendor/slick.css);
 /* line 9, ../../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/bootstrap-sass-3.3.6/assets/stylesheets/bootstrap/_normalize.scss */
 html {
   font-family: sans-serif;
@@ -9284,6 +9285,61 @@ header.navbar + .tab-bar {
       .tab-bar .nav-tabs > li.active g.icon {
         fill: #26c1fb; }
 
+/* line 5, components/_lists.sass */
+.list-stacked {
+  font-size: 14px;
+  line-height: 1.43;
+  color: #2b363b;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid #f0f0f0; }
+  /* line 14, components/_lists.sass */
+  .list-stacked li {
+    line-height: 1.43;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 0;
+    padding: 0;
+    border-bottom: 1px solid #f0f0f0; }
+    /* line 22, components/_lists.sass */
+    .list-stacked li:last-child {
+      border-bottom: none; }
+  /* line 25, components/_lists.sass */
+  .list-stacked li > a {
+    color: #2b363b;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 14px 25px 14px 20px;
+    border-left: 5px solid transparent; }
+  /* line 33, components/_lists.sass */
+  .list-stacked li > a:hover,
+  .list-stacked li.active-menu-item > a {
+    border-left: 5px solid #26c1fb; }
+  /* line 37, components/_lists.sass */
+  .list-stacked li > a > span {
+    display: inline-block;
+    color: #2b363b;
+    font-family: "Teko", sans-serif;
+    font-size: 30px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    width: 30px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    margin-bottom: -2px;
+    padding-right: 5px; }
+
 /* line 5, components/_checklist.sass */
 .checklist {
   color: #a9adaf;
@@ -10016,6 +10072,89 @@ header.navbar + .tab-bar {
   /* line 63, components/_map-infowindow.sass */
   .gm-info-window.gm-overlay-basic .overlay-notice {
     margin-bottom: 10px; }
+
+/* line 6, components/_map-overlay.sass */
+.carrier-map-spacer {
+  position: relative;
+  z-index: 1000; }
+  /* line 10, components/_map-overlay.sass */
+  .carrier-map-spacer.map-lg {
+    height: calc(100vh - 61px - 80px - 115px - 122px); }
+  /* line 13, components/_map-overlay.sass */
+  .carrier-map-spacer + footer.footer {
+    margin-top: 0; }
+
+/* line 16, components/_map-overlay.sass */
+.gm-overlay {
+  position: absolute;
+  top: 40px;
+  left: 84px;
+  width: 180px;
+  height: auto;
+  padding: 10px 18px 12px 18px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1); }
+
+/* line 27, components/_map-overlay.sass */
+.gm-overlay-heading {
+  color: #a9adaf;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.33;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 0; }
+
+/* line 36, components/_map-overlay.sass */
+.gm-map-marker {
+  font-family: "Teko", sans-serif;
+  font-size: 36px;
+  line-height: 0.81;
+  letter-spacing: 0.6px;
+  color: #fff;
+  width: 72px;
+  height: 72px;
+  text-align: center;
+  line-height: 77px;
+  background: url("../images/icon-gm-marker.svg") 50% 50% no-repeat; }
+  /* line 48, components/_map-overlay.sass */
+  .gm-map-marker.placeholder-positioning {
+    position: absolute;
+    top: 64px;
+    left: 38.5%; }
+
+/* line 54, components/_map-overlay.sass */
+.map-list {
+  margin: 0 -18px -12px; }
+
+/* line 57, components/_map-overlay.sass */
+.multi-load-slider-footer {
+  color: #fff;
+  text-align: center;
+  padding: 15px 20px;
+  margin: 22px -18px -12px;
+  border-radius: 0 0 4px 4px;
+  background: #505c61; }
+  /* line 65, components/_map-overlay.sass */
+  .multi-load-slider-footer .slick-arrow {
+    padding: 0;
+    border: none;
+    background: none; }
+    /* line 70, components/_map-overlay.sass */
+    .multi-load-slider-footer .slick-arrow:focus {
+      outline: none; }
+    /* line 72, components/_map-overlay.sass */
+    .multi-load-slider-footer .slick-arrow:active {
+      opacity: 0.6; }
+  /* line 75, components/_map-overlay.sass */
+  .multi-load-slider-footer .slider-prev {
+    float: left;
+    cursor: pointer; }
+  /* line 79, components/_map-overlay.sass */
+  .multi-load-slider-footer .slider-next {
+    float: right;
+    cursor: pointer; }
 
 /* line 5, layout/_header.sass */
 .navbar {
@@ -10952,7 +11091,7 @@ body.user-profile {
 
 /* line 189, pages/_carrier_dashboard.sass */
 .load-canceled .carrier-dashboard-load:before {
-  content: "Canceled";
+  content: "Cancelled";
   position: absolute;
   top: 30px;
   left: 175%;
