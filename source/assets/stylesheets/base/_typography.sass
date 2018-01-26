@@ -1,0 +1,149 @@
+//------------------------------------
+    #typography
+//------------------------------------
+
+body
+  color: $dark-grey
+  font-family: $body-font
+  font-weight: 400
+  // font-smoothing: antialiased
+  // -webkit-font-smoothing: antialiased
+  // -moz-osx-font-smoothing: grayscale
+
+h1
+  font-size: 32px
+  font-weight: 400
+  font-family: $heading-font
+  line-height: 1
+  text-transform: uppercase
+
+h2
+  font-size: 32px
+  line-height: 1.4
+  margin-bottom: 20px
+
+h3
+  font-size: 28px
+  line-height: 1.4
+
+h4
+  font-size: 24px
+  line-height: 1.4
+
+h5
+  font-size: 20px
+  font-weight: 400
+  line-height: 1.6
+
+h6
+  font-size: 14px
+  font-weight: 600
+
+ul, ol
+  padding-left: 20px
+  margin: 20px 0
+
+ul > li
+  margin-bottom: 10px
+
+p
+  margin: 0 0 20px
+
+a
+  color: $bright-blue
+  transition: all 0.2s ease-in
+  &:hover
+    color: #1E9AC9
+    text-decoration: none
+
+.lead
+  font-size: 18px
+
+.brand
+  font-weight: 400
+  font-family: $heading-font
+  text-transform: uppercase
+
+  &.brand-lg
+    margin-bottom: 60px
+
+// titles for forms
+
+.section-label
+  color: $gray-darkest
+  font-size: 30px
+  line-height: 1
+  letter-spacing: 0.5px
+  text-transform: none
+  margin-top: 40px
+
+.section-sub-label
+  color: $gray-mid-light
+  font-size: 20px
+  line-height: 1
+  text-transform: none
+  letter-spacing: 0.5px
+
+p.label
+  @extend label
+  padding: 0
+  text-align: left
+  display: block
+  color: $gray-mid-dark
+
+// headers styles for sections
+
+.small-header
+  color: $gray-mid-dark
+  font-size: 11px
+  line-height: 1.4
+  letter-spacing: 1px
+  text-transform: uppercase
+  margin: 0 0 5px
+
+.medium-header
+  font-size: 18px
+  line-height: 1.3
+  color: $gray-darkest
+  margin: 10px 0 30px
+
+.content-header
+  color: $gray-darkest
+  font-size: 18px
+  font-weight: 600
+  line-height: 1.3
+  margin: 0 0 20px
+
+.section-header
+  color: $gray-darkest
+  font-size: 14px
+  font-weight: 600
+  line-height: 1.4
+  text-transform: uppercase
+  padding-bottom: 15px
+  margin: 0 0 10px
+  border-bottom: solid 1px $gray-light
+  em
+    font-weight: 400
+    font-style: normal
+
+  &.sh-no_border
+    padding-bottom: 0
+    margin-bottom: 10px
+    border-bottom: none
+
+  &.sh-short
+    padding-bottom: 5px
+
+  &.sh-med
+    padding-bottom: 10px
+
+// helper classes
+
+.text-muted
+  color: $gray-mid-light
+
+.disclaimer
+  font-size: 12px
+  line-height: 1.3
+  color: $gray-mid-light

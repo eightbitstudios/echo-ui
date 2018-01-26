@@ -1,0 +1,233 @@
+//------------------------------------
+    #datepicker
+//------------------------------------
+
+.datepicker
+  position: relative
+
+  .filter-header,
+  .filter-footer
+    text-align: center
+    padding: 15px
+
+  .filter-header
+    border-bottom: 1px solid $gray-light
+
+.daterangepicker
+  color: $gray-mid-light
+  position: absolute
+  z-index: 100
+  top: 100%
+  left: 0
+  right: auto
+  margin: 0
+  padding: 0
+  width: 550px
+  background-color: #fff
+  border: none
+  border-radius: 0
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
+  &:after,
+  &:before
+    display: none
+
+  &.single-datepicker
+    width: 285px
+
+    .daterangepicker_input
+      display: none
+    
+    .calendar
+      width: 100%
+
+    .calendar-table
+      margin-bottom: 100px
+
+    table.table-condensed
+      margin-bottom: 15px
+      // &:before
+      //   content: ''
+      //   position: absolute
+      //   top: 60px
+      //   left: 0
+      //   height: 1px
+      //   width: 100%
+      //   background: $gray-lightest
+
+    thead tr:first-child
+      th
+        padding: 15px 0 17px
+    
+    th.month
+      text-transform: none
+      padding: 0
+      font-size: 18px
+      color: $gray-darkest
+
+    tbody > tr > td
+      &:hover
+        color: #FFF
+        background-color: $gray-mid-light
+
+    .checkboxes
+      width: 245px
+      position: absolute
+      left: 20px
+      bottom: 70px
+
+      .checkbox
+        display: inline-block
+        padding-left: 0
+
+      .control input:checked ~ .control-indicator
+        background-color: $gray-light
+
+      .checkbox input:checked ~ .control-indicator
+        background-image: image_url('checkbox-check.svg')
+
+      .control-indicator
+        top: 0
+        margin-right: 5px
+
+      label
+        font-size: 14px
+        text-transform: none
+        margin-right: 16px
+        padding-left: 25px
+
+        &:hover
+          font-weight: bold
+
+    .ranges
+      position: absolute
+      left: 0
+      bottom: 0
+      width: 100%
+
+  .daterangepicker_input
+    padding: 20px 20px 0
+    margin-bottom: 5px
+    border-bottom: 1px solid #e1e2e3
+
+    label
+      margin-bottom: 0
+
+    .form-control
+      font-size: 18px
+      padding: 0
+      height: auto
+      margin-bottom: 10px
+      border-bottom: 0
+
+  .left .daterangepicker_input
+    border-right: 1px solid #e1e2e3
+
+  .calendar
+    width: 50%
+    max-width: none
+    margin: 0
+
+  .calendar.left .calendar-table
+    padding-right: 10px
+    th.month
+      padding-right: 0
+
+  .calendar.right .calendar-table
+    padding-left: 10px
+    th.month
+      padding-left: 0
+
+  .calendar-table
+    border-radius: 2px
+    padding: 5px 20px
+    margin-bottom: 10px
+
+    thead tr:last-child th
+      background-color: $gray-lightest
+      border-bottom-color: $gray-lightest
+    tbody td
+      background-color: $gray-lightest
+
+  td,
+  th
+    font-size: 12px
+    line-height: 1.3
+    border-radius: 0
+    color: $gray-darkest
+
+  .calendar-table th
+    color: $gray-mid-light
+    font-weight: 100
+    font-size: 12px
+    line-height: 1.3
+    text-transform: uppercase
+    padding-top: 10px
+    padding-bottom: 10px
+
+  .calendar-table td
+    padding-top: 10px
+    padding-bottom: 10px
+
+  .calendar-table td.in-range
+    background-color: fade_out($bright-blue,0.8)
+
+  .calendar-table td.active,
+  .calendar-table td.active:hover
+    background-color: $bright-blue
+
+  td.off
+    color: #ccc
+
+  .fa-calendar
+    display: none
+
+  .ranges
+    display: flex
+    justify-content: center
+    float: none !important
+    text-align: center
+    margin: 0
+    padding: 10px
+    border-top: 1px solid $gray-light
+    .btn
+      margin: 0 5px
+
+  .select.monthselect-wrap
+    width: 56%
+    margin-right: 2%
+    float: left
+    select.monthselect
+      width: 100%
+      margin-right: 0
+
+  .select.yearselect-wrap
+    width: 42%
+    float: left
+    select.yearselect
+      width: 100%
+
+  .select select
+    font-size: 14px
+    line-height: 1.4
+    color: $gray-darkest
+    width: 100%
+    margin: 0
+    padding: .5rem 2.25rem .5rem 1rem
+    border-radius: 2px
+    background-color: $gray-lightest
+    border: 0
+    cursor: pointer
+
+.daterangepicker.single.show-calendar
+  display: flex
+  flex-direction: column
+  width: 275px
+
+  .calendar
+    width: 100%
+
+  .calendar-table
+    padding: 5px 15px
+
+  .daterangepicker_input
+    display: none

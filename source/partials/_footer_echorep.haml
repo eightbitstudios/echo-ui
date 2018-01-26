@@ -1,0 +1,18 @@
+%footer.footer
+
+  .footer-secondary
+    .container
+      .pull-left
+        .navbar-brand
+          %span
+            =image_tag 'logo-echo-sm.svg', alt: "Echo Logo"
+      .pull-right
+        %span.copyright
+          Copyright
+          :javascript
+            document.write(new Date().getFullYear())
+          Echo Global Logistics
+
+        %ul.list-inline.footer-nav.navbar-right
+          %li=link_to 'Terms &amp; Conditions', '#', class: ''
+          %li=link_to 'Privacy Policy', '#', class: ''

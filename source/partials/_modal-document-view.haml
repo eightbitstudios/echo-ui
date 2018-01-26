@@ -1,0 +1,82 @@
+.modal.fade.modal-document-image{tabindex: "-1", role: "dialog"}
+  .modal-dialog{role:"document"}
+    .modal-content
+
+      %button.close.btn-close{type: "button", data:{dismiss:"modal"}, aria:{label: "Close"}}
+        %span{aria:{hidden:"true"}} &times;
+
+      .modal-body
+        %section.modal-sidebar
+
+          %h4.section-header.sh-no_border Other Load Documents
+          .load-documents
+            .load-doc
+              .doc-image
+                %a{href: "#"}
+                  =image_tag('document_image.png')
+              .doc-descrip
+                %h5 Rate Confirmation
+                .doc-data
+                  Updated 06:45 CST, Today
+                  %br
+                  By Echo
+
+            .load-doc.active
+              .doc-image
+                %a{href: "#"}
+                  =image_tag('doc-TEMP-image.png')
+              .doc-descrip
+                %h5 Proof of Delivery
+                .doc-data
+                  Updated 06:45 CST, Today
+                  %br
+                  By Michelle P.
+
+          %footer
+            %button.btn-link{type: 'button'} Print All
+            %button.btn-link{type: "button", data: {dismiss: 'modal'}} Add Document
+
+        %section.modal-main-content
+          %header
+            .document-title.pull-left
+              %h4.content-header Proof of Delivery
+              %p Updated 06:45 CST, Today By Echo
+
+            %ul.list-inline.pull-right.document-tool-links
+              %li
+                =link_to '#' do
+                  =image_tag 'icon-download.svg'
+                  Download Document
+              %li
+                =link_to '#' do
+                  =image_tag 'icon-print.svg'
+                  Print
+              %li
+                =link_to '#' do
+                  =image_tag 'icon-add.svg'
+                  Add Page
+
+          .document-preview
+            =image_tag 'document-preview-TEMP.jpg'
+
+          %footer
+            %ul.pagination
+              %li
+                =link_to '#' do
+                  %span
+                    =image_tag('navigation-chevrons-lt@2x.png', width: '9', height: '12')
+
+              %li.active-page=link_to '1', '#'
+              %li=link_to '2', '#'
+              %li=link_to '3', '#'
+              %li=link_to '4', '#'
+              %li=link_to '5', '#'
+              %li
+                =link_to '#' do
+                  %span
+                    =image_tag('navigation-chevrons-rt@2x.png', width: '9', height: '12')
+
+
+
+
+

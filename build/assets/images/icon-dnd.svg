@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>icon / dnd</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="dnd" transform="translate(0.000000, -3.000000)" fill="#EB004B">
+            <path d="M7,3.5 C3.41001389,3.5 0.5,6.41001389 0.5,10 C0.5,13.5899861 3.41001389,16.5 7,16.5 C10.5899861,16.5 13.5,13.5899861 13.5,10 C13.5,6.41001389 10.5899861,3.5 7,3.5 L7,3.5 Z M11.75,10.8142105 C11.75,11.0547368 11.5403383,11.25 11.2803881,11.25 L2.71961194,11.25 C2.45966169,11.25 2.25,11.0547368 2.25,10.8142105 L2.25,9.18578947 C2.25,8.94526316 2.45966169,8.75 2.71961194,8.75 L11.2803881,8.75 C11.5395821,8.75 11.75,8.94526316 11.75,9.18578947 L11.75,10.8142105 Z" id="icon-/-dnd"></path>
+        </g>
+    </g>
+</svg>

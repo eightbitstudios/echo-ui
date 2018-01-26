@@ -1,0 +1,63 @@
+//------------------------------------
+    #tabs
+//------------------------------------
+
+.tab-bar + .main-content
+  margin-top: 45px
+
+header.navbar + .tab-bar
+  margin-top: -20px
+
+.tab-bar
+  // margin-bottom: 45px
+  background-color: #f7f7f7
+  box-shadow: inset 0 -1px 0 0 #e1e2e3
+  .container
+    display: flex
+    align-items: flex-end
+
+  .nav-tabs
+    margin-top: 20px
+    border-bottom: 0
+    flex: 1 0 auto
+
+    svg
+      margin-right: 5px
+      margin-bottom: -1px
+
+    g.icon
+      fill: $slate-grey
+      transition: fill 0.3s
+
+    > li
+      font-size: 20px
+      font-family: $heading-font
+      text-transform: uppercase
+      letter-spacing: 0.5px
+      margin-bottom: 0
+      +tablet
+        font-size: 30px
+
+      > a
+        color: $slate-grey
+        line-height: 1.2
+        padding: 10px 20px 11px
+        border-radius: 0
+        border: none
+        border-bottom: 4px solid transparent
+        background: none
+
+        &:hover
+          color: $bright-blue
+          border: none
+          border-bottom: 4px solid transparent
+          g.icon
+            fill: $bright-blue
+
+      &.active
+        a
+          color: $bright-blue
+          background: none
+          border-bottom: 4px solid $bright-blue
+        g.icon
+          fill: $bright-blue

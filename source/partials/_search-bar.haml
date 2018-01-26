@@ -1,0 +1,16 @@
+.search-bar.container
+  %form.search-form.pull-left{role:"search"}
+    .form-group
+      %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+      %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+
+  .filter-drivers.pull-left
+    %button.btn.btn-default.btn-filter.btn-date-picker
+      Filter Unassigned Drivers
+
+  .pull-right
+    %button.btn.btn-default Invite New Driver
+
+
+
+

@@ -1,0 +1,36 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Arrival For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-arrival'
+
+  %section.modal-main-content
+
+    %h4.content-header What time did the driver arrive<br /> at the pickup stop?
+    %p.text-muted.disclaimer [Legal disclaimer such as: For communication purposes only. Detention is calculated using customer policies and documents provided at the stop location.]
+
+    %form.form-inline.form-arrival-time
+      .filter-drivers.pull-left
+        .btn.btn-default.btn-filter.btn-modal-dp
+          Thu, Aug 18
+        .datepicker
+
+      .form-group
+        %label.hidden Time
+        %input.form-control{:type => "text", :placeholder => "12:00"}
+      .form-group
+        %label.hidden Time Zone
+        .select
+          %select.form-control{:type => "select", :placeholder => "Select one..."}
+            %option EST
+            %option CST
+            %option MST
+            %option PST
+
+    .date-select
+
+
+
+.modal-footer
+  %button.btn.btn-default{type: 'button'} Confirm Arrival
+  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CANCEL

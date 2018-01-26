@@ -1,0 +1,35 @@
+//------------------------------------
+    #checklist
+//------------------------------------
+
+.checklist
+  color: $gray-mid-light
+  list-style: none
+  margin-top: 5px
+  margin-bottom: 0
+  padding-left: 0
+
+  > li
+    line-height: 2.5em
+    margin-bottom: 0
+
+    &:before
+      position: relative
+      content: image-url("iconcheck-grey.svg")
+      top: 0.5rem
+      width: 22px
+      height: 22px
+      margin-right: 9px
+      display: inline-block
+    
+    &.checklist-approved
+      color: $gray-darkest
+
+      &:before
+        content: image-url("iconcheck-approved.svg")
+  
+    &.checklist-inprogress
+      color: $gray-darkest
+
+      &:before
+        content: image-url("icon-question.svg")

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>BFCDFF12-7C23-4ECA-A432-816CEAF8E742</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <circle id="path-1" cx="5" cy="5" r="5"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-1" y="-1" width="12" height="12">
+            <rect x="-1" y="-1" width="12" height="12" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Load-Management" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="load-management-details-collapsedActivity" transform="translate(-317.000000, -542.000000)">
+            <g id="warning-bar" transform="translate(0.000000, 530.000000)">
+                <g id="icon-/-warning" transform="translate(318.000000, 13.000000)">
+                    <g id="warning-indicator-bg">
+                        <use fill="#F18300" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <use stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M5.63942284,5.49517438 C5.61912954,5.8839303 5.27712158,6.19907924 4.89586285,6.19907924 L5.11808804,6.19907924 C4.7277245,6.19907924 4.3949332,5.8860729 4.37452806,5.49517438 L4.19899315,2.13247629 C4.17869985,1.74372037 4.48799244,1.42857143 4.86894013,1.42857143 L5.14501076,1.42857143 C5.53530556,1.42857143 5.83536289,1.74157777 5.81495774,2.13247629 L5.63942284,5.49517438 Z M4.14271763,7.51604353 C4.14271763,7.24260466 4.21595909,7.035901 4.3624442,6.89592634 C4.5089293,6.75595168 4.72214332,6.6859654 5.00209263,6.6859654 C5.27227628,6.6859654 5.48142132,6.75757927 5.62953404,6.90080915 C5.77764676,7.04403903 5.85170201,7.24911511 5.85170201,7.51604353 C5.85170201,7.77320627 5.77683297,7.97584096 5.62709263,8.12395368 C5.4773523,8.2720664 5.26902105,8.34612165 5.00209263,8.34612165 C4.72865377,8.34612165 4.51706734,8.27369399 4.36732701,8.1288365 C4.21758668,7.983979 4.14271763,7.77971672 4.14271763,7.51604353 L4.14271763,7.51604353 Z" id="!" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

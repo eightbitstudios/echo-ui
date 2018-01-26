@@ -1,0 +1,52 @@
+%p
+  %strong Document Guidelines
+
+%ul
+  %li Accepted File Types: JPEG, PDF, PNG
+  %li Max File Size: 20mb
+
+%p
+  %strong Documents Added
+
+- if load_doc == 'approved'
+
+  .load-doc.is-approved
+    .doc-descrip
+      .doc-data
+        %h5 LUMPER RECEIPT
+        Added 07:45 CST, Today
+        %br
+        By Echo
+
+  .load-doc
+    .doc-descrip
+      .doc-data
+        %h5 PROOF OF DELIVERY #1
+        Added 06:45 CST, Today
+        %br
+        By Echo
+
+  .load-doc
+    .doc-descrip
+      .doc-data
+        %h5 LUMPER RECEIPT
+        Added 05:45 CST, Today
+        %br
+        By Echo
+- else
+
+  .load-doc
+    .doc-descrip
+      .doc-data
+        %h5 PROOF OF DELIVERY #1
+        Added 06:45 CST, Today
+        %br
+        By Echo
+
+  .load-doc
+    .doc-descrip
+      .doc-data
+        %h5 LUMPER RECEIPT
+        Added 05:45 CST, Today
+        %br
+        By Echo

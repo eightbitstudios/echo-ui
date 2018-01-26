@@ -1,0 +1,24 @@
+-@title= 'Load Management Details Multistop'
+-@page_classes= 'load-management load-management-detail'
+
+= partial 'partials/header_carrier_load', locals: {loads: '9 Loads Located', map: false}
+
+.container-fluid.load-table_detail
+  .container
+    = partial 'partials/load_management_detail'
+
+.container.main-content
+  .section-head
+    %h1.section-label
+      3 STOPS
+
+  .row
+    %section.col-md-8
+    
+      = partial 'partials/loads_accordion-multi'
+
+      %p.text-muted Activity Logs are not available for multi-stop loads yet.
+
+    .col-md-4
+      
+      = partial 'partials/loads_sidebar'

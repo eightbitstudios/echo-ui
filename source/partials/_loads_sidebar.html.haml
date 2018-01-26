@@ -1,0 +1,62 @@
+%section.sidebar-container
+  %h4.section-header.sh-short Equipment
+  .equip-list
+    Dry Van 53'<br/>
+    HazMat<br/>
+    Tractor 093837<br/>
+    .inline-edit-content
+      =link_to '#', class: 'btn btn-link btn-inline-edit btn-sm' do
+        Add Trailer Number
+        =image_tag('add-pencil.svg')
+    %form.form-inline.form-inline-editing{style: "display: none;"}
+      .form-group
+        %label.hidden Add Trailer Number
+        %input.form-control{:type => "text", :placeholder => "Add Trailer Number"}
+      .form-group
+        %button.btn.btn-link{type: "submit"} Save
+        %button.btn.btn-link.btn-alt{type: "reset"} Cancel
+  %br
+  .equip-specials
+    Drop Trailer at Shipper<br>
+    No Reefers<br>
+
+%section.sidebar-container
+  %h4.section-header.sh-short General Instructions
+  %p POD Required within 24-48 hours after delivery.
+
+%section.sidebar-container
+  %h4.section-header.sh-short Documents
+  .load-documents
+    .load-doc
+      .doc-image
+        %a{href: "#"}
+          =image_tag('document_image.png')
+      .doc-descrip
+        .status-alert
+          %h5 Rate Confirmation
+          .doc-data
+            Updated 06:45 CST, Today
+            %br
+            By Echo
+
+    .load-doc
+      .doc-image
+        %a{href: "#"}
+          =image_tag('doc-TEMP-image.png')
+      .doc-descrip
+        %h5 Proof of Delivery
+        .doc-data
+          Updated 06:45 CST, Today
+          %br
+          By Michelle P.
+
+  %button.btn.btn-document.btn-document_primary
+    .add-type
+      Invoice
+  %button.btn.btn-document
+    .add-type
+      Load Documents
+      %small BOLs, Receipts, Scale Tickets
+  
+  %p.text-center.text-muted
+    %small Accepted File Types: JPEG, PDF, PNG

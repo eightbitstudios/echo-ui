@@ -1,0 +1,460 @@
+//------------------------------------
+    #buttons
+//------------------------------------
+
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn
+  opacity: 0.35
+
+.btn
+  padding: 12px 19px 9px
+  font-size: 22px
+  font-family: $heading-font
+  text-transform: uppercase
+  letter-spacing: 0.5px
+  line-height: 0.9
+  text-shadow: none
+  border-radius: 2px
+  transition: all 0.2s ease-in
+  white-space: normal
+  font-smoothing: antialiased
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+  &:active,
+  &:focus,
+  &:active:focus
+    outline: none
+    box-shadow: none
+
+  /////////////
+  // General button styles
+  /////////////
+  &.btn-link
+    color: $bright-blue
+
+  &.btn-default
+    color: $bright-blue
+    padding: 10px 16px 7px
+    border: solid 2px $bright-blue
+    background-color: transparent
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover
+      +tablet
+        color: #fff
+        background-color: $bright-blue
+
+    &:active,
+    &:focus
+      color: #fff
+      outline: none
+      box-shadow: none
+      border: solid 2px darken($bright-blue, 10%)
+      background-color: darken($bright-blue, 10%)
+
+    &.btn-disabled
+      opacity: 0.3
+      &:hover
+        color: $bright-blue
+        padding: 10px 19px 7px
+        border: solid 2px $bright-blue
+        background-color: transparent
+
+    &[disabled]:hover,
+    &.disabled:hover
+      border: solid 2px $bright-blue
+
+  //////
+  &.btn-secondary
+    color: $gray-mid-light
+    padding: 10px 16px 7px
+    border: solid 2px $gray-mid-light
+    background-color: transparent
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover
+      +tablet
+        color: #fff
+        background-color: $gray-mid-light
+
+    &:active,
+    &:focus
+      color: #fff
+      outline: none
+      box-shadow: none
+      border: solid 2px darken($gray-mid-light, 10%)
+      background-color: darken($gray-mid-light, 10%)
+
+  //////
+  &.btn-primary
+    color: #fff
+    border: none
+    background-color: $green
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover
+      +tablet
+        background-color: $green-dark
+
+    &:active,
+    &:focus
+      outline: none
+      box-shadow: none
+      background-color: #1c3b21
+
+  //////
+  &.btn-warning
+    border: none
+    background-color: $danger
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover
+      background-color: $danger-dark
+
+    &:active,
+    &:focus
+      outline: none
+      box-shadow: none
+      background-color: #a80035
+
+  //////
+  &.btn-danger
+    border: none
+    background-color: $danger
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    &:hover
+      background-color: $danger-dark
+
+    &:active,
+    &:focus
+      outline: none
+      box-shadow: none
+      background-color: #a80035
+
+  //////
+  &.btn-link
+    color: $bright-blue
+    font-family: $body-font
+    font-size: 14px
+    line-height: 1.4
+    text-transform: none
+    letter-spacing: 0
+    padding: 10px 0
+
+    &:hover,
+    &:focus
+      color: $bright-blue-dark
+      text-decoration: none
+
+    &.btn-alt
+      text-decoration: underline
+      color: $gray-mid-light
+      &:hover
+        color: #505C61
+
+    &.btn-sm
+      font-size: 12px
+      padding: 0
+
+    &.btn-support
+      color: $gray-mid-dark
+      text-decoration: underline
+      &:hover
+        text-decoration: none
+
+  /////////////
+  // Unique button styles
+  /////////////
+
+  //// Button saving animated gif
+
+
+  &.btn-filter
+    position: relative
+    transition: font-size 0s
+    color: $bright-blue
+    font-weight: normal
+    border-width: 2px
+    border-color: $bright-blue
+    font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    small
+      font-size: 14px
+      font-family: $body-font
+      letter-spacing: 0
+
+      // color: $gray-mid-light
+      // border-color: $gray-mid-light
+      // background-color: transparent
+
+    &.active,
+    &.btn-active,
+    &:focus,
+    &:active,
+    &:hover
+      color: #fff
+      border-color: $gray-mid-light
+      background-color: $gray-mid-light
+      box-shadow: none
+
+    &.filter__assigned
+      color: #fff
+      // font-family: $body-font
+      // font-size: 14px
+      // line-height: 1.4
+      // letter-spacing: 0
+      // text-transform: none
+      padding-right: 45px
+      border-color: $bright-blue
+      background-color: $bright-blue
+      transition: none
+      &:hover
+        border-color: $bright-blue-dark
+        background-color: $bright-blue-dark
+
+    &.btn-filter-invoice
+      small
+        display: none
+
+      &.filter__assigned
+        font-size: 22px
+        font-family: $heading-font
+        text-transform: uppercase
+        text-align: left
+        line-height: 1
+        small
+          display: block
+
+
+    &.btn-date-picker,
+    &.btn-modal-dp
+      padding-left: 45px
+
+      &.filter__assigned
+        &:before
+          content: image-url('icon-calendar-white.svg')
+
+      &:before
+        content: image-url('icon-calendar-gray.svg')
+        display: inline-block
+        position: absolute
+        top: 10px
+        left: 15px
+        width: 18px
+        height: auto
+        margin-right: 6px
+
+      &:focus,
+      &:active,
+      &:hover
+        &:before
+          content: image-url('icon-calendar-white.svg')
+
+    span.close
+      position: absolute
+      z-index: 999999
+      top: 50%
+      right: 10px
+      width: 12px
+      height: 12px
+      opacity: 1
+      font-size: 0
+      line-height: 0
+      text-indent: -9999em
+      margin-top: -6px
+      text-shadow: none
+      background: image-url('x-btn.svg') top left no-repeat
+      background-size: 12px
+
+  ///////
+  &.btn-document
+    position: relative
+    color: $gray-mid-light
+    width: 100%
+    font-size: 22px
+    line-height: 0.9
+    text-align: left
+    letter-spacing: 0.5px
+    padding: 10px
+    margin-bottom: 20px
+    background-color: #f7f7f7
+    border-radius: 0
+    border: dotted 1px $gray-mid-light
+
+    &.btn-document_primary
+      color: $bright-blue
+      border: dotted 1px $bright-blue
+      background: rgba(38, 193, 251, 0.2)
+      &:hover
+        background-color: rgba(38, 193, 251, 0.4)
+      &:before,
+      &:after
+        background-color: $bright-blue
+
+      .add-type
+        border-left-color: $bright-blue
+
+    &:before,
+    &:after
+      content: ''
+      position: absolute
+      top: 50%
+      left: 25px
+      width: 27px
+      height: 3px
+      margin-top: -2px
+      border-radius: 20px
+      background-color: $gray-mid-light
+      transform-origin: 50% 50%
+      -webkit-backface-visibility: hidden
+
+    &:after
+      transform: rotateZ(90deg)
+
+    &:hover
+      background-color: $gray-lightest
+
+    .add-type
+      display: flex
+      flex-direction: column
+      justify-content: center
+      height: 57px
+      margin-left: 67px
+      padding: 10px 10px 10px 25px
+      letter-spacing: 0
+      border-left: dotted 1px $gray-mid-light
+
+      small
+        color: $gray-mid-light
+        font-family: $body-font
+        font-size: 12px
+        letter-spacing: 0
+        text-transform: none
+        line-height: 1.3
+        display: block
+
+
+    /// Large Dropzone target
+
+    &.btn-dropzone-lg
+      display: flex
+      align-items: center
+      justify-content: flex-end
+      flex-direction: column
+      height: 140px
+      padding: 0
+
+      &:before,
+      &:after
+        top: calc(32px + 27px/2)
+        left: 50%
+        margin-left: calc(-27px/2)
+
+      .add-type
+        text-align: center
+        justify-content: flex-end
+        margin-left: 0
+        height: auto
+        padding: 27px
+        border-left: none
+
+
+    &.btn-add-doc
+      display: flex
+      align-items: center
+      justify-content: flex-end
+      flex-direction: column
+      height: 140px
+      width: 130px
+      padding: 0
+      margin-bottom: 0
+
+      &:before,
+      &:after
+        top: calc(40px + 27px/2)
+        left: 50%
+        margin-left: calc(-27px/2)
+
+      .add-type
+        text-align: center
+        justify-content: flex-end
+        margin-left: 0
+        height: auto
+        padding: 40px 0
+        border-left: none
+
+  //////
+  &.btn-icon
+    padding: 0
+    border: none
+    background: none
+
+    &:hover
+      background: none
+
+  //////
+  &.btn-alert
+    padding: 5px 0
+    color: $danger
+    img
+      vertical-align: baseline
+
+  //////
+  &.btn-back
+    &:hover
+      color: #1e9ac9
+      text-decoration: none
+
+    img
+      width: 11px
+      vertical-align: baseline
+
+  &.btn-show
+    padding-bottom: 0
+
+// Used in Modals
+/////////////
+
+.btn-close.close
+  position: relative
+  opacity: 1
+  font-size: 0
+  line-height: 0
+  width: 2rem
+  height: 2rem
+  z-index: 999999
+  &:after,
+  &:before
+    content: ''
+    height: 3px
+    width: 2.5rem
+    background: $gray-mid-light
+    border-radius: 3px
+    position: absolute
+    top: 50%
+    left: 50%
+    opacity: 1
+    transition: all 0.3s cubic-bezier(.71,.48,.3,.9)
+    transform: translateX(-50%) rotateZ(45deg)
+
+  &:after
+    transform: translateX(-50%) rotateZ(-45deg)
+

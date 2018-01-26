@@ -1,0 +1,48 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Add Document for'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-documents', locals: {load_doc: ''}
+
+  %section.modal-main-content
+
+    .btn.btn-document.btn-dropzone-lg
+      .add-type
+        ADD A DOCUMENT
+        %small You can also drag and drop
+
+    %form.form-inline
+      %legend TYPE
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios1", :checked => "checked"}
+        %span.control-indicator
+        Load Document
+
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios1"}
+        %span.control-indicator
+        Invoice
+
+    %hr.hr
+
+    %form
+      .row
+        .col-sm-6
+          .form-group
+            %label Invoice Number
+            %input.form-control{:type => "text", :placeholder => "e.g. 123456789"}
+
+          .form-group
+            %label Original Bill Rate: $1,500
+            %input.form-control{:type => "text", :placeholder => "Invoice amount if different"}
+
+          .form-group
+            %label Invoice Date
+            %input.form-control.input-modal-dp{:type => "text", :placeholder => "MM/DD/YYYY"}
+
+    .modal-action-links
+      %button.btn.btn-default{type: 'button'} Send Invoice
+
+
+.modal-footer
+  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE

@@ -1,0 +1,15 @@
+-@title= 'Invoice Landing'
+-@page_classes= 'invoice invoice-active'
+
+= partial 'partials/header_load_invoice', locals: {link: 'active'}
+= partial 'partials/header_carrier_invoice', locals: {loads: '9 Loads Located', map: true}
+
+.container.main-content
+  %section
+    .section-head
+      = partial 'partials/filter_bar_invoice'
+    .row
+      .col-md-12
+        = partial 'partials/invoices_active'
+
+        = partial 'partials/invoices_pagination'

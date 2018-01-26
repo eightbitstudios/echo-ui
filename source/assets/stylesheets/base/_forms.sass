@@ -1,0 +1,268 @@
+//------------------------------------
+    #form
+//------------------------------------
+
+fieldset + fieldset
+  margin-top: 40px
+
+legend
+  color: $gray-darkest
+  font-size: 14px
+  font-weight: 600
+  line-height: 1.4
+  text-transform: uppercase
+  margin: 0 0 20px
+  border-bottom: none
+
+label
+  font-size: 11px
+  font-weight: 400
+  color: $gray-mid-dark
+  line-height: 1.3
+  letter-spacing: 1.1px
+  margin-bottom: 0
+  text-transform: uppercase
+  transition: color 0.2s ease-in
+
+.select
+  padding-left: 10px
+  margin-right: -10px
+  //sloppy hack to fix IE dropdown background
+  select
+    padding-left: 0
+    padding-right: 0
+    margin: 0 -10px
+    border-radius: 0
+    border-bottom: 1px solid $gray-mid-light
+    background-color: #fff
+
+  &:after
+    content: image-url('icon-down-carat.svg')
+    border: none !important
+    margin-top: -1rem
+    margin-right: 1rem
+
+    &:focus
+      box-shadow: none
+
+  select::-ms-expand
+    display: none
+
+//////////
+
+.form-group
+  margin-bottom: 30px
+  position: relative
+
+  &:last-child
+    margin-bottom: 0
+
+  &:hover
+    label
+      color: $gray-darkest
+      font-weight: 600
+
+    .form-control
+      border-color: $gray-darkest
+
+//////////
+
+.form-control
+  color: $gray-darkest
+  box-shadow: none
+  padding-left: 0
+  border-radius: 0
+  border-width: 0 0 1px 0
+  border-color: $gray-mid-light
+
+  &::-webkit-input-placeholder
+    color: $gray-mid-light
+  &::-moz-placeholder
+    color: $gray-mid-light
+  &:-ms-input-placeholder
+    color: $gray-mid-light
+
+  &:focus
+    box-shadow: none
+    outline: none
+    border-color: $gray-darkest
+
+
+.form-group-inline
+  display: inline-block
+
+.form-inline-editing
+  .form-control
+    background-color: transparent
+
+  .btn-link + .btn-link
+    margin-left: 10px
+
+
+// Checkbox & Radio
+
+input[type="radio"],
+input[type="checkbox"]
+  margin-top: 0
+
+.checkbox,
+.radio
+  text-transform: none
+  letter-spacing: 0
+  font-size: 14px
+  font-weight: 400
+  margin-bottom: 25px
+
+  label
+    letter-spacing: 0
+    font-weight: 400 !important
+
+  &:hover
+    font-weight: 400 !important
+    label
+      font-weight: 400
+
+  .control:hover .control-indicator
+    background: $gray-light
+
+  &.control
+    display: block
+    margin-right: 16px
+    padding-left: 25px
+
+  .control-indicator
+    top: 0
+    margin-right: 5px
+
+
+/// Customized WTFForms Checkbox
+//////////
+
+.control
+
+  input:checked ~ .control-indicator
+    background-color: $gray-light
+
+  input:active ~ .control-indicator
+    background-color: #f7f7f7
+
+  input:focus ~ .control-indicator
+    box-shadow: 0 0 0 0
+
+  &.radio
+    input:checked ~ .control-indicator
+      border: solid 1px $gray-light
+      background-color: $gray-lightest
+      background-image: image_url('radial-selected.svg')
+      background-size: 10px
+
+  &.checkbox
+    input:checked ~ .control-indicator
+      background-image: image_url('checkbox-check.svg')
+
+.checkbox
+  .control-indicator
+    border-radius: 0
+
+  &.control-x,
+  &.control-lrg
+    padding-left: 30px
+    height: 30px
+    margin-top: 0
+    margin-bottom: 0
+    margin-right: 0
+
+    .checkbox input[type="checkbox"]
+      margin-left: -40px
+
+    .control-indicator
+      top: 0
+      width: 30px
+      height: 30px
+      border-radius: 4px
+      background-color: #fff
+      border: solid 1px $gray-light
+
+  &.control-x
+    input:checked ~ .control-indicator
+      background-color: #fff
+      background-image: image-url("icon-remove.svg")
+
+  &.control-lrg
+    .control-indicator
+
+    input:checked ~ .control-indicator
+      border: solid 1px $green
+      background-color: $green
+      background-image: image-url("icon-checkmark-wht.svg")
+
+
+/// Customized Inline form elements
+/////////
+
+.form-inline
+  legend
+    display: inline-block
+    float: left
+    margin: 0 15px 0 0
+    width: auto
+
+  .checkbox.control,
+  .radio.control
+    display: inline-block
+
+    input[type="radio"],
+    input[type="checkbox"]
+      margin-left: -15px
+
+
+
+textarea.form-control
+  height: 150px
+  padding: 10px
+  border: 0
+  border-radius: 2px
+  background-color: $gray-lightest
+
+/////////////
+// form info classes
+/////////////
+
+.help-block
+  font-size: 12px
+  line-height: 1.3
+  margin-bottom: -10px
+
+.has-error
+  label
+    font-weight: 600
+    line-height: 1.4
+    color: $danger
+
+  .form-control
+    box-shadow: none
+    border-color: $danger
+
+    &:focus
+      box-shadow: none
+      border-color: $danger
+
+  .help-block
+    font-weight: 400
+    color: $danger
+
+.is-approved
+  &:before
+    content: image-url('icon-approve.svg')
+    position: absolute
+    left: -15px
+    top: 0.05rem
+    width: 11px
+
+    +tablet
+      left: -20px
+
+  &.form-group
+    &:before
+      bottom: 7px
+      top: auto

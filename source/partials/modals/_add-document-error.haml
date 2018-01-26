@@ -1,0 +1,67 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Add Document for'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-documents', locals: {load_doc: ''}
+
+  %section.modal-main-content
+
+    .btn.btn-document.btn-dropzone-lg
+      .add-type
+        ADD A DOCUMENT
+        %small You can also drag and drop
+
+    %form.form-inline
+      %legend TYPE
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios1", :checked => 'checked'}
+        %span.control-indicator
+        Load Document
+
+      %label.radio.control
+        %input{:type => "radio", :name => "optionsRadios1"}
+        %span.control-indicator
+        Invoice
+
+    %hr.hr
+
+    %form
+      .row
+        .col-sm-7
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Proof of Delivery #2 (2 Needed)
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Lumper Receipt
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Bill of Lading
+
+        .col-sm-5
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Fuel Receipts
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Scale Tickets
+          %label.radio.control
+            %input{:type => "radio", :name => "optionsRadios"}
+            %span.control-indicator
+            Other
+
+    .modal-action-links.has-message
+      %button.btn.btn-default.disabled{type: 'button', disabled: 'disabled'} Add Document
+      .text-danger
+        %strong Upload Error
+        %br
+        Meaningful error messaging
+
+.modal-footer
+  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE
+  

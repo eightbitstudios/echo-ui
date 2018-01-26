@@ -1,0 +1,18 @@
+.container-fluid.carrier-dashboard-header
+  .container
+    %ul.list-inline.carrier-dashboard-header_left
+      %li
+        %strong LOAD 123443215
+      %li
+        = link_to 'BACK TO ACTIVE LOADS', '#'
+
+
+    %ul.list-inline.carrier-dashboard-header_right
+      %li
+        %span.carrier-dashboard-header_label ECHO REP
+        Danielle John
+      %li
+        =image_tag('mail-icon-gray@2x.png', width: '15px', height: '15px')
+        =link_to 'danielle.john@echoLogistics.com', 'mailto:danielle.john@echoLogistics.com'
+      %li
+        (610) 555-1212

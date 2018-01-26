@@ -1,0 +1,34 @@
+//------------------------------------
+    #main
+//------------------------------------
+
+html, body
+  height: 100%
+
+@media (max-width: 991px) and (min-width: 768px)
+  .container
+    width: 100%
+
+// Flexbox layout for containers that span 100% height
+//
+.container-flex
+  display: flex
+  flex-direction: row
+  align-items: stretch
+  align-content: stretch
+  justify-content: center
+  // height: 100%
+
+
+// Indiviual content containers
+// Used in Profile layouts
+
+.content-container
+  +container-shadow
+  margin-bottom: 20px
+
+
+hr
+  width: 100%
+  border-top-color: $gray-light
+

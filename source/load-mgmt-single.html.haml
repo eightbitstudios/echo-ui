@@ -1,0 +1,78 @@
+-@title= 'Load Management Details'
+-@page_classes= 'load-management load-management-detail'
+
+= partial 'partials/header_carrier_load', locals: {loads: '9 Loads Located', map: true}
+= partial 'partials/map_spacer'
+
+.container-fluid.load-table_detail
+  .container
+    = partial 'partials/load_management_detail'
+
+.alert.alert-warning.text-center
+  =image_tag('icon-warning-sm.svg')
+  &nbsp;
+  A new Rate Confirmation was added after this load became active. Please review updates below.
+
+.container.main-content
+  .section-head
+    %h1.section-label
+      STOPS
+
+  .row
+    %section.col-md-8
+    
+      = partial 'partials/loads_accordion'
+
+      %section.panel.load-table_log
+        %h4.section-header.sh-no_border All Load Activities
+        %p.text-muted.disclaimer [Disclaimer text provided by Legal to clarify that this log does not replace other records for purposes like calculating detention, etc]
+
+        %table.table.table-condensed.table-log
+          %tr
+            %td.log-note Do not Disturb On
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5
+          %tr
+            %td.log-note Trailer Picked up: Midtown OK
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5              
+          %tr
+            %td.log-note Driver Assigned: Mike P.
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5              
+          %tr
+            %td.log-note Reported Arrival at Pickup: Memphis TN
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5
+          %tr
+            %td.log-note Do not Disturb On
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5
+          %tr
+            %td.log-note Trailer Picked up: Midtown OK
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5              
+          %tr
+            %td.log-note Driver Assigned: Mike P.
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5              
+          %tr
+            %td.log-note Reported Arrival at Pickup: Memphis TN
+            %td.log-driver Driver Mike P.
+            %td.log-time 14:00 CST
+            %td.log-day Sat, June 5
+
+        =link_to 'See Last Activity Only', '#'
+
+      %p.text-muted Activity Logs are not available for multi-stop loads yet.
+
+    .col-md-4
+    
+      = partial 'partials/loads_sidebar'

@@ -1,0 +1,366 @@
+//------------------------------------
+//    #reporting and tracking modals
+//------------------------------------
+
+/// Custom styles for Load Management modals
+////////////
+
+.modal-load-mgmt
+  .modal-body
+    padding: 0
+    display: flex
+    flex-direction: row
+
+  .modal-sidebar
+    width: calc(100%/3)
+    width: 177px
+    padding: 25px 25px 25px 0
+    border-right: solid 1px $gray-light
+
+  .modal-main-content
+    padding: 25px 0 25px 25px
+    flex: 1
+    display: flex
+    flex-direction: column
+
+  .modal-footer
+    position: relative
+
+///////////////
+// Document Preview
+//////
+
+.modal-document-image
+
+  background: rgba(82,89,102,0.8)
+
+  .modal-content
+    background: transparent
+    box-shadow: none
+
+  .modal-dialog
+    width: 100%
+    max-width: 1240px
+
+  .modal-body
+    padding: 0
+    display: flex
+    flex-direction: row
+
+  .modal-sidebar
+    width: calc(100%/3)
+    width: 295px
+    padding: 30px 10px 15px
+    background: #fff
+    display: flex
+    flex-direction: column
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1)
+
+    footer
+      margin-top: auto
+
+/////////
+
+.modal-subheading
+  margin-left: auto
+
+.modal-action-links
+  padding-top: 20px
+  margin-top: auto
+  margin-bottom: -10px
+
+  .btn-link + .btn-link
+    margin-left: 15px
+
+  &.modal-action-split
+    display: flex
+    align-items: flex-end
+    justify-content: space-between
+
+    svg
+      vertical-align: middle
+
+  &.has-error,
+  &.has-message
+    display: flex
+    margin-bottom: 0
+    align-items: center
+
+    .btn
+      margin-right: 20px
+    .help-block
+      font-size: 14px
+
+.btn-group-left
+  margin-left: -5px
+
+.btn-group-right
+  margin-right: 0
+  > .btn
+    margin: 0
+
+// Typography in modals
+
+.modal-main-content
+
+  .content-header + p
+    margin-top: -15px
+
+.modal-sidebar
+
+  .load-doc
+    padding: 0
+    border-bottom: none
+
+// Assign Driver Modals
+//////////////
+
+.table-modal-scroll
+  height: 300px
+  overflow-y: scroll
+  padding-right: 25px
+  border-bottom: solid 1px $gray-mid-dark
+
+  table
+    tr > td:last-child
+      padding-right: 0
+
+.table-assign-driver
+  margin-bottom: 0
+
+  .driver-status,
+  .driver-contact
+    text-align: right
+
+  td.driver-contact
+    color: $gray-mid-light
+    width: 120px
+
+  td.driver-status
+    width: 60px
+
+  .driver-name
+    font-size: 14px
+
+////////////
+// Custom Modal Elements
+////////////
+
+
+.card-group
+  max-height: 235px
+  overflow-y: scroll
+  padding: 2px 15px 0 2px
+  margin-bottom: 20px
+
+// Arrive Time Picker
+//////
+
+.form-arrival-time
+  margin: 10px 0 40px
+
+  .form-group
+    margin: 0 0 0 20px
+    width: 60px
+
+    .form-control
+      width: 100%
+
+  .btn-modal-dp
+    padding-left: 45px
+
+    &.filter__assigned
+      &:before
+        content: image-url('icon-calendar-white.svg')
+
+    &:before
+      content: image-url('icon-calendar-gray.svg')
+      display: inline-block
+      position: absolute
+      top: 10px
+      left: 15px
+      width: 18px
+      height: auto
+      margin-right: 6px
+
+    &:hover,
+    &.active,
+    &:active,
+    &:focus
+      &:before
+        content: image-url('icon-calendar-white.svg')
+
+
+  .daterangepicker.single.show-calendar
+    left: 150px !important
+    top: calc(-370px /2) !important
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.3)
+
+    &.datepicker-offbottom
+      top: -370px !important
+
+
+.input-modal-dp
+  background-image: image-url('icon-calendar-gray-sm.svg')
+  background-position: center right
+  background-repeat: no-repeat
+
+// Delivery Location component
+
+.search-location
+  display: flex
+  justify-content: space-between
+  min-height: 60px
+  margin-top: 20px
+  margin-bottom: 30px
+
+  .form-control
+    width: 220px
+
+
+//////////////
+// Document adding components
+//////////////
+
+.document-add
+  display: flex
+  align-items: center
+  margin-bottom: 10px
+
+  .btn
+    flex: 0 0 auto
+    width: 255px
+    margin-bottom: 0
+
+  .btn-note
+    color: $gray-mid-light
+    margin: 0 0 0 20px
+
+// two column radio buttons
+
+.form-2-col
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: flex-start
+  margin-bottom: 30px
+
+  .control
+    flex: 1 0 auto
+    width: 35%
+    margin: 0 0 20px
+    &:nth-child(odd)
+      width: 60%
+
+// Doc adding horz scroll
+
+.document-uploading
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  width: 433px
+  padding-top: 20px
+  padding-bottom: 10px
+  margin-bottom: 15px
+  overflow-x: auto
+  overflow-y: hidden
+  -webkit-overflow-scrolling: touch
+  -webkit-transform: translate3d(0,0,0)
+
+  > div
+    flex-shrink: 0
+    margin-right: 20px
+
+.added-document
+  position: relative
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+  width: 130px
+  height: 140px
+  text-align: center
+  padding: 20px 15px 10px
+  background-color: $neutral-bg
+
+  .close
+    position: absolute
+    top: calc(-24px/2)
+    right: calc(-24px/2)
+    width: 24px
+    height: 24px
+    border-radius: 100%
+    background-color: #fff
+    transition: box-shadow 0.1s ease-in
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3)
+
+    &:hover
+      background: $neutral-bg
+      box-shadow: 0 0 0 rgba(0,0,0,0)
+
+    &:after,
+    &:before
+      width: 2px
+      height: 1.4rem
+      margin-top: -6px
+      background: #eb004b
+
+.added-doc-text
+  color: $gray-mid-light
+
+
+//////////
+// Document Preview Modal
+
+.modal-document-image
+
+  .modal-sidebar
+    border-radius: 2px
+
+    .section-header
+      padding: 0 20px
+
+    .load-doc,
+    .load-doc.active
+      padding: 10px
+      transition: background 0.1s ease-in
+
+      &:hover
+        background: $neutral-bg
+        cursor: pointer
+
+    .doc-image
+      margin-right: 15px
+
+  .modal-main-content
+    padding: 25px 50px 0 40px
+    flex: 1
+
+    footer
+      padding: 10px 0
+      text-align: center
+
+    .pagination
+      margin-bottom: 0
+
+.document-tool-links
+  margin: 27px 0 13px
+  li
+    margin-left: 5px
+
+.document-title
+  color: #fff
+
+  .content-header
+    color: #fff
+    margin-bottom: 5px
+  p
+    margin-top: 0 !important
+
+.document-preview
+  img
+    width: 100%
+    height: auto
+
+

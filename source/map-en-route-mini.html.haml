@@ -1,0 +1,22 @@
+-@title= 'Load Management - Active'
+-@page_classes= 'load-management load-management-active'
+
+= partial 'partials/header_load_management', locals: {link: 'active'}
+= partial 'partials/header_carrier_dashboard', locals: {loads: '9 Loads Located', map: true}
+
+.carrier-map-spacer
+  .gm-info-window.gm-overlay-basic
+
+    .overlay-notice Last Reported Location
+    .small Omaha, Nebraska
+    .small 1.5 hrs ago via tracking
+
+.container.main-content
+  %section
+    .section-head
+      = partial 'partials/filter_bar'
+    .row
+      .col-md-12
+        = partial 'partials/load_management_active'
+
+        = partial 'partials/load_management_pagination'

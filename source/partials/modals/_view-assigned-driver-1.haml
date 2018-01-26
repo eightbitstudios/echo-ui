@@ -1,0 +1,31 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Asssigned driver for'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar'
+
+  %section.modal-main-content
+    .well
+      %h2.driver-name
+        %a{href: '#'} Alfonzo Ali
+
+      %h3.medium-header (888) 278-8892
+
+      %strong.small-header
+        Email
+      %p ali@email.com
+
+      %strong.small-header Tractor Number
+      %p Tractor 12345677
+
+      %strong.small-header Preferred Language
+      %p English
+
+    .modal-action-links
+      %a.btn.btn-link{href: '#'} Change Driver
+      %a.btn.btn-link{href: '#'} View All Drivers
+
+.modal-footer
+  %button.btn.btn-link.btn-alt{type: "button", date: {dismiss: 'modal'}} CLOSE
+
+

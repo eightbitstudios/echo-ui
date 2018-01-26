@@ -1,0 +1,19 @@
+-@title= 'Add Document - Added'
+-@page_classes= 'load-management load-management-active'
+
+= partial 'partials/header_load_management', locals: {link: 'active'}
+= partial 'partials/header_carrier_dashboard', locals: {loads: '9 Loads Located', map: true}
+= partial 'partials/map_spacer'
+
+.container.main-content
+  %section
+    .section-head
+      = partial 'partials/filter_bar'
+    .row
+      .col-md-12
+        = partial 'partials/load_management_active'
+
+        = partial 'partials/load_management_pagination'
+
+
+= partial 'partials/modal', locals: {modal: 'add-document-added'}

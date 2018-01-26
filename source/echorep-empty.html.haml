@@ -1,0 +1,21 @@
+-@title= 'Rep Empty'
+-@page_classes= 'echorep'
+
+.container-flex.container-echorep
+
+  .col-sm-5.col-echorep.col-echorep_searchlist
+    .col-wrap
+      %form.search-form{role:"search"}
+        .form-group
+          %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+          %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+
+      = partial 'partials/sidebar-list'
+
+
+  .col-sm-7.col-echorep.col-echorep_searchresults
+    .col-wrap
+      %section.results-selection.results-selection_empty
+        =image_tag('icon-book.svg')
+        %h2 Select a carrier in the sidebar to <br/>view their users and drivers.
+        

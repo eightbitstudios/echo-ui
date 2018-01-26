@@ -1,0 +1,50 @@
+= partial 'partials/modals/modal-header', locals: {assign_text: 'Report Empty For'}
+
+.modal-body
+  %section.modal-sidebar
+    = partial 'partials/modals/modal-sidebar-report'
+
+  %section.modal-main-content
+
+    %h4.content-header Confirm Empty
+    %p If the driver can meet these customer needs. <br/>If not, please call your Echo rep.
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-lrg
+          %input.checkbox{type:'checkbox', checked: 'checked'}
+          %span.control-indicator
+
+      .card-details
+        %p
+          %strong With The Right Equipment
+        %p
+          53' Dry Van, HazMat <br/>
+          Vertical E-track, 8-10 ratchet straps
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-lrg
+          %input.checkbox{type:'checkbox', checked: 'checked'}
+          %span.control-indicator
+
+      .card-details
+        %p
+          %strong Providing The Service
+        %p Drop Trailer at Shipper
+
+    .card.card-driver
+      .card-action
+        %label.checkbox.control.control-lrg
+          %input.checkbox{type:'checkbox', checked: 'checked'}
+          %span.control-indicator
+
+      .card-details
+        %p
+          %strong Follow The Instructions
+        %p ** MUST REPORT DETENTION AND LUMPERS WITHIN 24 HRS **
+
+
+.modal-footer
+  %button.btn.btn-default{type: 'button'} CONFIRM EMPTY
+  %button.btn.btn-link.btn-alt{type: "button", data: {dismiss: 'modal'}} CLOSE

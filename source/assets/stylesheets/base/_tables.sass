@@ -1,0 +1,148 @@
+//------------------------------------
+    #table
+//------------------------------------
+
+
+table.table
+  color: $dark-grey
+
+  tr > th
+    padding-left: 23px
+    color: $gray-mid-light
+    font-size: 12px
+    line-height: 1.2
+    text-transform: uppercase
+    border-width: 0 0 2px
+    border-color: $gray-lightest
+
+    &:first-child
+      padding-left: 0
+
+    &.sorted-row
+      color: $black
+      border-color: $black
+
+    hr
+      margin: 2px 0
+
+  tr > td
+    padding-left: 10px
+    padding-right: 10px
+    border-bottom: 1px solid $gray-lightest
+    border-right: solid 1px #e7edf0
+    border-top: 0
+    position: relative
+    background: transparent
+    padding-top: 20px
+    padding-bottom: 20px
+    transition: all 0.2s ease-in
+    +tablet
+      padding-left: 23px
+      padding-right: 15px
+
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: -1px
+      right: -1px
+      bottom: 0
+      background: transparent
+      border-top: 20px solid #fff
+      border-bottom: 20px solid #fff
+      pointer-events: none
+
+    &:first-child
+      padding-left: 0
+      border-left: 4px solid transparent
+
+      &:after
+        left: 0
+
+    &:last-child
+      border-right: none
+
+  tr:hover,
+  tr.selected
+    td:first-child
+      padding-left: 11px
+      border-left: 4px solid $bright-blue
+
+
+/// table, a bit smaller w/o white striping
+
+.table.table-condensed
+
+  tr > th
+    color: $gray-darkest
+    font-size: 14px
+    text-transform: none
+    padding: 10px 0
+    border-top: 0
+    border-bottom: 1px solid $gray-darkest
+
+  tr > td
+    border-right: none
+    padding-left: 10px
+    padding-right: 10px
+
+    &:after
+      display: none
+
+//////////
+.table.table-minimal
+  margin-bottom: 0
+
+  tr > th
+    color: $gray-darkest
+    font-size: 14px
+    text-align: right
+    padding: 0 0 10px 20px
+    border-top: 0
+    border-bottom: none
+
+  tr
+    td:first-child
+      padding-left: 0
+      border-left: none
+
+    &:hover
+      td:first-child
+        padding-left: 0
+        border-left: none
+
+  tr > td
+    text-align: right
+    border: none
+    padding: 0 0 0 20px
+    &:first-child
+      text-align: left
+
+    &:after
+      display: none
+
+  tbody
+    tr:last-child td
+      padding-bottom: 10px
+
+  tfoot
+    tr:first-child td
+      padding-top: 10px
+      border-top: solid 1px $gray-light
+
+//////////
+.table.table-log
+  margin: 20px 0
+  border-top: 1px solid $gray-lightest
+
+  tr
+    td:first-child
+      padding-left: 0
+      border-left: none
+
+    &:hover
+      td:first-child
+        padding-left: 0
+        border-left: none
+

@@ -1,0 +1,47 @@
+//------------------------------------
+    #lists
+//------------------------------------
+
+.list-stacked
+  font-size: 14px
+  line-height: 1.43
+  color: $gray-darkest
+  padding: 0
+  margin: 0
+  list-style: none
+  border-top: 1px solid $gray-lightest
+
+  li
+    line-height: 1.43
+    display: flex
+    align-items: center
+    margin-bottom: 0
+    padding: 0
+    border-bottom: 1px solid #f0f0f0
+
+    &:last-child
+      border-bottom: none
+
+  li > a
+    color: $gray-darkest
+    width: 100%
+    display: flex
+    align-items: center
+    padding: 14px 25px 14px 20px
+    border-left: 5px solid transparent
+
+  li > a:hover,
+  li.active-menu-item > a
+    border-left: 5px solid $info
+
+  li > a > span
+    display: inline-block
+    color: $gray-darkest
+    font-family: $heading-font
+    font-size: 30px
+    line-height: 25px
+    letter-spacing: 0.5px
+    width: 30px
+    flex: 0 0 auto
+    margin-bottom: -2px
+    padding-right: 5px

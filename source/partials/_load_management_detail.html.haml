@@ -1,0 +1,58 @@
+%table.table.table-carrier-dashboard
+
+  %tbody
+    %tr
+      %td.carrier-dashboard-load
+        %p.label Pro:
+        %p.inline-edit-content
+          =link_to '#', class: 'btn-inline-edit' do
+            12345678910
+            =image_tag('add-pencil.svg')
+            
+          %form.form-inline.form-inline-editing{style: "display: none;"}
+            .form-group
+              %label.hidden Update Number
+              %input.form-control{:type => "text", :placeholder => "Update Number"}
+            .form-group
+              %button.btn.btn-link.btn-sm{type: "submit"} Save
+              %button.btn.btn-link.btn-sm.btn-alt{type: "reset"} Cancel
+  
+        %p.label BOL:
+        12345678910
+      %td.carrier-dashboard-pickup
+        .location-pickup.match-height
+          .lead
+            Washington-on-the-Brazos
+          .location-state
+            TN, 60655
+          .location-time
+            14:00-15:00 EST
+            %br
+            Today, Apr 20
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark.svg'
+      %td.carrier-dashboard-delivery
+        .location-delivery.match-height.muted
+          .lead
+            Winchester-on-the-Severn
+          .location-state
+            TX, 50968
+          .location-time
+            16:00-18:00 EST
+            %br
+            Fri, May 23
+      %td
+        .carrier-dashboard-driver.match-height
+          %h3.driver-name=link_to 'Fred F', '#'
+          <span><tel>(899) 584-0803</tel></span>
+          .driver-status
+            Active Driver
+            %br
+            Tracking On
+      %td
+        .carrier-dashboard-action.match-height
+          %h3.driver-name=link_to 'Reported Empty'
+          By Mike P at 13:15 CST today
+          .action-align-bottom
+            = link_to 'REPORT ARRIVAL AT PICKUP', '#', class: 'btn btn-danger'
+            %p.muted Running 15 Min. Late

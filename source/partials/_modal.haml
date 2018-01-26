@@ -1,0 +1,85 @@
+.modal.fade.modal-assign-driver.modal-load-mgmt{tabindex: "-1", role: "dialog"}
+  .modal-dialog{role:"document"}
+    .modal-content
+
+      - if modal == 'assign-driver-1'
+        = partial 'partials/modals/assign-driver-1'
+
+      - elsif modal == 'assign-driver-2'
+        = partial 'partials/modals/assign-driver-2'
+
+      - elsif modal == 'assign-driver-3'
+        = partial 'partials/modals/assign-driver-3'
+
+      - elsif modal == 'assign-driver-4'
+        = partial 'partials/modals/assign-driver-4'
+
+      - elsif modal == 'view-assigned-driver-1'
+        = partial 'partials/modals/view-assigned-driver-1'
+
+      - elsif modal == 'view-assigned-driver-2'
+        = partial 'partials/modals/view-assigned-driver-2'
+
+      - elsif modal == 'view-assigned-driver-3'
+        = partial 'partials/modals/view-assigned-driver-3'
+
+      - elsif modal == 'verify-driver'
+        = partial 'partials/modals/verify-driver'
+
+      - elsif modal == 'verify-driver-2'
+        = partial 'partials/modals/verify-driver-2'
+
+      - elsif modal == 'report-empty'
+        = partial 'partials/modals/report-empty'
+
+      - elsif modal == 'report-empty-2'
+        = partial 'partials/modals/report-empty-2'
+
+      - elsif modal == 'report-arrival'
+        = partial 'partials/modals/report-arrival'
+
+      - elsif modal == 'report-loaded'
+        = partial 'partials/modals/report-loaded'
+
+      - elsif modal == 'report-loaded-2'
+        = partial 'partials/modals/report-loaded-2'
+
+      - elsif modal == 'report-loaded-3'
+        = partial 'partials/modals/report-loaded-3'
+
+      - elsif modal == 'report-delivery'
+        = partial 'partials/modals/report-delivery'
+
+      - elsif modal == 'report-delivery-2'
+        = partial 'partials/modals/report-delivery-2'
+
+      - elsif modal == 'report-delivery-3'
+        = partial 'partials/modals/report-delivery-3'
+
+      - elsif modal == 'send-load-update'
+        = partial 'partials/modals/send-load-update'
+
+      - elsif modal == 'report-location'
+        = partial 'partials/modals/report-location'
+
+      - elsif modal == 'report-location-2'
+        = partial 'partials/modals/report-location-2'
+
+      - elsif modal == 'add-document'
+        = partial 'partials/modals/add-document'
+
+      - elsif modal == 'add-document-error'
+        = partial 'partials/modals/add-document-error'
+
+      - elsif modal == 'add-document-added'
+        = partial 'partials/modals/add-document-added'
+
+      - elsif modal == 'add-document-2'
+        = partial 'partials/modals/add-document-2'
+
+      - elsif modal == 'add-document-invoice'
+        = partial 'partials/modals/add-document-invoice'
+
+      - else
+        %h2 This modal does not exist
+
