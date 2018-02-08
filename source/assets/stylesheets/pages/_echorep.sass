@@ -141,6 +141,37 @@
     border-radius: 2px
     background-color: $bright-blue
 
+.sidebar-list_accordion
+  list-style: none
+  font-family: $body-font
+  font-size: 14px
+  line-height: 1.4
+
+  ul
+    padding: 10px 0 0
+    margin-top: 10px
+    border-top: 1px solid $gray-mid-light
+    list-style-type: none
+
+    a
+      color: $gray-darkest
+      font-weight: 400
+      padding: 3px 0
+      display: block
+
+      &:before
+        display: inline-block
+        content: image-url('star-solid.svg')
+        margin-right: 10px
+        margin-top: 0.25rem
+        width: 15px
+        height: 15px
+
+      &:hover
+        text-decoration: none
+        padding: 3px 10px
+        border-radius: 2px
+        background-color: $bright-blue
 
 // search results detail
 ///////////////

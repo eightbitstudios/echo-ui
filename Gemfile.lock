@@ -158,4 +158,4 @@ DEPENDENCIES
   middleman-sprockets (~> 4.0.0.rc.1)
 
 BUNDLED WITH
-   1.12.5
+   1.16.0

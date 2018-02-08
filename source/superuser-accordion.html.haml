@@ -1,0 +1,73 @@
+-@title= 'Superuser Accordion'
+-@page_classes= 'echorep'
+
+.container-flex.container-echorep
+
+  .col-sm-5.col-echorep.col-echorep_searchlist
+    .col-wrap
+      %form.search-form{role:"search"}
+        .form-group
+          %input.form-control.search-form-input{type: "text", placeholder:"Find A Driver"}
+          %button.btn.btn-default.btn-icon{type:"submit"}=image_tag('icon-search@2x.png', width: '16px', height: '16px')
+
+      .sidebar-list.search-results
+        %ul.sidebar-list_accordion
+          %li
+            Todd Bogwill
+            %ul
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+          %li
+            Todd Bogwill
+            %ul
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+          %li
+            Todd Bogwill
+            %ul
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+          %li
+            Todd Bogwill
+            %ul
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+          %li
+            Todd Bogwill
+            %ul
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+              %li 
+                =link_to 'Lorem Ipsum Carriers', '#'
+
+  .col-sm-7.col-echorep.col-echorep_searchresults
+    .col-wrap
+      %section.results-selection
