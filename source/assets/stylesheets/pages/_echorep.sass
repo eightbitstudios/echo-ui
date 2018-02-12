@@ -141,6 +141,74 @@
     border-radius: 2px
     background-color: $bright-blue
 
+.sidebar-list_accordion
+  margin: 0
+  padding: 0
+  list-style: none
+  font-family: $body-font
+  font-size: 14px
+  line-height: 1.4
+
+  > li
+    position: relative
+
+    &.open
+      .accordion-toggle:after
+        transform: rotate(180deg)
+
+      ul
+        height: auto
+
+  .accordion-toggle
+    padding-bottom: 10px
+    border-bottom: 1px solid $gray-light
+    font-weight: 600
+    cursor: pointer
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      width: 20px
+      height: 20px
+      background-image: image-url('caret.svg')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: 100% 100%
+      transform-origin: 50% 50%
+      pointer-events: none
+      transition: all .2s ease
+
+    &:hover:after, &:focus:after
+      background-size: 150% 150%
+
+  ul
+    height: 0px
+    margin: 0px
+    padding: 10px 0 0
+    list-style-type: none
+    overflow: hidden
+
+    a
+      color: $gray-darkest
+      font-weight: 400
+      padding: 3px 0
+      display: block
+
+      &:before
+        display: inline-block
+        content: image-url('star-solid.svg')
+        margin-right: 10px
+        margin-top: 0.25rem
+        width: 15px
+        height: 15px
+
+      &:hover
+        text-decoration: none
+        padding: 3px 10px
+        border-radius: 2px
+        background-color: $bright-blue
 
 // search results detail
 ///////////////
