@@ -1,0 +1,101 @@
+//------------------------------------
+// #report-loaded-timeline
+//------------------------------------
+
+// Modal overrides
+
+.modal.modal-report
+
+  .modal-content
+    padding-left: 24px
+    padding-right: 24px
+    padding-bottom: 24px
+
+  .modal-sidebar
+    width: 196px
+    height: 522px
+    padding-left: 6px
+
+  .modal-main-content
+    padding-bottom: 0
+
+  .modal-footer
+    border-top: none
+    padding-bottom: 0
+    margin-top: auto
+
+// Modal Sidebar timeline styles
+
+.report-timeline
+  list-style: none
+  margin: 0
+  height: 100%
+  padding-left: 0
+  margin-bottom: 24px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  border-left: 1px solid $gray-mid-light
+
+.timeline-status
+  position: relative
+  padding-left: 16px
+  margin-left: -1px
+  margin-bottom: 0
+
+  &:last-child
+    background: #fff
+
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    top: calc(-15px /2)
+    left: -14px
+    width: 30px
+    height: 30px
+    display: block
+
+  &:before
+    background: #fff
+
+  &:after
+    background-image: image-url('icon-unfilled.png')
+    background-repeat: no-repeat
+    background-position: 50%
+    background-size: 11px
+
+  // default state styles for elements is #inactive
+  .status-inactive
+
+  &.status-active
+    &:after
+      background-image: image-url('icon-open.png')
+
+    .status-label
+      color: #141b1f
+      font-weight: 700
+
+  &.status-complete
+    &:after
+      background-image: image-url('icon-checkmark-timeline.png')
+
+    .status-label
+      color: #141b1f
+    .status-datetime
+      display: block
+
+
+.status-label
+  color: $gray-mid-light
+  font-size: 14px
+  line-height: 15px
+  margin-top: 0
+  margin-bottom: 5px
+  text-transform: uppercase
+
+.status-datetime
+  color: $gray-mid-light
+  font-size: 11px
+  margin-bottom: 0
+  display: none
