@@ -10,12 +10,12 @@
 
   %section.modal-main-content
     .modal-main
-      %form.form-inline
+      %form
 
         %p
           %strong What kind of update are you reporting?
 
-        .form-group
+        .form-inline.form-elements
           %label.radio.control
             %input{:type => "radio", :name => "optionsRadios1", :checked => "checked"}
             %span.control-indicator
@@ -25,9 +25,6 @@
             %input{:type => "radio", :name => "optionsRadios1"}
             %span.control-indicator
             Report Trailer Drop
-
-        %br
-        %br
 
         %p
           %strong Enter the driver's location
@@ -48,4 +45,4 @@
       .btn-group-left
 
       .btn-group-right
-        %button.btn.btn-default{type: 'button'} Done
+        %button.btn.btn-default.btn-wide{type: 'button'} Done
