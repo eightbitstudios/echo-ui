@@ -1,8 +1,26 @@
 .modal-header
   %button.close.btn-close{type: "button", data:{dismiss:"modal"}, aria:{label: "Close"}}
     %span{aria:{hidden:"true"}} &times;
-  %h1.modal-title
-    TBD
+
+  %table.table-slim.table-carrier-dashboard
+    %tr
+      %td.carrier-dashboard-load
+        .detail-header Load
+        %h1 123443211
+      %td.carrier-dashboard-pickup
+        .detail-header Pickup
+        .location-text
+          Washington-on-the-Brazos,
+          TN
+      %td.carrier-dashboard-arrow
+        = image_tag 'icon-right-arrow-dark.svg'
+      %td.carrier-dashboard-delivery
+        .detail-header Delivery
+        .location-text
+          Winchester-on-the-Severn, TX
+      %td.carrier-dashboard-driver
+        .detail-header Driver
+        .location-text Fred F
 
 .modal-body
   %section.modal-sidebar
@@ -16,12 +34,12 @@
           %strong What kind of update are you reporting?
 
         .form-inline.form-elements
-          %label.radio.control
+          %label.radio.control.radio-alt
             %input{:type => "radio", :name => "optionsRadios1", :checked => "checked"}
             %span.control-indicator
             Location Update
 
-          %label.radio.control
+          %label.radio.control.radio-alt
             %input{:type => "radio", :name => "optionsRadios1"}
             %span.control-indicator
             Report Trailer Drop

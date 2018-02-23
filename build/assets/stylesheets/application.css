@@ -8566,7 +8566,12 @@ fieldset[disabled] .btn {
   .btn.btn-show {
     padding-bottom: 0; }
 
-/* line 436, base/_buttons.sass */
+/* line 434, base/_buttons.sass */
+.btn.btn-wide {
+  padding-left: 60px;
+  padding-right: 60px; }
+
+/* line 441, base/_buttons.sass */
 .btn-close.close {
   position: relative;
   opacity: 1;
@@ -8575,7 +8580,7 @@ fieldset[disabled] .btn {
   width: 2rem;
   height: 2rem;
   z-index: 999999; }
-  /* line 444, base/_buttons.sass */
+  /* line 449, base/_buttons.sass */
   .btn-close.close:after, .btn-close.close:before {
     content: "";
     height: 3px;
@@ -8590,7 +8595,7 @@ fieldset[disabled] .btn {
     transition: all 0.3s cubic-bezier(0.71, 0.48, 0.3, 0.9);
     -webkit-transform: translateX(-50%) rotateZ(45deg);
             transform: translateX(-50%) rotateZ(45deg); }
-  /* line 458, base/_buttons.sass */
+  /* line 463, base/_buttons.sass */
   .btn-close.close:after {
     -webkit-transform: translateX(-50%) rotateZ(-45deg);
             transform: translateX(-50%) rotateZ(-45deg); }
@@ -8661,7 +8666,11 @@ label, p.label {
   .form-group:hover .form-control {
     border-color: #2b363b; }
 
-/* line 70, base/_forms.sass */
+/* line 68, base/_forms.sass */
+.form-elements {
+  margin-bottom: 30px; }
+
+/* line 73, base/_forms.sass */
 .form-control {
   color: #2b363b;
   box-shadow: none;
@@ -8669,38 +8678,38 @@ label, p.label {
   border-radius: 0;
   border-width: 0 0 1px 0;
   border-color: #a9adaf; }
-  /* line 78, base/_forms.sass */
+  /* line 81, base/_forms.sass */
   .form-control::-webkit-input-placeholder {
     color: #a9adaf; }
-  /* line 80, base/_forms.sass */
+  /* line 83, base/_forms.sass */
   .form-control::-moz-placeholder {
     color: #a9adaf; }
-  /* line 82, base/_forms.sass */
+  /* line 85, base/_forms.sass */
   .form-control:-ms-input-placeholder {
     color: #a9adaf; }
-  /* line 85, base/_forms.sass */
+  /* line 88, base/_forms.sass */
   .form-control:focus {
     box-shadow: none;
     outline: none;
     border-color: #2b363b; }
 
-/* line 91, base/_forms.sass */
+/* line 94, base/_forms.sass */
 .form-group-inline {
   display: inline-block; }
 
-/* line 95, base/_forms.sass */
+/* line 98, base/_forms.sass */
 .form-inline-editing .form-control {
   background-color: transparent; }
-/* line 98, base/_forms.sass */
+/* line 101, base/_forms.sass */
 .form-inline-editing .btn-link + .btn-link {
   margin-left: 10px; }
 
-/* line 104, base/_forms.sass */
+/* line 107, base/_forms.sass */
 input[type="radio"],
 input[type="checkbox"] {
   margin-top: 0; }
 
-/* line 108, base/_forms.sass */
+/* line 111, base/_forms.sass */
 .checkbox,
 .radio {
   text-transform: none;
@@ -8708,70 +8717,70 @@ input[type="checkbox"] {
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 25px; }
-  /* line 116, base/_forms.sass */
+  /* line 119, base/_forms.sass */
   .checkbox label, .checkbox p.label,
   .radio label,
   .radio p.label {
     letter-spacing: 0;
     font-weight: 400 !important; }
-  /* line 120, base/_forms.sass */
+  /* line 123, base/_forms.sass */
   .checkbox:hover,
   .radio:hover {
     font-weight: 400 !important; }
-    /* line 122, base/_forms.sass */
+    /* line 125, base/_forms.sass */
     .checkbox:hover label, .checkbox:hover p.label,
     .radio:hover label,
     .radio:hover p.label {
       font-weight: 400; }
-  /* line 125, base/_forms.sass */
+  /* line 128, base/_forms.sass */
   .checkbox .control:hover .control-indicator,
   .radio .control:hover .control-indicator {
     background: #e1e2e3; }
-  /* line 128, base/_forms.sass */
+  /* line 131, base/_forms.sass */
   .checkbox.control,
   .radio.control {
     display: block;
     margin-right: 16px;
     padding-left: 25px; }
-  /* line 133, base/_forms.sass */
+  /* line 136, base/_forms.sass */
   .checkbox .control-indicator,
   .radio .control-indicator {
     top: 0;
     margin-right: 5px; }
 
-/* line 143, base/_forms.sass */
+/* line 146, base/_forms.sass */
 .control input:checked ~ .control-indicator {
   background-color: #e1e2e3; }
-/* line 146, base/_forms.sass */
+/* line 149, base/_forms.sass */
 .control input:active ~ .control-indicator {
   background-color: #f7f7f7; }
-/* line 149, base/_forms.sass */
+/* line 152, base/_forms.sass */
 .control input:focus ~ .control-indicator {
   box-shadow: 0 0 0 0; }
-/* line 153, base/_forms.sass */
+/* line 156, base/_forms.sass */
 .control.radio input:checked ~ .control-indicator {
   border: solid 1px #e1e2e3;
   background-color: #f0f0f0;
   background-image: url("../images/radial-selected.svg");
   background-size: 10px; }
-/* line 160, base/_forms.sass */
+/* line 163, base/_forms.sass */
 .control.checkbox input:checked ~ .control-indicator {
   background-image: url("../images/checkbox-check.svg"); }
 
-/* line 164, base/_forms.sass */
+/* line 167, base/_forms.sass */
 .checkbox .control-indicator {
   border-radius: 0; }
-/* line 167, base/_forms.sass */
+/* line 170, base/_forms.sass */
 .checkbox.control-x, .checkbox.control-lrg {
   padding-left: 30px;
   height: 30px;
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 0; }
-  /* line 175, base/_forms.sass */
+  /* line 178, base/_forms.sass */
   .checkbox.control-x .checkbox input[type="checkbox"], .checkbox.control-lrg .checkbox input[type="checkbox"] {
     margin-left: -40px; }
-  /* line 178, base/_forms.sass */
+  /* line 181, base/_forms.sass */
   .checkbox.control-x .control-indicator, .checkbox.control-lrg .control-indicator {
     top: 0;
     width: 30px;
@@ -8779,34 +8788,34 @@ input[type="checkbox"] {
     border-radius: 4px;
     background-color: #fff;
     border: solid 1px #e1e2e3; }
-/* line 187, base/_forms.sass */
+/* line 190, base/_forms.sass */
 .checkbox.control-x input:checked ~ .control-indicator {
   background-color: #fff;
   background-image: url("../images/icon-remove.svg"); }
-/* line 194, base/_forms.sass */
+/* line 197, base/_forms.sass */
 .checkbox.control-lrg input:checked ~ .control-indicator {
   border: solid 1px #3daf2c;
   background-color: #3daf2c;
   background-image: url("../images/icon-checkmark-wht.svg"); }
 
-/* line 204, base/_forms.sass */
+/* line 207, base/_forms.sass */
 .form-inline legend {
   display: inline-block;
   float: left;
   margin: 0 15px 0 0;
   width: auto; }
-/* line 210, base/_forms.sass */
+/* line 213, base/_forms.sass */
 .form-inline .checkbox.control,
 .form-inline .radio.control {
   display: inline-block; }
-  /* line 214, base/_forms.sass */
+  /* line 217, base/_forms.sass */
   .form-inline .checkbox.control input[type="radio"],
   .form-inline .checkbox.control input[type="checkbox"],
   .form-inline .radio.control input[type="radio"],
   .form-inline .radio.control input[type="checkbox"] {
     margin-left: -15px; }
 
-/* line 220, base/_forms.sass */
+/* line 223, base/_forms.sass */
 textarea.form-control {
   height: 150px;
   padding: 10px;
@@ -8814,31 +8823,31 @@ textarea.form-control {
   border-radius: 2px;
   background-color: #f0f0f0; }
 
-/* line 231, base/_forms.sass */
+/* line 236, base/_forms.sass */
 .help-block {
   font-size: 12px;
   line-height: 1.3;
   margin-bottom: -10px; }
 
-/* line 237, base/_forms.sass */
+/* line 242, base/_forms.sass */
 .has-error label, .has-error p.label {
   font-weight: 600;
   line-height: 1.4;
   color: #eb004b; }
-/* line 242, base/_forms.sass */
+/* line 247, base/_forms.sass */
 .has-error .form-control {
   box-shadow: none;
   border-color: #eb004b; }
-  /* line 246, base/_forms.sass */
+  /* line 251, base/_forms.sass */
   .has-error .form-control:focus {
     box-shadow: none;
     border-color: #eb004b; }
-/* line 250, base/_forms.sass */
+/* line 255, base/_forms.sass */
 .has-error .help-block {
   font-weight: 400;
   color: #eb004b; }
 
-/* line 255, base/_forms.sass */
+/* line 260, base/_forms.sass */
 .is-approved:before {
   content: url("../images/icon-approve.svg");
   position: absolute;
@@ -8846,10 +8855,10 @@ textarea.form-control {
   top: 0.05rem;
   width: 11px; }
   @media (min-width: 769px) {
-    /* line 255, base/_forms.sass */
+    /* line 260, base/_forms.sass */
     .is-approved:before {
       left: -20px; } }
-/* line 266, base/_forms.sass */
+/* line 271, base/_forms.sass */
 .is-approved.form-group:before {
   bottom: 7px;
   top: auto; }
@@ -10804,19 +10813,91 @@ body.user-profile {
     border-radius: 2px;
     background-color: #26c1fb; }
 
-/* line 148, pages/_echorep.sass */
+/* line 144, pages/_echorep.sass */
+.sidebar-list_accordion {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.4; }
+  /* line 152, pages/_echorep.sass */
+  .sidebar-list_accordion > li {
+    position: relative; }
+    /* line 156, pages/_echorep.sass */
+    .sidebar-list_accordion > li.open .accordion-toggle:after {
+      -webkit-transform: rotate(180deg);
+              transform: rotate(180deg); }
+    /* line 159, pages/_echorep.sass */
+    .sidebar-list_accordion > li.open ul {
+      height: auto; }
+  /* line 162, pages/_echorep.sass */
+  .sidebar-list_accordion .accordion-toggle {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e1e2e3;
+    font-weight: 600;
+    cursor: pointer; }
+    /* line 168, pages/_echorep.sass */
+    .sidebar-list_accordion .accordion-toggle:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      background-image: url("../images/caret.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      pointer-events: none;
+      -webkit-transition: all 0.2s ease;
+      transition: all 0.2s ease; }
+    /* line 183, pages/_echorep.sass */
+    .sidebar-list_accordion .accordion-toggle:hover:after, .sidebar-list_accordion .accordion-toggle:focus:after {
+      background-size: 150% 150%; }
+  /* line 186, pages/_echorep.sass */
+  .sidebar-list_accordion ul {
+    height: 0px;
+    margin: 0px;
+    padding: 10px 0 0;
+    list-style-type: none;
+    overflow: hidden; }
+    /* line 193, pages/_echorep.sass */
+    .sidebar-list_accordion ul a {
+      color: #2b363b;
+      font-weight: 400;
+      padding: 3px 0;
+      display: block; }
+      /* line 199, pages/_echorep.sass */
+      .sidebar-list_accordion ul a:before {
+        display: inline-block;
+        content: url("../images/star-solid.svg");
+        margin-right: 10px;
+        margin-top: 0.25rem;
+        width: 15px;
+        height: 15px; }
+      /* line 207, pages/_echorep.sass */
+      .sidebar-list_accordion ul a:hover {
+        text-decoration: none;
+        padding: 3px 10px;
+        border-radius: 2px;
+        background-color: #26c1fb; }
+
+/* line 216, pages/_echorep.sass */
 .selection-name {
   margin-bottom: 60px; }
-  /* line 151, pages/_echorep.sass */
+  /* line 219, pages/_echorep.sass */
   .selection-name h1 {
     font-size: 30px;
     margin: 0;
     text-transform: none; }
 
-/* line 156, pages/_echorep.sass */
+/* line 224, pages/_echorep.sass */
 .selection-users {
   margin-bottom: 60px; }
-  /* line 159, pages/_echorep.sass */
+  /* line 227, pages/_echorep.sass */
   .selection-users .selection-header {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -10829,7 +10910,7 @@ body.user-profile {
     margin-bottom: 20px;
     border-bottom: solid 1px #e1e2e3; }
 
-/* line 167, pages/_echorep.sass */
+/* line 235, pages/_echorep.sass */
 .driver-results {
   font-size: 18px;
   text-align: center;
@@ -10846,14 +10927,14 @@ body.user-profile {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  /* line 174, pages/_echorep.sass */
+  /* line 242, pages/_echorep.sass */
   .driver-results p {
     margin-bottom: 0; }
-  /* line 176, pages/_echorep.sass */
+  /* line 244, pages/_echorep.sass */
   .driver-results a {
     font-size: 14px; }
 
-/* line 183, pages/_echorep.sass */
+/* line 251, pages/_echorep.sass */
 .results-selection_empty {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10872,7 +10953,7 @@ body.user-profile {
   color: #a9adaf;
   text-align: center;
   padding: 0 5%; }
-  /* line 193, pages/_echorep.sass */
+  /* line 261, pages/_echorep.sass */
   .results-selection_empty h2 {
     font-weight: 100; }
 
@@ -11807,3 +11888,101 @@ table.table-invoice .load-col {
               -ms-grid-row-align: center;
           align-items: center;
   max-width: 275px; }
+
+/* line 9, pages/_timeline.sass */
+.modal.modal-report .modal-content {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px; }
+/* line 14, pages/_timeline.sass */
+.modal.modal-report .modal-sidebar {
+  width: 196px;
+  height: 522px;
+  padding-left: 6px; }
+/* line 19, pages/_timeline.sass */
+.modal.modal-report .modal-main-content {
+  padding-bottom: 0; }
+/* line 22, pages/_timeline.sass */
+.modal.modal-report .modal-footer {
+  border-top: none;
+  padding-bottom: 0;
+  margin-top: auto; }
+
+/* line 29, pages/_timeline.sass */
+.report-timeline {
+  list-style: none;
+  margin: 0;
+  height: 100%;
+  padding-left: 0;
+  margin-bottom: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-left: 1px solid #a9adaf; }
+
+/* line 40, pages/_timeline.sass */
+.timeline-status {
+  position: relative;
+  padding-left: 16px;
+  margin-left: -1px;
+  margin-bottom: 0; }
+  /* line 46, pages/_timeline.sass */
+  .timeline-status:last-child {
+    background: #fff; }
+  /* line 49, pages/_timeline.sass */
+  .timeline-status:before, .timeline-status:after {
+    content: "";
+    position: absolute;
+    top: calc(-15px /2);
+    left: -14px;
+    width: 30px;
+    height: 30px;
+    display: block; }
+  /* line 59, pages/_timeline.sass */
+  .timeline-status:before {
+    background: #fff; }
+  /* line 62, pages/_timeline.sass */
+  .timeline-status:after {
+    background-image: url("../images/icon-unfilled.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 11px; }
+  /* line 72, pages/_timeline.sass */
+  .timeline-status.status-active:after {
+    background-image: url("../images/icon-open.png"); }
+  /* line 75, pages/_timeline.sass */
+  .timeline-status.status-active .status-label {
+    color: #141b1f;
+    font-weight: 700; }
+  /* line 80, pages/_timeline.sass */
+  .timeline-status.status-complete:after {
+    background-image: url("../images/icon-checkmark-timeline.png"); }
+  /* line 83, pages/_timeline.sass */
+  .timeline-status.status-complete .status-label {
+    color: #141b1f; }
+  /* line 85, pages/_timeline.sass */
+  .timeline-status.status-complete .status-datetime {
+    display: block; }
+
+/* line 89, pages/_timeline.sass */
+.status-label {
+  color: #a9adaf;
+  font-size: 14px;
+  line-height: 15px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  text-transform: uppercase; }
+
+/* line 97, pages/_timeline.sass */
+.status-datetime {
+  color: #a9adaf;
+  font-size: 11px;
+  margin-bottom: 0;
+  display: none; }

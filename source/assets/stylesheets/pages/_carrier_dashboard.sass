@@ -132,6 +132,22 @@
     +tablet
       margin-top: auto
 
+table.table-slim
+  tr > th
+    border: 0
+  tr > td
+    padding: 0 20px
+    border: 0
+    vertical-align: top
+
+    &:first-child
+      padding-left: 0
+      width: 176px
+
+    &:after,
+    &:before
+      display: none
+
 .carrier-dashboard-pickup,
 .carrier-dashboard-delivery
   max-width: 200px
