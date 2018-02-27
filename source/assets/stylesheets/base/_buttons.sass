@@ -43,18 +43,44 @@ fieldset[disabled] .btn
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
 
-    &:hover
+    &.btn-next
+      padding-right: 25px
+      background-image: image-url('navigation-chevrons-rt.svg')
+      background-position: right 12px center
+      background-repeat: no-repeat
+
+    &.btn-prev
+      padding-left: 25px
+      background-image: image-url('navigation-chevrons-lt.svg')
+      background-position: left 12px center
+      background-repeat: no-repeat
+
+    &:not(:disabled):hover
       +tablet
         color: #fff
         background-color: $bright-blue
 
-    &:active,
-    &:focus
+        &.btn-next
+          background-image: image-url('navigation-chevrons-rt-white.svg')
+
+        &.btn-prev
+          background-image: image-url('navigation-chevrons-lt-white.svg')
+
+    &:not(:disabled):active,
+    &:not(:disabled):focus
       color: #fff
       outline: none
       box-shadow: none
       border: solid 2px darken($bright-blue, 10%)
       background-color: darken($bright-blue, 10%)
+
+      &.btn-next
+        background-image: image-url('navigation-chevrons-rt-white.svg')
+
+      &.btn-prev
+        background-image: image-url('navigation-chevrons-lt-white.svg')
+
+
 
     &.btn-disabled
       opacity: 0.3
@@ -78,18 +104,42 @@ fieldset[disabled] .btn
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
 
-    &:hover
+    &.btn-next
+      padding-right: 25px
+      background-image: image-url('navigation-chevrons-rt-gray.svg')
+      background-position: right 12px center
+      background-repeat: no-repeat
+
+    &.btn-prev
+      padding-left: 25px
+      background-image: image-url('navigation-chevrons-lt-gray.svg')
+      background-position: left 12px center
+      background-repeat: no-repeat
+
+    &:not(:disabled):hover
       +tablet
         color: #fff
         background-color: $gray-mid-light
 
-    &:active,
-    &:focus
+      &.btn-next
+        background-image: image-url('navigation-chevrons-rt-white.svg')
+
+      &.btn-prev
+        background-image: image-url('navigation-chevrons-lt-white.svg')
+
+    &:not(:disabled):active,
+    &:not(:disabled):focus
       color: #fff
       outline: none
       box-shadow: none
       border: solid 2px darken($gray-mid-light, 10%)
       background-color: darken($gray-mid-light, 10%)
+
+      &.btn-next
+        background-image: image-url('navigation-chevrons-rt-white.svg')
+
+      &.btn-prev
+        background-image: image-url('navigation-chevrons-lt-white.svg')
 
   //////
   &.btn-primary
@@ -154,10 +204,10 @@ fieldset[disabled] .btn
     letter-spacing: 0
     padding: 10px 0
 
-    &:hover,
-    &:focus
+    &:not(:disabled):hover,
+    &:not(:disabled):focus
       color: $bright-blue-dark
-      text-decoration: none
+      text-decoration: underline
 
     &.btn-alt
       text-decoration: underline
