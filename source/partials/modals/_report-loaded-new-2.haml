@@ -35,12 +35,12 @@
 
         .form-inline.form-elements
           %label.radio.control.radio-alt
-            %input{:type => "radio", :name => "optionsRadios1", :checked => "checked"}
+            %input{:type => "radio", :name => "optionsRadios1"}
             %span.control-indicator
             Location Update
 
           %label.radio.control.radio-alt
-            %input{:type => "radio", :name => "optionsRadios1"}
+            %input{:type => "radio", :name => "optionsRadios1", :checked => "checked"}
             %span.control-indicator
             Trailer Drop at Yard
 
@@ -59,7 +59,7 @@
                         %circle#Oval{:cx => "6.33333333", :cy => "6.33333333", :r => "6"}
                         %path#Shape{:d => "M10.5753333,10.576 L15.5,15.5"}
 
-        #if-trailer-drop{:style => "display: none"}
+        #if-trailer-drop
           %p
             %strong When did the driver drop the trailer?
 
