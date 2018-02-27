@@ -59,8 +59,13 @@
                         %circle#Oval{:cx => "6.33333333", :cy => "6.33333333", :r => "6"}
                         %path#Shape{:d => "M10.5753333,10.576 L15.5,15.5"}
 
-    .modal-footer.modal-footer-splits
-      .btn-group-left
+.modal-footer.modal-footer-splits
+  .btn-group-left
+    %button.btn.btn-secondary.btn-prev{type: 'button'} Back
 
-      .btn-group-right
-        %button.btn.btn-default.btn-wide{type: 'button'} Done
+  .btn-group-center
+    %button.btn.btn-link.btn-alt{type: 'button'} Cancel
+    %button.btn.btn-secondary{type: 'button', disabled: 'disabled'} Save & close
+
+  .btn-group-right
+    %button.btn.btn-default.btn-next{type: 'button'} Skip
