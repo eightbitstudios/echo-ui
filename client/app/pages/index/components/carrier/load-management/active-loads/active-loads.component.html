@@ -1,0 +1,40 @@
+<div class="active-loads">
+  <div class="container-fluid carrier-dashboard-header">
+    <div class="container">
+      <ul class="list-inline carrier-dashboard-header_left">
+        <li>
+          <strong ng-if="$ctrl.showMap && !$ctrl.showLoadDetailsMap">{{$ctrl.mapPoints.length}} Loads Mapped</strong>
+          <strong ng-if="$ctrl.showMap && $ctrl.showLoadDetailsMap">2 Stops Mapped</strong>
+        </li>
+      </ul>
+      <echo-rep-contact class="list-inline carrier-dashboard-header_right" rep-details="$ctrl.repDetails"></echo-rep-contact>
+    </div>
+  </div>
+  <load-map ng-if="$ctrl.showExpandedMap" show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="true"
+            view-map-handler="$ctrl.viewMapHandler(mapPoint)" carrier-id="$ctrl.carrierId" map-refresh-handler="$ctrl.refreshPageData()"></load-map>
+  <origin-destination-map ng-if="$ctrl.showLoadDetailsMap" map-point="$ctrl.loadDetailsMapPoint"></origin-destination-map>
+  <div class="row back-button-row">
+    <div class="col-md-offset-5 col-md-2 col-xs-offset-4 col-xs-4 text-center">
+      <button ng-if="$ctrl.showExpandedMap || $ctrl.showLoadDetailsMap" ng-click="$ctrl.shrinkMap()" class="btn back-to-dashboard-button">Back to Dashboard</button>
+    </div>
+  </div>
+
+  <div ng-if="!$ctrl.showExpandedMap && !$ctrl.showLoadDetailsMap">
+    <load-map show-map="$ctrl.showMap" map-points="$ctrl.mapPoints" detailed-info="true" show-expanded="false" view-map-handler="$ctrl.viewMapHandler(mapPoint)" map-refresh-handler="$ctrl.refreshPageData()"></load-map>
+    <div class="row view-full-map-button-row">
+      <div class="col-md-offset-5 col-md-2 col-xs-offset-4 col-xs-4 text-center">
+        <button ng-if="!$ctrl.showExpandedMap && !$ctrl.showLoadDetailsMap" ng-click="$ctrl.toggleExpandedMap()" class="btn view-full-map-button">
+          View Full Map
+        </button>
+      </div>
+    </div>
+    <loads-filter filter-text="$ctrl.filterText" load-count="$ctrl.paging.totalRecords">
+      <filter-button filter-enabled="$ctrl.isPickUpToday" click-handler="$ctrl.pickupsTodayHandler(value)" button-text="Pickups Today"></filter-button>
+      <filter-button filter-enabled="$ctrl.isDeliveriesToday" click-handler="$ctrl.deliveriesTodayHandler(value)" button-text="Deliveries Today"></filter-button>
+    </loads-filter>
+    <div class="container main-content">
+      <load-table rep-details="$ctrl.repDetails" loads="$ctrl.activeLoads" refresh-table-callback="$ctrl.refreshPageData()" load-type="$ctrl.loadType" show-loading="$ctrl.showLoading" carrier-id="$ctrl.carrierId"></load-table>
+      <pagination page-click-handler="$ctrl.fetchActiveLoads()" paging-model="$ctrl.paging" record-type="Loads" ng-if="!$ctrl.showLoading"></pagination>
+    </div>
+  </div>
+</div>

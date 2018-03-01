@@ -1,0 +1,29 @@
+<div class="unassigned-driver-list">
+  <table class="table table-condensed table-assign-driver">
+    <thead>
+      <tr>
+        <th colspan="3">Unassigned Drivers</th>
+      </tr>
+    </thead>
+  </table>
+  <div>
+  <div class="unassigned-driver-results table-modal-scroll">
+    <loading show-loading="$ctrl.showLoading"></loading>
+    <table class="table table-condensed table-assign-driver">
+      <tbody>
+        <tr ng-repeat="driver in $ctrl.drivers" class="driver-row">
+          <td class="driver-name col-xs-6">
+            <a href="javascript:void(0)" ng-click="$ctrl.selectDriver(driver)">{{driver | fullName}}</a>
+          </td>
+          <td class="driver-contact col-xs-5">
+            <a href="javascript:void(0)" ng-click="$ctrl.selectDriver(driver)">{{driver.phone | phoneNumber}}</a>
+          </td>
+          <td class="driver-select col-xs-1">
+            <radio-button ng-model="$ctrl.selectedDriver" value="driver"></radio-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>

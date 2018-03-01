@@ -1,0 +1,15 @@
+<div class="load">
+  <h2 class="load-number">
+    <a ng-if="$ctrl.wrapLink" ui-sref="{{::$ctrl.loadDetails}}({loadId: $ctrl.loadGuid, previous: $ctrl.currentStateName})">{{::$ctrl.loadNumber}}</a>
+    <span class="cancelled-load" ng-if="!$ctrl.wrapLink">{{::$ctrl.loadNumber}}</span>
+  </h2>
+  <span ng-if="$ctrl.proNumber">
+    <p class="label">Pro:</p>
+    <p>{{$ctrl.proNumber}}</p>
+
+    <a href="javascript:void(0)" ng-if="$ctrl.isDetailsUpdated" class="btn btn-link btn-status-alert">
+      <span class="echo-icon icon-warning"></span>
+      Details Updated
+    </a>
+  </span>
+</div>

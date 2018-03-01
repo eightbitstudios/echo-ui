@@ -1,0 +1,34 @@
+  <form name="$ctrl.invoiceForm">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-xs-6 form-group">
+            <label>Original Bill Rate: {{::$ctrl.originalBillRate | currency: '$'}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 form-group">
+            <label>Invoice Date (Required)</label>
+            <input required class="form-control input-modal-dp" uib-datepicker-popup="MM/dd/yyyy" ng-model="$ctrl.invoiceDate" close-on-date-selection="false" close-text="Apply" ng-click="$ctrl.openDatePicker()" is-open="$ctrl.isOpen" placeholder="MM/DD/YYYY" type="text"
+              datepicker-options="$ctrl.dateOptions"></input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-action-links">
+        <div class="row">
+          <div class="col-sm-6 invoice-button">
+            {{$ctrl.isDisabled}}
+            <loading-button disable-button="$ctrl.files.length === 0 || $ctrl.invoiceForm.$invalid" click-handler="$ctrl.uploadDocuments()" button-text="Send Invoice" show-loading="$ctrl.showLoading"></loading-button>
+          </div>
+          <div class="col-sm-6 upload-messages">
+            <div class="text-success fading-text" ng-if="$ctrl.showSavedMessage">
+              Invoices successfully added
+            </div>
+            <div class="text-danger" ng-if="$ctrl.showErrorMessage">
+              <error-messages error-code="$ctrl.serverError"></error-messages>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

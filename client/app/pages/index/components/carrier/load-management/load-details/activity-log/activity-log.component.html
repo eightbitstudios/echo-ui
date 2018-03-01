@@ -1,0 +1,21 @@
+<section class="panel load-table_log activity-log">
+  <h4 class="section-header sh-no_border">All Load Activities</h4>
+  <p class="text-muted disclaimer">These load activity log is for use as a reference only and may not be accurate. The load details shall be governed by the actual shipping documents applicable to each transaction in question (such as rate confirmations, bills of lading, proofs of delivery, etc).</p>
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div class="help-block text-center" ng-if="$ctrl.showError">An error has occurred. Please try again.</div>
+  <table class="table table-condensed table-log">
+    <tbody>
+      <tr ng-repeat="activity in $ctrl.activityLog" ng-if="$ctrl.isOpen || $index === 0">
+        <td class="log-note">{{activity.description}}</td>
+        <td class="log-driver">{{activity.user.roleName}} {{activity.user.firstName}} {{activity.user.lastName | firstCharacter}}</td>
+        <td class="log-time">{{activity.time}}</td>
+        <td class="log-day">{{activity.day}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="javascript:void(0)" ng-click="$ctrl.isOpen = !$ctrl.isOpen" ng-if="$ctrl.activityLog.length > 1">
+    <span ng-if="!$ctrl.isOpen">See All</span>
+    <span ng-if="$ctrl.isOpen">See Last Activity Only</span>
+  </a>
+</section>
+<p class="text-muted" ng-if="$ctrl.showDisclaimer()">Activity Logs are not available for multi-stop loads yet.</p>

@@ -1,0 +1,24 @@
+<div class="sidebar-list">
+  <ul class="sidebar-list-alpha" ng-repeat="sidebarItem in $ctrl.sidebarList" ng-if="$ctrl.searchParam.length < $ctrl.minSearchCharacters">
+    <li class="sidebar-list-letter">
+      {{sidebarItem.letter}}
+      <ul class="sidebar-list-names">
+        <li ng-repeat="value in  sidebarItem.values" ng-click="$ctrl.selectItemHandler(value)" 
+          ng-class="{'sidebar-selected': value.selected}" class="sidebar-name">
+          <a ui-sref="{{$ctrl.link}}({carrierId: value.getId(), isRepAdmin: true})"><span class="echo-icon" ng-class="{'icon-star-outline': value.isInactive(), 'icon-star-solid': !value.isInactive()}"></span>
+      {{value.getName()}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="sidebar-list-names" ng-if="$ctrl.searchParam.length >= $ctrl.minSearchCharacters">
+    <li ng-repeat="value in $ctrl.filteredItems = ($ctrl.items | filter:$ctrl.searchParam)" ng-click="$ctrl.selectItemHandler(value)" 
+      ng-class="{'sidebar-selected': value.selected}" class="sidebar-name">
+      <a ui-sref="{{$ctrl.link}}({carrierId: value.getId(), isRepAdmin: true})"><span class="echo-icon" ng-class="{'icon-star-outline': value.isInactive(), 'icon-star-solid': !value.isInactive()}"></span>
+      {{value.getName()}}</a>
+    </li>
+    <li ng-if="$ctrl.filteredItems.length === 0">
+      No Search Results
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,21 @@
+<section class="portal-user-grid">
+  <article class="portal-user" ng-repeat="portalUser in $ctrl.portalUsers" ng-click="$ctrl.userTileClickHandler(portalUser)">
+    <header>
+      <div class="user-name">{{portalUser.firstName}} {{portalUser.lastName}}</div>
+      <div class="user-title">{{portalUser.getRoleName()}}</div>
+    </header>
+    <div class="user-email">
+      <a href="javascript:void(0)">{{portalUser.email}}</a>
+    </div>
+    <div class="user-phone">{{portalUser.phone | phoneNumber}}</div>
+    <footer class="user-action">      
+      <div class="user-action-note" ng-if="portalUser.lastLogin === 'Never'">Invitation Sent</div>
+      <div class="user-action-note" ng-if="portalUser.lastLogin !== 'Never'">Last login {{portalUser.lastLogin}}</div>
+    </footer>
+  </article>
+  <article class="portal-user">
+    <button class="btn btn-adduser" ng-click="$ctrl.addTileHandler()">
+        <div class="echo-icon icon-plus" data-grunticon-embed></div>
+      </button>
+  </article>
+</section>

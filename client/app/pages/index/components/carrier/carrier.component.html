@@ -1,0 +1,9 @@
+<div class="carrier-admin">
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div ng-if="!$ctrl.showLoading">
+    <navbar carrier-details="$ctrl.carrierDetails">
+      <carrier-admin-nav carrier-details="$ctrl.carrierDetails"></carrier-admin-nav>
+    </navbar>
+    <div ui-view></div>
+  </div>
+</div>

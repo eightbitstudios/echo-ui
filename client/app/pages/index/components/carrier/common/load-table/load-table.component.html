@@ -1,0 +1,46 @@
+<section class="load-table">
+  <div class="row">
+    <div class="col-md-12">
+      <loading show-loading="$ctrl.showLoading" fixed="true"></loading>
+      <table class="table table-carrier-dashboard">
+        <thead>
+          <tr>
+            <th>Load</th>
+            <th class="carrier-dashboard-pickup">Pickup</th>
+            <th class="carrier-dashboard-arrow"></th>
+            <th class="carrier-dashboard-delivery">Delivery</th>
+            <th>Driver</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="$ctrl.loads.length === 0">
+            <td colspan="6" class="text-center">
+              <h3>No loads found</h3>
+            </td>
+          </tr>
+          <tr ng-class="{'load-cancelled': $ctrl.isCancelledLoad(loadManagement)}" ng-repeat="loadManagement in $ctrl.loads">
+            <td class="carrier-dashboard-load">
+              <load wrap-link="!$ctrl.isCancelledLoad(loadManagement)" load-guid="loadManagement.loadGuid" load-number="loadManagement.loadNumber" pro-number="loadManagement.proNumber" is-details-updated="loadManagement.isDetailsUpdated"></load>
+            </td>
+            <td class="carrier-dashboard-pickup">
+              <shipping-details shipping-details="loadManagement.pickUp" inactive="$ctrl.determineInactive(loadManagement.nextAction.nextAction, true)"></shipping-details>
+            </td>
+            <td class="carrier-dashboard-arrow">
+              <span class="echo-icon icon-right-arrow-dark"></span>
+            </td>
+            <td class="carrier-dashboard-delivery">
+              <shipping-details shipping-details="loadManagement.delivery" inactive="$ctrl.determineInactive(loadManagement.nextAction.nextAction, false)"></shipping-details>
+            </td>
+            <td>
+              <driver load="loadManagement" load-type="$ctrl.loadType" driver-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId" is-multi-stop="$ctrl.isMultiStopLoad(loadManagement)" is-cancelled-load="$ctrl.isCancelledLoad(loadManagement)"></driver>
+            </td>
+            <td>
+              <action load="loadManagement" load-type="$ctrl.loadType" action-changed-callback="$ctrl.refreshTableCallback()" carrier-id="$ctrl.carrierId" is-multi-stop="$ctrl.isMultiStopLoad(loadManagement)" rep-details="$ctrl.repDetails"></action>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

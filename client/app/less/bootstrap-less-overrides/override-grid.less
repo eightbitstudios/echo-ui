@@ -1,0 +1,117 @@
+//
+// Grid system
+// --------------------------------------------------
+
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+.main-content-container{ 
+    position: relative;
+    min-height: ~'calc(100vh - 92px)'; // Offset 32 pixels for the site header and 60 for the site footer.
+}
+.container {
+  //At the medium breakpoint, overriding the bootstrap default to set a static width
+  //for a container. Since our container and breakpoint are equal width values, browsers
+  //with an attached scrollbar would cut into that, causing a horizontal scrollbar.
+  //This just makes it so the container isn't forced to be that width and can be a bit smaller
+  //until the viewport is larger and the scrollbar goes away.
+  @media (min-width: @screen-md-min) {
+    width: auto;
+  }
+
+  //left/right padding for top level containers to make sure content isn't flush with the side of the page
+  @media (max-width: @screen-xs-max) {
+    padding: 0 20px;
+  }
+}
+
+.container-flex .col-echo {
+    padding-top: 45px;
+    padding-bottom: 45px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.container-flex .col-wrap {
+    width: 100%;
+}
+
+.container-flex .col-echo:first-child {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+@media (min-width: 992px) {
+    
+    .container-flex .col-echo:first-child {
+        padding-right: 60px;
+        padding-left: 60px;
+        .col-wrap {
+            width: 373px;
+        }
+    }
+    
+    .container-flex .col-echo:last-child {
+        padding-right: 60px;
+        padding-left: 60px;
+    }
+}
+
+.container-flex .col-echo:last-child {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    background-color: @c-gray-lightest;
+}
+
+@media (min-width: 1370px) {
+
+    .container-flex .col-echo:last-child .col-wrap {
+        width: 677px;
+    }
+}
+
+.container-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.content-container {
+    padding: 30px 20px;
+    border-radius: @c-white;
+    background-color: @c-white;
+    box-shadow: 0 1px 2px 0 rgba(65, 67, 68, 0.2);
+    margin-bottom: 20px;
+}
+
+@media (max-width: @screen-md) and (min-width: @screen-sm){
+    .container {
+        width: 100%;
+    }
+}
+@media (min-width: @screen-md){
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: @screen-lg){
+    .container {
+        width: 1170px;
+    }
+}

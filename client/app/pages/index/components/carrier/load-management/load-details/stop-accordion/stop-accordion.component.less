@@ -1,0 +1,92 @@
+.accordion {
+  word-wrap: break-word;
+
+  &.panel-closed {
+    .panel {
+      & > .panel-heading {
+        background-color: @c-gray-light;
+        color: @c-gray-darkest;
+        &:hover {
+          background-color: @c-gray-light;
+          .caret {
+            -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+          }
+        }
+        .caret {
+          -webkit-transform: rotateZ(0deg);
+          transform: rotateZ(0deg);
+        }
+      }
+    }
+  }
+  .panel-group .panel {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .panel {
+    padding: 20px;
+    border-radius: 2px;
+    border: 0;
+    background-color: @c-white;
+    box-shadow: 0 1px 2px 0 rgba(65, 67, 68, 0.2);
+    > .panel-heading {
+      color: @c-white;
+      padding: 0;
+      background-color: @c-slate-grey;
+      -webkit-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+    }
+    > .panel-heading:hover {
+      background-color: #3b404a;
+    }
+    > .panel-heading:hover .caret {
+      -webkit-transform: rotateZ(180deg);
+      transform: rotateZ(180deg);
+    }
+    .panel-title {
+      font-family: inherit;
+      font-size: 18px;
+      line-height: 1.3;
+      padding: 19px 30px;
+      strong {
+        text-transform: uppercase;
+        margin-right: 10px;
+      }
+      .stops-date {
+        font-size: 14px;
+        line-height: 1.4;
+        float: right;
+      }
+    }
+    .panel-title > a {
+      display: block;
+      -webkit-transition: none;
+      transition: none;
+    }
+    .panel-title > a:hover {
+      color: inherit;
+    }
+    .panel-title > a:focus {
+      text-decoration: none;
+      outline: none;
+    }
+    .panel-body {
+      padding: 30px 30px 20px;
+      border-top: 0;
+    }
+  }
+  .load-items-details {
+    margin-top: 50px;
+  }
+  .section-header_items span {
+    margin-left: 20px;
+  }
+  .section-header_items em {
+    margin-left: 5px;
+    font-style: normal;
+    font-weight: @fw-normal;
+  }
+}

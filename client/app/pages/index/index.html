@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="keywords" content="Carrier Portal, Driver App, Dispatcher Portal, Echo Mobile App, Echo Dispatchers, Echo Carrier">
+  <meta name="description" property="og:description" content="The most efficient solution for carrier dispatchers to simplify load management and the easiest app for drivers to see assigned load information in one place.">
+
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+  <script type='text/javascript'  src='assets/icons/grunticon.loader.js'></script>
+
+  <title>EchoDrive - Carrier Portal | Echo Global Logistics</title>
+
+  <!-- build:css css/main.css -->
+  <link href="css/main.css" rel="stylesheet">
+  <!-- endbuild -->
+
+  <!--[if lte IE 8]>
+  <script src="bower_components/respond.min.js"></script>
+  <script src="bower_components/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- build:js app/vendor.js -->
+  <% _.each( vendor_files.js, function( scriptSrc ){ %>
+  <script src="<%= scriptSrc %>"></script><% }); %>
+  <!-- endbuild -->
+
+    <!-- build:css -->
+  <% _.each( vendor_files.css, function( cssSrc ){ %>
+  <link href="<%= cssSrc %>" rel="stylesheet"></link><% }); %>
+  <!-- endbuild -->
+
+  <!-- build:js app/index/index.js -->
+  <!-- injector:js -->
+  <!-- endinjector -->
+  <!-- endbuild -->
+
+  <!-- build:js app/env-vars.js -->
+  <% _.each( app_files.envVars, function( scriptSrc ){ %>
+  <script src="<%= scriptSrc %>"></script><% }); %>
+  <!-- endbuild -->
+  <script>
+    grunticon(["assets/icons/icons.data.svg.css", "assets/icons/icons.data.png.css", "assets/icon/icons.fallback.css"], grunticon.svgLoadedCallback);
+  </script>
+</head>
+
+<body ng-app="echo.index" ng-controller="AppCtrl as appCtrl" id="ng-app" analytics>
+  <div ui-view="header"></div>
+  <div class="main-content-container" ng-class="{'white-container': $state.current.data.whiteContainer}">
+    <!-- body view to load remaining child routes -->
+    <div ui-view="body"></div>
+  </div>
+  <div ui-view="footer"></div>
+</body>
+</html>

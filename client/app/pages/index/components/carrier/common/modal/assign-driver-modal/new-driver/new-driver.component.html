@@ -1,0 +1,13 @@
+<div class="new-driver">
+  <h4 class="content-header">Invite a New Driver</h4>
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <driver-profile driver="$ctrl.newDriver" languages="$ctrl.languages" ng-if="!$ctrl.showLoading"></driver-profile>
+  <div class="modal-action-links modal-action-split">
+    <a class="btn btn-link btn-alt" href="javascript:void(0)" ng-click="$ctrl.cancelCallback()">
+      <span data-grunticon-embed class="echo-icon icon-left-arrow"></span> Cancel Invitation
+    </a>
+    <a class="btn btn-link" href="javascript:void(0)" ng-click="$ctrl.saveNewDriver()" ng-if="!$ctrl.showLoading">
+      Invite &amp; Continue<span class="echo-icon icon-right-arrow"></span>
+    </a>
+  </div>
+</div>

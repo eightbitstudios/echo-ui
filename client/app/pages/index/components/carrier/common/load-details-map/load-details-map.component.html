@@ -1,0 +1,26 @@
+<div class="load-map">
+  <div class="map-container" ng-class="{'detailed': $ctrl.detailedInfo, 'expanded': $ctrl.showExpanded}">
+    <loading show-loading="$ctrl.showLoading" overlay="false"></loading>
+    <google-maps ng-if="!$ctrl.showLoading && $ctrl.geoCodeComplete && $ctrl.showMap && !$ctrl.googleMapError"
+                 ng-class="{'detailed': $ctrl.detailedInfo}"
+                 map-type="$ctrl.mapType"
+                 popup-offset="$ctrl.popupOffset"
+                 center="$ctrl.mapCenter"
+                 total-points="$ctrl.mapPoints.length"
+                 is-details="true">
+
+      <google-maps-marker ng-repeat="mapMarker in $ctrl.mapMarkers" map-marker="mapMarker" is-details="true">
+
+        <google-maps-info-window is-details="true">
+          <warehouse-info-window map-marker="mapMarker"
+                                 total-temporary-stops="$ctrl.totalTemporaryStops">
+          </warehouse-info-window>
+        </google-maps-info-window>
+
+      </google-maps-marker>
+
+      <google-maps-polyline load-status-code="$ctrl.loadStatusCode" map-points="$ctrl.mapMarkers"></google-maps-polyline>
+
+    </google-maps>
+  </div>
+</div>

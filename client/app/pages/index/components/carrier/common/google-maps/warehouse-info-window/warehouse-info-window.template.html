@@ -1,0 +1,34 @@
+<div class="gm-warehouse-info-window" ng-blur="$ctrl.closeInfoWindow()">
+
+  <div class="gm-info-window-header">
+    <span>
+      {{$ctrl.infoWindowHeader}}
+    </span>
+  </div>
+
+  <div class="gm-info-window-body">
+    <div class="address-container">
+      <div class="warehouse-name">{{$ctrl.mapMarker.getName()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress1()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress2()}}</div>
+      <div>{{$ctrl.mapMarker.getAddress3()}}</div>
+      <div>{{$ctrl.mapMarker.getCity()}}, {{$ctrl.mapMarker.getStateCode()}} {{$ctrl.mapMarker.getPostalCode()}}</div>
+      <div>{{$ctrl.mapMarker.getCountryCode()}}</div>
+      <br>
+    </div>
+
+    <div class="schedule-container">
+      <span ng-if="!$ctrl.isCurrentLocation()" class="header">Time</span>
+      <span ng-if="$ctrl.isCurrentLocation()" class="header">Reported By</span>
+      <div ng-if="$ctrl.isCurrentLocation()">
+        <div>{{$ctrl.mapMarker.getReportTime()}}</div>
+        <div ng-if="$ctrl.mapMarker.getDriverName()">by {{$ctrl.mapMarker.getDriverName()}}.</div>
+      </div>
+      <div ng-if="!$ctrl.isCurrentLocation()">
+        <div>{{$ctrl.schedule.getFormattedDayTime()}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

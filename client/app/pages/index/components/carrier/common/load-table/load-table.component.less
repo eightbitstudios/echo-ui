@@ -1,0 +1,122 @@
+.load-table {
+  .col-md-12 {
+    min-height: 300px;
+  }
+  .loading {
+    background: @c-white;
+    opacity: .8;
+  }
+  .table-carrier-dashboard {
+    color: @c-gray-darkest;
+    tr > td {
+      &.carrier-dashboard-arrow, &.carrier-dashboard-pickup {
+        border-right: none;
+      }
+    }
+    &.carrier-dashboard-arrow {
+      padding-left: 0;
+      padding-right: 0;
+      img {
+        margin: 15px 0;
+      }
+    }
+    thead {
+      .location-delivery {
+        margin-left: 18px;
+      }
+    }
+    .muted {
+      color: @c-gray-mid-light;
+    }
+
+    .load-cancelled .carrier-dashboard-load:before {
+      content: "Cancelled";
+      position: absolute;
+      top: 30px;
+      left: 175%;
+      font-size: 60px;
+      font-family: "Teko";
+      -webkit-transform: rotateZ(-9deg);
+      transform: rotateZ(-9deg);
+      z-index: 999;
+      color: rgba(131, 135, 136, 0.6); 
+    }
+    
+    .load-cancelled .load-number {
+      color: #525966; 
+    }
+    .load-cancelled .driver-name_cancelled {
+      color: #eb004b; 
+    }
+    .load-cancelled .carrier-dashboard-arrow {
+      opacity: 0.4; 
+    }
+
+    .carrier-dashboard-load {
+      p {
+        margin-bottom: 10px;
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      p.label {
+        margin-bottom: 3px;
+      }
+    }
+    .loading {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .location-pickup, .location-delivery {
+      display: flex;
+      flex-direction: column;
+    }
+    .lead {
+      font-weight: normal;
+      line-height: 20px;
+      margin-bottom: 2px;
+      word-break: break-word;
+    }
+    .location-state {
+      margin-bottom: 10px;
+    }
+    .location-time {
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 10px;
+      +tablet {
+        margin-top: auto;
+      }
+    }
+    .driver-status {
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 10px;
+      +tablet {
+        margin-top: auto;
+      }
+    }
+  }
+}
+
+.carrier-dashboard-pickup, .carrier-dashboard-delivery {
+  max-width: 200px;
+}
+
+.carrier-dashboard-multi-load-action {
+  width: 100%;
+  .btn {
+    margin: 6px 0 0 0;
+    width: 100%;
+  }
+  p {
+    margin: 6px 0 0 0;
+    > .btn-link {
+      text-align: left;
+      margin: 0;
+    }
+  }
+  .action-align-bottom {
+    margin-top: auto;
+  }
+}

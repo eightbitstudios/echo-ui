@@ -1,0 +1,21 @@
+.loading-button {
+  .btn {
+    position: relative;
+  }
+  .btn-danger{
+    .loading .loading-text {
+      border-top-color: @c-error;
+    }
+  }
+  .loading {
+    .loading-text {
+      height: 25px;
+      width: 25px;
+      .center-image(@top: 12px; @left: 12px);
+    }
+  }
+
+  .hide-button-text {
+    visibility: hidden;
+  }
+}

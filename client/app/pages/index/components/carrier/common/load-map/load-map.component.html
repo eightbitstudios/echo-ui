@@ -1,0 +1,14 @@
+<div class="load-map">
+  <div class="map-container" ng-class="{'detailed': $ctrl.detailedInfo, 'expanded': $ctrl.showExpanded, 'expanded-sm': $ctrl.showExpanded && $ctrl.isLoadManagementPage()}">
+    <loading show-loading="$ctrl.showLoading" overlay="false"></loading>
+    <google-maps ng-if="!$ctrl.showLoading && $ctrl.showMap" fullscreen="$ctrl.showExpanded" popup-offset="$ctrl.popupOffset" center="$ctrl.mapCenter" total-points="$ctrl.points.length" map="$ctrl.map">
+      <google-maps-marker ng-repeat="mapPoint in $ctrl.points" position="mapPoint.position" number-of-loads="mapPoint.loads.length">
+        <google-maps-info-window>
+          <detailed-info-window ng-if="$ctrl.detailedInfo" map-point="mapPoint" view-map-handler="$ctrl.viewMapHandler({mapPoint: mapPoint})"
+                                expanded="$ctrl.showExpanded" action-changed-callback="$ctrl.mapRefreshHandler()" carrier-id="$ctrl.carrierId"></detailed-info-window>
+          <basic-info-window ng-if="!$ctrl.detailedInfo" map-point="mapPoint"></basic-info-window>
+        </google-maps-info-window>
+      </google-maps-marker>
+    </google-maps>
+  </div>
+</div>

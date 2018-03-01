@@ -1,0 +1,11 @@
+<section class="driver-grid">
+  <article class="driver driver-results text-center" ng-if="$ctrl.driverCount > 0">
+    <h5>{{$ctrl.driverCount}} Drivers Total</h5>
+    <a ui-sref="{{$ctrl.driverRoute}}({carrierId: $ctrl.carrierId})">Manage Drivers</a>
+  </article>
+  <article class="driver">
+    <button class="btn btn-adduser" ng-click="$ctrl.addDriverHandler()">
+        <div class="echo-icon icon-plus"></div>
+      </button>
+  </article>
+</section>

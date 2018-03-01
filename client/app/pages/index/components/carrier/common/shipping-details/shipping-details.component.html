@@ -1,0 +1,15 @@
+<div class="location" ng-class="{'inactive': $ctrl.inactive}">
+  <div class="place">
+    <div class="lead">
+      {{$ctrl.location.city}}
+    </div>
+    <div class="location-state">
+      {{$ctrl.location.state}}, {{$ctrl.location.zip}}
+    </div>
+  </div>
+  <div class="location-time">
+    {{$ctrl.location.time}}
+    <br> {{$ctrl.location.day}}
+  </div>
+  <pagination only-show-current-page="true" paging-model="$ctrl.paging" page-click-handler="$ctrl.pageClickHandler()"></pagination>
+</div>

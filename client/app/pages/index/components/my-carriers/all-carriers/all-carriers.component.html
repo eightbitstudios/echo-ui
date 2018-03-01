@@ -1,0 +1,8 @@
+<div class="all-carriers">
+  <loading show-loading="$ctrl.showLoading"></loading>
+  <div>
+    <filter-bar search-list="$ctrl.carrierList" search-param="$ctrl.searchParam" link="$ctrl.routesConfig.INDEX.myCarriersDetails.name"  min-search-characters="$ctrl.minSearchCharacters">
+    </filter-bar>
+     <sidebar-list items="$ctrl.carrierList" search-param="$ctrl.searchParam" min-search-characters="$ctrl.minSearchCharacters" link="$ctrl.routesConfig.INDEX.myCarriersDetails.name"></sidebar-list>
+  </div>
+</div>

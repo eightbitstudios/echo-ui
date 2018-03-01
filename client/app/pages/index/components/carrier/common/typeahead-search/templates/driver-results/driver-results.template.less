@@ -1,0 +1,43 @@
+.typeahead-search .dropdown-menu {
+  list-style: none;
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  left: 0;
+  width: 370px;
+  margin: 0;
+  padding: 30px 10px 20px;
+  border-radius: 2px;
+  border:none;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  li {
+    color: @c-gray-heavy-light;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    padding: 5px 10px 15px;
+    border-bottom: 1px solid @c-gray-light;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &:hover {
+      cursor: pointer;
+    }
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+  .result-title {
+    color: @c-gray-darkest;
+    font-size: 18px;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  .result-phone {
+    margin-left: auto;
+  }
+}
+
+.driver-results {
+  width: 100%;
+}

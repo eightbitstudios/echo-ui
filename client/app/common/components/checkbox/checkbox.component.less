@@ -1,0 +1,33 @@
+.checkbox {
+  &.control-lrg .control-indicator {
+    width: 30px;
+    height: 30px;
+  }
+  .control-indicator {
+    left: 0;
+    position: absolute;
+    top: 0;
+    border-radius: 4px;
+    background-color: @c-white;
+    border: solid 1px @c-gray-light;
+    width: 1.8rem;
+    height: 1.8rem;
+    cursor: pointer;
+    display: block;
+    line-height: 1rem;
+    font-size: 65%;
+    text-align: center;
+    background-size: 50% 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  input:checked ~ .control-indicator {
+    background-color: @c-gray-light;
+    background-image: url(../assets/images/checkbox-check.svg);
+  }
+  &.control-lrg input:checked ~ .control-indicator {
+    border: solid 1px @c-green-1;
+    background-color: @c-green-1;
+    background-image: url("../assets/images/icon-checkmark-wht.svg");
+  }
+}

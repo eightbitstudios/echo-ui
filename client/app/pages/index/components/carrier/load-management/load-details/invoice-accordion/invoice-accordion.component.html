@@ -1,0 +1,26 @@
+<uib-accordion class="invoice-accordion accordion" ng-class="{'panel-closed': !$ctrl.isOpen}">
+  <div uib-accordion-group is-open="$ctrl.isOpen">
+    <uib-accordion-heading><strong>Payment Details</strong>
+      <span class="pull-right">
+        <strong>Status</strong> Paid
+        <div class="caret"></div>
+      </span>
+    </uib-accordion-heading>
+    <div class="load-details">
+      <h4 class="section-header sh-no_border section-header_items">
+        Paid Invoices
+        <div class="pull-right">
+          <span>
+            Total Paid
+            <em>
+              {{$ctrl.invoiceDetails.totalAmountPaid | currency: '$'}}
+            </em>
+          </span>
+        </div>
+      </h4>
+      <section class="well">
+        <paid-invoices paid-invoices="$ctrl.invoiceDetails.invoiceDetails"></paid-invoices>
+      </section>
+    </div>
+  </div>
+</uib-accordion>

@@ -1,0 +1,26 @@
+<h4 class="content-header">Confirm Empty</h4>
+<p>Please confirm empty if the driver can meet the following customer needs. (If not, please call your Echo Rep.)</p>
+<checkbox-card ng-if="$ctrl.equipment.length > 0" is-checked="$ctrl.checkboxItems.equipmentCheckbox">
+  <p>
+    <strong>With the Right Equipment</strong>
+  </p>
+  <p>
+    {{$ctrl.equipment}}
+  </p>
+</checkbox-card>
+<checkbox-card ng-if="$ctrl.services.length > 0" is-checked="$ctrl.checkboxItems.serviceCheckbox">
+  <p>
+    <strong>Providing the Service</strong>
+  </p>
+  <p>
+    {{$ctrl.services}}
+  </p>
+</checkbox-card>
+<checkbox-card ng-if="$ctrl.reportEmpty.generalInstructions.length > 0" is-checked="$ctrl.checkboxItems.instructionCheckbox">
+  <p>
+    <strong>Follow the Instructions</strong>
+  </p>
+  <p>
+    {{$ctrl.reportEmpty.generalInstructions}}
+  </p>
+</checkbox-card>

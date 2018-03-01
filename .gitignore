@@ -1,2 +1,15 @@
-.ruby-version
+node_modules
+public
+.tmp
+.sass-cache
+.idea
+client/bower_components
+client/assets/grunticons
+build
+dist
+/server/config/local.env.js
 .DS_Store
+coverage
+*.ipr
+*.iml
+.ruby-version

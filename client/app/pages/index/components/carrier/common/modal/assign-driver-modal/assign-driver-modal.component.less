@@ -1,0 +1,129 @@
+.assign-driver-modal {
+
+  .new-driver, .unassigned-driver-list, .unassigned-driver {
+    position: relative;
+  }
+  .new-driver, .unassigned-driver, .assigned-driver-profile, load-driver {
+    height: 100%;
+  }
+  .new-driver, .unassigned-driver, .assigned-driver-profile {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .side-bar {
+    border-right: 1px solid #e5e5e5;
+  }
+  .modal-footer {
+    text-align: center;
+  }
+  .select-driver {
+    display: inline;
+  }
+  .selected-driver {
+    display: none;
+  }
+  .selected {
+    .select-driver {
+      display: none;
+    }
+    .selected-driver {
+      display: inline;
+    }
+  }
+
+  .table-modal-scroll {
+    border-bottom: solid 1px #505c61;
+    table tbody, table thead {
+      display: block;
+    }
+    table {
+      tbody {
+        height: 305px;
+        padding-right: 25px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        tr > td {
+          position: inherit;
+          &:after {
+            position: inherit;
+          }
+        }
+      }
+    }
+  }
+  .table-assign-driver {
+    margin-bottom: 0;
+
+    //override global table styles
+    tr {
+      td {
+        padding-left: 0 !important;
+        border-left: none !important;
+      }
+    }
+
+    table.table tr > td {
+      border-left: none !important;
+    }
+
+    //override global link styles
+    a {
+      color: @c-dark-grey;
+    }
+
+    a:hover {
+      color: @c-bright-blue;
+    }
+  }
+  .table-assign-driver .driver-status, .table-assign-driver .driver-contact {
+    text-align: right;
+  }
+  .table-assign-driver td.driver-contact {
+
+    a {
+      color: @c-gray-heavy-light;
+    }
+
+    a:hover {
+      color: @c-bright-blue;
+    }
+  }
+  .table-assign-driver .driver-name {
+    font-size: 14px;
+  }
+  .table-assign-driver .driver-select {
+    label {
+      bottom: 24px;
+      left: 10px;
+    }
+  }
+  .icon-left-arrow {
+    margin-right: 5px;
+  }
+  .icon-right-arrow {
+    margin-left: 5px;
+  }
+
+  .unassigned-driver-list .loading {
+    margin-top: 20px;
+  }
+  .icon-warning {
+    position: absolute;
+    padding-top: 1px;
+  }
+  .text-danger {
+    padding-left: 25px;
+    position: relative;
+    display: inline-block;
+  }
+  .search-form .form-control.search-form-input {
+    width: 300px;
+  }
+}
