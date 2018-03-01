@@ -554,6 +554,11 @@ $(window).load(function(){
 
   });
 
-
+  /////////////
+  // Accordion list toggle function
+  /////////////
+  $('.sidebar-list_accordion .accordion-toggle').click(function(){
+    $(this).closest('li').toggleClass('open');
+  });
 
 });

@@ -12,3 +12,4 @@ dist
 coverage
 *.ipr
 *.iml
+.ruby-version
